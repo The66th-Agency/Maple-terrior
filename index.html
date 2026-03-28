@@ -23,8 +23,8 @@
   <!-- Fonts: Fraunces + Plus Jakarta Sans (display=swap for fast first paint) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
   <link rel="preconnect" href="https://cdn.shopify.com">
 
   <!-- Tailwind CSS CDN -->
@@ -683,14 +683,21 @@
               <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-charcoal aspect-[4/3] md:aspect-[5/4]">
                 <!-- Video -->
                 <video
+                  id="hero-video"
                   class="absolute inset-0 w-full h-full object-cover"
-                  src="assets/videos/maple-bottle.mp4"
                   autoplay
                   loop
                   muted
                   playsinline
                   preload="metadata"
+                  poster="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=800"
                 ></video>
+                <script>
+                  // Only load video on desktop — mobile gets the poster image
+                  if (window.innerWidth > 768) {
+                    document.getElementById('hero-video').src = 'assets/videos/maple-bottle.mp4';
+                  }
+                </script>
                 <!-- Inner shadow for physical depth -->
                 <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] rounded-[inherit] pointer-events-none"></div>
 
@@ -2246,6 +2253,6 @@ var MapleCart = (function () {
 })();
 </script>
 
-<script src="assets/shared.js"></script>
+<script src="assets/shared.js" defer></script>
 </body>
 </html>
