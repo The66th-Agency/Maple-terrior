@@ -139,6 +139,47 @@
     }
     .trust-badge svg { width: 16px; height: 16px; color: #C4841D; flex-shrink: 0; }
 
+    /* ─── Product Detail Accordions ────────────────────────────── */
+    .pdp-acc-q {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 1rem 0; cursor: pointer; width: 100%; background: none; border: none;
+      text-align: left; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 0.88rem; font-weight: 600; color: #1A1714; letter-spacing: 0.02em;
+    }
+    .pdp-acc-q:hover { color: #C4841D; }
+    .pdp-acc-icon {
+      width: 22px; height: 22px; flex-shrink: 0; border-radius: 50%;
+      background: #F7F4EF; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1), background 0.25s;
+    }
+    .pdp-acc.active .pdp-acc-icon { transform: rotate(45deg); background: #C4841D; color: white; }
+    .pdp-acc-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .pdp-acc-a.open, .pdp-acc.active .pdp-acc-a { max-height: 600px; }
+    .pdp-acc-inner {
+      padding: 0 0 1rem;
+      font-size: 0.88rem; line-height: 1.7; color: #6B6158;
+    }
+    .pdp-acc-inner ul { padding-left: 1.25rem; margin: 0.5rem 0; }
+    .pdp-acc-inner li { margin-bottom: 0.35rem; }
+    .pdp-acc-inner p { margin-bottom: 0.75rem; }
+    .pdp-detail-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.5rem 0; border-bottom: 1px solid rgba(237,232,223,0.5);
+    }
+    .pdp-detail-row:last-child { border-bottom: none; }
+    .pdp-detail-label { font-size: 0.8rem; color: #8C8175; font-weight: 500; }
+    .pdp-detail-value { font-size: 0.8rem; color: #1A1714; font-weight: 500; text-align: right; }
+
+    /* Highlight pills */
+    .highlight-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; color: #4A4239; padding: 0.5rem 0;
+    }
+    .highlight-pill svg { width: 14px; height: 14px; color: #C4841D; flex-shrink: 0; }
+
     /* ─── FAQ Accordion ─────────────────────────────────────────── */
     .faq-item { border-bottom: 1px solid #EDE8DF; }
     .faq-q {
@@ -346,11 +387,58 @@
             </div>
           </div>
 
-          <div id="product-desc" class="prose prose-sm text-warm-gray-600 leading-relaxed mb-8">
-            <div class="skeleton" style="width:100%;height:6rem"></div>
+          <!-- Product Info Accordions -->
+          <div id="product-accordions" class="mb-8">
+            <!-- Description -->
+            <div class="pdp-acc border-b border-warm-gray-200/50">
+              <button class="pdp-acc-q" onclick="togglePdpAcc(this)">
+                <span>Description</span>
+                <span class="pdp-acc-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span>
+              </button>
+              <div class="pdp-acc-a open">
+                <div class="pdp-acc-inner" id="product-desc">
+                  <div class="skeleton" style="width:100%;height:4rem"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Highlights -->
+            <div class="pdp-acc border-b border-warm-gray-200/50" id="highlights-section" style="display:none">
+              <button class="pdp-acc-q" onclick="togglePdpAcc(this)">
+                <span>Highlights</span>
+                <span class="pdp-acc-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span>
+              </button>
+              <div class="pdp-acc-a">
+                <div class="pdp-acc-inner" id="product-highlights"></div>
+              </div>
+            </div>
+            <!-- Product Details -->
+            <div class="pdp-acc border-b border-warm-gray-200/50">
+              <button class="pdp-acc-q" onclick="togglePdpAcc(this)">
+                <span>Product Details</span>
+                <span class="pdp-acc-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span>
+              </button>
+              <div class="pdp-acc-a">
+                <div class="pdp-acc-inner" id="product-details">
+                  <div class="skeleton" style="width:100%;height:3rem"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Shipping & Returns -->
+            <div class="pdp-acc border-b border-warm-gray-200/50">
+              <button class="pdp-acc-q" onclick="togglePdpAcc(this)">
+                <span>Shipping &amp; Returns</span>
+                <span class="pdp-acc-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span>
+              </button>
+              <div class="pdp-acc-a">
+                <div class="pdp-acc-inner">
+                  <div class="pdp-detail-row"><span class="pdp-detail-label">Shipping</span><span class="pdp-detail-value">Free on Canadian orders over $99 CAD</span></div>
+                  <div class="pdp-detail-row"><span class="pdp-detail-label">International</span><span class="pdp-detail-value">Canada, USA, Japan, South Korea</span></div>
+                  <div class="pdp-detail-row"><span class="pdp-detail-label">Processing</span><span class="pdp-detail-value">1-3 business days</span></div>
+                  <div class="pdp-detail-row"><span class="pdp-detail-label">Returns</span><span class="pdp-detail-value">14-day return on damaged/defective items</span></div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div id="product-tags" class="flex flex-wrap gap-2 mb-8"></div>
         </div>
       </div>
     </div>
@@ -490,6 +578,12 @@
       if (menuOpen) { mobileMenu.style.opacity='1'; mobileMenu.style.pointerEvents='auto'; bar1.style.transform='translateY(5px) rotate(45deg)'; bar2.style.opacity='0'; bar3.style.transform='translateY(-5px) rotate(-45deg)'; mobileLinks.forEach(function(l){l.style.opacity='1';l.style.transform='translateY(0)';}); document.body.style.overflow='hidden'; }
       else { mobileMenu.style.opacity='0'; mobileMenu.style.pointerEvents='none'; bar1.style.transform=''; bar2.style.opacity='1'; bar3.style.transform=''; mobileLinks.forEach(function(l){l.style.opacity='0';l.style.transform='translateY(3rem)';}); document.body.style.overflow=''; }
     });
+
+    // ── Product Detail Accordions ──────────────────────────────
+    function togglePdpAcc(btn) {
+      var item = btn.closest('.pdp-acc');
+      item.classList.toggle('active');
+    }
 
     // ── FAQ Accordion ─────────────────────────────────────────
     function toggleFaq(btn) {
@@ -650,20 +744,55 @@
       document.getElementById('sticky-title').textContent = p.title;
       document.getElementById('sticky-price').textContent = '$' + parseFloat(variants[0].priceV2.amount).toFixed(2) + ' CAD';
 
-      // Description
-      document.getElementById('product-desc').innerHTML = p.descriptionHtml || ('<p>' + p.description + '</p>');
+      // Description — separate paragraphs from bullet points
+      var descHtml = p.descriptionHtml || ('<p>' + p.description + '</p>');
+      var tempDiv = document.createElement('div');
+      tempDiv.innerHTML = descHtml;
 
-      // Tags
-      var tagsEl = document.getElementById('product-tags');
-      tagsEl.innerHTML = '';
-      if (p.tags && p.tags.length) {
-        p.tags.forEach(function (tag) {
-          var span = document.createElement('span');
-          span.className = 'text-xs font-medium text-warm-gray-500 bg-warm-gray-100 rounded-full px-3 py-1';
-          span.textContent = tag;
-          tagsEl.appendChild(span);
+      // Extract bullet points (ul/li) for the Highlights section
+      var lists = tempDiv.querySelectorAll('ul');
+      var highlights = [];
+      lists.forEach(function (ul) {
+        ul.querySelectorAll('li').forEach(function (li) {
+          var text = li.textContent.trim();
+          if (text) highlights.push(text);
         });
+        ul.remove(); // remove from description
+      });
+
+      // Set description (paragraphs only)
+      var descEl = document.getElementById('product-desc');
+      descEl.innerHTML = tempDiv.innerHTML;
+      // Open the description accordion by default
+      descEl.closest('.pdp-acc').classList.add('active');
+
+      // Set highlights if we found any
+      if (highlights.length) {
+        document.getElementById('highlights-section').style.display = '';
+        var hlEl = document.getElementById('product-highlights');
+        hlEl.innerHTML = highlights.map(function (h) {
+          return '<div class="highlight-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg> ' + h + '</div>';
+        }).join('');
       }
+
+      // Product details
+      var detailsEl = document.getElementById('product-details');
+      var detailRows = '';
+      detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Brand</span><span class="pdp-detail-value">' + (p.vendor || 'Maple Terroir') + '</span></div>';
+      detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Category</span><span class="pdp-detail-value">' + (p.productType || 'Maple Products') + '</span></div>';
+      if (variants.length > 1) {
+        detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Available sizes</span><span class="pdp-detail-value">' + variants.length + ' options</span></div>';
+      }
+      var firstVariantTitle = variants[0].title;
+      if (firstVariantTitle && firstVariantTitle !== 'Default Title') {
+        // Extract weight from variant title (e.g. "136g x 1" → "136g")
+        var weightMatch = firstVariantTitle.match(/(\d+[gml]+)/i);
+        if (weightMatch) {
+          detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Weight</span><span class="pdp-detail-value">' + weightMatch[1] + ' per unit</span></div>';
+        }
+      }
+      detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Origin</span><span class="pdp-detail-value">Quebec, Canada</span></div>';
+      detailsEl.innerHTML = detailRows;
 
       initStickyATC();
 
