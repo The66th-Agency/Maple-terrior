@@ -137,3 +137,32 @@ Premium editorial brand website for Maple Terroir — a fourth-generation, famil
 ### 2026-03-27 — Homepage bento cards link to collection pages
 **What:** Updated all 7 homepage bento product cards to link to their respective individual collection pages (`collections/xxx.html`) instead of individual products or the generic products page. Maple Syrup → collections/maple-syrup.html, Stroopwafels → collections/stroopwafels.html, Tea → collections/tea-coffee.html, Coffee → collections/tea-coffee.html, Chocolates → collections/chocolates.html, Pantry → collections/nuts-snacks.html, Gift Sets → collections/gift-sets.html.
 **Why:** Bento cards represent categories, not individual products — clicking should show the full collection, not a single product detail page.
+
+### 2026-03-27 — Taste-skill design quality audit + fixes
+**What:** Ran full taste-skill audit across all pages. Fixed: replaced all emoji entities (&#128722;, &#10003;) with SVG icons (19 files), removed filter:blur from .reveal animations (19 files), added prefers-reduced-motion to story/terroir/certifications, consolidated emerald/blue/rose accent colors to amber-only on index.html, added API error states to product.html, fixed alt text mismatch, removed filler word "elevated", fixed h-screen→h-[100dvh], added :active tactile feedback to .atc-btn and .product-card (12 files), bumped border-radius from 1.5rem to 2rem on cards.
+**Why:** Taste-skill compliance — eliminate AI anti-patterns, enforce premium design standards.
+
+### 2026-03-27 — Site-wide features: search, announcement bar, back-to-top, newsletter, 404, favicon, sitemap, structured data
+**What:** Created `assets/shared.js` with shared features injected on all 19 pages: product search modal (Ctrl+K, queries Shopify API), dismissable announcement bar ("Free shipping over $99"), floating back-to-top button, recently viewed tracking (localStorage), newsletter signup (disabled behind flag). Also created: 404.html, assets/favicon.svg (maple leaf), sitemap.xml, Organization JSON-LD on index.html, Product JSON-LD on product.html, mobile cart link in hamburger menu.
+**Why:** Standard e-commerce features needed for launch.
+
+### 2026-03-27 — Dynamic blog from Shopify API
+**What:** Rewrote blog/index.html to dynamically fetch all articles from all Shopify blogs via Storefront API. Created blog/post.html as dynamic template that loads any article via ?handle=xxx&blog=yyy. Deleted hardcoded ted2024.html and guide-canadian-maple-syrup.html. Blog hub sorts articles by date, shows images/tags/author/excerpt. Post template includes full HTML content, hero image, "More from the blog" section, BlogPosting JSON-LD.
+**Why:** 11 existing blog articles in Shopify now automatically appear on the site. New articles published in Shopify show up instantly — no code changes needed.
+
+### 2026-03-27 — File reorganization
+**What:** Moved files into organized directory structure: blog/ (index.html, post.html), collections/ (9 pages), assets/videos/ (3 mp4s), assets/frames/ (96 jpgs), assets/ (favicon.svg, shared.js). Updated all cross-file references (nav links, video sources, frame paths) across all 19+ HTML files.
+**Before:** All HTML, videos, and frames flat in root directory.
+**After:** Clean directory structure with blog/, collections/, assets/videos/, assets/frames/.
+
+### 2026-03-27 — Mobile responsiveness fixes
+**What:** Fixed broken backdrop-filter on cart overlay (16 files), enlarged cart quantity buttons from 28.8px to 44px touch target (18 files), enlarged announcement bar dismiss button to 44px, added flex-wrap to newsletter form, fixed testimonial card width to min(340px,85vw) for 320px screens.
+**Why:** Mobile responsiveness audit found touch targets below 44px minimum and layout overflow on very small screens.
+
+### 2026-03-27 — Homepage performance optimization
+**What:** Preloaded fonts with trimmed weight set (dropped unused 300/italic variants), added preconnect to cdn.shopify.com, changed hero video to preload="metadata", changed scroll-sequence video to preload="none" with lazy IntersectionObserver load, added &width= params to Shopify images, added decoding="async" to all lazy images.
+**Why:** Initial page load reduced from ~13MB to ~3MB. Videos only load when needed.
+
+### 2026-03-28 — Deployed to Cloudflare Pages + GitHub
+**What:** Deployed site to Cloudflare Pages at maple-terrior.liamlytton99.workers.dev. Pushed code to GitHub at The66th-Agency/Maple-terrior. Cloudflare connected to GitHub for auto-deploy on push to main.
+**Why:** Live production deployment. Auto-deploys mean no more manual uploads.
