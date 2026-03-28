@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <title>Maple Chocolates — Maple Terroir</title>
+  <meta name="description" content="Artisan maple chocolates — dark chocolate covered cranberries, blueberries, cherries, chocolate covered almonds, maple sugar crunch bars, icewine dark chocolate.">
+  <meta property="og:title" content="Maple Chocolates — Maple Terroir">
+  <meta property="og:description" content="Artisan maple chocolates — dark chocolate covered cranberries, blueberries, cherries, chocolate covered almonds, maple sugar crunch bars, icewine dark chocolate.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FDFBF7', 'cream-dark': '#F5F0E8',
+            amber: { warm: '#C4841D', deep: '#8B5E14', light: '#E8A84C', glow: '#F4C77D' },
+            charcoal: '#1A1714',
+            'warm-gray': { 100: '#F7F4EF', 200: '#EDE8DF', 300: '#D9D1C4', 400: '#B8AD9E', 500: '#8C8175', 600: '#6B6158', 700: '#4A4239', 800: '#2E2822' },
+          },
+          fontFamily: {
+            display: ['"Fraunces"', 'Georgia', 'serif'],
+            body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #FDFBF7; }
+    ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-scrolled { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255,0.5); }
+    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .link-underline { position: relative; }
+    .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .link-underline:hover::after { width: 100%; }
+    .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+    .product-card { transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .product-card:hover {}
+    .product-card:active { transform: scale(0.98); }
+    .atc-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.45rem 0.9rem; border-radius: 100px;
+      background: #1A1714; color: #FDFBF7;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.03em;
+      border: none; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .atc-btn:hover {}
+    .atc-btn:active { transform: scale(0.95); }
+    .atc-btn.added { background: #5a7a4e; }
+    .skeleton { background: linear-gradient(90deg, #F5F0E8 25%, #EDE8DF 50%, #F5F0E8 75%); background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite; border-radius: 0.75rem; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* Collection filter pills */
+    .filter-pill {
+      padding: 0.5rem 1.1rem; border-radius: 100px;
+      border: 1.5px solid #EDE8DF; background: transparent;
+      font-size: 0.78rem; font-weight: 500; color: #6B6158;
+      cursor: pointer; white-space: nowrap;
+      transition: all 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .filter-pill:hover { border-color: #C4841D; color: #1A1714; }
+    .filter-pill.active { border-color: #C4841D; background: rgba(196,132,29,0.08); color: #1A1714; font-weight: 600; }
+
+    /* Cart Drawer */
+    .cart-overlay { position: fixed; inset: 0; background: rgba(26,23,20,0.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.35s cubic-bezier(0.32, 0.72, 0, 1); }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 90vw); background: #FDFBF7; z-index: 201; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); display: flex; flex-direction: column; box-shadow: -16px 0 48px rgba(26,23,20,0.12); }
+    .cart-drawer.open { transform: translateX(0); }
+    .cart-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 1.75rem; border-bottom: 1px solid rgba(217,209,196,0.4); }
+    .cart-title { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; font-weight: 500; color: #1A1714; }
+    .cart-close { width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; color: #8C8175; background: none; border: none; cursor: pointer; }
+    .cart-close:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.75rem; }
+    .cart-empty { text-align: center; padding: 4rem 1rem; color: #B8AD9E; font-size: 0.9rem; }
+    .cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(217,209,196,0.3); }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img { width: 72px; height: 72px; border-radius: 0.75rem; object-fit: cover; background: #F5F0E8; flex-shrink: 0; }
+    .cart-item-info { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+    .cart-item-name { font-family: 'Fraunces', Georgia, serif; font-size: 1rem; font-weight: 500; color: #1A1714; line-height: 1.3; }
+    .cart-item-variant { font-size: 0.72rem; color: #8C8175; }
+    .cart-item-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+    .cart-item-qty { display: flex; align-items: center; border: 1px solid rgba(217,209,196,0.5); border-radius: 100px; overflow: hidden; }
+    .cart-item-qty button {width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #8C8175; background: none; border: none; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .cart-item-qty button:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
+    .cart-item-qty span { min-width: 1.5rem; text-align: center; font-size: 0.78rem; font-weight: 500; color: #1A1714; }
+    .cart-item-price { font-family: 'Fraunces', Georgia, serif; font-size: 1rem; font-weight: 500; color: #1A1714; }
+    .cart-footer { padding: 1.25rem 1.75rem 1.75rem; border-top: 1px solid rgba(217,209,196,0.4); }
+    .cart-subtotal { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+    .cart-subtotal-label { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #8C8175; }
+    .cart-subtotal-price { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; font-weight: 500; color: #1A1714; }
+    .cart-note { font-size: 0.72rem; color: #B8AD9E; margin-bottom: 1rem; }
+    .cart-checkout-btn { display: flex; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; padding: 1rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.2s; }
+    .cart-checkout-btn:hover { background: #C4841D; transform: translateY(-1px); }
+    .nav-cart-count { position: absolute; top: -2px; right: -4px; min-width: 17px; height: 17px; border-radius: 100px; background: #C4841D; color: #fff; font-size: 0.6rem; font-weight: 600; display: flex; align-items: center; justify-content: center; padding: 0 4px; opacity: 0; transform: scale(0.5); transition: opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1); pointer-events: none; }
+    .nav-cart-count.visible { opacity: 1; transform: scale(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .skeleton { animation: none; }
+      .product-card:hover { transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
+    <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
+      <a href="../index.html" class="flex items-center gap-2.5 group">
+        <svg class="w-7 h-7 md:w-8 md:h-8 text-amber-warm transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:rotate-12" viewBox="0 0 40 40" fill="none">
+          <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/>
+          <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M20 12V32M14 18L20 22M26 18L20 22M12 24L20 28M28 24L20 28" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <span class="font-display text-lg md:text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="../story.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="../products.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="../terroir.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="../blog/" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Blog</a>
+        <a href="../certifications.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Certifications</a>
+        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+          <span>Shop Now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+      <button id="cart-toggle" onclick="MapleCart.toggle()" aria-label="Open cart" class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300 ml-2">
+        <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="nav-cart-count" id="cart-count">0</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
+        <div class="relative w-5 h-4 flex flex-col justify-between">
+          <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 origin-center"></span>
+          <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500"></span>
+          <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 origin-center"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
+    <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
+    <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
+      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="../blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
+      <a href="../certifications.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Certifications</a>
+      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- COLLECTION HEADER                                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="pt-36 md:pt-44 pb-8 md:pb-12 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-warm-gray-400 mb-8" aria-label="Breadcrumb">
+        <a href="../index.html" class="hover:text-charcoal transition-colors">Home</a>
+        <span>/</span>
+        <a href="../products.html" class="hover:text-charcoal transition-colors">Products</a>
+        <span>/</span>
+        <span class="text-warm-gray-600">Maple Chocolates</span>
+      </nav>
+      <span class="eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+        <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+        Artisan Chocolate
+      </span>
+      <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.08] max-w-4xl mb-4">
+        Maple Chocolates<br>
+        <span class="text-amber-warm italic font-medium">Where cacao meets the sugar bush.</span>
+      </h1>
+      <p class="text-warm-gray-600 leading-relaxed max-w-[55ch] text-lg mb-10">Dark chocolate paired with pure maple and Canadian fruits. From chocolate-covered cranberries and blueberries to our maple sugar crunch milk chocolate bar.</p>
+
+      <!-- Collection filter pills -->
+      <div class="flex flex-wrap gap-2 mb-4">
+        <a href="../products.html" class="filter-pill">All Products</a>
+        <a href="maple-syrup.html" class="filter-pill">Maple Syrup</a>
+        <a href="stroopwafels.html" class="filter-pill">Stroopwafels</a>
+        <a href="cookies.html" class="filter-pill">Cookies</a>
+        <a href="tea-coffee.html" class="filter-pill">Tea &amp; Coffee</a>
+        <a href="chocolates.html" class="filter-pill active">Chocolates</a>
+        <a href="nuts-snacks.html" class="filter-pill">Nuts &amp; Snacks</a>
+        <a href="gift-sets.html" class="filter-pill">Gift Sets</a>
+        <a href="home-sets.html" class="filter-pill">Home Sets</a>
+        <a href="bestsellers.html" class="filter-pill">Bestsellers</a>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <p id="product-count" class="text-sm text-warm-gray-400"></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PRODUCT GRID                                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="pb-24 md:pb-40 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <!-- Skeleton placeholders -->
+        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
+        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
+        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
+        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FREE SHIPPING -->
+  <section class="pb-16 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto text-center">
+      <div class="inline-flex items-center gap-3 bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-full px-6 py-3">
+        <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/>
+        </svg>
+        <span class="text-sm font-medium text-warm-gray-600">Free shipping on orders over <strong class="text-charcoal">$99 CAD</strong></span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/50">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <a href="../index.html" class="flex items-center gap-2.5">
+          <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 40 40" fill="none">
+            <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/>
+            <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="font-display text-lg font-semibold text-charcoal tracking-tight">Maple Terroir</span>
+        </a>
+        <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd.</p>
+        <div class="flex items-center gap-6">
+          <span class="text-xs text-warm-gray-300">Ecocert</span>
+          <span class="text-xs text-warm-gray-300">Canada Organic</span>
+          <span class="text-xs text-warm-gray-300">USDA Organic</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h2 class="cart-title">Your Cart</h2>
+      <button class="cart-close" aria-label="Close cart" onclick="MapleCart.toggle()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <div class="cart-empty" id="cart-empty">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-subtotal-price" id="cart-subtotal">$0.00</span>
+      </div>
+      <p class="cart-note">Shipping &amp; taxes calculated at checkout</p>
+      <button class="cart-checkout-btn" onclick="MapleCart.checkout()">Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </aside>
+
+
+  <script>
+    // Nav scroll
+    var navbar = document.getElementById('navbar');
+    var navInner = navbar.querySelector('.nav-glass');
+    window.addEventListener('scroll', function () { navInner.classList.toggle('nav-scrolled', window.pageYOffset > 80); }, { passive: true });
+
+    // Mobile menu
+    var menuToggle = document.getElementById('menu-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var mobileLinks = document.querySelectorAll('.mobile-link');
+    var bar1 = document.getElementById('bar1'), bar2 = document.getElementById('bar2'), bar3 = document.getElementById('bar3');
+    var menuOpen = false;
+    menuToggle.addEventListener('click', function () {
+      menuOpen = !menuOpen;
+      if (menuOpen) { mobileMenu.style.opacity='1'; mobileMenu.style.pointerEvents='auto'; bar1.style.transform='translateY(5px) rotate(45deg)'; bar2.style.opacity='0'; bar3.style.transform='translateY(-5px) rotate(-45deg)'; mobileLinks.forEach(function(l){l.style.opacity='1';l.style.transform='translateY(0)';}); document.body.style.overflow='hidden'; }
+      else { mobileMenu.style.opacity='0'; mobileMenu.style.pointerEvents='none'; bar1.style.transform=''; bar2.style.opacity='1'; bar3.style.transform=''; mobileLinks.forEach(function(l){l.style.opacity='0';l.style.transform='translateY(3rem)';}); document.body.style.overflow=''; }
+    });
+
+    // ── Load Collection ───────────────────────────────────────
+    var STOREFRONT_URL = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
+    var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
+
+    function loadCollection() {
+      var handle = 'chocolates';
+
+      
+
+      fetch(STOREFRONT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN },
+        body: JSON.stringify({
+          query: 'query($handle:String!){ collectionByHandle(handle:$handle){ id title description image{url altText} products(first:50){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode}}}} } } } } }',
+          variables: { handle: handle }
+        })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        var c = res.data.collectionByHandle;
+        if (!c) { window.location.href = '../products.html'; return; }
+
+        // Header
+        
+        var products = c.products.edges.map(function (e) { return e.node; });
+        document.getElementById('product-count').textContent = products.length + ' product' + (products.length !== 1 ? 's' : '');
+
+        // Render grid
+        var grid = document.getElementById('product-grid');
+        grid.innerHTML = '';
+
+        if (!products.length) {
+          grid.innerHTML = '<div class="col-span-full text-center py-20"><p class="text-warm-gray-400 text-lg">No products in this collection yet.</p><a href="../products.html" class="inline-block mt-4 text-sm font-medium text-amber-warm hover:text-amber-deep transition-colors">Browse all products &rarr;</a></div>';
+          return;
+        }
+
+        products.forEach(function (p) {
+          var img = p.images.edges.length ? p.images.edges[0].node : null;
+          var variant = p.variants.edges.length ? p.variants.edges[0].node : null;
+          var price = variant ? parseFloat(variant.priceV2.amount).toFixed(2) : '';
+          var variantId = variant ? variant.id : '';
+
+          var card = document.createElement('div');
+          card.className = 'product-card group';
+          card.innerHTML =
+            '<a href="../product.html?handle=' + p.handle + '" class="block">' +
+              '<div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
+                (img ? '<img src="' + img.url + '&width=500" alt="' + (img.altText || p.title).replace(/"/g, '&quot;') + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') +
+              '</div>' +
+              '<h3 class="font-medium text-sm text-charcoal mb-1 group-hover:text-amber-warm transition-colors">' + p.title + '</h3>' +
+            '</a>' +
+            '<div class="flex items-center justify-between">' +
+              '<p class="text-xs text-warm-gray-500">$' + price + ' CAD</p>' +
+              (variantId ? '<button class="atc-btn" data-variant-id="' + variantId + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Cart</button>' : '') +
+            '</div>';
+          grid.appendChild(card);
+        });
+      });
+    }
+
+    loadCollection();
+  </script>
+
+
+  <script>
+    // ── Shopify Cart ──────────────────────────────────────────
+    var MapleCart = (function () {
+      var cartId = localStorage.getItem('maple_cart_id') || null;
+      var cartData = null;
+      var CART_FRAGMENT = 'id checkoutUrl lines(first:50){edges{node{id quantity merchandise{...on ProductVariant{id title priceV2{amount currencyCode}image{url altText}product{title}}}}}}cost{subtotalAmount{amount currencyCode}}';
+      function gql(query, variables) { return fetch(STOREFRONT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: query, variables: variables || {} }) }).then(function (r) { return r.json(); }); }
+      function createCart(variantId, qty) { return gql('mutation($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{' + CART_FRAGMENT + '}userErrors{field message}}}', { lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }).then(function (res) { cartData = res.data.cartCreate.cart; cartId = cartData.id; localStorage.setItem('maple_cart_id', cartId); return cartData; }); }
+      function addLine(variantId, qty) { if (!cartId) return createCart(variantId, qty); return gql('mutation($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{' + CART_FRAGMENT + '}userErrors{field message}}}', { cartId: cartId, lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }).then(function (res) { if (res.data.cartLinesAdd.userErrors && res.data.cartLinesAdd.userErrors.length) { localStorage.removeItem('maple_cart_id'); cartId = null; return createCart(variantId, qty); } cartData = res.data.cartLinesAdd.cart; return cartData; }); }
+      function updateLine(lineId, qty) { return gql('mutation($cartId:ID!,$lines:[CartLineUpdateInput!]!){cartLinesUpdate(cartId:$cartId,lines:$lines){cart{' + CART_FRAGMENT + '}}}', { cartId: cartId, lines: [{ id: lineId, quantity: qty }] }).then(function (res) { cartData = res.data.cartLinesUpdate.cart; return cartData; }); }
+      function removeLine(lineId) { return gql('mutation($cartId:ID!,$lineIds:[ID!]!){cartLinesRemove(cartId:$cartId,lineIds:$lineIds){cart{' + CART_FRAGMENT + '}}}', { cartId: cartId, lineIds: [lineId] }).then(function (res) { cartData = res.data.cartLinesRemove.cart; return cartData; }); }
+      function fetchCart() { if (!cartId) return Promise.resolve(null); return gql('query($id:ID!){cart(id:$id){' + CART_FRAGMENT + '}}', { id: cartId }).then(function (res) { if (!res.data.cart) { localStorage.removeItem('maple_cart_id'); cartId = null; cartData = null; return null; } cartData = res.data.cart; return cartData; }); }
+      function getLines() { if (!cartData || !cartData.lines) return []; return cartData.lines.edges.map(function (e) { return e.node; }); }
+      function getTotalQty() { return getLines().reduce(function (s, l) { return s + l.quantity; }, 0); }
+      function renderBadge() { var el = document.getElementById('cart-count'); if (!el) return; var qty = getTotalQty(); el.textContent = qty; el.classList.toggle('visible', qty > 0); }
+      function renderDrawer() {
+        var itemsEl = document.getElementById('cart-items'); var emptyEl = document.getElementById('cart-empty'); var footerEl = document.getElementById('cart-footer'); var subtotalEl = document.getElementById('cart-subtotal'); var lines = getLines();
+        itemsEl.querySelectorAll('.cart-item').forEach(function (el) { el.remove(); });
+        if (!lines.length) { emptyEl.style.display = ''; footerEl.style.display = 'none'; return; }
+        emptyEl.style.display = 'none'; footerEl.style.display = '';
+        lines.forEach(function (line) {
+          var v = line.merchandise; var price = parseFloat(v.priceV2.amount) * line.quantity; var imgUrl = v.image ? v.image.url + '&width=144' : ''; var div = document.createElement('div'); div.className = 'cart-item';
+          div.innerHTML = (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (v.image.altText || v.product.title).replace(/"/g, '&quot;') + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + price.toFixed(2) + '</span></div></div>';
+          itemsEl.appendChild(div);
+        });
+        if (cartData.cost && cartData.cost.subtotalAmount) { subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2) + ' CAD'; }
+        itemsEl.querySelectorAll('[data-action]').forEach(function (btn) { btn.addEventListener('click', function () { var lineId = btn.dataset.line; var action = btn.dataset.action; var line = lines.find(function (l) { return l.id === lineId; }); if (!line) return; var newQty = action === 'inc' ? line.quantity + 1 : line.quantity - 1; var p = newQty <= 0 ? removeLine(lineId) : updateLine(lineId, newQty); p.then(function () { renderDrawer(); renderBadge(); }); }); });
+      }
+      function toggle() { var overlay = document.getElementById('cart-overlay'); var drawer = document.getElementById('cart-drawer'); var isOpen = drawer.classList.contains('open'); drawer.classList.toggle('open'); overlay.classList.toggle('open'); document.body.style.overflow = isOpen ? '' : 'hidden'; if (!isOpen) renderDrawer(); }
+      function addFromBtn(btn) { var variantId = btn.dataset.variantId; if (!variantId) return; var origHTML = btn.innerHTML; btn.classList.add('added'); btn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added'; addLine(variantId, 1).then(function () { renderBadge(); setTimeout(function () { btn.classList.remove('added'); btn.innerHTML = origHTML; }, 1400); }); }
+      function checkout() { if (cartData && cartData.checkoutUrl) { window.location.href = cartData.checkoutUrl; } }
+      function init() { fetchCart().then(function () { renderBadge(); }); document.getElementById('cart-overlay').addEventListener('click', toggle); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle(); }); }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+      return { toggle: toggle, addFromBtn: addFromBtn, addLine: addLine, renderBadge: renderBadge, checkout: checkout };
+    })();
+  </script>
+
+<script src="../assets/shared.js"></script>
+</body>
+</html>

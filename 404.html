@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Page Not Found — Maple Terroir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: { cream: '#FDFBF7', amber: { warm: '#C4841D' }, charcoal: '#1A1714', 'warm-gray': { 200: '#EDE8DF', 400: '#B8AD9E', 500: '#8C8175', 600: '#6B6158' } },
+      fontFamily: { display: ['"Fraunces"', 'Georgia', 'serif'], body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'] }
+    }}}
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #FDFBF7; color: #2E2822; }
+    body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+  </style>
+</head>
+<body class="min-h-[100dvh] flex flex-col items-center justify-center px-4 text-center">
+  <svg class="w-16 h-16 text-amber-warm mb-8 opacity-30" viewBox="0 0 40 40" fill="none">
+    <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.3"/>
+    <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M20 12V32M14 18L20 22M26 18L20 22M12 24L20 28M28 24L20 28" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  </svg>
+  <p class="text-xs font-semibold tracking-[0.2em] uppercase text-amber-warm mb-4">404</p>
+  <h1 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight mb-4">Page not found</h1>
+  <p class="text-warm-gray-500 leading-relaxed max-w-[40ch] mb-10">The page you're looking for may have been moved or no longer exists. Let's get you back on track.</p>
+  <div class="flex flex-wrap items-center justify-center gap-3">
+    <a href="index.html" class="inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-6 py-3 text-sm font-medium hover:bg-amber-warm transition-colors duration-300">
+      Back to Home
+    </a>
+    <a href="products.html" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-warm-gray-600 ring-1 ring-warm-gray-200 hover:ring-amber-warm hover:text-charcoal transition-all duration-300">
+      Browse Products
+    </a>
+  </div>
+</body>
+</html>

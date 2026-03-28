@@ -1,0 +1,2251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Maple Terroir — Pure Maple from Canada</title>
+  <meta name="description" content="Since 1978, Maple Terroir has delivered single-origin organic maple products from Quebec's Appalachian Mountains to tables worldwide. Family-owned, certified organic, proudly Canadian.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Maple Terroir",
+    "url": "https://mapleterroir.com",
+    "logo": "https://mapleterroir.com/assets/favicon.svg",
+    "description": "Single-origin organic maple products from Quebec's Appalachian Mountains. Family-owned since 1978.",
+    "foundingDate": "1978",
+    "address": { "@type": "PostalAddress", "addressLocality": "Vancouver", "addressRegion": "BC", "addressCountry": "CA" },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Fonts: Fraunces + Plus Jakarta Sans (display=swap for fast first paint) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.shopify.com">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FDFBF7',
+            'cream-dark': '#F5F0E8',
+            amber: {
+              warm: '#C4841D',
+              deep: '#8B5E14',
+              light: '#E8A84C',
+              glow: '#F4C77D',
+            },
+            charcoal: '#1A1714',
+            'warm-gray': {
+              100: '#F7F4EF',
+              200: '#EDE8DF',
+              300: '#D9D1C4',
+              400: '#B8AD9E',
+              500: '#8C8175',
+              600: '#6B6158',
+              700: '#4A4239',
+              800: '#2E2822',
+            },
+          },
+          fontFamily: {
+            display: ['"Fraunces"', 'Georgia', 'serif'],
+            body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+            '5xl': '2.5rem',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    /* Base resets and smooth scroll */
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background-color: #FDFBF7;
+      color: #2E2822;
+      overflow-x: hidden;
+    }
+
+    /* Film grain overlay for editorial texture */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #FDFBF7; }
+    ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #B8AD9E; }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(2.5rem) scale(0.98);
+      transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1),
+                  transform 0.9s cubic-bezier(0.32, 0.72, 0, 1),
+                  filter 0.9s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    .reveal-delay-4 { transition-delay: 400ms; }
+    .reveal-delay-5 { transition-delay: 500ms; }
+
+    /* Parallax subtle float */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .float-slow {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .float-medium {
+      animation: float 4.5s ease-in-out infinite;
+      animation-delay: -1.5s;
+    }
+
+    /* Kinetic marquee */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-track {
+      animation: marquee 40s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Maple leaf SVG rotation */
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .spin-slow {
+      animation: spin-slow 30s linear infinite;
+    }
+
+    /* Premium button hover */
+    .btn-premium {
+      transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .btn-premium:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3);
+    }
+
+    .btn-premium:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Image hover zoom */
+    .img-zoom {
+      transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .img-zoom:hover {
+      transform: scale(1.05);
+    }
+
+    /* Navbar blur transition */
+    .nav-glass {
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .nav-scrolled { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255,0.5); }
+
+    /* Certification badge shimmer */
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .cert-shimmer {
+      background: linear-gradient(90deg, transparent 30%, rgba(244, 199, 125, 0.15) 50%, transparent 70%);
+      background-size: 200% 100%;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    /* Horizontal scroll for product categories */
+    .scroll-hide::-webkit-scrollbar { display: none; }
+    .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ─── Cart Drawer ───────────────────────────────────────────── */
+    .cart-overlay {
+      position: fixed; inset: 0;
+      background: rgba(26,23,20,0.35);
+      backdrop-
+      -webkit-backdrop-
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(420px, 90vw);
+      background: #FDFBF7;
+      z-index: 201;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -16px 0 48px rgba(26,23,20,0.12);
+    }
+    .cart-drawer.open { transform: translateX(0); }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.75rem;
+      border-bottom: 1px solid rgba(217,209,196,0.4);
+    }
+    .cart-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #1A1714;
+    }
+    .cart-close {
+      width: 2.2rem; height: 2.2rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      color: #8C8175;
+      background: none; border: none; cursor: pointer;
+    }
+    .cart-close:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.75rem;
+    }
+    .cart-empty {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: #B8AD9E;
+      font-size: 0.9rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(217,209,196,0.3);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img {
+      width: 72px; height: 72px;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      background: #F5F0E8;
+      flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+    .cart-item-name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1A1714;
+      line-height: 1.3;
+    }
+    .cart-item-variant {
+      font-size: 0.72rem;
+      color: #8C8175;
+      letter-spacing: 0.02em;
+    }
+    .cart-item-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+    .cart-item-qty {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(217,209,196,0.5);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .cart-item-qty button {width: 2.75rem; height: 2.75rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      color: #8C8175;
+      background: none; border: none; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .cart-item-qty button:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
+    .cart-item-qty span {
+      min-width: 1.5rem;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #1A1714;
+    }
+    .cart-item-price {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1A1714;
+    }
+
+    .cart-footer {
+      padding: 1.25rem 1.75rem 1.75rem;
+      border-top: 1px solid rgba(217,209,196,0.4);
+    }
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+    .cart-subtotal-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #8C8175;
+    }
+    .cart-subtotal-price {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #1A1714;
+    }
+    .cart-note {
+      font-size: 0.72rem;
+      color: #B8AD9E;
+      margin-bottom: 1rem;
+    }
+    .cart-checkout-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 100px;
+      background: #1A1714;
+      color: #FDFBF7;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.2s;
+    }
+    .cart-checkout-btn:hover { background: #C4841D; transform: translateY(-1px); }
+    .cart-checkout-btn:active { transform: scale(0.98); }
+
+    /* Add-to-cart button on product cards */
+    .atc-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.2);
+      color: #FDFBF7;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+      z-index: 10;
+      position: relative;
+    }
+    .atc-btn:hover {}
+    .atc-btn:active { transform: scale(0.95); }
+    .atc-btn.added { background: #5a7a4e; border-color: #5a7a4e; }
+
+    /* Nav cart badge */
+    .nav-cart-count {
+      position: absolute;
+      top: -2px; right: -4px;
+      min-width: 17px; height: 17px;
+      border-radius: 100px;
+      background: #C4841D;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 4px;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+      pointer-events: none;
+    }
+    .nav-cart-count.visible { opacity: 1; transform: scale(1); }
+
+    /* Eyebrow pill */
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Stagger children on mobile */
+    @media (max-width: 767px) {
+      .md-asymmetric { grid-template-columns: 1fr !important; }
+    }
+
+    /* Smooth link underline */
+    .link-underline {
+      position: relative;
+    }
+    .link-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .link-underline:hover::after {
+      width: 100%;
+    }
+
+
+    /* Scroll sequence text positioning */
+    #scroll-sequence .sticky > .relative {
+      position: relative;
+      height: 100%;
+    }
+    #scroll-sequence [id^="seq-text-"] {
+      padding: 0 1rem;
+      will-change: opacity, transform;
+    }
+
+    /* Scroll sequence video */
+    #seq-video {
+      pointer-events: none;
+    }
+
+    /* Testimonial horizontal scroll */
+    @keyframes testimonial-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .testimonial-track {
+      animation: testimonial-scroll 45s linear infinite;
+    }
+
+    .testimonial-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Logo marquee */
+    @keyframes logo-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .logo-track {
+      animation: logo-scroll 30s linear infinite;
+    }
+
+    .logo-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* ─── Reduced Motion ─────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      html { scroll-behavior: auto; }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+
+      .float-slow,
+      .float-medium,
+      .spin-slow,
+      .cert-shimmer { animation: none; }
+
+      .marquee-track,
+      .testimonial-track,
+      .logo-track { animation: none; }
+    }
+
+    /* Maple leaf decorative SVG */
+    .maple-svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- NAVIGATION — Floating glass pill, detached from top    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
+    <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <svg class="w-7 h-7 md:w-8 md:h-8 text-amber-warm transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:rotate-12" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/>
+          <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M20 12V32M14 18L20 22M26 18L20 22M12 24L20 28M28 24L20 28" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+        </svg>
+        <span class="font-display text-lg md:text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="story.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="products.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="terroir.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="blog/" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Blog</a>
+        <a href="certifications.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Certifications</a>
+        <a href="products.html"
+           class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+          <span>Shop Now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+
+      <!-- Cart Icon -->
+      <button id="cart-toggle" onclick="MapleCart.toggle()" aria-label="Open cart" class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300 ml-2">
+        <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="nav-cart-count" id="cart-count">0</span>
+      </button>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
+        <div class="relative w-5 h-4 flex flex-col justify-between">
+          <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+          <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+          <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+    <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
+    <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
+      <a href="story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="certifications.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Certifications</a>
+      <a href="products.html"
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop Now
+        <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HERO — Asymmetric editorial split                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="min-h-[100dvh] relative flex items-end md:items-center pt-32 pb-16 md:pt-0 md:pb-0 px-4 md:px-8">
+    <!-- Background decorative elements -->
+    <div class="absolute top-20 right-0 w-[40vw] h-[40vw] max-w-[600px] max-h-[600px] rounded-full bg-gradient-to-br from-amber-glow/8 to-amber-warm/4 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-gradient-to-tr from-amber-deep/5 to-transparent blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-[1400px] mx-auto w-full">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+        <!-- Left: Text content -->
+        <div class="md:col-span-6 lg:col-span-5 space-y-8">
+          <div class="reveal">
+            <span class="eyebrow inline-flex items-center gap-2 bg-amber-warm/8 text-amber-deep rounded-full px-4 py-1.5 mb-6">
+              <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+              Since 1978 &middot; Vancouver, BC
+            </span>
+          </div>
+
+          <h1 class="reveal reveal-delay-1">
+            <span class="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-charcoal tracking-tight leading-[1.05]">
+              Pure Maple<br>from Canada,<br>
+              <span class="text-amber-warm italic font-medium">delivered to<br>your table.</span>
+            </span>
+          </h1>
+
+          <p class="reveal reveal-delay-2 text-base md:text-lg text-warm-gray-600 leading-relaxed max-w-[50ch]">
+            Single-origin organic maple from a fourth-generation family farm in Quebec's Appalachian Mountains. Three generations of the Lytton family, crafting nature's finest sweetener with no chemicals, no preservatives, no compromise.
+          </p>
+
+          <div class="reveal reveal-delay-3 flex flex-wrap items-center gap-4">
+            <a href="products.html"
+               class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+              <span>Explore Our Collection</span>
+              <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+            <a href="#story" class="inline-flex items-center gap-2 text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">
+              <span class="w-10 h-10 rounded-full border border-warm-gray-300 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-charcoal hover:scale-105">
+                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M8 13L4 9M8 13L12 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Our Story
+            </a>
+          </div>
+
+          <!-- Trust signals -->
+          <div class="reveal reveal-delay-4 flex items-center gap-6 pt-4 border-t border-warm-gray-200/60">
+            <div class="text-center">
+              <div class="font-display text-2xl font-semibold text-charcoal">47+</div>
+              <div class="text-xs text-warm-gray-500 mt-0.5">Years of Craft</div>
+            </div>
+            <div class="w-px h-8 bg-warm-gray-200"></div>
+            <div class="text-center">
+              <div class="font-display text-2xl font-semibold text-charcoal">4th</div>
+              <div class="text-xs text-warm-gray-500 mt-0.5">Generation Farm</div>
+            </div>
+            <div class="w-px h-8 bg-warm-gray-200"></div>
+            <div class="text-center">
+              <div class="font-display text-2xl font-semibold text-charcoal">4</div>
+              <div class="text-xs text-warm-gray-500 mt-0.5">Organic Certifications</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Hero image with double-bezel -->
+        <div class="md:col-span-6 lg:col-span-7 reveal reveal-delay-2">
+          <div class="relative">
+            <!-- Outer shell (Doppelrand) -->
+            <div class="bg-warm-gray-100/60 ring-1 ring-warm-gray-200/40 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
+              <!-- Inner core -->
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-charcoal aspect-[4/3] md:aspect-[5/4]">
+                <!-- Video -->
+                <video
+                  class="absolute inset-0 w-full h-full object-cover"
+                  src="assets/videos/maple-bottle.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="metadata"
+                ></video>
+                <!-- Inner shadow for physical depth -->
+                <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] rounded-[inherit] pointer-events-none"></div>
+
+                <!-- Text overlay on video -->
+                <div class="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 pointer-events-none">
+                  <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-xl rounded-full px-4 py-2 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+                    <div class="w-2 h-2 rounded-full bg-amber-warm animate-pulse"></div>
+                    <span class="text-xs font-medium text-charcoal">Certified Organic</span>
+                    <span class="text-warm-gray-300">|</span>
+                    <span class="text-xs text-warm-gray-500">Ecocert &middot; USDA &middot; JAS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating accent card -->
+            <div class="absolute -bottom-6 -left-4 md:-bottom-8 md:-left-8 float-slow">
+              <div class="bg-white ring-1 ring-warm-gray-200/40 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.08)] rounded-2xl p-4 md:p-5">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-amber-warm/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-xs font-semibold text-charcoal">No. 1 in Japan</div>
+                    <div class="text-[10px] text-warm-gray-500">Best Value Maple Syrup</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- WHERE TO FIND US — Retail partner logos                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-20 md:py-28 px-4 md:px-8 bg-white border-y border-warm-gray-200/50 overflow-hidden">
+    <div class="max-w-[1400px] mx-auto mb-12 text-center">
+      <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-4 mx-auto justify-center">
+        <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+        Where to Find Us
+      </span>
+      <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight">
+        Trusted by retailers across Canada &amp; Asia.
+      </h2>
+    </div>
+
+    <!-- Logo marquee -->
+    <div class="relative">
+      <div class="flex items-center logo-track" style="width: max-content;">
+        <!-- Set 1 -->
+        <div class="flex items-center gap-16 md:gap-24 px-8 md:px-12">
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-xl md:text-2xl font-bold text-charcoal tracking-tight">Costco</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Canada</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-lg md:text-xl font-bold text-charcoal tracking-tight">Nesters</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Market</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-lg md:text-xl font-bold text-charcoal tracking-tight">CANEX</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Canadian Forces</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-base md:text-lg font-bold text-charcoal tracking-tight leading-tight text-center">London<br>Drugs</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Retail</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-base md:text-lg font-bold text-charcoal tracking-tight leading-tight text-center">YVR<br>Airport</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Travel Retail</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-base md:text-lg font-bold text-charcoal tracking-tight leading-tight text-center">Specialty<br>Grocers</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Japan &amp; Korea</span>
+          </div>
+        </div>
+        <!-- Set 2 (duplicate for seamless loop) -->
+        <div class="flex items-center gap-16 md:gap-24 px-8 md:px-12">
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-xl md:text-2xl font-bold text-charcoal tracking-tight">Costco</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Canada</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-lg md:text-xl font-bold text-charcoal tracking-tight">Nesters</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Market</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-lg md:text-xl font-bold text-charcoal tracking-tight">CANEX</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Canadian Forces</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-base md:text-lg font-bold text-charcoal tracking-tight leading-tight text-center">London<br>Drugs</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Retail</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-base md:text-lg font-bold text-charcoal tracking-tight leading-tight text-center">YVR<br>Airport</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Travel Retail</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 flex-shrink-0">
+            <div class="w-28 md:w-36 h-16 md:h-20 rounded-xl bg-warm-gray-100/60 ring-1 ring-warm-gray-200/30 flex items-center justify-center px-4">
+              <span class="font-display text-base md:text-lg font-bold text-charcoal tracking-tight leading-tight text-center">Specialty<br>Grocers</span>
+            </div>
+            <span class="text-[10px] text-warm-gray-400 uppercase tracking-wider">Japan &amp; Korea</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white to-transparent pointer-events-none z-10"></div>
+      <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none z-10"></div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PRODUCTS — Bento-style collection grid                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="products" class="py-24 md:py-40 px-4 md:px-8 bg-white">
+    <div class="max-w-[1400px] mx-auto">
+      <!-- Section header -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-24">
+        <div>
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            Our Collection
+          </span>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1]">
+            Beyond the bottle.<br>
+            <span class="text-amber-warm italic font-medium">A world of maple.</span>
+          </h2>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <a href="products.html"
+             class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group whitespace-nowrap">
+            <span>View All Products</span>
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+              <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
+
+        <!-- 1. Pure Maple Syrup — Hero product, large -->
+        <div class="md:col-span-8 reveal">
+          <a href="collections/maple-syrup.html" class="block group">
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-amber-warm/20 group-hover:bg-amber-warm/5">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.375rem)] min-h-[280px] md:min-h-[380px] p-8 md:p-12 flex flex-col justify-between">
+                <div class="absolute inset-0">
+                  <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=800" alt="Organic Pure Maple Syrup bottle" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-charcoal/70 via-charcoal/50 to-charcoal/20"></div>
+                <div class="relative z-10">
+                  <span class="eyebrow text-amber-glow/80 mb-1 block">Signature</span>
+                  <h3 class="font-display text-2xl md:text-3xl font-semibold text-cream tracking-tight mb-2">Organic Pure Maple Syrup</h3>
+                  <p class="text-sm text-cream/70 leading-relaxed max-w-[45ch]">
+                    Late-harvest, single-origin from the Appalachian Mountains. Rich, complex amber with notes of caramel, vanilla, and forest floor. Like single-vineyard wine, but from the sugar bush.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between mt-8 relative z-10">
+                  <span class="text-sm font-medium text-cream/60">$14.99 CAD</span>
+                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+                <div class="absolute inset-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)] rounded-[inherit] pointer-events-none"></div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 2. Maple Stroopwafels -->
+        <div class="md:col-span-4 reveal reveal-delay-1">
+          <a href="collections/stroopwafels.html" class="block group h-full">
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem] h-full transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-amber-warm/20 group-hover:bg-amber-warm/5">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.375rem)] min-h-[280px] md:min-h-[380px] p-8 flex flex-col justify-between">
+                <div class="absolute inset-0">
+                  <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/NewMapleStroopFilm.jpg?v=1772656198&width=600" alt="Pure Maple Syrup Stroopwafels" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/40 to-charcoal/20"></div>
+                <div class="relative z-10">
+                  <span class="eyebrow text-amber-glow/80 mb-1 block">5 Flavours</span>
+                  <h3 class="font-display text-xl md:text-2xl font-semibold text-cream tracking-tight mb-2">Maple Stroopwafels</h3>
+                  <p class="text-sm text-cream/70 leading-relaxed">
+                    Thin, crispy waffle cookies filled with pure maple caramel. A Canadian twist on the Dutch classic.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between mt-6 relative z-10">
+                  <span class="text-sm font-medium text-cream/60">From $8.99 CAD</span>
+                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+                <div class="absolute inset-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)] rounded-[inherit] pointer-events-none"></div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 3. Maple Tea -->
+        <div class="md:col-span-4 reveal">
+          <a href="collections/tea-coffee.html" class="block group h-full">
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem] h-full transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-amber-warm/20 group-hover:bg-amber-warm/5">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.375rem)] min-h-[260px] p-8 flex flex-col justify-between">
+                <div class="absolute inset-0">
+                  <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/mapleterroirblueberrytea.png?v=1749672022&width=600" alt="Maple-Infused Blueberry Ceylon Tea" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/40 to-charcoal/20"></div>
+                <div class="relative z-10">
+                  <span class="eyebrow text-amber-glow/80 mb-1 block">Ceylon Blend</span>
+                  <h3 class="font-display text-xl font-semibold text-cream tracking-tight mb-2">Maple-Infused Tea</h3>
+                  <p class="text-sm text-cream/70 leading-relaxed">
+                    Premium Ceylon tea kissed with real maple. Warm, aromatic, and distinctly Canadian.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between mt-6 relative z-10">
+                  <span class="text-sm font-medium text-cream/60">$8.99 CAD</span>
+                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815601922297" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4. Maple Coffee -->
+        <div class="md:col-span-4 reveal reveal-delay-1">
+          <a href="collections/tea-coffee.html" class="block group h-full">
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem] h-full transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-amber-warm/20 group-hover:bg-amber-warm/5">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.375rem)] min-h-[260px] p-8 flex flex-col justify-between text-cream">
+                <div class="absolute inset-0">
+                  <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-cream-cookies.jpg?v=1749671388&width=600" alt="Maple Syrup Medium-Dark Roast Ground Coffee" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/50 to-charcoal/25"></div>
+                <div class="relative z-10">
+                  <span class="eyebrow text-amber-glow/80 mb-1 block">Arabica Blend</span>
+                  <h3 class="font-display text-xl font-semibold tracking-tight mb-2">Maple Coffee</h3>
+                  <p class="text-sm text-cream/70 leading-relaxed">
+                    Pure maple sugar meets high-quality Arabica beans. Your morning, but better.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between mt-6 relative z-10">
+                  <span class="text-sm font-medium text-cream/60">$14.99 CAD</span>
+                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/46304596099321" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 5. Chocolates & Sweets -->
+        <div class="md:col-span-4 reveal reveal-delay-2">
+          <a href="collections/chocolates.html" class="block group h-full">
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem] h-full transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-amber-warm/20 group-hover:bg-amber-warm/5">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.375rem)] bg-gradient-to-b from-amber-warm/5 to-cream min-h-[260px] p-8 flex flex-col justify-between">
+                <div>
+                  <span class="eyebrow text-amber-deep/40 mb-1 block">Confections</span>
+                  <h3 class="font-display text-xl font-semibold text-charcoal tracking-tight mb-2">Chocolates & Sweets</h3>
+                  <p class="text-sm text-warm-gray-600 leading-relaxed">
+                    Dark chocolate covered fruits with maple, maple cream cookies, maple leaf shortbread, and the beloved Hello Kitty maple cream cookies.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                  <span class="text-sm font-medium text-warm-gray-500">From $4.99 CAD</span>
+                  <span class="w-9 h-9 rounded-full bg-charcoal text-cream flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110 group-hover:bg-amber-warm">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 6. Pantry Staples — wide bottom -->
+        <div class="md:col-span-7 reveal">
+          <a href="collections/nuts-snacks.html" class="block group">
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-amber-warm/20 group-hover:bg-amber-warm/5">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.375rem)] bg-gradient-to-br from-amber-warm/5 to-cream min-h-[220px] p-8 md:p-10 flex flex-col justify-between">
+                <div class="flex flex-wrap gap-3 mb-4">
+                  <span class="text-xs font-medium text-warm-gray-500 bg-warm-gray-100 rounded-full px-3 py-1">Maple Butter</span>
+                  <span class="text-xs font-medium text-warm-gray-500 bg-warm-gray-100 rounded-full px-3 py-1">Maple Sugar</span>
+                  <span class="text-xs font-medium text-warm-gray-500 bg-warm-gray-100 rounded-full px-3 py-1">Covered Nuts</span>
+                  <span class="text-xs font-medium text-warm-gray-500 bg-warm-gray-100 rounded-full px-3 py-1">Maple Popcorn</span>
+                  <span class="text-xs font-medium text-warm-gray-500 bg-warm-gray-100 rounded-full px-3 py-1">Bacon Kettle Chips</span>
+                </div>
+                <div>
+                  <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight mb-2">Pantry &amp; Snacks</h3>
+                  <p class="text-sm text-warm-gray-600 leading-relaxed max-w-[50ch]">
+                    From maple-covered nuts and popcorn to our addictive maple bacon kettle chips. Pure maple sugar and velvety maple butter for your kitchen.
+                  </p>
+                </div>
+                <div class="absolute top-6 right-6">
+                  <span class="w-10 h-10 rounded-full bg-charcoal text-cream flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110 group-hover:bg-amber-warm">
+                    <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 7. Gift Sets -->
+        <div class="md:col-span-5 reveal reveal-delay-1">
+          <a href="collections/gift-sets.html" class="block group">
+            <div class="bg-amber-warm/8 ring-1 ring-amber-warm/15 p-1.5 rounded-[2rem] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:ring-amber-warm/30 group-hover:bg-amber-warm/12">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.375rem)] bg-gradient-to-br from-amber-warm/10 via-amber-glow/8 to-cream min-h-[220px] p-8 md:p-10 flex flex-col justify-between">
+                <div>
+                  <span class="eyebrow text-amber-deep mb-1 block">Premium Gifting</span>
+                  <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight mb-2">Curated Gift Sets</h3>
+                  <p class="text-sm text-warm-gray-600 leading-relaxed">
+                    Beautifully presented collections starting at $150 CAD. The perfect way to share the taste of Canada with someone special.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                  <span class="text-sm font-semibold text-amber-deep">$150 &ndash; $200 CAD</span>
+                  <span class="w-10 h-10 rounded-full bg-amber-warm text-white flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110">
+                    <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Free shipping callout -->
+      <div class="reveal mt-8 text-center">
+        <div class="inline-flex items-center gap-3 bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-full px-6 py-3">
+          <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M16 16C16 14.9 15.1 14 14 14C12.9 14 12 14.9 12 16M7 16H12M7 16H5.46C4.63 16 3.93 15.39 3.82 14.57L3 8H19M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/>
+          </svg>
+          <span class="text-sm font-medium text-warm-gray-600">Free shipping on orders over <strong class="text-charcoal">$99 CAD</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- OUR STORY — Heritage, family, three generations        -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="story" class="py-24 md:py-40 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <!-- Section header -->
+      <div class="max-w-3xl mb-16 md:mb-24">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          Our Heritage
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
+          Three generations of<br>
+          <span class="text-amber-warm italic font-medium">maple craft.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-base md:text-lg text-warm-gray-600 leading-relaxed max-w-[60ch]">
+          Founded in 1978 by Wayne Lytton, Maple Terroir is now led by his son Shawn as President. Our family's connection to the land runs deep &mdash; we source exclusively from a fourth-generation maple farm nestled in the Appalachian Mountains of Quebec.
+        </p>
+      </div>
+
+      <!-- Story grid — asymmetric editorial -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+        <!-- Left large card -->
+        <div class="md:col-span-7 reveal">
+          <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem] h-full">
+            <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] h-full min-h-[320px] md:min-h-[420px] p-8 md:p-12 flex flex-col justify-end">
+              <!-- Background image -->
+              <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=1920&q=80" alt="Autumn forest canopy" class="w-full h-full object-cover" loading="lazy" decoding="async">
+              </div>
+              <!-- Dark overlay for text readability -->
+              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-charcoal/20"></div>
+              <div class="relative">
+                <div class="eyebrow text-cream/70 mb-3">The Lytton Family</div>
+                <h3 class="font-display text-2xl md:text-3xl font-semibold text-cream mb-3 tracking-tight">
+                  From the forests of Quebec<br>to tables around the world.
+                </h3>
+                <p class="text-cream/80 leading-relaxed max-w-[50ch]">
+                  What began as a single family's passion for pure maple has grown into a brand trusted across Canada, Japan, Korea, and China. We've never wavered from our founding principle: quality over quantity, always.
+                </p>
+              </div>
+              <div class="absolute inset-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)] rounded-[inherit] pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right stacked cards -->
+        <div class="md:col-span-5 flex flex-col gap-6 md:gap-8">
+          <!-- Art heritage card -->
+          <div class="reveal reveal-delay-1">
+            <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-white p-8 md:p-10">
+                <div class="w-12 h-12 rounded-2xl bg-amber-warm/8 flex items-center justify-center mb-5">
+                  <svg class="w-6 h-6 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    <path d="M2 12C2 7.286 2 4.929 3.464 3.464C4.929 2 7.286 2 12 2C16.714 2 19.071 2 20.536 3.464C22 4.929 22 7.286 22 12C22 16.714 22 19.071 20.536 20.536C19.071 22 16.714 22 12 22C7.286 22 4.929 22 3.464 20.536C2 19.071 2 16.714 2 12Z"/>
+                    <circle cx="16" cy="8" r="2"/>
+                    <path d="M2 13.5C4 11 6.5 8.5 9.5 11.5C12.5 14.5 14 12 16 10.5C18 9 20 10 22 12.5"/>
+                  </svg>
+                </div>
+                <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">An Artistic Lineage</h3>
+                <p class="text-sm text-warm-gray-600 leading-relaxed">
+                  Founder Wayne Lytton's grandmother, Georgina Abrams Lytton, was a celebrated artist whose work resides in the National Gallery of Canada. That same eye for craft and beauty runs through everything we create.
+                </p>
+                <div class="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] rounded-[inherit] pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vancouver roots card -->
+          <div class="reveal reveal-delay-2">
+            <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+              <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] bg-charcoal p-8 md:p-10 text-cream">
+                <div class="w-12 h-12 rounded-2xl bg-white/8 flex items-center justify-center mb-5">
+                  <svg class="w-6 h-6 text-amber-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    <path d="M12 2C7.03 2 3 6.03 3 11C3 16.97 12 22 12 22C12 22 21 16.97 21 11C21 6.03 16.97 2 12 2Z"/>
+                    <circle cx="12" cy="11" r="3"/>
+                  </svg>
+                </div>
+                <h3 class="font-display text-xl font-semibold mb-2 tracking-tight">Proudly Canadian</h3>
+                <p class="text-sm text-warm-gray-400 leading-relaxed">
+                  Based in Vancouver, British Columbia. Made in Canada using mainly Canadian ingredients. Serving families and retailers across Canada and Asia since 1978.
+                </p>
+                <div class="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-[inherit] pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TESTIMONIALS — Social proof marquee                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-24 md:py-40 overflow-hidden">
+    <div class="max-w-[1400px] mx-auto px-4 md:px-8 mb-12 md:mb-16">
+      <div class="text-center">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6 mx-auto justify-center">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          What People Say
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1]">
+          Loved by families<br><span class="text-amber-warm italic font-medium">across four countries.</span>
+        </h2>
+      </div>
+    </div>
+
+    <!-- Scrolling testimonial cards -->
+    <div class="relative">
+      <div class="flex testimonial-track" style="width: max-content;">
+        <!-- Card 1 -->
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;The best maple syrup I've ever tasted. You can genuinely tell the difference between this and the mass-produced stuff. The late-harvest flavour is incredible &mdash; deep, rich, and complex.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">SK</div>
+              <div><div class="text-sm font-semibold text-charcoal">Sarah K.</div><div class="text-xs text-warm-gray-400">Vancouver, BC</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;Found the stroopwafels at Costco and now I'm completely hooked. The maple caramel filling is unreal. My kids ask for them every single day. We've tried all five flavours.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">MT</div>
+              <div><div class="text-sm font-semibold text-charcoal">Mike T.</div><div class="text-xs text-warm-gray-400">Toronto, ON</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;We order the gift sets every Christmas for our family in Japan. The quality is outstanding and the packaging is beautiful. They always ask for more.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/8 flex items-center justify-center text-xs font-semibold text-amber-deep">YN</div>
+              <div><div class="text-sm font-semibold text-charcoal">Yuki N.</div><div class="text-xs text-warm-gray-400">Tokyo, Japan</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;As a chef, I'm picky about my ingredients. Maple Terroir's organic syrup is the only one I'll use in my kitchen. The terroir really does come through &mdash; it's like tasting Quebec itself.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/8 flex items-center justify-center text-xs font-semibold text-amber-deep">DP</div>
+              <div><div class="text-sm font-semibold text-charcoal">David P.</div><div class="text-xs text-warm-gray-400">Montreal, QC</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;Bought the maple coffee as a gift and ended up keeping it for myself. The maple flavour is subtle and natural, not artificial at all. Now it's part of my morning routine.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-violet-50 flex items-center justify-center text-xs font-semibold text-violet-700">JL</div>
+              <div><div class="text-sm font-semibold text-charcoal">Jenny L.</div><div class="text-xs text-warm-gray-400">Seoul, South Korea</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4">
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;We stock Maple Terroir in our specialty food shop and it flies off the shelves. The organic certifications make it an easy sell, and customers keep coming back. Best maple brand we carry.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">RH</div>
+              <div><div class="text-sm font-semibold text-charcoal">Rachel H.</div><div class="text-xs text-warm-gray-400">Calgary, AB</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;The best maple syrup I've ever tasted. You can genuinely tell the difference between this and the mass-produced stuff. The late-harvest flavour is incredible.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">SK</div>
+              <div><div class="text-sm font-semibold text-charcoal">Sarah K.</div><div class="text-xs text-warm-gray-400">Vancouver, BC</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;Found the stroopwafels at Costco and now I'm completely hooked. The maple caramel filling is unreal. My kids ask for them every single day.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">MT</div>
+              <div><div class="text-sm font-semibold text-charcoal">Mike T.</div><div class="text-xs text-warm-gray-400">Toronto, ON</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full">
+            <div class="flex items-center gap-1 mb-4"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5">&ldquo;We order the gift sets every Christmas for our family in Japan. The quality is outstanding and the packaging is beautiful. They always ask for more.&rdquo;</p>
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-amber-warm/8 flex items-center justify-center text-xs font-semibold text-amber-deep">YN</div>
+              <div><div class="text-sm font-semibold text-charcoal">Yuki N.</div><div class="text-xs text-warm-gray-400">Tokyo, Japan</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fade edges -->
+      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream to-transparent pointer-events-none z-10"></div>
+      <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-cream to-transparent pointer-events-none z-10"></div>
+    </div>
+  </section>
+
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SCROLL SEQUENCE — Locomotive frame-by-frame animation   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="scroll-sequence" class="relative bg-charcoal" style="height: 400vh;">
+    <!-- Sticky container: frame canvas + text overlays -->
+    <div class="sticky top-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center">
+      <!-- Video element — scrubbed by scroll position -->
+      <video id="seq-video" class="absolute inset-0 w-full h-full object-cover" style="z-index: 1;" muted playsinline preload="none" style="will-change:contents" src="assets/videos/revised-stroop-stopmotion.mp4"></video>
+
+      <!-- No full-screen overlay — text panels have their own frosted glass backgrounds -->
+
+      <!-- Text sections that fade in/out based on scroll progress -->
+      <div class="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 pointer-events-none">
+
+        <!-- Section 1: Heritage (0% – 30%) -->
+        <div id="seq-text-1" class="absolute inset-0 flex items-center transition-none" style="opacity: 0;">
+          <div class="max-w-xl bg-charcoal/60 backdrop-blur-sm rounded-3xl p-8 md:p-10 ring-1 ring-white/5">
+            <span class="eyebrow inline-flex items-center gap-2 text-amber-glow mb-5">
+              <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+              Est. 1978
+            </span>
+            <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-5">
+              Built on<br><span class="text-amber-glow italic font-medium">three generations</span><br>of maple craft.
+            </h2>
+            <p class="text-base md:text-lg text-warm-gray-200 leading-relaxed max-w-[48ch]">
+              Wayne Lytton founded Maple Terroir in 1978. Today his son Shawn carries the legacy forward &mdash; the same family values, the same uncompromising standards, the same forest.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 2: Quality (30% – 65%) -->
+        <div id="seq-text-2" class="absolute inset-0 flex items-center justify-end transition-none" style="opacity: 0;">
+          <div class="max-w-xl text-right bg-charcoal/60 backdrop-blur-sm rounded-3xl p-8 md:p-10 ring-1 ring-white/5">
+            <span class="eyebrow inline-flex items-center gap-2 text-amber-glow mb-5 justify-end">
+              <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+              Certified Organic
+            </span>
+            <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-5">
+              No chemicals.<br>No preservatives.<br><span class="text-amber-glow italic font-medium">No compromise.</span>
+            </h2>
+            <p class="text-base md:text-lg text-warm-gray-200 leading-relaxed max-w-[48ch] ml-auto">
+              Quadruple-certified organic &mdash; Ecocert, Canada Organic, USDA, and JAS. Every bottle meets the strictest standards in the world, because anything less isn't Maple Terroir.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 3: Terroir (65% – 100%) -->
+        <div id="seq-text-3" class="absolute inset-0 flex items-center justify-center text-center transition-none" style="opacity: 0;">
+          <div class="max-w-2xl bg-charcoal/60 backdrop-blur-sm rounded-3xl p-8 md:p-10 ring-1 ring-white/5">
+            <span class="eyebrow inline-flex items-center gap-2 text-amber-glow mb-5 mx-auto justify-center">
+              <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+              Single-Origin Terroir
+            </span>
+            <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-5">
+              One farm. One forest.<br><span class="text-amber-glow italic font-medium">Quebec's Appalachian Mountains.</span>
+            </h2>
+            <p class="text-base md:text-lg text-warm-gray-200 leading-relaxed max-w-[50ch] mx-auto">
+              Like single-vineyard wine, our late-harvest maple carries the signature of its land &mdash; cold winters that concentrate the sap, mineral-rich soils that deepen the flavour, and old-growth sugar maples that have stood for generations.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll progress indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3">
+        <div class="flex gap-1.5">
+          <div id="seq-dot-1" class="w-1.5 h-1.5 rounded-full bg-cream/30 transition-all duration-500"></div>
+          <div id="seq-dot-2" class="w-1.5 h-1.5 rounded-full bg-cream/30 transition-all duration-500"></div>
+          <div id="seq-dot-3" class="w-1.5 h-1.5 rounded-full bg-cream/30 transition-all duration-500"></div>
+        </div>
+        <span class="text-[10px] uppercase tracking-[0.15em] text-cream/30 font-medium ml-2">Scroll to explore</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TERROIR — The single-origin story (editorial split)    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="terroir" class="py-24 md:py-40 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <!-- Left: Image / Visual -->
+        <div class="reveal order-2 md:order-1">
+          <div class="bg-warm-gray-100/60 ring-1 ring-warm-gray-200/40 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
+            <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] aspect-[3/4] md:aspect-[4/5]">
+              <!-- Background image -->
+              <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1491002052546-bf38f186af56?auto=format&fit=crop&w=1000&q=80" alt="Snowy Quebec forest" class="w-full h-full object-cover" loading="lazy" decoding="async">
+              </div>
+
+              <!-- Quote overlay -->
+              <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10 bg-gradient-to-t from-charcoal/80 via-charcoal/40 to-transparent">
+                <blockquote class="font-display text-lg md:text-xl italic text-cream/90 leading-relaxed">
+                  &ldquo;Like single-vineyard wine, our maple carries the signature of its terroir &mdash; the soil, the altitude, the cold Quebec winters.&rdquo;
+                </blockquote>
+                <cite class="block mt-3 text-xs font-body text-cream/50 not-italic uppercase tracking-widest">The Lytton Family</cite>
+              </div>
+
+              <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.1)] rounded-[inherit] pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Text content -->
+        <div class="order-1 md:order-2 space-y-8">
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            Single-Origin Terroir
+          </span>
+
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1]">
+            The Appalachian<br>Mountains of Quebec.
+          </h2>
+
+          <div class="space-y-6">
+            <p class="reveal reveal-delay-2 text-base md:text-lg text-warm-gray-600 leading-relaxed max-w-[55ch]">
+              Terroir isn't just for wine. The character of our maple syrup is shaped by the unique microclimate of Quebec's Appalachian range &mdash; cold winters that concentrate the sap, mineral-rich soils that deepen the flavour, and old-growth forests where the sugar maples have stood for generations.
+            </p>
+
+            <p class="reveal reveal-delay-3 text-base md:text-lg text-warm-gray-600 leading-relaxed max-w-[55ch]">
+              We harvest late in the season, when the sap runs deepest and richest. No blending, no shortcuts. Every bottle traces back to one farm, one family, one forest.
+            </p>
+          </div>
+
+          <!-- Terroir details -->
+          <div class="reveal reveal-delay-4 grid grid-cols-2 gap-6 pt-6 border-t border-warm-gray-200/60">
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-amber-warm/10 flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-amber-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M12 2L12 22M12 2C9 6 4 8 4 14C4 18.4 7.6 22 12 22M12 2C15 6 20 8 20 14C20 18.4 16.4 22 12 22"/>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-charcoal text-sm mb-1">Late-Harvest</h4>
+              <p class="text-xs text-warm-gray-500 leading-relaxed">Deeper, richer sap collected at the season's peak.</p>
+            </div>
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-amber-warm/8 flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M3 12H5M19 12H21M12 3V5M12 19V21M5.6 5.6L7 7M17 17L18.4 18.4M5.6 18.4L7 17M17 7L18.4 5.6"/>
+                  <circle cx="12" cy="12" r="4"/>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-charcoal text-sm mb-1">Single-Origin</h4>
+              <p class="text-xs text-warm-gray-500 leading-relaxed">One farm, one forest. Never blended or diluted.</p>
+            </div>
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-amber-warm/8 flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-amber-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M12 3V4M12 20V21M21 12H20M4 12H3M18.364 5.636L17.657 6.343M6.343 17.657L5.636 18.364M18.364 18.364L17.657 17.657M6.343 6.343L5.636 5.636"/>
+                  <path d="M17 12C17 14.761 14.761 17 12 17C9.239 17 7 14.761 7 12C7 9.239 12 3 12 3C12 3 17 9.239 17 12Z"/>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-charcoal text-sm mb-1">No Additives</h4>
+              <p class="text-xs text-warm-gray-500 leading-relaxed">Zero chemicals, preservatives, or bleaching agents.</p>
+            </div>
+            <div>
+              <div class="w-10 h-10 rounded-xl bg-amber-warm/8 flex items-center justify-center mb-3">
+                <svg class="w-5 h-5 text-amber-deep" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M20.84 4.61C20.329 4.099 19.723 3.693 19.055 3.417C18.387 3.141 17.672 3 16.95 3C16.228 3 15.513 3.141 14.845 3.417C14.177 3.693 13.571 4.099 13.06 4.61L12 5.67L10.94 4.61C9.908 3.578 8.509 3.001 7.05 3.001C5.591 3.001 4.192 3.578 3.16 4.61C2.128 5.642 1.551 7.041 1.551 8.5C1.551 9.959 2.128 11.358 3.16 12.39L4.22 13.45L12 21.23L19.78 13.45L20.84 12.39C21.351 11.879 21.757 11.273 22.033 10.605C22.309 9.937 22.45 9.222 22.45 8.5C22.45 7.778 22.309 7.063 22.033 6.395C21.757 5.727 21.351 5.121 20.84 4.61Z"/>
+                </svg>
+              </div>
+              <h4 class="font-semibold text-charcoal text-sm mb-1">Family-Crafted</h4>
+              <p class="text-xs text-warm-gray-500 leading-relaxed">Four generations of maple knowledge and care.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CERTIFICATIONS — Trust and credibility                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="certifications" class="py-24 md:py-40 px-4 md:px-8 bg-charcoal text-cream overflow-hidden">
+    <div class="max-w-[1400px] mx-auto">
+      <!-- Section header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 md:mb-24">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-glow mb-6">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          Certified Quality
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
+          Trusted globally.<br>
+          <span class="text-amber-glow italic font-medium">Certified organically.</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-base md:text-lg text-warm-gray-400 leading-relaxed">
+          Every product carries the certifications that matter. No shortcuts, no greenwashing &mdash; verified organic at every step from forest to table.
+        </p>
+      </div>
+
+      <!-- Certification cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <!-- Ecocert -->
+        <div class="reveal cert-shimmer">
+          <div class="bg-white/5 ring-1 ring-white/8 p-1.5 rounded-[2rem] md:rounded-[2rem]">
+            <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] md:rounded-[calc(2rem-0.375rem)] bg-white/[0.03] p-6 md:p-8 text-center min-h-[180px] md:min-h-[220px] flex flex-col items-center justify-center">
+              <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 md:w-8 md:h-8 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M12 2L15 8.5L22 9.5L17 14.5L18 21.5L12 18L6 21.5L7 14.5L2 9.5L9 8.5L12 2Z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-sm md:text-base text-cream mb-1">Ecocert</h3>
+              <p class="text-[10px] md:text-xs text-warm-gray-400">International Organic Certification</p>
+              <div class="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-[inherit] pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canada Organic -->
+        <div class="reveal reveal-delay-1 cert-shimmer" style="animation-delay: 1s">
+          <div class="bg-white/5 ring-1 ring-white/8 p-1.5 rounded-[2rem] md:rounded-[2rem]">
+            <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] md:rounded-[calc(2rem-0.375rem)] bg-white/[0.03] p-6 md:p-8 text-center min-h-[180px] md:min-h-[220px] flex flex-col items-center justify-center">
+              <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 md:w-8 md:h-8 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M12 2C12 2 9 6 7 9C5 12 6 16 9 18C10 19 11 19.5 12 19.5C13 19.5 14 19 15 18C18 16 19 12 17 9C15 6 12 2 12 2Z"/>
+                  <path d="M12 8V16M9 11L12 13M15 11L12 13"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-sm md:text-base text-cream mb-1">Canada Organic</h3>
+              <p class="text-[10px] md:text-xs text-warm-gray-400">Canadian Organic Standards</p>
+              <div class="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-[inherit] pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- USDA Organic -->
+        <div class="reveal reveal-delay-2 cert-shimmer" style="animation-delay: 2s">
+          <div class="bg-white/5 ring-1 ring-white/8 p-1.5 rounded-[2rem] md:rounded-[2rem]">
+            <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] md:rounded-[calc(2rem-0.375rem)] bg-white/[0.03] p-6 md:p-8 text-center min-h-[180px] md:min-h-[220px] flex flex-col items-center justify-center">
+              <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 md:w-8 md:h-8 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M8 12L11 15L16 9"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-sm md:text-base text-cream mb-1">USDA Organic</h3>
+              <p class="text-[10px] md:text-xs text-warm-gray-400">United States Department of Agriculture</p>
+              <div class="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-[inherit] pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JAS Japan -->
+        <div class="reveal reveal-delay-3 cert-shimmer" style="animation-delay: 3s">
+          <div class="bg-white/5 ring-1 ring-white/8 p-1.5 rounded-[2rem] md:rounded-[2rem]">
+            <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] md:rounded-[calc(2rem-0.375rem)] bg-white/[0.03] p-6 md:p-8 text-center min-h-[180px] md:min-h-[220px] flex flex-col items-center justify-center">
+              <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-amber-glow/10 flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 md:w-8 md:h-8 text-amber-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <path d="M12 2V4M12 20V22M22 12H20M4 12H2"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-sm md:text-base text-cream mb-1">JAS Certified</h3>
+              <p class="text-[10px] md:text-xs text-warm-gray-400">Japanese Agricultural Standard</p>
+              <div class="absolute inset-0 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-[inherit] pointer-events-none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom promise -->
+      <div class="reveal mt-12 md:mt-16 text-center">
+        <p class="text-warm-gray-400 text-sm leading-relaxed max-w-[50ch] mx-auto">
+          No chemicals. No preservatives. No bleaching agents. Every certification earned, every standard exceeded. Quality you can taste, integrity you can trust.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- GLOBAL REACH — Markets served                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-24 md:py-40 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
+        <!-- Left text -->
+        <div class="md:col-span-5 space-y-6">
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            Global Reach
+          </span>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1]">
+            From Vancouver<br>to the world.
+          </h2>
+          <p class="reveal reveal-delay-2 text-base text-warm-gray-600 leading-relaxed max-w-[50ch]">
+            Recognized as the number one value maple syrup in Japan, and trusted by premium retailers across Asia. We serve both retail partners and direct-to-consumer through our online store.
+          </p>
+          <div class="reveal reveal-delay-3">
+            <a href="products.html"
+               class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+              <span>Shop Our Store</span>
+              <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Market cards -->
+        <div class="md:col-span-7">
+          <div class="grid grid-cols-2 gap-4 md:gap-5">
+            <div class="reveal">
+              <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem]">
+                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
+                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">CA</div>
+                  <div class="text-sm font-medium text-warm-gray-600">Canada</div>
+                  <div class="text-xs text-warm-gray-400 mt-1">Home Market</div>
+                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
+                </div>
+              </div>
+            </div>
+            <div class="reveal reveal-delay-1">
+              <div class="bg-amber-warm/5 ring-1 ring-amber-warm/10 p-1.5 rounded-[2rem]">
+                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
+                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">JP</div>
+                  <div class="text-sm font-medium text-warm-gray-600">Japan</div>
+                  <div class="text-xs text-amber-warm mt-1">No. 1 Value Brand</div>
+                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
+                </div>
+              </div>
+            </div>
+            <div class="reveal reveal-delay-2">
+              <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem]">
+                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
+                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">KR</div>
+                  <div class="text-sm font-medium text-warm-gray-600">South Korea</div>
+                  <div class="text-xs text-warm-gray-400 mt-1">Growing Market</div>
+                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
+                </div>
+              </div>
+            </div>
+            <div class="reveal reveal-delay-3">
+              <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem]">
+                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
+                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">CN</div>
+                  <div class="text-sm font-medium text-warm-gray-600">China</div>
+                  <div class="text-xs text-warm-gray-400 mt-1">Premium Channel</div>
+                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CTA BANNER — Final conversion push                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-24 md:py-40 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal">
+        <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+            <!-- Decorative maple leaves -->
+            <div class="absolute top-0 left-0 w-1/3 h-1/3 opacity-10">
+              <svg viewBox="0 0 200 200" fill="currentColor" class="w-full h-full text-cream">
+                <path d="M100 15C100 15 80 40 65 55C55 65 40 70 30 65C35 80 45 85 55 85C45 95 30 100 20 95C30 110 50 115 65 105C60 120 50 135 35 145C55 140 70 125 80 110C80 125 75 145 65 160C80 150 90 135 95 118C98 135 95 155 100 175C105 155 102 135 105 118C110 135 120 150 135 160C125 145 120 125 120 110C130 125 145 140 165 145C150 135 140 120 135 105C150 115 170 110 180 95C170 100 155 95 145 85C155 85 165 80 170 65C160 70 145 65 135 55C120 40 100 15 100 15Z"/>
+              </svg>
+            </div>
+            <div class="absolute bottom-0 right-0 w-1/4 h-1/4 opacity-10 rotate-180">
+              <svg viewBox="0 0 200 200" fill="currentColor" class="w-full h-full text-cream">
+                <path d="M100 15C100 15 80 40 65 55C55 65 40 70 30 65C35 80 45 85 55 85C45 95 30 100 20 95C30 110 50 115 65 105C60 120 50 135 35 145C55 140 70 125 80 110C80 125 75 145 65 160C80 150 90 135 95 118C98 135 95 155 100 175C105 155 102 135 105 118C110 135 120 150 135 160C125 145 120 125 120 110C130 125 145 140 165 145C150 135 140 120 135 105C150 115 170 110 180 95C170 100 155 95 145 85C155 85 165 80 170 65C160 70 145 65 135 55C120 40 100 15 100 15Z"/>
+              </svg>
+            </div>
+
+            <div class="relative">
+              <span class="eyebrow text-cream/50 mb-6 block">Experience the Difference</span>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
+                Taste the terroir<br>of Quebec.
+              </h2>
+              <p class="text-base md:text-lg text-cream/70 leading-relaxed max-w-[45ch] mx-auto mb-10">
+                From our fourth-generation farm to your table. Discover why families across four countries trust Maple Terroir for the purest maple products in the world.
+              </p>
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="products.html"
+                   class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                  <span>Shop the Collection</span>
+                  <span class="w-7 h-7 rounded-full bg-charcoal/8 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </a>
+                <span class="text-sm text-cream/40">Free shipping over $99 CAD</span>
+              </div>
+            </div>
+
+            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <footer class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/50">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
+        <!-- Brand column -->
+        <div class="md:col-span-5">
+          <a href="#" class="flex items-center gap-2.5 mb-6">
+            <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none">
+              <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/>
+              <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M20 12V32M14 18L20 22M26 18L20 22M12 24L20 28M28 24L20 28" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+            </svg>
+            <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
+          </a>
+          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch] mb-6">
+            Pure maple from Canada, delivered to your table. Family-owned since 1978, certified organic, proudly Canadian.
+          </p>
+          <div class="flex items-center gap-2 text-xs text-warm-gray-400">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M12 2C7.03 2 3 6.03 3 11C3 16.97 12 22 12 22C12 22 21 16.97 21 11C21 6.03 16.97 2 12 2Z"/>
+              <circle cx="12" cy="11" r="3"/>
+            </svg>
+            <span>Vancouver, British Columbia, Canada</span>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="md:col-span-2 md:col-start-7">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
+          <ul class="space-y-3">
+            <li><a href="story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Products</a></li>
+            <li><a href="terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
+            <li><a href="certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Certifications</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
+          <ul class="space-y-3">
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Gift Sets</a></li>
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Best Sellers</a></li>
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">New Arrivals</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
+          <ul class="space-y-3">
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Press</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
+        <p class="text-xs text-warm-gray-400">
+          &copy; 2026 Maple Terroir Products Ltd. All rights reserved.
+        </p>
+        <div class="flex items-center gap-6">
+          <span class="text-xs text-warm-gray-300">Ecocert</span>
+          <span class="text-xs text-warm-gray-300">Canada Organic</span>
+          <span class="text-xs text-warm-gray-300">USDA Organic</span>
+          <span class="text-xs text-warm-gray-300">JAS</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- JAVASCRIPT — Scroll reveals, nav effects, mobile menu   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <script>
+    // ── Scroll Reveal via IntersectionObserver ──
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    const navInner = navbar.querySelector('.nav-glass');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 80) {
+        navInner.classList.add('nav-scrolled');
+      } else {
+        navInner.classList.remove('nav-scrolled');
+      }
+
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    // ── Mobile menu toggle with hamburger morph ──
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+
+      if (menuOpen) {
+        // Morph hamburger to X
+        bar1.style.transform = 'translateY(5px) rotate(45deg)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'translateY(-5px) rotate(-45deg)';
+
+        // Show menu
+        mobileMenu.style.opacity = '1';
+        mobileMenu.style.pointerEvents = 'auto';
+        document.body.style.overflow = 'hidden';
+
+        // Stagger reveal links
+        mobileLinks.forEach((link) => {
+          link.style.transform = 'translateY(0)';
+          link.style.opacity = '1';
+        });
+      } else {
+        // Morph X back to hamburger
+        bar1.style.transform = '';
+        bar2.style.opacity = '1';
+        bar3.style.transform = '';
+
+        // Hide menu
+        mobileMenu.style.opacity = '0';
+        mobileMenu.style.pointerEvents = 'none';
+        document.body.style.overflow = '';
+
+        // Reset links
+        mobileLinks.forEach((link) => {
+          link.style.transform = 'translateY(3rem)';
+          link.style.opacity = '0';
+        });
+      }
+    });
+
+    // Close mobile menu on link click
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (menuOpen) {
+          menuToggle.click();
+        }
+      });
+    });
+
+    // ── Smooth scroll for anchor links ──
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── Scroll Sequence: Video scrub animation ──
+    (function () {
+      const video = document.getElementById('seq-video');
+      const section = document.getElementById('scroll-sequence');
+
+      // Lazy-load the video when section is approaching viewport
+      var videoLoaded = false;
+      var lazyObs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting && !videoLoaded) {
+          videoLoaded = true;
+          video.preload = 'auto';
+          video.load();
+          lazyObs.disconnect();
+        }
+      }, { rootMargin: '200px 0px' });
+      lazyObs.observe(section);
+      const textEls = [
+        document.getElementById('seq-text-1'),
+        document.getElementById('seq-text-2'),
+        document.getElementById('seq-text-3'),
+      ];
+      const dotEls = [
+        document.getElementById('seq-dot-1'),
+        document.getElementById('seq-dot-2'),
+        document.getElementById('seq-dot-3'),
+      ];
+
+      // Ensure video is paused and ready for scrubbing
+      video.pause();
+
+      // Compute text opacity from scroll progress
+      function textOpacity(progress, fadeIn, holdStart, holdEnd, fadeOut) {
+        if (progress < fadeIn) return 0;
+        if (progress < holdStart) return (progress - fadeIn) / (holdStart - fadeIn);
+        if (progress < holdEnd) return 1;
+        if (progress < fadeOut) return 1 - (progress - holdEnd) / (fadeOut - holdEnd);
+        return 0;
+      }
+
+      let rafId = null;
+      let lastTime = -1;
+
+      function onScroll() {
+        if (rafId) return;
+        rafId = requestAnimationFrame(function () {
+          rafId = null;
+
+          const rect = section.getBoundingClientRect();
+          const sectionHeight = section.offsetHeight;
+          const viewportH = window.innerHeight;
+
+          // Progress: 0 when sticky starts, 1 when section ends
+          const scrolled = -rect.top;
+          const scrollable = sectionHeight - viewportH;
+          const progress = Math.max(0, Math.min(1, scrolled / scrollable));
+
+          // Scrub video to match scroll progress
+          if (video.duration && isFinite(video.duration)) {
+            const targetTime = progress * video.duration;
+            // Only seek if time changed meaningfully (avoid jitter)
+            if (Math.abs(targetTime - lastTime) > 0.03) {
+              video.currentTime = targetTime;
+              lastTime = targetTime;
+            }
+          }
+
+          // Text overlays
+          const o1 = textOpacity(progress, 0.0, 0.06, 0.25, 0.32);
+          const o2 = textOpacity(progress, 0.34, 0.40, 0.58, 0.65);
+          const o3 = textOpacity(progress, 0.67, 0.73, 0.92, 1.0);
+
+          textEls[0].style.opacity = o1;
+          textEls[1].style.opacity = o2;
+          textEls[2].style.opacity = o3;
+
+          // Subtle Y translate for parallax feel
+          textEls[0].style.transform = 'translateY(' + ((1 - o1) * 30) + 'px)';
+          textEls[1].style.transform = 'translateY(' + ((1 - o2) * 30) + 'px)';
+          textEls[2].style.transform = 'translateY(' + ((1 - o3) * 30) + 'px)';
+
+          // Dot indicators
+          var activeDot = o1 > 0.3 ? 0 : o2 > 0.3 ? 1 : o3 > 0.3 ? 2 : -1;
+          dotEls.forEach(function (dot, i) {
+            if (i === activeDot) {
+              dot.style.width = '1.5rem';
+              dot.style.background = 'rgba(244,199,125,0.9)';
+            } else {
+              dot.style.width = '0.375rem';
+              dot.style.background = 'rgba(253,251,247,0.3)';
+            }
+          });
+        });
+      }
+
+      // Init
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Set first frame once video metadata loads
+      video.addEventListener('loadedmetadata', function () {
+        video.currentTime = 0;
+      });
+    })();
+  </script>
+
+<!-- ── Cart Drawer ──────────────────────────────────────────────────── -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Shopping cart">
+  <div class="cart-header">
+    <h2 class="cart-title">Your Cart</h2>
+    <button class="cart-close" aria-label="Close cart" onclick="MapleCart.toggle()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty" id="cart-empty">
+      <p style="font-size:2rem;opacity:0.3;margin-bottom:1rem;"></p>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none;">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-price" id="cart-subtotal">$0.00</span>
+    </div>
+    <p class="cart-note">Shipping &amp; taxes calculated at checkout</p>
+    <button class="cart-checkout-btn" id="cart-checkout" onclick="MapleCart.checkout()">
+      Checkout
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</aside>
+
+<script>
+// ── Shopify Storefront Cart ──────────────────────────────────────────
+var MapleCart = (function () {
+  var STOREFRONT_URL = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
+  var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
+  var cartId = localStorage.getItem('maple_cart_id') || null;
+  var cartData = null;
+
+  var CART_FRAGMENT = 'id checkoutUrl lines(first:50){edges{node{id quantity merchandise{...on ProductVariant{id title priceV2{amount currencyCode}image{url altText}product{title}}}}}}cost{subtotalAmount{amount currencyCode}}';
+
+  function gql(query, variables) {
+    return fetch(STOREFRONT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN
+      },
+      body: JSON.stringify({ query: query, variables: variables || {} })
+    }).then(function (r) { return r.json(); });
+  }
+
+  function createCart(variantId, qty) {
+    return gql(
+      'mutation($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{' + CART_FRAGMENT + '}userErrors{field message}}}',
+      { lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }
+    ).then(function (res) {
+      cartData = res.data.cartCreate.cart;
+      cartId = cartData.id;
+      localStorage.setItem('maple_cart_id', cartId);
+      return cartData;
+    });
+  }
+
+  function addLine(variantId, qty) {
+    if (!cartId) return createCart(variantId, qty);
+    return gql(
+      'mutation($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{' + CART_FRAGMENT + '}userErrors{field message}}}',
+      { cartId: cartId, lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }
+    ).then(function (res) {
+      if (res.data.cartLinesAdd.userErrors && res.data.cartLinesAdd.userErrors.length) {
+        localStorage.removeItem('maple_cart_id');
+        cartId = null;
+        return createCart(variantId, qty);
+      }
+      cartData = res.data.cartLinesAdd.cart;
+      return cartData;
+    });
+  }
+
+  function updateLine(lineId, qty) {
+    return gql(
+      'mutation($cartId:ID!,$lines:[CartLineUpdateInput!]!){cartLinesUpdate(cartId:$cartId,lines:$lines){cart{' + CART_FRAGMENT + '}}}',
+      { cartId: cartId, lines: [{ id: lineId, quantity: qty }] }
+    ).then(function (res) {
+      cartData = res.data.cartLinesUpdate.cart;
+      return cartData;
+    });
+  }
+
+  function removeLine(lineId) {
+    return gql(
+      'mutation($cartId:ID!,$lineIds:[ID!]!){cartLinesRemove(cartId:$cartId,lineIds:$lineIds){cart{' + CART_FRAGMENT + '}}}',
+      { cartId: cartId, lineIds: [lineId] }
+    ).then(function (res) {
+      cartData = res.data.cartLinesRemove.cart;
+      return cartData;
+    });
+  }
+
+  function fetchCart() {
+    if (!cartId) return Promise.resolve(null);
+    return gql(
+      'query($id:ID!){cart(id:$id){' + CART_FRAGMENT + '}}',
+      { id: cartId }
+    ).then(function (res) {
+      if (!res.data.cart) {
+        localStorage.removeItem('maple_cart_id');
+        cartId = null;
+        cartData = null;
+        return null;
+      }
+      cartData = res.data.cart;
+      return cartData;
+    });
+  }
+
+  function getLines() {
+    if (!cartData || !cartData.lines) return [];
+    return cartData.lines.edges.map(function (e) { return e.node; });
+  }
+
+  function getTotalQty() {
+    return getLines().reduce(function (s, l) { return s + l.quantity; }, 0);
+  }
+
+  function renderBadge() {
+    var el = document.getElementById('cart-count');
+    if (!el) return;
+    var qty = getTotalQty();
+    el.textContent = qty;
+    el.classList.toggle('visible', qty > 0);
+  }
+
+  function renderDrawer() {
+    var itemsEl = document.getElementById('cart-items');
+    var emptyEl = document.getElementById('cart-empty');
+    var footerEl = document.getElementById('cart-footer');
+    var subtotalEl = document.getElementById('cart-subtotal');
+    var lines = getLines();
+
+    itemsEl.querySelectorAll('.cart-item').forEach(function (el) { el.remove(); });
+
+    if (!lines.length) {
+      emptyEl.style.display = '';
+      footerEl.style.display = 'none';
+      return;
+    }
+
+    emptyEl.style.display = 'none';
+    footerEl.style.display = '';
+
+    lines.forEach(function (line) {
+      var v = line.merchandise;
+      var price = parseFloat(v.priceV2.amount) * line.quantity;
+      var imgUrl = v.image ? v.image.url + '&width=144' : '';
+      var div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML =
+        (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (v.image.altText || v.product.title).replace(/"/g, '&quot;') + '">' : '<div class="cart-item-img"></div>') +
+        '<div class="cart-item-info">' +
+          '<div class="cart-item-name">' + v.product.title + '</div>' +
+          '<div class="cart-item-variant">' + v.title + '</div>' +
+          '<div class="cart-item-bottom">' +
+            '<div class="cart-item-qty">' +
+              '<button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button>' +
+              '<span>' + line.quantity + '</span>' +
+              '<button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button>' +
+            '</div>' +
+            '<span class="cart-item-price">$' + price.toFixed(2) + '</span>' +
+          '</div>' +
+        '</div>';
+      itemsEl.appendChild(div);
+    });
+
+    if (cartData.cost && cartData.cost.subtotalAmount) {
+      subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2) + ' CAD';
+    }
+
+    itemsEl.querySelectorAll('[data-action]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var lineId = btn.dataset.line;
+        var action = btn.dataset.action;
+        var line = lines.find(function (l) { return l.id === lineId; });
+        if (!line) return;
+        var newQty = action === 'inc' ? line.quantity + 1 : line.quantity - 1;
+        var p = newQty <= 0 ? removeLine(lineId) : updateLine(lineId, newQty);
+        p.then(function () { renderDrawer(); renderBadge(); });
+      });
+    });
+  }
+
+  function toggle() {
+    var overlay = document.getElementById('cart-overlay');
+    var drawer = document.getElementById('cart-drawer');
+    var isOpen = drawer.classList.contains('open');
+    drawer.classList.toggle('open');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+    if (!isOpen) renderDrawer();
+  }
+
+  function addFromBtn(btn) {
+    var variantId = btn.dataset.variantId;
+    if (!variantId) return;
+    var origHTML = btn.innerHTML;
+    btn.classList.add('added');
+    btn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added';
+    addLine(variantId, 1).then(function () {
+      renderBadge();
+      setTimeout(function () {
+        btn.classList.remove('added');
+        btn.innerHTML = origHTML;
+      }, 1400);
+    });
+  }
+
+  function checkout() {
+    if (cartData && cartData.checkoutUrl) {
+      window.location.href = cartData.checkoutUrl;
+    }
+  }
+
+  // Init
+  function init() {
+    fetchCart().then(function () { renderBadge(); });
+    document.getElementById('cart-overlay').addEventListener('click', toggle);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  return { toggle: toggle, addFromBtn: addFromBtn, checkout: checkout };
+})();
+</script>
+
+<script src="assets/shared.js"></script>
+</body>
+</html>
