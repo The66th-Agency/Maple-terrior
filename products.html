@@ -243,386 +243,41 @@
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- PRODUCT CATEGORIES                                     -->
+  <!-- PRODUCT CATEGORIES — Dynamically loaded from Shopify   -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[1400px] mx-auto" id="categories-container">
 
-      <!-- Pure Syrups -->
-      <div class="mb-20 md:mb-28">
-        <div class="flex items-end justify-between mb-10">
-          <div>
-            <span class="reveal eyebrow text-amber-warm mb-3 block">Single Origin</span>
-            <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">Pure Maple Syrups</h2>
+      <!-- Loading skeleton -->
+      <div id="categories-loading" class="space-y-20">
+        <div>
+          <div class="h-4 w-24 bg-warm-gray-200/50 rounded mb-3 animate-pulse"></div>
+          <div class="h-8 w-64 bg-warm-gray-200/50 rounded mb-10 animate-pulse"></div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
           </div>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          <!-- Organic 250ml -->
-          <a href="product.html?handle=organic-pure-maple-syrup-250ml" class="reveal product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Organic Pure Maple Syrup 250ml" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Organic Pure Maple Syrup</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$14.99 CAD &middot; 250ml</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <!-- First Tap Nouveau -->
-          <a href="product.html?handle=organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="reveal reveal-delay-1 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="First Tap Nouveau Maple Syrup" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">First Tap Nouveau <span class="text-amber-warm">Limited</span></h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$19.99 CAD &middot; 250ml</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815545397497" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <!-- Maple Leaf Bottle 250ml -->
-          <a href="product.html?handle=pure-maple-syrup-maple-leaf-bottle-250ml" class="reveal reveal-delay-2 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Maple Leaf Bottle 250ml" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Maple Leaf Bottle</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$24.99 CAD &middot; 250ml</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <!-- Jug 100ml -->
-          <a href="product.html?handle=pure-maple-syrup-jug-100ml" class="reveal reveal-delay-3 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Pure Maple Syrup Jug 100ml" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Maple Syrup Jug</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$8.99 CAD &middot; 100ml</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815543496953" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
+        <div>
+          <div class="h-4 w-28 bg-warm-gray-200/50 rounded mb-3 animate-pulse"></div>
+          <div class="h-8 w-56 bg-warm-gray-200/50 rounded mb-10 animate-pulse"></div>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+            <div class="aspect-square rounded-2xl bg-cream-dark animate-pulse"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Stroopwafels -->
-      <div class="mb-20 md:mb-28">
-        <div class="flex items-end justify-between mb-10">
-          <div>
-            <span class="reveal eyebrow text-amber-warm mb-3 block">5 Flavours</span>
-            <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">Maple Stroopwafels</h2>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
-          <a href="product.html?handle=maple-syrup-stroopwafel" class="reveal product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/NewMapleStroopFilm.jpg?v=1772656198&width=600" alt="Pure Maple Syrup Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Pure Maple Syrup</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$8.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=cocoa-chocolate-maple-stroopwafels-caddy" class="reveal reveal-delay-1 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/cocoa-chocolate-maple-stroopwafel.webp?v=1749671768&width=600" alt="Cocoa Chocolate Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Cocoa Chocolate</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$39.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42578985779449" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=strawberry-cream-maple-stroopwafels-caddy" class="reveal reveal-delay-2 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/strawberry-stroopwafel-wrap.webp?v=1749671783&width=600" alt="Strawberry Cream Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Strawberry Cream</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$39.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42579029197049" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=wild-blueberry-maple-stroopwafels-caddy" class="reveal reveal-delay-3 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Bluberrystroopwafelssingle.png?v=1764912531&width=600" alt="Wild Blueberry Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Wild Blueberry</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$39.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42579042271481" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=matcha-green-tea-maple-stroopwafels-caddy" class="reveal product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/waffle_maple_terroir_matcha_stroopwafel1_-_Copy.png?v=1764912588&width=600" alt="Matcha Green Tea Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Matcha Green Tea</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$39.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42579018121465" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-        </div>
-      </div>
+      <!-- Dynamic categories injected here by JS -->
+      <div id="dynamic-categories"></div>
 
-      <!-- Mini Stroopwafels & Snack Packs -->
-      <div class="mb-20 md:mb-28">
-        <div class="flex items-end justify-between mb-10">
-          <div>
-            <span class="reveal eyebrow text-amber-warm mb-3 block">Snack Size</span>
-            <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">Mini Stroopwafels &amp; Snacks</h2>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          <a href="product.html?handle=maple-syrup-mini-stroopwafel" class="reveal product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/NewMapleStroopFilm.jpg?v=1772656198&width=600" alt="Mini Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Mini Stroopwafels</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$8.99 &middot; 128g</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815580229881" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=handcrafted-pure-maple-syrup-butter-popcorn" class="reveal reveal-delay-1 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Maple Butter Popcorn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Maple Butter Popcorn</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$4.99 &middot; 100g</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815596810489" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=maple-syrup-sea-salt-roasted-peanuts" class="reveal reveal-delay-2 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Sea Salt Roasted Peanuts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Sea Salt Roasted Peanuts</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$5.99 &middot; 100g</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815598121209" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=pure-maple-syrup-candy" class="reveal reveal-delay-3 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Maple Syrup Candy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Pure Maple Syrup Candy</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$9.99 &middot; 120g</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/46289771495673" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Tea & Coffee -->
-      <div class="mb-20 md:mb-28">
-        <div class="flex items-end justify-between mb-10">
-          <div>
-            <span class="reveal eyebrow text-amber-warm mb-3 block">Beverages</span>
-            <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">Tea &amp; Coffee</h2>
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <a href="product.html?handle=maple-ceylon-tea" class="reveal product-card group block">
-            <div class="relative overflow-hidden rounded-[2rem] min-h-[320px] p-8 flex flex-col justify-end ring-1 ring-warm-gray-200/30">
-              <div class="absolute inset-0 bg-gradient-to-br from-amber-warm/10 via-cream-dark to-cream"></div>
-              <div class="absolute inset-0">
-                <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/mapleterroirblueberrytea.png?v=1749672022&width=600" alt="Maple Ceylon Tea" class="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-700" loading="lazy">
-              </div>
-              <div class="relative z-10">
-                <h3 class="font-display text-xl font-semibold text-charcoal mb-1 tracking-tight">Maple Ceylon Tea</h3>
-                <p class="text-sm text-warm-gray-600 mb-3">Premium Ceylon tea with real maple</p>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm font-medium text-amber-deep">$8.99 CAD</span>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815601922297" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?handle=blueberry-ceylon-tea" class="reveal reveal-delay-1 product-card group block">
-            <div class="relative overflow-hidden rounded-[2rem] min-h-[320px] p-8 flex flex-col justify-end ring-1 ring-warm-gray-200/30">
-              <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/10 via-cream-dark to-cream"></div>
-              <div class="absolute inset-0">
-                <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/mapleterroirblueberrytea.png?v=1749672022&width=600" alt="Blueberry Ceylon Tea" class="w-full h-full object-contain p-8 group-hover:scale-105 transition-transform duration-700" loading="lazy">
-              </div>
-              <div class="relative z-10">
-                <h3 class="font-display text-xl font-semibold text-charcoal mb-1 tracking-tight">Blueberry Ceylon Tea</h3>
-                <p class="text-sm text-warm-gray-600 mb-3">Ceylon tea with blueberry &amp; maple</p>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm font-medium text-amber-deep">$8.99 CAD</span>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815604084985" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?handle=maple-syrup-medium-dark-roast-ground-coffee" class="reveal reveal-delay-2 product-card group block">
-            <div class="relative overflow-hidden rounded-[2rem] min-h-[320px] p-8 flex flex-col justify-end ring-1 ring-warm-gray-200/30">
-              <div class="absolute inset-0 bg-gradient-to-br from-warm-gray-700/10 via-cream-dark to-cream"></div>
-              <div class="relative z-10">
-                <h3 class="font-display text-xl font-semibold text-charcoal mb-1 tracking-tight">Maple Ground Coffee</h3>
-                <p class="text-sm text-warm-gray-600 mb-3">Medium-dark roast Arabica with maple</p>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm font-medium text-amber-deep">$14.99 CAD</span>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/46304596099321" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Cookies & Sweets -->
-      <div class="mb-20 md:mb-28">
-        <div class="flex items-end justify-between mb-10">
-          <div>
-            <span class="reveal eyebrow text-amber-warm mb-3 block">Confections</span>
-            <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">Cookies &amp; Sweets</h2>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          <a href="product.html?handle=maple-syrup-cream-cookies-350g" class="reveal product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-cream-cookies.jpg?v=1749671388&width=600" alt="Maple Syrup Cream Cookies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Maple Cream Cookies</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$8.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/46289732567289" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=maple-leaf-mini-shortbread-cookies" class="reveal reveal-delay-1 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&width=600" alt="Maple Leaf Mini Shortbread" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Mini Shortbread Cookies</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$8.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815578919161" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=maple-sugar-sea-salt-cookies" class="reveal reveal-delay-2 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&width=600" alt="Maple Sugar & Sea Salt Cookies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Sugar &amp; Sea Salt Cookies</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$8.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815573643513" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=maple-syrup-blueberry-cookies" class="reveal reveal-delay-3 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Blueberrycookiefront.png?v=1749672092&width=600" alt="Maple Syrup & Blueberry Cookies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Blueberry Cookies</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$8.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815577903353" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Chocolates -->
-      <div class="mb-20 md:mb-28">
-        <div class="flex items-end justify-between mb-10">
-          <div>
-            <span class="reveal eyebrow text-amber-warm mb-3 block">Artisan Chocolate</span>
-            <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">Maple Chocolates</h2>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          <a href="product.html?handle=maple-sugar-crunch-milk-chocolate-bar" class="reveal product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/337-Maple-Sugar-Crunch-100g.jpg?v=1749672154&width=600" alt="Maple Sugar Crunch Chocolate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Maple Sugar Crunch Bar</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$4.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521317966073" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=icewine-dark-chocolate-bar" class="reveal reveal-delay-1 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/338-Icewine-Chocolate-Bar-100g.jpg?v=1749672167&width=600" alt="Icewine Dark Chocolate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Icewine Dark Chocolate</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$4.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521318228217" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=maple-syrup-milk-chocolate-covered-almonds" class="reveal reveal-delay-2 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleSyrupMilkChocolateCoveredAlmondsfrontandback_126df59e-789a-4b6d-a6e2-b9f2acfab1bc.png?v=1749671853&width=600" alt="Chocolate Covered Almonds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Chocolate Covered Almonds</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$9.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815589241081" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=dark-chocolate-covered-cranberry-pure-maple-syrup" class="reveal reveal-delay-3 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/dark-chocolate-cranberries.webp?v=1749672062&width=600" alt="Dark Chocolate Cranberries" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Dark Chocolate Cranberries</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$9.99</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815591076089" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Pantry Staples -->
-      <div class="mb-20 md:mb-28">
-        <div class="flex items-end justify-between mb-10">
-          <div>
-            <span class="reveal eyebrow text-amber-warm mb-3 block">Kitchen Essentials</span>
-            <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">Pantry Staples</h2>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          <a href="product.html?handle=organic-maple-cream-butter-jar" class="reveal product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Organic Maple Cream Butter" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Organic Maple Cream Butter</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$11.99 &middot; 160g</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552999673" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=organic-pure-maple-sugar" class="reveal reveal-delay-1 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Organic Pure Maple Sugar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Organic Pure Maple Sugar</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$9.99 &middot; 100g</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552213241" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-          <a href="product.html?handle=pure-maple-syrup-caramel" class="reveal reveal-delay-2 product-card group block">
-            <div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">
-              <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&width=600" alt="Pure Maple Syrup Caramel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-            </div>
-            <h3 class="font-medium text-sm text-charcoal mb-1">Pure Maple Syrup Caramel</h3>
-            <div class="flex items-center justify-between">
-              <p class="text-xs text-warm-gray-500">$9.99 &middot; 120g</p>
-              <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521315049721" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Gift Sets -->
-      <div>
+      <!-- Gift Sets — unique layout, kept static but data loaded from API -->
+      <div id="gift-sets-section" class="hidden">
         <div class="reveal">
           <div class="bg-amber-warm/8 ring-1 ring-amber-warm/15 p-2 rounded-[2rem] transition-all duration-700 hover:ring-amber-warm/30 hover:bg-amber-warm/12">
             <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] p-10 md:p-16 min-h-[300px] md:min-h-[360px] flex flex-col md:flex-row items-center justify-between gap-10">
@@ -633,16 +288,9 @@
                 <p class="text-warm-gray-600 leading-relaxed mb-6 max-w-[45ch]">
                   Beautifully presented collections of our finest maple products. Perfect for holidays, corporate gifting, or anyone who deserves something special.
                 </p>
-                <div class="flex flex-wrap gap-3">
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521339658489" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">Extravaganza &mdash; $75</button>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521332646137" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">Enthusiast &mdash; $110</button>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521332744441" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">Frenzy &mdash; $125</button>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/43203560308985" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">Mega Combo &mdash; $240</button>
-                </div>
+                <div id="gift-sets-buttons" class="flex flex-wrap gap-3"></div>
               </div>
-              <div class="relative z-10 flex gap-4">
-                <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleExtravaganzaGiftSet.png?v=1749671567&width=400" alt="Maple Gift Set" class="w-36 md:w-48 h-auto object-contain drop-shadow-lg hover:scale-105 transition-transform duration-700" loading="lazy">
-              </div>
+              <div class="relative z-10 flex gap-4" id="gift-sets-image"></div>
             </div>
           </div>
         </div>
@@ -650,6 +298,114 @@
 
     </div>
   </section>
+
+  <script>
+  (function () {
+    var STOREFRONT_URL = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
+    var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
+
+    var CATEGORIES = [
+      { handle: 'maple-syrup-all', eyebrow: 'Single Origin', title: 'Pure Maple Syrups', cols: 4 },
+      { handle: 'stroopwafels', eyebrow: '5 Flavours', title: 'Maple Stroopwafels', cols: 5 },
+      { handle: 'nuts-popcorn', eyebrow: 'Snack Packs', title: 'Snacks &amp; Treats', cols: 4 },
+      { handle: 'tea-coffee', eyebrow: 'Beverages', title: 'Tea &amp; Coffee', cols: 3 },
+      { handle: 'maple-cookies', eyebrow: 'Confections', title: 'Cookies &amp; Sweets', cols: 4 },
+      { handle: 'chocolates', eyebrow: 'Artisan Chocolate', title: 'Maple Chocolates', cols: 4 },
+      { handle: 'home-sets', eyebrow: 'Kitchen Essentials', title: 'Pantry Staples', cols: 3 },
+      { handle: 'gift-sets', eyebrow: 'Premium Gifting', title: 'Curated Gift Sets', cols: 0 }
+    ];
+
+    var QUERY = 'query($handle:String!){collectionByHandle(handle:$handle){title products(first:50){edges{node{title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode}}}}}}}}}';
+
+    function sfFetch(handle) {
+      return fetch(STOREFRONT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN },
+        body: JSON.stringify({ query: QUERY, variables: { handle: handle } })
+      }).then(function (r) { return r.json(); });
+    }
+
+    function esc(s) { return s.replace(/"/g, '&quot;'); }
+
+    function renderCard(p, delay) {
+      var img = p.images.edges.length ? p.images.edges[0].node : null;
+      var variant = p.variants.edges.length ? p.variants.edges[0].node : null;
+      var price = variant ? '$' + parseFloat(variant.priceV2.amount).toFixed(2) : '';
+      var variantId = variant ? variant.id : '';
+      var dc = delay > 0 ? ' reveal-delay-' + Math.min(delay, 3) : '';
+
+      return '<a href="product.html?handle=' + p.handle + '" class="reveal' + dc + ' product-card group block">' +
+        '<div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
+          (img ? '<img src="' + img.url + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') +
+        '</div>' +
+        '<h3 class="font-medium text-sm text-charcoal mb-1">' + p.title + '</h3>' +
+        '<div class="flex items-center justify-between">' +
+          '<p class="text-xs text-warm-gray-500">' + price + ' CAD</p>' +
+          (variantId ? '<button class="atc-btn" data-variant-id="' + esc(variantId) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>' : '') +
+        '</div>' +
+      '</a>';
+    }
+
+    function renderCategory(cat, products) {
+      var html = '<div class="mb-20 md:mb-28">' +
+        '<div class="flex items-end justify-between mb-10"><div>' +
+          '<span class="reveal eyebrow text-amber-warm mb-3 block">' + cat.eyebrow + '</span>' +
+          '<h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">' + cat.title + '</h2>' +
+        '</div></div>' +
+        '<div class="grid grid-cols-2 md:grid-cols-' + cat.cols + ' gap-4 md:gap-6">';
+      products.forEach(function (p, i) { html += renderCard(p, i % cat.cols); });
+      html += '</div></div>';
+      return html;
+    }
+
+    function renderGiftSets(products) {
+      var section = document.getElementById('gift-sets-section');
+      var btnsEl = document.getElementById('gift-sets-buttons');
+      var imgEl = document.getElementById('gift-sets-image');
+      var btns = '';
+      products.forEach(function (p) {
+        var v = p.variants.edges.length ? p.variants.edges[0].node : null;
+        if (!v) return;
+        var price = '$' + Math.round(parseFloat(v.priceV2.amount));
+        var label = p.title.replace(/Maple Terroir\s*/i, '').replace(/Gift\s*Set\s*/i, '').trim();
+        btns += '<button class="atc-btn" data-variant-id="' + esc(v.id) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">' + label + ' &mdash; ' + price + '</button>';
+      });
+      btnsEl.innerHTML = btns;
+      var fi = products.length && products[0].images.edges.length ? products[0].images.edges[0].node : null;
+      if (fi) imgEl.innerHTML = '<img src="' + fi.url + '&width=400" alt="Maple Gift Set" class="w-36 md:w-48 h-auto object-contain drop-shadow-lg hover:scale-105 transition-transform duration-700" loading="lazy">';
+      section.classList.remove('hidden');
+    }
+
+    var container = document.getElementById('dynamic-categories');
+    var loading = document.getElementById('categories-loading');
+    var promises = CATEGORIES.map(function (cat) { return sfFetch(cat.handle); });
+
+    Promise.all(promises).then(function (results) {
+      loading.style.display = 'none';
+      var html = '';
+      results.forEach(function (res, i) {
+        var cat = CATEGORIES[i];
+        var c = res.data ? res.data.collectionByHandle : null;
+        if (!c || !c.products.edges.length) return;
+        var products = c.products.edges.map(function (e) { return e.node; });
+        if (cat.handle === 'gift-sets') { renderGiftSets(products); }
+        else { html += renderCategory(cat, products); }
+      });
+      container.innerHTML = html;
+
+      // Re-init scroll reveals
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+      container.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      document.getElementById('gift-sets-section').querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+    }).catch(function (err) {
+      console.error('Failed to load products:', err);
+      loading.innerHTML = '<div class="text-center py-20"><p class="text-warm-gray-400 text-lg">Unable to load products. Please refresh the page.</p></div>';
+    });
+  })();
+  </script>
+
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
