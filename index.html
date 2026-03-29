@@ -538,6 +538,84 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+
+    /* ── Maple syrup pour animation ── */
+    .syrup-pour {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .shop-now-btn:hover .syrup-fill,
+    .shop-now-btn.is-pouring .syrup-fill {
+      animation: syrupFillBtn 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .shop-now-btn:not(:hover):not(.is-pouring) .syrup-fill {
+      animation: syrupDrainBtn 0.6s ease-in forwards;
+    }
+
+    .syrup-stream {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    .shop-now-btn:hover ~ .syrup-pour,
+    .shop-now-btn.is-pouring ~ .syrup-pour {
+      /* pour SVG sits before the btn in DOM — use parent hover */
+    }
+    .relative:hover .syrup-pour {
+      opacity: 1;
+    }
+    .relative:hover .syrup-stream {
+      animation: syrupPour 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .relative:hover .syrup-drop {
+      animation: syrupDrip 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+    }
+    .relative:not(:hover) .syrup-pour {
+      opacity: 0;
+      transition: opacity 0.4s ease 0.3s;
+    }
+
+    @keyframes syrupPour {
+      0%   { stroke-dashoffset: 1; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes syrupDrip {
+      0%   { opacity: 0; r: 4; cy: 52; }
+      20%  { opacity: 0.9; r: 7; cy: 52; }
+      50%  { opacity: 0.7; r: 8; cy: 56; }
+      80%  { opacity: 0.4; r: 6; cy: 62; }
+      100% { opacity: 0; r: 4; cy: 66; }
+    }
+    @keyframes syrupFillBtn {
+      0%   { transform: scaleY(0); opacity: 0; }
+      30%  { opacity: 1; }
+      100% { transform: scaleY(1); opacity: 1; }
+    }
+    @keyframes syrupDrainBtn {
+      0%   { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(0); opacity: 0; }
+    }
+
+    /* Gentle amber glow pulse on hover */
+    .shop-now-btn:hover {
+      box-shadow: 0 0 0 0 rgba(200, 117, 51, 0.4);
+      animation: syrupGlow 2s ease-in-out infinite;
+    }
+    @keyframes syrupGlow {
+      0%, 100% { box-shadow: 0 4px 20px -4px rgba(200, 117, 51, 0.3); }
+      50%      { box-shadow: 0 8px 30px -4px rgba(200, 117, 51, 0.5); }
+    }
+
+    /* Initial entrance: play pour once on page load */
+    .syrup-pour.entrance { opacity: 1; }
+    .syrup-pour.entrance .syrup-stream {
+      animation: syrupPour 1.2s cubic-bezier(0.4, 0, 0.2, 1) 2.5s forwards;
+    }
+    .syrup-pour.entrance .syrup-drop {
+      animation: syrupDrip 1.6s cubic-bezier(0.4, 0, 0.2, 1) 3.2s forwards;
+    }
+    .shop-now-btn.entrance .syrup-fill {
+      animation: syrupFillBtn 2s cubic-bezier(0.22, 1, 0.36, 1) 3.5s forwards;
+    }
   </style>
 </head>
 
@@ -643,13 +721,32 @@
           </p>
 
           <div class="reveal reveal-delay-3 flex flex-wrap items-center gap-4">
-            <a href="products.html"
-               class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
-              <span>Explore Our Collection</span>
-              <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-            </a>
+            <div class="relative">
+              <!-- Maple syrup pour animation -->
+              <svg class="syrup-pour absolute -top-16 left-1/2 -translate-x-1/2 w-12 h-16 pointer-events-none" viewBox="0 0 48 64" fill="none">
+                <defs>
+                  <linearGradient id="syrupGrad" x1="24" y1="0" x2="24" y2="64" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#C87533" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#C87533" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="#A0522D"/>
+                  </linearGradient>
+                </defs>
+                <!-- Main drip stream -->
+                <path class="syrup-stream" d="M24 0 Q24 20 24 32 Q24 44 24 52" stroke="url(#syrupGrad)" stroke-width="6" stroke-linecap="round" fill="none" pathLength="1"/>
+                <!-- Drip blob -->
+                <circle class="syrup-drop" cx="24" cy="52" r="6" fill="#A0522D" opacity="0"/>
+              </svg>
+
+              <a href="products.html"
+                 class="shop-now-btn btn-premium relative inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group overflow-hidden">
+                <!-- Syrup fill overlay -->
+                <span class="syrup-fill absolute inset-0 bg-gradient-to-t from-amber-900/40 via-amber-800/20 to-transparent rounded-full origin-bottom scale-y-0"></span>
+                <span class="relative z-10">Shop Now</span>
+                <span class="relative z-10 w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </a>
+            </div>
             <a href="#story" class="inline-flex items-center gap-2 text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">
               <span class="w-10 h-10 rounded-full border border-warm-gray-300 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-charcoal hover:scale-105">
                 <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none"><path d="M8 3V13M8 13L4 9M8 13L12 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -889,10 +986,10 @@
                 </div>
                 <div class="flex items-center justify-between mt-8 relative z-10">
                   <span class="text-sm font-medium text-cream/60">$14.99 CAD</span>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                    Add to Cart
-                  </button>
+                  <span class="atc-btn pointer-events-none">
+                    Shop Syrups
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                  </span>
                 </div>
                 <div class="absolute inset-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)] rounded-[inherit] pointer-events-none"></div>
               </div>
@@ -920,10 +1017,10 @@
                 </div>
                 <div class="flex items-center justify-between mt-6 relative z-10">
                   <span class="text-sm font-medium text-cream/60">From $8.99 CAD</span>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                    Add to Cart
-                  </button>
+                  <span class="atc-btn pointer-events-none">
+                    Explore Flavours
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                  </span>
                 </div>
                 <div class="absolute inset-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)] rounded-[inherit] pointer-events-none"></div>
               </div>
@@ -949,10 +1046,10 @@
                 </div>
                 <div class="flex items-center justify-between mt-6 relative z-10">
                   <span class="text-sm font-medium text-cream/60">$8.99 CAD</span>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815601922297" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                    Add to Cart
-                  </button>
+                  <span class="atc-btn pointer-events-none">
+                    Shop Tea
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                  </span>
                 </div>
               </div>
             </div>
@@ -977,10 +1074,10 @@
                 </div>
                 <div class="flex items-center justify-between mt-6 relative z-10">
                   <span class="text-sm font-medium text-cream/60">$14.99 CAD</span>
-                  <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/46304596099321" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                    Add to Cart
-                  </button>
+                  <span class="atc-btn pointer-events-none">
+                    Shop Coffee
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                  </span>
                 </div>
               </div>
             </div>
@@ -2336,6 +2433,24 @@ var MapleCart = (function () {
 })();
 </script>
 
+<script>
+// Maple syrup pour entrance animation
+(function() {
+  var pour = document.querySelector('.syrup-pour');
+  var btn = document.querySelector('.shop-now-btn');
+  if (!pour || !btn) return;
+  // Trigger entrance animation after reveal animations settle
+  setTimeout(function() {
+    pour.classList.add('entrance');
+    btn.classList.add('entrance');
+  }, 100);
+  // Remove entrance class after animation completes so hover takes over
+  setTimeout(function() {
+    pour.classList.remove('entrance');
+    btn.classList.remove('entrance');
+  }, 6000);
+})();
+</script>
 <script src="assets/shared.js" defer></script>
 </body>
 </html>
