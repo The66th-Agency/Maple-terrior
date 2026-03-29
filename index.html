@@ -539,82 +539,112 @@
       stroke-linejoin: round;
     }
 
-    /* ── Maple syrup pour animation ── */
-    .syrup-pour {
+    /* ── Maple bottle pour animation ── */
+    .maple-pour-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 0;
+    }
+    .maple-bottle-svg {
+      width: 52px;
+      height: 72px;
+      transform-origin: bottom right;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      z-index: 10;
+      margin-right: -6px;
+      margin-bottom: 2px;
+    }
+    .maple-pour-wrap:hover .maple-bottle-svg {
+      transform: rotate(-35deg) translateY(-4px);
+    }
+    /* The syrup stream from bottle spout */
+    .pour-stream {
+      position: absolute;
+      bottom: 0;
+      left: 38px;
+      width: 20px;
+      height: 40px;
+      z-index: 5;
+      overflow: visible;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.2s ease 0.3s;
     }
-    .shop-now-btn:hover .syrup-fill,
-    .shop-now-btn.is-pouring .syrup-fill {
-      animation: syrupFillBtn 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    .maple-pour-wrap:hover .pour-stream {
+      opacity: 1;
     }
-    .shop-now-btn:not(:hover):not(.is-pouring) .syrup-fill {
-      animation: syrupDrainBtn 0.6s ease-in forwards;
-    }
-
-    .syrup-stream {
+    .pour-stream-path {
       stroke-dasharray: 1;
       stroke-dashoffset: 1;
     }
-    .shop-now-btn:hover ~ .syrup-pour,
-    .shop-now-btn.is-pouring ~ .syrup-pour {
-      /* pour SVG sits before the btn in DOM — use parent hover */
+    .maple-pour-wrap:hover .pour-stream-path {
+      animation: pourDraw 0.5s ease-out 0.3s forwards;
     }
-    .relative:hover .syrup-pour {
-      opacity: 1;
+    @keyframes pourDraw {
+      to { stroke-dashoffset: 0; }
     }
-    .relative:hover .syrup-stream {
-      animation: syrupPour 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+    /* Button syrup fill */
+    .shop-now-btn {
+      position: relative;
+      overflow: hidden;
     }
-    .relative:hover .syrup-drop {
-      animation: syrupDrip 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+    .syrup-fill-bar {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(139, 69, 19, 0.35), rgba(160, 82, 45, 0.2), transparent);
+      border-radius: inherit;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.01s;
     }
-    .relative:not(:hover) .syrup-pour {
+    .maple-pour-wrap:hover .syrup-fill-bar {
+      animation: fillUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+    }
+    .maple-pour-wrap:not(:hover) .syrup-fill-bar {
+      animation: drainDown 0.5s ease-in forwards;
+    }
+    @keyframes fillUp {
+      0%   { transform: scaleY(0); }
+      100% { transform: scaleY(1); }
+    }
+    @keyframes drainDown {
+      0%   { transform: scaleY(1); }
+      100% { transform: scaleY(0); }
+    }
+
+    /* Drip drops */
+    .drip-drop {
+      position: absolute;
+      width: 6px;
+      height: 8px;
+      background: #8B4513;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       opacity: 0;
-      transition: opacity 0.4s ease 0.3s;
+      left: 44px;
+      bottom: 6px;
+    }
+    .maple-pour-wrap:hover .drip-drop {
+      animation: dripFall 0.8s ease-in 0.6s forwards;
+    }
+    .drip-drop:nth-child(2) {
+      left: 40px;
+      animation-delay: 0.9s !important;
+    }
+    @keyframes dripFall {
+      0%   { opacity: 0.8; transform: translateY(0); }
+      70%  { opacity: 0.6; transform: translateY(10px) scaleX(1); }
+      90%  { opacity: 0.3; transform: translateY(12px) scaleX(1.8) scaleY(0.4); }
+      100% { opacity: 0; transform: translateY(12px) scaleX(2) scaleY(0.2); }
     }
 
-    @keyframes syrupPour {
-      0%   { stroke-dashoffset: 1; }
-      100% { stroke-dashoffset: 0; }
+    /* Warm glow on hover */
+    .maple-pour-wrap:hover .shop-now-btn {
+      box-shadow: 0 6px 24px -4px rgba(139, 69, 19, 0.35);
     }
-    @keyframes syrupDrip {
-      0%   { opacity: 0; r: 4; cy: 52; }
-      20%  { opacity: 0.9; r: 7; cy: 52; }
-      50%  { opacity: 0.7; r: 8; cy: 56; }
-      80%  { opacity: 0.4; r: 6; cy: 62; }
-      100% { opacity: 0; r: 4; cy: 66; }
-    }
-    @keyframes syrupFillBtn {
-      0%   { transform: scaleY(0); opacity: 0; }
-      30%  { opacity: 1; }
-      100% { transform: scaleY(1); opacity: 1; }
-    }
-    @keyframes syrupDrainBtn {
-      0%   { transform: scaleY(1); opacity: 1; }
-      100% { transform: scaleY(0); opacity: 0; }
-    }
-
-    /* Gentle amber glow pulse on hover */
-    .shop-now-btn:hover {
-      box-shadow: 0 0 0 0 rgba(200, 117, 51, 0.4);
-      animation: syrupGlow 2s ease-in-out infinite;
-    }
-    @keyframes syrupGlow {
-      0%, 100% { box-shadow: 0 4px 20px -4px rgba(200, 117, 51, 0.3); }
-      50%      { box-shadow: 0 8px 30px -4px rgba(200, 117, 51, 0.5); }
-    }
-
-    /* Initial entrance: play pour once on page load */
-    .syrup-pour.entrance { opacity: 1; }
-    .syrup-pour.entrance .syrup-stream {
-      animation: syrupPour 1.2s cubic-bezier(0.4, 0, 0.2, 1) 2.5s forwards;
-    }
-    .syrup-pour.entrance .syrup-drop {
-      animation: syrupDrip 1.6s cubic-bezier(0.4, 0, 0.2, 1) 3.2s forwards;
-    }
-    .shop-now-btn.entrance .syrup-fill {
-      animation: syrupFillBtn 2s cubic-bezier(0.22, 1, 0.36, 1) 3.5s forwards;
+    .shop-now-btn {
+      transition: box-shadow 0.5s ease;
     }
   </style>
 </head>
@@ -721,26 +751,52 @@
           </p>
 
           <div class="reveal reveal-delay-3 flex flex-wrap items-center gap-4">
-            <div class="relative">
-              <!-- Maple syrup pour animation -->
-              <svg class="syrup-pour absolute -top-16 left-1/2 -translate-x-1/2 w-12 h-16 pointer-events-none" viewBox="0 0 48 64" fill="none">
+            <div class="maple-pour-wrap">
+              <!-- Maple syrup bottle SVG -->
+              <svg class="maple-bottle-svg" viewBox="0 0 48 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Bottle cap -->
+                <rect x="17" y="2" width="14" height="8" rx="2" fill="#5C3A1E"/>
+                <rect x="19" y="0" width="10" height="4" rx="1.5" fill="#6B4226"/>
+                <!-- Bottle neck -->
+                <path d="M20 10 L20 18 Q16 20 16 24 L16 24" fill="#C87533"/>
+                <path d="M28 10 L28 18 Q32 20 32 24 L32 24" fill="#A0622D"/>
+                <rect x="20" y="10" width="8" height="10" fill="#B5682A"/>
+                <!-- Bottle body -->
+                <path d="M16 24 Q14 24 13 26 L11 58 Q11 64 16 66 L32 66 Q37 64 37 58 L35 26 Q34 24 32 24 Z" fill="url(#bottleGrad)"/>
+                <!-- Label -->
+                <rect x="15" y="34" width="18" height="20" rx="2" fill="#FFF8F0" opacity="0.9"/>
+                <rect x="17" y="37" width="14" height="2" rx="1" fill="#C87533" opacity="0.6"/>
+                <rect x="19" y="41" width="10" height="1.5" rx="0.75" fill="#D4A574" opacity="0.4"/>
+                <rect x="18" y="44.5" width="12" height="1.5" rx="0.75" fill="#D4A574" opacity="0.3"/>
+                <!-- Maple leaf on label -->
+                <path d="M24 47 L22.5 49.5 L20 49 L21.5 51 L20.5 53 L23 52 L24 54 L25 52 L27.5 53 L26.5 51 L28 49 L25.5 49.5 Z" fill="#C87533" opacity="0.7"/>
+                <!-- Syrup level visible in bottle -->
+                <path d="M13.5 42 L12 58 Q12 63 16 65 L32 65 Q36 63 36 58 L34.5 42 Z" fill="#8B4513" opacity="0.3"/>
+                <!-- Glass highlight -->
+                <path d="M17 26 Q16 26 15.5 28 L14 50" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
                 <defs>
-                  <linearGradient id="syrupGrad" x1="24" y1="0" x2="24" y2="64" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#C87533" stop-opacity="0"/>
-                    <stop offset="30%" stop-color="#C87533" stop-opacity="0.9"/>
-                    <stop offset="100%" stop-color="#A0522D"/>
+                  <linearGradient id="bottleGrad" x1="11" y1="24" x2="37" y2="66" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#D4943C"/>
+                    <stop offset="50%" stop-color="#B5732A"/>
+                    <stop offset="100%" stop-color="#8B5E2F"/>
                   </linearGradient>
                 </defs>
-                <!-- Main drip stream -->
-                <path class="syrup-stream" d="M24 0 Q24 20 24 32 Q24 44 24 52" stroke="url(#syrupGrad)" stroke-width="6" stroke-linecap="round" fill="none" pathLength="1"/>
-                <!-- Drip blob -->
-                <circle class="syrup-drop" cx="24" cy="52" r="6" fill="#A0522D" opacity="0"/>
               </svg>
 
+              <!-- Pour stream -->
+              <svg class="pour-stream" viewBox="0 0 20 40" fill="none">
+                <path class="pour-stream-path" d="M4 0 Q6 15 10 25 Q12 32 10 40" stroke="#8B4513" stroke-width="3.5" stroke-linecap="round" fill="none" pathLength="1" opacity="0.6"/>
+                <path class="pour-stream-path" d="M6 2 Q8 14 10 24 Q11 30 10 38" stroke="#A0622D" stroke-width="2" stroke-linecap="round" fill="none" pathLength="1" opacity="0.4" style="animation-delay: 0.35s"/>
+              </svg>
+
+              <!-- Drip drops -->
+              <span class="drip-drop"></span>
+              <span class="drip-drop"></span>
+
+              <!-- Shop Now button -->
               <a href="products.html"
-                 class="shop-now-btn btn-premium relative inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group overflow-hidden">
-                <!-- Syrup fill overlay -->
-                <span class="syrup-fill absolute inset-0 bg-gradient-to-t from-amber-900/40 via-amber-800/20 to-transparent rounded-full origin-bottom scale-y-0"></span>
+                 class="shop-now-btn btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+                <span class="syrup-fill-bar"></span>
                 <span class="relative z-10">Shop Now</span>
                 <span class="relative z-10 w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
                   <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1098,8 +1154,9 @@
                 </div>
                 <div class="flex items-center justify-between mt-6">
                   <span class="text-sm font-medium text-warm-gray-500">From $4.99 CAD</span>
-                  <span class="w-9 h-9 rounded-full bg-charcoal text-cream flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110 group-hover:bg-amber-warm">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="atc-btn pointer-events-none">
+                    Shop Sweets
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                   </span>
                 </div>
               </div>
@@ -1126,8 +1183,9 @@
                   </p>
                 </div>
                 <div class="absolute top-6 right-6">
-                  <span class="w-10 h-10 rounded-full bg-charcoal text-cream flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110 group-hover:bg-amber-warm">
-                    <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="atc-btn pointer-events-none">
+                    Shop Snacks
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                   </span>
                 </div>
               </div>
@@ -1149,8 +1207,9 @@
                 </div>
                 <div class="flex items-center justify-between mt-6">
                   <span class="text-sm font-semibold text-amber-deep">$150 &ndash; $200 CAD</span>
-                  <span class="w-10 h-10 rounded-full bg-amber-warm text-white flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110">
-                    <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="atc-btn pointer-events-none">
+                    Shop Gifts
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                   </span>
                 </div>
               </div>
@@ -2433,24 +2492,6 @@ var MapleCart = (function () {
 })();
 </script>
 
-<script>
-// Maple syrup pour entrance animation
-(function() {
-  var pour = document.querySelector('.syrup-pour');
-  var btn = document.querySelector('.shop-now-btn');
-  if (!pour || !btn) return;
-  // Trigger entrance animation after reveal animations settle
-  setTimeout(function() {
-    pour.classList.add('entrance');
-    btn.classList.add('entrance');
-  }, 100);
-  // Remove entrance class after animation completes so hover takes over
-  setTimeout(function() {
-    pour.classList.remove('entrance');
-    btn.classList.remove('entrance');
-  }, 6000);
-})();
-</script>
 <script src="assets/shared.js" defer></script>
 </body>
 </html>
