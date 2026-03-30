@@ -98,6 +98,7 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 - **Border radius**: 2rem on cards
 - **No stock images**: Product images come from Shopify CDN (`cdn.shopify.com`)
 - **Consistent headers**: Use the eyebrow → H2 pattern across all sections (user rejected variety)
+- **Consistent section width**: All sections must use `max-w-[1400px] mx-auto px-4 md:px-8`. No section should break out of this container or use full-viewport width.
 
 ## Deployment
 **Always commit and push to `main` after completing changes.** This project auto-deploys via Cloudflare Pages on push to `main` (GitHub repo `The66th-Agency/Maple-terrior`). Don't wait for the user to ask - if the work is done, push it.
