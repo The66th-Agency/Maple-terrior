@@ -1420,13 +1420,16 @@
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- SCROLL SEQUENCE — Locomotive frame-by-frame animation   -->
+  <!-- SCROLL SEQUENCE — 4-scene image crossfade              -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <section id="scroll-sequence" class="relative bg-charcoal" style="height: 250vh;">
-    <!-- Sticky container: frame canvas + text overlays -->
+    <!-- Sticky container: scenes + text overlays -->
     <div class="sticky top-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center">
-      <!-- Video element — scrubbed by scroll position -->
-      <video id="seq-video" class="absolute inset-0 w-full h-full object-cover" style="z-index: 1; will-change: contents;" muted playsinline preload="none" src="assets/videos/revised-stroop-stopmotion.mp4"></video>
+      <!-- 4 scene images stacked, crossfade via opacity -->
+      <img id="seq-scene-1" src="assets/images/seq-scene-1.png" alt="Maple Stroopwafel — whole" class="absolute inset-0 w-full h-full object-cover" style="z-index: 1; opacity: 1; transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1);">
+      <img id="seq-scene-2" src="assets/images/seq-scene-2.png" alt="Maple Stroopwafel — first bite" class="absolute inset-0 w-full h-full object-cover" style="z-index: 1; opacity: 0; transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1);">
+      <img id="seq-scene-3" src="assets/images/seq-scene-3.png" alt="Maple Stroopwafel — second bite" class="absolute inset-0 w-full h-full object-cover" style="z-index: 1; opacity: 0; transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1);">
+      <img id="seq-scene-4" src="assets/images/seq-scene-4.png" alt="Maple Stroopwafel — last bite" class="absolute inset-0 w-full h-full object-cover" style="z-index: 1; opacity: 0; transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1);">
 
       <!-- No full-screen overlay — text panels have their own frosted glass backgrounds -->
 
@@ -2088,22 +2091,15 @@
       });
     });
 
-    // ── Scroll Sequence: Video scrub animation ──
+    // ── Scroll Sequence: 4-scene image crossfade ──
     (function () {
-      const video = document.getElementById('seq-video');
       const section = document.getElementById('scroll-sequence');
-
-      // Lazy-load the video when section is approaching viewport
-      var videoLoaded = false;
-      var lazyObs = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting && !videoLoaded) {
-          videoLoaded = true;
-          video.preload = 'auto';
-          video.load();
-          lazyObs.disconnect();
-        }
-      }, { rootMargin: '200px 0px' });
-      lazyObs.observe(section);
+      const scenes = [
+        document.getElementById('seq-scene-1'),
+        document.getElementById('seq-scene-2'),
+        document.getElementById('seq-scene-3'),
+        document.getElementById('seq-scene-4'),
+      ];
       const textEls = [
         document.getElementById('seq-text-1'),
         document.getElementById('seq-text-2'),
@@ -2112,12 +2108,11 @@
       const ring = document.getElementById('seq-ring');
       const counter = document.getElementById('seq-counter');
       const chevron = document.getElementById('seq-chevron');
-      const circumference = 2 * Math.PI * 18; // r=18
+      const circumference = 2 * Math.PI * 18;
 
-      // Ensure video is paused and ready for scrubbing
-      video.pause();
+      // Scene thresholds: switch at 0%, 25%, 50%, 75% progress
+      const thresholds = [0, 0.25, 0.5, 0.75];
 
-      // Compute text opacity from scroll progress
       function textOpacity(progress, fadeIn, holdStart, holdEnd, fadeOut) {
         if (progress < fadeIn) return 0;
         if (progress < holdStart) return (progress - fadeIn) / (holdStart - fadeIn);
@@ -2127,7 +2122,7 @@
       }
 
       let rafId = null;
-      let lastTime = -1;
+      let activeScene = 0;
 
       function onScroll() {
         if (rafId) return;
@@ -2137,24 +2132,25 @@
           const rect = section.getBoundingClientRect();
           const sectionHeight = section.offsetHeight;
           const viewportH = window.innerHeight;
-
-          // Progress: 0 when sticky starts, 1 when section ends
           const scrolled = -rect.top;
           const scrollable = sectionHeight - viewportH;
           const progress = Math.max(0, Math.min(1, scrolled / scrollable));
 
-          // Scrub video to match scroll progress
-          if (video.duration && isFinite(video.duration)) {
-            const targetTime = progress * video.duration;
-            // Only seek if time changed meaningfully (avoid jitter)
-            if (Math.abs(targetTime - lastTime) > 0.03) {
-              video.currentTime = targetTime;
-              lastTime = targetTime;
-            }
+          // Determine active scene
+          var newScene = 0;
+          for (var i = thresholds.length - 1; i >= 0; i--) {
+            if (progress >= thresholds[i]) { newScene = i; break; }
+          }
+
+          // Crossfade: show active scene, hide others
+          if (newScene !== activeScene) {
+            scenes[activeScene].style.opacity = '0';
+            scenes[newScene].style.opacity = '1';
+            activeScene = newScene;
           }
 
           // Text overlays
-          const o1 = textOpacity(progress, 0.0, 0.06, 0.25, 0.32);
+          const o1 = textOpacity(progress, 0.0, 0.06, 0.22, 0.28);
           const o2 = textOpacity(progress, 0.34, 0.40, 0.58, 0.65);
           const o3 = textOpacity(progress, 0.67, 0.73, 0.92, 1.0);
 
@@ -2162,7 +2158,6 @@
           textEls[1].style.opacity = o2;
           textEls[2].style.opacity = o3;
 
-          // Subtle Y translate for parallax feel
           textEls[0].style.transform = 'translateY(' + ((1 - o1) * 30) + 'px)';
           textEls[1].style.transform = 'translateY(' + ((1 - o2) * 30) + 'px)';
           textEls[2].style.transform = 'translateY(' + ((1 - o3) * 30) + 'px)';
@@ -2170,23 +2165,17 @@
           // Progress ring
           ring.style.strokeDashoffset = circumference * (1 - progress);
 
-          // Section counter
-          var activeNum = progress < 0.33 ? 1 : progress < 0.66 ? 2 : 3;
-          counter.textContent = activeNum + ' / 3';
+          // Counter (4 scenes now)
+          var activeNum = newScene + 1;
+          counter.textContent = activeNum + ' / 4';
 
-          // Fade chevron out as user scrolls (they got the hint)
+          // Fade chevron
           chevron.style.opacity = Math.max(0, 1 - progress * 3);
           if (progress > 0.3) chevron.style.animationPlayState = 'paused';
         });
       }
 
-      // Init
       window.addEventListener('scroll', onScroll, { passive: true });
-
-      // Set first frame once video metadata loads
-      video.addEventListener('loadedmetadata', function () {
-        video.currentTime = 0;
-      });
     })();
   </script>
 
