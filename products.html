@@ -293,7 +293,7 @@
     }
 
     /* ── Product ordering for maple-syrup-all ── */
-    var SYRUP_ORDER = ['50ml', '100ml', '250ml', 'jug', 'golden', 'nouveau', 'butter', 'sugar', 'set'];
+    var SYRUP_ORDER = ['leaf bottle 50', 'leaf bottle 100', 'leaf bottle 250', 'jug 100', 'organic pure maple syrup 250', 'nouveau', 'butter jar', 'pure maple sugar', 'home set'];
     function syrupSortKey(title) {
       var t = title.toLowerCase();
       for (var i = 0; i < SYRUP_ORDER.length; i++) { if (t.indexOf(SYRUP_ORDER[i]) !== -1) return i; }
