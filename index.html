@@ -1690,49 +1690,12 @@
           </div>
         </div>
 
-        <!-- Right: Market cards -->
-        <div class="md:col-span-7">
-          <div class="grid grid-cols-2 gap-4 md:gap-5">
-            <div class="reveal">
-              <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem]">
-                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
-                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">CA</div>
-                  <div class="text-sm font-medium text-warm-gray-600">Canada</div>
-                  <div class="text-xs text-warm-gray-400 mt-1">Home Market</div>
-                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
-                </div>
-              </div>
-            </div>
-            <div class="reveal reveal-delay-1">
-              <div class="bg-amber-warm/5 ring-1 ring-amber-warm/10 p-1.5 rounded-[2rem]">
-                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
-                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">JP</div>
-                  <div class="text-sm font-medium text-warm-gray-600">Japan</div>
-                  <div class="text-xs text-amber-warm mt-1">No. 1 Value Brand</div>
-                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
-                </div>
-              </div>
-            </div>
-            <div class="reveal reveal-delay-2">
-              <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem]">
-                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
-                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">KR</div>
-                  <div class="text-sm font-medium text-warm-gray-600">South Korea</div>
-                  <div class="text-xs text-warm-gray-400 mt-1">Growing Market</div>
-                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
-                </div>
-              </div>
-            </div>
-            <div class="reveal reveal-delay-3">
-              <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-1.5 rounded-[2rem]">
-                <div class="relative overflow-hidden rounded-[calc(1.5rem-0.375rem)] bg-white p-6 md:p-8">
-                  <div class="text-3xl md:text-4xl font-display font-semibold text-charcoal mb-1">CN</div>
-                  <div class="text-sm font-medium text-warm-gray-600">China</div>
-                  <div class="text-xs text-warm-gray-400 mt-1">Premium Channel</div>
-                  <div class="absolute top-4 right-4 w-2 h-2 rounded-full bg-amber-warm"></div>
-                </div>
-              </div>
-            </div>
+        <!-- Right: 3D Globe -->
+        <div class="md:col-span-7 reveal reveal-delay-1">
+          <div class="relative w-full aspect-square max-w-[560px] mx-auto">
+            <canvas id="globe-canvas" class="w-full h-full"></canvas>
+            <!-- Market labels floating around globe -->
+            <div id="globe-labels" class="absolute inset-0 pointer-events-none"></div>
           </div>
         </div>
       </div>
@@ -2384,6 +2347,212 @@ var MapleCart = (function () {
   }
 
   return { toggle: toggle, addFromBtn: addFromBtn, checkout: checkout };
+})();
+</script>
+
+<!-- Three.js Globe -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script>
+(function () {
+  function initGlobe() {
+    var canvas = document.getElementById('globe-canvas');
+    if (!canvas || !window.THREE) return;
+
+    var w = canvas.clientWidth;
+    var h = canvas.clientHeight;
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(w, h);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+    camera.position.z = 2.8;
+
+    // Globe sphere - warm charcoal with wireframe overlay
+    var radius = 1;
+    var globeGeo = new THREE.SphereGeometry(radius, 64, 64);
+    var globeMat = new THREE.MeshPhongMaterial({
+      color: 0x2E2822,
+      transparent: true,
+      opacity: 0.85,
+      shininess: 15
+    });
+    var globe = new THREE.Mesh(globeGeo, globeMat);
+    scene.add(globe);
+
+    // Wireframe overlay
+    var wireGeo = new THREE.SphereGeometry(radius * 1.002, 36, 18);
+    var wireMat = new THREE.MeshBasicMaterial({
+      color: 0xC4841D,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.08
+    });
+    var wireframe = new THREE.Mesh(wireGeo, wireMat);
+    scene.add(wireframe);
+
+    // Atmosphere glow
+    var glowGeo = new THREE.SphereGeometry(radius * 1.15, 64, 64);
+    var glowMat = new THREE.ShaderMaterial({
+      vertexShader: [
+        'varying vec3 vNormal;',
+        'void main() {',
+        '  vNormal = normalize(normalMatrix * normal);',
+        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'varying vec3 vNormal;',
+        'void main() {',
+        '  float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);',
+        '  gl_FragColor = vec4(0.77, 0.52, 0.11, 1.0) * intensity * 0.6;',
+        '}'
+      ].join('\n'),
+      side: THREE.BackSide,
+      blending: THREE.AdditiveBlending,
+      transparent: true
+    });
+    var glow = new THREE.Mesh(glowGeo, glowMat);
+    scene.add(glow);
+
+    // Lighting
+    var ambient = new THREE.AmbientLight(0xF4C77D, 0.4);
+    scene.add(ambient);
+    var dirLight = new THREE.DirectionalLight(0xFDFBF7, 0.8);
+    dirLight.position.set(5, 3, 5);
+    scene.add(dirLight);
+    var rimLight = new THREE.DirectionalLight(0xC4841D, 0.3);
+    rimLight.position.set(-3, -2, -3);
+    scene.add(rimLight);
+
+    // Market locations [lat, lng, label, sublabel]
+    var markets = [
+      [49.28, -123.12, 'Canada', 'Home Market'],
+      [35.68, 139.69, 'Japan', 'No. 1 Brand'],
+      [37.57, 126.98, 'South Korea', 'Growing Market'],
+      [31.23, 121.47, 'China', 'Premium Channel']
+    ];
+
+    // Convert lat/lng to 3D position
+    function latLngToVec3(lat, lng, r) {
+      var phi = (90 - lat) * Math.PI / 180;
+      var theta = (lng + 180) * Math.PI / 180;
+      return new THREE.Vector3(
+        -r * Math.sin(phi) * Math.cos(theta),
+        r * Math.cos(phi),
+        r * Math.sin(phi) * Math.sin(theta)
+      );
+    }
+
+    // Create glowing pins
+    var pinGroup = new THREE.Group();
+    var pinMeshes = [];
+    markets.forEach(function (m) {
+      var pos = latLngToVec3(m[0], m[1], radius);
+      // Pin dot
+      var dotGeo = new THREE.SphereGeometry(0.025, 16, 16);
+      var dotMat = new THREE.MeshBasicMaterial({ color: 0xC4841D });
+      var dot = new THREE.Mesh(dotGeo, dotMat);
+      dot.position.copy(pos);
+      pinGroup.add(dot);
+      // Pin glow ring
+      var ringGeo = new THREE.RingGeometry(0.03, 0.055, 32);
+      var ringMat = new THREE.MeshBasicMaterial({ color: 0xF4C77D, transparent: true, opacity: 0.5, side: THREE.DoubleSide });
+      var ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.position.copy(pos);
+      ring.lookAt(pos.clone().multiplyScalar(2));
+      pinGroup.add(ring);
+      pinMeshes.push({ dot: dot, ring: ring, pos: pos, label: m[2], sublabel: m[3] });
+    });
+    scene.add(pinGroup);
+
+    // Arc lines between Canada and each market
+    var canadaPos = latLngToVec3(49.28, -123.12, radius);
+    markets.slice(1).forEach(function (m) {
+      var targetPos = latLngToVec3(m[0], m[1], radius);
+      var mid = canadaPos.clone().add(targetPos).multiplyScalar(0.5).normalize().multiplyScalar(radius * 1.35);
+      var curve = new THREE.QuadraticBezierCurve3(canadaPos, mid, targetPos);
+      var points = curve.getPoints(50);
+      var arcGeo = new THREE.BufferGeometry().setFromPoints(points);
+      var arcMat = new THREE.LineBasicMaterial({ color: 0xC4841D, transparent: true, opacity: 0.25 });
+      var arc = new THREE.Line(arcGeo, arcMat);
+      pinGroup.add(arc);
+    });
+
+    // HTML labels
+    var labelsContainer = document.getElementById('globe-labels');
+
+    function updateLabels() {
+      labelsContainer.innerHTML = '';
+      pinMeshes.forEach(function (pin) {
+        var screenPos = pin.pos.clone();
+        screenPos.applyMatrix4(globe.matrixWorld);
+        // Check if point faces camera
+        var camDir = screenPos.clone().normalize();
+        var dotProduct = camDir.dot(camera.position.clone().normalize());
+        if (dotProduct < 0.15) return; // behind globe
+
+        screenPos.project(camera);
+        var x = (screenPos.x * 0.5 + 0.5) * w;
+        var y = (-screenPos.y * 0.5 + 0.5) * h;
+
+        var label = document.createElement('div');
+        label.style.cssText = 'position:absolute;left:' + x + 'px;top:' + y + 'px;transform:translate(-50%,-150%);white-space:nowrap;transition:opacity 0.3s;';
+        label.innerHTML = '<div style="text-align:center"><div style="font-family:Fraunces,Georgia,serif;font-size:0.85rem;font-weight:600;color:#1A1714">' + pin.label + '</div><div style="font-size:0.6rem;color:#C4841D;font-weight:500;letter-spacing:0.05em;text-transform:uppercase">' + pin.sublabel + '</div></div>';
+        labelsContainer.appendChild(label);
+      });
+    }
+
+    // Animation
+    var rotationSpeed = 0.002;
+    var time = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      time += 0.016;
+      globe.rotation.y += rotationSpeed;
+      wireframe.rotation.y += rotationSpeed;
+      pinGroup.rotation.y += rotationSpeed;
+
+      // Pulse pin rings
+      pinMeshes.forEach(function (pin, i) {
+        var scale = 1 + Math.sin(time * 2 + i) * 0.3;
+        pin.ring.scale.set(scale, scale, scale);
+        pin.ring.material.opacity = 0.5 - Math.sin(time * 2 + i) * 0.2;
+      });
+
+      updateLabels();
+      renderer.render(scene, camera);
+    }
+
+    // Only animate when visible
+    var globeObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        animate();
+        globeObserver.disconnect();
+      }
+    }, { threshold: 0.2 });
+    globeObserver.observe(canvas);
+
+    // Resize
+    window.addEventListener('resize', function () {
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
+  }
+
+  // Wait for Three.js to load
+  function waitForThree() {
+    if (window.THREE) { initGlobe(); }
+    else { setTimeout(waitForThree, 100); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForThree);
+  } else {
+    waitForThree();
+  }
 })();
 </script>
 
