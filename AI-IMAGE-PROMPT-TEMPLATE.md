@@ -1,4 +1,4 @@
-# Maple Terroir — AI Image Prompt Template
+ok but wegot# Maple Terroir — AI Image Prompt Template
 
 Use these templates with Midjourney, DALL-E, or any AI image generator. Upload the existing product image as a reference when the tool supports it.
 

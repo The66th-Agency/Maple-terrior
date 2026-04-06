@@ -108,3 +108,11 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 
 2026-03-29 — Deployment was switched from Cloudflare Pages to Workers (`maple-terrior-new`) via Wrangler in a previous session. Workers requires manual `wrangler deploy` and API token auth, breaking the auto-deploy flow. Reverted back to Pages (auto-deploys on push to `main` via GitHub repo `The66th-Agency/Maple-terrior`). **Rule: Always use Cloudflare Pages for this project. Never switch to Workers - there's no benefit and it breaks auto-deploy.**
 
+2026-03-30 — When making bento grid changes (copy, subtext, contrast), apply changes uniformly across ALL cards. Proposed removing body copy from some cards but keeping it on others (syrup + chocolates) based on a judgment call - resulted in an inconsistent grid that looked worse than either all-in or all-out. Had to do a second commit to fix it. **Rule: Bento grids are a system. Any copy or style change must be applied consistently to every card. Never half-apply - pick a direction and commit to all cards at once.**
+
+2026-03-31 — Multiple issues from processing Shawn's multi-email feedback batch:
+1. Cherry chocolate images were shown in the conversation at the start but kept getting flagged as "never received" in email drafts. **Rule: When processing multi-email client feedback, inventory ALL requests and assets upfront before executing anything. Never claim something is missing without checking the conversation first.**
+2. Blueberry box photo was uploaded to "Blueberry Ceylon Tea" instead of "Dark Chocolate Covered Blueberry" due to similar names. **Rule: Always use exact full Shopify product titles when giving upload instructions. Never use shorthand.**
+3. object-contain CSS fix looked great on tall box products but broke wide bag products, had to revert. **Rule: Before deploying any CSS change, mentally test it against ALL product types on the page, not just the target.**
+4. Syrup collection was reordered in Shopify but products.html had its own JS sort (SYRUP_ORDER) overriding Shopify's manual order. Wasted time in Shopify before finding the code override. **Rule: Always check if the codebase has client-side sort/filter logic before sending the user into Shopify to fix ordering.**
+
