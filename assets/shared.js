@@ -27,13 +27,37 @@ setTimeout(loadPostHog, 3000);
 
   // ── Inject HTML on DOM ready ─────────────────────────────
   function injectFeatures() {
-    // 1. ANNOUNCEMENT BAR
+    // 1. ANNOUNCEMENT BAR (rotating slider)
     if (!localStorage.getItem('mt_announce_dismissed')) {
+      var announceMessages = [
+        '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span>Free shipping on Canadian orders over <strong style="color:#F4C77D">$99 CAD</strong></span>',
+        '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Our store is open for online orders with <strong style="color:#F4C77D">local pickup</strong> only. Select "local pickup" at checkout.</span>'
+      ];
+      var announceIndex = 0;
       var bar = document.createElement('div');
       bar.id = 'announce-bar';
-      bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:45;background:#1A1714;color:#FDFBF7;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:0.5rem 1rem;font-size:0.72rem;font-weight:500;letter-spacing:0.04em;transition:transform 0.4s cubic-bezier(0.32,0.72,0,1);';
-      bar.innerHTML = '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span>Free shipping on Canadian orders over <strong style="color:#F4C77D">$99 CAD</strong></span><button onclick="dismissAnnounce()" style="position:absolute;right:0.5rem;background:none;border:none;color:rgba(253,251,247,0.4);cursor:pointer;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1" aria-label="Dismiss">&times;</button>';
+      bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:45;background:#1A1714;color:#FDFBF7;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:0.5rem 1rem;font-size:0.72rem;font-weight:500;letter-spacing:0.04em;transition:transform 0.4s cubic-bezier(0.32,0.72,0,1);overflow:hidden;';
+      var slideWrap = document.createElement('div');
+      slideWrap.id = 'announce-slides';
+      slideWrap.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:0.75rem;transition:opacity 0.4s ease,transform 0.4s ease;';
+      slideWrap.innerHTML = announceMessages[0];
+      bar.appendChild(slideWrap);
+      bar.insertAdjacentHTML('beforeend', '<button onclick="dismissAnnounce()" style="position:absolute;right:0.5rem;background:none;border:none;color:rgba(253,251,247,0.4);cursor:pointer;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1" aria-label="Dismiss">&times;</button>');
       document.body.prepend(bar);
+      // Rotate messages every 5s
+      setInterval(function () {
+        slideWrap.style.opacity = '0';
+        slideWrap.style.transform = 'translateY(-8px)';
+        setTimeout(function () {
+          announceIndex = (announceIndex + 1) % announceMessages.length;
+          slideWrap.innerHTML = announceMessages[announceIndex];
+          slideWrap.style.transform = 'translateY(8px)';
+          requestAnimationFrame(function () {
+            slideWrap.style.opacity = '1';
+            slideWrap.style.transform = 'translateY(0)';
+          });
+        }, 400);
+      }, 5000);
       // Push nav down
       var nav = document.getElementById('navbar');
       if (nav) nav.style.transition = 'top 0.4s cubic-bezier(0.32,0.72,0,1)';

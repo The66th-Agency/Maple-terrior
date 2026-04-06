@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <title>Our Story — Maple Terroir</title>
-  <meta name="description" content="Three generations of maple craft. Founded in 1978 by Wayne Lytton, Maple Terroir is a family-owned Canadian company sourcing single-origin organic maple from Quebec's Appalachian Mountains.">
+  <title>Wholesale — Maple Terroir</title>
+  <meta name="description" content="Partner with Maple Terroir to bring premium Canadian maple products to your business. Flexible ordering, dedicated support, and growth-oriented payment terms.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,130 +17,33 @@
       theme: {
         extend: {
           colors: {
-            cream: '#FDFBF7',
-            'cream-dark': '#F5F0E8',
-            amber: {
-              warm: '#C4841D',
-              deep: '#8B5E14',
-              light: '#E8A84C',
-              glow: '#F4C77D',
-            },
+            cream: '#FDFBF7', 'cream-dark': '#F5F0E8',
+            amber: { warm: '#C4841D', deep: '#8B5E14', light: '#E8A84C', glow: '#F4C77D' },
             charcoal: '#1A1714',
-            'warm-gray': {
-              100: '#F7F4EF',
-              200: '#EDE8DF',
-              300: '#D9D1C4',
-              400: '#B8AD9E',
-              500: '#8C8175',
-              600: '#6B6158',
-              700: '#4A4239',
-              800: '#2E2822',
-            },
+            'warm-gray': { 100: '#F7F4EF', 200: '#EDE8DF', 300: '#D9D1C4', 400: '#B8AD9E', 500: '#8C8175', 600: '#6B6158', 700: '#4A4239', 800: '#2E2822' },
           },
-          fontFamily: {
-            display: ['"Fraunces"', 'Georgia', 'serif'],
-            body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-          },
-          borderRadius: {
-            '4xl': '2rem',
-            '5xl': '2.5rem',
-          },
+          fontFamily: { display: ['"Fraunces"', 'Georgia', 'serif'], body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'] },
+          borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
         },
       },
     }
   </script>
 
   <style>
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      background-color: #FDFBF7;
-      color: #2E2822;
-      overflow-x: hidden;
-    }
-
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    }
-
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #FDFBF7; }
-    ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #B8AD9E; }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(2.5rem) scale(0.98);
-      transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1),
-                  transform 0.9s cubic-bezier(0.32, 0.72, 0, 1),
-                  filter 0.9s cubic-bezier(0.32, 0.72, 0, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .reveal-delay-1 { transition-delay: 100ms; }
-    .reveal-delay-2 { transition-delay: 200ms; }
-    .reveal-delay-3 { transition-delay: 300ms; }
-    .reveal-delay-4 { transition-delay: 400ms; }
-
-    .nav-glass {
-      backdrop-filter: blur(20px) saturate(1.8);
-      -webkit-backdrop-filter: blur(20px) saturate(1.8);
-      transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-    }
-
-    .nav-scrolled {
-      background: rgba(253, 251, 247, 0.85);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    .btn-premium {
-      transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-    }
-
-    .btn-premium:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3);
-    }
-
-    .link-underline {
-      position: relative;
-    }
-    .link-underline::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: currentColor;
-      transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-    }
-    .link-underline:hover::after {
-      width: 100%;
-    }
-
-    .eyebrow {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
+    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
+    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
+    .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+    .img-zoom { transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1); } .img-zoom:hover { transform: scale(1.05); }
     .cart-overlay { position: fixed; inset: 0; background: rgba(26,23,20,0.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.35s cubic-bezier(0.32, 0.72, 0, 1); }
     .cart-overlay.open { opacity: 1; pointer-events: all; }
     .cart-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 90vw); background: #FDFBF7; z-index: 201; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); display: flex; flex-direction: column; box-shadow: -16px 0 48px rgba(26,23,20,0.12); }
@@ -159,7 +62,7 @@
     .cart-item-variant { font-size: 0.72rem; color: #8C8175; letter-spacing: 0.02em; }
     .cart-item-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
     .cart-item-qty { display: flex; align-items: center; border: 1px solid rgba(217,209,196,0.5); border-radius: 100px; overflow: hidden; }
-    .cart-item-qty button {width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #8C8175; background: none; border: none; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .cart-item-qty button { width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #8C8175; background: none; border: none; cursor: pointer; transition: background 0.15s, color 0.15s; }
     .cart-item-qty button:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
     .cart-item-qty span { min-width: 1.5rem; text-align: center; font-size: 0.78rem; font-weight: 500; color: #1A1714; }
     .cart-item-price { font-family: 'Fraunces', Georgia, serif; font-size: 1rem; font-weight: 500; color: #1A1714; }
@@ -174,18 +77,22 @@
     .nav-cart-count { position: absolute; top: -2px; right: -4px; min-width: 17px; height: 17px; border-radius: 100px; background: #C4841D; color: #fff; font-size: 0.6rem; font-weight: 600; display: flex; align-items: center; justify-content: center; padding: 0 4px; opacity: 0; transform: scale(0.5); transition: opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1); pointer-events: none; }
     .nav-cart-count.visible { opacity: 1; transform: scale(1); }
 
+    /* Accordion */
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
+    .accordion-content.open { max-height: 500px; }
+    .accordion-icon { transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1); }
+    .accordion-icon.open { transform: rotate(180deg); }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
       .btn-premium { transition: none; }
       .btn-premium:hover { transform: none; box-shadow: none; }
       .nav-glass { transition: none; }
       .link-underline::after { transition: none; }
-      .marquee-track { animation: none; }
-      .float-slow, .float-medium { animation: none; }
-      .spin-slow { animation: none; }
-      .cert-shimmer { animation: none; }
       .img-zoom { transition: none; }
       .img-zoom:hover { transform: none; }
+      .accordion-content { transition: none; }
+      .accordion-icon { transition: none; }
       * { scroll-behavior: auto !important; }
     }
   </style>
@@ -204,23 +111,19 @@
         </svg>
         <span class="font-display text-lg md:text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
       </a>
-
       <div class="hidden md:flex items-center gap-8">
-        <a href="story.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="story.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Our Story</a>
         <a href="products.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Products</a>
         <a href="terroir.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="blog/" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="certifications.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Certifications</a>
-        <a href="wholesale.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="products.html"
-           class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
       </div>
-
       <!-- Cart Icon -->
       <button id="cart-toggle" onclick="MapleCart.toggle()" aria-label="Open cart" class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300 ml-2">
         <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -246,10 +149,8 @@
       <a href="products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
       <a href="terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
       <a href="blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="certifications.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Certifications</a>
-      <a href="wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 450ms">Wholesale</a>
-      <a href="products.html"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 550ms">
+      <a href="wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
         Shop Now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -258,259 +159,271 @@
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- HERO — Full-bleed image with text overlay              -->
+  <!-- HERO                                                   -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="relative min-h-[70vh] md:min-h-[80vh] flex items-end pb-16 md:pb-24 px-4 md:px-8">
+  <section class="relative min-h-[60vh] md:min-h-[70vh] flex items-end pb-16 md:pb-24 px-4 md:px-8">
     <div class="absolute inset-0">
-      <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=1920&q=80" alt="Autumn forest canopy" class="w-full h-full object-cover">
+      <img src="https://cdn.instant.so/sites/Kjn4vpPuFvAsOEBs/assets/Sk5MRXw1NdBDZXPm/syrup-waffle.jpg?width=1280" alt="Maple syrup on waffles" class="w-full h-full object-cover">
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent"></div>
     <div class="relative max-w-[1400px] mx-auto w-full">
       <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-glow/80 mb-6">
         <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
-        Our Story
+        Wholesale
       </span>
       <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-cream tracking-tight leading-[1.08] max-w-4xl">
-        Three generations of<br>
-        <span class="text-amber-glow italic font-medium">maple craft.</span>
+        Partner with<br>
+        <span class="text-amber-glow italic font-medium">Maple Terroir.</span>
       </h1>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- FOUNDING STORY                                         -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-center">
-        <div class="md:col-span-6 reveal">
-          <span class="eyebrow text-amber-warm mb-4 block">1978 — The Beginning</span>
-          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
-            A family's love letter to the land.
-          </h2>
-          <div class="space-y-5 text-warm-gray-600 leading-relaxed">
-            <p>
-              In 1978, Wayne Lytton set out with a simple vision: to share the purest maple products Canada had to offer with the world. What began as a passion project rooted in Quebec's Appalachian Mountains quickly became a lifelong pursuit of quality.
-            </p>
-            <p>
-              Wayne understood that great maple, like great wine, carries the signature of its origin &mdash; the mineral-rich soil, the altitude, the long cold winters that force the trees to store more starch, producing a richer, more complex sap come spring.
-            </p>
-            <p>
-              Today, his son Shawn leads the company as President, continuing the family tradition with the same uncompromising standards. Three generations in, the mission hasn't changed: quality over quantity, always.
-            </p>
-          </div>
-        </div>
-        <div class="md:col-span-6 reveal reveal-delay-2">
-          <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
-            <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] aspect-[4/5]">
-              <img src="https://images.unsplash.com/photo-1491002052546-bf38f186af56?auto=format&fit=crop&w=800&q=80" alt="Snowy Quebec forest" class="w-full h-full object-cover">
-              <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent"></div>
-              <div class="absolute bottom-8 left-8 right-8">
-                <p class="font-display text-lg italic text-cream/90">
-                  "We source exclusively from a fourth-generation maple farm nestled in the Appalachian Mountains of Quebec."
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- ARTISTIC LINEAGE                                       -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8 bg-white">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-center">
-        <div class="md:col-span-5 md:order-2 reveal">
-          <span class="eyebrow text-amber-warm mb-4 block">Heritage</span>
-          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
-            An artistic lineage.
-          </h2>
-          <div class="space-y-5 text-warm-gray-600 leading-relaxed">
-            <p>
-              Founder Wayne Lytton's grandmother, Georgina Abrams Lytton, was a celebrated artist whose work resides in the National Gallery of Canada. Her eye for beauty and devotion to craft left an indelible mark on the family.
-            </p>
-            <p>
-              That same sensibility runs through everything Maple Terroir creates &mdash; from the way we source our maple to the care we put into our packaging. We believe that a food product can be a work of art, and every bottle we produce reflects that belief.
-            </p>
-          </div>
-        </div>
-        <div class="md:col-span-7 md:order-1 reveal reveal-delay-1">
-          <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
-            <div class="grid grid-cols-2 gap-2 rounded-[calc(2rem-0.5rem)] overflow-hidden">
-              <div class="aspect-square overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=600&q=80" alt="Golden maple syrup" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-              </div>
-              <div class="aspect-square overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=600&q=80" alt="Autumn canopy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-              </div>
-              <div class="aspect-square overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1477601263568-180e2c6d046e?auto=format&fit=crop&w=600&q=80" alt="Snow covered trees" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-              </div>
-              <div class="aspect-square overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=600&q=80" alt="Herbal tea preparation" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- TIMELINE                                               -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
-      <div class="text-center mb-16 md:mb-24">
-        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
-          Our Journey
-        </span>
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1]">
-          Milestones along the way.
-        </h2>
-      </div>
-
-      <!-- Timeline entries -->
-      <div class="relative">
-        <!-- Vertical line -->
-        <div class="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-warm-gray-200"></div>
-
-        <!-- 1978 -->
-        <div class="reveal relative flex items-start gap-8 md:gap-0 mb-16 md:mb-20">
-          <div class="md:w-1/2 md:pr-12 md:text-right">
-            <span class="font-display text-4xl md:text-5xl font-semibold text-amber-warm/20">1978</span>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">The Founding</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Wayne Lytton establishes Maple Terroir with a vision to bring the purest Canadian maple to the world.</p>
-          </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-amber-warm ring-4 ring-cream mt-2"></div>
-          <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
-        </div>
-
-        <!-- Expansion to Asia -->
-        <div class="reveal reveal-delay-1 relative flex items-start gap-8 md:gap-0 mb-16 md:mb-20">
-          <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-amber-warm ring-4 ring-cream mt-2"></div>
-          <div class="md:w-1/2 md:pl-12 ml-12 md:ml-0">
-            <span class="font-display text-4xl md:text-5xl font-semibold text-amber-warm/20">1980s</span>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">Reaching Asia</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Maple Terroir expands to Japan, Korea, and China, bringing authentic Canadian maple products to new markets.</p>
-          </div>
-        </div>
-
-        <!-- Organic Certification -->
-        <div class="reveal reveal-delay-2 relative flex items-start gap-8 md:gap-0 mb-16 md:mb-20">
-          <div class="md:w-1/2 md:pr-12 md:text-right ml-12 md:ml-0">
-            <span class="font-display text-4xl md:text-5xl font-semibold text-amber-warm/20">1990s</span>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">Certified Organic</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Earns Ecocert, Canada Organic, and USDA Organic certifications — verified pure at every stage of production.</p>
-          </div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-amber-warm ring-4 ring-cream mt-2"></div>
-          <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
-        </div>
-
-        <!-- Next Generation -->
-        <div class="reveal reveal-delay-3 relative flex items-start gap-8 md:gap-0">
-          <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
-          <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-amber-warm ring-4 ring-cream mt-2"></div>
-          <div class="md:w-1/2 md:pl-12 ml-12 md:ml-0">
-            <span class="font-display text-4xl md:text-5xl font-semibold text-amber-warm/20">Today</span>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">The Next Generation</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Shawn Lytton leads as President, expanding the product line while staying true to the family's founding principles. Now offering maple syrup, stroopwafels, tea, coffee, and more.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- VALUES                                                 -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8 bg-charcoal text-cream">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="text-center mb-16 md:mb-24">
-        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-glow/70 mb-6">
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
-          What We Believe
-        </span>
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.1]">
-          Our guiding principles.
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Quality -->
-        <div class="reveal bg-white/5 ring-1 ring-white/10 rounded-[2rem] p-8 md:p-10">
-          <div class="w-12 h-12 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-amber-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-            </svg>
-          </div>
-          <h3 class="font-display text-xl font-semibold mb-3 tracking-tight">Quality Over Quantity</h3>
-          <p class="text-sm text-cream/60 leading-relaxed">
-            We never mass-produce. Every batch is small, carefully monitored, and held to the highest standards. If it doesn't meet our bar, it doesn't leave our facility.
-          </p>
-        </div>
-
-        <!-- Origin -->
-        <div class="reveal reveal-delay-1 bg-white/5 ring-1 ring-white/10 rounded-[2rem] p-8 md:p-10">
-          <div class="w-12 h-12 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-amber-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <path d="M12 2C7.03 2 3 6.03 3 11C3 16.97 12 22 12 22C12 22 21 16.97 21 11C21 6.03 16.97 2 12 2Z"/>
-              <circle cx="12" cy="11" r="3"/>
-            </svg>
-          </div>
-          <h3 class="font-display text-xl font-semibold mb-3 tracking-tight">Single-Origin Always</h3>
-          <p class="text-sm text-cream/60 leading-relaxed">
-            Our maple comes from one place: a fourth-generation farm in Quebec's Appalachian Mountains. We know the terroir, we know the trees, and we know exactly what goes into every bottle.
-          </p>
-        </div>
-
-        <!-- Family -->
-        <div class="reveal reveal-delay-2 bg-white/5 ring-1 ring-white/10 rounded-[2rem] p-8 md:p-10">
-          <div class="w-12 h-12 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-amber-glow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </div>
-          <h3 class="font-display text-xl font-semibold mb-3 tracking-tight">Family First</h3>
-          <p class="text-sm text-cream/60 leading-relaxed">
-            We're not a faceless corporation. We're a family, and we treat our customers, partners, and producers like family too. Every relationship matters.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- CTA                                                    -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
-        Taste the terroir.
-      </h2>
-      <p class="reveal reveal-delay-1 text-warm-gray-600 leading-relaxed mb-10 max-w-[50ch] mx-auto">
-        Explore our full collection of organic maple products &mdash; each one a reflection of the land, the season, and the care that goes into every batch.
+      <p class="reveal reveal-delay-2 text-warm-gray-300 leading-relaxed max-w-[55ch] text-lg mt-6">
+        Bring premium Canadian maple products to your business, with dedicated support and flexible solutions.
       </p>
-      <div class="reveal reveal-delay-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://mapleterroir.com" target="_blank" rel="noopener noreferrer"
-           class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-sm font-medium group">
-          <span>Shop All Products</span>
-          <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+      <div class="reveal reveal-delay-3 mt-8">
+        <a href="mailto:info@mapleterroir.com?subject=Wholesale%20Inquiry" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+          <span>Contact Us</span>
+          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
             <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
-        <a href="terroir.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500 py-4">
-          Learn About Our Terroir
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HOW IT WORKS — 3-Step Process                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6 mx-auto justify-center">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          How It Works
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+          Join as a Maple Terroir Partner
+        </h2>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[60ch] mx-auto text-lg mt-4">
+          We are excited to partner with retailers that share our passion for quality and dedication to promoting Canadian culture.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <!-- Step 1 -->
+        <div class="reveal bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 text-center">
+            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">1. Reach Out</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">
+              Email <a href="mailto:info@mapleterroir.com" class="text-amber-warm hover:text-amber-deep transition-colors">info@mapleterroir.com</a> to start the conversation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="reveal reveal-delay-1 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 text-center">
+            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">2. Get Access</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">
+              Flexible orders with efficient shipping of premium products.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="reveal reveal-delay-2 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 text-center">
+            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">3. Grow Your Sales</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">
+              Boost sales with unique maple products and dedicated support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- PRODUCT, ORDERING & PAYMENT — Accordion                -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <!-- Image -->
+        <div class="reveal order-2 md:order-1">
+          <div class="bg-warm-gray-100/60 ring-1 ring-warm-gray-200/40 p-2 md:p-2.5 rounded-[2rem]">
+            <div class="overflow-hidden rounded-[calc(2rem-0.5rem)]">
+              <img src="https://cdn.instant.so/sites/Kjn4vpPuFvAsOEBs/assets/1IeeorNaI4Whi0HZ/2891622831099427981008864652443054497708438n-1.jpg?width=1280" alt="Maple roasted peanuts display" class="w-full aspect-square object-cover img-zoom">
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion -->
+        <div class="order-1 md:order-2">
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            Details
+          </span>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">
+            Product, Ordering, and Payment Information
+          </h2>
+          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed mb-8">
+            Boost your product offerings with our premium maple line, backed by flexible ordering, efficient shipping, and growth-oriented payment terms.
+          </p>
+
+          <div class="reveal reveal-delay-3 space-y-3">
+            <!-- Accordion: Product Information -->
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+              <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+                <h3 class="font-display text-lg font-semibold text-charcoal">Product Information</h3>
+                <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content px-6">
+                <div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">
+                  <p class="mb-3">Access our detailed Product Sell Sheets to familiarise yourself with our star offerings:</p>
+                  <ul class="space-y-2 list-disc list-inside">
+                    <li><a href="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maple_Terroir_Sell_Sheet_template_as_of_03.20.2024.pdf?v=1710966619" target="_blank" rel="noopener noreferrer" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Terroir Product Sell Sheet</a></li>
+                    <li><a href="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MT_sell_sheet_stroopwafels_2024.pdf?v=1726089311" target="_blank" rel="noopener noreferrer" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Terroir Stroopwafels</a></li>
+                    <li><a href="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maple_Terroir_Maple_Leaf_Cream_Cookies_600g_-_sell_sheet-pallet_spec_only.pdf?v=1648650443" target="_blank" rel="noopener noreferrer" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Leaf Cream Cookies 600g</a></li>
+                    <li><a href="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Sell_Sheet_Maple_Terroir_Maple_Popcorn.pdf?v=1648650894" target="_blank" rel="noopener noreferrer" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Popcorn</a></li>
+                    <li><a href="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/sell_sheet_Maple_Kettle_Chips.pdf?v=1648650880" target="_blank" rel="noopener noreferrer" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Kettle Chips</a></li>
+                  </ul>
+                  <p class="mt-3">These resources provide all the information needed to market and sell our products effectively, from nutritional facts to unique selling points.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion: Ordering & Shipping -->
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+              <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+                <h3 class="font-display text-lg font-semibold text-charcoal">Flexible Ordering and Shipping</h3>
+                <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content px-6">
+                <div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">
+                  <p class="mb-3">We've tailored our ordering process to suit your needs:</p>
+                  <ul class="space-y-2 list-disc list-inside">
+                    <li><strong>Minimum order:</strong> One full case</li>
+                    <li>Half case orders available with a small $5.00 charge</li>
+                    <li>Free delivery options for bulk orders</li>
+                  </ul>
+                  <p class="mt-3">Our efficient shipping process ensures your products arrive fresh and ready for sale, with delivery times ranging from 2-9 business days after processing, depending on location.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion: Payment Terms -->
+            <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+              <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+                <h3 class="font-display text-lg font-semibold text-charcoal">Growth-Oriented Payment Terms</h3>
+                <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content px-6">
+                <div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">
+                  <p class="mb-3">As your trusted partner, we offer payment terms designed to support your business growth:</p>
+                  <ul class="space-y-2 list-disc list-inside">
+                    <li>Pre-payment for initial orders</li>
+                    <li>NET 30 Days terms available for established partners</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SHOPIFY COLLECTIVE                                     -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div>
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            Sell Easier
+          </span>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">
+            Sell Together on Shopify Collective
+          </h2>
+          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed mb-8">
+            Maple Terroir uses Shopify Collective to expand reach and collaborate with other stores, offering benefits like streamlined fulfillment, real-time inventory syncing, and potential order value increases of 20-40%.
+          </p>
+          <div class="reveal reveal-delay-3">
+            <a href="mailto:info@mapleterroir.com?subject=Wholesale%20Inquiry" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
+              <span>Contact Us</span>
+              <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <div class="bg-warm-gray-100/60 ring-1 ring-warm-gray-200/40 p-2 md:p-2.5 rounded-[2rem]">
+            <div class="overflow-hidden rounded-[calc(2rem-0.5rem)]">
+              <img src="https://cdn.instant.so/sites/Kjn4vpPuFvAsOEBs/assets/XMb1YbeqLL6rQmw6/3471888547973059849305825969636471175571329n-1.jpg?width=1280" alt="Maple Terroir team at food convention" class="w-full aspect-[4/5] object-cover img-zoom">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- RETAIL DISPLAY                                         -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal bg-warm-gray-100/60 ring-1 ring-warm-gray-200/40 p-2 md:p-2.5 rounded-[2rem]">
+        <div class="overflow-hidden rounded-[calc(2rem-0.5rem)]">
+          <img src="https://cdn.instant.so/sites/Kjn4vpPuFvAsOEBs/assets/aLlFxZVjyDUo1QaU/mtretaildisplay1.png?width=1280" alt="Maple Terroir retail display" class="w-full object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- CTA BANNER                                             -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="relative py-24 md:py-32 px-4 md:px-8 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://cdn.instant.so/sites/Kjn4vpPuFvAsOEBs/assets/vcwvpBss7KUasyhA/maple-terroir-organic-maple-syrup.webp?width=1280" alt="Maple Terroir organic maple syrup" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-charcoal/60"></div>
+    <div class="relative max-w-[1400px] mx-auto text-center">
+      <h2 class="reveal font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-cream tracking-tight leading-tight mb-4">
+        Pure Canadian Sweetness Since 1978
+      </h2>
+      <p class="reveal reveal-delay-1 text-warm-gray-300 leading-relaxed max-w-[55ch] mx-auto text-lg mb-8">
+        Delivering the finest Canadian maple traditions to tables worldwide for over 47 years.
+      </p>
+      <div class="reveal reveal-delay-2">
+        <a href="products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+          <span>Explore Maple Products</span>
+          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </a>
       </div>
     </div>
@@ -555,19 +468,16 @@
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="https://mapleterroir.com" target="_blank" rel="noopener noreferrer" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
-            <li><a href="https://mapleterroir.com" target="_blank" rel="noopener noreferrer" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Gift Sets</a></li>
-            <li><a href="https://mapleterroir.com" target="_blank" rel="noopener noreferrer" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Best Sellers</a></li>
-            <li><a href="https://mapleterroir.com" target="_blank" rel="noopener noreferrer" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">New Arrivals</a></li>
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
+            <li><a href="wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
           </ul>
         </div>
 
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
           <ul class="space-y-3">
-            <li><a href="contact.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
-            <li><a href="wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
-            <li><a href="https://mapleterroir.com" target="_blank" rel="noopener noreferrer" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Press</a></li>
+            <li><a href="mailto:info@mapleterroir.com" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
+            <li><a href="blog/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Blog</a></li>
           </ul>
         </div>
       </div>
@@ -588,6 +498,22 @@
 
   <!-- JAVASCRIPT -->
   <script>
+    // Accordion toggle
+    function toggleAccordion(btn) {
+      var content = btn.nextElementSibling;
+      var icon = btn.querySelector('.accordion-icon');
+      var isOpen = content.classList.contains('open');
+      // Close all others
+      document.querySelectorAll('.accordion-content.open').forEach(function(el) {
+        el.classList.remove('open');
+        el.previousElementSibling.querySelector('.accordion-icon').classList.remove('open');
+      });
+      if (!isOpen) {
+        content.classList.add('open');
+        icon.classList.add('open');
+      }
+    }
+
     // Scroll Reveal
     const revealObserver = new IntersectionObserver(
       (entries) => {
