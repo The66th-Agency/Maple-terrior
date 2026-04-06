@@ -1692,10 +1692,8 @@
 
         <!-- Right: 3D Globe -->
         <div class="md:col-span-7 reveal reveal-delay-1">
-          <div class="relative w-full aspect-square max-w-[560px] mx-auto">
+          <div class="relative w-full aspect-square max-w-[520px] mx-auto">
             <canvas id="globe-canvas" class="w-full h-full"></canvas>
-            <!-- Market labels floating around globe -->
-            <div id="globe-labels" class="absolute inset-0 pointer-events-none"></div>
           </div>
         </div>
       </div>
@@ -2350,7 +2348,7 @@ var MapleCart = (function () {
 })();
 </script>
 
-<!-- Three.js Globe -->
+<!-- Three.js Globe with continents -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script>
 (function () {
@@ -2366,172 +2364,157 @@ var MapleCart = (function () {
 
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
-    camera.position.z = 2.8;
+    camera.position.z = 2.6;
 
-    // Globe sphere - warm charcoal with wireframe overlay
     var radius = 1;
+    var globeGroup = new THREE.Group();
+    // Tilt globe slightly for visual interest
+    globeGroup.rotation.x = 0.15;
+    scene.add(globeGroup);
+
+    // Base sphere - cream/warm white
     var globeGeo = new THREE.SphereGeometry(radius, 64, 64);
     var globeMat = new THREE.MeshPhongMaterial({
-      color: 0x2E2822,
-      transparent: true,
-      opacity: 0.85,
-      shininess: 15
+      color: 0xF5F0E8,
+      shininess: 5,
+      specular: 0x222222
     });
     var globe = new THREE.Mesh(globeGeo, globeMat);
-    scene.add(globe);
+    globeGroup.add(globe);
 
-    // Wireframe overlay
-    var wireGeo = new THREE.SphereGeometry(radius * 1.002, 36, 18);
-    var wireMat = new THREE.MeshBasicMaterial({
-      color: 0xC4841D,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.08
-    });
-    var wireframe = new THREE.Mesh(wireGeo, wireMat);
-    scene.add(wireframe);
+    // Subtle graticule (lat/lng lines)
+    var gratMat = new THREE.LineBasicMaterial({ color: 0xD9D1C4, transparent: true, opacity: 0.3 });
+    // Latitude lines
+    for (var lat = -60; lat <= 60; lat += 30) {
+      var pts = [];
+      var phi = (90 - lat) * Math.PI / 180;
+      for (var i = 0; i <= 360; i += 3) {
+        var theta = i * Math.PI / 180;
+        pts.push(new THREE.Vector3(
+          -(radius * 1.001) * Math.sin(phi) * Math.cos(theta),
+          (radius * 1.001) * Math.cos(phi),
+          (radius * 1.001) * Math.sin(phi) * Math.sin(theta)
+        ));
+      }
+      var lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
+      globeGroup.add(new THREE.Line(lineGeo, gratMat));
+    }
+    // Longitude lines
+    for (var lng = 0; lng < 360; lng += 30) {
+      var pts2 = [];
+      var theta2 = lng * Math.PI / 180;
+      for (var j = 0; j <= 180; j += 3) {
+        var phi2 = j * Math.PI / 180;
+        pts2.push(new THREE.Vector3(
+          -(radius * 1.001) * Math.sin(phi2) * Math.cos(theta2),
+          (radius * 1.001) * Math.cos(phi2),
+          (radius * 1.001) * Math.sin(phi2) * Math.sin(theta2)
+        ));
+      }
+      var lineGeo2 = new THREE.BufferGeometry().setFromPoints(pts2);
+      globeGroup.add(new THREE.Line(lineGeo2, gratMat));
+    }
 
     // Atmosphere glow
-    var glowGeo = new THREE.SphereGeometry(radius * 1.15, 64, 64);
+    var glowGeo = new THREE.SphereGeometry(radius * 1.12, 64, 64);
     var glowMat = new THREE.ShaderMaterial({
-      vertexShader: [
-        'varying vec3 vNormal;',
-        'void main() {',
-        '  vNormal = normalize(normalMatrix * normal);',
-        '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
-        '}'
-      ].join('\n'),
-      fragmentShader: [
-        'varying vec3 vNormal;',
-        'void main() {',
-        '  float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0);',
-        '  gl_FragColor = vec4(0.77, 0.52, 0.11, 1.0) * intensity * 0.6;',
-        '}'
-      ].join('\n'),
+      vertexShader: 'varying vec3 vNormal; void main() { vNormal = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: 'varying vec3 vNormal; void main() { float intensity = pow(0.55 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0); gl_FragColor = vec4(0.77, 0.52, 0.11, 1.0) * intensity * 0.35; }',
       side: THREE.BackSide,
       blending: THREE.AdditiveBlending,
       transparent: true
     });
-    var glow = new THREE.Mesh(glowGeo, glowMat);
-    scene.add(glow);
+    scene.add(new THREE.Mesh(glowGeo, glowMat));
 
     // Lighting
-    var ambient = new THREE.AmbientLight(0xF4C77D, 0.4);
-    scene.add(ambient);
-    var dirLight = new THREE.DirectionalLight(0xFDFBF7, 0.8);
+    scene.add(new THREE.AmbientLight(0xFDFBF7, 0.6));
+    var dirLight = new THREE.DirectionalLight(0xFDFBF7, 0.5);
     dirLight.position.set(5, 3, 5);
     scene.add(dirLight);
-    var rimLight = new THREE.DirectionalLight(0xC4841D, 0.3);
-    rimLight.position.set(-3, -2, -3);
-    scene.add(rimLight);
+    var warmLight = new THREE.DirectionalLight(0xC4841D, 0.15);
+    warmLight.position.set(-3, 1, -2);
+    scene.add(warmLight);
 
-    // Market locations [lat, lng, label, sublabel]
-    var markets = [
-      [49.28, -123.12, 'Canada', 'Home Market'],
-      [35.68, 139.69, 'Japan', 'No. 1 Brand'],
-      [37.57, 126.98, 'South Korea', 'Growing Market'],
-      [31.23, 121.47, 'China', 'Premium Channel']
-    ];
-
-    // Convert lat/lng to 3D position
-    function latLngToVec3(lat, lng, r) {
-      var phi = (90 - lat) * Math.PI / 180;
-      var theta = (lng + 180) * Math.PI / 180;
+    // Convert lat/lng to 3D
+    function ll(lat, lng) {
+      var p = (90 - lat) * Math.PI / 180;
+      var t = (lng + 180) * Math.PI / 180;
       return new THREE.Vector3(
-        -r * Math.sin(phi) * Math.cos(theta),
-        r * Math.cos(phi),
-        r * Math.sin(phi) * Math.sin(theta)
+        -(radius * 1.002) * Math.sin(p) * Math.cos(t),
+        (radius * 1.002) * Math.cos(p),
+        (radius * 1.002) * Math.sin(p) * Math.sin(t)
       );
     }
 
-    // Create glowing pins
-    var pinGroup = new THREE.Group();
-    var pinMeshes = [];
-    markets.forEach(function (m) {
-      var pos = latLngToVec3(m[0], m[1], radius);
-      // Pin dot
-      var dotGeo = new THREE.SphereGeometry(0.025, 16, 16);
-      var dotMat = new THREE.MeshBasicMaterial({ color: 0xC4841D });
-      var dot = new THREE.Mesh(dotGeo, dotMat);
-      dot.position.copy(pos);
-      pinGroup.add(dot);
-      // Pin glow ring
-      var ringGeo = new THREE.RingGeometry(0.03, 0.055, 32);
-      var ringMat = new THREE.MeshBasicMaterial({ color: 0xF4C77D, transparent: true, opacity: 0.5, side: THREE.DoubleSide });
-      var ring = new THREE.Mesh(ringGeo, ringMat);
-      ring.position.copy(pos);
-      ring.lookAt(pos.clone().multiplyScalar(2));
-      pinGroup.add(ring);
-      pinMeshes.push({ dot: dot, ring: ring, pos: pos, label: m[2], sublabel: m[3] });
+    // Draw continent outlines from simplified coordinate paths
+    var continentMat = new THREE.LineBasicMaterial({ color: 0xC4841D, transparent: true, opacity: 0.7 });
+    var landFillMat = new THREE.MeshBasicMaterial({ color: 0xC4841D, transparent: true, opacity: 0.12, side: THREE.DoubleSide });
+
+    // Simplified continent outlines (major landmasses)
+    var continents = {
+      northAmerica: [[70,-165],[72,-130],[70,-100],[65,-90],[60,-80],[50,-65],[45,-65],[42,-70],[30,-82],[25,-80],[20,-90],[15,-87],[10,-84],[8,-77],[10,-75],[12,-82],[18,-88],[22,-97],[25,-110],[32,-117],[37,-122],[43,-125],[48,-125],[55,-133],[58,-137],[60,-147],[63,-152],[65,-168],[70,-165]],
+      southAmerica: [[12,-72],[10,-75],[5,-77],[2,-80],[-5,-80],[-8,-79],[-15,-76],[-18,-70],[-23,-70],[-28,-65],[-33,-58],[-38,-57],[-42,-63],[-46,-67],[-50,-70],[-54,-70],[-55,-67],[-52,-60],[-45,-58],[-40,-50],[-35,-53],[-30,-50],[-25,-47],[-20,-40],[-12,-38],[-5,-35],[0,-50],[5,-60],[8,-62],[10,-67],[12,-72]],
+      europe: [[36,-10],[38,-8],[40,-9],[43,-9],[44,-1],[46,-2],[48,- 5],[49,-1],[51,2],[53,5],[55,8],[57,10],[60,5],[62,5],[65,12],[68,15],[70,20],[70,28],[68,30],[65,25],[60,22],[56,18],[54,14],[54,10],[52,5],[50,4],[47,2],[44,3],[43,5],[40,0],[38,-1],[36,-5],[36,-10]],
+      africa: [[37,10],[35,0],[33,-8],[27,-13],[22,-17],[15,-17],[10,-15],[5,-5],[5,10],[2,10],[0,9],[-2,12],[-5,12],[-10,14],[-12,40],[-15,35],[-20,35],[-25,33],[-28,28],[-33,18],[-35,20],[-33,27],[-30,30],[-25,35],[-15,40],[-10,42],[-2,42],[5,42],[10,45],[12,50],[15,42],[20,38],[25,35],[30,32],[32,32],[35,35],[37,10]],
+      asia: [[42,30],[40,45],[38,48],[35,52],[30,50],[25,55],[22,60],[20,65],[25,70],[30,75],[35,72],[38,68],[42,65],[45,60],[50,55],[55,60],[58,62],[60,68],[62,70],[65,75],[68,80],[70,90],[72,100],[70,130],[68,140],[65,150],[62,155],[60,160],[55,160],[50,155],[45,145],[42,142],[40,130],[35,130],[30,120],[25,120],[22,114],[20,110],[15,108],[10,105],[5,100],[0,100],[-5,105],[-8,110],[-5,115],[0,115],[5,120],[8,118],[10,110],[15,100],[18,105],[20,100],[25,90],[28,78],[30,70],[33,60],[35,52]],
+      australia: [[-12,130],[-14,127],[-16,123],[-20,119],[-24,114],[-28,114],[-32,116],[-35,118],[-37,140],[-38,145],[-38,148],[-35,150],[-30,153],[-25,153],[-20,149],[-16,146],[-14,145],[-13,136],[-12,130]]
+    };
+
+    Object.keys(continents).forEach(function (name) {
+      var coords = continents[name];
+      var points = coords.map(function (c) { return ll(c[0], c[1]); });
+      points.push(points[0]); // close loop
+      var geo = new THREE.BufferGeometry().setFromPoints(points);
+      globeGroup.add(new THREE.Line(geo, continentMat));
+
+      // Fill continent with semi-transparent mesh
+      if (coords.length > 3) {
+        var shape = new THREE.Shape();
+        // Project to 2D for triangulation, then map back
+        var verts = [];
+        for (var i = 0; i < coords.length; i++) {
+          verts.push(ll(coords[i][0], coords[i][1]));
+        }
+        // Simple triangle fan from centroid
+        var cx = 0, cy = 0, cz = 0;
+        verts.forEach(function(v) { cx += v.x; cy += v.y; cz += v.z; });
+        cx /= verts.length; cy /= verts.length; cz /= verts.length;
+        var centroid = new THREE.Vector3(cx, cy, cz).normalize().multiplyScalar(radius * 1.0015);
+
+        for (var k = 0; k < verts.length; k++) {
+          var next = (k + 1) % verts.length;
+          var triGeo = new THREE.BufferGeometry();
+          var positions = new Float32Array([
+            centroid.x, centroid.y, centroid.z,
+            verts[k].x, verts[k].y, verts[k].z,
+            verts[next].x, verts[next].y, verts[next].z
+          ]);
+          triGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+          triGeo.computeVertexNormals();
+          globeGroup.add(new THREE.Mesh(triGeo, landFillMat));
+        }
+      }
     });
-    scene.add(pinGroup);
 
-    // Arc lines between Canada and each market
-    var canadaPos = latLngToVec3(49.28, -123.12, radius);
-    markets.slice(1).forEach(function (m) {
-      var targetPos = latLngToVec3(m[0], m[1], radius);
-      var mid = canadaPos.clone().add(targetPos).multiplyScalar(0.5).normalize().multiplyScalar(radius * 1.35);
-      var curve = new THREE.QuadraticBezierCurve3(canadaPos, mid, targetPos);
-      var points = curve.getPoints(50);
-      var arcGeo = new THREE.BufferGeometry().setFromPoints(points);
-      var arcMat = new THREE.LineBasicMaterial({ color: 0xC4841D, transparent: true, opacity: 0.25 });
-      var arc = new THREE.Line(arcGeo, arcMat);
-      pinGroup.add(arc);
-    });
-
-    // HTML labels
-    var labelsContainer = document.getElementById('globe-labels');
-
-    function updateLabels() {
-      labelsContainer.innerHTML = '';
-      pinMeshes.forEach(function (pin) {
-        var screenPos = pin.pos.clone();
-        screenPos.applyMatrix4(globe.matrixWorld);
-        // Check if point faces camera
-        var camDir = screenPos.clone().normalize();
-        var dotProduct = camDir.dot(camera.position.clone().normalize());
-        if (dotProduct < 0.15) return; // behind globe
-
-        screenPos.project(camera);
-        var x = (screenPos.x * 0.5 + 0.5) * w;
-        var y = (-screenPos.y * 0.5 + 0.5) * h;
-
-        var label = document.createElement('div');
-        label.style.cssText = 'position:absolute;left:' + x + 'px;top:' + y + 'px;transform:translate(-50%,-150%);white-space:nowrap;transition:opacity 0.3s;';
-        label.innerHTML = '<div style="text-align:center"><div style="font-family:Fraunces,Georgia,serif;font-size:0.85rem;font-weight:600;color:#1A1714">' + pin.label + '</div><div style="font-size:0.6rem;color:#C4841D;font-weight:500;letter-spacing:0.05em;text-transform:uppercase">' + pin.sublabel + '</div></div>';
-        labelsContainer.appendChild(label);
-      });
-    }
-
-    // Animation
-    var rotationSpeed = 0.002;
-    var time = 0;
+    // Smooth auto-rotation
+    var running = false;
     function animate() {
+      if (!running) return;
       requestAnimationFrame(animate);
-      time += 0.016;
-      globe.rotation.y += rotationSpeed;
-      wireframe.rotation.y += rotationSpeed;
-      pinGroup.rotation.y += rotationSpeed;
-
-      // Pulse pin rings
-      pinMeshes.forEach(function (pin, i) {
-        var scale = 1 + Math.sin(time * 2 + i) * 0.3;
-        pin.ring.scale.set(scale, scale, scale);
-        pin.ring.material.opacity = 0.5 - Math.sin(time * 2 + i) * 0.2;
-      });
-
-      updateLabels();
+      globeGroup.rotation.y += 0.0015;
       renderer.render(scene, camera);
     }
 
     // Only animate when visible
-    var globeObserver = new IntersectionObserver(function (entries) {
+    var globeObs = new IntersectionObserver(function (entries) {
       if (entries[0].isIntersecting) {
+        running = true;
         animate();
-        globeObserver.disconnect();
+      } else {
+        running = false;
       }
-    }, { threshold: 0.2 });
-    globeObserver.observe(canvas);
+    }, { threshold: 0.1 });
+    globeObs.observe(canvas);
 
     // Resize
     window.addEventListener('resize', function () {
@@ -2543,7 +2526,6 @@ var MapleCart = (function () {
     });
   }
 
-  // Wait for Three.js to load
   function waitForThree() {
     if (window.THREE) { initGlobe(); }
     else { setTimeout(waitForThree, 100); }
