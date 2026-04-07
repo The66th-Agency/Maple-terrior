@@ -2348,58 +2348,45 @@ var MapleCart = (function () {
 })();
 </script>
 
-<!-- Globe (cobe - 5KB, zero config, real land data built in) -->
-<script src="https://unpkg.com/cobe" defer></script>
-<script>
-(function () {
-  function initGlobe() {
-    var canvas = document.getElementById('globe-canvas');
-    if (!canvas || !window.createGlobe) return;
+<!-- Globe (cobe - 5KB, real land data built in) -->
+<script type="module">
+import createGlobe from 'https://cdn.skypack.dev/cobe@0.6.3';
 
-    var phi = 0;
-    var width = canvas.clientWidth;
-    var height = canvas.clientHeight;
-    canvas.width = width * 2;
-    canvas.height = height * 2;
+var canvas = document.getElementById('globe-canvas');
+if (canvas) {
+  var phi = 0;
+  var w = canvas.clientWidth;
+  var h = canvas.clientHeight;
+  canvas.width = w * 2;
+  canvas.height = h * 2;
 
-    createGlobe(canvas, {
-      devicePixelRatio: Math.min(window.devicePixelRatio, 2),
-      width: width * 2,
-      height: height * 2,
-      phi: 0,
-      theta: 0.15,
-      dark: 0,
-      diffuse: 1.2,
-      mapSamples: 20000,
-      mapBrightness: 6,
-      baseColor: [0.96, 0.93, 0.88],
-      markerColor: [0.77, 0.52, 0.11],
-      glowColor: [0.96, 0.93, 0.88],
-      markers: [],
-      onRender: function (state) {
-        state.phi = phi;
-        phi += 0.003;
-      }
-    });
+  var globe = createGlobe(canvas, {
+    devicePixelRatio: Math.min(window.devicePixelRatio, 2),
+    width: w * 2,
+    height: h * 2,
+    phi: 0,
+    theta: 0.15,
+    dark: 0,
+    diffuse: 1.2,
+    mapSamples: 20000,
+    mapBrightness: 6,
+    baseColor: [0.96, 0.93, 0.88],
+    markerColor: [0.77, 0.52, 0.11],
+    glowColor: [0.96, 0.93, 0.88],
+    markers: [],
+    onRender: function (state) {
+      state.phi = phi;
+      phi += 0.003;
+    }
+  });
 
-    window.addEventListener('resize', function () {
-      width = canvas.clientWidth;
-      height = canvas.clientHeight;
-      canvas.width = width * 2;
-      canvas.height = height * 2;
-    });
-  }
-
-  function waitForCobe() {
-    if (window.createGlobe) { initGlobe(); }
-    else { setTimeout(waitForCobe, 100); }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', waitForCobe);
-  } else {
-    waitForCobe();
-  }
-})();
+  window.addEventListener('resize', function () {
+    w = canvas.clientWidth;
+    h = canvas.clientHeight;
+    canvas.width = w * 2;
+    canvas.height = h * 2;
+  });
+}
 </script>
 
 <script src="assets/shared.js" defer></script>
