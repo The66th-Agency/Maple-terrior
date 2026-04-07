@@ -2392,6 +2392,7 @@ var MapleCart = (function () {
         ctx.strokeStyle = 'rgba(217, 209, 196, 0.25)';
         ctx.lineWidth = 0.8;
         for (var glat = -60; glat <= 60; glat += 30) {
+          if (glat === 0) continue; // skip equator
           var gy = ((90 - glat) / 180) * texCanvas.height;
           ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(texCanvas.width, gy); ctx.stroke();
         }
