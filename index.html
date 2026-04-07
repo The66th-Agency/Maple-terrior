@@ -2381,7 +2381,7 @@ var MapleCart = (function () {
         var texSize = 2048;
         var texCanvas = document.createElement('canvas');
         texCanvas.width = texSize;
-        texCanvas.height = texSize / 2;
+        texCanvas.height = texSize;
         var ctx = texCanvas.getContext('2d');
 
         // Ocean
@@ -2432,11 +2432,9 @@ var MapleCart = (function () {
       });
 
     // Start with plain cream sphere while texture loads
-    var globeGeo = new THREE.SphereGeometry(radius, 64, 64);
-    var globeMat = new THREE.MeshPhongMaterial({
-      color: 0xF5F0E8,
-      shininess: 8,
-      specular: 0x333333
+    var globeGeo = new THREE.SphereGeometry(radius, 128, 128);
+    var globeMat = new THREE.MeshBasicMaterial({
+      color: 0xF5F0E8
     });
     var globe = new THREE.Mesh(globeGeo, globeMat);
     globeGroup.add(globe);
