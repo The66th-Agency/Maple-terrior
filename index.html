@@ -2348,45 +2348,154 @@ var MapleCart = (function () {
 })();
 </script>
 
-<!-- Globe (cobe - 5KB, real land data built in) -->
-<script type="module">
-import createGlobe from 'https://cdn.skypack.dev/cobe@0.6.3';
+<!-- Three.js Globe with real geographic data -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js" defer></script>
+<script>
+(function () {
+  function initGlobe() {
+    var canvas = document.getElementById('globe-canvas');
+    if (!canvas || !window.THREE || !window.topojson) return;
 
-var canvas = document.getElementById('globe-canvas');
-if (canvas) {
-  var phi = 0;
-  var w = canvas.clientWidth;
-  var h = canvas.clientHeight;
-  canvas.width = w * 2;
-  canvas.height = h * 2;
+    var w = canvas.clientWidth;
+    var h = canvas.clientHeight;
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(w, h);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  var globe = createGlobe(canvas, {
-    devicePixelRatio: Math.min(window.devicePixelRatio, 2),
-    width: w * 2,
-    height: h * 2,
-    phi: 0,
-    theta: 0.15,
-    dark: 0,
-    diffuse: 1.2,
-    mapSamples: 20000,
-    mapBrightness: 6,
-    baseColor: [0.96, 0.93, 0.88],
-    markerColor: [0.77, 0.52, 0.11],
-    glowColor: [0.96, 0.93, 0.88],
-    markers: [],
-    onRender: function (state) {
-      state.phi = phi;
-      phi += 0.003;
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+    camera.position.z = 2.6;
+
+    var radius = 1;
+    var globeGroup = new THREE.Group();
+    globeGroup.rotation.x = 0.15;
+    scene.add(globeGroup);
+
+    // Fetch real world boundaries and paint onto canvas texture
+    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json')
+      .then(function (r) { return r.json(); })
+      .then(function (world) {
+        var land = topojson.feature(world, world.objects.land);
+
+        var texSize = 2048;
+        var texCanvas = document.createElement('canvas');
+        texCanvas.width = texSize;
+        texCanvas.height = texSize;
+        var ctx = texCanvas.getContext('2d');
+
+        // Ocean
+        ctx.fillStyle = '#F5F0E8';
+        ctx.fillRect(0, 0, texCanvas.width, texCanvas.height);
+
+        // No graticule - clean globe
+
+        // Draw each land polygon
+        function drawRing(coords) {
+          ctx.beginPath();
+          for (var i = 0; i < coords.length; i++) {
+            var lng = coords[i][0];
+            var lat = coords[i][1];
+            var x = ((lng + 180) / 360) * texCanvas.width;
+            var y = ((90 - lat) / 180) * texCanvas.height;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+        }
+
+        var geoms = land.type === 'FeatureCollection' ? land.features.map(function(f){return f.geometry;}) : [land.geometry || land];
+
+        geoms.forEach(function (geom) {
+          var polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates];
+          polys.forEach(function (polygon) {
+            // Skip Antarctica (any polygon where most points are below -60)
+            var ring = polygon[0];
+            var southCount = 0;
+            for (var ci = 0; ci < ring.length; ci++) { if (ring[ci][1] < -60) southCount++; }
+            if (southCount > ring.length * 0.5) return;
+
+            polygon.forEach(function (r, idx) {
+              drawRing(r);
+              if (idx === 0) {
+                ctx.fillStyle = 'rgba(196, 132, 29, 0.3)';
+                ctx.fill();
+              }
+            });
+          });
+        });
+
+        // Apply texture
+        var globeTexture = new THREE.CanvasTexture(texCanvas);
+        globe.material.map = globeTexture;
+        globe.material.needsUpdate = true;
+      });
+
+    // Start with plain cream sphere while texture loads
+    var globeGeo = new THREE.SphereGeometry(radius, 128, 128);
+    var globeMat = new THREE.MeshBasicMaterial({
+      color: 0xF5F0E8
+    });
+    var globe = new THREE.Mesh(globeGeo, globeMat);
+    globeGroup.add(globe);
+
+    // Atmosphere glow
+    var glowGeo = new THREE.SphereGeometry(radius * 1.1, 64, 64);
+    var glowMat = new THREE.ShaderMaterial({
+      vertexShader: 'varying vec3 vNormal; void main() { vNormal = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+      fragmentShader: 'varying vec3 vNormal; void main() { float intensity = pow(0.55 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 3.0); gl_FragColor = vec4(0.77, 0.52, 0.11, 1.0) * intensity * 0.3; }',
+      side: THREE.BackSide,
+      blending: THREE.AdditiveBlending,
+      transparent: true
+    });
+    scene.add(new THREE.Mesh(glowGeo, glowMat));
+
+    // Lighting
+    scene.add(new THREE.AmbientLight(0xFDFBF7, 0.7));
+    var dirLight = new THREE.DirectionalLight(0xFDFBF7, 0.4);
+    dirLight.position.set(5, 3, 5);
+    scene.add(dirLight);
+
+    // Smooth auto-rotation
+    var running = false;
+    function animate() {
+      if (!running) return;
+      requestAnimationFrame(animate);
+      globeGroup.rotation.y += 0.0015;
+      renderer.render(scene, camera);
     }
-  });
 
-  window.addEventListener('resize', function () {
-    w = canvas.clientWidth;
-    h = canvas.clientHeight;
-    canvas.width = w * 2;
-    canvas.height = h * 2;
-  });
-}
+    // Only animate when visible
+    var globeObs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        running = true;
+        animate();
+      } else {
+        running = false;
+      }
+    }, { threshold: 0.1 });
+    globeObs.observe(canvas);
+
+    // Resize
+    window.addEventListener('resize', function () {
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
+  }
+
+  function waitForThree() {
+    if (window.THREE) { initGlobe(); }
+    else { setTimeout(waitForThree, 100); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForThree);
+  } else {
+    waitForThree();
+  }
+})();
 </script>
 
 <script src="assets/shared.js" defer></script>
