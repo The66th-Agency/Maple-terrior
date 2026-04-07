@@ -2409,14 +2409,17 @@ var MapleCart = (function () {
         geoms.forEach(function (geom) {
           var polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates];
           polys.forEach(function (polygon) {
-            polygon.forEach(function (ring, idx) {
-              drawRing(ring);
+            // Skip Antarctica (any polygon where most points are below -60)
+            var ring = polygon[0];
+            var southCount = 0;
+            for (var ci = 0; ci < ring.length; ci++) { if (ring[ci][1] < -60) southCount++; }
+            if (southCount > ring.length * 0.5) return;
+
+            polygon.forEach(function (r, idx) {
+              drawRing(r);
               if (idx === 0) {
                 ctx.fillStyle = 'rgba(196, 132, 29, 0.3)';
                 ctx.fill();
-                ctx.strokeStyle = 'rgba(160, 110, 20, 0.5)';
-                ctx.lineWidth = 1.2;
-                ctx.stroke();
               }
             });
           });
