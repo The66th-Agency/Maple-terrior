@@ -2348,13 +2348,14 @@ var MapleCart = (function () {
 })();
 </script>
 
-<!-- Three.js Globe with continents -->
+<!-- Three.js Globe with real geographic data -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js" defer></script>
 <script>
 (function () {
   function initGlobe() {
     var canvas = document.getElementById('globe-canvas');
-    if (!canvas || !window.THREE) return;
+    if (!canvas || !window.THREE || !window.topojson) return;
 
     var w = canvas.clientWidth;
     var h = canvas.clientHeight;
@@ -2368,83 +2369,79 @@ var MapleCart = (function () {
 
     var radius = 1;
     var globeGroup = new THREE.Group();
-    // Tilt globe slightly for visual interest
     globeGroup.rotation.x = 0.15;
     scene.add(globeGroup);
 
-    // Create globe texture by painting continents onto a 2D canvas
-    var texSize = 2048;
-    var texCanvas = document.createElement('canvas');
-    texCanvas.width = texSize;
-    texCanvas.height = texSize / 2;
-    var ctx = texCanvas.getContext('2d');
+    // Fetch real world boundaries and paint onto canvas texture
+    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json')
+      .then(function (r) { return r.json(); })
+      .then(function (world) {
+        var land = topojson.feature(world, world.objects.land);
 
-    // Ocean - cream base
-    ctx.fillStyle = '#F5F0E8';
-    ctx.fillRect(0, 0, texCanvas.width, texCanvas.height);
+        var texSize = 2048;
+        var texCanvas = document.createElement('canvas');
+        texCanvas.width = texSize;
+        texCanvas.height = texSize / 2;
+        var ctx = texCanvas.getContext('2d');
 
-    // Graticule grid
-    ctx.strokeStyle = 'rgba(217, 209, 196, 0.35)';
-    ctx.lineWidth = 1;
-    for (var glat = -60; glat <= 60; glat += 30) {
-      var gy = ((90 - glat) / 180) * texCanvas.height;
-      ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(texCanvas.width, gy); ctx.stroke();
-    }
-    for (var glng = 0; glng < 360; glng += 30) {
-      var gx = (glng / 360) * texCanvas.width;
-      ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, texCanvas.height); ctx.stroke();
-    }
+        // Ocean
+        ctx.fillStyle = '#F5F0E8';
+        ctx.fillRect(0, 0, texCanvas.width, texCanvas.height);
 
-    // Helper: lat/lng to canvas pixel
-    function toPixel(lat, lng) {
-      var x = ((lng + 180) / 360) * texCanvas.width;
-      var y = ((90 - lat) / 180) * texCanvas.height;
-      return [x, y];
-    }
+        // Subtle graticule
+        ctx.strokeStyle = 'rgba(217, 209, 196, 0.25)';
+        ctx.lineWidth = 0.8;
+        for (var glat = -60; glat <= 60; glat += 30) {
+          var gy = ((90 - glat) / 180) * texCanvas.height;
+          ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(texCanvas.width, gy); ctx.stroke();
+        }
+        for (var glng = 0; glng < 360; glng += 30) {
+          var gx = (glng / 360) * texCanvas.width;
+          ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, texCanvas.height); ctx.stroke();
+        }
 
-    // Continent coordinates
-    var continents = {
-      northAmerica: [[70,-165],[72,-130],[70,-100],[65,-90],[60,-80],[50,-65],[45,-65],[42,-70],[30,-82],[25,-80],[20,-90],[15,-87],[10,-84],[8,-77],[10,-75],[12,-82],[18,-88],[22,-97],[25,-110],[32,-117],[37,-122],[43,-125],[48,-125],[55,-133],[58,-137],[60,-147],[63,-152],[65,-168],[70,-165]],
-      greenland: [[60,-45],[62,-42],[65,-40],[68,-30],[72,-22],[76,-20],[78,-22],[80,-30],[82,-40],[82,-50],[80,-58],[78,-65],[76,-68],[72,-55],[68,-52],[65,-45],[62,-48],[60,-45]],
-      southAmerica: [[12,-72],[10,-75],[5,-77],[2,-80],[-5,-80],[-8,-79],[-15,-76],[-18,-70],[-23,-70],[-28,-65],[-33,-58],[-38,-57],[-42,-63],[-46,-67],[-50,-70],[-54,-70],[-55,-67],[-52,-60],[-45,-58],[-40,-50],[-35,-53],[-30,-50],[-25,-47],[-20,-40],[-12,-38],[-5,-35],[0,-50],[5,-60],[8,-62],[10,-67],[12,-72]],
-      europe: [[36,-10],[38,-8],[40,-9],[43,-9],[44,-1],[46,-2],[48,-5],[49,-1],[51,2],[53,5],[55,8],[57,10],[60,5],[62,5],[65,12],[68,15],[70,20],[70,28],[68,30],[65,25],[60,22],[56,18],[54,14],[54,10],[52,5],[50,4],[47,2],[44,3],[43,5],[40,0],[38,-1],[36,-5],[36,-10]],
-      africa: [[37,10],[35,0],[33,-8],[27,-13],[22,-17],[15,-17],[10,-15],[5,-5],[5,10],[2,10],[0,9],[-2,12],[-5,12],[-10,14],[-12,40],[-15,35],[-20,35],[-25,33],[-28,28],[-33,18],[-35,20],[-33,27],[-30,30],[-25,35],[-15,40],[-10,42],[-2,42],[5,42],[10,45],[12,50],[15,42],[20,38],[25,35],[30,32],[32,32],[35,35],[37,10]],
-      asia: [[42,30],[40,45],[38,48],[35,52],[30,50],[25,55],[22,60],[20,65],[25,70],[30,75],[35,72],[38,68],[42,65],[45,60],[50,55],[55,60],[58,62],[60,68],[62,70],[65,75],[68,80],[70,90],[72,100],[70,130],[68,140],[65,150],[62,155],[60,160],[55,160],[50,155],[45,145],[42,142],[40,130],[35,130],[30,120],[25,120],[22,114],[20,110],[15,108],[10,105],[5,100],[0,100],[-5,105],[-8,110],[-5,115],[0,115],[5,120],[8,118],[10,110],[15,100],[18,105],[20,100],[25,90],[28,78],[30,70],[33,60],[35,52]],
-      seAsia: [[-1,104],[1,104],[5,103],[7,100],[5,98],[2,99],[-1,104]],
-      borneo: [[7,117],[4,115],[1,110],[-2,110],[-3,113],[-1,117],[2,118],[5,119],[7,117]],
-      japan: [[31,131],[33,130],[35,132],[36,136],[37,137],[39,140],[41,140],[43,145],[45,142],[42,140],[40,138],[37,136],[35,133],[33,131],[31,131]],
-      australia: [[-12,130],[-14,127],[-16,123],[-20,119],[-24,114],[-28,114],[-32,116],[-35,118],[-37,140],[-38,145],[-38,148],[-35,150],[-30,153],[-25,153],[-20,149],[-16,146],[-14,145],[-13,136],[-12,130]],
-      newZealand: [[-35,174],[-37,175],[-39,176],[-41,175],[-44,170],[-46,168],[-46,166],[-44,168],[-42,172],[-39,174],[-37,174],[-35,174]]
-    };
+        // Draw each land polygon
+        function drawRing(coords) {
+          ctx.beginPath();
+          for (var i = 0; i < coords.length; i++) {
+            var lng = coords[i][0];
+            var lat = coords[i][1];
+            var x = ((lng + 180) / 360) * texCanvas.width;
+            var y = ((90 - lat) / 180) * texCanvas.height;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+        }
 
-    // Draw filled continents + outlines
-    Object.keys(continents).forEach(function (name) {
-      var coords = continents[name];
-      // Fill
-      ctx.beginPath();
-      var p0 = toPixel(coords[0][0], coords[0][1]);
-      ctx.moveTo(p0[0], p0[1]);
-      for (var i = 1; i < coords.length; i++) {
-        var p = toPixel(coords[i][0], coords[i][1]);
-        ctx.lineTo(p[0], p[1]);
-      }
-      ctx.closePath();
-      ctx.fillStyle = 'rgba(196, 132, 29, 0.35)';
-      ctx.fill();
-      // Outline
-      ctx.strokeStyle = 'rgba(176, 115, 24, 0.6)';
-      ctx.lineWidth = 2;
-      ctx.stroke();
-    });
+        var geoms = land.type === 'FeatureCollection' ? land.features.map(function(f){return f.geometry;}) : [land.geometry || land];
 
-    // Create texture from canvas
-    var globeTexture = new THREE.CanvasTexture(texCanvas);
-    globeTexture.wrapS = THREE.RepeatWrapping;
+        geoms.forEach(function (geom) {
+          var polys = geom.type === 'MultiPolygon' ? geom.coordinates : [geom.coordinates];
+          polys.forEach(function (polygon) {
+            polygon.forEach(function (ring, idx) {
+              drawRing(ring);
+              if (idx === 0) {
+                ctx.fillStyle = 'rgba(196, 132, 29, 0.3)';
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(160, 110, 20, 0.5)';
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+              }
+            });
+          });
+        });
 
-    // Globe sphere with texture
+        // Apply texture
+        var globeTexture = new THREE.CanvasTexture(texCanvas);
+        globe.material.map = globeTexture;
+        globe.material.needsUpdate = true;
+      });
+
+    // Start with plain cream sphere while texture loads
     var globeGeo = new THREE.SphereGeometry(radius, 64, 64);
     var globeMat = new THREE.MeshPhongMaterial({
-      map: globeTexture,
+      color: 0xF5F0E8,
       shininess: 8,
       specular: 0x333333
     });
