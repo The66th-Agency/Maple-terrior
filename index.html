@@ -2388,18 +2388,7 @@ var MapleCart = (function () {
         ctx.fillStyle = '#F5F0E8';
         ctx.fillRect(0, 0, texCanvas.width, texCanvas.height);
 
-        // Subtle graticule
-        ctx.strokeStyle = 'rgba(217, 209, 196, 0.25)';
-        ctx.lineWidth = 0.8;
-        for (var glat = -60; glat <= 60; glat += 30) {
-          if (glat === 0) continue; // skip equator
-          var gy = ((90 - glat) / 180) * texCanvas.height;
-          ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(texCanvas.width, gy); ctx.stroke();
-        }
-        for (var glng = 0; glng < 360; glng += 30) {
-          var gx = (glng / 360) * texCanvas.width;
-          ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, texCanvas.height); ctx.stroke();
-        }
+        // No graticule - clean globe
 
         // Draw each land polygon
         function drawRing(coords) {
