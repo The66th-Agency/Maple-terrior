@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <title>Products — Maple Terroir</title>
-  <meta name="description" content="Explore Maple Terroir's full collection of organic maple products — pure maple syrup, stroopwafels, tea, coffee, chocolates, gift sets, and more.">
+  <title>Products  -  Maple Terroir</title>
+  <meta name="description" content="Explore Maple Terroir's full collection of organic maple products  -  pure maple syrup, stroopwafels, tea, coffee, chocolates, gift sets, and more.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -212,7 +212,7 @@
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- PRODUCT CATEGORIES — Dynamically loaded from Shopify   -->
+  <!-- PRODUCT CATEGORIES  -  Dynamically loaded from Shopify   -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto" id="categories-container">
@@ -245,7 +245,7 @@
       <!-- Dynamic categories injected here by JS -->
       <div id="dynamic-categories"></div>
 
-      <!-- Gift Sets — unique layout, kept static but data loaded from API -->
+      <!-- Gift Sets  -  unique layout, kept static but data loaded from API -->
       <div id="gift-sets-section" class="hidden">
         <div class="reveal">
           <div class="bg-amber-warm/8 ring-1 ring-amber-warm/15 p-2 rounded-[2rem] transition-all duration-700 hover:ring-amber-warm/30 hover:bg-amber-warm/12">
@@ -361,7 +361,7 @@
         if (!v) return;
         var price = '$' + Math.round(parseFloat(v.priceV2.amount));
         var label = p.title.replace(/Maple Terroir\s*/i, '').replace(/Gift\s*Set\s*/i, '').trim();
-        btns += '<button class="atc-btn" data-variant-id="' + esc(v.id) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">' + label + ' &mdash; ' + price + '</button>';
+        btns += '<button class="atc-btn" data-variant-id="' + esc(v.id) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">' + label + '  -  ' + price + '</button>';
       });
       btnsEl.innerHTML = btns;
       var fi = products.length && products[0].images.edges.length ? products[0].images.edges[0].node : null;
