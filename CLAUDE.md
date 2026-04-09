@@ -6,7 +6,7 @@ Documented result: 1,500% organic traffic growth (used as case study for The 66t
 Run /taste-review on all frontend changes before shipping.
 
 ## Project Overview
-Premium editorial + headless e-commerce website for Maple Terroir — a fourth-generation, family-owned Canadian maple syrup company based in Quebec's Appalachian Mountains. The site combines storytelling with a fully shoppable catalog powered by Shopify's Storefront API. Deployed to Cloudflare Pages (auto-deploys on push to main).
+Premium editorial + headless e-commerce website for Maple Terroir — a third-generation, family-owned Canadian maple syrup company based in Quebec's Appalachian Mountains. The site combines storytelling with a fully shoppable catalog powered by Shopify's Storefront API. Deployed to Cloudflare Pages (auto-deploys on push to main).
 
 ## Tech Stack
 - **HTML/CSS/JS** — all-in-one single-file pages (no build step, no bundler, no framework)
