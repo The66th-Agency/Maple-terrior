@@ -1487,8 +1487,8 @@
   <section id="scroll-sequence" class="relative bg-charcoal" style="height: 250vh;">
     <!-- Sticky container: frame canvas + text overlays -->
     <div class="sticky top-0 h-[100dvh] w-full overflow-hidden flex items-center justify-center">
-      <!-- Video element  -  scrubbed by scroll position -->
-      <video id="seq-video" class="absolute inset-0 w-full h-full object-cover" style="z-index: 1; will-change: contents;" muted playsinline preload="none" src="assets/videos/revised-stroop-stopmotion.mp4"></video>
+      <!-- Canvas element  -  frame sequence scrubbed by scroll position (reliable across all browsers/hardware) -->
+      <canvas id="seq-canvas" class="absolute inset-0 w-full h-full" style="z-index: 1; object-fit: cover;"></canvas>
 
       <!-- No full-screen overlay  -  text panels have their own frosted glass backgrounds -->
 
@@ -2079,22 +2079,11 @@
       });
     });
 
-    // ── Scroll Sequence: Video scrub animation ──
+    // ── Scroll Sequence: Canvas frame-sequence scrub (reliable across all browsers/hardware) ──
     (function () {
-      const video = document.getElementById('seq-video');
+      const canvas = document.getElementById('seq-canvas');
+      const ctx = canvas.getContext('2d');
       const section = document.getElementById('scroll-sequence');
-
-      // Lazy-load the video when section is approaching viewport
-      var videoLoaded = false;
-      var lazyObs = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting && !videoLoaded) {
-          videoLoaded = true;
-          video.preload = 'auto';
-          video.load();
-          lazyObs.disconnect();
-        }
-      }, { rootMargin: '200px 0px' });
-      lazyObs.observe(section);
       const textEls = [
         document.getElementById('seq-text-1'),
         document.getElementById('seq-text-2'),
@@ -2103,12 +2092,77 @@
       const ring = document.getElementById('seq-ring');
       const counter = document.getElementById('seq-counter');
       const chevron = document.getElementById('seq-chevron');
-      const circumference = 2 * Math.PI * 18; // r=18
+      const circumference = 2 * Math.PI * 18;
 
-      // Ensure video is paused and ready for scrubbing
-      video.pause();
+      const FRAME_COUNT = 96;
+      const frames = new Array(FRAME_COUNT);
+      let firstFrameReady = false;
+      let currentFrame = -1;
 
-      // Compute text opacity from scroll progress
+      // Size canvas to device pixel ratio for crisp rendering
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = Math.round(rect.width * dpr);
+        canvas.height = Math.round(rect.height * dpr);
+        drawFrame(currentFrame >= 0 ? currentFrame : 0, true);
+      }
+
+      // Draw a frame with object-fit: cover behavior
+      function drawFrame(index, force) {
+        if (!force && index === currentFrame) return;
+        const img = frames[index];
+        if (!img || !img.complete || img.naturalWidth === 0) return;
+        currentFrame = index;
+
+        const cw = canvas.width;
+        const ch = canvas.height;
+        const iw = img.naturalWidth;
+        const ih = img.naturalHeight;
+        const scale = Math.max(cw / iw, ch / ih);
+        const dw = iw * scale;
+        const dh = ih * scale;
+        const dx = (cw - dw) / 2;
+        const dy = (ch - dh) / 2;
+
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.drawImage(img, dx, dy, dw, dh);
+      }
+
+      function frameSrc(i) {
+        return 'assets/frames/frame-' + String(i).padStart(4, '0') + '.jpg';
+      }
+
+      // Load frame 0 immediately so section is never blank
+      const first = new Image();
+      first.decoding = 'async';
+      first.onload = function () {
+        frames[0] = first;
+        firstFrameReady = true;
+        resizeCanvas();
+      };
+      first.src = frameSrc(0);
+
+      // Lazy-load the rest when section approaches viewport
+      let loadStarted = false;
+      function loadRemainingFrames() {
+        if (loadStarted) return;
+        loadStarted = true;
+        for (let i = 1; i < FRAME_COUNT; i++) {
+          const img = new Image();
+          img.decoding = 'async';
+          img.src = frameSrc(i);
+          frames[i] = img;
+        }
+      }
+      const lazyObs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          loadRemainingFrames();
+          lazyObs.disconnect();
+        }
+      }, { rootMargin: '400px 0px' });
+      lazyObs.observe(section);
+
       function textOpacity(progress, fadeIn, holdStart, holdEnd, fadeOut) {
         if (progress < fadeIn) return 0;
         if (progress < holdStart) return (progress - fadeIn) / (holdStart - fadeIn);
@@ -2118,7 +2172,6 @@
       }
 
       let rafId = null;
-      let lastTime = -1;
 
       function onScroll() {
         if (rafId) return;
@@ -2128,23 +2181,20 @@
           const rect = section.getBoundingClientRect();
           const sectionHeight = section.offsetHeight;
           const viewportH = window.innerHeight;
-
-          // Progress: 0 when sticky starts, 1 when section ends
           const scrolled = -rect.top;
           const scrollable = sectionHeight - viewportH;
           const progress = Math.max(0, Math.min(1, scrolled / scrollable));
 
-          // Scrub video to match scroll progress
-          if (video.duration && isFinite(video.duration)) {
-            const targetTime = progress * video.duration;
-            // Only seek if time changed meaningfully (avoid jitter)
-            if (Math.abs(targetTime - lastTime) > 0.03) {
-              video.currentTime = targetTime;
-              lastTime = targetTime;
+          // Pick nearest available frame; fall back to last loaded one so we never blank out
+          let target = Math.min(FRAME_COUNT - 1, Math.floor(progress * FRAME_COUNT));
+          let useFrame = target;
+          if (!frames[useFrame] || !frames[useFrame].complete || frames[useFrame].naturalWidth === 0) {
+            for (let i = target; i >= 0; i--) {
+              if (frames[i] && frames[i].complete && frames[i].naturalWidth > 0) { useFrame = i; break; }
             }
           }
+          drawFrame(useFrame);
 
-          // Text overlays
           const o1 = textOpacity(progress, 0.0, 0.06, 0.25, 0.32);
           const o2 = textOpacity(progress, 0.34, 0.40, 0.58, 0.65);
           const o3 = textOpacity(progress, 0.67, 0.73, 0.92, 1.0);
@@ -2153,31 +2203,23 @@
           textEls[1].style.opacity = o2;
           textEls[2].style.opacity = o3;
 
-          // Subtle Y translate for parallax feel
           textEls[0].style.transform = 'translateY(' + ((1 - o1) * 30) + 'px)';
           textEls[1].style.transform = 'translateY(' + ((1 - o2) * 30) + 'px)';
           textEls[2].style.transform = 'translateY(' + ((1 - o3) * 30) + 'px)';
 
-          // Progress ring
           ring.style.strokeDashoffset = circumference * (1 - progress);
 
-          // Section counter
           var activeNum = progress < 0.33 ? 1 : progress < 0.66 ? 2 : 3;
           counter.textContent = activeNum + ' / 3';
 
-          // Fade chevron out as user scrolls (they got the hint)
           chevron.style.opacity = Math.max(0, 1 - progress * 3);
           if (progress > 0.3) chevron.style.animationPlayState = 'paused';
         });
       }
 
-      // Init
       window.addEventListener('scroll', onScroll, { passive: true });
-
-      // Set first frame once video metadata loads
-      video.addEventListener('loadedmetadata', function () {
-        video.currentTime = 0;
-      });
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
     })();
   </script>
 
