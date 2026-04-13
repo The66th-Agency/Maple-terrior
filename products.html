@@ -71,6 +71,22 @@
     .atc-btn:active { transform: scale(0.95); }
     .atc-btn.added { background: #5a7a4e; }
 
+    /* Category filter pills */
+    .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .cat-pill {
+      display: inline-flex; align-items: center; white-space: nowrap;
+      padding: 0.55rem 1rem; border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      font-size: 13px; font-weight: 500; color: #3a342e;
+      background: transparent; border: none; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .cat-pill:hover { color: #1A1714; background: rgba(196,132,29,0.08); }
+    .cat-pill.active { background: #1A1714; color: #FDFBF7; }
+    .cat-pill.active:hover { background: #1A1714; }
+    [id^="cat-"] { scroll-margin-top: 170px; }
+
     /* Hero Add to Cart */
     .atc-btn-hero {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -134,12 +150,12 @@
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
       <a href="index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]" width="1280" height="500" /></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="story.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
         <a href="products.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Products</a>
-        <a href="terroir.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Terroir</a>
-        <a href="blog/" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="certifications.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Certifications</a>
-        <a href="wholesale.html" class="link-underline text-sm font-medium text-warm-gray-600 hover:text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
+        <a href="certifications.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Certifications</a>
+        <a href="wholesale.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
@@ -204,10 +220,19 @@
   </section>
 
 
+  <!-- Category filter / jump nav -->
+  <div id="category-filter" class="sticky top-[88px] z-30 px-4 md:px-8 mb-4">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="nav-glass rounded-full border border-warm-gray-200/50 px-3 py-2 overflow-x-auto scrollbar-hide">
+        <div id="category-filter-pills" class="flex items-center gap-1.5 min-w-max"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- PRODUCT CATEGORIES  -  Dynamically loaded from Shopify   -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-16 md:py-24 px-4 md:px-8">
+  <section class="py-10 md:py-16 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto" id="categories-container">
 
       <!-- Loading skeleton -->
@@ -239,7 +264,7 @@
       <div id="dynamic-categories"></div>
 
       <!-- Gift Sets  -  unique layout, kept static but data loaded from API -->
-      <div id="gift-sets-section" class="hidden">
+      <div id="cat-gift-sets" class="hidden" data-gift-sets="1">
         <div class="reveal">
           <div class="bg-amber-warm/8 ring-1 ring-amber-warm/15 p-2 rounded-[2rem] transition-all duration-700 hover:ring-amber-warm/30 hover:bg-amber-warm/12">
             <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] p-10 md:p-16 min-h-[300px] md:min-h-[360px] flex flex-col md:flex-row items-center justify-between gap-10">
@@ -333,7 +358,7 @@
     }
 
     function renderCategory(cat, products) {
-      var html = '<div class="mb-20 md:mb-28">' +
+      var html = '<div id="cat-' + cat.handle + '" class="mb-20 md:mb-28">' +
         '<div class="flex items-end justify-between mb-10"><div>' +
           '<span class="reveal eyebrow text-amber-warm mb-3 block">' + cat.eyebrow + '</span>' +
           '<h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">' + cat.title + '</h2>' +
@@ -345,7 +370,7 @@
     }
 
     function renderGiftSets(products) {
-      var section = document.getElementById('gift-sets-section');
+      var section = document.getElementById('cat-gift-sets');
       var btnsEl = document.getElementById('gift-sets-buttons');
       var imgEl = document.getElementById('gift-sets-image');
       var btns = '';
@@ -394,7 +419,42 @@
         entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.classList.add('visible'); });
       }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
       container.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
-      document.getElementById('gift-sets-section').querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+      document.getElementById('cat-gift-sets').querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+
+      // Build filter pills only for categories that actually rendered
+      var pillsEl = document.getElementById('category-filter-pills');
+      var rendered = CATEGORIES.filter(function (cat) {
+        return document.getElementById('cat-' + cat.handle);
+      });
+      var pillsHtml = rendered.map(function (cat) {
+        var label = cat.title.replace(/&amp;/g, '&');
+        return '<button class="cat-pill" data-target="cat-' + cat.handle + '">' + label + '</button>';
+      }).join('');
+      pillsEl.innerHTML = pillsHtml;
+
+      pillsEl.querySelectorAll('.cat-pill').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var el = document.getElementById(btn.dataset.target);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+
+      // Scroll-spy: highlight active pill based on scroll position
+      var sections = rendered.map(function (cat) { return document.getElementById('cat-' + cat.handle); }).filter(Boolean);
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            pillsEl.querySelectorAll('.cat-pill').forEach(function (b) {
+              b.classList.toggle('active', b.dataset.target === id);
+            });
+            var activeBtn = pillsEl.querySelector('.cat-pill.active');
+            if (activeBtn) activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          }
+        });
+      }, { rootMargin: '-180px 0px -60% 0px', threshold: 0 });
+      sections.forEach(function (s) { spy.observe(s); });
+      if (pillsEl.querySelector('.cat-pill')) pillsEl.querySelector('.cat-pill').classList.add('active');
     }).catch(function (err) {
       console.error('Failed to load products:', err);
       loading.innerHTML = '<div class="text-center py-20"><p class="text-warm-gray-400 text-lg">Unable to load products. Please refresh the page.</p></div>';
