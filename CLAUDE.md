@@ -100,13 +100,18 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 - **Consistent headers**: Use the eyebrow → H2 pattern across all sections (user rejected variety)
 - **Consistent section width**: All sections must use `max-w-[1400px] mx-auto px-4 md:px-8`. No section should break out of this container or use full-viewport width.
 
-## Deployment
+## Deployment & Environments
 **Always commit and push to `main` after completing changes.** This project auto-deploys via Cloudflare Pages on push to `main` (GitHub repo `The66th-Agency/Maple-terrior`). Don't wait for the user to ask - if the work is done, push it.
+
+### Which URL is what (CRITICAL — verify before any QA)
+- **`https://maple-terrior-new.liamlytton99.workers.dev/`** — the Cloudflare Workers preview of THIS repo. This is the canonical preview Liam and Shawn review against. When the client says "the site" or "pull up the site," default to this URL.
+- **`https://mapleterroir.com/`** — legacy public Shopify storefront. Different design, different copy, different product ordering. Do NOT treat as source of truth for the rebuild. Only reference when explicitly asked about what is currently live on Shopify.
+- Never tell the client "I'm working on the right site" without first confirming which URL they are looking at.
 
 ## Lab Notes
 [date] [what happened] [what to do differently]
 
-2026-03-29 — Deployment was switched from Cloudflare Pages to Workers (`maple-terrior-new`) via Wrangler in a previous session. Workers requires manual `wrangler deploy` and API token auth, breaking the auto-deploy flow. Reverted back to Pages (auto-deploys on push to `main` via GitHub repo `The66th-Agency/Maple-terrior`). **Rule: Always use Cloudflare Pages for this project. Never switch to Workers - there's no benefit and it breaks auto-deploy.**
+2026-03-29 — [SUPERSEDED by 2026-04-15 entry below] Originally logged a "never switch to Workers" rule. That turned out to be stale. The Workers URL `maple-terrior-new.liamlytton99.workers.dev` IS the canonical preview the client reviews against.
 
 2026-03-30 — When making bento grid changes (copy, subtext, contrast), apply changes uniformly across ALL cards. Proposed removing body copy from some cards but keeping it on others (syrup + chocolates) based on a judgment call - resulted in an inconsistent grid that looked worse than either all-in or all-out. Had to do a second commit to fix it. **Rule: Bento grids are a system. Any copy or style change must be applied consistently to every card. Never half-apply - pick a direction and commit to all cards at once.**
 
@@ -115,4 +120,34 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 2. Blueberry box photo was uploaded to "Blueberry Ceylon Tea" instead of "Dark Chocolate Covered Blueberry" due to similar names. **Rule: Always use exact full Shopify product titles when giving upload instructions. Never use shorthand.**
 3. object-contain CSS fix looked great on tall box products but broke wide bag products, had to revert. **Rule: Before deploying any CSS change, mentally test it against ALL product types on the page, not just the target.**
 4. Syrup collection was reordered in Shopify but products.html had its own JS sort (SYRUP_ORDER) overriding Shopify's manual order. Wasted time in Shopify before finding the code override. **Rule: Always check if the codebase has client-side sort/filter logic before sending the user into Shopify to fix ordering.**
+
+2026-04-15 — Full session log. Shawn sent red-markup screenshots with FAQ edits, product reorder asks, stat corrections, photo swaps, and a stroopwafel title-wrap complaint. All shipped, but several unforced errors along the way.
+
+### Mistakes and rules
+
+1. **Pulled up mapleterroir.com (legacy Shopify) when Liam said "pull up the MT website."** Wasted his time. Then cited a stale 2026-03-29 lab note ("never use Workers") to argue when he pushed back, instead of verifying against reality. **Rule: Before any MT QA, content, or "check the site" task, default to `maple-terrior-new.liamlytton99.workers.dev`. Never cite a lab note against observed evidence — verify first, update the note second.** The Workers URL vs Shopify URL distinction is now in the Deployment & Environments section above; re-read it any time the client says "the site."
+
+2. **Claimed all 5 stroopwafel titles rendered on 2 lines when Pure Maple Syrup Stroopwafels was actually on 1 line of text inside a 2-line-padded box.** Was measuring `boundingBox.height / lineHeight`, which is fooled by `min-height` + `line-clamp`. Shawn was right; I told Liam he was wrong; had to eat it. **Rule: When asked "does this text wrap to N lines," measure via `Range.getClientRects()` and count distinct `top` values. Bounding-box math lies whenever `min-height`, padding, `line-clamp`, or `-webkit-box` is involved.**
+
+3. **Shipped a hardcoded `<br>` for Pure Maple that fixed mid-width but broke wide viewports** — others went to 1 line while Pure Maple stayed 2 lines, the inverse of the original bug. Didn't test at multiple widths before pushing. **Rule: Any fix to product-card title wrapping, grid alignment, bento copy, or any layout symptom caused by mixed line counts must be tested at a minimum of 3 viewport widths (narrow ~400px, mid ~1280px, wide ~1920px) before commit. Per-item overrides almost always create the inverse bug somewhere else — prefer dynamic equalizers (post-render JS measuring actual line counts per grid).**
+
+4. **Summarised only part of the session when Liam asked for a recap.** Gave him the 4 latest edits and left out the FAQ work from earlier in the same session. He had to chase me for it. **Rule: When the user asks for "what did we do" or "summary," recap the entire session, not just the most recent batch. When unsure of scope, check `git log` for every commit since the session started and list each.**
+
+### Patterns and infrastructure we built this session
+
+- **Dynamic title equalizer** — in [products.html](products.html) and [collections/stroopwafels.html](collections/stroopwafels.html). Post-render JS per grid: measure each title via `Range.getClientRects()`; if any wraps to 2+ lines, split every title before its last word with `<br>`; if all fit on 1 line, collapse `min-height` to 0. Re-runs on window resize (debounced 150ms). Reuse this pattern for any grid where mixed title lengths cause uneven card heights.
+- **Cookie sort order** — `COOKIE_ORDER` + `cookieSortKey` in [products.html](products.html), same pattern as `SYRUP_ORDER` (client-side sort overrides Shopify's manual collection order). If Shawn reorders the cookies collection in Shopify and nothing moves, this is why.
+- **Markets grid is 3-col on md+** — [certifications.html](certifications.html). Was 2-col; upgraded to fit CA/JP/KR/CN/US/TW. Touching this grid means accounting for 6+ cards, not 4.
+
+### Copy and content facts locked in
+
+- **"Our Promise" stats on [terroir.html](terroir.html):** 3rd Generation Farm (not 4th), 3x Certified (not "4x Organic Certified"). Only the SYRUP is organic-certified, not the full product line — so claims like "4x organic certified" across the whole company are wrong. The 3 certs are Ecocert, Canada Organic, USDA Organic.
+- **FAQ source of truth is [index.html](index.html) homepage only** — no standalone FAQ page. Currently 12 Qs: 7 original (Shawn-edited) + 5 new (international shipping, storage, grades, organic cert, wholesale). When Shawn asks to "add more FAQs," append here.
+- **Markets list (CA/JP/KR/CN/US/TW)** is framed as "markets served" on the certifications page — that context is fine to list countries in. This is different from the global rule "don't list specific shipping countries in FAQ/shipping claims" (import regs vary). The distinction: market presence vs shipping offering.
+- **No contractions rule** still holds for all user-facing MT copy. Drafted new FAQ entries this session follow this.
+
+### Asset handling
+
+- **Photo swaps from the legacy Shopify site** — the current `mapleterroir.com` is built on Instant.so and its CDN is `cdn.instant.so/sites/Kjn4vpPuFvAsOEBs/assets/...`. When the client references "the photo on the current site," find it there and **download + host locally** in `assets/images/`. Never hotlink from `cdn.instant.so` — if their plan lapses or assets rotate, our site breaks. Example this session: [assets/images/maple-syrup-french-toast-pour.webp](assets/images/maple-syrup-french-toast-pour.webp).
+- **Unsplash is a fallback only** — when a real product/lifestyle photo exists on the legacy site, always prefer that over Unsplash. Unsplash images flag as generic stock to anyone who has seen the client's real content.
 
