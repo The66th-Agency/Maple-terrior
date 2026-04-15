@@ -362,7 +362,7 @@
               '<div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
                 (img ? '<img src="' + img.url + '&width=500" alt="' + (img.altText || p.title).replace(/"/g, '&quot;') + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') +
               '</div>' +
-              '<h3 class="font-medium text-sm text-charcoal mb-1 group-hover:text-amber-warm transition-colors" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">' + (p.title === 'Pure Maple Syrup Stroopwafels' ? 'Pure Maple Syrup<br>Stroopwafels' : p.title) + '</h3>' +
+              '<h3 class="font-medium text-sm text-charcoal mb-1 group-hover:text-amber-warm transition-colors product-title" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">' + p.title + '</h3>' +
             '</a>' +
             '<div class="flex items-center justify-between">' +
               '<p class="text-xs text-warm-gray-500">$' + price + ' CAD</p>' +
@@ -370,8 +370,38 @@
             '</div>';
           grid.appendChild(card);
         });
+        equalizeTitleWrapping();
       });
     }
+
+    function equalizeTitleWrapping() {
+      document.querySelectorAll('.grid, #collection-grid').forEach(function (grid) {
+        var titles = grid.querySelectorAll('.product-title');
+        if (titles.length < 2) return;
+        titles.forEach(function (t) { t.dataset.original = t.dataset.original || t.textContent; t.innerHTML = t.dataset.original; });
+        var anyWraps = false;
+        titles.forEach(function (t) {
+          var r = document.createRange(); r.selectNodeContents(t);
+          var rects = r.getClientRects();
+          var ys = new Set();
+          for (var i = 0; i < rects.length; i++) ys.add(Math.round(rects[i].top));
+          if (ys.size > 1) anyWraps = true;
+        });
+        titles.forEach(function (t) {
+          if (anyWraps) {
+            var text = t.dataset.original;
+            var idx = text.lastIndexOf(' ');
+            if (idx > 0) t.innerHTML = text.slice(0, idx) + '<br>' + text.slice(idx + 1);
+            t.style.minHeight = '2.5rem';
+          } else {
+            t.style.minHeight = '0';
+          }
+        });
+      });
+    }
+
+    var _eqT;
+    window.addEventListener('resize', function () { clearTimeout(_eqT); _eqT = setTimeout(equalizeTitleWrapping, 150); });
 
     loadCollection();
   </script>
