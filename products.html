@@ -320,6 +320,18 @@
       return 99;
     }
 
+    /* ── Product ordering for maple-cookies (Shawn sequence) ── */
+    var COOKIE_ORDER = ['sugar', 'blueberry', 'shortbread', 'mini stroopwafel', 'stroopwafel'];
+    function cookieSortKey(title) {
+      var t = title.toLowerCase();
+      if (t.indexOf('mini stroopwafel') !== -1) return 3;
+      if (t.indexOf('stroopwafel') !== -1) return 4;
+      if (t.indexOf('shortbread') !== -1) return 2;
+      if (t.indexOf('blueberry') !== -1) return 1;
+      if (t.indexOf('sugar') !== -1) return 0;
+      return 99;
+    }
+
     /* ── Products to hide from catalog ── */
     var HIDDEN_PRODUCTS = ['blueberry-ceylon', 'blueberry ceylon', 'blueberry-tea', 'blueberry tea', 'kettle-chip', 'kettle chip', 'maple kettle', 'chocolates-bare-50', 'chocolate bare 50', 'chocolate-bar-50'];
     function isHidden(p) {
@@ -434,6 +446,10 @@
         // Custom sort for maple syrup collection
         if (cat.handle === 'maple-syrup-all') {
           products.sort(function (a, b) { return syrupSortKey(a.title) - syrupSortKey(b.title); });
+        }
+        // Custom sort for cookies & sweets collection
+        if (cat.handle === 'maple-cookies') {
+          products.sort(function (a, b) { return cookieSortKey(a.title) - cookieSortKey(b.title); });
         }
         if (cat.handle === 'gift-sets') { renderGiftSets(products); }
         else { html += renderCategory(cat, products); }
