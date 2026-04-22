@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://mapleterroir.com/blog/">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <title>Blog  -  Maple Terroir</title>
   <meta name="description" content="Stories from the sugar bush. Explore articles about maple syrup culture, community partnerships, and educational guides from Maple Terroir.">
@@ -321,14 +322,14 @@
           card.innerHTML =
             '<div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem] h-full transition-all duration-500 group-hover:ring-amber-warm/20">' +
               '<div class="relative rounded-[2rem] overflow-hidden aspect-[4/3] mb-0 bg-cream-dark">' +
-                (a.image ? '<img src="' + a.image.url + '&width=700" alt="' + (a.image.altText || a.title).replace(/"/g, '&quot;') + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full" style="background:linear-gradient(135deg,#F4C77D 0%,#E8A84C 40%,#C4841D 100%)"></div>') +
+                (a.image ? '<img src="' + a.image.url + '&width=700" alt="' + (window.MapleEsc||String)(a.image.altText || a.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full" style="background:linear-gradient(135deg,#F4C77D 0%,#E8A84C 40%,#C4841D 100%)"></div>') +
                 (tag ? '<div class="absolute top-4 left-4"><span class="inline-block bg-cream/90 backdrop-blur-sm text-amber-deep text-xs font-semibold px-3 py-1.5 rounded-full">' + tag + '</span></div>' : '') +
               '</div>' +
               '<div class="p-5 md:p-6">' +
                 '<time class="text-xs text-warm-gray-400 font-medium">' + date + '</time>' +
                 (a.authorV2 ? '<span class="text-xs text-warm-gray-300 mx-2">&middot;</span><span class="text-xs text-warm-gray-400">' + a.authorV2.name + '</span>' : '') +
                 '<h2 class="font-display text-xl md:text-2xl font-semibold text-charcoal mt-2 mb-3 leading-snug group-hover:text-amber-warm transition-colors duration-300">' + a.title + '</h2>' +
-                '<p class="text-sm text-warm-gray-500 leading-relaxed mb-4" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">' + (a.excerpt || '') + '</p>' +
+                '<p class="text-sm text-warm-gray-500 leading-relaxed mb-4" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">' + (window.MapleEsc||String)(a.excerpt || '') + '</p>' +
                 '<span class="text-sm font-medium text-amber-warm">Read more</span>' +
               '</div>' +
             '</div>';
@@ -551,7 +552,7 @@
         emptyEl.style.display = 'none'; footerEl.style.display = '';
         lines.forEach(function (line) {
           var v = line.merchandise; var price = parseFloat(v.priceV2.amount) * line.quantity; var imgUrl = v.image ? v.image.url + '&width=144' : ''; var div = document.createElement('div'); div.className = 'cart-item';
-          div.innerHTML = (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (v.image.altText || v.product.title).replace(/"/g, '&quot;') + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + price.toFixed(2) + '</span></div></div>';
+          div.innerHTML = (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (window.MapleEsc||String)(v.image.altText || v.product.title) + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + price.toFixed(2) + '</span></div></div>';
           itemsEl.appendChild(div);
         });
         if (cartData.cost && cartData.cost.subtotalAmount) { subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2) + ' CAD'; }
@@ -559,7 +560,7 @@
       }
       function toggle() { var overlay = document.getElementById('cart-overlay'); var drawer = document.getElementById('cart-drawer'); var isOpen = drawer.classList.contains('open'); drawer.classList.toggle('open'); overlay.classList.toggle('open'); document.body.style.overflow = isOpen ? '' : 'hidden'; if (!isOpen) renderDrawer(); }
       function addFromBtn(btn) { var variantId = btn.dataset.variantId; if (!variantId) return; var origHTML = btn.innerHTML; btn.classList.add('added'); btn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added'; addLine(variantId, 1).then(function () { renderBadge(); setTimeout(function () { btn.classList.remove('added'); btn.innerHTML = origHTML; }, 1400); }); }
-      function checkout() { if (cartData && cartData.checkoutUrl) { window.location.href = cartData.checkoutUrl; } }
+      function checkout() { if (!cartData || !cartData.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cartData.checkoutUrl); } else { window.location.href = cartData.checkoutUrl; } }
       function init() { fetchCart().then(function () { renderBadge(); }); document.getElementById('cart-overlay').addEventListener('click', toggle); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle(); }); }
       if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
       return { toggle: toggle, addFromBtn: addFromBtn, checkout: checkout };

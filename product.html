@@ -645,7 +645,7 @@
     function loadProduct() {
       var params = new URLSearchParams(window.location.search);
       var handle = params.get('handle');
-      if (!handle) { window.location.href = 'products.html'; return; }
+      if (!handle) { window.location.href = '404.html'; return; }
 
       var STOREFRONT_URL = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
       var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
@@ -653,12 +653,18 @@
       fetch(STOREFRONT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN },
-        body: JSON.stringify({ query: '{ productByHandle(handle: "' + handle + '") { id title handle description descriptionHtml tags vendor productType images(first:10) { edges { node { url altText } } } variants(first:10) { edges { node { id title priceV2 { amount currencyCode } availableForSale image { url altText } } } } } }' })
+        body: JSON.stringify({
+          query: 'query($handle:String!){ productByHandle(handle:$handle){ id title handle description descriptionHtml tags vendor productType images(first:10){edges{node{url altText}}} variants(first:10){edges{node{id title priceV2{amount currencyCode} availableForSale image{url altText}}}} } }',
+          variables: { handle: handle }
+        })
       })
       .then(function (r) { return r.json(); })
       .then(function (res) {
-        var p = res.data.productByHandle;
-        if (!p) { window.location.href = 'products.html'; return; }
+        var p = res.data && res.data.productByHandle;
+        if (!p) { window.location.href = '404.html'; return; }
+        var canon = document.querySelector('link[rel="canonical"]');
+        if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
+        canon.href = 'https://mapleterroir.com/product.html?handle=' + encodeURIComponent(p.handle);
         productData = p;
         renderProduct(p);
         loadRecommendations(handle);
@@ -674,13 +680,13 @@
       document.title = p.title + '  -  Maple Terroir';
       document.getElementById('breadcrumb-title').textContent = p.title;
       document.getElementById('product-title').textContent = p.title;
-      document.getElementById('product-type').innerHTML = '<svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg> ' + (p.productType || 'Maple Products');
+      document.getElementById('product-type').innerHTML = '<svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg> ' + (window.MapleEsc||String)(p.productType || 'Maple Products');
 
       // Images
       var images = p.images.edges.map(function (e) { return e.node; });
       if (images.length) {
         var mainEl = document.getElementById('gallery-main');
-        mainEl.innerHTML = '<img src="' + images[0].url + '&width=800" alt="' + (images[0].altText || p.title).replace(/"/g,'&quot;') + '">';
+        mainEl.innerHTML = '<img src="' + images[0].url + '&width=800" alt="' + (window.MapleEsc||String)(images[0].altText || p.title) + '">';
         // Zoom: track mouse position for transform-origin
         mainEl.addEventListener('mousemove', function (e) {
           var rect = mainEl.getBoundingClientRect();
@@ -694,7 +700,7 @@
         images.forEach(function (img, i) {
           var thumb = document.createElement('button');
           thumb.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
-          thumb.innerHTML = '<img src="' + img.url + '&width=144" alt="' + (img.altText || '').replace(/"/g,'&quot;') + '">';
+          thumb.innerHTML = '<img src="' + img.url + '&width=144" alt="' + (window.MapleEsc||String)(img.altText || '') + '">';
           thumb.addEventListener('click', function () {
             mainEl.querySelector('img').src = img.url + '&width=800';
             thumbsEl.querySelectorAll('.gallery-thumb').forEach(function (t) { t.classList.remove('active'); });
@@ -773,8 +779,8 @@
       // Product details
       var detailsEl = document.getElementById('product-details');
       var detailRows = '';
-      detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Brand</span><span class="pdp-detail-value">' + (p.vendor || 'Maple Terroir') + '</span></div>';
-      detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Category</span><span class="pdp-detail-value">' + (p.productType || 'Maple Products') + '</span></div>';
+      detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Brand</span><span class="pdp-detail-value">' + (window.MapleEsc||String)(p.vendor || 'Maple Terroir') + '</span></div>';
+      detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Category</span><span class="pdp-detail-value">' + (window.MapleEsc||String)(p.productType || 'Maple Products') + '</span></div>';
       if (variants.length > 1) {
         detailRows += '<div class="pdp-detail-row"><span class="pdp-detail-label">Available sizes</span><span class="pdp-detail-value">' + variants.length + ' options</span></div>';
       }
@@ -841,8 +847,8 @@
           card.href = 'product.html?handle=' + p.handle;
           card.className = 'rec-card group block';
           card.innerHTML = '<div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
-            (img ? '<img src="' + img.url + '&width=400" alt="' + (img.altText || p.title).replace(/"/g,'&quot;') + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '') +
-            '</div><h3 class="font-medium text-sm text-charcoal mb-1">' + p.title + '</h3><p class="text-xs text-warm-gray-500">$' + price + ' CAD</p>';
+            (img ? '<img src="' + img.url + '&width=400" alt="' + (window.MapleEsc||String)(img.altText || p.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '') +
+            '</div><h3 class="font-medium text-sm text-charcoal mb-1">' + (window.MapleEsc||String)(p.title) + '</h3><p class="text-xs text-warm-gray-500">$' + price + ' CAD</p>';
           recEl.appendChild(card);
         });
       })
@@ -879,14 +885,14 @@
         emptyEl.style.display = 'none'; footerEl.style.display = '';
         lines.forEach(function (line) {
           var v = line.merchandise; var price = parseFloat(v.priceV2.amount) * line.quantity; var imgUrl = v.image ? v.image.url + '&width=144' : ''; var div = document.createElement('div'); div.className = 'cart-item';
-          div.innerHTML = (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (v.image.altText || v.product.title).replace(/"/g, '&quot;') + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + price.toFixed(2) + '</span></div></div>';
+          div.innerHTML = (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (window.MapleEsc||String)(v.image.altText || v.product.title) + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + price.toFixed(2) + '</span></div></div>';
           itemsEl.appendChild(div);
         });
         if (cartData.cost && cartData.cost.subtotalAmount) { subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2) + ' CAD'; }
         itemsEl.querySelectorAll('[data-action]').forEach(function (btn) { btn.addEventListener('click', function () { var lineId = btn.dataset.line; var action = btn.dataset.action; var line = lines.find(function (l) { return l.id === lineId; }); if (!line) return; var newQty = action === 'inc' ? line.quantity + 1 : line.quantity - 1; var p = newQty <= 0 ? removeLine(lineId) : updateLine(lineId, newQty); p.then(function () { renderDrawer(); renderBadge(); }); }); });
       }
       function toggle() { var overlay = document.getElementById('cart-overlay'); var drawer = document.getElementById('cart-drawer'); var isOpen = drawer.classList.contains('open'); drawer.classList.toggle('open'); overlay.classList.toggle('open'); document.body.style.overflow = isOpen ? '' : 'hidden'; if (!isOpen) renderDrawer(); }
-      function checkout() { if (cartData && cartData.checkoutUrl) { window.location.href = cartData.checkoutUrl; } }
+      function checkout() { if (!cartData || !cartData.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cartData.checkoutUrl); } else { window.location.href = cartData.checkoutUrl; } }
       function init() { fetchCart().then(function () { renderBadge(); }); document.getElementById('cart-overlay').addEventListener('click', toggle); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle(); }); }
       if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
       return { toggle: toggle, addLine: addLine, renderBadge: renderBadge, checkout: checkout };

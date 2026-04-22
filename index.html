@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://mapleterroir.com/">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <title>Maple Terroir  -  Pure Maple from Canada</title>
   <meta name="description" content="Since 1978, Maple Terroir has delivered single-origin organic maple products from Quebec's Appalachian Mountains to tables worldwide. Family-owned, certified organic, proudly Canadian.">
@@ -2355,9 +2356,9 @@ var MapleCart = (function () {
       var div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML =
-        (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (v.image.altText || v.product.title).replace(/"/g, '&quot;') + '">' : '<div class="cart-item-img"></div>') +
+        (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (window.MapleEsc||String)(v.image.altText || v.product.title) + '">' : '<div class="cart-item-img"></div>') +
         '<div class="cart-item-info">' +
-          '<div class="cart-item-name">' + v.product.title + '</div>' +
+          '<div class="cart-item-name">' + (window.MapleEsc||String)(v.product.title) + '</div>' +
           '<div class="cart-item-variant">' + v.title + '</div>' +
           '<div class="cart-item-bottom">' +
             '<div class="cart-item-qty">' +
@@ -2414,7 +2415,10 @@ var MapleCart = (function () {
   }
 
   function checkout() {
-    if (cartData && cartData.checkoutUrl) {
+    if (!cartData || !cartData.checkoutUrl) return;
+    if (window.MapleSafeCheckout) {
+      window.MapleSafeCheckout(cartData.checkoutUrl);
+    } else {
       window.location.href = cartData.checkoutUrl;
     }
   }

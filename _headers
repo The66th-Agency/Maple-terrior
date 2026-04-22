@@ -1,0 +1,24 @@
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), browsing-topics=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://us.i.posthog.com https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://cdn.shopify.com https://images.unsplash.com; media-src 'self' https://cdn.shopify.com; connect-src 'self' https://maple-terroir.myshopify.com https://us.i.posthog.com https://us-assets.i.posthog.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.myshopify.com; object-src 'none'; upgrade-insecure-requests
+
+# Long cache for hashed assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Short cache for HTML so updates roll out fast
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Block indexing on the Workers preview host (mapped per-host below isn't possible
+# in _headers, so this also goes on prod; canonical tags handle prod indexing)
+/CLAUDE.md
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/*.bak
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store

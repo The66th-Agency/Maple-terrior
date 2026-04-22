@@ -1,4 +1,18 @@
 .claude/
-index.html.bak
-.env
 .qa-screenshots/
+.wrangler/
+node_modules/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Backups and editor noise
+*.bak
+*.swp
+*.tmp
+.DS_Store
+Thumbs.db

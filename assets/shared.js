@@ -3,6 +3,44 @@
 // Search, Announcement Bar, Back to Top, Recently Viewed
 // ═══════════════════════════════════════════════════════
 
+// ── Security helpers (exposed globally for per-page cart code) ─────
+// Why exposed: each page has its own inline cart IIFE that needs to
+// validate the Shopify checkout URL and the cached cart id.
+window.MapleEsc = function (s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+};
+
+// Allowlist redirect for Shopify-issued checkout URLs. Returns true on redirect.
+window.MapleSafeCheckout = function (url) {
+  if (!url) return false;
+  var u;
+  try { u = new URL(url, window.location.origin); } catch (e) { return false; }
+  if (u.protocol !== 'https:') return false;
+  var allowed = /(^|\.)myshopify\.com$|(^|\.)shopify\.com$|^checkout\.mapleterroir\.com$|^mapleterroir\.com$/i;
+  if (!allowed.test(u.hostname)) return false;
+  window.location.href = u.href;
+  return true;
+};
+
+// Shopify Cart IDs are GIDs ("gid://shopify/Cart/...") or short opaque strings.
+// Drop anything with HTML chars, whitespace, or wrong shape — likely tampered.
+window.MapleValidCartId = function (id) {
+  if (!id || typeof id !== 'string') return false;
+  if (id.length > 512) return false;
+  return /^[A-Za-z0-9:/?=\-_.%]+$/.test(id);
+};
+
+// Sanitize the persisted cart id at page load. If invalid, drop it so the
+// per-page cart IIFEs see a clean slate.
+(function () {
+  var raw = localStorage.getItem('maple_cart_id');
+  if (raw && !window.MapleValidCartId(raw)) {
+    localStorage.removeItem('maple_cart_id');
+  }
+})();
+
 // ── PostHog Analytics (delayed until after page load) ─────
 function loadPostHog() {
   if (window.__posthogLoaded) return;
@@ -21,6 +59,7 @@ setTimeout(loadPostHog, 3000);
 (function () {
   var SU = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
   var ST = '59618e3b6f5e626df6c5f527b4972d3d';
+  var esc = window.MapleEsc;
 
   // Detect if we're in a subdirectory
   var pathPrefix = (window.location.pathname.includes('/blog/') || window.location.pathname.includes('/collections/')) ? '../' : '';
@@ -72,7 +111,7 @@ setTimeout(loadPostHog, 3000);
         '<div style="background:#FDFBF7;border-radius:2rem;box-shadow:0 32px 80px -20px rgba(26,23,20,0.2);overflow:hidden;border:1px solid rgba(217,209,196,0.3)">' +
           '<div style="display:flex;align-items:center;gap:0.75rem;padding:1.25rem 1.5rem;border-bottom:1px solid rgba(217,209,196,0.3)">' +
             '<svg style="width:20px;height:20px;color:#B8AD9E;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>' +
-            '<input id="search-input" type="text" placeholder="Search products..." style="flex:1;border:none;outline:none;background:none;font-family:Plus Jakarta Sans,system-ui,sans-serif;font-size:1rem;color:#1A1714" autocomplete="off">' +
+            '<input id="search-input" type="text" placeholder="Search products..." style="flex:1;border:none;outline:none;background:none;font-family:Plus Jakarta Sans,system-ui,sans-serif;font-size:1rem;color:#1A1714" autocomplete="off" maxlength="100">' +
             '<kbd style="font-size:0.65rem;padding:0.2rem 0.5rem;border-radius:0.375rem;background:rgba(217,209,196,0.3);color:#8C8175;font-family:system-ui">ESC</kbd>' +
           '</div>' +
           '<div id="search-results" style="max-height:400px;overflow-y:auto;padding:0.5rem"></div>' +
@@ -145,25 +184,13 @@ setTimeout(loadPostHog, 3000);
       cartBtn.parentNode.insertBefore(searchBtn, cartBtn);
     }
 
-    // 6. NEWSLETTER SIGNUP IN FOOTER
-    // Disabled until email service is configured. To enable:
-    // Set window.MT_NEWSLETTER_ENABLED = true before shared.js loads
-    if (window.MT_NEWSLETTER_ENABLED) {
-      var footer = document.querySelector('footer');
-      if (footer && !footer.querySelector('.newsletter-form')) {
-        var newsletterHTML = '<div class="newsletter-form" style="border-top:1px solid rgba(217,209,196,0.3);margin-top:2rem;padding-top:2rem;text-align:center">' +
-          '<p style="font-family:Fraunces,Georgia,serif;font-size:1.1rem;font-weight:500;color:#1A1714;margin-bottom:0.5rem">Stay in the loop</p>' +
-          '<p style="font-size:0.8rem;color:#8C8175;margin-bottom:1rem;max-width:35ch;margin-left:auto;margin-right:auto">New products, seasonal harvests, and the occasional recipe. No spam.</p>' +
-          '<form onsubmit="return handleNewsletter(event)" style="display:flex;flex-wrap:wrap;gap:0.5rem;max-width:400px;margin:0 auto">' +
-            '<input type="email" required placeholder="Your email" style="flex:1;padding:0.7rem 1.2rem;border-radius:100px;border:1.5px solid #EDE8DF;background:transparent;font-family:Plus Jakarta Sans,system-ui,sans-serif;font-size:0.82rem;outline:none;color:#1A1714;transition:border-color 0.2s" onfocus="this.style.borderColor=\'#C4841D\'" onblur="this.style.borderColor=\'#EDE8DF\'">' +
-            '<button type="submit" style="padding:0.7rem 1.5rem;border-radius:100px;background:#1A1714;color:#FDFBF7;border:none;font-family:Plus Jakarta Sans,system-ui,sans-serif;font-size:0.82rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:background 0.2s" onmouseenter="this.style.background=\'#C4841D\'" onmouseleave="this.style.background=\'#1A1714\'">Subscribe</button>' +
-          '</form>' +
-          '<p id="newsletter-msg" style="font-size:0.72rem;color:#8C8175;margin-top:0.75rem;display:none"></p>' +
-        '</div>';
-        var copyrightBar = footer.querySelector('.flex.flex-col.md\\:flex-row, .pt-8');
-        if (copyrightBar) { copyrightBar.insertAdjacentHTML('beforebegin', newsletterHTML); }
-        else { footer.querySelector('div').insertAdjacentHTML('beforeend', newsletterHTML); }
-      }
+    // 6. NEWSLETTER SIGNUP IN FOOTER — DISABLED
+    // No email service is wired. Set window.MT_NEWSLETTER_ENABLED = true
+    // ONLY after wiring `handleNewsletter` to a real endpoint (Klaviyo /
+    // Shopify Customer API). Until then this stays off — submitting to a
+    // stub silently drops emails into the void and lies to users.
+    if (window.MT_NEWSLETTER_ENABLED === true) {
+      console.warn('[MT] Newsletter is enabled but handleNewsletter is still a stub. Wire it before launch.');
     }
 
     // Wire up events
@@ -186,23 +213,15 @@ setTimeout(loadPostHog, 3000);
     }, { passive: true });
   }
 
-  // ── Newsletter ─────────────────────────────────────────────
+  // ── Newsletter (stub — see note above) ─────────────────────
   window.handleNewsletter = function (e) {
     e.preventDefault();
-    var form = e.target;
     var msg = document.getElementById('newsletter-msg');
-    var email = form.querySelector('input[type="email"]').value;
-    // For now, just show success (can connect to Shopify Customer API later)
-    form.querySelector('button').textContent = 'Subscribed';
-    form.querySelector('button').style.background = '#5a7a4e';
-    form.querySelector('input').value = '';
-    msg.textContent = 'Thanks! We\'ll keep you posted.';
-    msg.style.display = 'block';
-    msg.style.color = '#5a7a4e';
-    setTimeout(function () {
-      form.querySelector('button').textContent = 'Subscribe';
-      form.querySelector('button').style.background = '#1A1714';
-    }, 3000);
+    if (msg) {
+      msg.textContent = 'Newsletter signup is not yet available. Please email info@mapleterroir.com.';
+      msg.style.display = 'block';
+      msg.style.color = '#8C8175';
+    }
     return false;
   };
 
@@ -243,7 +262,7 @@ setTimeout(loadPostHog, 3000);
   }
 
   function onSearchInput() {
-    var q = document.getElementById('search-input').value.trim();
+    var q = document.getElementById('search-input').value.trim().slice(0, 100);
     var results = document.getElementById('search-results');
     if (q.length < 2) { results.innerHTML = '<div style="padding:2rem;text-align:center;color:#B8AD9E;font-size:0.85rem">Type at least 2 characters to search</div>'; return; }
     results.innerHTML = '<div style="padding:2rem;text-align:center;color:#B8AD9E;font-size:0.85rem">Searching...</div>';
@@ -260,7 +279,12 @@ setTimeout(loadPostHog, 3000);
     .then(function (res) {
       var products = res.data.products.edges.map(function (e) { return e.node; });
       if (!products.length) {
-        results.innerHTML = '<div style="padding:2rem;text-align:center;color:#B8AD9E;font-size:0.85rem">No products found for &ldquo;' + q + '&rdquo;</div>';
+        // Build text node so q is never interpreted as HTML.
+        results.innerHTML = '';
+        var empty = document.createElement('div');
+        empty.style.cssText = 'padding:2rem;text-align:center;color:#B8AD9E;font-size:0.85rem';
+        empty.textContent = 'No products found for \u201C' + q + '\u201D';
+        results.appendChild(empty);
         return;
       }
       results.innerHTML = '';
@@ -268,12 +292,12 @@ setTimeout(loadPostHog, 3000);
         var img = p.images.edges.length ? p.images.edges[0].node : null;
         var price = p.variants.edges.length ? parseFloat(p.variants.edges[0].node.priceV2.amount).toFixed(2) : '';
         var a = document.createElement('a');
-        a.href = pathPrefix + 'product.html?handle=' + p.handle;
+        a.href = pathPrefix + 'product.html?handle=' + encodeURIComponent(p.handle);
         a.style.cssText = 'display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;border-radius:1rem;text-decoration:none;color:inherit;transition:background 0.15s;';
         a.addEventListener('mouseenter', function () { a.style.background = 'rgba(217,209,196,0.2)'; });
         a.addEventListener('mouseleave', function () { a.style.background = 'none'; });
-        a.innerHTML = (img ? '<img src="' + img.url + '&width=80" alt="' + (img.altText || p.title).replace(/"/g, '&quot;') + '" style="width:48px;height:48px;border-radius:0.75rem;object-fit:cover;background:#F5F0E8;flex-shrink:0">' : '<div style="width:48px;height:48px;border-radius:0.75rem;background:#F5F0E8;flex-shrink:0"></div>') +
-          '<div style="flex:1;min-width:0"><div style="font-weight:500;font-size:0.88rem;color:#1A1714;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + p.title + '</div><div style="font-size:0.75rem;color:#8C8175">$' + price + ' CAD</div></div>' +
+        a.innerHTML = (img ? '<img src="' + esc(img.url) + '&width=80" alt="' + esc(img.altText || p.title) + '" style="width:48px;height:48px;border-radius:0.75rem;object-fit:cover;background:#F5F0E8;flex-shrink:0">' : '<div style="width:48px;height:48px;border-radius:0.75rem;background:#F5F0E8;flex-shrink:0"></div>') +
+          '<div style="flex:1;min-width:0"><div style="font-weight:500;font-size:0.88rem;color:#1A1714;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(p.title) + '</div><div style="font-size:0.75rem;color:#8C8175">$' + esc(price) + ' CAD</div></div>' +
           '<svg style="width:16px;height:16px;color:#D9D1C4;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>';
         a.addEventListener('click', function () { toggleSearch(); });
         results.appendChild(a);
@@ -285,19 +309,26 @@ setTimeout(loadPostHog, 3000);
   }
 
   // ── Recently Viewed (localStorage) ────────────────────────
+  // Note: any future "Recently Viewed" rail MUST render title/img via
+  // textContent or window.MapleEsc. Treat localStorage values as untrusted —
+  // they could be tampered with via a future XSS or a sibling site.
   window.MapleSiteRecent = {
     KEY: 'mt_recently_viewed',
     MAX: 8,
     track: function (handle, title, imgUrl, price) {
-      var items = JSON.parse(localStorage.getItem(this.KEY) || '[]');
-      items = items.filter(function (i) { return i.handle !== handle; });
-      items.unshift({ handle: handle, title: title, img: imgUrl, price: price, ts: Date.now() });
+      var items;
+      try { items = JSON.parse(localStorage.getItem(this.KEY) || '[]'); } catch (e) { items = []; }
+      if (!Array.isArray(items)) items = [];
+      items = items.filter(function (i) { return i && i.handle !== handle; });
+      items.unshift({ handle: String(handle || ''), title: String(title || ''), img: String(imgUrl || ''), price: String(price || ''), ts: Date.now() });
       if (items.length > this.MAX) items = items.slice(0, this.MAX);
-      localStorage.setItem(this.KEY, JSON.stringify(items));
+      try { localStorage.setItem(this.KEY, JSON.stringify(items)); } catch (e) {}
     },
     get: function (excludeHandle) {
-      var items = JSON.parse(localStorage.getItem(this.KEY) || '[]');
-      if (excludeHandle) items = items.filter(function (i) { return i.handle !== excludeHandle; });
+      var items;
+      try { items = JSON.parse(localStorage.getItem(this.KEY) || '[]'); } catch (e) { return []; }
+      if (!Array.isArray(items)) return [];
+      if (excludeHandle) items = items.filter(function (i) { return i && i.handle !== excludeHandle; });
       return items;
     }
   };
