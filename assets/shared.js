@@ -56,6 +56,23 @@ if (document.readyState === 'complete') { setTimeout(loadPostHog, 100); }
 else { window.addEventListener('load', function () { setTimeout(loadPostHog, 100); }); }
 setTimeout(loadPostHog, 3000);
 
+// ── Google Analytics 4 (delayed until after page load) ─────
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+function loadGA() {
+  if (window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2HETD7E9WS';
+  document.head.appendChild(s);
+  gtag('js', new Date());
+  gtag('config', 'G-2HETD7E9WS');
+}
+if (document.readyState === 'complete') { setTimeout(loadGA, 100); }
+else { window.addEventListener('load', function () { setTimeout(loadGA, 100); }); }
+setTimeout(loadGA, 3000);
+
 (function () {
   var SU = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
   var ST = '59618e3b6f5e626df6c5f527b4972d3d';
