@@ -104,12 +104,14 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 **Always commit and push to `main` after completing changes.** This project auto-deploys via Cloudflare Pages on push to `main` (GitHub repo `The66th-Agency/Maple-terrior`). Don't wait for the user to ask - if the work is done, push it.
 
 ### Which URL is what (CRITICAL — verify before any QA)
-- **`https://maple-terrior-new.liamlytton99.workers.dev/`** — the Cloudflare Workers preview of THIS repo. This is the canonical preview Liam and Shawn review against. When the client says "the site" or "pull up the site," default to this URL.
-- **`https://mapleterroir.com/`** — legacy public Shopify storefront. Different design, different copy, different product ordering. Do NOT treat as source of truth for the rebuild. Only reference when explicitly asked about what is currently live on Shopify.
-- Never tell the client "I'm working on the right site" without first confirming which URL they are looking at.
+- **`https://mapleterroir.com/`** — PRODUCTION. The cutover from legacy Shopify to this rebuild has happened. mapleterroir.com now serves THIS repo via Cloudflare Pages. Default to this URL when the client says "the site."
+- **`https://maple-terrior-new.liamlytton99.workers.dev/`** — Cloudflare Workers preview of this repo. Byte-identical to mapleterroir.com (same source). Use only if mapleterroir.com is unreachable or you need to test before DNS cache flushes.
+- Never tell the client "I'm working on the right site" without first verifying both URLs serve the same content.
 
 ## Lab Notes
 [date] [what happened] [what to do differently]
+
+2026-04-26 — Wired add_to_cart and begin_checkout events into [assets/shared.js](assets/shared.js) via fetch monkey-patch + MapleSafeCheckout wrapper. One file edit covered all 22 pages. Pattern: hook the shared infrastructure, never edit per-page IIFEs for sitewide tracking. Also reduced /story hero LCP from 2237ms by serving 1600px@q=70 instead of 1920px@q=80 and adding `fetchpriority="high"` + preload hint. Re-confirmed mapleterroir.com IS the rebuild now (cutover happened); CLAUDE.md was stale on this.
 
 2026-03-29 — [SUPERSEDED by 2026-04-15 entry below] Originally logged a "never switch to Workers" rule. That turned out to be stale. The Workers URL `maple-terrior-new.liamlytton99.workers.dev` IS the canonical preview the client reviews against.
 
