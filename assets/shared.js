@@ -13,6 +13,10 @@ window.MapleEsc = function (s) {
 };
 
 // Allowlist redirect for Shopify-issued checkout URLs. Returns true on redirect.
+// Why the rewrite: mapleterroir.com is now Cloudflare Pages (static rebuild), not Shopify.
+// Shopify's Storefront API still returns checkoutUrl on mapleterroir.com (its primary
+// domain config), so /cart/* paths 404. Force the canonical myshopify.com host for any
+// /cart/* or /checkout/* path so the cart token resolves on Shopify's actual checkout.
 window.MapleSafeCheckout = function (url) {
   if (!url) return false;
   var u;
@@ -20,6 +24,9 @@ window.MapleSafeCheckout = function (url) {
   if (u.protocol !== 'https:') return false;
   var allowed = /(^|\.)myshopify\.com$|(^|\.)shopify\.com$|^checkout\.mapleterroir\.com$|^mapleterroir\.com$/i;
   if (!allowed.test(u.hostname)) return false;
+  if (u.hostname === 'mapleterroir.com' && /^\/(cart|checkout)\//i.test(u.pathname)) {
+    u.hostname = 'maple-terroir.myshopify.com';
+  }
   window.location.href = u.href;
   return true;
 };
