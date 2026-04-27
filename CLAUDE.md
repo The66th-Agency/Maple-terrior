@@ -56,7 +56,7 @@ Loaded by every page. Provides: announcement bar, search modal (Ctrl+K), back-to
 ├── collections/            # 9 SEO-optimized collection pages
 ├── assets/
 │   ├── shared.js           # Sitewide features (search, cart, announcement bar)
-│   ├── favicon.svg
+│   ├── favicon.png + favicon-32.png + apple-touch-icon.png  (cropped from mt-logo.webp)
 │   ├── videos/             # Hero video, scroll-scrub video, exploding view
 │   ├── frames/             # 96 JPGs for scroll sequence (frame-0000.jpg to frame-0095.jpg)
 │   └── images/             # Static images
