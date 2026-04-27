@@ -1,3 +1,13 @@
+# Shopify checkout passthrough — mapleterroir.com is now Cloudflare Pages,
+# so /cart/* and /checkout/* paths must redirect to the Shopify storefront
+# domain. Without this, every Shopify-issued checkout URL 404s. The 302! is
+# Cloudflare Pages' force-redirect even if a static file matches.
+/cart/*       https://maple-terroir.myshopify.com/cart/:splat       302!
+/checkout/*   https://maple-terroir.myshopify.com/checkout/:splat   302!
+/checkouts/*  https://maple-terroir.myshopify.com/checkouts/:splat  302!
+/account      https://maple-terroir.myshopify.com/account           302!
+/account/*    https://maple-terroir.myshopify.com/account/:splat    302!
+
 # Renamed pages — preserve SEO equity from old URLs
 /wholesale.html  /maple-syrup-wholesale  301
 /wholesale       /maple-syrup-wholesale  301
