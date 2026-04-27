@@ -73,6 +73,76 @@ if (document.readyState === 'complete') { setTimeout(loadGA, 100); }
 else { window.addEventListener('load', function () { setTimeout(loadGA, 100); }); }
 setTimeout(loadGA, 3000);
 
+// ── Ecommerce event tracking ─────
+// Hooks Shopify Storefront cart mutations and the MapleSafeCheckout redirect to
+// fire add_to_cart and begin_checkout to PostHog and GA4 from one place,
+// instead of editing every page's inline cart IIFE.
+(function () {
+  function captureBoth(name, props) {
+    try {
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        window.posthog.capture(name, props || {});
+      }
+    } catch (e) {}
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, props || {});
+      }
+    } catch (e) {}
+  }
+
+  // Patch fetch to spot cart mutations going to Shopify Storefront.
+  var origFetch = window.fetch ? window.fetch.bind(window) : null;
+  if (origFetch) {
+    window.fetch = function (input, init) {
+      var url = typeof input === 'string' ? input : (input && input.url) || '';
+      var body = init && init.body ? String(init.body) : '';
+      var isShopify = url.indexOf('myshopify.com/api/') > -1;
+      var isCartAdd = isShopify && (body.indexOf('cartLinesAdd') > -1 || body.indexOf('cartCreate') > -1);
+      var promise = origFetch(input, init);
+      if (!isCartAdd) return promise;
+      return promise.then(function (res) {
+        try {
+          res.clone().json().then(function (data) {
+            var payload = (data && data.data) || {};
+            var cart = (payload.cartLinesAdd && payload.cartLinesAdd.cart)
+              || (payload.cartCreate && payload.cartCreate.cart);
+            if (!cart) return;
+            var edges = (cart.lines && cart.lines.edges) || [];
+            var lastNode = edges.length ? edges[edges.length - 1].node : null;
+            var merch = lastNode && lastNode.merchandise;
+            var price = merch && merch.priceV2 ? parseFloat(merch.priceV2.amount) : null;
+            captureBoth('add_to_cart', {
+              variant_id: merch && merch.id,
+              variant_title: merch && merch.title,
+              product_title: merch && merch.product && merch.product.title,
+              quantity: lastNode && lastNode.quantity,
+              price: price,
+              currency: merch && merch.priceV2 ? merch.priceV2.currencyCode : null,
+              cart_subtotal: cart.cost && cart.cost.subtotalAmount ? parseFloat(cart.cost.subtotalAmount.amount) : null,
+              cart_size: edges.length,
+              page: window.location.pathname,
+              value: price
+            });
+          }).catch(function () {});
+        } catch (e) {}
+        return res;
+      });
+    };
+  }
+
+  // Wrap the existing checkout redirect helper to fire begin_checkout first.
+  var origCheckout = window.MapleSafeCheckout;
+  window.MapleSafeCheckout = function (url) {
+    captureBoth('begin_checkout', {
+      checkout_url: url,
+      page: window.location.pathname
+    });
+    if (typeof origCheckout === 'function') return origCheckout(url);
+    return false;
+  };
+})();
+
 (function () {
   var SU = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
   var ST = '59618e3b6f5e626df6c5f527b4972d3d';
