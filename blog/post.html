@@ -6,8 +6,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-  <title>Loading...  -  Maple Terroir Blog</title>
-  <meta name="description" content="">
+  <title>Maple Syrup Article | Maple Terroir Blog</title>
+  <meta name="description" content="Stories from the sugar bush. Maple syrup culture, Quebec maple craft, and educational guides from Maple Terroir.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -268,7 +268,7 @@
       if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
       canon.href = 'https://mapleterroir.com/blog/post.html?handle=' + encodeURIComponent(handle) + '&blog=' + encodeURIComponent(blogHandle);
 
-      document.title = a.title + '  -  Maple Terroir Blog';
+      document.title = a.title + ' | Maple Terroir Blog';
       document.querySelector('meta[name="description"]').content = a.excerpt || a.title;
       document.getElementById('breadcrumb-title').textContent = a.title;
       document.getElementById('article-title').textContent = a.title;

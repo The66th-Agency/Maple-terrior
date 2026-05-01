@@ -6,8 +6,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <title>Loading...  -  Maple Terroir</title>
-  <meta name="description" content="Premium organic maple products from Quebec's Appalachian Mountains. Family-owned since 1978.">
+  <title>Maple Products | Single-Origin Quebec | Maple Terroir</title>
+  <meta name="description" content="Premium maple products from a single-origin farm in Quebec's Appalachian Mountains. Family-owned and proudly Canadian since 1978.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -679,7 +679,12 @@
 
     function renderProduct(p) {
       // Title & meta
-      document.title = p.title + '  -  Maple Terroir';
+      document.title = p.title + ' | Maple Terroir';
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (!metaDesc) { metaDesc = document.createElement('meta'); metaDesc.name = 'description'; document.head.appendChild(metaDesc); }
+      var pdpDesc = (p.description || '').replace(/\s+/g, ' ').trim().substring(0, 155);
+      if (!pdpDesc) pdpDesc = p.title + ' from Maple Terroir. Single-origin Quebec maple, family-owned since 1978.';
+      metaDesc.setAttribute('content', pdpDesc);
       document.getElementById('breadcrumb-title').textContent = p.title;
       document.getElementById('product-title').textContent = p.title;
       document.getElementById('product-type').innerHTML = '<svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg> ' + (window.MapleEsc||String)(p.productType || 'Maple Products');
