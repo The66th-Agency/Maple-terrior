@@ -334,8 +334,8 @@
       </div>
 
       <div class="reveal mt-12 text-center">
-        <a href="collections/maple-syrup-gift-set" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
-          <span>View Full Gift Set Collection</span>
+        <a href="collections/home-sets.html" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
+          <span>View All Home Sets</span>
           <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
             <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
@@ -738,7 +738,7 @@
 
       function esc(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-      gql('query { collectionByHandle(handle: "gift-sets") { products(first: 8) { edges { node { title handle images(first:1) { edges { node { url altText } } } variants(first:1) { edges { node { id priceV2 { amount } } } } } } } } }')
+      gql('query { collectionByHandle(handle: "home-sets") { products(first: 8) { edges { node { title handle images(first:1) { edges { node { url altText } } } variants(first:1) { edges { node { id priceV2 { amount } } } } } } } } }')
         .then(function (res) {
           var grid = document.getElementById('gift-grid');
           var loading = document.getElementById('gift-loading');
