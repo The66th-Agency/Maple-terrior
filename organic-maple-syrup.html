@@ -69,6 +69,8 @@
     .img-zoom { transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1); } .img-zoom:hover { transform: scale(1.05); }
     .product-card { background: #fff; border-radius: 2rem; overflow: hidden; transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(26,23,20,0.12); }
+    @keyframes shimmer-move { 0% { background-position: -700px 0 } 100% { background-position: 700px 0 } }
+    .skeleton-card { border-radius: 2rem; background: linear-gradient(to right, #EDE8DF 8%, #F7F4EF 38%, #EDE8DF 54%); background-size: 1400px 100%; animation: shimmer-move 1.8s infinite linear; }
     .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
     .atc-btn:hover { background: #C4841D; }
     .atc-btn.added { background: #5A5249; }
@@ -193,44 +195,40 @@
   <!-- ═══════════════ WHAT MAKES MAPLE SYRUP TRULY ORGANIC ═══════════════ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6 mx-auto justify-center">
-          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
-          The Standard
-        </span>
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
-          What Makes Maple Syrup Truly Organic
-        </h2>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] mx-auto text-lg mt-4">
-          Organic certification for maple syrup requires more than avoiding pesticides. The trees, the soil, the collection equipment, and the processing facility all fall within the audited scope.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="reveal bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
-          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10">
-            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">No Synthetic Inputs, Ever</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Organic maple syrup certification requires that no synthetic pesticides, herbicides, or fertilisers have been applied to the sugar bush or surrounding land. This is an ongoing standard, not a one-time approval.</p>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
+        <div class="md:col-span-4">
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            The Standard
+          </span>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">
+            What Makes Maple Syrup Truly Organic
+          </h2>
+          <p class="reveal reveal-delay-2 text-warm-gray-500 text-sm leading-relaxed mt-4">
+            More than avoiding pesticides. The trees, soil, collection equipment, and processing facility all fall within the audited scope.
+          </p>
         </div>
-        <div class="reveal reveal-delay-1 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
-          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10">
-            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div class="md:col-span-7 md:col-start-6 divide-y divide-warm-gray-200/50">
+          <div class="reveal pb-10 flex gap-8 items-start">
+            <span class="font-display text-6xl font-semibold text-amber-warm/20 flex-shrink-0 leading-none -mt-2 select-none">01</span>
+            <div>
+              <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">No Synthetic Inputs, Ever</h3>
+              <p class="text-sm text-warm-gray-600 leading-relaxed">Organic maple syrup certification requires that no synthetic pesticides, herbicides, or fertilisers have been applied to the sugar bush or surrounding land. This is an ongoing standard, not a one-time approval.</p>
             </div>
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Annual Third-Party Audit</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Maple Terroir organic maple syrup is inspected annually by each of its three certifying bodies — Ecocert, Canada Organic, and USDA. Annual re-verification means the certification reflects current practice, not a historical snapshot.</p>
           </div>
-        </div>
-        <div class="reveal reveal-delay-2 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
-          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10">
-            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
-              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="reveal reveal-delay-1 py-10 flex gap-8 items-start">
+            <span class="font-display text-6xl font-semibold text-amber-warm/20 flex-shrink-0 leading-none -mt-2 select-none">02</span>
+            <div>
+              <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Annual Third-Party Audit</h3>
+              <p class="text-sm text-warm-gray-600 leading-relaxed">Maple Terroir organic maple syrup is inspected annually by each of its three certifying bodies — Ecocert, Canada Organic, and USDA. Annual re-verification means the certification reflects current practice, not a historical snapshot.</p>
             </div>
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Single-Origin Makes It Verifiable</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Blended maple syrup pools sap from multiple farms with different practices. Because Maple Terroir sources from one farm, every batch is traceable and every certification claim is grounded in one audited operation.</p>
+          </div>
+          <div class="reveal reveal-delay-2 pt-10 flex gap-8 items-start">
+            <span class="font-display text-6xl font-semibold text-amber-warm/20 flex-shrink-0 leading-none -mt-2 select-none">03</span>
+            <div>
+              <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Single-Origin Makes It Verifiable</h3>
+              <p class="text-sm text-warm-gray-600 leading-relaxed">Blended maple syrup pools sap from multiple farms with different practices. Because Maple Terroir sources from one farm, every batch is traceable and every certification claim is grounded in one audited operation.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -254,7 +252,14 @@
         </p>
       </div>
       <div id="organic-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
-        <div class="col-span-full text-center py-12 text-warm-gray-400 text-sm" id="organic-loading">Loading...</div>
+        <div id="organic-loading" class="col-span-full">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
+            <div class="skeleton-card aspect-[3/4]"></div>
+            <div class="skeleton-card aspect-[3/4] hidden sm:block"></div>
+            <div class="skeleton-card aspect-[3/4] hidden lg:block"></div>
+            <div class="skeleton-card aspect-[3/4] hidden xl:block"></div>
+          </div>
+        </div>
       </div>
       <div class="reveal mt-12 text-center">
         <a href="collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
