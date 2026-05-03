@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://mapleterroir.com/canadian-maple-syrup">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Canadian Maple Syrup | Single-Origin Quebec | Maple Terroir</title>
+  <meta name="description" content="Canadian maple syrup from one family farm in Quebec's Appalachian Mountains since 1978. Triple-certified organic, single-origin, stocked at Costco, Shoppers, and duty-free worldwide.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Canadian Maple Syrup | Maple Terroir",
+    "url": "https://mapleterroir.com/canadian-maple-syrup",
+    "description": "Pure Canadian maple syrup from a single-origin family farm in Quebec's Appalachian Mountains. Triple-certified organic, family-owned since 1978.",
+    "isPartOf": { "@type": "WebSite", "name": "Maple Terroir", "url": "https://mapleterroir.com" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mapleterroir.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Canadian Maple Syrup", "item": "https://mapleterroir.com/canadian-maple-syrup" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FDFBF7', 'cream-dark': '#F5F0E8',
+            amber: { warm: '#C4841D', deep: '#8B5E14', light: '#E8A84C', glow: '#F4C77D' },
+            charcoal: '#1A1714',
+            'warm-gray': { 100: '#F7F4EF', 200: '#EDE8DF', 300: '#D9D1C4', 400: '#B8AD9E', 500: '#8C8175', 600: '#5A5249', 700: '#4A4239', 800: '#2E2822' },
+          },
+          fontFamily: { display: ['"Fraunces"', 'Georgia', 'serif'], body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'] },
+          borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
+    body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
+    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
+    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
+    .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+    .img-zoom { transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1); } .img-zoom:hover { transform: scale(1.05); }
+    .product-card { background: #fff; border-radius: 2rem; overflow: hidden; transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(26,23,20,0.12); }
+    .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+    .atc-btn:hover { background: #C4841D; }
+    .atc-btn.added { background: #5A5249; }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
+    .accordion-content.open { max-height: 500px; }
+    .accordion-icon { transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1); }
+    .accordion-icon.open { transform: rotate(180deg); }
+    .cart-overlay { position: fixed; inset: 0; background: rgba(26,23,20,0.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.35s cubic-bezier(0.32,0.72,0,1); }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px,90vw); background: #FDFBF7; z-index: 201; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.32,0.72,0,1); display: flex; flex-direction: column; box-shadow: -16px 0 48px rgba(26,23,20,0.12); }
+    .cart-drawer.open { transform: translateX(0); }
+    .cart-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 1.75rem; border-bottom: 1px solid rgba(217,209,196,0.4); }
+    .cart-title { font-family: 'Fraunces',Georgia,serif; font-size: 1.4rem; font-weight: 500; color: #1A1714; }
+    .cart-close { width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; color: #8C8175; background: none; border: none; cursor: pointer; }
+    .cart-close:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.75rem; }
+    .cart-empty { text-align: center; padding: 4rem 1rem; color: #B8AD9E; font-size: 0.9rem; }
+    .cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(217,209,196,0.3); }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img { width: 72px; height: 72px; border-radius: 0.75rem; object-fit: cover; background: #F5F0E8; flex-shrink: 0; }
+    .cart-item-info { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+    .cart-item-name { font-family: 'Fraunces',Georgia,serif; font-size: 1rem; font-weight: 500; color: #1A1714; line-height: 1.3; }
+    .cart-item-variant { font-size: 0.72rem; color: #8C8175; }
+    .cart-item-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+    .cart-item-qty { display: flex; align-items: center; border: 1px solid rgba(217,209,196,0.5); border-radius: 100px; overflow: hidden; }
+    .cart-item-qty button { width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #8C8175; background: none; border: none; cursor: pointer; transition: background 0.15s, color 0.15s; }
+    .cart-item-qty button:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
+    .cart-item-qty span { min-width: 1.5rem; text-align: center; font-size: 0.78rem; font-weight: 500; color: #1A1714; }
+    .cart-item-price { font-family: 'Fraunces',Georgia,serif; font-size: 1rem; font-weight: 500; color: #1A1714; }
+    .cart-footer { padding: 1.25rem 1.75rem 1.75rem; border-top: 1px solid rgba(217,209,196,0.4); }
+    .cart-subtotal { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+    .cart-subtotal-label { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #8C8175; }
+    .cart-subtotal-price { font-family: 'Fraunces',Georgia,serif; font-size: 1.4rem; font-weight: 500; color: #1A1714; }
+    .cart-note { font-size: 0.72rem; color: #B8AD9E; margin-bottom: 1rem; }
+    .cart-checkout-btn { display: flex; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; padding: 1rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+    .cart-checkout-btn:hover { background: #C4841D; transform: translateY(-1px); }
+    .nav-cart-count { position: absolute; top: -2px; right: -4px; min-width: 17px; height: 17px; border-radius: 100px; background: #C4841D; color: #fff; font-size: 0.6rem; font-weight: 600; display: flex; align-items: center; justify-content: center; padding: 0 4px; opacity: 0; transform: scale(0.5); transition: opacity 0.25s, transform 0.25s; pointer-events: none; }
+    .nav-cart-count.visible { opacity: 1; transform: scale(1); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .btn-premium, .img-zoom, .accordion-content, .accordion-icon { transition: none; }
+      .btn-premium:hover { transform: none; box-shadow: none; }
+      .img-zoom:hover { transform: none; }
+      * { scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
+    <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
+      <a href="index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]" width="1280" height="500" /></a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
+        <a href="maple-syrup-wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+          <span>Shop Now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+      <button id="cart-toggle" onclick="MapleCart.toggle()" aria-label="Open cart" class="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300 ml-2">
+        <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="nav-cart-count" id="cart-count">0</span>
+      </button>
+      <button id="menu-toggle" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
+        <div class="relative w-5 h-4 flex flex-col justify-between">
+          <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 origin-center"></span>
+          <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500"></span>
+          <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 origin-center"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
+    <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
+    <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
+      <a href="story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
+      <a href="maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
+      <a href="products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="relative min-h-[65vh] md:min-h-[75vh] flex items-end pb-16 md:pb-28 px-4 md:px-8">
+    <div class="absolute inset-0">
+      <img src="assets/images/story/sap-in-bucket.png" alt="Canadian maple syrup sap dripping into a collection bucket in a Quebec sugar bush" class="w-full h-full object-cover object-center">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-charcoal/10"></div>
+    <div class="relative max-w-[1400px] mx-auto w-full">
+      <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-glow/80 mb-6">
+        <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+        Single-Origin Quebec
+      </span>
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-cream tracking-tight leading-[1.08] max-w-4xl">
+        Canadian<br>Maple Syrup.
+      </h1>
+      <p class="reveal reveal-delay-2 text-warm-gray-300 leading-relaxed max-w-[58ch] text-lg mt-6">
+        Canadian maple syrup sourced from one family farm in Quebec's Appalachian Mountains since 1978. Triple-certified organic, single-origin, and recognised internationally as a benchmark for real Canadian maple.
+      </p>
+      <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-4">
+        <a href="products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+          <span>Shop Maple Syrup</span>
+          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="#why-different" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">What Makes It Different</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ WHY DIFFERENT ═══════════════ -->
+  <section id="why-different" class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div>
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            The Difference
+          </span>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">
+            Why Canadian Maple Syrup From One Farm Tastes Different
+          </h2>
+          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed mb-6">
+            Most canadian maple syrup sold commercially is blended from dozens of farms across multiple provinces. The flavour is averaged, not authentic. Maple Terroir sources exclusively from one family farm in Quebec's Appalachian Mountains, where the soil, the tree age, and the seasonal temperature swings produce a syrup character no blend can replicate.
+          </p>
+          <p class="reveal reveal-delay-3 text-warm-gray-600 leading-relaxed">
+            Japan recognised this first. Maple Terroir is known as the number one value canadian maple syrup in Japan, where single-origin provenance is taken seriously. The same bottle on your table carries that same standard.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="bg-warm-gray-100/60 ring-1 ring-warm-gray-200/40 p-2 md:p-2.5 rounded-[2rem]">
+            <div class="overflow-hidden rounded-[calc(2rem-0.5rem)]">
+              <img src="assets/images/maple-syrup-french-toast-pour.webp" alt="Canadian maple syrup being poured — single-origin Quebec Maple Terroir" class="w-full aspect-[4/5] object-cover img-zoom">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ PRODUCT GRID ═══════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6 mx-auto justify-center">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          The Collection
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+          Shop Canadian Maple Syrup
+        </h2>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[52ch] mx-auto text-lg mt-4">
+          Every bottle single-origin from Quebec. Grades range from delicate golden to bold very dark — the same sap season, the same farm, different harvest timing.
+        </p>
+      </div>
+      <div id="syrup-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
+        <div class="col-span-full text-center py-12 text-warm-gray-400 text-sm" id="syrup-loading">Loading...</div>
+      </div>
+      <div class="reveal mt-12 text-center">
+        <a href="collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
+          <span>View All Maple Syrup</span>
+          <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ SINGLE-ORIGIN ═══════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6 mx-auto justify-center">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          Provenance
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+          Single-Origin Quebec — What That Actually Means
+        </h2>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] mx-auto text-lg mt-4">
+          Single-origin is not a marketing phrase. It is a verifiable sourcing decision with direct consequences for flavour, consistency, and accountability.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="reveal bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10">
+            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">One Farm, One Address</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">Every bottle of Maple Terroir canadian maple syrup traces to one family's sugar bush in the Quebec Appalachians. No pooling with other producers, no geographic averaging.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10">
+            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">47 Years of Seasonal Knowledge</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">The Lytton family has tapped the same forest since 1978. That institutional knowledge of when to tap, when to stop, and how temperature shifts affect sugar content does not transfer to a blended supply chain.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10">
+            <div class="w-14 h-14 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6">
+              <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Traceable to the Tree Stand</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">Because Maple Terroir works with one source, the origin of every litre is fully traceable. That accountability is what allows triple organic certification — and what blended canadian maple syrup cannot offer.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ RETAILERS ═══════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-charcoal">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-glow/70 mb-6 mx-auto justify-center">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          Retail Presence
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-cream tracking-tight leading-tight">
+          Trusted Across Canada and Around the World
+        </h2>
+        <p class="reveal reveal-delay-2 text-warm-gray-400 leading-relaxed max-w-[52ch] mx-auto text-lg mt-4">
+          Maple Terroir canadian maple syrup is stocked by retailers Canadians already trust, and exported to markets that take provenance seriously.
+        </p>
+      </div>
+      <div class="reveal grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 items-center mb-12">
+        <img src="assets/images/logos/costco.webp" alt="Costco" class="h-8 md:h-10 object-contain opacity-60 mx-auto">
+        <img src="assets/images/logos/amazon.webp" alt="Amazon" class="h-8 md:h-10 object-contain opacity-60 mx-auto">
+        <img src="assets/images/logos/shoppers.webp" alt="Shoppers Drug Mart" class="h-8 md:h-10 object-contain opacity-60 mx-auto">
+        <img src="assets/images/logos/save-on-foods.png" alt="Save-On-Foods" class="h-8 md:h-10 object-contain opacity-60 mx-auto">
+        <img src="assets/images/logos/urban-fare.webp" alt="Urban Fare" class="h-8 md:h-10 object-contain opacity-60 mx-auto">
+      </div>
+      <p class="reveal text-center text-warm-gray-500 text-sm">Active markets: Canada, United States, Japan, South Korea, China, Taiwan</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ CERTIFICATIONS ═══════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div>
+          <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6">
+            <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+            Organic Certification
+          </span>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">
+            Triple-Certified Canadian Maple Syrup
+          </h2>
+          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed mb-6">
+            Maple Terroir maple syrup holds three independent organic certifications simultaneously: Ecocert, Canada Organic, and USDA Organic. Each is verified by a separate accrediting body on an annual cycle. No other canadian maple syrup line holds all three at once.
+          </p>
+          <p class="reveal reveal-delay-3 text-warm-gray-600 leading-relaxed">
+            Certification applies to the maple syrup. Other products in the Maple Terroir line — stroopwafels, chocolates, cookies — are made with certified organic maple syrup as an ingredient but are not certified as finished products. <a href="certifications.html" class="text-amber-warm hover:text-amber-deep transition-colors">Full certification details.</a>
+          </p>
+        </div>
+        <div class="reveal reveal-delay-1 grid grid-cols-3 gap-4">
+          <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+            <div class="bg-white rounded-[calc(2rem-0.5rem)] p-6 text-center">
+              <img src="assets/images/eco-cert.png" alt="Ecocert organic certification" class="h-14 w-auto object-contain mx-auto mb-3">
+              <p class="text-xs text-warm-gray-500 font-medium">Ecocert</p>
+            </div>
+          </div>
+          <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+            <div class="bg-white rounded-[calc(2rem-0.5rem)] p-6 text-center">
+              <img src="assets/images/organic-cert.png" alt="Canada Organic certification" class="h-14 w-auto object-contain mx-auto mb-3">
+              <p class="text-xs text-warm-gray-500 font-medium">Canada Organic</p>
+            </div>
+          </div>
+          <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
+            <div class="bg-white rounded-[calc(2rem-0.5rem)] p-6 text-center">
+              <img src="assets/images/usda-cert.png" alt="USDA Organic certification" class="h-14 w-auto object-contain mx-auto mb-3">
+              <p class="text-xs text-warm-gray-500 font-medium">USDA Organic</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span class="reveal eyebrow inline-flex items-center gap-2 text-amber-warm mb-6 mx-auto justify-center">
+          <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>
+          Frequently Asked
+        </span>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+          Canadian Maple Syrup FAQ
+        </h2>
+      </div>
+      <div class="reveal reveal-delay-2 space-y-3">
+        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What makes Maple Terroir different from other canadian maple syrup brands?</h3>
+            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Most canadian maple syrup is blended across multiple farms and regions, which averages out the flavour and makes origin untraceable. Maple Terroir sources exclusively from one family farm in Quebec's Appalachian Mountains. Single-origin sourcing is what makes triple organic certification possible and what produces a consistent, traceable flavour profile.</p>
+          </div>
+        </div>
+        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What grades of canadian maple syrup does Maple Terroir offer?</h3>
+            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Maple Terroir offers multiple Grade A classifications from the same Quebec farm: Golden (delicate taste, harvested earliest in the season), Amber (rich taste, the most versatile), Dark (robust, deeper colour, stronger maple character), and Very Dark (strong taste, harvested latest). The grade reflects harvest timing, not quality — all grades meet the same organic and single-origin standard. <a href="blog/post.html?handle=the-complete-guide-to-canadian-maple-syrup&blog=blogs-maple-terroir" class="text-amber-warm hover:text-amber-deep transition-colors">Learn more about grades.</a></p>
+          </div>
+        </div>
+        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is Maple Terroir canadian maple syrup certified organic?</h3>
+            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. Maple Terroir maple syrup carries three simultaneous organic certifications: Ecocert, Canada Organic, and USDA Organic. Each certification is independently verified on an annual basis. No other canadian maple syrup producer holds all three at once.</p>
+          </div>
+        </div>
+        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Where can I buy Maple Terroir canadian maple syrup in Canada?</h3>
+            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Maple Terroir is available online at mapleterroir.com with free shipping on Canadian orders over $99. In stores, the syrup is stocked at Costco, Shoppers Drug Mart, Save-On-Foods, Urban Fare, HomeSense, Nesters Market, and CANEX locations across Canada. Availability by location varies — the online store has the full product range.</p>
+          </div>
+        </div>
+        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I order canadian maple syrup in bulk or for wholesale?</h3>
+            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. Maple Terroir supplies retailers, gift shops, hotels, and duty-free channels. Visit the <a href="maple-syrup-wholesale.html" class="text-amber-warm hover:text-amber-deep transition-colors">wholesale page</a> for the inquiry process, or email <a href="mailto:info@mapleterroir.com" class="text-amber-warm hover:text-amber-deep transition-colors">info@mapleterroir.com</a> directly. For <a href="maple-syrup-corporate-gift.html" class="text-amber-warm hover:text-amber-deep transition-colors">corporate gifting orders</a>, contact the same address.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="relative py-24 md:py-32 px-4 md:px-8 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="assets/images/terroir/appalachian-autumn.png" alt="Quebec Appalachian autumn maple forest — source of Maple Terroir single-origin canadian maple syrup" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-charcoal/65"></div>
+    <div class="relative max-w-[1400px] mx-auto text-center">
+      <h2 class="reveal font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-cream tracking-tight leading-tight mb-4 max-w-3xl mx-auto">
+        Real Canadian Maple Syrup.<br>One Farm. Since 1978.
+      </h2>
+      <p class="reveal reveal-delay-1 text-warm-gray-300 leading-relaxed max-w-[48ch] mx-auto text-lg mb-10">
+        Shop the full maple syrup collection or reach out about wholesale and corporate orders.
+      </p>
+      <div class="reveal reveal-delay-2 flex flex-wrap gap-4 justify-center">
+        <a href="products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-8 py-4 text-sm font-semibold group">
+          <span>Shop Maple Syrup</span>
+          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="terroir.html" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Read the Terroir Story</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/50">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
+        <div class="md:col-span-5">
+          <a href="index.html" class="flex items-center gap-2.5 mb-6">
+            <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 12V32M14 18L20 22M26 18L20 22M12 24L20 28M28 24L20 28" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
+            <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
+          </a>
+          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch]">Pure maple from Canada, delivered to your table. Family-owned since 1978, certified organic, proudly Canadian.</p>
+        </div>
+        <div class="md:col-span-2 md:col-start-7">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
+          <ul class="space-y-3">
+            <li><a href="story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
+            <li><a href="terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
+            <li><a href="certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
+            <li><a href="organic-maple-syrup.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Organic Maple Syrup</a></li>
+          </ul>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
+          <ul class="space-y-3">
+            <li><a href="products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
+            <li><a href="collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
+            <li><a href="collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
+            <li><a href="maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+          </ul>
+        </div>
+        <div class="md:col-span-2">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
+          <ul class="space-y-3">
+            <li><a href="mailto:info@mapleterroir.com" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Contact Us</a></li>
+            <li><a href="blog/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
+        <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <span class="text-xs text-warm-gray-300">Ecocert</span>
+          <span class="text-xs text-warm-gray-300">Canada Organic</span>
+          <span class="text-xs text-warm-gray-300">USDA Organic</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Shopping cart">
+    <div class="cart-header"><h2 class="cart-title">Your Cart</h2><button class="cart-close" aria-label="Close cart" onclick="MapleCart.toggle()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div>
+    <div class="cart-items" id="cart-items"><div class="cart-empty" id="cart-empty"><p>Your cart is empty</p></div></div>
+    <div class="cart-footer" id="cart-footer" style="display:none;">
+      <div class="cart-subtotal"><span class="cart-subtotal-label">Subtotal</span><span class="cart-subtotal-price" id="cart-subtotal">$0.00</span></div>
+      <p class="cart-note">Shipping &amp; taxes calculated at checkout</p>
+      <button class="cart-checkout-btn" onclick="MapleCart.checkout()">Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+    </div>
+  </aside>
+
+
+  <script>
+    (function () {
+      var STOREFRONT_URL = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
+      var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
+      function gql(q, v) { return fetch(STOREFRONT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: q, variables: v || {} }) }).then(function (r) { return r.json(); }); }
+      function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+      gql('{ collectionByHandle(handle:"maple-syrup-all"){ products(first:8){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount}}}} } } } } }')
+        .then(function (res) {
+          var grid = document.getElementById('syrup-grid');
+          document.getElementById('syrup-loading').remove();
+          var products = res.data && res.data.collectionByHandle && res.data.collectionByHandle.products.edges.map(function (e) { return e.node; });
+          if (!products || !products.length) { grid.innerHTML = '<div class="col-span-full text-center py-8 text-warm-gray-400 text-sm">Visit our <a href="collections/premium-maple-syrup" class="text-amber-warm">maple syrup collection</a> to shop all options.</div>'; return; }
+          products.forEach(function (p) {
+            var img = p.images.edges.length ? p.images.edges[0].node : null;
+            var variant = p.variants.edges.length ? p.variants.edges[0].node : null;
+            var price = variant ? parseFloat(variant.priceV2.amount).toFixed(2) : '';
+            var card = document.createElement('div');
+            card.className = 'reveal product-card ring-1 ring-warm-gray-200/30';
+            card.innerHTML = '<a href="product.html?handle=' + esc(p.handle) + '" class="block"><div class="aspect-square overflow-hidden bg-cream-dark">' + (img ? '<img src="' + esc(img.url) + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') + '</div><div class="p-5"><h3 class="font-display text-base font-semibold text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3><div class="flex items-center justify-between mt-3"><p class="text-sm text-warm-gray-500 font-medium">$' + price + ' CAD</p>' + (variant ? '<button class="atc-btn" data-variant-id="' + esc(variant.id) + '" onclick="event.stopPropagation();MapleCart.addFromBtn(this)">+ Add</button>' : '') + '</div></div></a>';
+            grid.appendChild(card);
+            revealObs.observe(card);
+          });
+        }).catch(function () { document.getElementById('syrup-loading').textContent = 'Visit our maple syrup collection to shop all options.'; });
+
+      window.toggleAccordion = function (btn) {
+        var c = btn.nextElementSibling, ic = btn.querySelector('.accordion-icon'), open = c.classList.contains('open');
+        document.querySelectorAll('.accordion-content.open').forEach(function (el) { el.classList.remove('open'); el.previousElementSibling.querySelector('.accordion-icon').classList.remove('open'); });
+        if (!open) { c.classList.add('open'); ic.classList.add('open'); }
+      };
+
+      var revealObs = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+      var nb = document.getElementById('navbar'), ni = nb.querySelector('.nav-glass');
+      window.addEventListener('scroll', function () { ni.classList.toggle('nav-scrolled', window.pageYOffset > 80); }, { passive: true });
+
+      var mt = document.getElementById('menu-toggle'), mm = document.getElementById('mobile-menu'), ml = document.querySelectorAll('.mobile-link');
+      var b1 = document.getElementById('bar1'), b2 = document.getElementById('bar2'), b3 = document.getElementById('bar3'), mo = false;
+      mt.addEventListener('click', function () {
+        mo = !mo; mm.style.opacity = mo ? '1' : '0'; mm.style.pointerEvents = mo ? 'auto' : 'none';
+        b1.style.transform = mo ? 'translateY(5px) rotate(45deg)' : ''; b2.style.opacity = mo ? '0' : '1'; b3.style.transform = mo ? 'translateY(-5px) rotate(-45deg)' : '';
+        ml.forEach(function (l) { l.style.opacity = mo ? '1' : '0'; l.style.transform = mo ? 'translateY(0)' : 'translateY(3rem)'; });
+        document.body.style.overflow = mo ? 'hidden' : '';
+      });
+      ml.forEach(function (l) { l.addEventListener('click', function () { mo = false; mm.style.opacity = '0'; mm.style.pointerEvents = 'none'; b1.style.transform = ''; b2.style.opacity = '1'; b3.style.transform = ''; document.body.style.overflow = ''; }); });
+    })();
+  </script>
+
+  <script>
+    var MapleCart = (function () {
+      var SU = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json', ST = '59618e3b6f5e626df6c5f527b4972d3d';
+      var cId = localStorage.getItem('maple_cart_id') || null, cD = null;
+      var CF = 'id checkoutUrl lines(first:50){edges{node{id quantity merchandise{...on ProductVariant{id title priceV2{amount currencyCode}image{url altText}product{title}}}}}}cost{subtotalAmount{amount currencyCode}}';
+      function gql(q, v) { return fetch(SU, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': ST }, body: JSON.stringify({ query: q, variables: v || {} }) }).then(function (r) { return r.json(); }); }
+      function create(vId, qty) { return gql('mutation($l:[CartLineInput!]!){cartCreate(input:{lines:$l}){cart{' + CF + '}}}', { l: [{ merchandiseId: vId, quantity: qty || 1 }] }).then(function (r) { cD = r.data.cartCreate.cart; cId = cD.id; localStorage.setItem('maple_cart_id', cId); return cD; }); }
+      function addLine(vId, qty) { if (!cId) return create(vId, qty); return gql('mutation($c:ID!,$l:[CartLineInput!]!){cartLinesAdd(cartId:$c,lines:$l){cart{' + CF + '}userErrors{field message}}}', { c: cId, l: [{ merchandiseId: vId, quantity: qty || 1 }] }).then(function (r) { if (r.data.cartLinesAdd.userErrors && r.data.cartLinesAdd.userErrors.length) { localStorage.removeItem('maple_cart_id'); cId = null; return create(vId, qty); } cD = r.data.cartLinesAdd.cart; return cD; }); }
+      function upd(lId, qty) { return gql('mutation($c:ID!,$l:[CartLineUpdateInput!]!){cartLinesUpdate(cartId:$c,lines:$l){cart{' + CF + '}}}', { c: cId, l: [{ id: lId, quantity: qty }] }).then(function (r) { cD = r.data.cartLinesUpdate.cart; return cD; }); }
+      function rem(lId) { return gql('mutation($c:ID!,$ls:[ID!]!){cartLinesRemove(cartId:$c,lineIds:$ls){cart{' + CF + '}}}', { c: cId, ls: [lId] }).then(function (r) { cD = r.data.cartLinesRemove.cart; return cD; }); }
+      function fetch_() { if (!cId) return Promise.resolve(null); return gql('query($id:ID!){cart(id:$id){' + CF + '}}', { id: cId }).then(function (r) { if (!r.data.cart) { localStorage.removeItem('maple_cart_id'); cId = null; cD = null; return null; } cD = r.data.cart; return cD; }); }
+      function lines() { return cD && cD.lines ? cD.lines.edges.map(function (e) { return e.node; }) : []; }
+      function badge() { var el = document.getElementById('cart-count'); if (!el) return; var q = lines().reduce(function (s, l) { return s + l.quantity; }, 0); el.textContent = q; el.classList.toggle('visible', q > 0); }
+      function draw() {
+        var ie = document.getElementById('cart-items'), ee = document.getElementById('cart-empty'), fe = document.getElementById('cart-footer'), se = document.getElementById('cart-subtotal'), ls = lines();
+        ie.querySelectorAll('.cart-item').forEach(function (el) { el.remove(); });
+        if (!ls.length) { ee.style.display = ''; fe.style.display = 'none'; return; }
+        ee.style.display = 'none'; fe.style.display = '';
+        ls.forEach(function (line) {
+          var v = line.merchandise, pr = parseFloat(v.priceV2.amount) * line.quantity, iu = v.image ? v.image.url + '&width=144' : '';
+          var d = document.createElement('div'); d.className = 'cart-item';
+          d.innerHTML = (iu ? '<img class="cart-item-img" src="' + iu + '" alt="' + (window.MapleEsc||String)(v.image.altText || v.product.title) + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + pr.toFixed(2) + '</span></div></div>';
+          ie.appendChild(d);
+        });
+        if (cD.cost && cD.cost.subtotalAmount) se.textContent = '$' + parseFloat(cD.cost.subtotalAmount.amount).toFixed(2) + ' CAD';
+        ie.querySelectorAll('[data-action]').forEach(function (btn) { btn.addEventListener('click', function () { var lId = btn.dataset.line, act = btn.dataset.action, ln = ls.find(function (l) { return l.id === lId; }); if (!ln) return; var nq = act === 'inc' ? ln.quantity + 1 : ln.quantity - 1; (nq <= 0 ? rem(lId) : upd(lId, nq)).then(function () { draw(); badge(); }); }); });
+      }
+      function toggle() { var ov = document.getElementById('cart-overlay'), dr = document.getElementById('cart-drawer'), op = dr.classList.contains('open'); dr.classList.toggle('open'); ov.classList.toggle('open'); document.body.style.overflow = op ? '' : 'hidden'; if (!op) draw(); }
+      function addFromBtn(btn) { var vId = btn.dataset.variantId; if (!vId) return; var oh = btn.innerHTML; btn.classList.add('added'); btn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added'; addLine(vId, 1).then(function () { badge(); setTimeout(function () { btn.classList.remove('added'); btn.innerHTML = oh; }, 1400); }); }
+      function checkout() { if (!cD || !cD.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cD.checkoutUrl); } else { window.location.href = cD.checkoutUrl; } }
+      function init() { fetch_().then(function () { badge(); }); document.getElementById('cart-overlay').addEventListener('click', toggle); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle(); }); }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+      return { toggle: toggle, addFromBtn: addFromBtn, checkout: checkout };
+    })();
+  </script>
+
+  <script src="assets/shared.js" defer></script>
+</body>
+</html>
