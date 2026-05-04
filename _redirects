@@ -18,3 +18,11 @@
 
 /collections/gift-sets.html  /collections/maple-syrup-gift-set  301
 /collections/gift-sets       /collections/maple-syrup-gift-set  301
+
+# Legacy Shopify blog URLs → Cloudflare Pages blog template.
+# All articles still live in Shopify (headless); blog/post.html fetches them by handle
+# via the Storefront API. Before these rules, ~700k monthly GSC impressions were
+# landing on 404s because the Shopify→CF Pages cutover dropped the /blogs/* path.
+# 301 to preserve link equity and keep the rankings alive.
+/blogs/blogs-maple-terroir       /blog/                                              301
+/blogs/blogs-maple-terroir/*     /blog/post?handle=:splat&blog=blogs-maple-terroir   301
