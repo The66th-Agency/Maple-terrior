@@ -751,7 +751,7 @@
       variants.forEach(function (v, i) {
         var btn = document.createElement('button');
         btn.className = 'variant-btn' + (i === 0 ? ' active' : '') + (!v.availableForSale ? ' sold-out' : '');
-        btn.textContent = v.title + (!v.availableForSale ? ' – Sold Out' : '');
+        btn.textContent = v.title + (!v.availableForSale ? ' (Sold Out)' : '');
         btn.dataset.variantId = v.id;
         btn.dataset.price = v.priceV2.amount;
         btn.dataset.available = v.availableForSale ? '1' : '';

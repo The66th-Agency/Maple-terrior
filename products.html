@@ -93,6 +93,7 @@
     .atc-btn:hover {}
     .atc-btn:active { transform: scale(0.95); }
     .atc-btn.added { background: #5a7a4e; }
+    .sold-out-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 100px; background: rgba(140,129,117,0.12); color: #8C8175; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; }
 
     /* Category jump chips */
     .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
@@ -325,7 +326,8 @@
       { handle: 'gift-sets', eyebrow: 'Premium Gifting', title: 'Curated Gift Sets', cols: 0 }
     ];
 
-    var QUERY = 'query($handle:String!){collectionByHandle(handle:$handle){title products(first:50){edges{node{title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode}}}}}}}}}';
+    var QUERY = 'query($handle:String!){collectionByHandle(handle:$handle){title products(first:50){edges{node{title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode} availableForSale}}}}}}}}';
+
 
     function sfFetch(handle) {
       return fetch(STOREFRONT_URL, {
@@ -387,7 +389,7 @@
         '<h3 class="font-medium text-sm text-charcoal mb-1 product-title" style="min-height:2.8rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">' + (window.MapleEsc||String)(p.title) + '</h3>' +
         '<div class="flex items-center justify-between">' +
           '<p class="text-xs text-warm-gray-500">' + price + ' CAD</p>' +
-          (variantId ? '<button class="atc-btn" data-variant-id="' + esc(variantId) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>' : '') +
+          (variantId && variant.availableForSale ? '<button class="atc-btn" data-variant-id="' + esc(variantId) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">+ Cart</button>' : variantId && !variant.availableForSale ? '<span class="sold-out-badge">Sold Out</span>' : '') +
         '</div>' +
       '</a>';
     }
@@ -440,7 +442,9 @@
         if (!v) return;
         var price = '$' + Math.round(parseFloat(v.priceV2.amount));
         var label = p.title.replace(/Maple Terroir\s*/i, '').replace(/Gift\s*Set\s*/i, '').trim();
-        btns += '<button class="atc-btn" data-variant-id="' + esc(v.id) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">' + label + '  -  ' + price + '</button>';
+        btns += v.availableForSale
+          ? '<button class="atc-btn" data-variant-id="' + esc(v.id) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">' + label + '  -  ' + price + '</button>'
+          : '<span class="atc-btn" style="opacity:0.45;cursor:not-allowed;background:#EDE8DF;color:#8C8175">' + label + '  -  Sold Out</span>';
       });
       btnsEl.innerHTML = btns;
       var fi = products.length && products[0].images.edges.length ? products[0].images.edges[0].node : null;
