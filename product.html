@@ -121,6 +121,10 @@
       border-color: #C4841D; background: rgba(196,132,29,0.08);
       color: #1A1714; font-weight: 600;
     }
+    .variant-btn.sold-out { opacity: 0.45; cursor: not-allowed; text-decoration: line-through; }
+    .variant-btn.sold-out:hover { border-color: #EDE8DF; color: #4A4239; }
+    .pdp-atc.sold-out { background: #EDE8DF; color: #8C8175; cursor: not-allowed; }
+    .pdp-atc.sold-out:hover { transform: none; }
 
     /* ─── Add to Cart (product page) ────────────────────────────── */
     .pdp-atc {
@@ -634,6 +638,7 @@
     function addToCartPDP() {
       if (!selectedVariantId) return;
       var btn = document.getElementById('pdp-atc');
+      if (btn.classList.contains('sold-out')) return;
       var orig = btn.innerHTML;
       btn.classList.add('added');
       btn.innerHTML = '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added to Cart';
@@ -730,27 +735,50 @@
       var variants = p.variants.edges.map(function (e) { return e.node; });
       var pickerEl = document.getElementById('variant-picker');
       pickerEl.innerHTML = '';
+      function updateAtcState(available) {
+        var atcBtns = document.querySelectorAll('.pdp-atc');
+        atcBtns.forEach(function (b) {
+          if (available) {
+            b.classList.remove('sold-out');
+            b.innerHTML = b.innerHTML.replace('Sold Out', 'Add to Cart');
+          } else {
+            b.classList.add('sold-out');
+            b.innerHTML = b.innerHTML.replace('Add to Cart', 'Sold Out');
+          }
+        });
+      }
+
       variants.forEach(function (v, i) {
         var btn = document.createElement('button');
-        btn.className = 'variant-btn' + (i === 0 ? ' active' : '');
-        btn.textContent = v.title;
+        btn.className = 'variant-btn' + (i === 0 ? ' active' : '') + (!v.availableForSale ? ' sold-out' : '');
+        btn.textContent = v.title + (!v.availableForSale ? ' – Sold Out' : '');
         btn.dataset.variantId = v.id;
         btn.dataset.price = v.priceV2.amount;
+        btn.dataset.available = v.availableForSale ? '1' : '';
         btn.addEventListener('click', function () {
+          if (!v.availableForSale) return;
           pickerEl.querySelectorAll('.variant-btn').forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
           selectedVariantId = v.id;
           document.getElementById('product-price').textContent = '$' + parseFloat(v.priceV2.amount).toFixed(2);
           document.getElementById('sticky-price').textContent = '$' + parseFloat(v.priceV2.amount).toFixed(2) + ' CAD';
+          updateAtcState(v.availableForSale);
         });
         pickerEl.appendChild(btn);
       });
 
-      // Set initial variant
-      selectedVariantId = variants[0].id;
-      document.getElementById('product-price').textContent = '$' + parseFloat(variants[0].priceV2.amount).toFixed(2);
+      // Set initial variant — skip to first available if first is sold out
+      var firstAvail = variants.find(function (v) { return v.availableForSale; });
+      var initVariant = variants[0].availableForSale ? variants[0] : (firstAvail || variants[0]);
+      if (!variants[0].availableForSale && firstAvail) {
+        pickerEl.querySelectorAll('.variant-btn')[0].classList.remove('active');
+        pickerEl.querySelectorAll('.variant-btn')[variants.indexOf(firstAvail)].classList.add('active');
+      }
+      selectedVariantId = initVariant.id;
+      updateAtcState(initVariant.availableForSale);
+      document.getElementById('product-price').textContent = '$' + parseFloat(initVariant.priceV2.amount).toFixed(2);
       document.getElementById('sticky-title').textContent = p.title;
-      document.getElementById('sticky-price').textContent = '$' + parseFloat(variants[0].priceV2.amount).toFixed(2) + ' CAD';
+      document.getElementById('sticky-price').textContent = '$' + parseFloat(initVariant.priceV2.amount).toFixed(2) + ' CAD';
 
       // Description  -  separate paragraphs from bullet points
       var descHtml = p.descriptionHtml || ('<p>' + p.description + '</p>');

@@ -63,6 +63,7 @@
     .atc-btn:hover {}
     .atc-btn:active { transform: scale(0.95); }
     .atc-btn.added { background: #5a7a4e; }
+    .sold-out-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 100px; background: rgba(140,129,117,0.12); color: #8C8175; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; }
     .skeleton { background: linear-gradient(90deg, #F5F0E8 25%, #EDE8DF 50%, #F5F0E8 75%); background-size: 200% 100%; animation: shimmer 1.5s ease-in-out infinite; border-radius: 0.75rem; }
     @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
@@ -324,7 +325,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN },
         body: JSON.stringify({
-          query: 'query($handle:String!){ collectionByHandle(handle:$handle){ id title description image{url altText} products(first:50){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode}}}} } } } } }',
+          query: 'query($handle:String!){ collectionByHandle(handle:$handle){ id title description image{url altText} products(first:50){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode} availableForSale}}} } } } } }',
           variables: { handle: handle }
         })
       })
@@ -397,7 +398,7 @@
             '</a>' +
             '<div class="flex items-center justify-between">' +
               '<p class="text-xs text-warm-gray-500">$' + price + ' CAD</p>' +
-              (variantId ? '<button class="atc-btn" data-variant-id="' + variantId + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Cart</button>' : '') +
+              (variantId && variant.availableForSale ? '<button class="atc-btn" data-variant-id="' + variantId + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Cart</button>' : variantId && !variant.availableForSale ? '<span class="sold-out-badge">Sold Out</span>' : '') +
             '</div>';
           grid.appendChild(card);
         });

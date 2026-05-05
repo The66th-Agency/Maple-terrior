@@ -342,7 +342,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN },
         body: JSON.stringify({
-          query: 'query{ products(first:24, sortKey:CREATED_AT, reverse:true){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode}}}} } } } }'
+          query: 'query{ products(first:24, sortKey:CREATED_AT, reverse:true){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode} availableForSale}}} } } } }'
         })
       })
       .then(function (r) { return r.json(); })
@@ -378,7 +378,7 @@
             '</a>' +
             '<div class="flex items-center justify-between">' +
               '<p class="text-xs text-warm-gray-500">$' + price + ' CAD</p>' +
-              (variantId ? '<button class="atc-btn" data-variant-id="' + variantId + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Cart</button>' : '') +
+              (variantId && variant.availableForSale ? '<button class="atc-btn" data-variant-id="' + variantId + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Cart</button>' : variantId && !variant.availableForSale ? '<span class="sold-out-badge">Sold Out</span>' : '') +
             '</div>';
           grid.appendChild(card);
         });
