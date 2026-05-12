@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core pages -->
   <url><loc>https://mapleterroir.com/</loc><priority>1.0</priority></url>
   <url><loc>https://mapleterroir.com/products</loc><priority>0.9</priority></url>
   <url><loc>https://mapleterroir.com/story</loc><priority>0.7</priority></url>
@@ -12,6 +13,7 @@
   <url><loc>https://mapleterroir.com/canadian-maple-syrup</loc><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/organic-maple-syrup</loc><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/blog/</loc><priority>0.7</priority></url>
+  <!-- Collection pages -->
   <url><loc>https://mapleterroir.com/collections/premium-maple-syrup</loc><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/maple-stroopwafels</loc><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/tea-coffee</loc><priority>0.8</priority></url>
@@ -22,4 +24,45 @@
   <url><loc>https://mapleterroir.com/collections/home-sets</loc><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/bestsellers</loc><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/new-arrivals</loc><priority>0.8</priority></url>
+  <!-- Product pages -->
+  <url><loc>https://mapleterroir.com/product?handle=maple-syrup-milk-chocolate-covered-almonds</loc><lastmod>2026-04-29</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=cocoa-dark-chocolate-covered-maple-roasted-almonds</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-syrup-medium-dark-roast-ground-coffee</loc><lastmod>2026-05-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-ceylon-tea</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=blueberry-ceylon-tea</loc><lastmod>2026-04-01</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=pure-maple-syrup-candy</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=pure-maple-syrup-caramel</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=dark-chocolate-covered-cranberry-pure-maple-syrup</loc><lastmod>2026-04-01</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=dark-chocolate-covered-cherry-pure-maple-syrup</loc><lastmod>2026-04-30</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=dark-chocolate-covered-blueberry-pure-maple-syrup</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-syrup-blueberry-cookies</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-syrup-stroopwafel</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-syrup-sea-salt-roasted-peanuts</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=handcrafted-pure-maple-syrup-butter-popcorn</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=organic-maple-cream-butter-jar</loc><lastmod>2026-05-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=organic-pure-maple-sugar</loc><lastmod>2026-04-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-syrup-cream-cookies-350g</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-sugar-sea-salt-cookies</loc><lastmod>2026-04-29</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=organic-pure-maple-syrup-250ml</loc><lastmod>2026-05-12</lastmod><priority>0.9</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=pure-maple-syrup-maple-leaf-bottle-50ml</loc><lastmod>2026-05-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=pure-maple-syrup-maple-leaf-bottle-100ml</loc><lastmod>2026-05-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=pure-maple-syrup-maple-leaf-bottle-250ml</loc><lastmod>2026-05-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-enthusiast-home-set</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-frenzy-home-set</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-indulge-home-set</loc><lastmod>2026-04-29</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=hello-kitty-maple-cream-cookies</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-extravaganza-gift-set</loc><lastmod>2026-04-21</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=matcha-green-tea-maple-stroopwafels-caddy</loc><lastmod>2026-05-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=wild-blueberry-maple-stroopwafels-caddy</loc><lastmod>2026-05-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=strawberry-cream-maple-stroopwafels-caddy</loc><lastmod>2026-04-30</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=cocoa-chocolate-maple-stroopwafels-caddy</loc><lastmod>2026-05-03</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=pure-maple-syrup-stroopwafels-caddy</loc><lastmod>2026-05-12</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=pure-maple-syrup-jug-100ml</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-leaf-mini-shortbread-cookies</loc><lastmod>2026-05-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-syrup-mini-stroopwafel</loc><lastmod>2026-04-14</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-mega-combo-gift-set</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-organic-heaven-home-set</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-treat-home-set</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/product?handle=maple-tea-party-home-set</loc><lastmod>2026-03-27</lastmod><priority>0.7</priority></url>
 </urlset>
