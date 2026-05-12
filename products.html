@@ -327,7 +327,12 @@
     ];
 
     var QUERY = 'query($handle:String!){collectionByHandle(handle:$handle){title products(first:50){edges{node{title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode} availableForSale}}}}}}}}';
+    var PRODUCT_QUERY = 'query($handle:String!){productByHandle(handle:$handle){title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode} availableForSale}}}}}';
 
+    /* ── Products to inject into a category that aren't in the source Shopify collection ── */
+    var EXTRA_PRODUCTS = {
+      'nuts-popcorn': ['pure-maple-syrup-caramel']
+    };
 
     function sfFetch(handle) {
       return fetch(STOREFRONT_URL, {
@@ -335,6 +340,14 @@
         headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN },
         body: JSON.stringify({ query: QUERY, variables: { handle: handle } })
       }).then(function (r) { return r.json(); });
+    }
+
+    function sfFetchProduct(handle) {
+      return fetch(STOREFRONT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN },
+        body: JSON.stringify({ query: PRODUCT_QUERY, variables: { handle: handle } })
+      }).then(function (r) { return r.json(); }).then(function (j) { return j.data && j.data.productByHandle; });
     }
 
     /* ── Product ordering for maple-syrup-all ── */
@@ -456,7 +469,18 @@
     var loading = document.getElementById('categories-loading');
     var promises = CATEGORIES.map(function (cat) { return sfFetch(cat.handle); });
 
-    Promise.all(promises).then(function (results) {
+    /* Fetch extra products (those not in the source Shopify collection) in parallel */
+    var extraHandles = [];
+    Object.keys(EXTRA_PRODUCTS).forEach(function (k) { extraHandles = extraHandles.concat(EXTRA_PRODUCTS[k]); });
+    var extraPromise = Promise.all(extraHandles.map(sfFetchProduct)).then(function (list) {
+      var byHandle = {};
+      list.forEach(function (p) { if (p) byHandle[p.handle] = p; });
+      return byHandle;
+    });
+
+    Promise.all([Promise.all(promises), extraPromise]).then(function (both) {
+      var results = both[0];
+      var extras = both[1];
       loading.style.display = 'none';
       var html = '';
       results.forEach(function (res, i) {
@@ -464,6 +488,14 @@
         var c = res.data ? res.data.collectionByHandle : null;
         if (!c || !c.products.edges.length) return;
         var products = c.products.edges.map(function (e) { return e.node; });
+        // Inject extras for this category
+        if (EXTRA_PRODUCTS[cat.handle]) {
+          EXTRA_PRODUCTS[cat.handle].forEach(function (h) {
+            if (extras[h] && !products.some(function (p) { return p.handle === h; })) {
+              products.push(extras[h]);
+            }
+          });
+        }
         // Filter hidden products globally
         products = products.filter(function (p) { return !isHidden(p); });
         // Move mini stroopwafel out of stroopwafels collection
