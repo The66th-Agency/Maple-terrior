@@ -226,6 +226,49 @@
       else { mobileMenu.style.opacity='0'; mobileMenu.style.pointerEvents='none'; bar1.style.transform=''; bar2.style.opacity='1'; bar3.style.transform=''; mobileLinks.forEach(function(l){l.style.opacity='0';l.style.transform='translateY(3rem)';}); document.body.style.overflow=''; }
     });
 
+    // Internal link injection — runs after article HTML is rendered
+    // Longest/most-specific phrases first to avoid partial matches
+    function injectInternalLinks(container) {
+      var LINK_MAP = [
+        { re: /\borganic maple syrup\b/i,    url: '../organic-maple-syrup' },
+        { re: /\bcanadian maple syrup\b/i,   url: '../canadian-maple-syrup' },
+        { re: /\bmaple syrup wholesale\b/i,  url: '../maple-syrup-wholesale' },
+        { re: /\bpure maple syrup\b/i,       url: '../collections/premium-maple-syrup' },
+        { re: /\bmaple stroopwafels?\b/i,    url: '../collections/maple-stroopwafels' },
+        { re: /\bstroopwafels?\b/i,          url: '../collections/maple-stroopwafels' },
+        { re: /\bmaple sugar\b/i,            url: '../product?handle=organic-pure-maple-sugar' },
+        { re: /\bcorporate gifts?\b/i,       url: '../maple-syrup-corporate-gift' },
+        { re: /\bmaple syrup\b/i,            url: '../collections/premium-maple-syrup' }
+      ];
+      var linked = {};
+      function getTextNodes(el) {
+        var nodes = [], walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false), node;
+        while ((node = walker.nextNode())) {
+          var p = node.parentNode, skip = false;
+          while (p && p !== el) { if (p.tagName === 'A') { skip = true; break; } p = p.parentNode; }
+          if (!skip) nodes.push(node);
+        }
+        return nodes;
+      }
+      LINK_MAP.forEach(function(rule) {
+        if (linked[rule.url]) return;
+        var nodes = getTextNodes(container);
+        for (var i = 0; i < nodes.length; i++) {
+          var text = nodes[i].nodeValue, match = rule.re.exec(text);
+          if (!match) continue;
+          var frag = document.createDocumentFragment();
+          var before = text.slice(0, match.index), after = text.slice(match.index + match[0].length);
+          if (before) frag.appendChild(document.createTextNode(before));
+          var a = document.createElement('a'); a.href = rule.url; a.textContent = match[0];
+          frag.appendChild(a);
+          if (after) frag.appendChild(document.createTextNode(after));
+          nodes[i].parentNode.replaceChild(frag, nodes[i]);
+          linked[rule.url] = true;
+          break;
+        }
+      });
+    }
+
     // Load article
     var SU = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
     var ST = '59618e3b6f5e626df6c5f527b4972d3d';
@@ -266,7 +309,7 @@
 
       var canon = document.querySelector('link[rel="canonical"]');
       if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
-      canon.href = 'https://mapleterroir.com/blog/post.html?handle=' + encodeURIComponent(handle) + '&blog=' + encodeURIComponent(blogHandle);
+      canon.href = 'https://mapleterroir.com/blog/post?handle=' + encodeURIComponent(handle) + '&blog=' + encodeURIComponent(blogHandle);
 
       document.title = a.title + ' | Maple Terroir Blog';
       document.querySelector('meta[name="description"]').content = a.excerpt || a.title;
@@ -275,6 +318,7 @@
       document.getElementById('article-author').textContent = a.authorV2 ? 'By ' + a.authorV2.name : '';
       document.getElementById('article-date').textContent = new Date(a.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
       document.getElementById('article-content').innerHTML = a.contentHtml;
+      injectInternalLinks(document.getElementById('article-content'));
 
       // Hero image
       var heroEl = document.getElementById('article-hero');
