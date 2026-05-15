@@ -155,3 +155,8 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 - **Photo swaps from the legacy Shopify site** — the current `mapleterroir.com` is built on Instant.so and its CDN is `cdn.instant.so/sites/Kjn4vpPuFvAsOEBs/assets/...`. When the client references "the photo on the current site," find it there and **download + host locally** in `assets/images/`. Never hotlink from `cdn.instant.so` — if their plan lapses or assets rotate, our site breaks. Example this session: [assets/images/maple-syrup-french-toast-pour.webp](assets/images/maple-syrup-french-toast-pour.webp).
 - **Unsplash is a fallback only** — when a real product/lifestyle photo exists on the legacy site, always prefer that over Unsplash. Unsplash images flag as generic stock to anyone who has seen the client's real content.
 
+## Writing rules
+
+- Agency Rule: only people act. Abstract nouns (clarity, results, change, strategy, leadership) cannot be the subject of a sentence. Recast so a person or group is the subject. The abstract noun becomes an object, modifier, or part of a prepositional phrase.
+  - AVOID: "SEO drives traffic." USE: "We build pages that bring in buyers."
+  - Exception: real systems taking real actions are fine. "Shopify handles the cart" and "Cloudflare serves the page" are correct.
