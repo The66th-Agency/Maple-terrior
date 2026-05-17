@@ -16,17 +16,11 @@
   <script>
     (function () {
       try {
-        // Resolve handle from pathname (clean /blog/SLUG) first, query string second (legacy)
-        var pathParts = window.location.pathname.split('/').filter(Boolean);
-        var reserved = { 'post': 1, 'post.html': 1, 'index': 1, 'index.html': 1 };
-        var h = null;
-        if (pathParts[0] === 'blog' && pathParts[1] && !reserved[pathParts[1]]) {
-          h = decodeURIComponent(pathParts[1]);
-        } else {
-          h = new URLSearchParams(window.location.search).get('handle');
-        }
+        var p = new URLSearchParams(window.location.search);
+        var h = p.get('handle');
+        var b = p.get('blog') || 'blogs-maple-terroir';
         if (!h) return;
-        var url = 'https://mapleterroir.com/blog/' + encodeURIComponent(h);
+        var url = 'https://mapleterroir.com/blog/post?handle=' + encodeURIComponent(h) + '&blog=' + encodeURIComponent(b);
         var c = document.querySelector('link[rel="canonical"]');
         if (c) c.href = url;
         var og = document.querySelector('meta[property="og:url"]');
@@ -300,61 +294,61 @@
     // Blog-to-blog cross-links — injected as natural inline paragraphs mid-content
     var BLOG_CROSS_LINKS = {
       'from-sap-to-sweetness-a-complete-pure-maple-syrup-journey': [
-        { after: /sap|tap|tree|sugar maple|collection/i, sentence: 'The economics behind this process are surprisingly complex — <a href="/blog/the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide">a deep dive into sap values</a> shows just how much weather, yield, and pricing pressure shape every bottle.' },
-        { after: /grade|colour|color|amber|dark|golden/i, sentence: 'For a full breakdown of what to look for when buying, the <a href="/blog/the-complete-guide-to-canadian-maple-syrup">complete guide to Canadian maple syrup</a> covers grades, regions, and how to read the label.' }
+        { after: /sap|tap|tree|sugar maple|collection/i, sentence: 'The economics behind this process are surprisingly complex — <a href="post?handle=the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide&blog=blogs-maple-terroir">a deep dive into sap values</a> shows just how much weather, yield, and pricing pressure shape every bottle.' },
+        { after: /grade|colour|color|amber|dark|golden/i, sentence: 'For a full breakdown of what to look for when buying, the <a href="post?handle=the-complete-guide-to-canadian-maple-syrup&blog=blogs-maple-terroir">complete guide to Canadian maple syrup</a> covers grades, regions, and how to read the label.' }
       ],
       '5-surprising-maple-syrup-benefits-you-need-to-know': [
-        { after: /antioxidant|compound|polyphenol|nutrient|zinc|manganese/i, sentence: 'These properties come through most clearly in pure, minimally processed syrup — the kind explored in detail in our <a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">guide to how maple syrup is made</a>.' },
-        { after: /recipe|cook|bak|use|substitut/i, sentence: 'If you want to put these benefits to work in the kitchen, <a href="/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide">15 unexpected maple syrup uses</a> goes well beyond the breakfast table.' }
+        { after: /antioxidant|compound|polyphenol|nutrient|zinc|manganese/i, sentence: 'These properties come through most clearly in pure, minimally processed syrup — the kind explored in detail in our <a href="post?handle=from-sap-to-sweetness-a-complete-pure-maple-syrup-journey&blog=blogs-maple-terroir">guide to how maple syrup is made</a>.' },
+        { after: /recipe|cook|bak|use|substitut/i, sentence: 'If you want to put these benefits to work in the kitchen, <a href="post?handle=15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide&blog=news">15 unexpected maple syrup uses</a> goes well beyond the breakfast table.' }
       ],
       'canadian-maple-syrup-heist-a-30-million-theft-unveiled': [
-        { after: /Quebec|federation|reserve|FPAQ|strategic/i, sentence: 'That reserve exists because Canadian maple syrup production is one of the most tightly regulated agricultural industries in the world — something the <a href="/blog/canadian-maple-syrup-production-report-2025">2025 production report</a> puts into sharp perspective.' },
-        { after: /heritage|tradition|generation|history|artisan/i, sentence: 'The story of how that heritage was built — and what makes Quebec syrup distinct from anything else — is worth understanding on its own terms: <a href="/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">The Rich Story of Maple Syrup Canada</a>.' }
+        { after: /Quebec|federation|reserve|FPAQ|strategic/i, sentence: 'That reserve exists because Canadian maple syrup production is one of the most tightly regulated agricultural industries in the world — something the <a href="post?handle=canadian-maple-syrup-production-report-2025&blog=blogs-maple-terroir">2025 production report</a> puts into sharp perspective.' },
+        { after: /heritage|tradition|generation|history|artisan/i, sentence: 'The story of how that heritage was built — and what makes Quebec syrup distinct from anything else — is worth understanding on its own terms: <a href="post?handle=the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir&blog=blogs-maple-terroir">The Rich Story of Maple Syrup Canada</a>.' }
       ],
       'the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir': [
-        { after: /reserve|stockpile|supply|control|Federation/i, sentence: 'That reserve became notorious for another reason entirely — if you have not heard the story, the <a href="/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled">$30 million maple syrup heist</a> is one of the stranger chapters in Canadian agricultural history.' },
-        { after: /Quebec|terroir|region|climate|soil|Appalachian|flavour/i, sentence: 'The science behind why Quebec produces such distinct syrup goes deeper than geography — <a href="/blog/the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide">the hidden truth behind sap values</a> explains what actually varies from season to season.' }
+        { after: /reserve|stockpile|supply|control|Federation/i, sentence: 'That reserve became notorious for another reason entirely — if you have not heard the story, the <a href="post?handle=canadian-maple-syrup-heist-a-30-million-theft-unveiled&blog=blogs-maple-terroir">$30 million maple syrup heist</a> is one of the stranger chapters in Canadian agricultural history.' },
+        { after: /Quebec|terroir|region|climate|soil|Appalachian|flavour/i, sentence: 'The science behind why Quebec produces such distinct syrup goes deeper than geography — <a href="post?handle=the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide&blog=blogs-maple-terroir">the hidden truth behind sap values</a> explains what actually varies from season to season.' }
       ],
       'authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats': [
-        { after: /store.bought|commercial|packaged|shelf|supermarket/i, sentence: 'Before committing to the full process, it is worth reading the <a href="/blog/homemade-vs-store-bought-waffle-snacks-which-tastes-better-2025">homemade vs store-bought taste test</a> — the gap is real, but not always where people expect it.' }
+        { after: /store.bought|commercial|packaged|shelf|supermarket/i, sentence: 'Before committing to the full process, it is worth reading the <a href="post?handle=homemade-vs-store-bought-waffle-snacks-which-tastes-better-2025&blog=blogs-maple-terroir">homemade vs store-bought taste test</a> — the gap is real, but not always where people expect it.' }
       ],
       'homemade-vs-store-bought-waffle-snacks-which-tastes-better-2025': [
-        { after: /recipe|flour|dough|bak|caramel|filling|waffle iron/i, sentence: 'For anyone ready to take on the scratch version, the <a href="/blog/authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats">complete Dutch stroopwafel recipe</a> covers every step from dough to caramel fill.' }
+        { after: /recipe|flour|dough|bak|caramel|filling|waffle iron/i, sentence: 'For anyone ready to take on the scratch version, the <a href="post?handle=authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats&blog=blogs-maple-terroir">complete Dutch stroopwafel recipe</a> covers every step from dough to caramel fill.' }
       ],
       'the-complete-guide-to-canadian-maple-syrup': [
-        { after: /Quebec|province|region|production|output|supply/i, sentence: 'The numbers behind that dominance are striking — the <a href="/blog/canadian-maple-syrup-production-report-2025">2025 Canadian maple syrup production report</a> tracks exactly how the market has shifted and where it is heading.' },
-        { after: /history|heritage|tradition|Indigenous|century/i, sentence: 'For the human side of that story, <a href="/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">The Rich Story of Maple Syrup Canada</a> goes deep on the generational craft behind the category.' }
+        { after: /Quebec|province|region|production|output|supply/i, sentence: 'The numbers behind that dominance are striking — the <a href="post?handle=canadian-maple-syrup-production-report-2025&blog=blogs-maple-terroir">2025 Canadian maple syrup production report</a> tracks exactly how the market has shifted and where it is heading.' },
+        { after: /history|heritage|tradition|Indigenous|century/i, sentence: 'For the human side of that story, <a href="post?handle=the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir&blog=blogs-maple-terroir">The Rich Story of Maple Syrup Canada</a> goes deep on the generational craft behind the category.' }
       ],
       'canadian-maple-syrup-production-report-2025': [
-        { after: /reserve|stockpile|heist|theft|stolen/i, sentence: 'That strategic reserve made headlines for more than its scale — the <a href="/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled">$30 million maple syrup heist</a> remains one of the most bizarre stories in food industry history.' },
-        { after: /market|valuation|billion|growth|consumer|demand/i, sentence: 'For a ground-level look at what drives that demand, the <a href="/blog/the-complete-guide-to-canadian-maple-syrup">complete guide to Canadian maple syrup</a> covers what distinguishes premium product from commodity.' }
+        { after: /reserve|stockpile|heist|theft|stolen/i, sentence: 'That strategic reserve made headlines for more than its scale — the <a href="post?handle=canadian-maple-syrup-heist-a-30-million-theft-unveiled&blog=blogs-maple-terroir">$30 million maple syrup heist</a> remains one of the most bizarre stories in food industry history.' },
+        { after: /market|valuation|billion|growth|consumer|demand/i, sentence: 'For a ground-level look at what drives that demand, the <a href="post?handle=the-complete-guide-to-canadian-maple-syrup&blog=blogs-maple-terroir">complete guide to Canadian maple syrup</a> covers what distinguishes premium product from commodity.' }
       ],
       'canadian-maple-syrup-production-report-2025-hidden-market-opportunities-revealed': [
-        { after: /reserve|stockpile|heist|theft|stolen/i, sentence: 'That strategic reserve made headlines for more than its scale — the <a href="/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled">$30 million maple syrup heist</a> remains one of the most bizarre stories in food industry history.' },
-        { after: /market|valuation|billion|growth|consumer|demand/i, sentence: 'For a ground-level look at what drives that demand, the <a href="/blog/the-complete-guide-to-canadian-maple-syrup">complete guide to Canadian maple syrup</a> covers what distinguishes premium product from commodity.' }
+        { after: /reserve|stockpile|heist|theft|stolen/i, sentence: 'That strategic reserve made headlines for more than its scale — the <a href="post?handle=canadian-maple-syrup-heist-a-30-million-theft-unveiled&blog=blogs-maple-terroir">$30 million maple syrup heist</a> remains one of the most bizarre stories in food industry history.' },
+        { after: /market|valuation|billion|growth|consumer|demand/i, sentence: 'For a ground-level look at what drives that demand, the <a href="post?handle=the-complete-guide-to-canadian-maple-syrup&blog=blogs-maple-terroir">complete guide to Canadian maple syrup</a> covers what distinguishes premium product from commodity.' }
       ],
       '15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide': [
-        { after: /health|benefit|nutrient|antioxidant|zinc|manganese/i, sentence: 'The nutritional case for making that swap goes deeper than sweetness — <a href="/blog/5-surprising-maple-syrup-benefits-you-need-to-know">5 surprising maple syrup benefits</a> breaks down what the research actually shows.' }
+        { after: /health|benefit|nutrient|antioxidant|zinc|manganese/i, sentence: 'The nutritional case for making that swap goes deeper than sweetness — <a href="post?handle=5-surprising-maple-syrup-benefits-you-need-to-know&blog=blogs-maple-terroir">5 surprising maple syrup benefits</a> breaks down what the research actually shows.' }
       ],
       'the-truth-about-maple-syrup-hidden-uses-most-people-dont-know': [
-        { after: /recipe|cook|glaze|marinade|savory|sweet|kitchen/i, sentence: 'For a longer list with step-by-step applications, <a href="/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide">15 unexpected maple syrup uses</a> covers everything from cocktail syrups to salad dressings.' }
+        { after: /recipe|cook|glaze|marinade|savory|sweet|kitchen/i, sentence: 'For a longer list with step-by-step applications, <a href="post?handle=15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide&blog=news">15 unexpected maple syrup uses</a> covers everything from cocktail syrups to salad dressings.' }
       ],
       'the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide': [
-        { after: /sap|tap|tree|season|spring|winter|harvest/i, sentence: 'The hands-on side of that process — what actually happens from tap to bottle — is covered thoroughly in <a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">From Sap to Sweetness</a>.' },
-        { after: /Quebec|Canada|supply|production|industry|market/i, sentence: 'For the broader market picture, the <a href="/blog/canadian-maple-syrup-production-report-2025">2025 Canadian maple syrup production report</a> tracks where the industry stands and where it is heading.' }
+        { after: /sap|tap|tree|season|spring|winter|harvest/i, sentence: 'The hands-on side of that process — what actually happens from tap to bottle — is covered thoroughly in <a href="post?handle=from-sap-to-sweetness-a-complete-pure-maple-syrup-journey&blog=blogs-maple-terroir">From Sap to Sweetness</a>.' },
+        { after: /Quebec|Canada|supply|production|industry|market/i, sentence: 'For the broader market picture, the <a href="post?handle=canadian-maple-syrup-production-report-2025&blog=blogs-maple-terroir">2025 Canadian maple syrup production report</a> tracks where the industry stands and where it is heading.' }
       ],
       'can-you-tap-any-maple-tree-the-truth-about-backyard-syrup-making': [
-        { after: /sap|boil|evaporat|reduc|40|ratio|gallon/i, sentence: 'If you want to understand what actually happens to that sap after collection, <a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">From Sap to Sweetness</a> follows the full journey from tree to bottle.' }
+        { after: /sap|boil|evaporat|reduc|40|ratio|gallon/i, sentence: 'If you want to understand what actually happens to that sap after collection, <a href="post?handle=from-sap-to-sweetness-a-complete-pure-maple-syrup-journey&blog=blogs-maple-terroir">From Sap to Sweetness</a> follows the full journey from tree to bottle.' }
       ],
       'the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient': [
-        { after: /health|benefit|mineral|zinc|manganese|glycemic/i, sentence: 'The nutritional story behind maple-derived sweeteners is broader than most people realise — <a href="/blog/5-surprising-maple-syrup-benefits-you-need-to-know">5 surprising maple syrup benefits</a> covers what the research actually shows.' },
-        { after: /bak|recipe|cook|substitut|replac/i, sentence: 'For inspiration on where to use it, <a href="/blog/15-easy-gluten-free-maple-cake-recipes-your-family-will-love-in-2025">15 gluten-free maple cake recipes</a> shows how maple sugar performs as a primary sweetener across a range of bakes.' }
+        { after: /health|benefit|mineral|zinc|manganese|glycemic/i, sentence: 'The nutritional story behind maple-derived sweeteners is broader than most people realise — <a href="post?handle=5-surprising-maple-syrup-benefits-you-need-to-know&blog=blogs-maple-terroir">5 surprising maple syrup benefits</a> covers what the research actually shows.' },
+        { after: /bak|recipe|cook|substitut|replac/i, sentence: 'For inspiration on where to use it, <a href="post?handle=15-easy-gluten-free-maple-cake-recipes-your-family-will-love-in-2025&blog=blogs-maple-terroir">15 gluten-free maple cake recipes</a> shows how maple sugar performs as a primary sweetener across a range of bakes.' }
       ],
       '15-easy-gluten-free-maple-cake-recipes-your-family-will-love-in-2025': [
-        { after: /sugar|sweetener|granulat|substitut|replac/i, sentence: 'Maple sugar is worth understanding as a standalone ingredient before you start baking — <a href="/blog/the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient">The Ultimate Guide to Maple Sugar</a> covers flavour profile, storage, and why chefs are making the switch.' }
+        { after: /sugar|sweetener|granulat|substitut|replac/i, sentence: 'Maple sugar is worth understanding as a standalone ingredient before you start baking — <a href="post?handle=the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient&blog=blogs-maple-terroir">The Ultimate Guide to Maple Sugar</a> covers flavour profile, storage, and why chefs are making the switch.' }
       ],
       '1123': [
-        { after: /sap|tap|yield|vacuum|production|extract/i, sentence: 'The experience of that process at the farm level — what it looks like season to season — comes through clearly in <a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">From Sap to Sweetness</a>.' }
+        { after: /sap|tap|yield|vacuum|production|extract/i, sentence: 'The experience of that process at the farm level — what it looks like season to season — comes through clearly in <a href="post?handle=from-sap-to-sweetness-a-complete-pure-maple-syrup-journey&blog=blogs-maple-terroir">From Sap to Sweetness</a>.' }
       ]
     };
 
@@ -386,16 +380,8 @@
     // Load article
     var SU = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
     var ST = '59618e3b6f5e626df6c5f527b4972d3d';
-    // Resolve handle from pathname (clean /blog/SLUG) first, query string second (legacy)
-    var pathParts = window.location.pathname.split('/').filter(Boolean);
-    var reserved = { 'post': 1, 'post.html': 1, 'index': 1, 'index.html': 1 };
-    var handle = null;
     var params = new URLSearchParams(window.location.search);
-    if (pathParts[0] === 'blog' && pathParts[1] && !reserved[pathParts[1]]) {
-      handle = decodeURIComponent(pathParts[1]);
-    } else {
-      handle = params.get('handle');
-    }
+    var handle = params.get('handle');
     var blogHandle = params.get('blog') || 'blogs-maple-terroir';
 
     if (!handle) { window.location.href = '../404.html'; }
@@ -431,7 +417,7 @@
 
       var canon = document.querySelector('link[rel="canonical"]');
       if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
-      canon.href = 'https://mapleterroir.com/blog/' + encodeURIComponent(handle);
+      canon.href = 'https://mapleterroir.com/blog/post?handle=' + encodeURIComponent(handle) + '&blog=' + encodeURIComponent(blogHandle);
 
       document.title = a.title + ' | Maple Terroir Blog';
       document.querySelector('meta[name="description"]').content = a.excerpt || a.title;
@@ -503,7 +489,7 @@
       all.forEach(function (item) {
         var a = item.article;
         var card = document.createElement('a');
-        card.href = '/blog/' + a.handle;
+        card.href = 'post.html?handle=' + a.handle + '&blog=' + item.blog;
         card.className = 'block group';
         card.innerHTML = '<div class="rounded-[2rem] overflow-hidden mb-4 aspect-[3/2] bg-cream-dark ring-1 ring-warm-gray-200/30">' +
           (a.image ? '<img src="' + a.image.url + '&width=600" alt="' + (window.MapleEsc||String)(a.image.altText || a.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '') +

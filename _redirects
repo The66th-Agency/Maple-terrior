@@ -73,22 +73,12 @@
 # Shopify search path, route to the catalog (real search is the Ctrl+K modal)
 /search   /products  301
 
-# Legacy Shopify blog URLs, redirect straight to the new clean URL format.
-# Articles live in Shopify (headless); blog/post.html fetches by handle via
-# the Storefront API. Before these rules, ~700k monthly GSC impressions were
-# landing on 404s because the Shopify to CF Pages cutover dropped /blogs/*.
-/blogs/blogs-maple-terroir       /blog/      301
-/blogs/blogs-maple-terroir/*     /blog/:splat   301
-/blogs/news                      /blog/      301
-/blogs/news/*                    /blog/:splat   301
-
-# Edge cases that would otherwise match the catch-all rewrite below
-/blog/index       /blog/   301
-/blog/index.html  /blog/   301
-
-# Clean blog URLs: /blog/SLUG rewrites to the post.html template (URL bar
-# stays clean). JS reads SLUG from window.location.pathname and fetches
-# the article via the Shopify Storefront API. Old query-param URLs
-# (/blog/post?handle=...) are handled by functions/blog/post.js which
-# 301s to the canonical clean URL.
-/blog/:slug      /blog/post.html   200
+# Legacy Shopify blog URLs, Cloudflare Pages blog template.
+# All articles still live in Shopify (headless); blog/post.html fetches them
+# by handle via the Storefront API. Before these rules, ~700k monthly GSC
+# impressions were landing on 404s because the Shopify to CF Pages cutover
+# dropped the /blogs/* path. 301 to preserve link equity and rankings.
+/blogs/blogs-maple-terroir       /blog/                                              301
+/blogs/blogs-maple-terroir/*     /blog/post?handle=:splat&blog=blogs-maple-terroir   301
+/blogs/news                      /blog/                                              301
+/blogs/news/*                    /blog/post?handle=:splat&blog=news                  301
