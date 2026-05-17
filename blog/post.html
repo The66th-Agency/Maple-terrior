@@ -9,6 +9,28 @@
   <title>Maple Syrup Article | Maple Terroir Blog</title>
   <meta name="description" content="Stories from the sugar bush. Maple syrup culture, Quebec maple craft, and educational guides from Maple Terroir.">
 
+  <link rel="canonical" href="https://mapleterroir.com/blog/">
+  <meta property="og:url" content="https://mapleterroir.com/blog/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Maple Terroir">
+  <script>
+    (function () {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var h = p.get('handle');
+        var b = p.get('blog') || 'blogs-maple-terroir';
+        if (!h) return;
+        var url = 'https://mapleterroir.com/blog/post?handle=' + encodeURIComponent(h) + '&blog=' + encodeURIComponent(b);
+        var c = document.querySelector('link[rel="canonical"]');
+        if (c) c.href = url;
+        var og = document.querySelector('meta[property="og:url"]');
+        if (og) og.setAttribute('content', url);
+        var titleGuess = h.replace(/-/g, ' ').replace(/\b\w/g, function (m) { return m.toUpperCase(); });
+        document.title = titleGuess + ' | Maple Terroir Blog';
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
