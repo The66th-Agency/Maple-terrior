@@ -349,7 +349,7 @@
           var tag = (a.tags && a.tags.length) ? a.tags[0] : '';
 
           var card = document.createElement('a');
-          card.href = 'post.html?handle=' + a.handle + '&blog=' + item.blog;
+          card.href = '../blog/' + a.handle;
           card.className = 'block group reveal' + (i % 2 === 1 ? ' reveal-delay-1' : '');
 
           card.innerHTML =
