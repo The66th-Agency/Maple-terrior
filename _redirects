@@ -1,12 +1,17 @@
-# Shopify checkout passthrough — mapleterroir.com is Cloudflare Pages now,
+# Shopify checkout passthrough. mapleterroir.com is Cloudflare Pages now,
 # so /cart/* and /checkout/* must redirect to Shopify or every checkout 404s.
+/cart         https://maple-terroir.myshopify.com/cart              302
 /cart/*       https://maple-terroir.myshopify.com/cart/:splat       302
 /checkout/*   https://maple-terroir.myshopify.com/checkout/:splat   302
 /checkouts/*  https://maple-terroir.myshopify.com/checkouts/:splat  302
 /account      https://maple-terroir.myshopify.com/account           302
 /account/*    https://maple-terroir.myshopify.com/account/:splat    302
 
-# Renamed pages — preserve SEO equity from old URLs
+# Shopify-hosted legal policies (privacy, terms, refund, shipping). Shopify
+# owns these for compliance, so point legacy URLs to the canonical Shopify pages.
+/policies/*   https://maple-terroir.myshopify.com/policies/:splat   301
+
+# Renamed pages, preserve SEO equity from old URLs
 /wholesale.html  /maple-syrup-wholesale  301
 /wholesale       /maple-syrup-wholesale  301
 
@@ -19,10 +24,61 @@
 /collections/gift-sets.html  /collections/maple-syrup-gift-set  301
 /collections/gift-sets       /collections/maple-syrup-gift-set  301
 
-# Legacy Shopify blog URLs → Cloudflare Pages blog template.
-# All articles still live in Shopify (headless); blog/post.html fetches them by handle
-# via the Storefront API. Before these rules, ~700k monthly GSC impressions were
-# landing on 404s because the Shopify→CF Pages cutover dropped the /blogs/* path.
-# 301 to preserve link equity and keep the rankings alive.
+# Legacy Shopify product URLs, rewrite to the headless template that
+# fetches from Shopify Storefront API by handle. Catches ~132 indexed 404s
+# in one rule. Query strings (Shopify recommendation tracking, ?variant=) are
+# preserved automatically by Cloudflare Pages and ignored by /product?handle=.
+/products/*  /product?handle=:splat  301
+
+# Legacy Shopify collection URLs that don't exist in the new catalog,
+# map each to the closest equivalent on the new site.
+/collections/favourites               /collections/bestsellers          301
+/collections/maple-cookies            /collections/cookies              301
+/collections/cookies-stroopwafels     /collections/cookies              301
+/collections/nuts-and-popcorn         /collections/nuts-snacks          301
+/collections/nuts-popcorn             /collections/nuts-snacks          301
+/collections/maple-chocolates         /collections/chocolates           301
+/collections/canadian-maple-products  /canadian-maple-syrup             301
+/collections/organic-maple-syrup      /organic-maple-syrup              301
+/collections/organic-pure-maple-syrup /organic-maple-syrup              301
+/collections/conventional-maple-syrup /collections/premium-maple-syrup  301
+/collections/regular-maple-syrup      /collections/premium-maple-syrup  301
+/collections/maple-syrup-all          /collections/premium-maple-syrup  301
+/collections/all                      /products                         301
+/collections/shop-all                 /products                         301
+/collections/maple-products           /products                         301
+/collections/sweets                   /products                         301
+/collections/variety-maple-products   /products                         301
+/collections                          /products                         301
+
+# Legacy Shopify /pages/X URLs, map to editorial equivalents on the new site
+/pages/about                    /story                    301
+/pages/our-story                /story                    301
+/pages/community                /story                    301
+/pages/home                     /                         301
+/pages/wholesale                /maple-syrup-wholesale    301
+/pages/mt-wholesale             /maple-syrup-wholesale    301
+/pages/contact                  /contact                  301
+/pages/maple-syrup              /canadian-maple-syrup     301
+/pages/maple-syrup-copy         /canadian-maple-syrup     301
+/pages/about-pure-maple-syrup   /canadian-maple-syrup     301
+/pages/pure-maple-syrup-canada  /canadian-maple-syrup     301
+/pages/maple-syrup-faqs         /                         301
+/pages/coffee-and-tea           /collections/tea-coffee   301
+/pages/maple-snacks             /collections/nuts-snacks  301
+/pages/maple-chocolates         /collections/chocolates   301
+/pages/cookies-and-stroopwafels /collections/cookies      301
+/pages/vancouver                /                         301
+
+# Shopify search path, route to the catalog (real search is the Ctrl+K modal)
+/search   /products  301
+
+# Legacy Shopify blog URLs, Cloudflare Pages blog template.
+# All articles still live in Shopify (headless); blog/post.html fetches them
+# by handle via the Storefront API. Before these rules, ~700k monthly GSC
+# impressions were landing on 404s because the Shopify to CF Pages cutover
+# dropped the /blogs/* path. 301 to preserve link equity and rankings.
 /blogs/blogs-maple-terroir       /blog/                                              301
 /blogs/blogs-maple-terroir/*     /blog/post?handle=:splat&blog=blogs-maple-terroir   301
+/blogs/news                      /blog/                                              301
+/blogs/news/*                    /blog/post?handle=:splat&blog=news                  301
