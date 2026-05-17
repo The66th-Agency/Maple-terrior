@@ -82,6 +82,13 @@
 /blogs/news                      /blog/      301
 /blogs/news/*                    /blog/:splat   301
 
-# Clean /blog/* routing is handled by functions/blog/[[slug]].js, not
-# _redirects. A 200 rewrite to /blog/post.html here triggers CF Pages'
-# .html-to-clean-URL auto-redirect and loops.
+# Edge cases that would otherwise match the catch-all rewrite below
+/blog/index       /blog/   301
+/blog/index.html  /blog/   301
+
+# Clean blog URLs: /blog/SLUG rewrites to the post.html template (URL bar
+# stays clean). JS reads SLUG from window.location.pathname and fetches
+# the article via the Shopify Storefront API. Old query-param URLs
+# (/blog/post?handle=...) are handled by functions/blog/post.js which
+# 301s to the canonical clean URL.
+/blog/:slug      /blog/post.html   200
