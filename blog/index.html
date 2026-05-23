@@ -14,7 +14,7 @@
   <meta property="og:title" content="Maple Syrup Blog | Stories from the Sugar Bush | Maple Terroir">
   <meta property="og:description" content="Stories from the sugar bush, maple syrup culture, and educational guides from a Quebec family farm.">
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434">
-  <meta property="og:image:alt" content="Maple Terroir blog — stories from the sugar bush and guides on Quebec maple craft">
+  <meta property="og:image:alt" content="Maple Terroir blog: stories from the sugar bush plus guides on Quebec maple craft">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Maple Syrup Blog | Stories from the Sugar Bush | Maple Terroir">
   <meta name="twitter:description" content="Stories from the sugar bush, maple syrup culture, and educational guides from a Quebec family farm.">
@@ -349,7 +349,7 @@
           var tag = (a.tags && a.tags.length) ? a.tags[0] : '';
 
           var card = document.createElement('a');
-          card.href = 'post.html?handle=' + a.handle + '&blog=' + item.blog;
+          card.href = a.handle;
           card.className = 'block group reveal' + (i % 2 === 1 ? ' reveal-delay-1' : '');
 
           card.innerHTML =
