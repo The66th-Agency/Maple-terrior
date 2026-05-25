@@ -920,6 +920,7 @@
       var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
       var cartId = localStorage.getItem('maple_cart_id') || null;
       var cartData = null;
+      var pendingTimers = {}; // per-line debounce so rapid +/- clicks coalesce into one API call
       var CART_FRAGMENT = 'id checkoutUrl lines(first:50){edges{node{id quantity merchandise{...on ProductVariant{id title priceV2{amount currencyCode}image{url altText}product{title}}}}}}cost{subtotalAmount{amount currencyCode}}';
       function gql(query, variables) { return fetch(STOREFRONT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: query, variables: variables || {} }) }).then(function (r) { return r.json(); }); }
       function createCart(variantId, qty) { return gql('mutation($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{' + CART_FRAGMENT + '}userErrors{field message}}}', { lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }).then(function (res) { cartData = res.data.cartCreate.cart; cartId = cartData.id; localStorage.setItem('maple_cart_id', cartId); return cartData; }); }
@@ -941,7 +942,42 @@
           itemsEl.appendChild(div);
         });
         if (cartData.cost && cartData.cost.subtotalAmount) { subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2) + ' CAD'; }
-        itemsEl.querySelectorAll('[data-action]').forEach(function (btn) { btn.addEventListener('click', function () { var lineId = btn.dataset.line; var action = btn.dataset.action; var line = lines.find(function (l) { return l.id === lineId; }); if (!line) return; var newQty = action === 'inc' ? line.quantity + 1 : line.quantity - 1; var p = newQty <= 0 ? removeLine(lineId) : updateLine(lineId, newQty); p.then(function () { renderDrawer(); renderBadge(); }); }); });
+        // Optimistic +/-: update DOM immediately, debounce the Shopify roundtrip 300ms so
+        // rapid clicks coalesce. PostHog rage-click cluster on this control (May 2026) was
+        // the previous "wait for API → renderDrawer" pattern feeling broken.
+        itemsEl.querySelectorAll('[data-action]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var lineId = btn.dataset.line;
+            var action = btn.dataset.action;
+            var qtyEl = btn.parentNode.querySelector('span');
+            var current = parseInt(qtyEl.textContent, 10) || 0;
+            var newQty = action === 'inc' ? current + 1 : current - 1;
+            if (newQty < 0) return;
+            qtyEl.textContent = newQty;
+            var serverLine = lines.find(function (l) { return l.id === lineId; });
+            var unitPrice = serverLine ? parseFloat(serverLine.merchandise.priceV2.amount) : 0;
+            var priceEl = btn.closest('.cart-item-bottom').querySelector('.cart-item-price');
+            if (priceEl) priceEl.textContent = '$' + (unitPrice * newQty).toFixed(2);
+            // Recompute subtotal + badge from current DOM state
+            var optBadge = 0, optSubtotal = 0;
+            itemsEl.querySelectorAll('.cart-item-qty span').forEach(function (s) { optBadge += parseInt(s.textContent, 10) || 0; });
+            itemsEl.querySelectorAll('.cart-item-price').forEach(function (p) { optSubtotal += parseFloat(p.textContent.replace(/[^0-9.]/g, '')) || 0; });
+            subtotalEl.textContent = '$' + optSubtotal.toFixed(2) + ' CAD';
+            var badgeEl = document.getElementById('cart-count');
+            if (badgeEl) { badgeEl.textContent = optBadge; badgeEl.classList.toggle('visible', optBadge > 0); }
+            clearTimeout(pendingTimers[lineId]);
+            pendingTimers[lineId] = setTimeout(function () {
+              delete pendingTimers[lineId];
+              var finalQty = parseInt(qtyEl.textContent, 10);
+              var op = finalQty <= 0 ? removeLine(lineId) : updateLine(lineId, finalQty);
+              op.then(function () {
+                var sl = getLines().find(function (l) { return l.id === lineId; });
+                if (finalQty <= 0 || !sl || sl.quantity !== finalQty) renderDrawer();
+                renderBadge();
+              }).catch(function () { renderDrawer(); renderBadge(); });
+            }, 300);
+          });
+        });
       }
       function toggle() { var overlay = document.getElementById('cart-overlay'); var drawer = document.getElementById('cart-drawer'); var isOpen = drawer.classList.contains('open'); drawer.classList.toggle('open'); overlay.classList.toggle('open'); document.body.style.overflow = isOpen ? '' : 'hidden'; if (!isOpen) renderDrawer(); }
       function checkout() { if (!cartData || !cartData.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cartData.checkoutUrl); } else { window.location.href = cartData.checkoutUrl; } }
