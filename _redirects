@@ -73,12 +73,17 @@
 # Shopify search path, route to the catalog (real search is the Ctrl+K modal)
 /search   /products  301
 
-# Legacy Shopify blog URLs, Cloudflare Pages blog template.
-# All articles still live in Shopify (headless); blog/post.html fetches them
-# by handle via the Storefront API. Before these rules, ~700k monthly GSC
-# impressions were landing on 404s because the Shopify to CF Pages cutover
-# dropped the /blogs/* path. 301 to preserve link equity and rankings.
-/blogs/blogs-maple-terroir       /blog/                                              301
-/blogs/blogs-maple-terroir/*     /blog/post?handle=:splat&blog=blogs-maple-terroir   301
-/blogs/news                      /blog/                                              301
-/blogs/news/*                    /blog/post?handle=:splat&blog=news                  301
+# Legacy Shopify blog URLs. Articles now live as static HTML at /blog/[slug].
+# Earlier these went through a JS-redirect shim at /blog/post.html, but Google
+# was splitting equity across 3+ URL variants per article (see GSC report
+# 2026-05-25). Send each legacy URL directly to its canonical static page in
+# one hop.
+/blogs/blogs-maple-terroir       /blog/         301
+/blogs/blogs-maple-terroir/*     /blog/:splat   301
+/blogs/news                      /blog/         301
+/blogs/news/*                    /blog/:splat   301
+
+# Retire the old dynamic blog template. /blog/post and /blog/post.html were the
+# JS shim that fetched articles via Shopify Storefront API; not needed now.
+/blog/post.html  /blog/  301
+/blog/post       /blog/  301
