@@ -21,6 +21,19 @@ export async function onRequest(context) {
     return Response.redirect(redirectUrl.toString(), 301);
   }
 
+  // 1b) Retired dynamic blog template. Legacy URLs look like
+  //     /blog/post.html?handle=<slug>&blog=blogs-maple-terroir
+  //     The static _redirects rule can't read the ?handle= query, so it sends
+  //     these to the /blog/ hub and the article's equity is lost. Here we read
+  //     the handle and 301 straight to the canonical static article /blog/<slug>,
+  //     consolidating equity instead of dumping it on the index.
+  if (path === '/blog/post.html' || path === '/blog/post') {
+    const handle = (url.searchParams.get('handle') || '').toLowerCase();
+    if (/^[a-z0-9-]+$/.test(handle)) {
+      return Response.redirect(new URL(`/blog/${handle}`, url).toString(), 301);
+    }
+  }
+
   // 2) Pass through to the static asset, then layer on noindex for preview hosts
   const response = await context.next();
   const host = url.hostname.toLowerCase();
