@@ -38,6 +38,8 @@
 /collections/nuts-and-popcorn         /collections/nuts-snacks          301
 /collections/nuts-popcorn             /collections/nuts-snacks          301
 /collections/maple-chocolates         /collections/chocolates           301
+/collections/coffee-tea               /collections/tea-coffee           301
+/collections/bundles                  /collections/home-sets            301
 /collections/canadian-maple-products  /canadian-maple-syrup             301
 /collections/organic-maple-syrup      /organic-maple-syrup              301
 /collections/organic-pure-maple-syrup /organic-maple-syrup              301
@@ -69,6 +71,9 @@
 /pages/maple-chocolates         /collections/chocolates   301
 /pages/cookies-and-stroopwafels /collections/cookies      301
 /pages/vancouver                /                         301
+/pages/bundles                  /collections/home-sets    301
+/pages/testimonials             /                         301
+/pages/reseller-policy-for-brand-protection  /maple-syrup-wholesale  301
 
 # Shopify search path, route to the catalog (real search is the Ctrl+K modal)
 /search   /products  301
