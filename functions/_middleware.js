@@ -21,17 +21,6 @@ export async function onRequest(context) {
     return Response.redirect(redirectUrl.toString(), 301);
   }
 
-  // 1a) Legacy product template URL. The old client template lived at
-  //     /product?handle=<slug>. Product pages are now server-rendered at
-  //     /products/<slug> (functions/products/[handle].js), so consolidate the old
-  //     query URL onto the canonical path.
-  if (path === '/product' || path === '/product.html') {
-    const ph = (url.searchParams.get('handle') || '').toLowerCase();
-    if (/^[a-z0-9-]+$/.test(ph)) {
-      return Response.redirect(new URL(`/products/${ph}`, url).toString(), 301);
-    }
-  }
-
   // 1b) Retired dynamic blog template. Legacy URLs look like
   //     /blog/post.html?handle=<slug>&blog=blogs-maple-terroir
   //     The static _redirects rule can't read the ?handle= query, so it sends
