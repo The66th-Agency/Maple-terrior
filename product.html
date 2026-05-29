@@ -650,9 +650,15 @@
 
     // ── Load Product Data ─────────────────────────────────────
     function loadProduct() {
-      var params = new URLSearchParams(window.location.search);
-      var handle = params.get('handle');
-      if (!handle) { window.location.href = '404.html'; return; }
+      // Handle resolution: edge-injected global (clean /products/<handle> URL),
+      // then the path itself, then the legacy ?handle= query as a fallback.
+      var handle = window.__PRODUCT_HANDLE__ || '';
+      if (!handle) {
+        var m = window.location.pathname.match(/^\/products\/([^\/?#]+)/);
+        if (m) handle = decodeURIComponent(m[1]);
+      }
+      if (!handle) handle = new URLSearchParams(window.location.search).get('handle');
+      if (!handle) { window.location.href = '/404.html'; return; }
 
       var STOREFRONT_URL = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
       var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
@@ -671,7 +677,7 @@
         if (!p) { window.location.href = '404.html'; return; }
         var canon = document.querySelector('link[rel="canonical"]');
         if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
-        canon.href = 'https://mapleterroir.com/product?handle=' + encodeURIComponent(p.handle);
+        canon.href = 'https://mapleterroir.com/products/' + encodeURIComponent(p.handle);
         productData = p;
         renderProduct(p);
         loadRecommendations(handle);
@@ -693,7 +699,7 @@
       // OG + Twitter meta
       var ogImg = p.images.edges.length ? p.images.edges[0].node.url + '&width=1200' : '';
       var ogImgAlt = p.images.edges.length ? (p.images.edges[0].node.altText || p.title) : p.title;
-      var pageUrl = 'https://mapleterroir.com/product?handle=' + encodeURIComponent(p.handle);
+      var pageUrl = 'https://mapleterroir.com/products/' + encodeURIComponent(p.handle);
       var ogTitle = p.title + ' | Maple Terroir';
       [
         ['og:type','website'], ['og:url',pageUrl], ['og:title',ogTitle],
@@ -896,7 +902,7 @@
           var img = p.images.edges.length ? p.images.edges[0].node : null;
           var price = p.variants.edges.length ? parseFloat(p.variants.edges[0].node.priceV2.amount).toFixed(2) : '';
           var card = document.createElement('a');
-          card.href = 'product.html?handle=' + p.handle;
+          card.href = '/products/' + p.handle;
           card.className = 'rec-card group block';
           card.innerHTML = '<div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
             (img ? '<img src="' + img.url + '&width=400" alt="' + (window.MapleEsc||String)(img.altText || p.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '') +

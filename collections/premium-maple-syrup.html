@@ -704,7 +704,7 @@
           var card = document.createElement('div');
           card.className = 'product-card group';
           card.innerHTML =
-            '<a href="../product.html?handle=' + p.handle + '" class="block">' +
+            '<a href="/products/' + p.handle + '" class="block">' +
               '<div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
                 (img ? '<img src="' + img.url + '&width=500" alt="' + (window.MapleEsc||String)(img.altText || p.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') +
               '</div>' +

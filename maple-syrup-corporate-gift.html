@@ -765,7 +765,7 @@
             var card = document.createElement('div');
             card.className = 'reveal product-card ring-1 ring-warm-gray-200/30';
             card.innerHTML =
-              '<a href="product.html?handle=' + esc(p.handle) + '" class="block">' +
+              '<a href="/products/' + esc(p.handle) + '" class="block">' +
                 '<div class="aspect-square overflow-hidden bg-cream-dark">' +
                   (img ? '<img src="' + esc(img.url) + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') +
                 '</div>' +
