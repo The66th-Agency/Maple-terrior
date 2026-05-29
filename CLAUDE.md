@@ -6,7 +6,7 @@ Documented result: 1,500% organic traffic growth (used as case study for The 66t
 Run /taste-review on all frontend changes before shipping.
 
 ## Project Overview
-Premium editorial + headless e-commerce website for Maple Terroir — a third-generation, family-owned Canadian maple syrup company based in Quebec's Appalachian Mountains. The site combines storytelling with a fully shoppable catalog powered by Shopify's Storefront API. Deployed to Cloudflare Pages (auto-deploys on push to main).
+Premium editorial + headless e-commerce website for Maple Terroir, a third-generation, family-owned Canadian maple syrup company based in Quebec's Appalachian Mountains. The site combines storytelling with a fully shoppable catalog powered by Shopify's Storefront API. Deployed as a **Cloudflare Worker (Workers Static Assets)**, auto-deploys on push to `main`. This is NOT a Cloudflare Pages project, which matters: the `functions/` directory does NOT execute (see Deployment & Environments).
 
 ## Tech Stack
 - **HTML/CSS/JS** — all-in-one single-file pages (no build step, no bundler, no framework)
@@ -16,7 +16,7 @@ Premium editorial + headless e-commerce website for Maple Terroir — a third-ge
 - **Fonts**: Fraunces (variable serif headings, optical sizing) + Plus Jakarta Sans (body)
 - **Color palette**: cream `#FDFBF7`, amber-warm `#C4841D`, charcoal `#1A1714`, warm-gray scale
 - **Animations**: IntersectionObserver scroll reveals, requestAnimationFrame video scrubbing, CSS marquees
-- **Hosting**: Cloudflare Pages, GitHub repo at The66th-Agency/Maple-terrior
+- **Hosting**: Cloudflare **Worker** with Workers Static Assets (NOT Pages), GitHub repo at The66th-Agency/Maple-terrior. Honors `_redirects` and `_headers`. Does NOT run Pages Functions (`functions/` is inert).
 
 ## Development
 No build step. Open any HTML file in a browser to preview. For local development with live reload, use any static file server (e.g., `npx serve` or VS Code Live Server extension).
@@ -101,15 +101,23 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 - **Consistent section width**: All sections must use `max-w-[1400px] mx-auto px-4 md:px-8`. No section should break out of this container or use full-viewport width.
 
 ## Deployment & Environments
-**Always commit and push to `main` after completing changes.** This project auto-deploys via Cloudflare Pages on push to `main` (GitHub repo `The66th-Agency/Maple-terrior`). Don't wait for the user to ask - if the work is done, push it.
+**Always commit and push to `main` after completing changes.** This project auto-deploys on push to `main` (GitHub repo `The66th-Agency/Maple-terrior`). Don't wait for the user to ask - if the work is done, push it.
+
+**Deployment model (verified 2026-05-29):** the Cloudflare project `maple-terrior-new` is a **Worker with Workers Static Assets**, NOT a Pages project (the dashboard shows the Workers icon and a "route", not a Pages custom domain). Consequences:
+- `_redirects` and `_headers` ARE honored (Workers Assets supports them).
+- Pages Functions (`functions/` directory) are NOT executed. Any `functions/_middleware.js` or `functions/<route>.js` is dead code here. Do not solve problems with Pages Functions; use static files, `_redirects`, or a real Worker entry (`_worker.js` / wrangler config) instead.
+- `_redirects` is evaluated before any Worker logic, so a `_redirects` rule will shadow anything else trying to claim the same path.
+- No `pages.dev` preview domains exist. Branch pushes build under Workers Builds; check build status in the dashboard.
 
 ### Which URL is what (CRITICAL — verify before any QA)
-- **`https://mapleterroir.com/`** — PRODUCTION. The cutover from legacy Shopify to this rebuild has happened. mapleterroir.com now serves THIS repo via Cloudflare Pages. Default to this URL when the client says "the site."
+- **`https://mapleterroir.com/`**: PRODUCTION. The cutover from legacy Shopify to this rebuild has happened. mapleterroir.com now serves THIS repo via the Cloudflare Worker. Default to this URL when the client says "the site."
 - **`https://maple-terrior-new.liamlytton99.workers.dev/`** — Cloudflare Workers preview of this repo. Byte-identical to mapleterroir.com (same source). Use only if mapleterroir.com is unreachable or you need to test before DNS cache flushes.
 - Never tell the client "I'm working on the right site" without first verifying both URLs serve the same content.
 
 ## Lab Notes
 [date] [what happened] [what to do differently]
+
+2026-05-29: **SEO migration regression: product pages were not getting indexed, and the deploy is a Worker not Pages.** GSC was full of "Crawled, currently not indexed" for product URLs and organic product traffic had tanked after the custom rebuild. **Root cause:** every product was served from one client-rendered template (`product.html`) via `?handle=`. Googlebot saw byte-identical generic HTML for all ~40 products (same `<title>` "Maple Products | Single-Origin Quebec", no canonical, zero product copy until JS ran), so it treated them as duplicate thin pages and refused to index. Blogs (static HTML) and the 9 hand-built `collections/*.html` were fine; only products (and the dynamic `collection.html` fallback) were CSR. **Second discovery:** the Cloudflare project is a **Worker with Static Assets, not Pages**, so `functions/` never runs (an earlier `functions/_middleware.js` blog-redirect fix was silently inert, and `_redirects` is evaluated before any Worker logic). **Fix (branch `seo/product-ssr`, pending merge/verify at time of writing):** pre-render one static `products/<handle>.html` per product via [scripts/build-products.mjs](scripts/build-products.mjs), baking unique title/meta/canonical/OG/JSON-LD + product name and description into each file; client JS still hydrates gallery/variants/cart with live Shopify data. Asset/nav paths are absolutized in the generator so they resolve at `/products/<handle>` depth. Also removed the `/products/* -> /product?handle=` rule from `_redirects`, switched the sitemap and all internal product links sitewide to `/products/<handle>`, and pointed the template canonical at the clean URL. **Rules going forward:** (1) re-run `node scripts/build-products.mjs` and commit `products/*.html` whenever the catalog changes (new products, renamed handles, copy edits), since baked SEO goes stale otherwise (prices stay live via JS). (2) Never use Pages Functions on this project; use static files, `_redirects`, or a real Worker entry. (3) For any new dynamic page type, make sure Googlebot gets unique server-side HTML (title + canonical + content), never one shared CSR shell.
 
 2026-04-26 — Wired add_to_cart and begin_checkout events into [assets/shared.js](assets/shared.js) via fetch monkey-patch + MapleSafeCheckout wrapper. One file edit covered all 22 pages. Pattern: hook the shared infrastructure, never edit per-page IIFEs for sitewide tracking. Also reduced /story hero LCP from 2237ms by serving 1600px@q=70 instead of 1920px@q=80 and adding `fetchpriority="high"` + preload hint. Re-confirmed mapleterroir.com IS the rebuild now (cutover happened); CLAUDE.md was stale on this.
 
