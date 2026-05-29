@@ -24,11 +24,12 @@
 /collections/gift-sets.html  /collections/maple-syrup-gift-set  301
 /collections/gift-sets       /collections/maple-syrup-gift-set  301
 
-# Legacy Shopify product URLs, rewrite to the headless template that
-# fetches from Shopify Storefront API by handle. Catches ~132 indexed 404s
-# in one rule. Query strings (Shopify recommendation tracking, ?variant=) are
-# preserved automatically by Cloudflare Pages and ignored by /product?handle=.
-/products/*  /product?handle=:splat  301
+# Product pages are now server-rendered on the edge by functions/products/[handle].js
+# (full unique title/meta/canonical/JSON-LD + product copy, so Google indexes them).
+# IMPORTANT: do NOT add a /products/* redirect here. _redirects is evaluated BEFORE
+# Functions on Cloudflare Pages, so any rule matching /products/<handle> would shadow
+# the Function and break server rendering. Legacy ?variant=/?pr_ params are ignored by
+# the Function and consolidated via the canonical tag it emits.
 
 # Legacy Shopify collection URLs that don't exist in the new catalog,
 # map each to the closest equivalent on the new site.
@@ -88,7 +89,8 @@
 /blogs/news                      /blog/         301
 /blogs/news/*                    /blog/:splat   301
 
-# Retire the old dynamic blog template. /blog/post and /blog/post.html were the
-# JS shim that fetched articles via Shopify Storefront API; not needed now.
-/blog/post.html  /blog/  301
-/blog/post       /blog/  301
+# Retire the old dynamic blog template. /blog/post.html?handle=<slug> and
+# /blog/post?handle=<slug> are handled by functions/_middleware.js, which reads the
+# handle and 301s to the canonical static article /blog/<slug>. We deliberately do
+# NOT add a /blog/post* rule here, because _redirects runs before Functions and would
+# shadow that handler (sending everything to the /blog/ hub and losing the article).

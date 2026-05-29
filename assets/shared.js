@@ -379,7 +379,7 @@ setTimeout(loadGA, 3000);
         var img = p.images.edges.length ? p.images.edges[0].node : null;
         var price = p.variants.edges.length ? parseFloat(p.variants.edges[0].node.priceV2.amount).toFixed(2) : '';
         var a = document.createElement('a');
-        a.href = pathPrefix + 'product.html?handle=' + encodeURIComponent(p.handle);
+        a.href = '/products/' + encodeURIComponent(p.handle);
         a.style.cssText = 'display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;border-radius:1rem;text-decoration:none;color:inherit;transition:background 0.15s;';
         a.addEventListener('mouseenter', function () { a.style.background = 'rgba(217,209,196,0.2)'; });
         a.addEventListener('mouseleave', function () { a.style.background = 'none'; });

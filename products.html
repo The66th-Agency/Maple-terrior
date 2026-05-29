@@ -405,7 +405,7 @@
       var variantId = variant ? variant.id : '';
       var dc = delay > 0 ? ' reveal-delay-' + Math.min(delay, 3) : '';
 
-      return '<a href="product.html?handle=' + p.handle + '" class="reveal' + dc + ' product-card group block">' +
+      return '<a href="/products/' + p.handle + '" class="reveal' + dc + ' product-card group block">' +
         '<div class="aspect-square rounded-2xl overflow-hidden mb-4 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
           (img ? '<img src="' + img.url + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') +
         '</div>' +
