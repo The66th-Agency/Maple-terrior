@@ -24,12 +24,18 @@
 /collections/gift-sets.html  /collections/maple-syrup-gift-set  301
 /collections/gift-sets       /collections/maple-syrup-gift-set  301
 
-# Product pages are now server-rendered on the edge by functions/products/[handle].js
-# (full unique title/meta/canonical/JSON-LD + product copy, so Google indexes them).
-# IMPORTANT: do NOT add a /products/* redirect here. _redirects is evaluated BEFORE
-# Functions on Cloudflare Pages, so any rule matching /products/<handle> would shadow
-# the Function and break server rendering. Legacy ?variant=/?pr_ params are ignored by
-# the Function and consolidated via the canonical tag it emits.
+# Product pages are pre-rendered static files at products/<handle>.html (built by
+# scripts/build-products.mjs) and served directly. This is a Worker with Static Assets,
+# NOT Pages, so functions/ never runs. Do NOT add a /products/* redirect: it would
+# shadow the static product pages and break them.
+
+# Retire the legacy client-rendered shells. product.html and collection.html are
+# excluded from assets (see .assetsignore); these singular paths 301 to the catalog so
+# any old inbound link lands on a real page instead of a thin CSR template.
+/product         /products   301
+/product.html    /products   301
+/collection      /products   301
+/collection.html /products   301
 
 # Legacy Shopify collection URLs that don't exist in the new catalog,
 # map each to the closest equivalent on the new site.
@@ -88,6 +94,10 @@
 /blogs/blogs-maple-terroir/*     /blog/:splat   301
 /blogs/news                      /blog/         301
 /blogs/news/*                    /blog/:splat   301
+
+# Renamed: numeric Shopify slug -> keyword-rich URL. Keep this 301 so the indexed
+# /blog/1123 does not 404.
+/blog/1123  /blog/maple-syrup-extraction-optimization-sustainable-agriculture  301
 
 # Retire the old dynamic blog template. /blog/post.html?handle=<slug> and
 # /blog/post?handle=<slug> are handled by functions/_middleware.js, which reads the

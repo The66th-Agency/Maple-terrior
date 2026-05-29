@@ -3,3 +3,10 @@ node_modules
 .claude
 *.bak
 *.md
+
+# Legacy client-rendered shells. product.html is still the template that
+# scripts/build-products.mjs reads from disk, but it must NOT be served (Google
+# treated it and collection.html as thin duplicates). Excluding them here makes
+# /product and /collection 404; _redirects 301s those paths to /products.
+product.html
+collection.html
