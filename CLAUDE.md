@@ -10,7 +10,7 @@ Premium editorial + headless e-commerce website for Maple Terroir, a third-gener
 
 ## Tech Stack
 - **HTML/CSS/JS** — all-in-one single-file pages (no build step, no bundler, no framework)
-- **Tailwind CSS** via CDN (`cdn.tailwindcss.com`)
+- **Tailwind CSS** compiled to a static file at `assets/tailwind.css` (theme in `tailwind.config.js`). The runtime `cdn.tailwindcss.com` script was removed 2026-05-29. Re-run the build after adding any NEW utility class (see Development), or it will be silently unstyled.
 - **Shopify Storefront API** — headless e-commerce (cart, checkout, products, collections, blog)
 - **PostHog** — analytics (loaded via `assets/shared.js`)
 - **Fonts**: Fraunces (variable serif headings, optical sizing) + Plus Jakarta Sans (body)
@@ -19,7 +19,11 @@ Premium editorial + headless e-commerce website for Maple Terroir, a third-gener
 - **Hosting**: Cloudflare **Worker** with Workers Static Assets (NOT Pages), GitHub repo at The66th-Agency/Maple-terrior. Honors `_redirects` and `_headers`. Does NOT run Pages Functions (`functions/` is inert).
 
 ## Development
-No build step. Open any HTML file in a browser to preview. For local development with live reload, use any static file server (e.g., `npx serve` or VS Code Live Server extension).
+Two build steps exist (the original "no build step" design no longer fully holds):
+1. `node scripts/build-products.mjs` regenerates `products/<handle>.html` from Shopify when the catalog changes.
+2. `npx tailwindcss@3 -c tailwind.config.js -i tailwind-input.css -o assets/tailwind.css --minify` recompiles the CSS. Run after adding ANY new Tailwind utility class to any HTML or JS, otherwise the class is silently unstyled (the CDN that used to JIT classes at runtime is gone). Editing existing classes needs no rebuild.
+
+Preview with any static server (e.g. `npx serve`, or the `maple-terroir` preview config on port 4406). The root-relative `/assets/tailwind.css` link needs a server; opening via `file://` will not load the styles.
 
 ## Shopify Storefront API
 - **Endpoint**: `https://maple-terroir.myshopify.com/api/2026-01/graphql.json`
