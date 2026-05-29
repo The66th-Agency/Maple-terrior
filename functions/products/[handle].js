@@ -28,6 +28,22 @@ function widthUrl(u, w) {
   return u + (u.indexOf('?') === -1 ? '?' : '&') + 'width=' + w;
 }
 
+// Fetch a static asset, following the asset server's .html->clean 307 once so we
+// never end up rewriting an empty redirect body.
+async function getAsset(env, url, path, headers) {
+  let res = await env.ASSETS.fetch(new Request(new URL(path, url), { headers }));
+  if (res.status >= 300 && res.status < 400) {
+    const loc = res.headers.get('location');
+    if (loc) res = await env.ASSETS.fetch(new Request(new URL(loc, url), { headers }));
+  }
+  return res;
+}
+
+async function notFound(env, url, request) {
+  const nf = await getAsset(env, url, '/404', request.headers);
+  return new Response(nf.body, { status: 404, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+}
+
 export async function onRequest(context) {
   const { params, request, env } = context;
   const url = new URL(request.url);
@@ -35,8 +51,7 @@ export async function onRequest(context) {
 
   // Defensive: only real-looking handles. Anything else gets the real 404.
   if (!/^[a-z0-9][a-z0-9-]*$/.test(handle)) {
-    const nf = await env.ASSETS.fetch(new Request(new URL('/404.html', url), request));
-    return new Response(nf.body, { status: 404, headers: nf.headers });
+    return notFound(env, url, request);
   }
 
   // Fetch the product server-side.
@@ -58,12 +73,12 @@ export async function onRequest(context) {
 
   // Unknown handle -> serve the real 404 page with a 404 status.
   if (!product) {
-    const nf = await env.ASSETS.fetch(new Request(new URL('/404.html', url), request));
-    return new Response(nf.body, { status: 404, headers: nf.headers });
+    return notFound(env, url, request);
   }
 
-  // Load the client template to enhance.
-  const templateRes = await env.ASSETS.fetch(new Request(new URL('/product.html', url), request));
+  // Load the client template to enhance (clean path; getAsset follows the
+  // .html->clean redirect so we don't rewrite an empty redirect body).
+  const templateRes = await getAsset(env, url, '/product', request.headers);
 
   const canonical = SITE + '/products/' + handle;
   const title = product.title + ' | Maple Terroir';
