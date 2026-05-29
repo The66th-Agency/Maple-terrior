@@ -5,12 +5,23 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=(), browsing-topics=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://us.i.posthog.com https://us-assets.i.posthog.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://cdn.shopify.com https://images.unsplash.com https://www.google-analytics.com https://*.google-analytics.com; media-src 'self' https://cdn.shopify.com; connect-src 'self' https://maple-terroir.myshopify.com https://us.i.posthog.com https://us-assets.i.posthog.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://*.myshopify.com; object-src 'none'; upgrade-insecure-requests
 
-# Long cache for hashed assets
-/assets/*
+# Immutable static media: content never changes in place (new files get new names).
+# Cloudflare _headers CONCATENATES every matching rule, so this must be scoped to the
+# media subdirs only, never a broad /assets/* that would also stamp the regenerated
+# files below with immutable.
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/videos/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/frames/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/frames-v2/*
   Cache-Control: public, max-age=31536000, immutable
 
-# tailwind.css is regenerated on rebuild (fixed filename, not content-hashed), so it
-# must NOT inherit the immutable rule above or recompiles would never reach browsers.
+# Regenerated in place on rebuild (fixed filenames, NOT content-hashed). Must NOT be
+# immutable or updates never reach returning visitors. shared.js: 1 day. tailwind.css: 1 hour.
+/assets/shared.js
+  Cache-Control: public, max-age=86400
 /assets/tailwind.css
   Cache-Control: public, max-age=3600
 
