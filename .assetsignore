@@ -10,3 +10,7 @@ node_modules
 # /product and /collection 404; _redirects 301s those paths to /products.
 product.html
 collection.html
+
+# Tailwind build inputs (the compiled output assets/tailwind.css IS served).
+tailwind.config.js
+tailwind-input.css

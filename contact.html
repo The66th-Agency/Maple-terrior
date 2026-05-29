@@ -17,7 +17,7 @@
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact Maple Terroir",
-    "url": "https://mapleterroir.com/contact.html",
+    "url": "https://mapleterroir.com/contact",
     "description": "Contact Maple Terroir for orders, wholesale, custom gifting, or questions about organic maple syrup.",
     "isPartOf": { "@type": "WebSite", "name": "Maple Terroir", "url": "https://mapleterroir.com" },
     "mainEntity": {
@@ -37,7 +37,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mapleterroir.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://mapleterroir.com/contact.html" }
+      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://mapleterroir.com/contact" }
     ]
   }
   </script>
@@ -46,23 +46,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            cream: '#FDFBF7', 'cream-dark': '#F5F0E8',
-            amber: { warm: '#C4841D', deep: '#8B5E14', light: '#E8A84C', glow: '#F4C77D' },
-            charcoal: '#1A1714',
-            'warm-gray': { 100: '#F7F4EF', 200: '#EDE8DF', 300: '#D9D1C4', 400: '#B8AD9E', 500: '#8C8175', 600: '#5A5249', 700: '#4A4239', 800: '#2E2822' },
-          },
-          fontFamily: { display: ['"Fraunces"', 'Georgia', 'serif'], body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'] },
-          borderRadius: { '4xl': '2rem', '5xl': '2.5rem' },
-        },
-      },
-    }
-  </script>
+  <link rel="stylesheet" href="/assets/tailwind.css">
 
   <style>
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
