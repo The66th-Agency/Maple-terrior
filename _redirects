@@ -99,8 +99,14 @@
 # /blog/1123 does not 404.
 /blog/1123  /blog/maple-syrup-extraction-optimization-sustainable-agriculture  301
 
-# Retire the old dynamic blog template. /blog/post.html?handle=<slug> and
-# /blog/post?handle=<slug> are handled by functions/_middleware.js, which reads the
-# handle and 301s to the canonical static article /blog/<slug>. We deliberately do
-# NOT add a /blog/post* rule here, because _redirects runs before Functions and would
-# shadow that handler (sending everything to the /blog/ hub and losing the article).
+# Retire the old dynamic blog template. There is NO functions/_middleware.js on this
+# project (it is a Worker with Static Assets; Pages Functions never run), so these two
+# variants were silently 404ing and bleeding link equity (GSC: equity split across
+# /blog/post.html?, /blog/post?, and /blogs/blogs-maple-terroir/ per article).
+# _redirects CANNOT read the ?handle= query param (Cloudflare does not support query
+# matching in _redirects), so it can only send these to the blog hub as a floor that
+# stops the 404. Per-article precision (handle -> /blog/<handle>) is a Cloudflare
+# Single Redirect Rule in the dashboard, which runs at the edge BEFORE _redirects and
+# wins when a handle is present. See CLAUDE.md "DNS and domain redirects".
+/blog/post.html  /blog/  301
+/blog/post       /blog/  301

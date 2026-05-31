@@ -44,7 +44,7 @@ Loaded by every page. Provides: announcement bar, search modal (Ctrl+K), back-to
 | Dynamic product | `product.html?handle=xxx` | Shopify Storefront API (single product query) |
 | Dynamic collection | `collection.html?handle=xxx` | Shopify Storefront API (collection query) |
 | SEO collection | `collections/*.html` (9 pages) | Hardcoded hero + Shopify API for product grid |
-| Dynamic blog | `blog/index.html`, `blog/post.html?handle=xxx&blog=yyy` | Shopify Storefront API (articles query) |
+| Static blog | `blog/index.html` (hub, dynamic from Shopify), `blog/<slug>.html` (one static file per article) | Hub: Shopify articles query. Articles: pre-rendered static HTML. `blog/post.html` was DELETED 2026-05-30 (was a thin CSR shell). |
 | Utility | `404.html`, `sitemap.xml` | Static |
 
 ### Directory structure
@@ -129,6 +129,11 @@ The `mapleterroir.com` DNS zone is on Cloudflare (account `Liamlytton99@gmail.co
 
 ## Lab Notes
 [date] [what happened] [what to do differently]
+
+2026-05-30: **Blog URL triplication: legacy `/blog/post*` variants were silently 404ing.** GSC showed each article indexed at up to 3 URLs splitting clicks and tanking avg position: `/blog/post.html?handle=<h>`, `/blog/post?handle=<h>`, and `/blogs/blogs-maple-terroir/<h>`. State found on live prod: variant 3 was already 301'd to `/blog/<h>` by `_redirects`; variants 1 and 2 returned **404** because they relied on a `functions/_middleware.js` that DOES NOT EXIST (and could never run, since this is a Worker with Static Assets, not Pages). The `_redirects` comment claiming otherwise was false. Canonical is `/blog/<slug>` (sitemap + live 200 confirm), so do NOT revert to the old Shopify `/blogs/blogs-maple-terroir/` pattern. **Fix shipped (repo):** removed the dead-middleware comment and added `/blog/post.html /blog/ 301` + `/blog/post /blog/ 301` as a floor that stops the 404. **Why only a hub floor:** Cloudflare `_redirects` cannot match or capture the `?handle=` query param (verified against Cloudflare docs: query-param matching is unsupported), and the path is identical for every article, so per-article 301 is impossible in `_redirects`. **Per-article precision needs a dashboard Single Redirect Rule** (runs at edge BEFORE `_redirects`, so it wins when a handle is present). Rule Liam must add in the `mapleterroir.com` Cloudflare zone, Rules, Redirect Rules, Create, "Custom filter expression":
+- **When:** `(http.request.uri.path eq "/blog/post.html" or http.request.uri.path eq "/blog/post") and len(http.request.uri.args["handle"]) > 0`
+- **Then:** Dynamic redirect, expression `concat("https://mapleterroir.com/blog/", http.request.uri.args["handle"])`, status **301**, Preserve query string **OFF**.
+**Rule going forward:** any future "blog URL split" must be diagnosed against the Worker-not-Pages model (Pages Functions are inert) and the `_redirects` query-param limitation; per-handle redirects belong in a dashboard Redirect Rule, not `_redirects`.
 
 2026-05-30: **Two domain/SEO fixes: www was serving a duplicate Shopify storefront, and the Shopify blog import had truncated `<title>` tags.**
 1. **www to Shopify duplicate site.** `www.mapleterroir.com` was a DNS-only CNAME to `shops.myshopify.com`, so Shopify claimed www and 301'd visitors to `maple-terroir.myshopify.com`, a second live copy of the store competing with the rebuild for rankings. Fix: repointed the www CNAME to the apex, set it **proxied** (orange cloud), and added a Cloudflare **Single Redirect rule** (www to root, 301, preserve query string). See Deployment & Environments, "DNS and domain redirects". **Rule: hostname-level redirects (www to apex, http to https) are Cloudflare Redirect Rules in the dashboard, never `_redirects`, which only sees paths after the Worker already owns the hostname. A proxied www with no route or rule returns 522.** Checkout is unaffected: the redirect allowlist in [assets/shared.js](assets/shared.js) trusts only `*.myshopify.com`, `*.shopify.com`, `checkout.mapleterroir.com`, and the apex, never www.
