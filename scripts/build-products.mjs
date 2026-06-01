@@ -26,7 +26,7 @@ const ALL_PRODUCTS_QUERY = `{
     edges { node {
       id title handle description descriptionHtml productType vendor
       images(first: 1) { edges { node { url altText } } }
-      variants(first: 1) { edges { node { priceV2 { amount currencyCode } availableForSale } } }
+      variants(first: 1) { edges { node { sku barcode priceV2 { amount currencyCode } availableForSale } } }
     } }
   }
 }`;
@@ -59,15 +59,26 @@ function renderProduct(template, p) {
   const currency = variant && variant.priceV2 ? variant.priceV2.currencyCode : 'CAD';
   const availability = variant && variant.availableForSale
     ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock';
+  const sku = variant && variant.sku ? String(variant.sku).trim() : '';
+  const barcode = variant && variant.barcode ? String(variant.barcode).trim() : '';
+  // priceValidUntil one year out keeps the Offer eligible for product rich results.
+  const priceValidUntil = new Date(Date.now() + 365 * 86400000).toISOString().slice(0, 10);
+  // Full, clean description for schema; meta/OG stay capped at 155 chars (desc, above).
+  const ldDesc = ((p.description || '').replace(/\s+/g, ' ').trim() || desc).slice(0, 5000);
 
   const ld = {
     '@context': 'https://schema.org', '@type': 'Product',
-    name: p.title, description: desc,
+    name: p.title, description: ldDesc,
     brand: { '@type': 'Brand', name: 'Maple Terroir' }, url: canonical,
   };
   if (image) ld.image = image;
   if (p.productType) ld.category = p.productType;
-  if (price) ld.offers = { '@type': 'Offer', price, priceCurrency: currency, availability, url: canonical };
+  if (sku) { ld.sku = sku; ld.mpn = sku; }
+  if (barcode) ld.gtin = barcode;
+  if (price) ld.offers = {
+    '@type': 'Offer', price, priceCurrency: currency, availability, url: canonical,
+    itemCondition: 'https://schema.org/NewCondition', priceValidUntil,
+  };
 
   const headInject =
     `<link rel="canonical" href="${escAttr(canonical)}">` +
