@@ -110,3 +110,7 @@
 # wins when a handle is present. See CLAUDE.md "DNS and domain redirects".
 /blog/post.html  /blog/  301
 /blog/post       /blog/  301
+
+# Consolidated duplicate. The thin "is organic maple syrup better?" post was merged into
+# the deeper organic-vs-conventional guide (same query, the two were cannibalizing). 301 it.
+/blog/is-organic-maple-syrup-better  /blog/organic-vs-conventional-maple-syrup  301
