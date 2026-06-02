@@ -127,6 +127,15 @@ The `mapleterroir.com` DNS zone is on Cloudflare (account `Liamlytton99@gmail.co
 - **Gotcha**: Shopify still lists `www.mapleterroir.com` as one of its domains, so before this rule existed www bounced visitors to `maple-terroir.myshopify.com` (a live duplicate of the store competing for rankings). The edge redirect rule overrides that. Do not try to fix it with DNS alone: a proxied www with no route and no rule returns a 522.
 - **Who makes the changes**: Claude has no Cloudflare API token, so Liam makes the dashboard clicks; Claude gives exact steps and verifies the result live with `curl` (status codes, redirect chain, headers).
 
+### Search Console / Google API access (verified 2026-06-01)
+Maple Terroir's GSC data is pullable through the connected Google API (claude-seo plugin, OAuth Tier 2). Gotchas worked out 2026-06-01:
+- Scripts + venv live under the **`seo`** skill, NOT `seo-google` (whose dir is docs only): run `~/.claude/skills/seo/.venv/bin/python ~/.claude/skills/seo/scripts/<script>.py`.
+- The config's `default_property` is `https://www.the66th.com/`, so you MUST override the property for Maple Terroir or every call errors "Permission denied ... the66th.com":
+  - Search analytics + sitemaps: `gsc_query.py --property "https://mapleterroir.com/"` (and `gsc_query.py sitemaps --property ...`).
+  - URL inspection: `gsc_inspect.py <url> -s "https://mapleterroir.com/"` (flag is `--site-url`/`-s`, NOT `--property`).
+- GA4 is NOT wired for MT (the configured ga4_property_id is the66th's; MT uses PostHog). A GA4 pull would need MT's own property id.
+- 2026-06-01 baseline read (28 days): 253 clicks / 42,925 impressions / 0.59% CTR; sitemap 92 URLs, 0 errors; homepage + `/blog/organic-vs-conventional-maple-syrup` inspect as PASS (indexed).
+
 ## Lab Notes
 [date] [what happened] [what to do differently]
 
