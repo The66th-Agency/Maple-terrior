@@ -15,6 +15,9 @@
   <url><loc>https://mapleterroir.com/blog/</loc><priority>0.7</priority></url>
   <!-- Tourist capture pages -->
   <url><loc>https://mapleterroir.com/canadian-gifts-vancouver</loc><lastmod>2026-05-19</lastmod><priority>0.9</priority></url>
+  <url><loc>https://mapleterroir.com/canadian-souvenirs</loc><lastmod>2026-06-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/canadian-souvenirs-toronto</loc><lastmod>2026-06-03</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/banff-souvenirs</loc><lastmod>2026-06-03</lastmod><priority>0.8</priority></url>
   <!-- Location pages -->
   <url><loc>https://mapleterroir.com/locations-we-serve/</loc><lastmod>2026-06-03</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/</loc><lastmod>2026-06-03</lastmod><priority>0.8</priority></url>
@@ -24,10 +27,10 @@
   <url><loc>https://mapleterroir.com/locations-we-serve/usa/buy-maple-syrup-chicago</loc><lastmod>2026-06-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/usa/buy-maple-syrup-boston</loc><lastmod>2026-06-03</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/usa/buy-maple-syrup-seattle</loc><lastmod>2026-06-03</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/buy-maple-syrup-vancouver</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/buy-maple-syrup-toronto</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/buy-maple-syrup-montreal</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/buy-maple-syrup-calgary</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-vancouver</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-toronto</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-montreal</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-calgary</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>
   <!-- Static blog posts (CF Pages served, not Shopify) -->
   <url><loc>https://mapleterroir.com/blog/best-canadian-gifts-2026</loc><lastmod>2026-05-19</lastmod><priority>0.9</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-canadian-maple-syrup-brands-2026</loc><lastmod>2026-05-19</lastmod><priority>0.8</priority></url>

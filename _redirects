@@ -126,3 +126,9 @@
 /locations-we-serve/buy-maple-syrup-chicago  /locations-we-serve/usa/buy-maple-syrup-chicago  301
 /locations-we-serve/buy-maple-syrup-boston  /locations-we-serve/usa/buy-maple-syrup-boston  301
 /locations-we-serve/buy-maple-syrup-seattle  /locations-we-serve/usa/buy-maple-syrup-seattle  301
+
+# Canada locations nested under /canada/ (2026-06-03)
+/locations-we-serve/buy-maple-syrup-vancouver  /locations-we-serve/canada/buy-maple-syrup-vancouver  301
+/locations-we-serve/buy-maple-syrup-toronto  /locations-we-serve/canada/buy-maple-syrup-toronto  301
+/locations-we-serve/buy-maple-syrup-montreal  /locations-we-serve/canada/buy-maple-syrup-montreal  301
+/locations-we-serve/buy-maple-syrup-calgary  /locations-we-serve/canada/buy-maple-syrup-calgary  301
