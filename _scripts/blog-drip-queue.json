@@ -1,0 +1,18 @@
+{
+  "_comment": "Validated blog drip queue for the Maple Terroir TOF/MOF/BOF content plan. One post per day. A scheduled run writes the FIRST item whose file at blog/<slug>.html does not yet exist. Volumes are US (Mangools), KD is Mangools difficulty. Published items are marked done.",
+  "template": "blog/organic-vs-conventional-maple-syrup.html",
+  "brand_rules": "no contractions; no em dashes; no jargon; Agency Rule; organic cert = SYRUP only (Ecocert/Canada Organic/USDA); '3rd Generation Farm' + '3x Certified'; Wayne Lytton founded 1978, son Shawn now; single-origin Quebec Appalachian; no invented stats; never cite a maple or stroopwafel competitor (no Escuminac); client ranks first in own-domain roundups.",
+  "queue": [
+    { "slug": "does-maple-syrup-go-bad-shelf-life-storage", "title": "Does Maple Syrup Go Bad? Shelf Life and How to Store It", "primary_kw": "does maple syrup go bad", "volume_us": 10500, "kd": 25, "stage": "TOF", "status": "published", "published": "2026-06-02" },
+    { "slug": "maple-syrup-vs-honey", "title": "Maple Syrup vs Honey", "primary_kw": "maple syrup vs honey", "volume_us": 3600, "kd": 28, "stage": "MOF", "note": "health-framed comparison", "status": "queued" },
+    { "slug": "is-maple-syrup-vegan-and-gluten-free", "title": "Is Maple Syrup Vegan and Gluten-Free?", "primary_kw": "is maple syrup gluten free", "volume_us": 1300, "kd": 15, "stage": "TOF", "note": "include vegan + honest keto section (pure maple is NOT keto) + nutrition", "status": "queued" },
+    { "slug": "maple-syrup-substitute-for-sugar", "title": "How to Substitute Maple Syrup for Sugar in Baking", "primary_kw": "maple syrup substitute for sugar", "volume_us": 1300, "kd": 29, "stage": "MOF", "note": "conversion ratios + liquid adjustment", "status": "queued" },
+    { "slug": "maple-syrup-vs-agave", "title": "Maple Syrup vs Agave", "primary_kw": "maple syrup vs agave", "volume_us": 1200, "kd": 20, "stage": "MOF", "note": "fold in a maple vs corn syrup section", "status": "queued" },
+    { "slug": "what-is-a-stroopwafel", "title": "What Is a Stroopwafel? (And How to Eat One)", "primary_kw": "what is a stroopwafel", "volume_us": 610, "kd": 37, "stage": "TOF", "note": "how to eat (warm on mug) + history + maple stroopwafel differentiator", "status": "queued" }
+  ],
+  "cut_or_deferred": {
+    "best maple syrup brands": "CUT, cannibalizes existing best-canadian-maple-syrup-brands-2026 + brutal publisher DA",
+    "is maple syrup keto (standalone)": "CUT, SERP is sugar-free product intent; answered as a section inside the vegan/gluten-free post",
+    "new BOF gift page": "DEFERRED, US volume ~0-120, seasonal/Canada; existing collections cover it"
+  }
+}
