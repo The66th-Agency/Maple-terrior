@@ -1929,6 +1929,7 @@
             <li><a href="contact.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
             <li><a href="maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
             <li><a href="press.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Press</a></li>
+            <li><a href="privacy.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
@@ -2088,16 +2089,25 @@
 
         const cw = canvas.width;
         const ch = canvas.height;
+        // The exported frames carry a 2px black edge top & bottom. Cover-scaling
+        // lands that edge exactly on the canvas boundary (dy = 0), producing a
+        // black hairline at the section seam. Crop a few source pixels off every
+        // side and paint the section background behind it so the seam is clean.
+        const EDGE = 3;
         const iw = img.naturalWidth;
         const ih = img.naturalHeight;
-        const scale = Math.max(cw / iw, ch / ih);
-        const dw = iw * scale;
-        const dh = ih * scale;
+        const sw = iw - EDGE * 2;
+        const sh = ih - EDGE * 2;
+        const scale = Math.max(cw / sw, ch / sh);
+        const dw = sw * scale;
+        const dh = sh * scale;
         const dx = (cw - dw) / 2;
         const dy = (ch - dh) / 2;
 
         ctx.clearRect(0, 0, cw, ch);
-        ctx.drawImage(img, dx, dy, dw, dh);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, cw, ch);
+        ctx.drawImage(img, EDGE, EDGE, sw, sh, dx, dy, dw, dh);
       }
 
       function frameSrc(i) {
