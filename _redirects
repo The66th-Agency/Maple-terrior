@@ -118,3 +118,11 @@
 # Consolidated duplicate. The thin "is organic maple syrup better?" post was merged into
 # the deeper organic-vs-conventional guide (same query, the two were cannibalizing). 301 it.
 /blog/is-organic-maple-syrup-better  /blog/organic-vs-conventional-maple-syrup  301
+
+# US locations nested under /usa/ (2026-06-03)
+/locations-we-serve/united-states/  /locations-we-serve/usa/  301
+/locations-we-serve/buy-maple-syrup-new-york  /locations-we-serve/usa/buy-maple-syrup-new-york  301
+/locations-we-serve/buy-maple-syrup-los-angeles  /locations-we-serve/usa/buy-maple-syrup-los-angeles  301
+/locations-we-serve/buy-maple-syrup-chicago  /locations-we-serve/usa/buy-maple-syrup-chicago  301
+/locations-we-serve/buy-maple-syrup-boston  /locations-we-serve/usa/buy-maple-syrup-boston  301
+/locations-we-serve/buy-maple-syrup-seattle  /locations-we-serve/usa/buy-maple-syrup-seattle  301
