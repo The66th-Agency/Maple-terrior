@@ -1,6 +1,7 @@
 {
   "_comment": "Validated blog drip queue for the Maple Terroir TOF/MOF/BOF content plan. One post per day. A scheduled run writes the FIRST item whose file at blog/<slug>.html does not yet exist. Volumes are US (Mangools), KD is Mangools difficulty. Published items are marked done.",
   "template": "blog/organic-vs-conventional-maple-syrup.html",
+  "publish_steps_note": "After writing each post: add it to sitemap.xml, add one inbound link from a sibling premium post, AND add a STATIC_POSTS entry in blog/index.html (the hub grid is Shopify-fed and will not show static posts otherwise). Then commit + push + verify 200.",
   "brand_rules": "no contractions; no em dashes; no jargon; Agency Rule; organic cert = SYRUP only (Ecocert/Canada Organic/USDA); '3rd Generation Farm' + '3x Certified'; Wayne Lytton founded 1978, son Shawn now; single-origin Quebec Appalachian; no invented stats; never cite a maple or stroopwafel competitor (no Escuminac); client ranks first in own-domain roundups.",
   "queue": [
     { "slug": "does-maple-syrup-go-bad-shelf-life-storage", "title": "Does Maple Syrup Go Bad? Shelf Life and How to Store It", "primary_kw": "does maple syrup go bad", "volume_us": 10500, "kd": 25, "stage": "TOF", "status": "published", "published": "2026-06-02" },

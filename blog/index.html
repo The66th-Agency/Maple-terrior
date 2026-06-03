@@ -284,23 +284,22 @@
       var SU = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
       var ST = '59618e3b6f5e626df6c5f527b4972d3d';
 
-      fetch(SU, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': ST },
-        body: JSON.stringify({
-          query: '{ blogs(first: 5) { edges { node { handle articles(first: 20, sortKey: PUBLISHED_AT, reverse: true) { edges { node { title handle excerpt publishedAt image { url altText } authorV2 { name } tags } } } } } } }'
-        })
-      })
-      .then(function (r) { return r.json(); })
-      .then(function (res) {
-        var all = [];
-        res.data.blogs.edges.forEach(function (b) {
-          var blogHandle = b.node.handle;
-          b.node.articles.edges.forEach(function (a) {
-            all.push({ blog: blogHandle, article: a.node });
-          });
-        });
-        // Sort by date descending
+      // Premium editorial posts live as static files, not Shopify articles, so the
+      // Shopify query never returns them. Merge them in so the newest content shows
+      // in the hub instead of only older Shopify posts. When the daily drip publishes
+      // a new static post, add an entry here so it appears in this grid.
+      var STATIC_POSTS = [
+        { handle: 'maple-syrup-vs-honey', title: 'Maple Syrup vs Honey: Which Is Healthier?', publishedAt: '2026-06-03T12:00:00', excerpt: 'The real differences between maple syrup and honey: sugar type, glycemic index, minerals, antioxidants, and which one is vegan.', image: { url: '/assets/images/maple-syrup-french-toast-pour.webp', altText: 'Pure maple syrup being poured' }, tags: ['Comparison'], authorV2: { name: 'Maple Terroir' } },
+        { handle: 'does-maple-syrup-go-bad-shelf-life-storage', title: 'Does Maple Syrup Go Bad? Shelf Life and How to Store It', publishedAt: '2026-06-02T12:00:00', excerpt: 'Unopened, pure maple syrup keeps for years. Once opened, it belongs in the fridge. A clear guide to shelf life, storage, mold, and crystals.', image: { url: '/assets/images/pantry-bento.png', altText: 'A pantry of preserved goods' }, tags: ['Guide'], authorV2: { name: 'Maple Terroir' } },
+        { handle: 'organic-vs-conventional-maple-syrup', title: 'Organic vs Conventional Maple Syrup: The Real Differences', publishedAt: '2026-05-19T12:00:00', excerpt: 'The four real differences between organic and conventional maple syrup, plus an honest take on price, taste, and nutrition.', image: { url: '/assets/images/terroir/appalachian-autumn.png', altText: 'A Quebec organic sugarbush in autumn' }, tags: ['Comparison'], authorV2: { name: 'Maple Terroir' } },
+        { handle: 'pure-maple-syrup-vs-table-syrup', title: 'Pure Maple Syrup vs Table Syrup', publishedAt: '2026-05-19T12:00:00', excerpt: 'Pure maple syrup vs table syrup, compared by ingredient list, nutrition, glycemic index, and price, and how to spot the real thing.', image: { url: '/assets/images/maple-syrup-french-toast-pour.webp', altText: 'Pure maple syrup poured over French toast' }, tags: ['Comparison'], authorV2: { name: 'Maple Terroir' } },
+        { handle: 'grade-a-vs-grade-b-maple-syrup', title: 'Grade A vs Grade B Maple Syrup', publishedAt: '2026-05-19T12:00:00', excerpt: 'Grade B was retired in 2015 and renamed Grade A Very Dark, Strong Taste. Here is what actually changed and how to choose a grade.', image: { url: '/assets/images/story/sap-in-bucket.png', altText: 'Maple sap dripping into a collection bucket' }, tags: ['Guide'], authorV2: { name: 'Maple Terroir' } },
+        { handle: 'quebec-vs-vermont-maple-syrup', title: 'Quebec vs Vermont Maple Syrup', publishedAt: '2026-05-19T12:00:00', excerpt: 'Quebec vs Vermont maple syrup compared: production volume, grading rules, the shared Appalachian forest, and what actually differs.', image: { url: '/assets/images/terroir/appalachian-autumn.png', altText: 'Appalachian sugarbush in autumn' }, tags: ['Comparison'], authorV2: { name: 'Maple Terroir' } }
+      ];
+
+      function staticItems() { return STATIC_POSTS.map(function (a) { return { blog: 'blogs-maple-terroir', article: a }; }); }
+
+      function renderGrid(all) {
         all.sort(function (a, b) { return new Date(b.article.publishedAt) - new Date(a.article.publishedAt); });
 
         var grid = document.getElementById('blog-grid');
@@ -310,6 +309,7 @@
           var a = item.article;
           var date = new Date(a.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
           var tag = (a.tags && a.tags.length) ? a.tags[0] : '';
+          var imgSrc = a.image ? (a.image.url.indexOf('shopify') > -1 ? a.image.url + '&width=700' : a.image.url) : '';
 
           var card = document.createElement('a');
           card.href = a.handle;
@@ -318,7 +318,7 @@
           card.innerHTML =
             '<div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem] h-full transition-all duration-500 group-hover:ring-amber-warm/20">' +
               '<div class="relative rounded-[2rem] overflow-hidden aspect-[4/3] mb-0 bg-cream-dark">' +
-                (a.image ? '<img src="' + a.image.url + '&width=700" alt="' + (window.MapleEsc||String)(a.image.altText || a.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full" style="background:linear-gradient(135deg,#F4C77D 0%,#E8A84C 40%,#C4841D 100%)"></div>') +
+                (imgSrc ? '<img src="' + imgSrc + '" alt="' + (window.MapleEsc||String)(a.image.altText || a.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">' : '<div class="w-full h-full" style="background:linear-gradient(135deg,#F4C77D 0%,#E8A84C 40%,#C4841D 100%)"></div>') +
                 (tag ? '<div class="absolute top-4 left-4"><span class="inline-block bg-cream/90 backdrop-blur-sm text-amber-deep text-xs font-semibold px-3 py-1.5 rounded-full">' + tag + '</span></div>' : '') +
               '</div>' +
               '<div class="p-5 md:p-6">' +
@@ -338,9 +338,32 @@
             obs.observe(card);
           }, 50);
         });
+      }
+
+      fetch(SU, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': ST },
+        body: JSON.stringify({
+          query: '{ blogs(first: 5) { edges { node { handle articles(first: 20, sortKey: PUBLISHED_AT, reverse: true) { edges { node { title handle excerpt publishedAt image { url altText } authorV2 { name } tags } } } } } } }'
+        })
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        var staticHandles = {};
+        STATIC_POSTS.forEach(function (p) { staticHandles[p.handle] = true; });
+        var all = staticItems();
+        res.data.blogs.edges.forEach(function (b) {
+          var blogHandle = b.node.handle;
+          b.node.articles.edges.forEach(function (a) {
+            if (staticHandles[a.node.handle]) return; // static premium version wins
+            all.push({ blog: blogHandle, article: a.node });
+          });
+        });
+        renderGrid(all);
       })
       .catch(function () {
-        document.getElementById('blog-grid').innerHTML = '<p class="text-warm-gray-400 text-center col-span-full py-12">Unable to load articles. Please try again later.</p>';
+        // Shopify fetch failed; still show the premium static posts.
+        renderGrid(staticItems());
       });
     })();
   </script>
