@@ -2445,8 +2445,8 @@ var MapleCart = (function () {
 </script>
 
 <!-- Three.js Globe with real geographic data -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js" defer></script>
+<script src="/assets/vendor/three.min.js" defer></script>
+<script src="/assets/vendor/topojson-client.min.js" defer></script>
 <script>
 (function () {
   function initGlobe() {
@@ -2469,7 +2469,7 @@ var MapleCart = (function () {
     scene.add(globeGroup);
 
     // Fetch real world boundaries and paint onto canvas texture
-    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-110m.json')
+    fetch('/assets/vendor/land-110m.json')
       .then(function (r) { return r.json(); })
       .then(function (world) {
         var land = topojson.feature(world, world.objects.land);

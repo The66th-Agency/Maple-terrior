@@ -17,6 +17,11 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/frames-v2/*
   Cache-Control: public, max-age=31536000, immutable
+# Version-pinned third-party libs (three.js r128, topojson v3, world-atlas v2),
+# self-hosted so the homepage globe does not depend on an external CDN the CSP
+# would have to whitelist. Never edited in place; a version bump gets a new file.
+/assets/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
 
 # Regenerated in place on rebuild (fixed filenames, NOT content-hashed). Must NOT be
 # immutable or updates never reach returning visitors. shared.js: 1 day. tailwind.css: 1 hour.
