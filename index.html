@@ -59,6 +59,8 @@
 
 
   <!-- Tailwind CSS CDN -->
+  <!-- Hero video: fetch eagerly on desktop only (phones show the poster, no video) so it plays fast instead of loading last, behind the logos, frames, and other videos. Mobile gate matches the innerWidth>768 check on the hero video. -->
+  <link rel="preload" as="video" type="video/mp4" href="/assets/videos/maple-bottle.mp4" media="(min-width: 769px)">
   <link rel="stylesheet" href="/assets/tailwind.css">
 
   <style>
@@ -688,7 +690,7 @@
                   loop
                   muted
                   playsinline
-                  preload="metadata"
+                  preload="auto"
                   poster="public(18).png"
                 ></video>
                 <script>
