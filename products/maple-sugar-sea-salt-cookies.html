@@ -246,7 +246,7 @@
       .gallery-main img, .sticky-atc { transition: none; }
     }
   </style>
-<link rel="canonical" href="https://mapleterroir.com/products/maple-sugar-sea-salt-cookies"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-sugar-sea-salt-cookies"><meta property="og:title" content="Maple Sugar &amp; Sea Salt Cookies | Maple Terroir"><meta property="og:description" content="Maple Terroir’s Maple Sugar &amp; Sea Salt Cookies are made with Maple Terroir pure maple sugar and a touch of sea salt. Savour some maple goodness in every bi"><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Sugar &amp; Sea Salt Cookies | Maple Terroir"><meta name="twitter:description" content="Maple Terroir’s Maple Sugar &amp; Sea Salt Cookies are made with Maple Terroir pure maple sugar and a touch of sea salt. Savour some maple goodness in every bi"><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Sugar & Sea Salt Cookies","description":"Maple Terroir’s Maple Sugar & Sea Salt Cookies are made with Maple Terroir pure maple sugar and a touch of sea salt. Savour some maple goodness in every bite and enjoy them with our Maple Terroir maple ceylon black tea or maple medium-dark roast ground coffee! Available in packs of 3, 6, 12, 24, and 48 units of 100g boxes. Each box contains 10 individually wrapped cookies.","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-sugar-sea-salt-cookies","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&width=1200","category":"Cookies","sku":"759","mpn":"759","offers":{"@type":"Offer","price":"8.99","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-sugar-sea-salt-cookies","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-01"}}</script><script>window.__PRODUCT_HANDLE__="maple-sugar-sea-salt-cookies";</script>
+<link rel="canonical" href="https://mapleterroir.com/products/maple-sugar-sea-salt-cookies"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-sugar-sea-salt-cookies"><meta property="og:title" content="Maple Sugar &amp; Sea Salt Cookies | Maple Terroir"><meta property="og:description" content="Maple Terroir’s Maple Sugar &amp; Sea Salt Cookies are made with Maple Terroir pure maple sugar and a touch of sea salt. Savour some maple goodness in every bi"><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Sugar &amp; Sea Salt Cookies | Maple Terroir"><meta name="twitter:description" content="Maple Terroir’s Maple Sugar &amp; Sea Salt Cookies are made with Maple Terroir pure maple sugar and a touch of sea salt. Savour some maple goodness in every bi"><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Sugar & Sea Salt Cookies","description":"Maple Terroir’s Maple Sugar & Sea Salt Cookies are made with Maple Terroir pure maple sugar and a touch of sea salt. Savour some maple goodness in every bite and enjoy them with our Maple Terroir maple ceylon black tea or maple medium-dark roast ground coffee! Available in packs of 3, 6, 12, 24, and 48 units of 100g boxes. Each box contains 10 individually wrapped cookies.","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-sugar-sea-salt-cookies","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&width=1200","category":"Cookies","sku":"759","mpn":"759","offers":{"@type":"Offer","price":"8.99","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-sugar-sea-salt-cookies","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-07"}}</script><script>window.__PRODUCT_HANDLE__="maple-sugar-sea-salt-cookies";</script>
 </head>
 
 <body>
@@ -837,26 +837,10 @@
 
       initStickyATC();
 
-      // Schema.org Product structured data
-      var schema = {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: p.title,
-        description: p.description.substring(0, 300),
-        brand: { '@type': 'Brand', name: 'Maple Terroir' },
-        offers: {
-          '@type': 'AggregateOffer',
-          priceCurrency: 'CAD',
-          lowPrice: Math.min.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          highPrice: Math.max.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          availability: 'https://schema.org/InStock'
-        }
-      };
-      if (images.length) schema.image = images[0].url;
-      var ld = document.createElement('script');
-      ld.type = 'application/ld+json';
-      ld.textContent = JSON.stringify(schema);
-      document.head.appendChild(ld);
+      // Product JSON-LD is baked statically into each /products/<handle>.html at
+      // build time (scripts/build-products.mjs). Do NOT inject a second one here at
+      // runtime: Google renders this JS and would then see two Product entities
+      // (duplicate-schema risk). The baked Offer already carries price/sku/brand.
 
       // Track recently viewed
       if (typeof MapleSiteRecent !== 'undefined') {

@@ -839,26 +839,10 @@
 
       initStickyATC();
 
-      // Schema.org Product structured data
-      var schema = {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: p.title,
-        description: p.description.substring(0, 300),
-        brand: { '@type': 'Brand', name: 'Maple Terroir' },
-        offers: {
-          '@type': 'AggregateOffer',
-          priceCurrency: 'CAD',
-          lowPrice: Math.min.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          highPrice: Math.max.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          availability: 'https://schema.org/InStock'
-        }
-      };
-      if (images.length) schema.image = images[0].url;
-      var ld = document.createElement('script');
-      ld.type = 'application/ld+json';
-      ld.textContent = JSON.stringify(schema);
-      document.head.appendChild(ld);
+      // Product JSON-LD is baked statically into each /products/<handle>.html at
+      // build time (scripts/build-products.mjs). Do NOT inject a second one here at
+      // runtime: Google renders this JS and would then see two Product entities
+      // (duplicate-schema risk). The baked Offer already carries price/sku/brand.
 
       // Track recently viewed
       if (typeof MapleSiteRecent !== 'undefined') {

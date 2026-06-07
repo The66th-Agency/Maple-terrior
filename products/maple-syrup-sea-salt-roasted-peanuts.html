@@ -246,7 +246,7 @@
       .gallery-main img, .sticky-atc { transition: none; }
     }
   </style>
-<link rel="canonical" href="https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts"><meta property="og:title" content="Maple Syrup &amp; Sea Salt Roasted Peanuts | Maple Terroir"><meta property="og:description" content="As non-GMO peanuts are being roasted, Maple Terroir Pure Maple Syrup is slowly added using a traditional panning method. Sea salt is then lightly sprinkled"><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplepeanuts.jpg?v=1749671331&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Syrup &amp; Sea Salt Roasted Peanuts | Maple Terroir"><meta name="twitter:description" content="As non-GMO peanuts are being roasted, Maple Terroir Pure Maple Syrup is slowly added using a traditional panning method. Sea salt is then lightly sprinkled"><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplepeanuts.jpg?v=1749671331&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Syrup & Sea Salt Roasted Peanuts","description":"As non-GMO peanuts are being roasted, Maple Terroir Pure Maple Syrup is slowly added using a traditional panning method. Sea salt is then lightly sprinkled. You will find honey roasted peanuts everywhere but our combination of maple syrup, sea salt and peanuts is unique! Available in packs of 1, 12, 24, and 40 units of 100g boxes. Non-GMO peanuts Maple Terroir Pure Canadian Maple Syrup Traditional Panning Method 4g of Protein Per Serving A Great Source of energy A Great Source of Fibre A Great Source of Iron","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplepeanuts.jpg?v=1749671331&width=1200","category":"Nuts","sku":"741H","mpn":"741H","offers":{"@type":"Offer","price":"5.99","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-01"}}</script><script>window.__PRODUCT_HANDLE__="maple-syrup-sea-salt-roasted-peanuts";</script>
+<link rel="canonical" href="https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts"><meta property="og:title" content="Maple Syrup &amp; Sea Salt Roasted Peanuts | Maple Terroir"><meta property="og:description" content="As non-GMO peanuts are being roasted, Maple Terroir Pure Maple Syrup is slowly added using a traditional panning method. Sea salt is then lightly sprinkled"><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplepeanuts.jpg?v=1749671331&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Syrup &amp; Sea Salt Roasted Peanuts | Maple Terroir"><meta name="twitter:description" content="As non-GMO peanuts are being roasted, Maple Terroir Pure Maple Syrup is slowly added using a traditional panning method. Sea salt is then lightly sprinkled"><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplepeanuts.jpg?v=1749671331&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Syrup & Sea Salt Roasted Peanuts","description":"As non-GMO peanuts are being roasted, Maple Terroir Pure Maple Syrup is slowly added using a traditional panning method. Sea salt is then lightly sprinkled. You will find honey roasted peanuts everywhere but our combination of maple syrup, sea salt and peanuts is unique! Available in packs of 1, 12, 24, and 40 units of 100g boxes. Non-GMO peanuts Maple Terroir Pure Canadian Maple Syrup Traditional Panning Method 4g of Protein Per Serving A Great Source of energy A Great Source of Fibre A Great Source of Iron","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplepeanuts.jpg?v=1749671331&width=1200","category":"Nuts","sku":"741H","mpn":"741H","offers":{"@type":"Offer","price":"5.99","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-07"}}</script><script>window.__PRODUCT_HANDLE__="maple-syrup-sea-salt-roasted-peanuts";</script>
 </head>
 
 <body>
@@ -847,26 +847,10 @@
 
       initStickyATC();
 
-      // Schema.org Product structured data
-      var schema = {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: p.title,
-        description: p.description.substring(0, 300),
-        brand: { '@type': 'Brand', name: 'Maple Terroir' },
-        offers: {
-          '@type': 'AggregateOffer',
-          priceCurrency: 'CAD',
-          lowPrice: Math.min.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          highPrice: Math.max.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          availability: 'https://schema.org/InStock'
-        }
-      };
-      if (images.length) schema.image = images[0].url;
-      var ld = document.createElement('script');
-      ld.type = 'application/ld+json';
-      ld.textContent = JSON.stringify(schema);
-      document.head.appendChild(ld);
+      // Product JSON-LD is baked statically into each /products/<handle>.html at
+      // build time (scripts/build-products.mjs). Do NOT inject a second one here at
+      // runtime: Google renders this JS and would then see two Product entities
+      // (duplicate-schema risk). The baked Offer already carries price/sku/brand.
 
       // Track recently viewed
       if (typeof MapleSiteRecent !== 'undefined') {

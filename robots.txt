@@ -4,4 +4,20 @@ Disallow: /*.bak$
 Disallow: /CLAUDE.md
 Disallow: /AI-IMAGE-PROMPT-TEMPLATE.md
 
+# AI assistants and AI-search crawlers are explicitly welcomed (Maple Terroir wants
+# to be cited in ChatGPT, Claude, Perplexity, Google AI, and Apple answers). Named
+# here so a future change to the wildcard rule above cannot silently block them.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /*.bak$
+Disallow: /CLAUDE.md
+Disallow: /AI-IMAGE-PROMPT-TEMPLATE.md
+
 Sitemap: https://mapleterroir.com/sitemap.xml

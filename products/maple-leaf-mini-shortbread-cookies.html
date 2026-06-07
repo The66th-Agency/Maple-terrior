@@ -246,7 +246,7 @@
       .gallery-main img, .sticky-atc { transition: none; }
     }
   </style>
-<link rel="canonical" href="https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies"><meta property="og:title" content="Maple Leaf Mini Shortbread Cookies | Maple Terroir"><meta property="og:description" content="Maple Terroir's bite-size Maple Leaf Mini Shortbread Cookies are made from Canadian flour, Canadian butter, Canadian eggs and of course, Maple Terroir pure"><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Leaf Mini Shortbread Cookies | Maple Terroir"><meta name="twitter:description" content="Maple Terroir's bite-size Maple Leaf Mini Shortbread Cookies are made from Canadian flour, Canadian butter, Canadian eggs and of course, Maple Terroir pure"><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Leaf Mini Shortbread Cookies","description":"Maple Terroir's bite-size Maple Leaf Mini Shortbread Cookies are made from Canadian flour, Canadian butter, Canadian eggs and of course, Maple Terroir pure maple syrup. Each box contains 45 delicious mini-size cookies that do not contain any preservatives, artificial flavours, or colour agents. This product is peanut-free and made in a peanut-free facility. Available in packs of 1, 12, 24, 36, and 48 units of 113g boxes. Each box contains 45 mini-size cookies. Non-GMO ingredients The first ingredient is Canadian-grown flour Canadian butter Canadian eggs Canadian sea salt No preservatives, artificial flavouring or citric acid Sweetened with pure maple syrup","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&width=1200","category":"Cookies","sku":"388","mpn":"388","offers":{"@type":"Offer","price":"8.99","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-01"}}</script><script>window.__PRODUCT_HANDLE__="maple-leaf-mini-shortbread-cookies";</script>
+<link rel="canonical" href="https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies"><meta property="og:title" content="Maple Leaf Mini Shortbread Cookies | Maple Terroir"><meta property="og:description" content="Maple Terroir's bite-size Maple Leaf Mini Shortbread Cookies are made from Canadian flour, Canadian butter, Canadian eggs and of course, Maple Terroir pure"><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Leaf Mini Shortbread Cookies | Maple Terroir"><meta name="twitter:description" content="Maple Terroir's bite-size Maple Leaf Mini Shortbread Cookies are made from Canadian flour, Canadian butter, Canadian eggs and of course, Maple Terroir pure"><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Leaf Mini Shortbread Cookies","description":"Maple Terroir's bite-size Maple Leaf Mini Shortbread Cookies are made from Canadian flour, Canadian butter, Canadian eggs and of course, Maple Terroir pure maple syrup. Each box contains 45 delicious mini-size cookies that do not contain any preservatives, artificial flavours, or colour agents. This product is peanut-free and made in a peanut-free facility. Available in packs of 1, 12, 24, 36, and 48 units of 113g boxes. Each box contains 45 mini-size cookies. Non-GMO ingredients The first ingredient is Canadian-grown flour Canadian butter Canadian eggs Canadian sea salt No preservatives, artificial flavouring or citric acid Sweetened with pure maple syrup","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&width=1200","category":"Cookies","sku":"388","mpn":"388","offers":{"@type":"Offer","price":"8.99","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-leaf-mini-shortbread-cookies","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-07"}}</script><script>window.__PRODUCT_HANDLE__="maple-leaf-mini-shortbread-cookies";</script>
 </head>
 
 <body>
@@ -846,26 +846,10 @@
 
       initStickyATC();
 
-      // Schema.org Product structured data
-      var schema = {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: p.title,
-        description: p.description.substring(0, 300),
-        brand: { '@type': 'Brand', name: 'Maple Terroir' },
-        offers: {
-          '@type': 'AggregateOffer',
-          priceCurrency: 'CAD',
-          lowPrice: Math.min.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          highPrice: Math.max.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          availability: 'https://schema.org/InStock'
-        }
-      };
-      if (images.length) schema.image = images[0].url;
-      var ld = document.createElement('script');
-      ld.type = 'application/ld+json';
-      ld.textContent = JSON.stringify(schema);
-      document.head.appendChild(ld);
+      // Product JSON-LD is baked statically into each /products/<handle>.html at
+      // build time (scripts/build-products.mjs). Do NOT inject a second one here at
+      // runtime: Google renders this JS and would then see two Product entities
+      // (duplicate-schema risk). The baked Offer already carries price/sku/brand.
 
       // Track recently viewed
       if (typeof MapleSiteRecent !== 'undefined') {

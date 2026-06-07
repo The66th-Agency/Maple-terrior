@@ -246,7 +246,7 @@
       .gallery-main img, .sticky-atc { transition: none; }
     }
   </style>
-<link rel="canonical" href="https://mapleterroir.com/products/maple-mega-combo-gift-set"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-mega-combo-gift-set"><meta property="og:title" content="Maple Mega Combo Gift Set | Maple Terroir"><meta property="og:description" content="The Mega Maple Gift Set gives you one of almost everything. Yes, the recipient will experience the wonders of a wide range of maple products that will put "><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Mega Combo Gift Set | Maple Terroir"><meta name="twitter:description" content="The Mega Maple Gift Set gives you one of almost everything. Yes, the recipient will experience the wonders of a wide range of maple products that will put "><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Mega Combo Gift Set","description":"The Mega Maple Gift Set gives you one of almost everything. Yes, the recipient will experience the wonders of a wide range of maple products that will put a smile on their face! Please note that our Pure Maple Medium-Dark Roast Ground Coffee is sold out. We have included Pure Maple Syrup Caramel as an alternative. This gift set contains the following delightful Maple Terroir Maple Products: Pure Maple Butter Popcorn 100g x 3 Pure Maple Stroopwafels 136g x 3 Pure Maple Cocoa Dark Chocolate Roasted Almonds 100g x 3 Pure Organic Maple Syrup 250ml x 2 Pure Maple Syrup Caramel 120 g × 2 Pure Maple Ceylon Black Tea (15 tea bags) 30g x 2 Pure Organic Maple Butter 160g x 2 Pure Organic Maple Sugar 100g x 2 Pure Maple Leaf mini Shortbread 128g x 3 Pure Maple mini Stroopwafel 113g x 3","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-mega-combo-gift-set","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&width=1200","category":"Gift Set","gtin":"custom product","offers":{"@type":"Offer","price":"240.0","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-mega-combo-gift-set","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-01"}}</script><script>window.__PRODUCT_HANDLE__="maple-mega-combo-gift-set";</script>
+<link rel="canonical" href="https://mapleterroir.com/products/maple-mega-combo-gift-set"><meta property="og:type" content="product"><meta property="og:url" content="https://mapleterroir.com/products/maple-mega-combo-gift-set"><meta property="og:title" content="Maple Mega Combo Gift Set | Maple Terroir"><meta property="og:description" content="The Mega Maple Gift Set gives you one of almost everything. Yes, the recipient will experience the wonders of a wide range of maple products that will put "><meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&amp;width=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Maple Mega Combo Gift Set | Maple Terroir"><meta name="twitter:description" content="The Mega Maple Gift Set gives you one of almost everything. Yes, the recipient will experience the wonders of a wide range of maple products that will put "><meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&amp;width=1200"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Maple Mega Combo Gift Set","description":"The Mega Maple Gift Set gives you one of almost everything. Yes, the recipient will experience the wonders of a wide range of maple products that will put a smile on their face! Please note that our Pure Maple Medium-Dark Roast Ground Coffee is sold out. We have included Pure Maple Syrup Caramel as an alternative. This gift set contains the following delightful Maple Terroir Maple Products: Pure Maple Butter Popcorn 100g x 3 Pure Maple Stroopwafels 136g x 3 Pure Maple Cocoa Dark Chocolate Roasted Almonds 100g x 3 Pure Organic Maple Syrup 250ml x 2 Pure Maple Syrup Caramel 120 g × 2 Pure Maple Ceylon Black Tea (15 tea bags) 30g x 2 Pure Organic Maple Butter 160g x 2 Pure Organic Maple Sugar 100g x 2 Pure Maple Leaf mini Shortbread 128g x 3 Pure Maple mini Stroopwafel 113g x 3","brand":{"@type":"Brand","name":"Maple Terroir"},"url":"https://mapleterroir.com/products/maple-mega-combo-gift-set","image":"https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&width=1200","category":"Gift Set","offers":{"@type":"Offer","price":"240.0","priceCurrency":"CAD","availability":"https://schema.org/InStock","url":"https://mapleterroir.com/products/maple-mega-combo-gift-set","itemCondition":"https://schema.org/NewCondition","priceValidUntil":"2027-06-07"}}</script><script>window.__PRODUCT_HANDLE__="maple-mega-combo-gift-set";</script>
 </head>
 
 <body>
@@ -861,26 +861,10 @@
 
       initStickyATC();
 
-      // Schema.org Product structured data
-      var schema = {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: p.title,
-        description: p.description.substring(0, 300),
-        brand: { '@type': 'Brand', name: 'Maple Terroir' },
-        offers: {
-          '@type': 'AggregateOffer',
-          priceCurrency: 'CAD',
-          lowPrice: Math.min.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          highPrice: Math.max.apply(null, variants.map(function (v) { return parseFloat(v.priceV2.amount); })),
-          availability: 'https://schema.org/InStock'
-        }
-      };
-      if (images.length) schema.image = images[0].url;
-      var ld = document.createElement('script');
-      ld.type = 'application/ld+json';
-      ld.textContent = JSON.stringify(schema);
-      document.head.appendChild(ld);
+      // Product JSON-LD is baked statically into each /products/<handle>.html at
+      // build time (scripts/build-products.mjs). Do NOT inject a second one here at
+      // runtime: Google renders this JS and would then see two Product entities
+      // (duplicate-schema risk). The baked Offer already carries price/sku/brand.
 
       // Track recently viewed
       if (typeof MapleSiteRecent !== 'undefined') {

@@ -74,7 +74,12 @@ function renderProduct(template, p) {
   if (image) ld.image = image;
   if (p.productType) ld.category = p.productType;
   if (sku) { ld.sku = sku; ld.mpn = sku; }
-  if (barcode) ld.gtin = barcode;
+  // Only emit a GTIN when the barcode is a real numeric code. Shopify's "barcode"
+  // is sometimes filler like "custom product", which is invalid structured data.
+  const gtinDigits = barcode.replace(/[^0-9]/g, '');
+  if (barcode && gtinDigits === barcode && [8, 12, 13, 14].includes(gtinDigits.length)) {
+    ld['gtin' + gtinDigits.length] = gtinDigits;
+  }
   if (price) ld.offers = {
     '@type': 'Offer', price, priceCurrency: currency, availability, url: canonical,
     itemCondition: 'https://schema.org/NewCondition', priceValidUntil,
