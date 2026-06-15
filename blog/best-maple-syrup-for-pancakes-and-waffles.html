@@ -177,8 +177,12 @@
   <!-- HERO IMAGE -->
   <section class="px-4 md:px-8 mb-8 md:mb-16">
     <div class="max-w-[1200px] mx-auto">
-      <div class="rounded-[2rem] overflow-hidden aspect-[16/9] md:aspect-[21/9]">
-        <img src="../assets/images/maple-syrup-french-toast-pour.webp" alt="A pour of single-origin Quebec maple syrup over a warm breakfast stack, the everyday Amber grade for pancakes and waffles" class="w-full h-full object-cover">
+      <div class="rounded-[2rem] overflow-hidden aspect-[16/9] md:aspect-[21/9] bg-charcoal">
+        <video id="pour-hero-video" class="w-full h-full object-cover" autoplay loop muted playsinline preload="none" poster="../assets/images/maple-syrup-french-toast-pour.webp"></video>
+        <script>
+          // Motion on desktop only; phones keep the poster still (mobile performance)
+          if (window.innerWidth > 768) { document.getElementById('pour-hero-video').src = '../assets/videos/maple-syrup-pour.mp4'; }
+        </script>
       </div>
     </div>
   </section>
