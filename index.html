@@ -503,6 +503,9 @@
       animation-play-state: paused;
     }
 
+    /* Canex is a single-colour red wordmark; render it black to match the other mono logos */
+    img[alt="CANEX"] { filter: brightness(0); }
+
     /* ─── Reduced Motion ─────────────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
@@ -1764,7 +1767,7 @@
                 Taste the terroir<br>of Quebec.
               </h2>
               <p class="text-base md:text-lg text-cream/70 leading-relaxed max-w-[45ch] mx-auto mb-10">
-                From a single forest in Quebec to your table. The reason families from Vancouver to Tokyo have stopped buying anything else.
+                From a single forest in Quebec to your table. The reason families all over the world have stopped buying anything else.
               </p>
               <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="products.html"
@@ -1881,7 +1884,7 @@
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
           <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Do you offer wholesale or private label?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. We work with cafés, restaurants, specialty grocers, and corporate gifting partners across North America. Visit our Wholesale page or contact us directly to discuss pricing, custom labelling, and minimum order quantities.</p>
+            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. We work with cafés, restaurants, hotels, specialty grocers, retail chains, and corporate gifting partners across North America. Visit our Wholesale page or contact us directly to discuss pricing, custom labelling, and minimum order quantities.</p>
           </div>
         </div>
 
