@@ -78,9 +78,8 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 
@@ -120,14 +119,14 @@
   <!-- NAV -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500" /></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500" /></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="./" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="/maple-syrup-wholesale" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
@@ -145,12 +144,12 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
       <a href="./" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
-      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
+      <a href="/products" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
     </div>
   </div>
 
@@ -251,7 +250,7 @@
         <div class="prose-body pl-0 md:pl-14">
           <p>The Appalachian Mountains run from the southern United States up through New England, across the Vermont border, and into southern Quebec. The forest does not stop at the line on the map. Sugar maples on the Quebec side and sugar maples on the Vermont side share the same species, very similar soil chemistry, comparable elevation, and a near-identical freeze-thaw cycle that drives sap flow each spring.</p>
           <p>The implication is straightforward. The terroir differences between two farms in the same Quebec valley, or between two farms in central Vermont, are often larger than the average difference between a Quebec Appalachian farm and a Vermont Appalachian farm. Soil microvariation, tree age, slope orientation, and boil method all matter. The border, for the most part, does not.</p>
-          <p>Maple Terroir taps from one family-owned farm in Quebec's Appalachian Mountains, the same mountain range that runs through Vermont. The "terroir" we trade on lives at the farm level, not the provincial level. The full <a href="../terroir.html">terroir page</a> explains how the specific microclimate of that one farm shapes the syrup.</p>
+          <p>Maple Terroir taps from one family-owned farm in Quebec's Appalachian Mountains, the same mountain range that runs through Vermont. The "terroir" we trade on lives at the farm level, not the provincial level. The full <a href="/terroir">terroir page</a> explains how the specific microclimate of that one farm shapes the syrup.</p>
         </div>
       </article>
 
@@ -262,7 +261,7 @@
         </div>
         <div class="prose-body pl-0 md:pl-14">
           <p>Vermont's voluntary grading and smaller average producer size made room for a craft scene. Wood-fired evaporators that impart smoke notes, bourbon-barrel-aged syrup, vanilla-infused syrup, single-tree bottlings: most of these formats were popularized by Vermont producers selling at farmers' markets and direct-to-consumer. Vermont built brands like Runamok, Crown Maple, and dozens of smaller operations that compete on experimentation rather than volume.</p>
-          <p>Quebec runs both ends of the spectrum. The province dominates industrial-scale supply, including most of the syrup that ends up in private label and food service, but Quebec also has strong craft producers operating at smaller volumes with high traceability and certification. Escuminac, O d'Or, and <a href="../products.html">Maple Terroir</a> all sit in that single-origin craft tier on the Quebec side.</p>
+          <p>Quebec runs both ends of the spectrum. The province dominates industrial-scale supply, including most of the syrup that ends up in private label and food service, but Quebec also has strong craft producers operating at smaller volumes with high traceability and certification. Escuminac, O d'Or, and <a href="/products">Maple Terroir</a> all sit in that single-origin craft tier on the Quebec side.</p>
           <p>The lazy framing is "Vermont is craft, Quebec is industrial." The accurate framing is that both regions produce both, and the question is which specific producer the bottle in your hand came from.</p>
         </div>
       </article>
@@ -288,7 +287,7 @@
           <p>Pick by what you value, not by which side of the border the bottle came from.</p>
           <p>If volume, affordability, and consistent grading matter most, Quebec wins on every dimension. The PPAQ system enforces predictability, and Quebec's scale keeps cost per litre lower than Vermont's small-batch craft tier.</p>
           <p>If experimental formats like bourbon-barrel-aged, wood-fired, or infused syrup matter most, Vermont's craft scene is the deeper bench. Quebec has these formats too, but Vermont built the category and still leads it.</p>
-          <p>If verified single-origin, third-party certification, and Appalachian terroir from one farm matter most, the bottle to find is single-origin from a Quebec Appalachian producer with strong certifications. Maple Terroir taps from one family-owned farm in Quebec's Appalachians, the same mountain range as Vermont, and holds three organic certifications: Ecocert, Canada Organic, and USDA Organic. Most maple syrup from either region is blended supply from many farms with no traceable origin. The <a href="../certifications.html">organic certification page</a> covers what each certification actually verifies.</p>
+          <p>If verified single-origin, third-party certification, and Appalachian terroir from one farm matter most, the bottle to find is single-origin from a Quebec Appalachian producer with strong certifications. Maple Terroir taps from one family-owned farm in Quebec's Appalachians, the same mountain range as Vermont, and holds three organic certifications: Ecocert, Canada Organic, and USDA Organic. Most maple syrup from either region is blended supply from many farms with no traceable origin. The <a href="/certifications">organic certification page</a> covers what each certification actually verifies.</p>
         </div>
       </article>
 
@@ -342,11 +341,11 @@
         Maple Terroir is single-origin Quebec maple syrup from one family-owned farm in the Appalachian Mountains, the same range that runs through Vermont. Triple-certified organic.
       </p>
       <div class="reveal reveal-delay-2 flex flex-wrap gap-4 justify-center">
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-8 py-4 text-sm font-semibold group">
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-8 py-4 text-sm font-semibold group">
           <span>Shop Maple Terroir</span>
           <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
-        <a href="../canadian-maple-syrup.html" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Read the Canadian Maple Guide</a>
+        <a href="/canadian-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Read the Canadian Maple Guide</a>
       </div>
     </div>
   </section>
@@ -407,7 +406,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed"><a href="../products.html" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Terroir</a> is single-origin from one family-owned Quebec farm in the Appalachian Mountains, the same mountain range that runs through Vermont. Every bottle traces to one farm and one harvest. The syrup holds three <a href="../certifications.html" class="text-amber-warm hover:text-amber-deep transition-colors">organic certifications</a>: Ecocert, Canada Organic, and USDA Organic. Most maple syrup from either region is blended supply from many farms with no traceable origin.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed"><a href="/products" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Terroir</a> is single-origin from one family-owned Quebec farm in the Appalachian Mountains, the same mountain range that runs through Vermont. Every bottle traces to one farm and one harvest. The syrup holds three <a href="/certifications" class="text-amber-warm hover:text-amber-deep transition-colors">organic certifications</a>: Ecocert, Canada Organic, and USDA Organic. Most maple syrup from either region is blended supply from many farms with no traceable origin.</p>
           </div>
         </div>
       </div>
@@ -420,7 +419,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="../index.html" class="flex items-center gap-2.5 mb-6">
+          <a href="/" class="flex items-center gap-2.5 mb-6">
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 12V32M14 18L20 22M26 18L20 22M12 24L20 28M28 24L20 28" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
@@ -429,10 +428,10 @@
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="../story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
-            <li><a href="../terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
-            <li><a href="../certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
-            <li><a href="../canadian-maple-syrup.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
+            <li><a href="/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
             <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
           
           </ul>
@@ -440,10 +439,10 @@
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
             <li><a href="../collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
             <li><a href="../collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
-            <li><a href="../maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+            <li><a href="/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
@@ -456,7 +455,7 @@
       </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
-        <a href="/privacy.html" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
         <div class="flex items-center gap-6">
           <span class="text-xs text-warm-gray-300">Ecocert</span>
           <span class="text-xs text-warm-gray-300">Canada Organic</span>

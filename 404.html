@@ -8,9 +8,8 @@
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <title>Page Not Found  -  Maple Terroir</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
   <link rel="stylesheet" href="/assets/tailwind.css">
   <style>
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background: #FDFBF7; color: #2E2822; }
@@ -27,10 +26,10 @@
   <h1 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight mb-4">Page not found</h1>
   <p class="text-warm-gray-500 leading-relaxed max-w-[40ch] mb-10">The page you are looking for may have been moved or no longer exists. Let us get you back on track.</p>
   <div class="flex flex-wrap items-center justify-center gap-3">
-    <a href="index.html" class="inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-6 py-3 text-sm font-medium hover:bg-amber-warm transition-colors duration-300">
+    <a href="/" class="inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-6 py-3 text-sm font-medium hover:bg-amber-warm transition-colors duration-300">
       Back to Home
     </a>
-    <a href="products.html" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-warm-gray-600 ring-1 ring-warm-gray-200 hover:ring-amber-warm hover:text-charcoal transition-all duration-300">
+    <a href="/products" class="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-warm-gray-600 ring-1 ring-warm-gray-200 hover:ring-amber-warm hover:text-charcoal transition-all duration-300">
       Browse Products
     </a>
   </div>

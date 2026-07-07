@@ -26,9 +26,8 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mapleterroir.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mapleterroir.com/blog/"},{"@type":"ListItem","position":3,"name":"Canadian Maple Syrup Heist: A $30 Million Theft Unveiled","item":"https://mapleterroir.com/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled"}]}
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 
@@ -66,14 +65,14 @@
 
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="./" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="/maple-syrup-wholesale" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
@@ -91,12 +90,12 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
       <a href="./" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
-      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
+      <a href="/products" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
     </div>
   </div>
 
@@ -134,9 +133,9 @@
 </div>
 
       <p><em><span style="font-weight: 400;">Updated on December 6th, 2025</span></em></p>
-<p><span style="font-weight: 400;">Picture a heist that didn't target diamonds, gold, or priceless art - but <a href="../collections/premium-maple-syrup">maple syrup</a> instead. The <a href="../canadian-maple-syrup">Canadian maple syrup</a> heist is one of the most unusual crimes in Canadian history. Thieves coordinated this sweet operation between </span><b>August 2011 and July 2012</b><span style="font-weight: 400;"> and walked away with an astounding </span><a href="https://www.cbc.ca/news/canada/montreal/maple-syrup-worth-up-to-30m-stolen-in-quebec-1.1266012"><span style="font-weight: 400;">$30 million worth</span></a><span style="font-weight: 400;"> of amber liquid. </span></p>
+<p><span style="font-weight: 400;">Picture a heist that didn't target diamonds, gold, or priceless art - but <a href="../collections/premium-maple-syrup">maple syrup</a> instead. The <a href="/canadian-maple-syrup">Canadian maple syrup</a> heist is one of the most unusual crimes in Canadian history. Thieves coordinated this sweet operation between </span><b>August 2011 and July 2012</b><span style="font-weight: 400;"> and walked away with an astounding </span><a href="https://www.cbc.ca/news/canada/montreal/maple-syrup-worth-up-to-30m-stolen-in-quebec-1.1266012"><span style="font-weight: 400;">$30 million worth</span></a><span style="font-weight: 400;"> of amber liquid. </span></p>
 <p>The story of how that heritage was built, and what makes Quebec syrup distinct from anything else, is worth understanding on its own terms: <a href="the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">The Rich Story of Maple Syrup Canada</a>.</p>
-<p><span style="font-weight: 400;">The sort of thing we love about this story goes beyond a simple theft. These criminals targeted Quebec's Strategic <a rel="noopener" href="https://mapleterroir.com/products/pure-maple-syrup-maple-leaf-bottle-50ml" target="_blank">Maple Syrup</a> Reserve, a facility that safeguarded millions of pounds of <a rel="noopener" href="https://mapleterroir.com/products/organic-pure-maple-syrup-250ml" target="_blank">pure maple syrup</a>. This meticulously planned operation resulted in the disappearance of </span><a href="https://en.m.wikipedia.org/wiki/Great_Canadian_Maple_Syrup_Heist"><span style="font-weight: 400;">nearly 3,000 tons</span></a><span style="font-weight: 400;"> of maple syrup. Authorities launched a complex investigation that crossed borders between two countries and exposed an underground network of sticky-fingered thieves.</span></p>
+<p><span style="font-weight: 400;">The sort of thing we love about this story goes beyond a simple theft. These criminals targeted Quebec's Strategic <a href="https://mapleterroir.com/products/pure-maple-syrup-maple-leaf-bottle-50ml">Maple Syrup</a> Reserve, a facility that safeguarded millions of pounds of <a href="https://mapleterroir.com/products/organic-pure-maple-syrup-250ml">pure maple syrup</a>. This meticulously planned operation resulted in the disappearance of </span><a href="https://en.m.wikipedia.org/wiki/Great_Canadian_Maple_Syrup_Heist"><span style="font-weight: 400;">nearly 3,000 tons</span></a><span style="font-weight: 400;"> of maple syrup. Authorities launched a complex investigation that crossed borders between two countries and exposed an underground network of sticky-fingered thieves.</span></p>
 <p>That reserve exists because Canadian maple syrup production is one of the most tightly regulated agricultural industries in the world, something the <a href="canadian-maple-syrup-production-report-2025">2025 production report</a> puts into sharp perspective.</p>
 <h2><span style="font-weight: 400;">Inside the Strategic Reserve</span></h2>
 <style>
@@ -294,11 +293,11 @@
 <span class="maple-leaf-icon">🍁</span>
 <h3 class="cta-headline">Taste Canada's Liquid Gold</h3>
 <p class="cta-subtext"> Experience the rich, golden flavour that made maple syrup a national treasure,and our syrup the gold standard. At Maple Terroir, every bottle is a promise of purity, depth, and unparalleled quality. </p>
-<a class="cta-button" href="https://mapleterroir.com/pages/maple-syrup" rel="noopener" target="_blank"> Shop Pure Maple Syrup </a>
+<a class="cta-button" href="https://mapleterroir.com/pages/maple-syrup"> Shop Pure Maple Syrup </a>
 </div>
 </div>
-<p><span style="font-weight: 400;">Quebec dominates the world's<a rel="noopener" href="https://mapleterroir.com/blogs/blogs-maple-terroir/canadian-maple-syrup-production-report-2025-hidden-market-opportunities-revealed" target="_blank"> maple syrup market</a>. The numbers tell the story - they control </span><a href="https://www.maplefromcanada.com/about/about-quebec-maple-syrup-producers/"><b>72% of global production</b></a><span style="font-weight: 400;">. Their Federation of Quebec Maple Syrup Producers (QMSP) runs what people call the International Strategic Reserve (ISR). Think of it as OPEC, but they deal with maple syrup instead of oil.</span></p>
-<p>Anyone who wants the real product behind that production system can browse our <a href="../canadian-maple-syrup">Canadian maple syrup catalog</a>, drawn straight from the Appalachian Quebec sugar bush.</p>
+<p><span style="font-weight: 400;">Quebec dominates the world's<a href="/blog/canadian-maple-syrup-production-report-2025-hidden-market-opportunities-revealed"> maple syrup market</a>. The numbers tell the story - they control </span><a href="https://www.maplefromcanada.com/about/about-quebec-maple-syrup-producers/"><b>72% of global production</b></a><span style="font-weight: 400;">. Their Federation of Quebec Maple Syrup Producers (QMSP) runs what people call the International Strategic Reserve (ISR). Think of it as OPEC, but they deal with maple syrup instead of oil.</span></p>
+<p>Anyone who wants the real product behind that production system can browse our <a href="/canadian-maple-syrup">Canadian maple syrup catalog</a>, drawn straight from the Appalachian Quebec sugar bush.</p>
 <p><span style="font-weight: 400;">The numbers from 2024 are impressive. Quebec produced </span><a href="https://ppaq.ca/en/"><b>239 million pounds of maple syrup</b></a><span style="font-weight: 400;">. This massive output comes from </span><b>13,500 maple producers</b><span style="font-weight: 400;"> who run </span><b>8,400 maple enterprises</b><span style="font-weight: 400;">. The QMSP's 24-year-old strategic reserve spreads across three major facilities:</span></p>
 <ul>
 <li style="font-weight: 400;"><span style="font-weight: 400;">A massive Laurierville warehouse (267,000 square feet - picture five football fields)</span></li>
@@ -372,7 +371,7 @@
 <a href="../collections/premium-maple-syrup" style="display:inline-block;background:#C4841D;color:#1A1714;font-weight:600;text-decoration:none;padding:0.85rem 1.75rem;border-radius:9999px;font-size:0.95rem;">Shop the maple syrup</a>
 </div>
 <h2><span style="font-weight: 400;">Anatomy of the Heist</span></h2>
-<p><span style="font-weight: 400;">A massive theft started at the time when Avik Caron, whose wife was an employee at the warehouse  would transform the </span><a href="https://mapleterroir.com/blogs/blogs-maple-terroir/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey?srsltid=AfmBOopK2WonYwnrBFlCvP4DfyptNOXr-8l0EzxzS0-FCGdsU1iS17AH"><span style="font-weight: 400;">maple syrup industry</span></a><span style="font-weight: 400;">. This turned into one of the most sophisticated agricultural crimes from October 2011 to August 2012. Thieves coordinated the removal of </span><a href="https://en.wikipedia.org/wiki/Great_Canadian_Maple_Syrup_Heist"><span style="font-weight: 400;">9,571 barrels of syrup</span></a><span style="font-weight: 400;">, worth CAD 26.06M. Like any precious commodity, exceptional </span><span style="font-weight: 400;">maple syrup</span><span style="font-weight: 400;"> deserves such protection.</span></p>
+<p><span style="font-weight: 400;">A massive theft started at the time when Avik Caron, whose wife was an employee at the warehouse  would transform the </span><a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey"><span style="font-weight: 400;">maple syrup industry</span></a><span style="font-weight: 400;">. This turned into one of the most sophisticated agricultural crimes from October 2011 to August 2012. Thieves coordinated the removal of </span><a href="https://en.wikipedia.org/wiki/Great_Canadian_Maple_Syrup_Heist"><span style="font-weight: 400;">9,571 barrels of syrup</span></a><span style="font-weight: 400;">, worth CAD 26.06M. Like any precious commodity, exceptional </span><span style="font-weight: 400;">maple syrup</span><span style="font-weight: 400;"> deserves such protection.</span></p>
 <p><span style="font-weight: 400;">These criminals executed their plan with precision. The sticky operation unfolded this way:</span></p>
 <ul>
 <li style="font-weight: 400;"><span style="font-weight: 400;">Rented space in the same industrial facility to run a legitimate business</span></li>
@@ -405,7 +404,7 @@
 </li>
 </ul>
 <h3><b>International Cooperation</b></h3>
-<p><span style="font-weight: 400;">The case grew beyond <a rel="noopener" href="https://mapleterroir.com/blogs/blogs-maple-terroir/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey" target="_blank">Canadian borders</a> and needed unprecedented teamwork between:</span></p>
+<p><span style="font-weight: 400;">The case grew beyond <a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">Canadian borders</a> and needed unprecedented teamwork between:</span></p>
 <ul>
 <li style="font-weight: 400;"><span style="font-weight: 400;">The Royal Canadian Mounted Police</span></li>
 <li style="font-weight: 400;"><span style="font-weight: 400;">Quebec Provincial Police</span></li>
@@ -547,7 +546,7 @@
       <h2 class="font-display text-3xl md:text-4xl font-semibold text-cream tracking-tight leading-tight mb-4 max-w-2xl mx-auto">Single-Origin Quebec Maple Syrup, Family-Owned Since 1978.</h2>
       <p class="text-warm-gray-300 leading-relaxed max-w-[48ch] mx-auto mb-8">Triple-certified organic, shipped from Vancouver across Canada and to five international markets.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <a href="./" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">More from the Blog</a>
       </div>
     </div>
@@ -557,7 +556,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="../index.html" class="flex items-center gap-2.5 mb-6">
+          <a href="/" class="flex items-center gap-2.5 mb-6">
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
@@ -566,20 +565,20 @@
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="../story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
-            <li><a href="../terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
-            <li><a href="../certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
-            <li><a href="../canadian-maple-syrup.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
+            <li><a href="/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
             <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
             <li><a href="../collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
             <li><a href="../collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
-            <li><a href="../maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+            <li><a href="/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
@@ -592,7 +591,7 @@
       </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
-        <a href="/privacy.html" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
         <div class="flex items-center gap-6">
           <span class="text-xs text-warm-gray-300">Ecocert</span>
           <span class="text-xs text-warm-gray-300">Canada Organic</span>

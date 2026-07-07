@@ -26,9 +26,8 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mapleterroir.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mapleterroir.com/blog/"},{"@type":"ListItem","position":3,"name":"5 Surprising Maple Syrup Benefits You Need to Know","item":"https://mapleterroir.com/blog/5-surprising-maple-syrup-benefits-you-need-to-know"}]}
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 
@@ -66,14 +65,14 @@
 
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="./" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="/maple-syrup-wholesale" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
@@ -91,12 +90,12 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
       <a href="./" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
-      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
+      <a href="/products" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
     </div>
   </div>
 
@@ -138,7 +137,7 @@
 <p data-mce-fragment="1">Scientists have found unique compounds in maple syrup that don't exist anywhere else in nature. The answer about maple syrup's health benefits might surprise you. <a href="../collections/premium-maple-syrup">Pure maple syrup</a> contains an array of natural compounds that researchers are still studying, from antioxidants to a prebiotic fiber.</p>
 <p>These properties come through most clearly in pure, minimally processed syrup, the kind explored in detail in our <a href="from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">guide to how maple syrup is made</a>.</p>
 <p data-mce-fragment="1">Let us take a closer look at five areas where researchers have studied this natural sweetener. Most of this work is early-stage laboratory and animal research, not proof of benefits in people, and maple syrup is still an added sugar best enjoyed in moderation.</p>
-<p>Buyers who want minimally processed, certified-organic syrup can browse our <a href="../organic-maple-syrup">organic Canadian maple syrup line</a>, which carries Ecocert, Canada Organic, and USDA Organic certifications.</p>
+<p>Buyers who want minimally processed, certified-organic syrup can browse our <a href="/organic-maple-syrup">organic Canadian maple syrup line</a>, which carries Ecocert, Canada Organic, and USDA Organic certifications.</p>
 <h2 data-mce-fragment="1">The Science Behind Maple Syrup's Unique Compounds</h2>
 <p data-mce-fragment="1">The science behind maple syrup benefits reveals a fascinating world of unique compounds. Research at the University of Rhode Island has found<span data-mce-fragment="1"> </span><a data-mce-fragment="1" class="text-n-purple-1000 hover:underline" href="https://web.uri.edu/maple/uri-scientist-discovers-54-beneficial-compounds-in-pure-maple-syrup/" target="_blank">54 beneficial compounds</a><span data-mce-fragment="1"> </span>in pure maple syrup. Five of these compounds were never seen before in nature.</p>
 <h3 data-mce-fragment="1">Understanding Quebecol and Its Properties</h3>
@@ -216,7 +215,7 @@
 <p data-mce-fragment="1"><strong data-mce-fragment="1">The biggest breakthrough</strong><span data-mce-fragment="1"> </span>shows quebecol reduces Nuclear Factor Kappa B (NF-κB) activation at 100 mM concentration without any cytotoxicity.</p>
 <h2 data-mce-fragment="1">Conclusion</h2>
 <p data-mce-fragment="1">Maple syrup offers much more than just a breakfast condiment. Research shows its health-supporting properties through unique compounds like quebecol, powerful antioxidants, and prebiotic elements. In early laboratory and animal research, these compounds have been studied for possible effects on the brain, gut, and inflammation. Evidence in people is still limited.</p>
-<p data-mce-fragment="1">Pure maple syrup contains natural compounds that refined sweeteners lack. Refined sweeteners provide mostly empty calories, while maple syrup also delivers some minerals and antioxidant compounds. High-quality maple products are a great way to get these benefits - you can head over to<span data-mce-fragment="1"> </span><a data-mce-fragment="1" class="text-n-purple-1000 hover:underline" href="https://mapleterroir.com/" target="_blank">https://mapleterroir.com/</a><span data-mce-fragment="1"> </span>to find the best <a href="../canadian-maple-syrup">Canadian maple syrup</a> options.</p>
+<p data-mce-fragment="1">Pure maple syrup contains natural compounds that refined sweeteners lack. Refined sweeteners provide mostly empty calories, while maple syrup also delivers some minerals and antioxidant compounds. High-quality maple products are a great way to get these benefits - you can head over to<span data-mce-fragment="1"> </span><a data-mce-fragment="1" class="text-n-purple-1000 hover:underline" href="https://mapleterroir.com/">https://mapleterroir.com/</a><span data-mce-fragment="1"> </span>to find the best <a href="/canadian-maple-syrup">Canadian maple syrup</a> options.</p>
 <p data-mce-fragment="1">Maple syrup is still an added sugar and is best enjoyed in moderation. Used in place of refined sugar, it adds rich, complex flavour along with small amounts of minerals and antioxidants. The research above is early-stage, much of it in cells and animals, and none of it is medical advice.</p>
 <h2 data-mce-fragment="1">FAQs</h2>
 <p data-mce-fragment="1"><strong data-mce-fragment="1">Q1. What are the main health benefits of maple syrup?</strong><span data-mce-fragment="1"> </span>Maple syrup contains unique compounds like quebecol and antioxidants that offer various health benefits. In early laboratory and animal studies, researchers have looked at possible neuroprotective, gut, and anti-inflammatory effects, though these are not yet proven in people. Maple syrup is also a good source of the mineral manganese. It is still an added sugar and is best used in moderation.</p>
@@ -236,7 +235,7 @@
       <h2 class="font-display text-3xl md:text-4xl font-semibold text-cream tracking-tight leading-tight mb-4 max-w-2xl mx-auto">Single-Origin Quebec Maple Syrup, Family-Owned Since 1978.</h2>
       <p class="text-warm-gray-300 leading-relaxed max-w-[48ch] mx-auto mb-8">Triple-certified organic, shipped from Vancouver across Canada and to five international markets.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <a href="./" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">More from the Blog</a>
       </div>
     </div>
@@ -246,7 +245,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="../index.html" class="flex items-center gap-2.5 mb-6">
+          <a href="/" class="flex items-center gap-2.5 mb-6">
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
@@ -255,20 +254,20 @@
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="../story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
-            <li><a href="../terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
-            <li><a href="../certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
-            <li><a href="../canadian-maple-syrup.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
+            <li><a href="/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
             <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
             <li><a href="../collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
             <li><a href="../collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
-            <li><a href="../maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+            <li><a href="/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
@@ -281,7 +280,7 @@
       </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
-        <a href="/privacy.html" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
         <div class="flex items-center gap-6">
           <span class="text-xs text-warm-gray-300">Ecocert</span>
           <span class="text-xs text-warm-gray-300">Canada Organic</span>

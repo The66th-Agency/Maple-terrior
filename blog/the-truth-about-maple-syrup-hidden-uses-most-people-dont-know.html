@@ -26,9 +26,8 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mapleterroir.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mapleterroir.com/blog/"},{"@type":"ListItem","position":3,"name":"The Truth About Maple Syrup: Hidden Uses Most People Don'...","item":"https://mapleterroir.com/blog/the-truth-about-maple-syrup-hidden-uses-most-people-dont-know"}]}
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 
@@ -66,14 +65,14 @@
 
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="./" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="/maple-syrup-wholesale" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
@@ -91,12 +90,12 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
     
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
       <a href="./" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
-      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
+      <a href="/products" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
     </div>
   </div>
 
@@ -135,7 +134,7 @@
 
       <h1 data-pm-slice="1 1 []">The Truth About <a href="../collections/premium-maple-syrup">Maple Syrup</a>: Hidden Uses Most People Don't Know</h1>
 
-<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/pages/maple-syrup-faqs" target="_blank">uses of maple syrup</a> go way beyond the reach and influence of breakfast tables. Most people think it's just for pancakes. This golden elixir needs 40 gallons of sap to make just one gallon of syrup, and Canada makes 78% of the world's supply.</p>
+<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/pages/maple-syrup-faqs">uses of maple syrup</a> go way beyond the reach and influence of breakfast tables. Most people think it's just for pancakes. This golden elixir needs 40 gallons of sap to make just one gallon of syrup, and Canada makes 78% of the world's supply.</p>
 <p>Maple syrup stands out from other sweeteners. It adds magic to everything from chili to roasted vegetables. This natural sweetener packs impressive nutrition too. Just one-third cup provides <a rel="noopener noreferrer nofollow" class="link" href="https://www.maplesyrupfromcanada.com/blogs/b2b-maple-syrup/the-versatility-of-maple-syrup-as-a-foodservice-ingredient-beyond-breakfast-foods" target="_blank">165% of daily manganese</a> and 28% of zinc requirements.</p>
 <p>For a longer list with step-by-step applications, <a href="15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide">15 unexpected maple syrup uses</a> covers everything from cocktail syrups to salad dressings.</p>
 <p>Let me share some unexpected ways to use maple syrup in your kitchen and beyond. You'll learn how this traditional sweetener can enhance savory dishes and create natural beauty treatments. Your cooking and daily routines will change in ways you never imagined.</p>
@@ -143,8 +142,8 @@
 <h2>What is maple syrup used for beyond breakfast?</h2>
 
 <p><sub>Image Source: </sub><a rel="noopener noreferrer nofollow" class="link" href="https://mainemapleproducers.com" target="_blank"><sub>Maine Maple Producers Association</sub></a></p>
-<p>Maple syrup has grown way beyond the breakfast table into a versatile ingredient that boosts both sweet and savory dishes. You might be surprised to learn that this <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/5-surprising-maple-syrup-benefits-you-need-to-know?srsltid=AfmBOoqYnMyOJxgjQ8F6_8g0YhrQs9JFehKKpaQ_PglY8mssWyZg2agD" target="_blank">natural sweetener</a> can turn ordinary recipes into extraordinary culinary experiences with just a few tablespoons.</p>
-<h3>The surprising versatility of <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/organic-pure-maple-syrup-250ml" target="_blank">pure maple syrup</a>
+<p>Maple syrup has grown way beyond the breakfast table into a versatile ingredient that boosts both sweet and savory dishes. You might be surprised to learn that this <a rel="noopener noreferrer nofollow" class="link" href="/blog/5-surprising-maple-syrup-benefits-you-need-to-know">natural sweetener</a> can turn ordinary recipes into extraordinary culinary experiences with just a few tablespoons.</p>
+<h3>The surprising versatility of <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/organic-pure-maple-syrup-250ml">pure maple syrup</a>
 </h3>
 <p><a href="../collections/premium-maple-syrup">Pure maple syrup</a> stands out as a flexible kitchen ingredient. Real maple syrup's unique flavors complement many foods and beverages, unlike artificial alternatives.</p>
 <p>The syrup creates amazing glazes and marinades for meats and fish in savory cooking. Mix it with soy sauce, garlic, and ginger to make flavorful marinades for chicken or tofu <a rel="noopener noreferrer nofollow" class="link" href="https://mainemapleproducers.com/nutrition-the-9-health-benefits-of-maple-syrup/" target="_blank"><sup>[1]</sup></a>. Its natural sweetness works great with salty flavors, making it perfect for glazing ham or salmon <a rel="noopener noreferrer nofollow" class="link" href="https://www.maplefromcanada.com/recipes/lighter-fare/maple-salad-dressing/" target="_blank"><sup>[2]</sup></a>. Root vegetables like carrots, sweet potatoes, and Brussels sprouts taste better when roasted with maple syrup <a rel="noopener noreferrer nofollow" class="link" href="https://www.smokylakemaple.com/knowledge-base/how-do-i-care-for-my-pans-at-the-end-of-the-season/?srsltid=AfmBOoozdqepjCn4laNytTS2_XQfUBUYEdCyMKsVAibULPh4NlJ7Apws" target="_blank"><sup>[3]</sup></a>.</p>
@@ -164,7 +163,7 @@
 <p>You can find unexpected ways to use maple syrup that go beyond pancakes and waffles. This amber elixir reshapes the scene of ordinary meals into gourmet experiences with its complex sweetness and distinctive character.</p>
 <h3>Enhancing savory dishes and marinades</h3>
 <p>Maple syrup creates magic with savory ingredients. It caramelizes beautifully on meats during cooking and forms a flavorful crust that locks in moisture. A blend with soy sauce and ginger produces an exceptional Asian-inspired marinade that works great with chicken or tofu <a rel="noopener noreferrer nofollow" class="link" href="https://maplefromcanada.ca/recipes/maple-asian-marinade/" target="_blank"><sup>[8]</sup></a>.</p>
-<p>The perfect pork tenderloin marinade combines maple syrup with Dijon mustard, sesame oil, and garlic. Let it sit overnight in the refrigerator to penetrate deeply <a rel="noopener noreferrer nofollow" class="link" href="https://www.allrecipes.com/recipe/51997/maple-garlic-marinated-pork-tenderloin/" target="_blank"><sup>[9]</sup></a>. The <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/pages/about-pure-maple-syrup" target="_blank">sugars in maple syrup</a> help meat brown better and create complex flavors during grilling or roasting.</p>
+<p>The perfect pork tenderloin marinade combines maple syrup with Dijon mustard, sesame oil, and garlic. Let it sit overnight in the refrigerator to penetrate deeply <a rel="noopener noreferrer nofollow" class="link" href="https://www.allrecipes.com/recipe/51997/maple-garlic-marinated-pork-tenderloin/" target="_blank"><sup>[9]</sup></a>. The <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/pages/about-pure-maple-syrup">sugars in maple syrup</a> help meat brown better and create complex flavors during grilling or roasting.</p>
 <p>Bacon and maple make an irresistible pair. You can brush bacon with maple syrup, Dijon mustard, and cayenne before baking to create a sweet-spicy flavor experience <a rel="noopener noreferrer nofollow" class="link" href="https://www.tasteofhome.com/collection/savory-maple-syrup-recipes/?srsltid=AfmBOopofvAYPoaWXXI2WqCpESDg1YZ8EjU3aqd7giGmw5EKtSSEVA0K" target="_blank"><sup>[10]</sup></a>. The syrup also brings out the best in roasted vegetables - especially butternut squash, sweet potatoes, and Brussels sprouts. It enhances their natural sweetness and adds depth <a rel="noopener noreferrer nofollow" class="link" href="https://www.foodandwine.com/condiments/maple-syrup" target="_blank"><sup>[11]</sup></a>.</p>
 <h3>Maple syrup in beverages and cocktails</h3>
 <p>Bartenders have found that maple syrup adds richness and complexity to cocktails. The syrup brings more than just sweetness, unlike simple syrup. A "Maple Old Fashioned" emerges when you swap sugar with maple syrup in the classic recipe - making it perfect for fall <a rel="noopener noreferrer nofollow" class="link" href="https://www.diffordsguide.com/encyclopedia/3379/cocktails/20-best-maple-syrup-cocktails" target="_blank"><sup>[12]</sup></a>.</p>
@@ -173,7 +172,7 @@
 <h3>Substituting maple syrup for sugar in baking</h3>
 <p>Success in baking with maple syrup needs specific adjustments. Use about <a rel="noopener noreferrer nofollow" class="link" href="https://www.kingarthurbaking.com/blog/2017/08/18/baking-with-liquid-sweeteners" target="_blank">3/4 cup of maple syrup</a> for each cup of white sugar and reduce other liquids by 3-4 tablespoons <a rel="noopener noreferrer nofollow" class="link" href="https://www.kingarthurbaking.com/blog/2017/08/18/baking-with-liquid-sweeteners" target="_blank"><sup>[13]</sup></a>. Add 3-4 tablespoons of flour for every cup of maple syrup if the recipe has no liquid <a rel="noopener noreferrer nofollow" class="link" href="https://www.kingarthurbaking.com/blog/2017/08/18/baking-with-liquid-sweeteners" target="_blank"><sup>[13]</sup></a>.</p>
 <p>Maple syrup gives cookies a rich, almost brown sugar-like flavor. These cookies stay moist longer than those made with sugar <a rel="noopener noreferrer nofollow" class="link" href="https://www.kingarthurbaking.com/blog/2017/08/18/baking-with-liquid-sweeteners" target="_blank"><sup>[13]</sup></a>. Muffins made with maple syrup often rise higher and have a more pronounced flavor than their sugar-sweetened versions <a rel="noopener noreferrer nofollow" class="link" href="https://www.kingarthurbaking.com/blog/2017/08/18/baking-with-liquid-sweeteners" target="_blank"><sup>[13]</sup></a>.</p>
-<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/collections/premium-maple-syrup" target="_blank">Maple syrup can</a> make baked goods brown faster because of its sugar composition. So, reduce your oven temperature by about 25°F when using maple syrup <a rel="noopener noreferrer nofollow" class="link" href="https://www.marthastewart.com/8331631/how-to-swap-sugar-with-honey-maple-syrup-unrefined-sweeteners" target="_blank"><sup>[7]</sup></a>.</p>
+<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/collections/premium-maple-syrup">Maple syrup can</a> make baked goods brown faster because of its sugar composition. So, reduce your oven temperature by about 25°F when using maple syrup <a rel="noopener noreferrer nofollow" class="link" href="https://www.marthastewart.com/8331631/how-to-swap-sugar-with-honey-maple-syrup-unrefined-sweeteners" target="_blank"><sup>[7]</sup></a>.</p>
 <h3>Creating gourmet sauces and dressings</h3>
 <p>A simple maple vinaigrette can elevate ordinary salads. Mix 2 tablespoons Dijon mustard, 2 tablespoons wine vinegar or lemon juice, salt, pepper, 4 tablespoons olive oil, and 1 tablespoon maple syrup <a rel="noopener noreferrer nofollow" class="link" href="https://www.maplefromcanada.com/recipes/lighter-fare/maple-salad-dressing/" target="_blank"><sup>[2]</sup></a>. This versatile dressing works on leafy greens, roasted vegetables, and even as a protein marinade.</p>
 <p>A <a rel="noopener noreferrer nofollow" class="link" href="https://www.tasteofhome.com/collection/savory-maple-syrup-recipes/?srsltid=AfmBOopofvAYPoaWXXI2WqCpESDg1YZ8EjU3aqd7giGmw5EKtSSEVA0K" target="_blank">maple-balsamic vinaigrette</a> offers more complex flavors. Blend maple syrup with balsamic vinegar, mustard, and olive oil to create perfect sweet and tangy notes <a rel="noopener noreferrer nofollow" class="link" href="https://www.tasteofhome.com/collection/savory-maple-syrup-recipes/?srsltid=AfmBOopofvAYPoaWXXI2WqCpESDg1YZ8EjU3aqd7giGmw5EKtSSEVA0K" target="_blank"><sup>[10]</sup></a>.</p>
@@ -187,7 +186,7 @@
 <p><strong>Hydrating Maple Face Mask:</strong></p>
 <ol>
 <li>
-<p>Mix 2 tablespoons <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/discover-the-best-maple-syrup-in-vancouver-a-sweet-guide-for-2024?srsltid=AfmBOopB88be6ywUpzreKUEEvsTXKaCyrDxtu55RpA6GugJmPC6jc1_4" target="_blank">pure maple syrup</a> with 1 tablespoon yogurt <a rel="noopener noreferrer nofollow" class="link" href="https://cruecosmetics.com/en/blogs/blogue/diy-beauty-recipes?srsltid=AfmBOooy2ci4mZBthhaPI8UY-tsL5aFEIP9joL3psF9dE4eJaffnyzEt" target="_blank"><sup>[16]</sup></a></p>
+<p>Mix 2 tablespoons <a rel="noopener noreferrer nofollow" class="link" href="/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">pure maple syrup</a> with 1 tablespoon yogurt <a rel="noopener noreferrer nofollow" class="link" href="https://cruecosmetics.com/en/blogs/blogue/diy-beauty-recipes?srsltid=AfmBOooy2ci4mZBthhaPI8UY-tsL5aFEIP9joL3psF9dE4eJaffnyzEt" target="_blank"><sup>[16]</sup></a></p>
 </li>
 <li>
 <p>Apply to clean, dry face and leave for 15 minutes</p>
@@ -274,7 +273,7 @@
 <p>Maple syrup helps preserve other foods too. Its high sugar content creates conditions where most microorganisms can't survive. This makes it perfect for glazes and marinades that help meat last longer <a rel="noopener noreferrer nofollow" class="link" href="https://www.maplefarmers.com/blogs/all-about-vermont-maple-syrup/how-to-store-maple-syrup?srsltid=AfmBOop-5cmWiFH62IiXFADD6bEQMsnwNgoWhRDIKC31ydUjfwNZCXKE" target="_blank"><sup>[30]</sup></a>.</p>
 <h2>Conclusion</h2>
 <p>Maple syrup is nature's amazing gift that goes way beyond a breakfast sweetener. We found that there was magic in this golden elixir when used in savory dishes, cocktails, and beauty treatments. Pure maple syrup has a richer nutritional profile than regular sugar. It provides essential minerals like manganese and zinc, along with dozens of bioactive plant compounds.</p>
-<p>This versatile ingredient works great in gourmet marinades, natural face masks, and cough remedies. It even helps with garden care and food preservation. You can taste our delicious maple syrup at <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com" target="_blank">mapleterroir.com</a> and start learning about its countless uses in your kitchen and home.</p>
+<p>This versatile ingredient works great in gourmet marinades, natural face masks, and cough remedies. It even helps with garden care and food preservation. You can taste our delicious maple syrup at <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com">mapleterroir.com</a> and start learning about its countless uses in your kitchen and home.</p>
 <p>Note that quality makes all the difference - pure maple syrup is your best choice over artificial alternatives to tap into its full potential. Try it first in your morning coffee or as a natural glaze for roasted vegetables. You'll soon wonder how your pantry ever managed without this amazing ingredient.</p>
 <h2>FAQs</h2>
 <p><strong>Q1. What makes maple syrup unique compared to other sweeteners?</strong> Maple syrup is a natural sweetener made from the sap of maple trees. It contains dozens of bioactive plant compounds, including some first identified in maple syrup, along with minerals like manganese. Unlike refined sugar, maple syrup has a lower glycemic index and offers a complex flavor profile that enhances both sweet and savory dishes.</p>
@@ -296,7 +295,7 @@
       <h2 class="font-display text-3xl md:text-4xl font-semibold text-cream tracking-tight leading-tight mb-4 max-w-2xl mx-auto">Single-Origin Quebec Maple Syrup, Family-Owned Since 1978.</h2>
       <p class="text-warm-gray-300 leading-relaxed max-w-[48ch] mx-auto mb-8">Triple-certified organic, shipped from Vancouver across Canada and to five international markets.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <a href="./" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">More from the Blog</a>
       </div>
     </div>
@@ -306,7 +305,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="../index.html" class="flex items-center gap-2.5 mb-6">
+          <a href="/" class="flex items-center gap-2.5 mb-6">
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
@@ -315,20 +314,20 @@
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="../story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
-            <li><a href="../terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
-            <li><a href="../certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
-            <li><a href="../canadian-maple-syrup.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
+            <li><a href="/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
             <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
             <li><a href="../collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
             <li><a href="../collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
-            <li><a href="../maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+            <li><a href="/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
@@ -341,7 +340,7 @@
       </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
-        <a href="/privacy.html" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
         <div class="flex items-center gap-6">
           <span class="text-xs text-warm-gray-300">Ecocert</span>
           <span class="text-xs text-warm-gray-300">Canada Organic</span>
