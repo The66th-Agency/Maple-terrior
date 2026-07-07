@@ -132,3 +132,52 @@
 /locations-we-serve/buy-maple-syrup-toronto  /locations-we-serve/canada/buy-maple-syrup-toronto  301
 /locations-we-serve/buy-maple-syrup-montreal  /locations-we-serve/canada/buy-maple-syrup-montreal  301
 /locations-we-serve/buy-maple-syrup-calgary  /locations-we-serve/canada/buy-maple-syrup-calgary  301
+
+# Explicit 301s for the legacy .html URL forms. The Worker's default extension
+# handling only 307s these (temporary), which tells Google not to consolidate
+# signals. Internal links were switched to the clean URLs 2026-07-07; these
+# rules give any remaining external or historical inbound link a permanent hop.
+/index.html  /  301
+/story.html  /story  301
+/terroir.html  /terroir  301
+/certifications.html  /certifications  301
+/press.html  /press  301
+/contact.html  /contact  301
+/privacy.html  /privacy  301
+/products.html  /products  301
+/canadian-maple-syrup.html  /canadian-maple-syrup  301
+/organic-maple-syrup.html  /organic-maple-syrup  301
+/maple-syrup-wholesale.html  /maple-syrup-wholesale  301
+/maple-syrup-corporate-gift.html  /maple-syrup-corporate-gift  301
+/canadian-gifts-vancouver.html  /canadian-gifts-vancouver  301
+/canadian-souvenirs.html  /canadian-souvenirs  301
+/canadian-souvenirs-toronto.html  /canadian-souvenirs-toronto  301
+/banff-souvenirs.html  /banff-souvenirs  301
+/collections/bestsellers.html  /collections/bestsellers  301
+/collections/chocolates.html  /collections/chocolates  301
+/collections/cookies.html  /collections/cookies  301
+/collections/home-sets.html  /collections/home-sets  301
+/collections/maple-stroopwafels.html  /collections/maple-stroopwafels  301
+/collections/maple-syrup-gift-set.html  /collections/maple-syrup-gift-set  301
+/collections/new-arrivals.html  /collections/new-arrivals  301
+/collections/nuts-snacks.html  /collections/nuts-snacks  301
+/collections/premium-maple-syrup.html  /collections/premium-maple-syrup  301
+/collections/tea-coffee.html  /collections/tea-coffee  301
+/locations-we-serve/index.html  /locations-we-serve/  301
+/locations-we-serve/canada/index.html  /locations-we-serve/canada/  301
+/locations-we-serve/usa/index.html  /locations-we-serve/usa/  301
+/locations-we-serve/canada/buy-maple-syrup-calgary.html  /locations-we-serve/canada/buy-maple-syrup-calgary  301
+/locations-we-serve/canada/buy-maple-syrup-edmonton.html  /locations-we-serve/canada/buy-maple-syrup-edmonton  301
+/locations-we-serve/canada/buy-maple-syrup-montreal.html  /locations-we-serve/canada/buy-maple-syrup-montreal  301
+/locations-we-serve/canada/buy-maple-syrup-ottawa.html  /locations-we-serve/canada/buy-maple-syrup-ottawa  301
+/locations-we-serve/canada/buy-maple-syrup-toronto.html  /locations-we-serve/canada/buy-maple-syrup-toronto  301
+/locations-we-serve/canada/buy-maple-syrup-vancouver.html  /locations-we-serve/canada/buy-maple-syrup-vancouver  301
+/locations-we-serve/usa/buy-maple-syrup-boston.html  /locations-we-serve/usa/buy-maple-syrup-boston  301
+/locations-we-serve/usa/buy-maple-syrup-chicago.html  /locations-we-serve/usa/buy-maple-syrup-chicago  301
+/locations-we-serve/usa/buy-maple-syrup-los-angeles.html  /locations-we-serve/usa/buy-maple-syrup-los-angeles  301
+/locations-we-serve/usa/buy-maple-syrup-new-york.html  /locations-we-serve/usa/buy-maple-syrup-new-york  301
+/locations-we-serve/usa/buy-maple-syrup-seattle.html  /locations-we-serve/usa/buy-maple-syrup-seattle  301
+/blog/index.html  /blog/  301
+
+# Deleted legacy article with no static equivalent; nearest live post.
+/blog/discover-the-best-maple-syrup-in-vancouver-a-sweet-guide-for-2024  /blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir  301

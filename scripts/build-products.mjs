@@ -38,9 +38,11 @@ const escText = (s) => String(s == null ? '' : s)
 const widthUrl = (u, w) => (!u ? '' : u + (u.indexOf('?') === -1 ? '?' : '&') + 'width=' + w);
 
 // Make the root-relative template work one directory deep (/products/<handle>).
+// The ' exclusion keeps this away from JS string concatenations in inline scripts
+// (e.g. '<img src="' + images[0].url + ...), which it used to mangle into src="/https://...
 function absolutize(html) {
   return html.replace(
-    /(href|src)="(?!https?:\/\/|\/\/|\/|#|mailto:|tel:|data:|javascript:)([^"]*)"/g,
+    /(href|src)="(?!https?:\/\/|\/\/|\/|#|mailto:|tel:|data:|javascript:|')([^"]+)"/g,
     (_, attr, path) => `${attr}="/${path}"`
   );
 }
@@ -85,6 +87,17 @@ function renderProduct(template, p) {
     itemCondition: 'https://schema.org/NewCondition', priceValidUntil,
   };
 
+  // Mirrors the visible Home / Products / <name> breadcrumb already in the template.
+  // Every other page type ships BreadcrumbList; PDPs were the one gap.
+  const breadcrumbLd = {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: `${SITE}/products` },
+      { '@type': 'ListItem', position: 3, name: p.title, item: canonical },
+    ],
+  };
+
   const headInject =
     `<link rel="canonical" href="${escAttr(canonical)}">` +
     `<meta property="og:type" content="product">` +
@@ -97,6 +110,7 @@ function renderProduct(template, p) {
     `<meta name="twitter:description" content="${escAttr(desc)}">` +
     (image ? `<meta name="twitter:image" content="${escAttr(image)}">` : '') +
     `<script type="application/ld+json">${JSON.stringify(ld)}</script>` +
+    `<script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>` +
     `<script>window.__PRODUCT_HANDLE__=${JSON.stringify(handle)};</script>\n`;
 
   const descHtml = p.descriptionHtml || `<p>${escText(p.description || '')}</p>`;
@@ -117,6 +131,15 @@ function renderProduct(template, p) {
     /(<div class="pdp-acc-inner" id="product-desc">)\s*<div class="skeleton"[^>]*><\/div>\s*(<\/div>)/,
     `$1${descHtml}$2`
   );
+  // Bake the price into the visible span. Raw HTML used to show an empty node
+  // (client JS fills it), so non-JS crawlers saw no price outside the JSON-LD.
+  // The hydration script still overwrites this with the live Shopify price.
+  if (price) {
+    html = html.replace(
+      /(<span id="product-price"[^>]*>)[\s\S]*?(<\/span>)/,
+      `$1$$${parseFloat(price).toFixed(2)}$2`
+    );
+  }
   return html;
 }
 

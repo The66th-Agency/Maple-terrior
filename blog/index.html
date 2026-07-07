@@ -42,9 +42,8 @@
   </script>
 
   <!-- Fonts: Fraunces + Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <!-- Tailwind CSS CDN -->
   <link rel="stylesheet" href="/assets/tailwind.css">
@@ -203,15 +202,15 @@
   <!-- NAVIGATION -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]" width="1280" height="500" /></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]" width="1280" height="500" /></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="./" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../certifications.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Certifications</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html"
+        <a href="/certifications" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Certifications</a>
+        <a href="/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products"
            class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
@@ -238,13 +237,13 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
       <a href="./" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="../certifications.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Certifications</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 450ms">Wholesale</a>
-      <a href="../products.html"
+      <a href="/certifications" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Certifications</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 450ms">Wholesale</a>
+      <a href="/products"
          class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 550ms">
         Shop Now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -290,7 +289,7 @@
       // a new static post, add an entry here so it appears in this grid.
       var STATIC_POSTS = [
         { handle: 'maple-syrup-vs-honey', title: 'Maple Syrup vs Honey: Which Is Healthier?', publishedAt: '2026-06-03T12:00:00', excerpt: 'The real differences between maple syrup and honey: sugar type, glycemic index, minerals, antioxidants, and which one is vegan.', image: { url: '/assets/images/maple-syrup-french-toast-pour.webp', altText: 'Pure maple syrup being poured' }, tags: ['Comparison'], authorV2: { name: 'Maple Terroir' } },
-        { handle: 'does-maple-syrup-go-bad-shelf-life-storage', title: 'Does Maple Syrup Go Bad? Shelf Life and How to Store It', publishedAt: '2026-06-02T12:00:00', excerpt: 'Unopened, pure maple syrup keeps for years. Once opened, it belongs in the fridge. A clear guide to shelf life, storage, mold, and crystals.', image: { url: '/assets/images/pantry-bento.png', altText: 'A pantry of preserved goods' }, tags: ['Guide'], authorV2: { name: 'Maple Terroir' } },
+        { handle: 'does-maple-syrup-go-bad-shelf-life-storage', title: 'Does Maple Syrup Go Bad? Shelf Life and How to Store It', publishedAt: '2026-06-02T12:00:00', excerpt: 'Unopened, pure maple syrup keeps for years. Once opened, it belongs in the fridge. A clear guide to shelf life, storage, mold, and crystals.', image: { url: '/assets/images/pantry-bento.webp', altText: 'A pantry of preserved goods' }, tags: ['Guide'], authorV2: { name: 'Maple Terroir' } },
         { handle: 'organic-vs-conventional-maple-syrup', title: 'Organic vs Conventional Maple Syrup: The Real Differences', publishedAt: '2026-05-19T12:00:00', excerpt: 'The four real differences between organic and conventional maple syrup, plus an honest take on price, taste, and nutrition.', image: { url: '/assets/images/terroir/appalachian-autumn.png', altText: 'A Quebec organic sugarbush in autumn' }, tags: ['Comparison'], authorV2: { name: 'Maple Terroir' } },
         { handle: 'pure-maple-syrup-vs-table-syrup', title: 'Pure Maple Syrup vs Table Syrup', publishedAt: '2026-05-19T12:00:00', excerpt: 'Pure maple syrup vs table syrup, compared by ingredient list, nutrition, glycemic index, and price, and how to spot the real thing.', image: { url: '/assets/images/maple-syrup-french-toast-pour.webp', altText: 'Pure maple syrup poured over French toast' }, tags: ['Comparison'], authorV2: { name: 'Maple Terroir' } },
         { handle: 'grade-a-vs-grade-b-maple-syrup', title: 'Grade A vs Grade B Maple Syrup', publishedAt: '2026-05-19T12:00:00', excerpt: 'Grade B was retired in 2015 and renamed Grade A Very Dark, Strong Taste. Here is what actually changed and how to choose a grade.', image: { url: '/assets/images/story/sap-in-bucket.png', altText: 'Maple sap dripping into a collection bucket' }, tags: ['Guide'], authorV2: { name: 'Maple Terroir' } },
@@ -374,7 +373,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="../index.html" class="flex items-center gap-2.5 mb-6">
+          <a href="/" class="flex items-center gap-2.5 mb-6">
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none">
               <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/>
               <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -390,11 +389,11 @@
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="../story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Products</a></li>
-            <li><a href="../terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Products</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
             <li><a href="./" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Blog</a></li>
-            <li><a href="../certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Certifications</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Certifications</a></li>
             <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
           
           </ul>
@@ -403,20 +402,22 @@
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
-            <li><a href="../collections/maple-syrup-gift-set.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Gift Sets</a></li>
-            <li><a href="../collections/bestsellers.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Best Sellers</a></li>
-            <li><a href="../collections/new-arrivals.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">New Arrivals</a></li>
+            <li><a href="/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Canadian Maple Syrup</a></li>
+            <li><a href="/organic-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Organic Maple Syrup</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
+            <li><a href="/collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Gift Sets</a></li>
+            <li><a href="/collections/bestsellers" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Best Sellers</a></li>
+            <li><a href="/collections/new-arrivals" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">New Arrivals</a></li>
           </ul>
         </div>
 
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
           <ul class="space-y-3">
-            <li><a href="../contact.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
-            <li><a href="../maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
-            <li><a href="../press.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Press</a></li>
-            <li><a href="/privacy.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Privacy Policy</a></li>
+            <li><a href="/contact" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
+            <li><a href="/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
+            <li><a href="/press" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Press</a></li>
+            <li><a href="/privacy" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Privacy Policy</a></li>
           </ul>
         </div>
       </div>

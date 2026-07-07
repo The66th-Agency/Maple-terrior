@@ -24,7 +24,7 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Bestselling Maple Products | Maple Terroir",
-    "url": "https://mapleterroir.com/collections/bestsellers.html",
+    "url": "https://mapleterroir.com/collections/bestsellers",
     "description": "Bestselling Maple Terroir products. Customer favourites including stroopwafels, maple cream butter, pure Canadian maple syrup, and gift sets.",
     "isPartOf": { "@type": "WebSite", "name": "Maple Terroir", "url": "https://mapleterroir.com" }
   }
@@ -35,15 +35,14 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mapleterroir.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://mapleterroir.com/products.html" },
-      { "@type": "ListItem", "position": 3, "name": "Bestsellers", "item": "https://mapleterroir.com/collections/bestsellers.html" }
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://mapleterroir.com/products" },
+      { "@type": "ListItem", "position": 3, "name": "Bestsellers", "item": "https://mapleterroir.com/collections/bestsellers" }
     ]
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 
@@ -136,15 +135,15 @@
   <!-- NAVIGATION -->
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]" width="1280" height="500" /></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]" width="1280" height="500" /></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="../blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../certifications.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Certifications</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="/certifications" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Certifications</a>
+        <a href="/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -171,13 +170,13 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
       <a href="../blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
-      <a href="../certifications.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Certifications</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 450ms">Wholesale</a>
-      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:550ms">Shop Now</a>
+      <a href="/certifications" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Certifications</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 450ms">Wholesale</a>
+      <a href="/products" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:550ms">Shop Now</a>
     </div>
   </div>
 
@@ -189,9 +188,9 @@
     <div class="max-w-[1400px] mx-auto">
       <!-- Breadcrumb -->
       <nav class="flex items-center gap-2 text-xs text-warm-gray-400 mb-8" aria-label="Breadcrumb">
-        <a href="../index.html" class="hover:text-charcoal transition-colors">Home</a>
+        <a href="/" class="hover:text-charcoal transition-colors">Home</a>
         <span>/</span>
-        <a href="../products.html" class="hover:text-charcoal transition-colors">Products</a>
+        <a href="/products" class="hover:text-charcoal transition-colors">Products</a>
         <span>/</span>
         <span class="text-warm-gray-600">Bestselling Maple Products</span>
       </nav>
@@ -207,16 +206,16 @@
 
       <!-- Collection filter pills -->
       <div class="flex flex-wrap gap-2 mb-4">
-        <a href="../products.html" class="filter-pill">All Products</a>
-        <a href="premium-maple-syrup.html" class="filter-pill">Maple Syrup</a>
-        <a href="maple-stroopwafels.html" class="filter-pill">Stroopwafels</a>
-        <a href="cookies.html" class="filter-pill">Cookies</a>
-        <a href="tea-coffee.html" class="filter-pill">Tea &amp; Coffee</a>
-        <a href="chocolates.html" class="filter-pill">Chocolates</a>
-        <a href="nuts-snacks.html" class="filter-pill">Nuts &amp; Snacks</a>
-        <a href="maple-syrup-gift-set.html" class="filter-pill">Gift Sets</a>
-        <a href="home-sets.html" class="filter-pill">Home Sets</a>
-        <a href="bestsellers.html" class="filter-pill active">Bestsellers</a>
+        <a href="/products" class="filter-pill">All Products</a>
+        <a href="/collections/premium-maple-syrup" class="filter-pill">Maple Syrup</a>
+        <a href="/collections/maple-stroopwafels" class="filter-pill">Stroopwafels</a>
+        <a href="/collections/cookies" class="filter-pill">Cookies</a>
+        <a href="/collections/tea-coffee" class="filter-pill">Tea &amp; Coffee</a>
+        <a href="/collections/chocolates" class="filter-pill">Chocolates</a>
+        <a href="/collections/nuts-snacks" class="filter-pill">Nuts &amp; Snacks</a>
+        <a href="/collections/maple-syrup-gift-set" class="filter-pill">Gift Sets</a>
+        <a href="/collections/home-sets" class="filter-pill">Home Sets</a>
+        <a href="/collections/bestsellers" class="filter-pill active">Bestsellers</a>
       </div>
 
       <div class="flex items-center justify-between">
@@ -232,11 +231,8 @@
   <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        <!-- Skeleton placeholders -->
-        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
-        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
-        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
-        <div><div class="skeleton" style="aspect-ratio:1;border-radius:1rem;margin-bottom:1rem"></div><div class="skeleton" style="width:70%;height:0.9rem;margin-bottom:0.5rem"></div><div class="skeleton" style="width:40%;height:0.8rem"></div></div>
+        <!-- Static crawlable grid baked by scripts/build-grids.mjs; page JS replaces it with the live hydrated version on load. -->
+        <div class="product-card group"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="block"><div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15.png?v=1774746721&width=500" alt="Pure Maple Syrup Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"></div><h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Pure Maple Syrup Stroopwafels</h3></a><div class="flex items-center justify-between"><p class="text-xs text-warm-gray-500">$39.99 CAD</p></div></div><div class="product-card group"><a href="/products/maple-sugar-sea-salt-cookies" class="block"><div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&width=500" alt="Maple Sugar &amp; Sea Salt Cookies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"></div><h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Maple Sugar &amp; Sea Salt Cookies</h3></a><div class="flex items-center justify-between"><p class="text-xs text-warm-gray-500">$8.99 CAD</p></div></div><div class="product-card group"><a href="/products/wild-blueberry-maple-stroopwafels-caddy" class="block"><div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15_16c7b8c9-3d0d-41a3-8324-65da900bde74.png?v=1774746741&width=500" alt="Wild Blueberry Maple Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"></div><h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Wild Blueberry Maple Stroopwafels</h3></a><div class="flex items-center justify-between"><p class="text-xs text-warm-gray-500">$39.99 CAD</p></div></div><div class="product-card group"><a href="/products/organic-pure-maple-syrup-250ml" class="block"><div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&width=500" alt="Organic Pure Maple Syrup 250ml" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"></div><h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Organic Pure Maple Syrup 250ml</h3></a><div class="flex items-center justify-between"><p class="text-xs text-warm-gray-500">$14.99 CAD</p></div></div><div class="product-card group"><a href="/products/matcha-green-tea-maple-stroopwafels-caddy" class="block"><div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_17_aa8793ff-ec0b-4389-8ece-b14e7f808cc5.png?v=1774746769&width=500" alt="Matcha Green Tea Maple Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"></div><h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Matcha Green Tea Maple Stroopwafels</h3></a><div class="flex items-center justify-between"><p class="text-xs text-warm-gray-500">$39.99 CAD</p></div></div><div class="product-card group"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block"><div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&width=500" alt="pure maple syrup maple leaf 250ml" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"></div><h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Pure Maple Syrup Maple Leaf Bottle 250ml</h3></a><div class="flex items-center justify-between"><p class="text-xs text-warm-gray-500">$24.99 CAD</p></div></div><div class="product-card group"><a href="/products/cocoa-chocolate-maple-stroopwafels-caddy" class="block"><div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_17.png?v=1774746668&width=500" alt="Cocoa Chocolate Maple Stroopwafels" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy"></div><h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Cocoa Chocolate Maple Stroopwafels</h3></a><div class="flex items-center justify-between"><p class="text-xs text-warm-gray-500">$39.99 CAD</p></div></div>
       </div>
     </div>
   </section>
@@ -259,7 +255,7 @@
   <footer class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/50">
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="../index.html" class="flex items-center gap-2.5">
+        <a href="/" class="flex items-center gap-2.5">
           <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 40 40" fill="none">
             <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/>
             <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -268,7 +264,7 @@
         </a>
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd.</p>
         <a href="/locations-we-serve/" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Locations We Serve</a>
-        <a href="/privacy.html" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
         <div class="flex items-center gap-6">
           <span class="text-xs text-warm-gray-300">Ecocert</span>
           <span class="text-xs text-warm-gray-300">Canada Organic</span>
@@ -355,7 +351,7 @@
         grid.innerHTML = '';
 
         if (!products.length) {
-          grid.innerHTML = '<div class="col-span-full text-center py-20"><p class="text-warm-gray-400 text-lg">No products in this collection yet.</p><a href="../products.html" class="inline-block mt-4 text-sm font-medium text-amber-warm hover:text-amber-deep transition-colors">Browse all products &rarr;</a></div>';
+          grid.innerHTML = '<div class="col-span-full text-center py-20"><p class="text-warm-gray-400 text-lg">No products in this collection yet.</p><a href="/products" class="inline-block mt-4 text-sm font-medium text-amber-warm hover:text-amber-deep transition-colors">Browse all products &rarr;</a></div>';
           return;
         }
 

@@ -26,9 +26,8 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mapleterroir.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mapleterroir.com/blog/"},{"@type":"ListItem","position":3,"name":"Homemade vs Store-Bought Waffle Snacks: Which Tastes Bett...","item":"https://mapleterroir.com/blog/homemade-vs-store-bought-waffle-snacks-which-tastes-better-2025"}]}
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 
@@ -63,14 +62,14 @@
 
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="./" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="/maple-syrup-wholesale" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
@@ -88,12 +87,12 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
     
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
       <a href="./" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
-      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
+      <a href="/products" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
     </div>
   </div>
 
@@ -127,7 +126,7 @@
     <div class="article-body">
       <h1 data-pm-slice="1 1 []"><br></h1>
 
-<p> Waffle snacks have taken the world by storm. People everywhere love Dutch <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/collections/stroopwafels" target="_blank">stroopwafels</a> and Japanese mochi waffles.</p>
+<p> Waffle snacks have taken the world by storm. People everywhere love Dutch <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/collections/stroopwafels">stroopwafels</a> and Japanese mochi waffles.</p>
 <p>Maple Terroir's <a href="../collections/maple-stroopwafels">Stroopwafel</a> Waffle Cookies give you grab-and-go convenience, but nothing beats making them at home where you control every ingredient.</p>
 <p>The difference between homemade and store-bought is clear. Most commercial brands pack their waffles with glucose-fructose as the main ingredient.</p>
 <p>Shoppers who want the store-bought option done properly can browse our <a href="../collections/maple-stroopwafels">premium maple stroopwafels</a>, which use real Quebec maple syrup instead of corn-syrup flavoring.</p>
@@ -194,7 +193,7 @@
 </li>
 </ul>
 <p>The fun doesn't stop at the batter. The Baker Mama suggests a "Build-Your-Own Waffle Board" as a great way to serve breakfast, brunch or dinner. Everyone can create their perfect combination <a rel="noopener noreferrer nofollow" class="link" href="https://www.lalalunchbox.com/blog/easy-waffles-for-the-lunchbox" target="_blank"><sup>[11]</sup></a>.</p>
-<p>You might offer softened butter, peanut butter, Nutella, or whipped topping as spreads. Fresh fruits add color and nutrition - try raspberries, blueberries, banana slices, and strawberries. A drizzle of <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/" target="_blank">maple syrup</a> or honey and crunchy toppings like chopped pecans, chocolate chips, or sprinkles complete the experience <a rel="noopener noreferrer nofollow" class="link" href="https://www.lalalunchbox.com/blog/easy-waffles-for-the-lunchbox" target="_blank"><sup>[11]</sup></a>.</p>
+<p>You might offer softened butter, peanut butter, Nutella, or whipped topping as spreads. Fresh fruits add color and nutrition - try raspberries, blueberries, banana slices, and strawberries. A drizzle of <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/">maple syrup</a> or honey and crunchy toppings like chopped pecans, chocolate chips, or sprinkles complete the experience <a rel="noopener noreferrer nofollow" class="link" href="https://www.lalalunchbox.com/blog/easy-waffles-for-the-lunchbox" target="_blank"><sup>[11]</sup></a>.</p>
 <p>Knowing how to adjust waffle thickness adds another dimension. Some recipes create thick, fluffy Belgian-style waffles, while others produce thinner, crispier varieties based on your priorities <a rel="noopener noreferrer nofollow" class="link" href="https://www.jamieoliver.com/recipes/eggs/brilliant-breakfast-waffles/" target="_blank"><sup>[12]</sup></a>. You can easily create gluten-free, vegan, or protein-enriched versions by tweaking your simple recipe.</p>
 <h3>Store-Bought: Limited flavor choices</h3>
 <p>Store-bought waffle options offer nowhere near as many customization possibilities. Most frozen waffles come in standard varieties: homestyle, buttermilk, blueberry, chocolate chip, and sometimes whole grain or Belgian-style options <a rel="noopener noreferrer nofollow" class="link" href="https://www.thescramble.com/cooking-eating-on-a-budget/hitting-the-road-pack-travel-food/?srsltid=AfmBOor4QEgPPvNPZ2oOHhB9bkbLv4_jnc_YLTTnVQs3xfIBhRc9ollx" target="_blank"><sup>[13]</sup></a>.</p>
@@ -226,7 +225,7 @@
 <p>Store-bought options win for portability. They stay fresh without refrigeration until opened, making them ideal for road trips, office snacks, or travel fuel <a rel="noopener noreferrer nofollow" class="link" href="https://tasteofbelgium.com/prepackaged-belgian-waffles-convenient/" target="_blank"><sup>[17]</sup></a>. Busy people love this grab-and-go feature.</p>
 <h3>Homemade storage tips for freshness</h3>
 <p>Homemade waffles need careful storage but taste better when handled right. Fresh waffles don't last as long as store-bought ones. They stay good for about 1 day at room temperature, 5-7 days in the fridge, and 8-12 months in the freezer <a rel="noopener noreferrer nofollow" class="link" href="https://eatbydate.com/grains/how-long-do-waffles-last/" target="_blank"><sup>[1]</sup></a>.</p>
-<p>Here's how to keep your homemade <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/maple-syrup-stroopwafel" target="_blank">waffle</a> snacks fresh:</p>
+<p>Here's how to keep your homemade <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/maple-syrup-stroopwafel">waffle</a> snacks fresh:</p>
 <ol>
 <li>
 <p><strong>Proper cooling</strong>: Let waffles cool on a rack to avoid condensation and sogginess <a rel="noopener noreferrer nofollow" class="link" href="https://www.wikihow.com/Store-Waffles" target="_blank"><sup>[18]</sup></a>.</p>
@@ -306,7 +305,7 @@
 <h3>Mini waffle snacks with fruit or cheese</h3>
 <p>Mini waffle makers are now popular tools to create bite-sized treats perfect for snacking. These compact appliances make waffles about 4 inches wide, which are perfect for portable snacks that both kids and adults love.</p>
 <p>"Fruit 'n Waffle Kabobs" work great for fruit-based options. You can alternate mini waffles with fresh berries on paper straws or wooden skewers <a rel="noopener noreferrer nofollow" class="link" href="https://www.momables.com/mini-waffle-sandwiches/" target="_blank"><sup>[5]</sup></a>. The slightly crisp waffles paired with juicy strawberries or blackberries create an amazing texture contrast. A maple cinnamon yogurt dip made from vanilla Greek yogurt, <a href="../collections/premium-maple-syrup">maple syrup</a>, and cinnamon makes these treats even better <a rel="noopener noreferrer nofollow" class="link" href="https://www.momontimeout.com/fruit-n-waffle-kabobs-with-maple-cinnamon-yogurt-dip/" target="_blank"><sup>[27]</sup></a>.</p>
-<p>The "Fruit and Waffle Flower Garden" turns breakfast into edible art. This kid-friendly creation uses mini waffles as flower centers with <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/strawberry-cream-maple-stroopwafels-caddy" target="_blank">strawberry</a> "petals" and kiwi slices as stems <a rel="noopener noreferrer nofollow" class="link" href="https://holleygrainger.com/fruit-waffle-flower-garden/" target="_blank"><sup>[28]</sup></a>. Kids eat more fruit this way, and they get essential nutrients like vitamin C and fiber.</p>
+<p>The "Fruit and Waffle Flower Garden" turns breakfast into edible art. This kid-friendly creation uses mini waffles as flower centers with <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/strawberry-cream-maple-stroopwafels-caddy">strawberry</a> "petals" and kiwi slices as stems <a rel="noopener noreferrer nofollow" class="link" href="https://holleygrainger.com/fruit-waffle-flower-garden/" target="_blank"><sup>[28]</sup></a>. Kids eat more fruit this way, and they get essential nutrients like vitamin C and fiber.</p>
 <p>Chocolate lovers will enjoy mini chocolate waffle and fruit bites. The batter needs cocoa powder and NESTLÉ® Nesquik® chocolate milk for extra richness <a rel="noopener noreferrer nofollow" class="link" href="https://www.mysuburbankitchen.com/mini-chocolate-waffle-and-fruit-bites/" target="_blank"><sup>[29]</sup></a>. Top these with sliced bananas and raspberries to balance sweet and tart flavors.</p>
 <h3>Savory cheese waffle snacks for lunchboxes</h3>
 <p>Cheese waffles show how versatile your waffle maker can be and make great lunchbox additions. Here's a simple recipe:</p>
@@ -366,7 +365,7 @@
 <p>Waffle Mill's Waffle Chips show this trend. The company created them "to create a new category of waffles that are easy to eat and can be consumed on-the-go" <a rel="noopener noreferrer nofollow" class="link" href="https://www.travelandleisureasia.com/in/dining/waffle-mill-chips-make-for-great-travel-snacks/" target="_blank"><sup>[36]</sup></a>. Their packaging keeps fresh for nine months, which makes them perfect for travel <a rel="noopener noreferrer nofollow" class="link" href="https://www.travelandleisureasia.com/in/dining/waffle-mill-chips-make-for-great-travel-snacks/" target="_blank"><sup>[36]</sup></a>.</p>
 <p>Office life calls for easy snacks. Stroopwafels and similar store-bought treats have become office favorites because they come individually wrapped and pair well with coffee <a rel="noopener noreferrer nofollow" class="link" href="https://www.amazon.com/waffle-snacks/s?k=waffle+snacks" target="_blank"><sup>[37]</sup></a>.</p>
 <p>Road trips work better with store-bought options. Many travelers reach for ready-to-eat waffle snacks that don't need prep work. Families with young kids find these especially helpful during long car rides <a rel="noopener noreferrer nofollow" class="link" href="https://www.theleangreenbean.com/healthy-road-trip-snacks/" target="_blank"><sup>[38]</sup></a>.</p>
-<p>Athletes and outdoor enthusiasts love these convenient snacks. Sports brands like Honey Stinger offer organic waffle products as "energy <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/strawberry-cream-maple-stroopwafels-caddy?variant=42579029197049&amp;currency=CAD&amp;utm_medium=product_sync&amp;utm_source=google&amp;utm_content=sag_organic&amp;utm_campaign=sag_organic" target="_blank">stroopwafel</a> for exercise, endurance and performance" <a rel="noopener noreferrer nofollow" class="link" href="https://honeystinger.com/collections/all-waffles?srsltid=AfmBOoq5ZIV7IYOm-lRyHqIezU12JUGu7m1_9bueg5f8DQW4ty6KpmsU" target="_blank"><sup>[39]</sup></a>. These snacks provide quick energy for hikes, bike rides, and other activities.</p>
+<p>Athletes and outdoor enthusiasts love these convenient snacks. Sports brands like Honey Stinger offer organic waffle products as "energy <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/strawberry-cream-maple-stroopwafels-caddy?variant=42579029197049&amp;currency=CAD&amp;utm_medium=product_sync&amp;utm_source=google&amp;utm_content=sag_organic&amp;utm_campaign=sag_organic">stroopwafel</a> for exercise, endurance and performance" <a rel="noopener noreferrer nofollow" class="link" href="https://honeystinger.com/collections/all-waffles?srsltid=AfmBOoq5ZIV7IYOm-lRyHqIezU12JUGu7m1_9bueg5f8DQW4ty6KpmsU" target="_blank"><sup>[39]</sup></a>. These snacks provide quick energy for hikes, bike rides, and other activities.</p>
 <p>Air travelers benefit from these snacks too. Since airplane food can disappoint, pre-packaged waffles offer a reliable option that stays fresh throughout the flight <a rel="noopener noreferrer nofollow" class="link" href="https://www.thescramble.com/cooking-eating-on-a-budget/hitting-the-road-pack-travel-food/?srsltid=AfmBOor4QEgPPvNPZ2oOHhB9bkbLv4_jnc_YLTTnVQs3xfIBhRc9ollx" target="_blank"><sup>[13]</sup></a>.</p>
 <h2>Kid-Friendly and Family Appeal</h2>
 <p>Kids' faces light up when they see waffles. These breakfast favorites are a great way to get memorable family moments. Parents need to choose between making them at home or buying them from stores, especially with kids in the picture.</p>
@@ -508,7 +507,7 @@
 <p>Store-bought waffles are the clear winners when it comes to convenience. They work great for busy mornings, office snacks, and travel when time is tight. The downside? You get fewer flavor choices and more packaging waste.</p>
 <p>Money-wise, homemade waffles cost about CAD 0.21 each, while store-bought ones run CAD 0.26 or more. This price gap adds up by a lot for families who keep taking them. The original cost of a good waffle maker pays off through years of homemade treats.</p>
 <p>Kids love both options, which parents will appreciate. Homemade waffles can reshape the scene at breakfast into fun food art projects. Quality store-bought versions satisfy sudden cravings without prep time.</p>
-<p>Here's what I suggest: try a mixed approach. Make homemade waffle batches when possible and freeze extra portions for weekdays. Keep some quality store-bought options handy for super busy times. Looking for tasty ready-to-eat options? <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/maple-syrup-mini-stroopwafel?variant=45815580229881" target="_blank">Check out these amazing mini waffles</a> that offer both convenience and quality ingredients.</p>
+<p>Here's what I suggest: try a mixed approach. Make homemade waffle batches when possible and freeze extra portions for weekdays. Keep some quality store-bought options handy for super busy times. Looking for tasty ready-to-eat options? <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/products/maple-syrup-mini-stroopwafel?variant=45815580229881">Check out these amazing mini waffles</a> that offer both convenience and quality ingredients.</p>
 <p>Your lifestyle, values, and taste priorities determine which waffle path works best. These versatile treats deserve a spot in your snack lineup, whether you make them from scratch or grab them ready-made.</p>
 <h2>FAQs</h2>
 <p><strong>Q1. Are homemade waffles healthier than store-bought ones?</strong> Homemade waffles can be healthier as you have control over the ingredients. You can use whole grains, reduce sugar, and add nutritious mix-ins. Store-bought waffles often contain preservatives and added sugars, but some brands offer healthier options.</p>
@@ -530,7 +529,7 @@
       <h2 class="font-display text-3xl md:text-4xl font-semibold text-cream tracking-tight leading-tight mb-4 max-w-2xl mx-auto">Single-Origin Quebec Maple Syrup, Family-Owned Since 1978.</h2>
       <p class="text-warm-gray-300 leading-relaxed max-w-[48ch] mx-auto mb-8">Triple-certified organic, shipped from Vancouver across Canada and to five international markets.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <a href="./" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">More from the Blog</a>
       </div>
     </div>
@@ -540,7 +539,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="../index.html" class="flex items-center gap-2.5 mb-6">
+          <a href="/" class="flex items-center gap-2.5 mb-6">
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
@@ -549,20 +548,20 @@
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="../story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
-            <li><a href="../terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
-            <li><a href="../certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
-            <li><a href="../canadian-maple-syrup.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
+            <li><a href="/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
             <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
             <li><a href="../collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
             <li><a href="../collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
-            <li><a href="../maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+            <li><a href="/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
@@ -575,7 +574,7 @@
       </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
-        <a href="/privacy.html" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
         <div class="flex items-center gap-6">
           <span class="text-xs text-warm-gray-300">Ecocert</span>
           <span class="text-xs text-warm-gray-300">Canada Organic</span>

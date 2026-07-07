@@ -26,9 +26,8 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mapleterroir.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://mapleterroir.com/blog/"},{"@type":"ListItem","position":3,"name":"Canadian Maple Syrup Production Report 2025","item":"https://mapleterroir.com/blog/canadian-maple-syrup-production-report-2025"}]}
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts.css" as="style">
+  <link rel="stylesheet" href="/assets/fonts.css">
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 
@@ -66,14 +65,14 @@
 
   <nav id="navbar" class="fixed top-0 left-0 right-0 z-40 pt-5 px-4 md:px-8">
     <div class="nav-glass max-w-6xl mx-auto rounded-full px-5 py-3 md:px-8 md:py-4 flex items-center justify-between border border-warm-gray-200/50">
-      <a href="../index.html" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
+      <a href="/" class="flex items-center group" aria-label="Maple Terroir - home"><img src="../assets/images/mt-logo.webp" alt="Maple Terroir" class="h-9 md:h-11 w-auto" width="1280" height="500"></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="../story.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
-        <a href="../products.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
-        <a href="../terroir.html" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
+        <a href="/story" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Our Story</a>
+        <a href="/products" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Products</a>
+        <a href="/terroir" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Terroir</a>
         <a href="./" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
-        <a href="../maple-syrup-wholesale.html" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
+        <a href="/maple-syrup-wholesale" class="link-underline text-sm font-medium text-charcoal transition-colors duration-500">Wholesale</a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
           <span>Shop Now</span>
           <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
@@ -91,12 +90,12 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="../story.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
-      <a href="../products.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
-      <a href="../terroir.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:300ms">Terroir</a>
       <a href="./" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:350ms">Blog</a>
-      <a href="../maple-syrup-wholesale.html" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
-      <a href="../products.html" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
+      <a href="/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:400ms">Wholesale</a>
+      <a href="/products" class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700" style="transition-delay:500ms">Shop Now</a>
     </div>
   </div>
 
@@ -133,19 +132,19 @@
 <p style="color:#1A1714;font-size:1.05rem;line-height:1.7;margin:0;">Canada produces most of the world's maple syrup, and Quebec accounts for the large majority of it. The 2025 production picture reflects record recent harvests, rising global demand for natural sweeteners, and the role of Quebec's strategic reserve in keeping supply and prices steady.</p>
 </div>
 
-      <h1 data-pm-slice="1 1 []"><a href="../canadian-maple-syrup">Canadian Maple Syrup</a> Production Report 2025</h1>
+      <h1 data-pm-slice="1 1 []"><a href="/canadian-maple-syrup">Canadian Maple Syrup</a> Production Report 2025</h1>
 <p><em>Updated on: May 18th, 2025</em></p>
-<p>The <a href="../collections/premium-maple-syrup">maple syrup</a> production market has hit a remarkable <a rel="noopener noreferrer nofollow" class="link" href="https://www.statista.com/statistics/370150/canadian-maple-syrup-production/" target="_blank">$1.54 billion valuation</a> in 2024, with growth fuelled by consumer demand for premium maple-based treats like our bestselling <a href="https://mapleterroir.com/products/pure-maple-syrup-stroopwafels-caddy?variant=42579003408633" target="_blank">Pure Maple Syrup Stroopwafels</a>. Experts predict this figure will climb to $2.62 billion by 2032. North America rules this sweet industry with a 75.97% market share, thanks to Canada's dominant production capabilities.</p>
+<p>The <a href="../collections/premium-maple-syrup">maple syrup</a> production market has hit a remarkable <a rel="noopener noreferrer nofollow" class="link" href="https://www.statista.com/statistics/370150/canadian-maple-syrup-production/" target="_blank">$1.54 billion valuation</a> in 2024, with growth fuelled by consumer demand for premium maple-based treats like our bestselling <a href="https://mapleterroir.com/products/pure-maple-syrup-stroopwafels-caddy?variant=42579003408633">Pure Maple Syrup Stroopwafels</a>. Experts predict this figure will climb to $2.62 billion by 2032. North America rules this sweet industry with a 75.97% market share, thanks to Canada's dominant production capabilities.</p>
 <p>For a ground-level look at what drives that demand, the <a href="the-complete-guide-to-canadian-maple-syrup">complete guide to Canadian maple syrup</a> covers what distinguishes premium product from commodity.</p>
 <p>Canadian maple syrup production, especially in Quebec, showcases the country's agricultural excellence. Quebec's maple syrup industry thrives under the Federation of Quebec Maple Syrup Producers, which manages about 7,300 producers. The region produces an impressive <a rel="noopener noreferrer nofollow" class="link" href="https://www.statista.com/statistics/370150/canadian-maple-syrup-production/" target="_blank">89% of Canada's total output</a>. This makes Canada the world's top producer, generating roughly 75% of global maple syrup.</p>
 <p><img></p>
 <div style="text-align: left;"><img style="float: none;" alt="maple syrup bottle next to a quebec flag" src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/ChatGPT_Image_Apr_5_2025_09_12_30_PM.png?v=1743912777"></div>
 <p>The market outlook remains bright with a projected 6.94% CAGR through 2032. We see this growth coming from consumers who increasingly prefer natural sweeteners and eco-friendly food products. These trends create many more opportunities to expand and innovate in the market.</p>
-<p>For shoppers who want a piece of that production, our <a href="../canadian-maple-syrup">Canadian maple syrup catalog</a> includes the same single-origin Quebec syrup the report tracks.</p>
+<p>For shoppers who want a piece of that production, our <a href="/canadian-maple-syrup">Canadian maple syrup catalog</a> includes the same single-origin Quebec syrup the report tracks.</p>
 <h2>Current State of Canadian Maple Syrup Production</h2>
-<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir?srsltid=AfmBOoqzza7fp-VA6-VJaGD__4tgPSgWSU1ds_z7xqWb6flZ1VG5FWvE" target="_blank">Canadian maple syrup production</a> soared in 2024, setting new records in the industry. The total harvest hit 19.9 million gallons, which was 91.3% higher than the previous year <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>.</p>
+<p><a rel="noopener noreferrer nofollow" class="link" href="/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">Canadian maple syrup production</a> soared in 2024, setting new records in the industry. The total harvest hit 19.9 million gallons, which was 91.3% higher than the previous year <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>.</p>
 <h3>Production Volume Analysis 2024-2025</h3>
-<p>Quebec's exceptional performance drove the 2024 production surge. The province's producers collected 18 million gallons, up by 8.7 million gallons (+92.2%) from 2023 <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>. This boost helped replenish the global <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/canadian-maple-syrup-heist-a-30-million-theft-unveiled?srsltid=AfmBOoojS8Te8KsCn3_WHw361KH8UG5X1Ha8Q7K5-VOMjCS03Xp8mC_W" target="_blank">strategic reserve</a>, which had dropped to its lowest point in 16 years <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>.</p>
+<p>Quebec's exceptional performance drove the 2024 production surge. The province's producers collected 18 million gallons, up by 8.7 million gallons (+92.2%) from 2023 <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>. This boost helped replenish the global <a rel="noopener noreferrer nofollow" class="link" href="/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled">strategic reserve</a>, which had dropped to its lowest point in 16 years <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>.</p>
 <p>That strategic reserve made headlines for more than its scale. The <a href="canadian-maple-syrup-heist-a-30-million-theft-unveiled">$30 million maple syrup heist</a> remains one of the most bizarre stories in food industry history.</p>
 <p>Ontario's maple producers gathered 607,000 gallons in 2024, up by 20.9% from last year <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>. New Brunswick's numbers jumped the most, with production more than doubling (+128.8%) to 1.2 million gallons <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>. Nova Scotia's production grew by nearly one-third to 43,000 gallons in 2024 <a rel="noopener noreferrer nofollow" class="link" href="https://mapleresearch.org/wp-content/uploads/md6023netzero.pdf" target="_blank"><sup>[1]</sup></a>.</p>
 <h3>Regional Distribution of Production Capacity</h3>
@@ -190,7 +189,7 @@
 <div style="text-align: left;"><img style="margin-bottom: 16px; float: none;" alt="detailed illustrations showing the production and manufacturing stats for maple syrup" src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/ChatGPT_Image_Apr_5_2025_09_30_43_PM.png?v=1743913869"></div>
 <p>The industry continues to grow stronger. The number of certified producers keeps rising. Quebec maple companies with organic certification reached 1,472 in 2023. This represents 21% of all operations <a rel="noopener noreferrer nofollow" class="link" href="https://ppaq.ca/en/sustainable-development/economic/" target="_blank"><sup>[5]</sup></a>. Their steadfast dedication to quality and sustainability shows in these numbers.</p>
 <h3>Strategic Reserve Management</h3>
-<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/canadian-maple-syrup-heist-a-30-million-theft-unveiled?srsltid=AfmBOormYuHwK3-WwkF8PNM_ZjH7U1Yybk2W3B8ZKQftljYLYx_tfyDV" target="_blank">Quebec Maple Syrup Producers</a> (QMSP) manages the Global Strategic Maple Syrup Reserve. This reserve is a vital force that stabilizes the international maple syrup market. The reserve operates through three strategic warehouses:</p>
+<p><a rel="noopener noreferrer nofollow" class="link" href="/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled">Quebec Maple Syrup Producers</a> (QMSP) manages the Global Strategic Maple Syrup Reserve. This reserve is a vital force that stabilizes the international maple syrup market. The reserve operates through three strategic warehouses:</p>
 <ol>
 <li>
 <p>The Laurierville Plant and Warehouse:</p>
@@ -312,7 +311,7 @@
 <p>Quebec has dominated the maple syrup industry for decades. Ontario and New Brunswick now play key roles in Canada's maple syrup world and show remarkable growth in both production and market share.</p>
 <h3>Ontario's Growing Production Capacity</h3>
 <p>The maple industry in Ontario has changed dramatically thanks to government support. The governments of Canada and Ontario invested CAD 1.39 million in 2024 through the Sustainable Canadian Agricultural Partnership to boost the province's maple sector <a rel="noopener noreferrer nofollow" class="link" href="https://www.canada.ca/en/agriculture-agri-food/news/2024/03/governments-helping-boost-production-of-ontario-maple-syrup.html" target="_blank"><sup>[12]</sup></a>.</p>
-<p>This funding helps 77 <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/discover-the-best-maple-syrup-in-vancouver-a-sweet-guide-for-2024?srsltid=AfmBOooVc8WJ5kK3Vb4jt_krTSqSnuDySgZ_WzL-A9BKNNaUtpMIMHr7" target="_blank">maple syrup producers</a> share costs for:</p>
+<p>This funding helps 77 <a rel="noopener noreferrer nofollow" class="link" href="/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">maple syrup producers</a> share costs for:</p>
 <ul>
 <li>
 <p>Installing better equipment including reverse osmosis systems</p>
@@ -372,7 +371,7 @@
 <p>Both regions show great potential for future growth. Ontario wants to reach Quebec's production levels, backed by its rich maple tree resources <a rel="noopener noreferrer nofollow" class="link" href="https://canadiangrocer.com/ontario-could-easily-match-quebecs-maple-syrup-production-investment-needed-omspa-president" target="_blank"><sup>[15]</sup></a>. Ontario actually has more maple trees than Quebec, which opens up huge opportunities with proper investment and development <a rel="noopener noreferrer nofollow" class="link" href="https://canadiangrocer.com/ontario-could-easily-match-quebecs-maple-syrup-production-investment-needed-omspa-president" target="_blank"><sup>[15]</sup></a>.</p>
 <p>Both provinces focus on value-added production by building processing facilities and developing markets. This strategy fits with Canada's national goals to grow stronger in global maple syrup markets while protecting resources and helping rural communities grow <a rel="noopener noreferrer nofollow" class="link" href="https://www.canada.ca/en/agriculture-agri-food/news/2024/03/governments-helping-boost-production-of-ontario-maple-syrup.html" target="_blank"><sup>[12]</sup></a>.</p>
 <h2>Sustainability Initiatives in Production</h2>
-<p>Green practices in <a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir?srsltid=AfmBOooTL5s_86GC_C75wR-2oCbkXxkvbKlSankzZGX3qG6M6Dqu4Awt" target="_blank">maple syrup production</a> play a significant role in protecting Canada's maple forests. The industry shows strong commitment to environmental protection through complete forest management, carbon reduction initiatives, and innovative waste management solutions.</p>
+<p>Green practices in <a rel="noopener noreferrer nofollow" class="link" href="/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">maple syrup production</a> play a significant role in protecting Canada's maple forests. The industry shows strong commitment to environmental protection through complete forest management, carbon reduction initiatives, and innovative waste management solutions.</p>
 <h3>Forest Management Practices</h3>
 <p>Maple producers use silvicultural strategies to protect and boost forest health. These practices help maintain structural and ecological diversity. They support various plant and animal species and improve natural ecosystem services <a rel="noopener noreferrer nofollow" class="link" href="https://natural-resources.canada.ca/forest-forestry/state-canada-forests/maple-syrup-production-climate-change-does-future-taste-sweet" target="_blank"><sup>[16]</sup></a>.</p>
 <p>The industry's forest management has:</p>
@@ -448,7 +447,7 @@
 </ul>
 <p>The maple syrup industry's commitment to sustainability goes beyond individual programs. Producers take part in life cycle analysis studies, carbon footprint assessments, and evaluations of ecological goods and services from Quebec sugar bushes <a rel="noopener noreferrer nofollow" class="link" href="https://ppaq.ca/en/sustainable-development/maple-production-and-sustainable-development/" target="_blank"><sup>[21]</sup></a>. These combined efforts make the industry a leader in environmental protection while ensuring maple syrup production continues for generations to come.</p>
 <h2>Export Market Opportunities</h2>
-<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/discover-the-best-maple-syrup-in-vancouver-a-sweet-guide-for-2024?srsltid=AfmBOor4EeEP8Dg7h-2_qbOy8ASGzmVo5tOFIjMX1Z1gFw4vOFD9vDrE" target="_blank">Canadian maple syrup exports</a> now reach 68 countries worldwide in 2023 <a rel="noopener noreferrer nofollow" class="link" href="https://agriculture.canada.ca/en/sector/horticulture/reports/statistical-overview-canadian-maple-industry-2023" target="_blank"><sup>[3]</sup></a>. Strong market positioning and trade deals have opened new paths to expand the business further.</p>
+<p><a rel="noopener noreferrer nofollow" class="link" href="/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir">Canadian maple syrup exports</a> now reach 68 countries worldwide in 2023 <a rel="noopener noreferrer nofollow" class="link" href="https://agriculture.canada.ca/en/sector/horticulture/reports/statistical-overview-canadian-maple-industry-2023" target="_blank"><sup>[3]</sup></a>. Strong market positioning and trade deals have opened new paths to expand the business further.</p>
 <h3>Asian Market Demand Analysis</h3>
 <p>Japan ranks sixth among export destinations with CAD 25.76 million in maple product purchases during 2023 <a rel="noopener noreferrer nofollow" class="link" href="https://agriculture.canada.ca/en/sector/horticulture/reports/statistical-overview-canadian-maple-industry-2023" target="_blank"><sup>[3]</sup></a>. The Japanese market shows great promise through:</p>
 <ul>
@@ -495,7 +494,7 @@
 <p>Custom packaging solutions</p>
 </li>
 <li>
-<p>Products tailored to local tastes,like our <a href="https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts" rel="noopener" class="cursor-pointer" data-end="1266" data-start="1208">Maple Syrup &amp; Sea Salt Roasted Peanuts</a></p>
+<p>Products tailored to local tastes,like our <a href="https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts" class="cursor-pointer" data-end="1266" data-start="1208">Maple Syrup &amp; Sea Salt Roasted Peanuts</a></p>
 </li>
 <li>
 <p>Strategic collaborations with local distributors</p>
@@ -508,7 +507,7 @@
 <p>Exports stayed strong at CAD 856.92 million in 2023, even with production challenges <a rel="noopener noreferrer nofollow" class="link" href="https://agriculture.canada.ca/en/sector/horticulture/reports/statistical-overview-canadian-maple-industry-2023" target="_blank"><sup>[3]</sup></a>. This shows the industry's strong market position and smart reserve management.</p>
 <p>The maple export business looks bright ahead. Growing worldwide demand for natural sweeteners and organic products will help. Smart market development and new product ideas will help Canadian maple producers grab more opportunities in global markets.</p>
 <h2>Conclusion</h2>
-<p><a rel="noopener noreferrer nofollow" class="link" href="https://mapleterroir.com/blogs/blogs-maple-terroir/canadian-maple-syrup-heist-a-30-million-theft-unveiled?srsltid=AfmBOoqZ5_aB6H_phPBOQoNqJ0y1icAWFxgEaNc9s7cv_fXp_doOfa0G" target="_blank">Canadian maple syrup production</a> proves agricultural excellence through its breakthroughs and green practices. The industry looks set to reach $2.62 billion by 2032. Quebec leads the world by producing 89% of Canada's total output. The region's success comes from adopting advanced technology and managing strategic reserves effectively.Value-added products include maple cream, granulated sugar, and innovative snacks like <a rel="noopener" class="cursor-pointer" data-end="2077" data-start="2026" href="https://mapleterroir.com/products/handcrafted-pure-maple-syrup-butter-popcorn" title="Pure Maple Syrup Butter Popcorn" target="_blank">Pure Maple Syrup Butter Popcorn</a>, ideal for new retail channels.</p>
+<p><a rel="noopener noreferrer nofollow" class="link" href="/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled">Canadian maple syrup production</a> proves agricultural excellence through its breakthroughs and green practices. The industry looks set to reach $2.62 billion by 2032. Quebec leads the world by producing 89% of Canada's total output. The region's success comes from adopting advanced technology and managing strategic reserves effectively.Value-added products include maple cream, granulated sugar, and innovative snacks like <a class="cursor-pointer" data-end="2077" data-start="2026" href="https://mapleterroir.com/products/handcrafted-pure-maple-syrup-butter-popcorn" title="Pure Maple Syrup Butter Popcorn">Pure Maple Syrup Butter Popcorn</a>, ideal for new retail channels.</p>
 <p>Ontario and New Brunswick show promising growth potential. These regions strengthen Canada's global market position through government funding and creative land-use policies. Traditional production methods have changed with smart tapping systems, automated collection networks, and energy-efficient processing. These changes boost yields and reduce environmental footprint.</p>
 <p>The industry's future depends on sustainability. Long-term success relies on forest management, lower carbon emissions, and effective waste management programs. New opportunities keep emerging in Asian and European markets. The industry grows stronger through value-added products and smart trade deals.</p>
 <p>Quality standards, breakthroughs, and green practices make Canadian maple syrup an industry leader. Market trends point to steady growth as more people worldwide want natural sweeteners and organic products. Modern technology and eco-friendly methods will give Canadian maple syrup a lasting legacy as a premium agricultural product.</p>
@@ -531,7 +530,7 @@
       <h2 class="font-display text-3xl md:text-4xl font-semibold text-cream tracking-tight leading-tight mb-4 max-w-2xl mx-auto">Single-Origin Quebec Maple Syrup, Family-Owned Since 1978.</h2>
       <p class="text-warm-gray-300 leading-relaxed max-w-[48ch] mx-auto mb-8">Triple-certified organic, shipped from Vancouver across Canada and to five international markets.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="../products.html" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group"><span>Shop Maple Terroir</span><span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
         <a href="./" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">More from the Blog</a>
       </div>
     </div>
@@ -541,7 +540,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="../index.html" class="flex items-center gap-2.5 mb-6">
+          <a href="/" class="flex items-center gap-2.5 mb-6">
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
@@ -550,20 +549,20 @@
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="../story.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
-            <li><a href="../terroir.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
-            <li><a href="../certifications.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
-            <li><a href="../canadian-maple-syrup.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
+            <li><a href="/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
             <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="../products.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
             <li><a href="../collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
             <li><a href="../collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
-            <li><a href="../maple-syrup-wholesale.html" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+            <li><a href="/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
           </ul>
         </div>
         <div class="md:col-span-2">
@@ -576,7 +575,7 @@
       </div>
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
-        <a href="/privacy.html" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
         <div class="flex items-center gap-6">
           <span class="text-xs text-warm-gray-300">Ecocert</span>
           <span class="text-xs text-warm-gray-300">Canada Organic</span>
