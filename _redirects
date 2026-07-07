@@ -1,44 +1,28 @@
-# Shopify checkout passthrough. mapleterroir.com is Cloudflare Pages now,
-# so /cart/* and /checkout/* must redirect to Shopify or every checkout 404s.
+# _redirects for the Cloudflare Worker (Workers Static Assets).
+#
+# ORDERING IS LOAD-BEARING, DO NOT SHUFFLE: wrangler's parser counts every rule
+# after the FIRST wildcard/placeholder rule as "dynamic" (a one-way flag), and
+# dynamic rules are capped at 100 vs 2,000 for exact rules. With wildcards at the
+# top of this file, all 121 rules counted as dynamic and every deploy failed
+# (2026-07-07). So: ALL exact-path rules live in section 1, ALL wildcard rules in
+# section 2, always append new exact rules to section 1. First match still wins;
+# no exact path here overlaps an earlier wildcard, so behavior is unchanged.
+
+# ── Section 1: exact-path rules (static, limit 2,000) ──────────────────────
 /cart         https://maple-terroir.myshopify.com/cart              302
-/cart/*       https://maple-terroir.myshopify.com/cart/:splat       302
-/checkout/*   https://maple-terroir.myshopify.com/checkout/:splat   302
-/checkouts/*  https://maple-terroir.myshopify.com/checkouts/:splat  302
 /account      https://maple-terroir.myshopify.com/account           302
-/account/*    https://maple-terroir.myshopify.com/account/:splat    302
-
-# Shopify-hosted legal policies (privacy, terms, refund, shipping). Shopify
-# owns these for compliance, so point legacy URLs to the canonical Shopify pages.
-/policies/*   https://maple-terroir.myshopify.com/policies/:splat   301
-
-# Renamed pages, preserve SEO equity from old URLs
 /wholesale.html  /maple-syrup-wholesale  301
 /wholesale       /maple-syrup-wholesale  301
-
 /collections/stroopwafels.html  /collections/maple-stroopwafels  301
 /collections/stroopwafels       /collections/maple-stroopwafels  301
-
 /collections/maple-syrup.html  /collections/premium-maple-syrup  301
 /collections/maple-syrup       /collections/premium-maple-syrup  301
-
 /collections/gift-sets.html  /collections/maple-syrup-gift-set  301
 /collections/gift-sets       /collections/maple-syrup-gift-set  301
-
-# Product pages are pre-rendered static files at products/<handle>.html (built by
-# scripts/build-products.mjs) and served directly. This is a Worker with Static Assets,
-# NOT Pages, so functions/ never runs. Do NOT add a /products/* redirect: it would
-# shadow the static product pages and break them.
-
-# Retire the legacy client-rendered shells. product.html and collection.html are
-# excluded from assets (see .assetsignore); these singular paths 301 to the catalog so
-# any old inbound link lands on a real page instead of a thin CSR template.
 /product         /products   301
 /product.html    /products   301
 /collection      /products   301
 /collection.html /products   301
-
-# Legacy Shopify collection URLs that don't exist in the new catalog,
-# map each to the closest equivalent on the new site.
 /collections/favourites               /collections/bestsellers          301
 /collections/maple-cookies            /collections/cookies              301
 /collections/cookies-stroopwafels     /collections/cookies              301
@@ -59,12 +43,7 @@
 /collections/sweets                   /products                         301
 /collections/variety-maple-products   /products                         301
 /collections                          /products                         301
-
-# Renamed products: old Shopify handle -> current static page (keeps the indexed URL alive).
-# "Maple Tea" was renamed "Maple Ceylon Tea" (handle changed), so /products/maple-tea 404'd.
 /products/maple-tea                   /products/maple-ceylon-tea        301
-
-# Legacy Shopify /pages/X URLs, map to editorial equivalents on the new site
 /pages/about                    /story                    301
 /pages/our-story                /story                    301
 /pages/community                /story                    301
@@ -85,58 +64,23 @@
 /pages/bundles                  /collections/home-sets    301
 /pages/testimonials             /                         301
 /pages/reseller-policy-for-brand-protection  /maple-syrup-wholesale  301
-
-# Shopify search path, route to the catalog (real search is the Ctrl+K modal)
 /search   /products  301
-
-# Legacy Shopify blog URLs. Articles now live as static HTML at /blog/[slug].
-# Earlier these went through a JS-redirect shim at /blog/post.html, but Google
-# was splitting equity across 3+ URL variants per article (see GSC report
-# 2026-05-25). Send each legacy URL directly to its canonical static page in
-# one hop.
 /blogs/blogs-maple-terroir       /blog/         301
-/blogs/blogs-maple-terroir/*     /blog/:splat   301
 /blogs/news                      /blog/         301
-/blogs/news/*                    /blog/:splat   301
-
-# Renamed: numeric Shopify slug -> keyword-rich URL. Keep this 301 so the indexed
-# /blog/1123 does not 404.
 /blog/1123  /blog/maple-syrup-extraction-optimization-sustainable-agriculture  301
-
-# Retire the old dynamic blog template. There is NO functions/_middleware.js on this
-# project (it is a Worker with Static Assets; Pages Functions never run), so these two
-# variants were silently 404ing and bleeding link equity (GSC: equity split across
-# /blog/post.html?, /blog/post?, and /blogs/blogs-maple-terroir/ per article).
-# _redirects CANNOT read the ?handle= query param (Cloudflare does not support query
-# matching in _redirects), so it can only send these to the blog hub as a floor that
-# stops the 404. Per-article precision (handle -> /blog/<handle>) is a Cloudflare
-# Single Redirect Rule in the dashboard, which runs at the edge BEFORE _redirects and
-# wins when a handle is present. See CLAUDE.md "DNS and domain redirects".
 /blog/post.html  /blog/  301
 /blog/post       /blog/  301
-
-# Consolidated duplicate. The thin "is organic maple syrup better?" post was merged into
-# the deeper organic-vs-conventional guide (same query, the two were cannibalizing). 301 it.
 /blog/is-organic-maple-syrup-better  /blog/organic-vs-conventional-maple-syrup  301
-
-# US locations nested under /usa/ (2026-06-03)
 /locations-we-serve/united-states/  /locations-we-serve/usa/  301
 /locations-we-serve/buy-maple-syrup-new-york  /locations-we-serve/usa/buy-maple-syrup-new-york  301
 /locations-we-serve/buy-maple-syrup-los-angeles  /locations-we-serve/usa/buy-maple-syrup-los-angeles  301
 /locations-we-serve/buy-maple-syrup-chicago  /locations-we-serve/usa/buy-maple-syrup-chicago  301
 /locations-we-serve/buy-maple-syrup-boston  /locations-we-serve/usa/buy-maple-syrup-boston  301
 /locations-we-serve/buy-maple-syrup-seattle  /locations-we-serve/usa/buy-maple-syrup-seattle  301
-
-# Canada locations nested under /canada/ (2026-06-03)
 /locations-we-serve/buy-maple-syrup-vancouver  /locations-we-serve/canada/buy-maple-syrup-vancouver  301
 /locations-we-serve/buy-maple-syrup-toronto  /locations-we-serve/canada/buy-maple-syrup-toronto  301
 /locations-we-serve/buy-maple-syrup-montreal  /locations-we-serve/canada/buy-maple-syrup-montreal  301
 /locations-we-serve/buy-maple-syrup-calgary  /locations-we-serve/canada/buy-maple-syrup-calgary  301
-
-# Explicit 301s for the legacy .html URL forms. The Worker's default extension
-# handling only 307s these (temporary), which tells Google not to consolidate
-# signals. Internal links were switched to the clean URLs 2026-07-07; these
-# rules give any remaining external or historical inbound link a permanent hop.
 /index.html  /  301
 /story.html  /story  301
 /terroir.html  /terroir  301
@@ -178,6 +122,16 @@
 /locations-we-serve/usa/buy-maple-syrup-new-york.html  /locations-we-serve/usa/buy-maple-syrup-new-york  301
 /locations-we-serve/usa/buy-maple-syrup-seattle.html  /locations-we-serve/usa/buy-maple-syrup-seattle  301
 /blog/index.html  /blog/  301
-
-# Deleted legacy article with no static equivalent; nearest live post.
 /blog/discover-the-best-maple-syrup-in-vancouver-a-sweet-guide-for-2024  /blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir  301
+
+# ── Section 2: wildcard rules (dynamic, limit 100) ──────────────────────────
+# Shopify checkout/account passthrough (mapleterroir.com serves static files,
+# so /cart/* and /checkout/* must go to Shopify or checkout 404s), Shopify-owned
+# legal policies, and the legacy Shopify blog paths.
+/cart/*       https://maple-terroir.myshopify.com/cart/:splat       302
+/checkout/*   https://maple-terroir.myshopify.com/checkout/:splat   302
+/checkouts/*  https://maple-terroir.myshopify.com/checkouts/:splat  302
+/account/*    https://maple-terroir.myshopify.com/account/:splat    302
+/policies/*   https://maple-terroir.myshopify.com/policies/:splat   301
+/blogs/blogs-maple-terroir/*     /blog/:splat   301
+/blogs/news/*                    /blog/:splat   301
