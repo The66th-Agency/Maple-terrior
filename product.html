@@ -447,6 +447,16 @@
   </section>
 
 
+  <!-- Customer Reviews (Loox). Starts hidden; loadLoox() reveals it only once the
+       widget reports real content, so review-less products show no empty header. -->
+  <section id="reviews-section" class="hidden py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
+    <div class="max-w-[1400px] mx-auto">
+      <span class="eyebrow text-amber-warm mb-4 block text-center">Customer Reviews</span>
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight text-center mb-12">What Our Customers Say</h2>
+      <div id="looxReviews" data-id="" class="loox-reviews-default"></div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
     <div class="max-w-[720px] mx-auto">
@@ -663,6 +673,7 @@
         canon.href = 'https://mapleterroir.com/products/' + encodeURIComponent(p.handle);
         productData = p;
         renderProduct(p);
+        loadLoox(p.id);
         loadRecommendations(handle);
       })
       .catch(function () {
@@ -670,6 +681,34 @@
         document.getElementById('product-desc').innerHTML = '<p>We couldn\'t load this product. Please check your connection and <a href="/products" class="text-amber-warm underline">browse all products</a>.</p>';
       });
     }
+
+    // Loox reviews widget. Static pages ship with data-id baked by build-products.mjs
+    // and load immediately; the dynamic page passes the Shopify gid after hydration.
+    // The loader script is appended only once, after a numeric product id is set,
+    // so the widget never scans an empty container.
+    function loadLoox(gid) {
+      var el = document.getElementById('looxReviews');
+      if (!el) return;
+      var num = String(gid || el.getAttribute('data-id') || '').replace(/\D/g, '');
+      if (!num) return;
+      el.setAttribute('data-id', num);
+      // Reveal the section only when Loox actually renders content (the widget
+      // iframe reports 0 height for a product with no reviews yet).
+      var sec = document.getElementById('reviews-section');
+      if (sec && 'ResizeObserver' in window) {
+        var ro = new ResizeObserver(function () {
+          if (el.offsetHeight > 10) { sec.classList.remove('hidden'); ro.disconnect(); }
+        });
+        ro.observe(el);
+      }
+      if (window.__looxLoaded) return;
+      window.__looxLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://loox.io/widget/loox.js?shop=maple-terroir.myshopify.com';
+      document.head.appendChild(s);
+    }
+    loadLoox();
 
     function renderProduct(p) {
       // Title & meta
