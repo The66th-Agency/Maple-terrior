@@ -453,7 +453,7 @@
     <div class="max-w-[1400px] mx-auto">
       <span class="eyebrow text-amber-warm mb-4 block text-center">Customer Reviews</span>
       <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight text-center mb-12">What Our Customers Say</h2>
-      <div id="looxReviews" data-id="" class="loox-reviews-default"></div>
+      <div id="looxReviews" class="loox-widget" data-product-id="" data-limit="20" data-default-tab="automatic" style="margin:0 auto;max-width:1440px;"></div>
     </div>
   </section>
 
@@ -689,9 +689,9 @@
     function loadLoox(gid) {
       var el = document.getElementById('looxReviews');
       if (!el) return;
-      var num = String(gid || el.getAttribute('data-id') || '').replace(/\D/g, '');
+      var num = String(gid || el.getAttribute('data-product-id') || '').replace(/\D/g, '');
       if (!num) return;
-      el.setAttribute('data-id', num);
+      el.setAttribute('data-product-id', num);
       // Reveal the section only when Loox actually renders content (the widget
       // iframe reports 0 height for a product with no reviews yet).
       var sec = document.getElementById('reviews-section');

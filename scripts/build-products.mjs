@@ -144,7 +144,7 @@ function renderProduct(template, p) {
   // immediately, without waiting for the client-side product fetch.
   const looxId = String(p.id || '').replace(/\D/g, '');
   if (looxId) {
-    html = html.replace('id="looxReviews" data-id=""', `id="looxReviews" data-id="${looxId}"`);
+    html = html.replace('data-product-id=""', `data-product-id="${looxId}"`);
   }
   return html;
 }
