@@ -157,7 +157,7 @@ setTimeout(loadGA, 3000);
     if (!localStorage.getItem('mt_announce_dismissed')) {
       var announceMessages = [
         '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span>Free shipping on Canadian orders over <strong style="color:#F4C77D">$99 CAD</strong></span>',
-        '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Our store is open for online orders with <strong style="color:#F4C77D">local pickup</strong> only. Select "local pickup" at checkout.</span>'
+        '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Local to Vancouver? Choose <strong style="color:#F4C77D">local pickup</strong> free at checkout.</span>'
       ];
       var announceIndex = 0;
       var bar = document.createElement('div');
