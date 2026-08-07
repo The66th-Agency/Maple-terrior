@@ -47,11 +47,34 @@ function absolutize(html) {
   );
 }
 
+// Hand-written meta summaries for products whose Shopify copy reads badly once cut.
+// Keyed by handle, each a complete thought under 160 characters.
+const META_OVERRIDES = {
+  'maple-syrup-medium-dark-roast-ground-coffee':
+    'Medium-dark roast Arabica coffee from the Jinotega region of Nicaragua, blended with pure Maple Terroir maple syrup.',
+  'maple-syrup-stroopwafel':
+    'Canadian-style Dutch stroopwafels from Maple Terroir, filled with pure maple syrup and no artificial maple flavour.',
+  'maple-leaf-mini-shortbread-cookies':
+    'Bite-size maple leaf shortbread made with Canadian flour, butter and eggs, sweetened with pure Maple Terroir maple syrup.',
+  'maple-syrup-mini-stroopwafel':
+    'Mini stroopwafels made with non-GMO Canadian flour and a pure maple syrup filling. The one-bite version of our full-size stroopwafel.',
+};
+
+// Cut at a sentence, or failing that a word, so no summary ends mid-word.
+function trimSummary(text, limit = 155) {
+  if (text.length <= limit) return text;
+  const cut = text.slice(0, limit);
+  const sentenceEnd = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('! '), cut.lastIndexOf('? '));
+  if (sentenceEnd > limit * 0.5) return cut.slice(0, sentenceEnd + 1).trim();
+  const wordEnd = cut.lastIndexOf(' ');
+  return (wordEnd > 0 ? cut.slice(0, wordEnd) : cut).replace(/[,;:]$/, '').trim();
+}
+
 function renderProduct(template, p) {
   const handle = p.handle;
   const canonical = `${SITE}/products/${handle}`;
   const title = `${p.title} | Maple Terroir`;
-  let desc = (p.description || '').replace(/\s+/g, ' ').trim().slice(0, 155);
+  let desc = META_OVERRIDES[handle] || trimSummary((p.description || '').replace(/\s+/g, ' ').trim());
   if (!desc) desc = `${p.title} from Maple Terroir. Single-origin Quebec maple, family-owned since 1978.`;
 
   const imgNode = p.images.edges[0] && p.images.edges[0].node;
