@@ -485,6 +485,10 @@
         else { html += renderCategory(cat, products); }
       });
       container.innerHTML = html;
+      /* Drop the hidden static SEO grid from the DOM once the live grid exists,
+         so the first product link on the page is always a visible, tappable one
+         (hidden-but-present anchors trip link checkers and assistive tech). */
+      loading.remove();
 
       equalizeTitleWrapping();
       window.addEventListener('resize', (function () {

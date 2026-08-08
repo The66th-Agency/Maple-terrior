@@ -128,7 +128,7 @@ async function main() {
   }
 
   // /products catalog: full flat grid baked into the #categories-loading shell,
-  // which the page JS hides once the categorized live view is built.
+  // which the page JS removes from the DOM once the categorized live view is built.
   {
     const json = await gql('{ products(first: 250) { edges { node { title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{priceV2{amount currencyCode} availableForSale}}} } } } }');
     const products = (json.data ? json.data.products.edges : []).map((e) => e.node).filter((p) => !isHidden(p));
