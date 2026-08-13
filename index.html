@@ -2367,15 +2367,7 @@ var MapleCart = (function () {
     }
 
     itemsEl.querySelectorAll('[data-action]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var lineId = btn.dataset.line;
-        var action = btn.dataset.action;
-        var line = lines.find(function (l) { return l.id === lineId; });
-        if (!line) return;
-        var newQty = action === 'inc' ? line.quantity + 1 : line.quantity - 1;
-        var p = newQty <= 0 ? removeLine(lineId) : updateLine(lineId, newQty);
-        p.then(function () { renderDrawer(); renderBadge(); });
-      });
+      btn.addEventListener('click', function () { var lineId = btn.dataset.line; var action = btn.dataset.action; var qtyEl = btn.parentNode.querySelector('span'); var current = parseInt(qtyEl.textContent, 10) || 0; var newQty = action === 'inc' ? current + 1 : current - 1; if (newQty < 0) return; qtyEl.textContent = newQty; var serverLine = lines.find(function (l) { return l.id === lineId; }); var unitPrice = serverLine ? parseFloat(serverLine.merchandise.priceV2.amount) : 0; var priceEl = btn.closest('.cart-item-bottom').querySelector('.cart-item-price'); if (priceEl) priceEl.textContent = '$' + (unitPrice * newQty).toFixed(2); var optBadge = 0, optSubtotal = 0; itemsEl.querySelectorAll('.cart-item-qty span').forEach(function (s) { optBadge += parseInt(s.textContent, 10) || 0; }); itemsEl.querySelectorAll('.cart-item-price').forEach(function (p) { optSubtotal += parseFloat(p.textContent.replace(/[^0-9.]/g, '')) || 0; }); subtotalEl.textContent = '$' + optSubtotal.toFixed(2) + ' CAD'; var badgeEl = document.getElementById('cart-count'); if (badgeEl) { badgeEl.textContent = optBadge; badgeEl.classList.toggle('visible', optBadge > 0); } var timers = window.__mtQtyTimers = window.__mtQtyTimers || {}; clearTimeout(timers[lineId]); timers[lineId] = setTimeout(function () { delete timers[lineId]; var finalQty = parseInt(qtyEl.textContent, 10); var op = finalQty <= 0 ? removeLine(lineId) : updateLine(lineId, finalQty); op.then(function () { var sl = getLines().find(function (l) { return l.id === lineId; }); if (finalQty <= 0 || !sl || sl.quantity !== finalQty) renderDrawer(); renderBadge(); }).catch(function () { renderDrawer(); renderBadge(); }); }, 300); });
     });
   }
 
