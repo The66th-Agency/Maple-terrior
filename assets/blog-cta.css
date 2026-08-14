@@ -37,6 +37,27 @@
 
 .blog-cta > * { position: relative; }
 
+/* ALIGNMENT.
+   The card is a guest inside somebody else's layout, so it takes the width of
+   the column it is dropped into rather than centring itself on the page. Two
+   layouts exist across the blog:
+
+   1. The prose articles put their body in `.article-body`, a 720px column.
+      A 760px card inside that bleeds 20px past the paragraphs on both sides,
+      which reads as a component that missed its slot.
+   2. The sectioned articles run a 12-column grid with the big numeral in the
+      left four and the text in the right eight. A card centred on the page
+      lands left of that text column and lines up with nothing on the page.
+      Those get wrapped in the same grid in the markup; this rule keeps the
+      card filling whatever column it lands in. */
+.article-body .blog-cta,
+.blog-cta-slot .blog-cta {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
 .blog-cta .blog-cta__eyebrow {
   display: inline-flex;
   align-items: center;
@@ -378,4 +399,213 @@
   .blog-cta .blog-cta__reduce b      { animation: none; }
   .blog-cta .blog-cta__steam::before,
   .blog-cta .blog-cta__steam::after  { animation: none; opacity: 0.7; }
+}
+
+/* GRADE: three swatches darkening in turn, the way syrup darkens as the season
+   runs on. Post: the five maple syrup benefits, whose point is that the darker
+   grades carry more of the compounds. */
+.blog-cta .blog-cta__grade {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 10px;
+}
+
+.blog-cta .blog-cta__grade i {
+  display: block;
+  width: 5px;
+  height: 9px;
+  border-radius: 1.5px;
+  background: var(--cta-amber);
+  animation: blog-cta-darken 3.6s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__grade i:nth-child(2) { animation-delay: 0.35s; }
+.blog-cta .blog-cta__grade i:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes blog-cta-darken {
+  0%, 20%  { opacity: 0.3; }
+  45%      { opacity: 1; }
+  75%, 100%{ opacity: 0.3; }
+}
+
+/* SWAP: two beads trading places, one sugar and one syrup.
+   Post: the hidden uses guide, whose baking section is a substitution ratio. */
+.blog-cta .blog-cta__swap {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 8px;
+}
+
+.blog-cta .blog-cta__swap::before,
+.blog-cta .blog-cta__swap::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.blog-cta .blog-cta__swap::before {
+  left: 0;
+  background: var(--cta-amber);
+  animation: blog-cta-swap-right 3.2s cubic-bezier(.6,0,.4,1) infinite;
+}
+
+.blog-cta .blog-cta__swap::after {
+  left: 10px;
+  background: rgba(196, 132, 29, 0.3);
+  animation: blog-cta-swap-left 3.2s cubic-bezier(.6,0,.4,1) infinite;
+}
+
+@keyframes blog-cta-swap-right {
+  0%, 25%   { transform: translateX(0); }
+  50%, 75%  { transform: translateX(10px); }
+  100%      { transform: translateX(0); }
+}
+
+@keyframes blog-cta-swap-left {
+  0%, 25%   { transform: translateX(0); }
+  50%, 75%  { transform: translateX(-10px); }
+  100%      { transform: translateX(0); }
+}
+
+/* RIBBON: a parcel with its ribbon tightening across the front.
+   Post: the Canadian gifts and souvenirs ranking. */
+.blog-cta .blog-cta__ribbon {
+  position: relative;
+  display: inline-block;
+  width: 13px;
+  height: 11px;
+  border: 1px solid var(--cta-amber);
+  border-radius: 2px;
+}
+
+.blog-cta .blog-cta__ribbon::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 50%;
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--cta-amber);
+  animation: blog-cta-tie 3.4s ease-in-out infinite;
+}
+
+@keyframes blog-cta-tie {
+  0%, 100% { transform: scaleY(1);    opacity: 0.55; }
+  50%      { transform: scaleY(1);    opacity: 1; }
+}
+
+.blog-cta .blog-cta__ribbon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -1px;
+  right: -1px;
+  height: 3px;
+  margin-top: -1.5px;
+  background: var(--cta-amber);
+  transform-origin: 50% 50%;
+  animation: blog-cta-cinch 3.4s ease-in-out infinite;
+}
+
+@keyframes blog-cta-cinch {
+  0%, 100% { transform: scaleX(0.2); opacity: 0.4; }
+  50%      { transform: scaleX(1);   opacity: 1; }
+}
+
+/* HEAL: a wide tap hole beside a narrow one, and the narrow one closing over.
+   Post: organic versus conventional, whose second difference is tap hole size. */
+.blog-cta .blog-cta__heal {
+  position: relative;
+  display: inline-block;
+  width: 17px;
+  height: 10px;
+}
+
+.blog-cta .blog-cta__heal::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 132, 29, 0.35);
+}
+
+.blog-cta .blog-cta__heal::after {
+  content: "";
+  position: absolute;
+  right: 1px;
+  top: 2.5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cta-amber);
+  animation: blog-cta-close 3.4s ease-in-out infinite;
+}
+
+@keyframes blog-cta-close {
+  0%, 15%  { transform: scale(1);    opacity: 0.9; }
+  60%, 85% { transform: scale(0.15); opacity: 0.35; }
+  100%     { transform: scale(1);    opacity: 0.9; }
+}
+
+/* BORDER: a bead crossing a line straight through the tick where the border
+   would be, because a blind tasting does not find it.
+   Post: Quebec versus Vermont. */
+.blog-cta .blog-cta__border {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 10px;
+  border-bottom: 1px solid rgba(196, 132, 29, 0.35);
+}
+
+.blog-cta .blog-cta__border::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 1px;
+  height: 6px;
+  margin-left: -0.5px;
+  background: rgba(196, 132, 29, 0.4);
+}
+
+.blog-cta .blog-cta__border::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cta-amber);
+  animation: blog-cta-cross 4s ease-in-out infinite;
+}
+
+@keyframes blog-cta-cross {
+  0%, 8%   { transform: translateX(0); }
+  50%, 58% { transform: translateX(16px); }
+  100%     { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-cta .blog-cta__grade i,
+  .blog-cta .blog-cta__swap::before,
+  .blog-cta .blog-cta__swap::after,
+  .blog-cta .blog-cta__ribbon::before,
+  .blog-cta .blog-cta__heal::after,
+  .blog-cta .blog-cta__border::after { animation: none; }
+  .blog-cta .blog-cta__grade i:nth-child(1) { opacity: 0.35; }
+  .blog-cta .blog-cta__grade i:nth-child(2) { opacity: 0.65; }
+  .blog-cta .blog-cta__grade i:nth-child(3) { opacity: 1; }
+  .blog-cta .blog-cta__ribbon::after { animation: none; transform: scaleX(1); }
+  .blog-cta .blog-cta__border::after { transform: translateX(8px); }
 }
