@@ -609,3 +609,194 @@
   .blog-cta .blog-cta__ribbon::after { animation: none; transform: scaleX(1); }
   .blog-cta .blog-cta__border::after { transform: translateX(8px); }
 }
+
+/* SPROUT: a shoot putting out two leaves, because this one comes from a tree
+   and the thing it is compared against is made by bees.
+   Post: maple syrup versus honey. */
+.blog-cta .blog-cta__sprout {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 14px;
+}
+
+.blog-cta .blog-cta__sprout::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 1.5px;
+  height: 10px;
+  margin-left: -0.75px;
+  background: var(--cta-amber);
+}
+
+.blog-cta .blog-cta__sprout::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 1px;
+  width: 5px;
+  height: 5px;
+  margin-left: -6px;
+  border-radius: 50% 0 50% 0;
+  background: var(--cta-amber);
+  box-shadow: 7px 0 0 var(--cta-amber);
+  transform-origin: 50% 100%;
+  animation: blog-cta-unfurl 3.6s ease-in-out infinite;
+}
+
+@keyframes blog-cta-unfurl {
+  0%, 10%  { transform: scale(0.3); opacity: 0.4; }
+  45%, 80% { transform: scale(1);   opacity: 1; }
+  100%     { transform: scale(0.3); opacity: 0.4; }
+}
+
+/* SLICE: a ring with about a fifth of it filled in, the share of Quebec maple
+   operations holding organic certification.
+   Post: the 2025 Canadian production report. */
+.blog-cta .blog-cta__slice {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: conic-gradient(var(--cta-amber) 0 21%, rgba(196, 132, 29, 0.22) 21% 100%);
+  animation: blog-cta-fifth 3.6s ease-in-out infinite;
+}
+
+@keyframes blog-cta-fifth {
+  0%, 100% { transform: rotate(0deg)   scale(1); }
+  50%      { transform: rotate(360deg) scale(1.08); }
+}
+
+/* TIP: a beam tipping as the weight on one end changes, because sweeter sap
+   swings the whole calculation.
+   Post: what maple sap is actually worth. */
+.blog-cta .blog-cta__tip {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+}
+
+.blog-cta .blog-cta__tip::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--cta-amber);
+  transform-origin: 50% 50%;
+  animation: blog-cta-tilt 3.8s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__tip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 1.5px;
+  height: 6px;
+  margin-left: -0.75px;
+  background: rgba(196, 132, 29, 0.45);
+}
+
+@keyframes blog-cta-tilt {
+  0%, 100% { transform: rotate(-14deg); }
+  50%      { transform: rotate(14deg); }
+}
+
+/* PIN: a map marker dropping and settling. The syrup grows in Quebec and the
+   orders go out of Vancouver.
+   Post: the Vancouver story. */
+.blog-cta .blog-cta__pin {
+  position: relative;
+  display: inline-block;
+  width: 11px;
+  height: 15px;
+}
+
+.blog-cta .blog-cta__pin::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--cta-amber);
+  transform: rotate(-45deg);
+  transform-origin: 50% 100%;
+  animation: blog-cta-drop 3.4s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 8px;
+  height: 2px;
+  margin-left: -4px;
+  border-radius: 50%;
+  background: rgba(196, 132, 29, 0.3);
+  animation: blog-cta-land 3.4s ease-in-out infinite;
+}
+
+@keyframes blog-cta-drop {
+  0%      { transform: rotate(-45deg) translate(3px, -5px); opacity: 0; }
+  25%     { transform: rotate(-45deg) translate(0, 0);      opacity: 1; }
+  85%     { transform: rotate(-45deg) translate(0, 0);      opacity: 1; }
+  100%    { transform: rotate(-45deg) translate(3px, -5px); opacity: 0; }
+}
+
+@keyframes blog-cta-land {
+  0%, 20%  { transform: scaleX(0.3); opacity: 0; }
+  30%      { transform: scaleX(1.2); opacity: 0.9; }
+  85%      { transform: scaleX(1);   opacity: 0.6; }
+  100%     { transform: scaleX(0.3); opacity: 0; }
+}
+
+/* CLOCK: a hand going round, because the recipe in this article costs the best
+   part of an hour and the alternative costs none.
+   Post: homemade versus store-bought waffle snacks. */
+.blog-cta .blog-cta__clock {
+  position: relative;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 1.5px solid var(--cta-amber);
+  border-radius: 50%;
+}
+
+.blog-cta .blog-cta__clock::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.5px;
+  height: 4px;
+  margin-left: -0.75px;
+  margin-top: -4px;
+  border-radius: 1px;
+  background: var(--cta-amber);
+  transform-origin: 50% 100%;
+  animation: blog-cta-sweep 3.6s linear infinite;
+}
+
+@keyframes blog-cta-sweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-cta .blog-cta__sprout::after { animation: none; transform: scale(1); opacity: 1; }
+  .blog-cta .blog-cta__slice         { animation: none; }
+  .blog-cta .blog-cta__tip::before   { animation: none; transform: rotate(-14deg); }
+  .blog-cta .blog-cta__pin::before   { animation: none; transform: rotate(-45deg); opacity: 1; }
+  .blog-cta .blog-cta__pin::after    { animation: none; transform: scaleX(1); opacity: 0.6; }
+  .blog-cta .blog-cta__clock::before { animation: none; transform: rotate(45deg); }
+}
