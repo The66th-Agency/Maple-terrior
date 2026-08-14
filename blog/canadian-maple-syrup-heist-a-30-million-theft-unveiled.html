@@ -31,6 +31,7 @@
 
   <link rel="stylesheet" href="/assets/tailwind.css">
 <link rel="stylesheet" href="/assets/blog-article.css">
+<link rel="stylesheet" href="/assets/blog-cta.css">
 
   <style>
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -139,164 +140,18 @@
 <p><span style="font-weight: 400;">The sort of thing we love about this story goes beyond a simple theft. These criminals targeted Quebec's Strategic <a href="https://mapleterroir.com/products/pure-maple-syrup-maple-leaf-bottle-50ml">Maple Syrup</a> Reserve, a facility that safeguarded millions of pounds of <a href="https://mapleterroir.com/products/organic-pure-maple-syrup-250ml">pure maple syrup</a>. This meticulously planned operation resulted in the disappearance of </span><a href="https://en.m.wikipedia.org/wiki/Great_Canadian_Maple_Syrup_Heist"><span style="font-weight: 400;">nearly 3,000 tons</span></a><span style="font-weight: 400;"> of maple syrup. Authorities launched a complex investigation that crossed borders between two countries and exposed an underground network of sticky-fingered thieves.</span></p>
 <p>That reserve exists because Canadian maple syrup production is one of the most tightly regulated agricultural industries in the world, something the <a href="canadian-maple-syrup-production-report-2025">2025 production report</a> puts into sharp perspective.</p>
 <h2><span style="font-weight: 400;">Inside the Strategic Reserve</span></h2>
-<style>
-    .maple-cta-container {
-        max-width: 600px;
-        margin: 40px auto;
-        padding: 0 20px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    .maple-cta {
-        background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
-        border-radius: 20px;
-        padding: 40px 30px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
-        transform: translateY(0);
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .maple-cta:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 25px 50px rgba(139, 69, 19, 0.4);
-    }
-
-    .maple-cta::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-        animation: shimmer 3s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-        0%, 100% { opacity: 0; }
-        50% { opacity: 1; }
-    }
-
-    .maple-leaf-icon {
-        font-size: 48px;
-        margin-bottom: 20px;
-        display: block;
-        animation: float 2s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-5px); }
-    }
-
-    .cta-headline {
-        color: white;
-        font-size: 28px;
-        font-weight: bold;
-        margin: 0 0 15px 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        position: relative;
-        z-index: 2;
-    }
-
-    .cta-subtext {
-        color: #FFE4B5;
-        font-size: 16px;
-        margin: 0 0 30px 0;
-        line-height: 1.5;
-        position: relative;
-        z-index: 2;
-    }
-
-    .cta-button {
-        display: inline-block;
-        background: linear-gradient(45deg, #FFD700, #FFA500);
-        color: #8B4513;
-        text-decoration: none;
-        padding: 16px 40px;
-        border-radius: 50px;
-        font-weight: bold;
-        font-size: 18px;
-        transition: all 0.3s ease;
-        position: relative;
-        z-index: 2;
-        border: 3px solid rgba(255, 255, 255, 0.2);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
-    }
-
-    .cta-button:hover {
-        background: linear-gradient(45deg, #FFA500, #FFD700);
-        transform: scale(1.05);
-        box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4);
-        color: #654321;
-    }
-
-    .cta-button:active {
-        transform: scale(0.98);
-    }
-
-    .droplets {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-    }
-
-    .droplet {
-        position: absolute;
-        width: 8px;
-        height: 8px;
-        background: rgba(255, 215, 0, 0.6);
-        border-radius: 50%;
-        animation: drip 4s linear infinite;
-    }
-
-    .droplet:nth-child(1) { left: 20%; animation-delay: 0s; }
-    .droplet:nth-child(2) { left: 50%; animation-delay: 1s; }
-    .droplet:nth-child(3) { left: 80%; animation-delay: 2s; }
-
-    @keyframes drip {
-        0% { top: -10px; opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { top: 100%; opacity: 0; }
-    }
-
-    @media (max-width: 768px) {
-        .maple-cta {
-            padding: 30px 20px;
-        }
-
-        .cta-headline {
-            font-size: 24px;
-        }
-
-        .cta-button {
-            padding: 14px 30px;
-            font-size: 16px;
-        }
-    }
-</style>
-<div class="maple-cta-container">
-<div class="maple-cta">
-<div class="droplets">
-<div class="droplet"><br></div>
-<div class="droplet"><br></div>
-<div class="droplet"><br></div>
-</div>
-<span class="maple-leaf-icon">🍁</span>
-<h3 class="cta-headline">Taste Canada's Liquid Gold</h3>
-<p class="cta-subtext"> Experience the rich, golden flavour that made maple syrup a national treasure,and our syrup the gold standard. At Maple Terroir, every bottle is a promise of purity, depth, and unparalleled quality. </p>
-<a class="cta-button" href="https://mapleterroir.com/pages/maple-syrup"> Shop Pure Maple Syrup </a>
-</div>
-</div>
+  <!-- Blog call-to-action, built for this post. Styles in /assets/blog-cta.css -->
+  <section class="px-4 md:px-8">
+    <aside class="blog-cta">
+      <p class="blog-cta__eyebrow"><span class="blog-cta__one" aria-hidden="true"><i></i><i></i><i></i><i></i></span> One barrel you can point at</p>
+      <h2 class="blog-cta__title">The reserve in this story pools barrels from thousands of producers.</h2>
+      <p class="blog-cta__body">Maple Terroir does the opposite. Every bottle comes from one family sugar bush in Quebec&rsquo;s Appalachian Mountains, certified organic by Ecocert, Canada Organic, and the USDA, and the label tells you where it grew.</p>
+      <div class="blog-cta__actions">
+        <a class="blog-cta__button" href="/organic-maple-syrup">See the syrup</a>
+        <a class="blog-cta__link" href="/terroir">Where it comes from</a>
+      </div>
+    </aside>
+  </section>
 <p><span style="font-weight: 400;">Quebec dominates the world's<a href="/blog/canadian-maple-syrup-production-report-2025-hidden-market-opportunities-revealed"> maple syrup market</a>. The numbers tell the story - they control </span><a href="https://www.maplefromcanada.com/about/about-quebec-maple-syrup-producers/"><b>72% of global production</b></a><span style="font-weight: 400;">. Their Federation of Quebec Maple Syrup Producers (QMSP) runs what people call the International Strategic Reserve (ISR). Think of it as OPEC, but they deal with maple syrup instead of oil.</span></p>
 <p>Anyone who wants the real product behind that production system can browse our <a href="/canadian-maple-syrup">Canadian maple syrup catalog</a>, drawn straight from the Appalachian Quebec sugar bush.</p>
 <p><span style="font-weight: 400;">The numbers from 2024 are impressive. Quebec produced </span><a href="https://ppaq.ca/en/"><b>239 million pounds of maple syrup</b></a><span style="font-weight: 400;">. This massive output comes from </span><b>13,500 maple producers</b><span style="font-weight: 400;"> who run </span><b>8,400 maple enterprises</b><span style="font-weight: 400;">. The QMSP's 24-year-old strategic reserve spreads across three major facilities:</span></p>
