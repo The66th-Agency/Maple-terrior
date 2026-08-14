@@ -1,0 +1,27 @@
+/* Article body fixes shared by every blog post.
+   One home on purpose: the same article styling is pasted inline into each post,
+   so a fix made in one file silently misses the rest. Anything that should be
+   true of every article belongs here. */
+
+/* Long web addresses in the References list cannot break on their own, so they
+   push the whole page wider than the phone screen and the reader ends up
+   dragging the article sideways. Let an over-long run of characters wrap. */
+.article-body,
+.article-body p,
+.article-body li {
+  overflow-wrap: break-word;
+}
+
+.article-body a {
+  overflow-wrap: anywhere;
+}
+
+/* A table wider than the screen scrolls inside its own box rather than dragging
+   the page sideways with it. */
+.article-body table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
