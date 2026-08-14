@@ -1,0 +1,180 @@
+/* Blog article call-to-action card.
+   One stylesheet, many posts: each article drops in the same markup and swaps the
+   eyebrow, headline, body copy, and the two links. Animation is CSS only (no
+   per-frame JS) so it stays cheap on phones, and it stops for reduced motion.
+
+   Every inner rule is written as `.blog-cta .blog-cta__x` on purpose. The article
+   body styles its own headings, paragraphs and links as `.article-body h2 / p / a`,
+   which outranks a single class, so a card dropped into an article loses its
+   headline size, its eyebrow colour, and gets underlined links. The doubled class
+   puts this card above those rules regardless of load order. */
+
+.blog-cta {
+  --cta-cream: #FDFBF7;
+  --cta-amber: #C4841D;
+  --cta-glow: #F4C77D;
+  --cta-charcoal: #1A1714;
+  position: relative;
+  overflow: hidden;
+  max-width: 760px;
+  margin: 4rem auto;
+  padding: 2.75rem 2rem 2.5rem;
+  border-radius: 2rem;
+  background: var(--cta-cream);
+  border: 1px solid rgba(196, 132, 29, 0.22);
+  box-shadow: 0 18px 48px rgba(26, 23, 20, 0.07);
+}
+
+/* Warm wash in the top-right corner, fading out well inside the card so no
+   edge of the gradient box is ever visible as a seam. */
+.blog-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 150% at 88% 18%, rgba(244, 199, 125, 0.42), rgba(244, 199, 125, 0) 62%);
+  pointer-events: none;
+}
+
+.blog-cta > * { position: relative; }
+
+.blog-cta .blog-cta__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.9rem;
+  color: var(--cta-amber);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* A bead of sap that swells at the spile, falls, and fades. */
+.blog-cta .blog-cta__drip {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 14px;
+}
+
+.blog-cta .blog-cta__drip::before,
+.blog-cta .blog-cta__drip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: var(--cta-amber);
+}
+
+.blog-cta .blog-cta__drip::before {
+  top: 0;
+  transform-origin: 50% 0;
+  animation: blog-cta-swell 3.2s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__drip::after {
+  top: 0;
+  opacity: 0;
+  animation: blog-cta-fall 3.2s ease-in infinite;
+}
+
+@keyframes blog-cta-swell {
+  0%, 50% { transform: scale(0.78, 0.72); opacity: 0.9; }
+  70%     { transform: scale(1.1, 1.25); opacity: 1; }
+  74%     { transform: scale(0.7, 0.62); opacity: 0.85; }
+  100%    { transform: scale(0.78, 0.72); opacity: 0.9; }
+}
+
+@keyframes blog-cta-fall {
+  0%, 70% { transform: translateY(0) scale(0.9, 1.1); opacity: 0; }
+  75%     { opacity: 1; }
+  100%    { transform: translateY(16px) scale(0.7, 1.3); opacity: 0; }
+}
+
+.blog-cta .blog-cta__title {
+  margin: 0 0 0.85rem;
+  color: var(--cta-charcoal);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(1.5rem, 1.15rem + 1.6vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.blog-cta .blog-cta__body {
+  margin: 0 0 1.75rem;
+  max-width: 56ch;
+  color: #4A4239;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.blog-cta .blog-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Both actions clear the 44px minimum touch target, and both drop the article's
+   underline and amber link colour. */
+.blog-cta .blog-cta__button,
+.blog-cta .blog-cta__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.blog-cta .blog-cta__button {
+  padding: 0 1.75rem;
+  background: var(--cta-charcoal);
+  color: var(--cta-cream);
+}
+
+.blog-cta .blog-cta__button:hover {
+  background: var(--cta-amber);
+  color: var(--cta-cream);
+  text-decoration: none;
+}
+
+.blog-cta .blog-cta__link {
+  padding: 0 1.25rem;
+  border: 1px solid rgba(26, 23, 20, 0.18);
+  color: var(--cta-charcoal);
+}
+
+.blog-cta .blog-cta__link:hover {
+  border-color: var(--cta-amber);
+  color: var(--cta-amber);
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .blog-cta {
+    margin: 3rem auto;
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+  .blog-cta .blog-cta__actions { gap: 0.65rem; }
+  .blog-cta .blog-cta__button,
+  .blog-cta .blog-cta__link { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-cta .blog-cta__drip::before {
+    animation: none;
+    transform: scale(1, 1.15);
+    opacity: 1;
+  }
+  .blog-cta .blog-cta__drip::after { animation: none; opacity: 0; }
+}
