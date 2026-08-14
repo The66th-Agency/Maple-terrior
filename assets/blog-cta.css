@@ -800,3 +800,325 @@
   .blog-cta .blog-cta__pin::after    { animation: none; transform: scaleX(1); opacity: 0.6; }
   .blog-cta .blog-cta__clock::before { animation: none; transform: rotate(45deg); }
 }
+
+/* GRID: waffle pockets filling one after another.
+   Post: the best maple syrup for pancakes and waffles. */
+.blog-cta .blog-cta__grid {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 5px);
+  gap: 2px;
+  vertical-align: middle;
+}
+
+.blog-cta .blog-cta__grid i {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--cta-amber);
+  animation: blog-cta-pocket 3.2s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__grid i:nth-child(2) { animation-delay: 0.2s; }
+.blog-cta .blog-cta__grid i:nth-child(3) { animation-delay: 0.4s; }
+.blog-cta .blog-cta__grid i:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes blog-cta-pocket {
+  0%, 15%  { opacity: 0.25; }
+  40%, 70% { opacity: 1; }
+  100%     { opacity: 0.25; }
+}
+
+/* TICKS: five checks going in one at a time, the five things this guide says to
+   look for before buying.
+   Post: how to choose the best organic maple syrup. */
+.blog-cta .blog-cta__ticks {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 10px;
+}
+
+.blog-cta .blog-cta__ticks i {
+  display: block;
+  width: 2px;
+  height: 8px;
+  border-radius: 1px;
+  background: var(--cta-amber);
+  transform-origin: 50% 100%;
+  animation: blog-cta-check 4s ease-out infinite;
+}
+
+.blog-cta .blog-cta__ticks i:nth-child(2) { animation-delay: 0.25s; }
+.blog-cta .blog-cta__ticks i:nth-child(3) { animation-delay: 0.5s; }
+.blog-cta .blog-cta__ticks i:nth-child(4) { animation-delay: 0.75s; }
+.blog-cta .blog-cta__ticks i:nth-child(5) { animation-delay: 1s; }
+
+@keyframes blog-cta-check {
+  0%, 5%   { transform: scaleY(0.2); opacity: 0.3; }
+  30%, 80% { transform: scaleY(1);   opacity: 1; }
+  100%     { transform: scaleY(0.2); opacity: 0.3; }
+}
+
+/* BARS: three harvests, the last one taller than the two before it.
+   Post: the 2025 production report on hidden market opportunities. */
+.blog-cta .blog-cta__bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 11px;
+}
+
+.blog-cta .blog-cta__bars i {
+  display: block;
+  width: 3px;
+  border-radius: 1px 1px 0 0;
+  background: rgba(196, 132, 29, 0.4);
+  transform-origin: 50% 100%;
+}
+
+.blog-cta .blog-cta__bars i:nth-child(1) { height: 5px; }
+.blog-cta .blog-cta__bars i:nth-child(2) { height: 8px; }
+.blog-cta .blog-cta__bars i:nth-child(3) {
+  height: 11px;
+  background: var(--cta-amber);
+  animation: blog-cta-record 3.4s ease-in-out infinite;
+}
+
+@keyframes blog-cta-record {
+  0%, 20%  { transform: scaleY(0.55); }
+  50%, 80% { transform: scaleY(1); }
+  100%     { transform: scaleY(0.55); }
+}
+
+/* METER: a bar filling past the end of its own track, because one serving
+   carries more manganese than a whole day needs.
+   Post: from sap to sweetness. */
+.blog-cta .blog-cta__meter {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(196, 132, 29, 0.22);
+}
+
+.blog-cta .blog-cta__meter::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 3px;
+  background: var(--cta-amber);
+  transform-origin: 0 50%;
+  animation: blog-cta-fill 3.6s ease-in-out infinite;
+}
+
+@keyframes blog-cta-fill {
+  0%, 8%   { transform: scaleX(0.05); }
+  55%, 85% { transform: scaleX(1); }
+  100%     { transform: scaleX(0.05); }
+}
+
+/* RETIRE: one label fading out while the label that replaced it fades in.
+   Post: grade A versus grade B, and what happened in 2015. */
+.blog-cta .blog-cta__retire {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 8px;
+}
+
+.blog-cta .blog-cta__retire::before,
+.blog-cta .blog-cta__retire::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  width: 7px;
+  height: 6px;
+  border-radius: 1px;
+}
+
+.blog-cta .blog-cta__retire::before {
+  left: 0;
+  background: rgba(196, 132, 29, 0.35);
+  animation: blog-cta-old 3.8s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__retire::after {
+  right: 0;
+  background: var(--cta-amber);
+  animation: blog-cta-new 3.8s ease-in-out infinite;
+}
+
+@keyframes blog-cta-old {
+  0%, 20%  { opacity: 0.9; transform: translateY(0); }
+  55%, 90% { opacity: 0.15; transform: translateY(3px); }
+  100%     { opacity: 0.9; transform: translateY(0); }
+}
+
+@keyframes blog-cta-new {
+  0%, 20%  { opacity: 0.2; transform: translateY(-3px); }
+  55%, 90% { opacity: 1; transform: translateY(0); }
+  100%     { opacity: 0.2; transform: translateY(-3px); }
+}
+
+/* GROW: a trunk putting on height and holding it, because a healthy maple keeps
+   giving sap for decades.
+   Post: extraction and sustainable forest management. */
+.blog-cta .blog-cta__grow {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 13px;
+}
+
+.blog-cta .blog-cta__grow::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3px;
+  margin-left: -1.5px;
+  height: 13px;
+  border-radius: 1.5px;
+  background: var(--cta-amber);
+  transform-origin: 50% 100%;
+  animation: blog-cta-taller 4s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__grow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(196, 132, 29, 0.4);
+}
+
+@keyframes blog-cta-taller {
+  0%, 8%   { transform: scaleY(0.3); }
+  50%, 85% { transform: scaleY(1); }
+  100%     { transform: scaleY(0.3); }
+}
+
+/* STAGE: a spotlight pool opening on a stage floor.
+   Post: the TED2024 partnership. */
+.blog-cta .blog-cta__stage {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 12px;
+}
+
+.blog-cta .blog-cta__stage::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 12px;
+  height: 5px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--cta-amber);
+  animation: blog-cta-spot 3.6s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 3px;
+  height: 6px;
+  margin-left: -1.5px;
+  background: linear-gradient(to bottom, rgba(244, 199, 125, 0), var(--cta-amber));
+  opacity: 0.5;
+}
+
+@keyframes blog-cta-spot {
+  0%, 100% { transform: scaleX(0.35); opacity: 0.45; }
+  50%      { transform: scaleX(1);    opacity: 1; }
+}
+
+/* COUNT: one ingredient beside the ten the other bottle carries.
+   Post: pure maple syrup versus table syrup. */
+.blog-cta .blog-cta__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 10px;
+}
+
+.blog-cta .blog-cta__count b {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cta-amber);
+  animation: blog-cta-single 3.4s ease-in-out infinite;
+}
+
+.blog-cta .blog-cta__count u {
+  display: grid;
+  grid-template-columns: repeat(5, 2px);
+  grid-auto-rows: 2px;
+  gap: 1px;
+  text-decoration: none;
+}
+
+.blog-cta .blog-cta__count u i {
+  display: block;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(196, 132, 29, 0.4);
+}
+
+@keyframes blog-cta-single {
+  0%, 100% { transform: scale(0.85); opacity: 0.8; }
+  50%      { transform: scale(1.15); opacity: 1; }
+}
+
+/* CRYSTAL: a sugar crystal forming out of the syrup it came from.
+   Post: the maple sugar guide. */
+.blog-cta .blog-cta__crystal {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--cta-amber);
+  transform: rotate(45deg);
+  border-radius: 1.5px;
+  animation: blog-cta-form 3.4s ease-in-out infinite;
+}
+
+@keyframes blog-cta-form {
+  0%, 10%  { transform: rotate(45deg) scale(0.35); opacity: 0.35; border-radius: 50%; }
+  50%, 85% { transform: rotate(45deg) scale(1);    opacity: 1;    border-radius: 1.5px; }
+  100%     { transform: rotate(45deg) scale(0.35); opacity: 0.35; border-radius: 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-cta .blog-cta__grid i,
+  .blog-cta .blog-cta__ticks i,
+  .blog-cta .blog-cta__bars i,
+  .blog-cta .blog-cta__meter::before,
+  .blog-cta .blog-cta__retire::before,
+  .blog-cta .blog-cta__retire::after,
+  .blog-cta .blog-cta__grow::before,
+  .blog-cta .blog-cta__stage::before,
+  .blog-cta .blog-cta__count b,
+  .blog-cta .blog-cta__crystal { animation: none; }
+  .blog-cta .blog-cta__grid i        { opacity: 1; }
+  .blog-cta .blog-cta__ticks i       { transform: scaleY(1); opacity: 1; }
+  .blog-cta .blog-cta__bars i:nth-child(3) { transform: scaleY(1); }
+  .blog-cta .blog-cta__meter::before { transform: scaleX(1); }
+  .blog-cta .blog-cta__retire::before { opacity: 0.25; }
+  .blog-cta .blog-cta__retire::after  { opacity: 1; }
+  .blog-cta .blog-cta__grow::before  { transform: scaleY(1); }
+  .blog-cta .blog-cta__stage::before { transform: scaleX(1); opacity: 1; }
+  .blog-cta .blog-cta__crystal       { transform: rotate(45deg) scale(1); opacity: 1; border-radius: 1.5px; }
+}
