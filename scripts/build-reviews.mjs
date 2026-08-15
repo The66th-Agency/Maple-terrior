@@ -153,7 +153,10 @@ function reviewsSection(list, photoFor) {
        +  '<a href="https://loox.io/" rel="nofollow noopener" target="_blank">Loox</a>, '
        +  'which sends the request only to a real order.</p>';
 
-  html += '<div class="mt-reviews-grid">';
+  /* One or two reviews in a three-column layout leaves most of the row empty
+     and the section reads as broken, so a sparse page gets a centred row. */
+  const shape = count <= 2 ? ` mt-reviews-grid--few mt-reviews-grid--${count}` : '';
+  html += `<div class="mt-reviews-grid${shape}">`;
   list.forEach((r, i) => {
     html += reviewCard(r, photoFor(r), i >= VISIBLE_AT_FIRST);
   });

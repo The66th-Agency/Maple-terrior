@@ -116,6 +116,24 @@
   column-gap: 1.5rem;
 }
 
+/* A page with one or two reviews centres them instead, so the section does not
+   read as a broken three-column row with most of it empty. */
+.mt-reviews-grid--few {
+  column-count: initial;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-inline: auto;
+}
+
+.mt-reviews-grid--few .mt-review { margin-bottom: 0; }
+.mt-reviews-grid--1 { max-width: 560px; }
+.mt-reviews-grid--1 .mt-review { width: 100%; }
+.mt-reviews-grid--2 { max-width: 860px; }
+.mt-reviews-grid--2 .mt-review { flex: 1 1 340px; }
+
 .mt-review {
   display: flex;
   flex-direction: column;
