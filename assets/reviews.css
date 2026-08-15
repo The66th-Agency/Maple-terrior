@@ -308,3 +308,112 @@
   .mt-reviews-source a,
   .mt-reviews-more { transition: none; }
 }
+
+/* ---------- Homepage rating bar ----------
+   Sits under the "What People Say" heading and names where each rating comes
+   from. Two cells only: Google and the store's own verified reviews. */
+
+.mt-srcbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem 3rem;
+  margin-top: 2.75rem;
+}
+
+.mt-src {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 0.3rem 0.75rem;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.mt-src:hover { opacity: 0.65; }
+
+.mt-src-mark {
+  grid-row: 1 / span 2;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.mt-src-mark--check {
+  stroke: #C4841D;
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  padding: 0.1rem;
+}
+
+.mt-src-score {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1A1714;
+  line-height: 1;
+}
+
+.mt-src-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  margin-left: 0.4rem;
+}
+
+.mt-src-stars svg { width: 0.8rem; height: 0.8rem; }
+
+.mt-src-score,
+.mt-src-stars { grid-row: 1; }
+
+.mt-src-line {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  font-size: 0.78rem;
+  color: rgba(26, 23, 20, 0.5);
+}
+
+.mt-src-rule {
+  width: 1px;
+  height: 2.2rem;
+  background: rgba(26, 23, 20, 0.12);
+}
+
+/* On a phone the two cells stack. A shared width keeps their marks, scores and
+   captions on one left edge instead of each cell centring itself, and the
+   divider turns on its side so the two ratings read as separate entries. */
+@media (max-width: 640px) {
+  .mt-srcbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .mt-src { width: 15.5rem; }
+  .mt-src-rule { width: 3rem; height: 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-src { transition: none; }
+}
+
+/* The source label on each testimonial card: a small mark plus the word for
+   where the review was left. Quiet enough to read as a caption. */
+.mt-card-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(26, 23, 20, 0.4);
+  white-space: nowrap;
+}
+
+.mt-card-src .mt-src-mark { width: 0.95rem; height: 0.95rem; }
+.mt-card-src .mt-src-mark--check { padding: 0; }
