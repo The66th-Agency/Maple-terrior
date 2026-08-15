@@ -145,6 +145,14 @@ function reviewsSection(list, photoFor) {
        +  `${count === 1 ? 'review' : 'reviews'} from verified buyers</span>`;
   html += '</div>';
 
+  /* Where the reviews come from, said plainly. Loox only emails a review
+     request to someone who placed an order, so every review here is tied to a
+     real purchase. The link is nofollow because it points at a vendor. */
+  html += '<p class="mt-reviews-source">Every review on this page comes from a '
+       +  'customer who bought the product. Reviews are collected and verified by '
+       +  '<a href="https://loox.io/" rel="nofollow noopener" target="_blank">Loox</a>, '
+       +  'which sends the request only to a real order.</p>';
+
   html += '<div class="mt-reviews-grid">';
   list.forEach((r, i) => {
     html += reviewCard(r, photoFor(r), i >= VISIBLE_AT_FIRST);

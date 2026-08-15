@@ -87,6 +87,27 @@
   color: rgba(26, 23, 20, 0.55);
 }
 
+/* Where the reviews come from. Sits under the score, above the cards. */
+.mt-reviews-source {
+  width: 100%;
+  max-width: 620px;
+  margin: -1.5rem auto 3rem;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(26, 23, 20, 0.5);
+}
+
+.mt-reviews-source a {
+  color: #C4841D;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(196, 132, 29, 0.4);
+  transition: text-decoration-color 0.3s ease;
+}
+
+.mt-reviews-source a:hover { text-decoration-color: #C4841D; }
+
 /* Reviews run to wildly different lengths, so a plain row grid leaves tall
    holes under the short ones. Columns let each card sit right under the one
    above it and the section closes up. */
@@ -239,5 +260,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .mt-rating-inline,
+  .mt-reviews-source a,
   .mt-reviews-more { transition: none; }
 }
