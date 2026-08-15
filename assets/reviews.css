@@ -87,6 +87,33 @@
   color: rgba(26, 23, 20, 0.55);
 }
 
+/* ---------- The rating on a product card in a grid ----------
+   Sits on the right of the row that already holds the price, so the card
+   gains no height and the grid keeps its rhythm. Sized to the price text. */
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 0.4rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: rgba(26, 23, 20, 0.6);
+  white-space: nowrap;
+}
+
+.card-rating svg {
+  width: 0.85em;
+  height: 0.85em;
+  display: block;
+  fill: #C4841D;
+}
+
+.card-rating i {
+  font-style: normal;
+  color: rgba(26, 23, 20, 0.38);
+}
+
 /* Where the reviews come from. Sits under the score, above the cards. */
 .mt-reviews-source {
   width: 100%;
