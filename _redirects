@@ -124,6 +124,9 @@
 /blog/index.html  /blog/  301
 /blog/discover-the-best-maple-syrup-in-vancouver-a-sweet-guide-for-2024  /blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir  301
 
+/tools/index.html  /tools/  301
+/tools/sugar-to-maple-syrup-conversion.html  /tools/sugar-to-maple-syrup-conversion  301
+
 # ── Section 2: wildcard rules (dynamic, limit 100) ──────────────────────────
 # Shopify checkout/account passthrough (mapleterroir.com serves static files,
 # so /cart/* and /checkout/* must go to Shopify or checkout 404s), Shopify-owned
