@@ -236,6 +236,34 @@
       <div class="prose-body max-w-[760px] mx-auto mb-12">
         <p>In 2015 the International Maple Syrup Institute introduced a new grading framework, and Canada (through the Canadian Food Inspection Agency) and the United States (through the USDA) adopted it the same year. The old structure was replaced with four classifications, all sitting under the Grade A umbrella, each named for color and described by flavour intensity rather than ranked against each other.</p>
       </div>
+      <!-- Grade colour and flavour chart (added 2026-08-23) -->
+      <div class="max-w-[900px] mx-auto mb-12">
+        <style>
+          .grade-chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 1.5rem; border: 1px solid rgba(217,209,196,0.5); background: #FFFFFF; }
+          .grade-chart { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 0.92rem; }
+          .grade-chart th { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: #8C8175; text-align: left; padding: 1rem 1.1rem; border-bottom: 1px solid rgba(217,209,196,0.5); background: rgba(245,240,232,0.55); white-space: nowrap; }
+          .grade-chart td { padding: 0.85rem 1.1rem; border-bottom: 1px solid rgba(217,209,196,0.35); color: #2E2822; vertical-align: top; }
+          .grade-chart tbody tr:last-child td { border-bottom: none; }
+          .grade-chart td:first-child { font-weight: 600; color: #1A1714; white-space: nowrap; }
+          .grade-swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; margin-right: 0.45rem; vertical-align: -2px; border: 1px solid rgba(26,23,20,0.12); }
+          .grade-chart-note { font-size: 0.75rem; color: #B8AD9E; line-height: 1.6; margin-top: 0.75rem; }
+        </style>
+        <div class="grade-chart-scroll">
+          <table class="grade-chart">
+            <thead>
+              <tr><th scope="col">Grade class</th><th scope="col">Colour</th><th scope="col">Light through it</th><th scope="col">Season</th><th scope="col">Taste</th><th scope="col">Reach for it</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="grade-swatch" style="background:#E7B95C"></span>Golden, Delicate Taste</td><td>light gold</td><td>75% or more</td><td>first sap of the season</td><td>soft, buttery, subtle</td><td>cheese, ice cream, yogurt, fresh fruit</td></tr>
+              <tr><td><span class="grade-swatch" style="background:#C98B2D"></span>Amber, Rich Taste</td><td>classic amber</td><td>50 to 74.9%</td><td>mid-season</td><td>balanced, distinctly maple</td><td>pancakes, French toast, the one-bottle kitchen</td></tr>
+              <tr><td><span class="grade-swatch" style="background:#8F5A1B"></span>Dark, Robust Taste</td><td>noticeably deeper</td><td>25 to 49.9%</td><td>late mid-season</td><td>pronounced, pushes forward</td><td>baking, coffee, glazes</td></tr>
+              <tr><td><span class="grade-swatch" style="background:#542F10"></span>Very Dark, Strong Taste</td><td>deep mahogany</td><td>under 25%</td><td>final harvest</td><td>intense, stands up to anything</td><td>marinades, BBQ, the old Grade B jobs</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="grade-chart-note">"Light through it" is how the grades are measured: the percent of light that passes through a sample of the syrup. The cut-offs are identical in the <a href="https://www.ams.usda.gov/grades-standards/maple-syrup-grades-standards" rel="noopener" style="text-decoration:underline;">USDA standard</a> and the <a href="https://inspection.canada.ca/en/about-cfia/acts-and-regulations/list-acts-and-regulations/documents-incorporated-reference/canadian-grade-compendium-volume-7" rel="noopener" style="text-decoration:underline;">Canadian Food Inspection Agency grade compendium</a>.</p>
+      </div>
+
       <div class="max-w-[900px] mx-auto space-y-10 md:space-y-12">
 
         <article class="reveal">
