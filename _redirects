@@ -127,6 +127,15 @@
 /tools/index.html  /tools/  301
 /tools/sugar-to-maple-syrup-conversion.html  /tools/sugar-to-maple-syrup-conversion  301
 
+
+# Selling pages moved under the /shop/ hub 2026-08-26 (slug unchanged, parent added)
+/canadian-maple-syrup         /shop/canadian-maple-syrup               301
+/organic-maple-syrup          /shop/organic-maple-syrup                301
+/maple-candy                  /shop/maple-candy                        301
+/maple-sugar                  /shop/maple-sugar                        301
+/maple-syrup-wholesale        /shop/maple-syrup-wholesale              301
+/maple-syrup-corporate-gift   /shop/maple-syrup-corporate-gift         301
+
 # ── Section 2: wildcard rules (dynamic, limit 100) ──────────────────────────
 # Shopify checkout/account passthrough (mapleterroir.com serves static files,
 # so /cart/* and /checkout/* must go to Shopify or checkout 404s), Shopify-owned
