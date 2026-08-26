@@ -12,6 +12,11 @@
 //
 // Run:  node scripts/build-grids.mjs   (after any catalog change, alongside build-products.mjs)
 // Idempotent: re-running replaces the previously baked cards.
+//
+// ORDER MATTERS: this script rewrites each grid wholesale, which STRIPS the star
+// ratings that build-card-ratings.mjs bakes into the same cards. Always run
+// build-card-ratings.mjs <loox-export.csv> AFTER this one, or 65 product cards
+// silently lose their stars. (Hit 2026-08-26 on the BOF-page pass.)
 
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -32,6 +37,18 @@ const COLLECTION_PAGES = {
   'collections/nuts-snacks.html': 'nuts-popcorn',
   'collections/premium-maple-syrup.html': 'maple-syrup-all',
   'collections/tea-coffee.html': 'tea-coffee',
+};
+
+// The two bottom-of-funnel selling pages carry their own grid instead of the
+// shared #product-grid shell, and they were left out of the 2026-07-07 pass, so
+// /canadian-maple-syrup shipped a "Shop Canadian Maple Syrup" section that held
+// zero product links in the raw HTML (2026-08-26 check: 8 links rendered in a
+// browser, 0 before JS). Their cards bake into the LOADING element, which the
+// page JS removes before appending the hydrated cards, so nothing duplicates.
+// page file -> [loading element id, Shopify collection handle, how many the page JS asks for]
+const BOF_PAGES = {
+  'canadian-maple-syrup.html': ['syrup-loading', 'maple-syrup-all', 8],
+  'organic-maple-syrup.html': ['organic-loading', 'organic-pure-maple-syrup', 8],
 };
 
 // Mirror of HIDDEN_PRODUCTS in products.html: products deliberately kept out of
@@ -74,6 +91,35 @@ function card(p) {
   '</div>';
 }
 
+// ItemList markup for the two selling pages. A category/selling page is a
+// summary page in Google's terms, so it carries ItemList pointing at the product
+// URLs rather than Product+offer blocks it does not own. Kept in the build script
+// so the list never drifts from the grid above it.
+function itemListBlock(pageUrl, products) {
+  const json = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Maple Terroir maple syrup',
+    url: pageUrl,
+    numberOfItems: products.length,
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.title,
+      url: `https://mapleterroir.com/products/${p.handle}`,
+    })),
+  };
+  return '<!-- itemlist:start (baked by scripts/build-grids.mjs) -->\n  ' +
+    '<script type="application/ld+json">\n  ' + JSON.stringify(json, null, 2).replace(/\n/g, '\n  ') +
+    '\n  </' + 'script>\n  <!-- itemlist:end -->';
+}
+
+function injectItemList(html, block) {
+  const re = /<!-- itemlist:start[\s\S]*?<!-- itemlist:end -->/;
+  if (re.test(html)) return html.replace(re, block);
+  return html.replace('</head>', '  ' + block + '\n</head>');
+}
+
 // Replace the inner content of the element opened by `openTag` (balanced-div scan).
 function replaceInner(html, openTagRe, inner, label) {
   const m = html.match(openTagRe);
@@ -108,6 +154,28 @@ async function main() {
     const path = join(ROOT, file);
     let html = await readFile(path, 'utf8');
     html = replaceInner(html, /<div id="product-grid"[^>]*>/, products.map(card).join(''), file);
+    await writeFile(path, html, 'utf8');
+    pages++; links += products.length;
+    console.log(`${file}: ${products.length} static cards (${handle})`);
+  }
+
+  for (const [file, [loadingId, handle, first]] of Object.entries(BOF_PAGES)) {
+    const json = await gql(
+      'query($handle:String!,$first:Int!){collectionByHandle(handle:$handle){products(first:$first){edges{node{title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{priceV2{amount currencyCode} availableForSale}}}}}}}}',
+      { handle, first }
+    );
+    const c = json.data && json.data.collectionByHandle;
+    if (!c) { console.warn(`SKIP ${file}: collection "${handle}" not found`); continue; }
+    const products = c.products.edges.map((e) => e.node).filter((p) => !isHidden(p));
+    if (!products.length) { console.warn(`SKIP ${file}: 0 products`); continue; }
+    const path = join(ROOT, file);
+    let html = await readFile(path, 'utf8');
+    // The loading shell is col-span-full, so the baked cards need their own grid
+    // wrapper or they stack full-width for the moment before the JS swaps them.
+    const grid = '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">' +
+      products.map(card).join('') + '</div>';
+    html = replaceInner(html, new RegExp(`<div id="${loadingId}"[^>]*>`), grid, file);
+    html = injectItemList(html, itemListBlock(`https://mapleterroir.com/${file.replace(/\.html$/, '')}`, products));
     await writeFile(path, html, 'utf8');
     pages++; links += products.length;
     console.log(`${file}: ${products.length} static cards (${handle})`);
