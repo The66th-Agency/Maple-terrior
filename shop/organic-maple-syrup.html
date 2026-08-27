@@ -100,6 +100,7 @@
     .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
     .atc-btn:hover { background: #C4841D; }
     .atc-btn.added { background: #5A5249; }
+    .sold-out-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 100px; background: rgba(140,129,117,0.12); color: #8C8175; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
     .accordion-content.open { max-height: 500px; }
     .accordion-icon { transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -777,7 +778,7 @@
       function gql(q, v) { return fetch(STOREFRONT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: q, variables: v || {} }) }).then(function (r) { return r.json(); }); }
       function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-      gql('{ collectionByHandle(handle:"organic-pure-maple-syrup"){ products(first:8){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount}}}} } } } } }')
+      gql('{ collectionByHandle(handle:"organic-pure-maple-syrup"){ products(first:8){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount} availableForSale}}} } } } } }')
         .then(function (res) {
           var grid = document.getElementById('organic-grid');
           document.getElementById('organic-loading').remove();
@@ -789,7 +790,7 @@
             var price = variant ? parseFloat(variant.priceV2.amount).toFixed(2) : '';
             var card = document.createElement('div');
             card.className = 'reveal product-card ring-1 ring-warm-gray-200/30';
-            card.innerHTML = '<a href="/products/' + esc(p.handle) + '" class="block"><div class="aspect-square overflow-hidden bg-cream-dark">' + (img ? '<img src="' + esc(img.url) + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') + '</div><div class="p-5"><h3 class="font-display text-base font-semibold text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3><div class="flex items-center justify-between mt-3"><p class="text-sm text-warm-gray-500 font-medium">$' + price + ' CAD</p>' + (variant ? '<button class="atc-btn" data-variant-id="' + esc(variant.id) + '" onclick="event.stopPropagation();MapleCart.addFromBtn(this)">+ Add</button>' : '') + '</div></div></a>';
+            card.innerHTML = '<a href="/products/' + esc(p.handle) + '" class="block"><div class="aspect-square overflow-hidden bg-cream-dark">' + (img ? '<img src="' + esc(img.url) + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') + '</div><div class="p-5"><h3 class="font-display text-base font-semibold text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3><div class="flex items-center justify-between mt-3"><p class="text-sm text-warm-gray-500 font-medium">$' + price + ' CAD</p>' + (variant && variant.availableForSale ? '<button class="atc-btn" data-variant-id="' + esc(variant.id) + '" onclick="event.stopPropagation();MapleCart.addFromBtn(this)">+ Add</button>' : '<span class="sold-out-badge">Sold Out</span>') + '</div></div></a>';
             grid.appendChild(card);
             revealObs.observe(card);
           });
