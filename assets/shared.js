@@ -427,3 +427,128 @@ setTimeout(loadGA, 3000);
     injectFeatures();
   }
 })();
+
+// ── Cart conversion: open the drawer on add, and show the free-shipping gap ──
+//
+// WHY. Over the 21 days to 2026-09-15 the site recorded 163 add to carts, 51
+// begin checkouts and 9 purchases. Two thirds of the people who put syrup in a
+// basket never reached a checkout at all, and that is the largest single leak
+// in the business, far larger than anything Search Console can fix.
+//
+// Watching the real site explains it. Adding an item changes nothing on screen
+// except a small number on the header icon. No drawer, no panel, no message.
+// A shopper gets no confirmation the click worked and is never shown the way
+// forward, so the cart sits there and the session ends.
+//
+// The second half is the shipping promise. The banner offers free shipping over
+// $99 CAD and the drawer never mentions it again. A basket at $24.99 shows a
+// subtotal and a checkout button and no reason to add the second bottle.
+//
+// Both fixes live HERE, in the one file all 116 pages load, and not in the cart
+// code itself, which is duplicated inline across 76 of them. Touching that
+// would be the 73-file sweep the repo warns about. This file already hooks the
+// same Shopify mutation to fire add_to_cart, so the moment of a successful add
+// is already known in one place.
+(function () {
+  var FREE_SHIPPING_CAD = 99; // The banner's promise. Change both together.
+
+  function drawerIsOpen() {
+    var d = document.getElementById('cart-drawer');
+    return !!(d && d.classList.contains('open'));
+  }
+
+  // MapleCart is defined by each page's own inline cart code, so it may not
+  // exist yet on a very early add. Wait briefly rather than failing silently.
+  function openDrawer(attempt) {
+    attempt = attempt || 0;
+    if (drawerIsOpen()) return;
+    if (window.MapleCart && typeof window.MapleCart.toggle === 'function') {
+      window.MapleCart.toggle();
+      return;
+    }
+    if (attempt < 10) setTimeout(function () { openDrawer(attempt + 1); }, 150);
+  }
+
+  function parseSubtotal() {
+    var el = document.getElementById('cart-subtotal');
+    if (!el) return null;
+    var n = parseFloat(String(el.textContent).replace(/[^0-9.]/g, ''));
+    return isNaN(n) ? null : n;
+  }
+
+  // One line above the checkout button. It reads as a fact about the order,
+  // never as a nudge, because the rest of this site does not talk that way.
+  function renderShippingProgress() {
+    var footer = document.getElementById('cart-footer');
+    if (!footer) return;
+    var subtotal = parseSubtotal();
+    if (subtotal === null) return;
+
+    var row = document.getElementById('cart-ship-progress');
+    if (!row) {
+      row = document.createElement('div');
+      row.id = 'cart-ship-progress';
+      row.style.cssText = 'margin:0 0 0.75rem;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:0.8125rem;line-height:1.4;color:#1A1714;';
+      var note = footer.querySelector('.cart-note');
+      if (note) footer.insertBefore(row, note);
+      else footer.insertBefore(row, footer.firstChild);
+    }
+
+    var remaining = FREE_SHIPPING_CAD - subtotal;
+    var pct = Math.max(0, Math.min(100, (subtotal / FREE_SHIPPING_CAD) * 100));
+    var bar =
+      '<div style="height:3px;background:rgba(26,23,20,0.12);border-radius:100px;margin-top:0.5rem;overflow:hidden">' +
+      '<div style="height:100%;width:' + pct.toFixed(0) + '%;background:#C4841D;border-radius:100px"></div></div>';
+
+    if (remaining > 0) {
+      row.innerHTML =
+        '<span>Add <strong>$' + remaining.toFixed(2) + ' CAD</strong> for free shipping across Canada.</span>' + bar;
+    } else {
+      row.innerHTML = '<span>This order ships free across Canada.</span>' + bar;
+    }
+  }
+
+  // The drawer is re-rendered wholesale by the page's own cart code, so watch
+  // the footer rather than hooking a render function that differs per page.
+  function watchFooter() {
+    var items = document.getElementById('cart-items');
+    var footer = document.getElementById('cart-footer');
+    var target = footer || items || document.body;
+    try {
+      new MutationObserver(function () { renderShippingProgress(); })
+        .observe(target, { childList: true, subtree: true, characterData: true });
+    } catch (e) {}
+    renderShippingProgress();
+  }
+
+  // The same Shopify mutation the analytics hook above watches. A separate
+  // patch so neither concern can break the other.
+  var origFetch = window.fetch ? window.fetch.bind(window) : null;
+  if (origFetch) {
+    window.fetch = function (input, init) {
+      var url = typeof input === 'string' ? input : (input && input.url) || '';
+      var body = init && init.body ? String(init.body) : '';
+      var isAdd = url.indexOf('myshopify.com/api/') > -1 &&
+        (body.indexOf('cartLinesAdd') > -1 || body.indexOf('cartCreate') > -1);
+      var p = origFetch(input, init);
+      if (!isAdd) return p;
+      return p.then(function (res) {
+        try {
+          res.clone().json().then(function (data) {
+            var d = (data && data.data) || {};
+            var cart = (d.cartLinesAdd && d.cartLinesAdd.cart) || (d.cartCreate && d.cartCreate.cart);
+            if (!cart) return; // a failed add must not open an empty drawer
+            setTimeout(function () { openDrawer(0); renderShippingProgress(); }, 120);
+          }).catch(function () {});
+        } catch (e) {}
+        return res;
+      });
+    };
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', watchFooter);
+  } else {
+    watchFooter();
+  }
+})();
