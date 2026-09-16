@@ -478,45 +478,66 @@ setTimeout(loadGA, 3000);
 
   // One line above the checkout button. It reads as a fact about the order,
   // never as a nudge, because the rest of this site does not talk that way.
+  //
+  // SELF-TRIGGERING: this function writes into the same footer the observer
+  // below watches, so writing unconditionally makes the observer fire, which
+  // writes again, forever. The first version of this did exactly that and hung
+  // every page it ran on. Two guards: the observer is disconnected across the
+  // write, and nothing is written at all unless the text actually changed.
+  var lastRendered = null;
+  var observer = null;
+
   function renderShippingProgress() {
     var footer = document.getElementById('cart-footer');
     if (!footer) return;
     var subtotal = parseSubtotal();
     if (subtotal === null) return;
 
-    var row = document.getElementById('cart-ship-progress');
-    if (!row) {
-      row = document.createElement('div');
-      row.id = 'cart-ship-progress';
-      row.style.cssText = 'margin:0 0 0.75rem;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:0.8125rem;line-height:1.4;color:#1A1714;';
-      var note = footer.querySelector('.cart-note');
-      if (note) footer.insertBefore(row, note);
-      else footer.insertBefore(row, footer.firstChild);
-    }
-
     var remaining = FREE_SHIPPING_CAD - subtotal;
     var pct = Math.max(0, Math.min(100, (subtotal / FREE_SHIPPING_CAD) * 100));
-    var bar =
+    var text = remaining > 0
+      ? 'Add <strong>$' + remaining.toFixed(2) + ' CAD</strong> for free shipping across Canada.'
+      : 'This order ships free across Canada.';
+    var html =
+      '<span>' + text + '</span>' +
       '<div style="height:3px;background:rgba(26,23,20,0.12);border-radius:100px;margin-top:0.5rem;overflow:hidden">' +
       '<div style="height:100%;width:' + pct.toFixed(0) + '%;background:#C4841D;border-radius:100px"></div></div>';
 
-    if (remaining > 0) {
-      row.innerHTML =
-        '<span>Add <strong>$' + remaining.toFixed(2) + ' CAD</strong> for free shipping across Canada.</span>' + bar;
-    } else {
-      row.innerHTML = '<span>This order ships free across Canada.</span>' + bar;
+    var row = document.getElementById('cart-ship-progress');
+    if (row && html === lastRendered) return; // nothing changed, touch nothing
+
+    if (observer) { try { observer.disconnect(); } catch (e) {} }
+    try {
+      if (!row) {
+        row = document.createElement('div');
+        row.id = 'cart-ship-progress';
+        row.style.cssText = 'margin:0 0 0.75rem;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:0.8125rem;line-height:1.4;color:#1A1714;';
+        var note = footer.querySelector('.cart-note');
+        if (note) footer.insertBefore(row, note);
+        else footer.insertBefore(row, footer.firstChild);
+      }
+      row.innerHTML = html;
+      lastRendered = html;
+    } finally {
+      if (observer) { try { observer.observe(watchTarget(), OBS); } catch (e) {} }
     }
   }
 
-  // The drawer is re-rendered wholesale by the page's own cart code, so watch
-  // the footer rather than hooking a render function that differs per page.
+  // Watch the subtotal only, not the whole drawer. It is the one node whose
+  // change means the line has to be redrawn, and it is outside the node this
+  // writes into, which keeps the two apart.
+  var OBS = { childList: true, subtree: true, characterData: true };
+
+  function watchTarget() {
+    return document.getElementById('cart-subtotal') ||
+           document.getElementById('cart-items') ||
+           document.body;
+  }
+
   function watchFooter() {
-    var items = document.getElementById('cart-items');
-    var footer = document.getElementById('cart-footer');
-    var target = footer || items || document.body;
     try {
-      new MutationObserver(function () { renderShippingProgress(); })
-        .observe(target, { childList: true, subtree: true, characterData: true });
+      observer = new MutationObserver(function () { renderShippingProgress(); });
+      observer.observe(watchTarget(), OBS);
     } catch (e) {}
     renderShippingProgress();
   }
