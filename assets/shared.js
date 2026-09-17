@@ -67,6 +67,11 @@ function loadGA() {
   s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2HETD7E9WS';
   document.head.appendChild(s);
   gtag('js', new Date());
+  // Cross-domain linking. The purchase fires on the Shopify checkout host, so
+  // without this the session breaks at payment and every sale lands as Direct
+  // (2026-09-16: 22 of 23 purchases since August). The GA4 tag settings are
+  // read-only from our login, so the linker lives here.
+  gtag('set', 'linker', { domains: ['mapleterroir.com', 'maple-terroir.myshopify.com', 'checkout.mapleterroir.com'] });
   gtag('config', 'G-2HETD7E9WS');
 }
 if (document.readyState === 'complete') { setTimeout(loadGA, 100); }
@@ -133,12 +138,26 @@ setTimeout(loadGA, 3000);
 
   // Wrap the existing checkout redirect helper to fire begin_checkout first.
   var origCheckout = window.MapleSafeCheckout;
+  // The checkout is a script redirect, which gtag's linker never sees, so hand
+  // the URL to a throwaway link and let gtag add its _gl parameter to it.
+  window.MapleDecorateCheckout = function (url) {
+    try {
+      var a = document.createElement('a');
+      a.href = url;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+      var out = a.href;
+      a.remove();
+      return out;
+    } catch (e) { return url; }
+  };
   window.MapleSafeCheckout = function (url) {
     captureBoth('begin_checkout', {
       checkout_url: url,
       page: window.location.pathname
     });
-    if (typeof origCheckout === 'function') return origCheckout(url);
+    if (typeof origCheckout === 'function') return origCheckout(window.MapleDecorateCheckout(url));
     return false;
   };
 })();
