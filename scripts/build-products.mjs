@@ -163,12 +163,6 @@ function renderProduct(template, p) {
       `$1$$${parseFloat(price).toFixed(2)}$2`
     );
   }
-  // Bake the numeric Shopify product id into the Loox container so reviews load
-  // immediately, without waiting for the client-side product fetch.
-  const looxId = String(p.id || '').replace(/\D/g, '');
-  if (looxId) {
-    html = html.replace('data-product-id=""', `data-product-id="${looxId}"`);
-  }
   return html;
 }
 
