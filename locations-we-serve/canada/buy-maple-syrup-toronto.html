@@ -102,6 +102,7 @@
     @keyframes shimmer-move { 0% { background-position: -700px 0 } 100% { background-position: 700px 0 } }
     .skeleton-card { border-radius: 2rem; background: linear-gradient(to right, #EDE8DF 8%, #F7F4EF 38%, #EDE8DF 54%); background-size: 1400px 100%; animation: shimmer-move 1.8s infinite linear; }
     .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+    .sold-out-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 100px; background: rgba(140,129,117,0.12); color: #8C8175; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; }
     .atc-btn:hover { background: #C4841D; }
     .atc-btn.added { background: #5A5249; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -238,7 +239,7 @@
             Ontario growers produce roughly 10 percent of Canada's maple syrup, and Torontonians have always had local options on the shelf. Quebec accounts for over 70 percent of world production, and Toronto cooks who care about depth and consistency tend to reach for single-origin Quebec syrup. Maple Terroir is one of those single-origin Quebec lines, sourced from one family farm in the Appalachian Mountains and shipped to Toronto and the GTA from our Vancouver distribution facility. You order it online and it arrives at your door, no hunting through grocery aisles.
           </p>
           <p class="reveal reveal-delay-3 text-warm-gray-600 leading-relaxed">
-            The full Maple Terroir range is available online for direct delivery to Toronto and GTA homes, ordered from mapleterroir.com and shipped straight from the Vancouver facility. The same syrup ships from this facility to Japan, South Korea, the United States, and Mexico. Toronto shoppers get the same product the international markets pay a premium for.
+            The full Maple Terroir range is available online for direct delivery to Toronto and GTA homes, ordered from mapleterroir.com and shipped straight from the Vancouver facility. The same syrup is sold in Japan, South Korea, China, Taiwan and the United States. Toronto shoppers get the same product the international markets pay a premium for.
           </p>
         </div>
         <div class="reveal reveal-delay-1">
@@ -337,7 +338,7 @@
         <div class="py-12 md:py-0 md:pl-16 text-center md:text-right">
           <div class="font-display text-7xl md:text-9xl font-semibold text-charcoal leading-none">5</div>
           <p class="text-warm-gray-500 text-sm uppercase tracking-[0.2em] mt-4">International markets</p>
-          <p class="text-warm-gray-600 text-sm leading-relaxed mt-3 max-w-[28ch] ml-auto">Canada, US, Mexico, Japan, South Korea. Direct from the same Vancouver facility.</p>
+          <p class="text-warm-gray-600 text-sm leading-relaxed mt-3 max-w-[28ch] ml-auto">The United States, Japan, South Korea, China and Taiwan, where Maple Terroir is sold.</p>
         </div>
       </div>
     </div>
@@ -561,7 +562,7 @@
       function gql(q, v) { return fetch(STOREFRONT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: q, variables: v || {} }) }).then(function (r) { return r.json(); }); }
       function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-      gql('{ collectionByHandle(handle:"maple-syrup-all"){ products(first:8){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount}}}} } } } } }')
+      gql('{ collectionByHandle(handle:"maple-syrup-all"){ products(first:8){ edges{ node{ title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id availableForSale priceV2{amount}}}} } } } } }')
         .then(function (res) {
           var grid = document.getElementById('syrup-grid');
           var loading = document.getElementById('syrup-loading');
@@ -574,7 +575,7 @@
             var price = variant ? parseFloat(variant.priceV2.amount).toFixed(2) : '';
             var card = document.createElement('div');
             card.className = 'reveal product-card ring-1 ring-warm-gray-200/30';
-            card.innerHTML = '<a href="/products/' + esc(p.handle) + '" class="block"><div class="aspect-square overflow-hidden bg-cream-dark">' + (img ? '<img src="' + esc(img.url) + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') + '</div><div class="p-5"><h3 class="font-display text-base font-semibold text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3><div class="flex items-center justify-between mt-3"><p class="text-sm text-warm-gray-500 font-medium">$' + price + ' CAD</p>' + (variant ? '<button class="atc-btn" data-variant-id="' + esc(variant.id) + '" onclick="event.stopPropagation();MapleCart.addFromBtn(this)">+ Add</button>' : '') + '</div></div></a>';
+            card.innerHTML = '<a href="/products/' + esc(p.handle) + '" class="block"><div class="aspect-square overflow-hidden bg-cream-dark">' + (img ? '<img src="' + esc(img.url) + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') + '</div><div class="p-5"><h3 class="font-display text-base font-semibold text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3><div class="flex items-center justify-between mt-3"><p class="text-sm text-warm-gray-500 font-medium">$' + price + ' CAD</p>' + (variant && variant.availableForSale ? '<button class="atc-btn" data-variant-id="' + esc(variant.id) + '" onclick="event.stopPropagation();MapleCart.addFromBtn(this)">+ Add</button>' : (variant ? '<span class="sold-out-badge">Sold Out</span>' : '')) + '</div></div></a>';
             grid.appendChild(card);
             revealObs.observe(card);
           });

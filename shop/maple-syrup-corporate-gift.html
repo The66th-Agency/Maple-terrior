@@ -100,6 +100,7 @@
     .product-card { background: #fff; border-radius: 2rem; overflow: hidden; ring-1 ring-warm-gray-200/30; transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(26,23,20,0.12); }
     .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+    .sold-out-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 100px; background: rgba(140,129,117,0.12); color: #8C8175; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; }
     .atc-btn:hover { background: #C4841D; transform: translateY(-1px); }
     .atc-btn.added { background: #5A5249; }
     @media (prefers-reduced-motion: reduce) {
@@ -737,7 +738,7 @@
 
       function esc(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
-      gql('query { collectionByHandle(handle: "home-sets") { products(first: 8) { edges { node { title handle images(first:1) { edges { node { url altText } } } variants(first:1) { edges { node { id priceV2 { amount } } } } } } } } }')
+      gql('query { collectionByHandle(handle: "home-sets") { products(first: 8) { edges { node { title handle images(first:1) { edges { node { url altText } } } variants(first:1) { edges { node { id availableForSale priceV2 { amount } } } } } } } } }')
         .then(function (res) {
           var grid = document.getElementById('gift-grid');
           var loading = document.getElementById('gift-loading');
@@ -760,7 +761,7 @@
                   '<h3 class="font-display text-base font-semibold text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3>' +
                   '<div class="flex items-center justify-between mt-3">' +
                     '<p class="text-sm text-warm-gray-500 font-medium">$' + price + ' CAD</p>' +
-                    (variantId ? '<button class="atc-btn" data-variant-id="' + esc(variantId) + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Add</button>' : '') +
+                    (variantId && variant.availableForSale ? '<button class="atc-btn" data-variant-id="' + esc(variantId) + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Add</button>' : (variantId ? '<span class="sold-out-badge">Sold Out</span>' : '')) +
                   '</div>' +
                 '</div>' +
               '</a>';
