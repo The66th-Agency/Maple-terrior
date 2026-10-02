@@ -394,7 +394,7 @@
 </ul>
 <p><br></p>
 <p> </p>
-<p><iframe width="500" height="315" src="https://www.youtube.com/embed/r7GIIvWWGOU" title="YouTube video player"></iframe></p></div>
+<p><a href="https://www.youtube.com/watch?v=r7GIIvWWGOU" target="_blank" rel="noopener" class="text-amber-warm underline">Watch the video on YouTube</a></p></div>
               </div>
             </div>
             <!-- Highlights -->
@@ -817,6 +817,17 @@
       var descHtml = p.descriptionHtml || ('<p>' + p.description + '</p>');
       var tempDiv = document.createElement('div');
       tempDiv.innerHTML = descHtml;
+      // The CSP frames nothing from YouTube, so an embed in a Shopify description
+      // renders as a blocked box. Show it as a link to the video instead.
+      tempDiv.querySelectorAll('iframe[src*="youtube"]').forEach(function (f) {
+        var id = (f.getAttribute('src').match(/embed\/([\w-]+)/) || [])[1];
+        var a = document.createElement('a');
+        a.href = id ? 'https://www.youtube.com/watch?v=' + id : f.getAttribute('src');
+        a.target = '_blank'; a.rel = 'noopener';
+        a.className = 'text-amber-warm underline';
+        a.textContent = 'Watch the video on YouTube';
+        f.replaceWith(a);
+      });
 
       // Extract bullet points (ul/li) for the Highlights section
       var lists = tempDiv.querySelectorAll('ul');

@@ -136,7 +136,13 @@ function renderProduct(template, p) {
     `<script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>` +
     `<script>window.__PRODUCT_HANDLE__=${JSON.stringify(handle)};</script>\n`;
 
-  const descHtml = p.descriptionHtml || `<p>${escText(p.description || '')}</p>`;
+  // The CSP frames nothing from YouTube, so an embed in a Shopify description
+  // renders as a blocked box. Bake it as a link to the video instead (the page
+  // script does the same when it re-renders the description from Shopify).
+  const descHtml = (p.descriptionHtml || `<p>${escText(p.description || '')}</p>`).replace(
+    /<iframe[^>]*src="https:\/\/www\.youtube(?:-nocookie)?\.com\/embed\/([\w-]+)[^"]*"[^>]*><\/iframe>/g,
+    '<a href="https://www.youtube.com/watch?v=$1" target="_blank" rel="noopener" class="text-amber-warm underline">Watch the video on YouTube</a>'
+  );
 
   let html = absolutize(template);
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escText(title)}</title>`);
