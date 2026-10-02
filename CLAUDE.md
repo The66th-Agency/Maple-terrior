@@ -22,6 +22,7 @@ Premium editorial + headless e-commerce website for Maple Terroir, a third-gener
 Two build steps exist (the original "no build step" design no longer fully holds):
 1. `node scripts/build-products.mjs` regenerates `products/<handle>.html` from Shopify when the catalog changes.
 2. `npx tailwindcss@3 -c tailwind.config.js -i tailwind-input.css -o assets/tailwind.css --minify` recompiles the CSS. Run after adding ANY new Tailwind utility class to any HTML or JS, otherwise the class is silently unstyled (the CDN that used to JIT classes at runtime is gone). Editing existing classes needs no rebuild.
+3. `node scripts/build-souvenirs.mjs` rebakes the product shelf on `/canadian-souvenirs` (hero tiles, filtered grid, ItemList) from the curated handle list at the top of the script. Sold-out products are skipped at bake time and greyed out live by the page JS. Re-run after changing the list or when a product comes back in stock. It does not touch any other grid, so the star ratings `build-card-ratings.mjs` bakes elsewhere are safe.
 
 Preview with any static server (e.g. `npx serve`, or the `maple-terroir` preview config on port 4406). The root-relative `/assets/tailwind.css` link needs a server; opening via `file://` will not load the styles.
 
