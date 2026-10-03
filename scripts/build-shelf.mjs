@@ -103,7 +103,10 @@ for (const file of walk(ROOT)) {
       else items.push(p);
     }
     if (items.length < 3) console.warn(`  ${relative(ROOT, file)}: only ${items.length} products in stock on this shelf`);
-    const inner = `\n      <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">\n${items.map((p) => '        ' + card(p)).join('\n')}\n      </div>\n      ${LIVE}\n      `;
+    // Columns follow the count so no card sits alone on the last row (Liam saw a
+    // fifth card stranded under a row of four on 2026-10-02).
+    const n = items.length, cols = n <= 5 ? n : n % 4 === 0 ? 4 : n % 3 === 0 ? 3 : 4;
+    const inner = `\n      <div data-shelf class="grid grid-cols-2 ${({ 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4', 5: 'lg:grid-cols-5' })[cols]} gap-3 md:gap-5">\n${items.map((p) => '        ' + card(p)).join('\n')}\n      </div>\n      ${LIVE}\n      `;
     out += html.slice(pos, openEnd) + inner;
     pos = close;
   }
