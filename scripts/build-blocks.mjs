@@ -62,7 +62,7 @@ const logos = () => `  <section aria-label="Customer rating and retailers" class
     <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-5 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
       <p class="flex items-center gap-3 flex-shrink-0 text-sm text-charcoal">${STARS}<span><b class="font-semibold">5.0</b> <span class="text-warm-gray-500">average customer rating</span></span></p>
       <span class="hidden md:block w-px h-6 bg-warm-gray-200 flex-shrink-0" aria-hidden="true"></span>
-      <p class="eyebrow text-warm-gray-400 flex-shrink-0 hidden md:block">Also stocked by</p>
+      <p class="text-sm text-warm-gray-500 flex-shrink-0 hidden md:block">Also stocked by</p>
       <div class="mt-strip-mask relative flex-1 overflow-hidden">
         <div class="mt-strip-track flex items-center" style="width:max-content">
           <div class="flex items-center gap-12 md:gap-16 pr-12 md:pr-16">${logoRow(false)}</div>
@@ -80,8 +80,8 @@ const SETS = {
   gifts: [['maple-frenzy-home-set', 'Simon S.'], ['pure-maple-syrup-stroopwafels-caddy', 'Yoshimi S.'], ['maple-syrup-mini-stroopwafel', 'Michelle Buchar']],
 };
 const HEAD = {
-  syrup: ['What Customers Say', 'Rated 5.0 by the People Who Pour It'],
-  gifts: ['What Customers Say', 'Rated 5.0 by the People Who Send It'],
+  syrup: 'Rated 5.0 by the People Who Pour It',
+  gifts: 'Rated 5.0 by the People Who Send It',
 };
 function review(handle, name) {
   const f = join(ROOT, 'products', `${handle}.html`);
@@ -100,7 +100,7 @@ function review(handle, name) {
 function reviews(set, where) {
   const picks = (SETS[set] || SETS.syrup).map(([h, n]) => review(h, n)).filter(Boolean);
   if (picks.length < 3) console.warn(`  ${where}: only ${picks.length} of the "${set}" reviews still published on their product pages`);
-  const [eyebrow, h2] = HEAD[set] || HEAD.syrup;
+  const h2 = HEAD[set] || HEAD.syrup;
   const card = (r) => `        <figure class="bg-white rounded-[2rem] p-6 md:p-7 ring-1 ring-warm-gray-200/40 flex flex-col">
           ${STARS}
           <blockquote class="text-charcoal leading-relaxed mt-4 flex-1">&ldquo;${r.text}&rdquo;</blockquote>
@@ -110,7 +110,6 @@ function reviews(set, where) {
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
         <div>
-          <span class="eyebrow inline-flex items-center gap-2 text-amber-warm mb-4"><svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="3"/></svg>${eyebrow}</span>
           <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">${h2}</h2>
         </div>
         <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -133,7 +132,6 @@ const family = () => `  <section id="family" class="scroll-mt-28 py-16 md:py-24 
         <figcaption class="text-xs text-warm-gray-400 mt-3">${CAPTION}</figcaption>
       </figure>
       <div class="reveal reveal-delay-1 md:col-span-7">
-        <span class="eyebrow text-amber-warm mb-4 block">A Family Business</span>
         <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Three Generations of One Maple Family.</h2>
         <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and Gavin Lytton packs and ships the online orders from Vancouver.</p>
         <p class="text-warm-gray-600 leading-relaxed mb-8 max-w-[56ch]">When you order from mapleterroir.com, the order goes to that family, and they are the ones who pack it.</p>

@@ -198,9 +198,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
   color: #C4841D;
 }
 
@@ -252,11 +250,9 @@
 
 .mt-review-reply b {
   display: block;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #C4841D;
+  color: #1A1714;
   margin-bottom: 0.4rem;
 }
 
@@ -408,10 +404,8 @@
   align-items: center;
   gap: 0.35rem;
   flex-shrink: 0;
-  font-size: 0.68rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: rgba(26, 23, 20, 0.4);
+  font-size: 0.78rem;
+  color: rgba(26, 23, 20, 0.5);
   white-space: nowrap;
 }
 

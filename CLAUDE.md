@@ -102,7 +102,7 @@ Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detect
 - **Accent color**: Amber only (`#C4841D` / `#F4C77D`) — no emerald, blue, or rose accents
 - **Border radius**: 2rem on cards
 - **No stock images**: Product images come from Shopify CDN (`cdn.shopify.com`)
-- **Consistent headers**: Use the eyebrow → H2 pattern across all sections (user rejected variety)
+- **Headings**: the heading opens the section, with no eyebrow above it, and every heading is one color and one style, with no amber or italic word inside it. The rules live in the frontend-design skill (EYEBROW BAN) and `memory/visual.md`; an older "eyebrow → H2" line here contradicted both and put eyebrows on almost every section until October 3, 2026, when Liam named colored and italic heading words and eyebrows as AI slop.
 - **Consistent section width**: All sections must use `max-w-[1400px] mx-auto px-4 md:px-8`. No section should break out of this container or use full-viewport width.
 
 ## Deployment & Environments

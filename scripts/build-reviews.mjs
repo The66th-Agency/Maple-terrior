@@ -209,7 +209,6 @@ function buildPage(file, list, photoFor) {
     /<section id="reviews-section"[\s\S]*?<\/section>/,
     `<section id="reviews-section" class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
     <div class="max-w-[1400px] mx-auto">
-      <span class="eyebrow text-amber-warm mb-4 block text-center">Customer Reviews</span>
       <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight text-center mb-12">What Our Customers Say</h2>
       ${section}
     </div>
