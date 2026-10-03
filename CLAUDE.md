@@ -23,7 +23,7 @@ Two build steps exist (the original "no build step" design no longer fully holds
 1. `node scripts/build-products.mjs` regenerates `products/<handle>.html` from Shopify when the catalog changes.
 2. `npx tailwindcss@3 -c tailwind.config.js -i tailwind-input.css -o assets/tailwind.css --minify` recompiles the CSS. Run after adding ANY new Tailwind utility class to any HTML or JS, otherwise the class is silently unstyled (the CDN that used to JIT classes at runtime is gone). Editing existing classes needs no rebuild.
 3. `node scripts/build-souvenirs.mjs` rebakes the product shelf on `/canadian-souvenirs` (hero tiles, filtered grid, ItemList) from the curated handle list at the top of the script. Sold-out products are skipped at bake time and greyed out live by the page JS. Re-run after changing the list or when a product comes back in stock. It does not touch any other grid, so the star ratings `build-card-ratings.mjs` bakes elsewhere are safe.
-4. `node scripts/build-blocks.mjs` bakes the shared blocks of the Canada city pages into every page carrying their marker pairs: `LOGOS` (the rating and retailer-logo strip under the hero), `REVIEWS` (three real reviews after the product grid, `set="syrup"` or `set="gifts"`, quoted from the product pages) and `FAMILY` (photo, three generations, who packs the orders). Each block's copy lives only in that script: change it there and re-run, never edit a page's copy of it.
+4. `node scripts/build-blocks.mjs` bakes the shared blocks of the Canada city pages and the homepage into every page carrying their marker pairs: `LOGOS` (the rating and retailer-logo strip under the hero), `REVIEWS` (three real reviews after the product grid, `set="syrup"` or `set="gifts"`, quoted from the product pages) and `FAMILY` (photo, three generations, who packs the orders). Each block's copy lives only in that script: change it there and re-run, never edit a page's copy of it.
 5. `node scripts/build-shelf.mjs` bakes a product shelf into every page carrying `<!-- SHELF:START handles="a,b,c" -->` / `<!-- SHELF:END -->`: real cards with live price and stock re-checked in the browser, sold-out products left off at bake time. The Canada location pages use it; the handles per page type are in `active/maple-terroir/agent/canada-cities.md`.
 
 Preview with any static server (e.g. `npx serve`, or the `maple-terroir` preview config on port 4406). The root-relative `/assets/tailwind.css` link needs a server; opening via `file://` will not load the styles.
@@ -71,8 +71,8 @@ Loaded by every page. Provides: announcement bar, search modal (Ctrl+K), back-to
 ```
 
 ### index.html section order
-1. Hero — asymmetric editorial split with video
-2. Retailer Logos — "Where to Find Us" trust strip (marquee)
+1. Hero: full-bleed photo with the copy over a dark shade, the same markup as the Canada city page heroes. The photo is the Toronto gift page's own (`assets/images/cities/gift-baskets-toronto.webp`), Liam's pick, October 2, 2026 ("i only want that hero image to be there"). The old video split hero is gone.
+2. Rating and retailer-logo strip: the `LOGOS` block baked by `scripts/build-blocks.mjs`, one slow marquee, replacing the old two-row "Where to Find Us" section
 3. Products — bento-style asymmetric grid linking to collection pages
 4. Our Story — heritage, family narrative (static)
 5. Testimonials — social proof marquee
