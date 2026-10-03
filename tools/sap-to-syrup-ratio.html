@@ -346,7 +346,7 @@
               <div class="calc-field">
                 <input type="number" id="sap-amount" class="calc-input" value="43" min="0" step="1" inputmode="decimal">
                 <select id="sap-unit" class="calc-select" aria-label="Unit">
-                  <option value="gal" selected>US gallons</option>
+                  <option value="gal" selected>gallons (3.785 L)</option>
                   <option value="l">litres</option>
                 </select>
               </div>
@@ -613,12 +613,12 @@
           sapGal = gal;
           out = gal / ratio;
           resultEl.textContent = volText(out);
-          metricEl.textContent = (unitEl.value === 'l' ? fmt(out) + ' US gal' : fmt(out * L_PER_GAL) + ' L') + ' · ratio ' + fmt(ratio) + ' to 1';
+          metricEl.textContent = (unitEl.value === 'l' ? fmt(out) + ' gal' : fmt(out * L_PER_GAL) + ' L') + ' · ratio ' + fmt(ratio) + ' to 1';
         } else {
           out = gal * ratio;
           sapGal = out;
           resultEl.textContent = volText(out) + ' of sap';
-          metricEl.textContent = (unitEl.value === 'l' ? fmt(out) + ' US gal' : fmt(out * L_PER_GAL) + ' L') + ' · ratio ' + fmt(ratio) + ' to 1';
+          metricEl.textContent = (unitEl.value === 'l' ? fmt(out) + ' gal' : fmt(out * L_PER_GAL) + ' L') + ' · ratio ' + fmt(ratio) + ' to 1';
         }
         ratioEl.innerHTML = '<strong>' + fmt(ratio) + ' gallons of sap for every gallon of syrup.</strong> At ' + s.toFixed(1) + ' percent sugar, almost all of it is water boiled away.';
         var taps = Math.max(1, Math.round(sapGal / SAP_PER_TAP));
