@@ -92,7 +92,7 @@ Every page includes inline Shopify cart logic (createCart, addToCart, updateCart
 Elements with class `.reveal` use IntersectionObserver to animate in. Must include `@media (prefers-reduced-motion: reduce)` fallback (opacity: 1, no transform) on every page.
 
 ### Nav + mobile menu
-Navigation is duplicated inline in every HTML file (no templating). When modifying nav links, update all pages: `index.html`, `story.html`, `terroir.html`, `certifications.html`, `products.html`, `product.html`, `collection.html`, `404.html`, `blog/index.html`, `blog/post.html`, and all 9 `collections/*.html` files.
+Navigation is duplicated inline in every HTML file (no templating), as one block that is identical on all 114 pages that have a nav (404.html has none): the same links (Our Story, Products, Terroir, Blog, Wholesale, Shop Now), classes and root-relative paths. The one difference is the cart icon, which sits in the nav only on the 81 pages with an inline cart drawer; shared.js adds the search icon and the menu's Cart item only where it finds that icon. The desktop link row switches on at 1024px (`lg`), with the menu button below that, because at `md` the links wrapped to two lines from 768 to about 1050px and the cart spilled out of the pill at 768 (October 2, 2026). Certifications is not in the nav (October 2, 2026); the page is linked from the footer and from body copy. A nav change replaces the block in every page in one commit, plus the copy in `_scripts/generate-static-blogs.mjs`; `scaffold.mjs` and `build-products.mjs` copy it from live pages, so they follow.
 
 ### Subdirectory path handling
 Pages in `blog/` and `collections/` use `../` relative paths. `shared.js` detects subdirectory via `window.location.pathname` and adjusts link prefixes.

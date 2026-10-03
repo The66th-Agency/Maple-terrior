@@ -237,8 +237,10 @@ setTimeout(loadGA, 3000);
     document.body.appendChild(btt);
 
     // 4. CART LINK IN MOBILE MENU
+    // Only on pages with a cart drawer (the ones whose nav has #cart-toggle);
+    // elsewhere MapleCart is undefined and the link would do nothing.
     var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
+    if (mobileMenu && document.getElementById('cart-toggle')) {
       var menuInner = mobileMenu.querySelector('.flex.flex-col');
       if (menuInner && !menuInner.querySelector('.mobile-cart-link')) {
         var cartLink = document.createElement('button');
