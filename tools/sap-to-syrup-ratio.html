@@ -8,16 +8,16 @@
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <title>Sap to Syrup Ratio Calculator by Tree Species | Maple Terroir</title>
-  <meta name="description" content="Work out the sap to syrup ratio for sugar, red or silver maple, boxelder or your own sugar reading, and how much syrup your sap will make.">
+  <meta name="description" content="Work out the sap to syrup ratio for sugar, red or silver maple, or your own sugar reading, and how much syrup your sap will make.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mapleterroir.com/tools/sap-to-syrup-ratio">
   <meta property="og:title" content="Sap to Syrup Ratio Calculator">
-  <meta property="og:description" content="Work out the sap to syrup ratio for sugar, red or silver maple, boxelder or your own sugar reading, and how much syrup your sap will make.">
+  <meta property="og:description" content="Work out the sap to syrup ratio for sugar, red or silver maple, or your own sugar reading, and how much syrup your sap will make.">
   <meta property="og:image" content="https://mapleterroir.com/assets/images/covers/sap-to-syrup-ratio.webp">
   <meta property="og:image:alt" content="A large jug of clear maple sap beside a small bottle of amber maple syrup">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sap to Syrup Ratio Calculator">
-  <meta name="twitter:description" content="Work out the sap to syrup ratio for sugar, red or silver maple, boxelder or your own sugar reading, and how much syrup your sap will make.">
+  <meta name="twitter:description" content="Work out the sap to syrup ratio for sugar, red or silver maple, or your own sugar reading, and how much syrup your sap will make.">
   <meta name="twitter:image" content="https://mapleterroir.com/assets/images/covers/sap-to-syrup-ratio.webp">
   <script type="application/ld+json">
 {
@@ -353,14 +353,14 @@
               <div class="calc-field">
                 <input type="number" id="sap-amount" class="calc-input" value="43" min="0" step="1" inputmode="decimal">
                 <select id="sap-unit" class="calc-select" aria-label="Unit">
-                  <option value="gal" selected>gallons (3.785 L)</option>
+                  <option value="gal" selected>gallons</option>
                   <option value="l">litres</option>
                 </select>
               </div>
             </div>
 
             <p class="calc-note mt-6">
-              The ratio comes from the Rule of 86: divide 86 by the sap's sugar percentage. A sap refractometer or hydrometer gives the reading for your own trees.
+              The ratio comes from the Rule of 86: divide 86 by the sap's sugar percentage. Cornell's beginner guide gives the same figures, about 43 gallons of sap at 2 percent sugar and 86 gallons at 1 percent. A sap refractometer or hydrometer gives the reading for your own trees.
             </p>
           </div>
 
@@ -376,11 +376,11 @@
               </div>
               <div class="calc-adjust-row">
                 <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V10l6-6 6 6v10"/></svg>
-                <p id="sap-taps"><strong>About 4 taps' worth of sap.</strong> One taphole gives roughly 10 gallons in an average season.</p>
+                <p id="sap-taps"><strong>About 4 taps' worth of sap.</strong> Ohio State's hobby guide puts an average taphole at 6 to 10 gallons a season, and the calculator uses 10.</p>
               </div>
               <div class="calc-adjust-row">
                 <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h7M14 9h7M14 15h7M14 20h7M8 4v9.3a3.5 3.5 0 11-3-.05V4a1.5 1.5 0 013 0z"/></svg>
-                <p id="sap-done"><strong>Syrup is done at 7&deg;F above boiling water,</strong> about 219&deg;F at sea level. Check your own boiling point on the day, since it moves with the weather.</p>
+                <p id="sap-done"><strong>Syrup is done at 7&deg;F above boiling water,</strong> about 219&deg;F at sea level, according to Ohio State's hobby guide. Check your own boiling point on the day, since it moves with the weather.</p>
               </div>
             </div>
           </div>
@@ -421,14 +421,12 @@
             <tr><td>Sugar maple</td><td>2% or higher</td><td>about 43 gallons, fewer in a sweet year</td></tr>
             <tr><td>Black maple</td><td>similar to sugar maple</td><td>about 43 gallons</td></tr>
             <tr><td>Red maple</td><td>1.5 to 2%</td><td>about 43 to 57 gallons</td></tr>
-            <tr><td>Silver maple</td><td>about 1.7%</td><td>about 50 gallons</td></tr>
-            <tr><td>Boxelder</td><td>about 1.4%</td><td>about 60 gallons</td></tr>
-            <tr><td>Paper birch</td><td>under 1%</td><td>100 gallons or more</td></tr>
+            <tr><td>Silver maple</td><td>lower than red maple, as low as 1%</td><td>up to 86 gallons</td></tr>
           </tbody>
         </table>
       </div>
       <p class="reveal calc-note text-center mt-6 max-w-[60ch] mx-auto">
-        Sugar maple, black maple and red maple readings follow <a href="https://cfaes-contenthub.org.ohio-state.edu/fact-sheet/hobby-maple-syrup-production" rel="noopener" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal transition-colors">Ohio State's hobby maple syrup guide</a>. Birch sap is mostly fructose and glucose rather than sucrose, so the Rule of 86 is only a rough guide for it.
+        Sugar maple, black maple and red maple readings follow <a href="https://cfaes-contenthub.org.ohio-state.edu/fact-sheet/hobby-maple-syrup-production" rel="noopener" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal transition-colors">Ohio State's hobby maple syrup guide</a>; the silver maple reading follows <a href="https://centerforagroforestry.org/wp-content/uploads/2022/02/beginner-notebook-1st-ed-11.pdf" rel="noopener" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal transition-colors">Cornell's beginner guide</a>.
       </p>
     </div>
   </section>
@@ -448,7 +446,7 @@
           Why 86.
         </h2>
         <p class="reveal reveal-delay-2 text-cream/60 leading-relaxed max-w-[55ch] mx-auto">
-          Finished maple syrup is about two thirds sugar. The Rule of 86 is the shortcut producers use to get there from sap.
+          Finished maple syrup is 66 to 67 percent sugar, according to Cornell's beginner guide. The Rule of 86 is the shortcut producers use to get there from sap.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -462,11 +460,11 @@
         </div>
         <div class="reveal reveal-delay-2 why-card">
           <h3>What changes the sugar</h3>
-          <p>Species first, then the tree itself. A maple with a large, healthy crown in full sun tends to give sweeter sap than a crowded one.</p>
+          <p>Species first, then the tree itself. A maple with a large, healthy crown in full sun tends to give sweeter sap than a crowded one. Cornell's beginner guide says the same.</p>
         </div>
         <div class="reveal reveal-delay-3 why-card">
           <h3>When to stop</h3>
-          <p>Syrup is finished at 7&deg;F above the boiling point of water. Past that it crystallises; short of it the syrup is thin and can spoil.</p>
+          <p>Syrup is finished at 7&deg;F above the boiling point of water, according to Ohio State's hobby guide. Past that it crystallises; short of it the syrup is thin and can spoil.</p>
         </div>
       </div>
     </div>
@@ -552,12 +550,12 @@
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
           <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <span class="eyebrow text-cream/50 mb-6 block">Forty Gallons, Already Boiled</span>
+              <span class="eyebrow text-cream/50 mb-6 block">About 43 Gallons of Sap in Every Gallon</span>
               <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6">
-                Skip the boil.<br>Pour the syrup.
+                Or buy the syrup<br>already boiled.
               </h2>
               <p class="text-base md:text-lg text-cream/70 leading-relaxed max-w-[45ch] mx-auto mb-10">
-                Maple Terroir taps one forest in the Appalachian Mountains of Quebec and bottles syrup certified organic three times over. The family has made maple this way since 1978.
+                Maple Terroir syrup comes from one farm in the Appalachian Mountains of Quebec, and our organic syrups are certified by Ecocert, Canada Organic and USDA Organic. Wayne and Kaori Lytton started the company in 1978.
               </p>
               <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="/collections/premium-maple-syrup"
@@ -567,7 +565,7 @@
                     <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <span class="text-sm text-cream/40">Free shipping over $99 CAD</span>
+                <span class="text-sm text-cream/40">Free shipping on orders of $99 CAD or more</span>
               </div>
             </div>
             <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
@@ -629,7 +627,7 @@
         }
         ratioEl.innerHTML = '<strong>' + fmt(ratio) + ' gallons of sap for every gallon of syrup.</strong> At ' + s.toFixed(1) + ' percent sugar, almost all of it is water boiled away.';
         var taps = Math.max(1, Math.round(sapGal / SAP_PER_TAP));
-        tapsEl.innerHTML = '<strong>About ' + taps + (taps === 1 ? ' tap' : ' taps') + '’ worth of sap.</strong> One taphole gives roughly 10 gallons in an average season.';
+        tapsEl.innerHTML = '<strong>About ' + taps + (taps === 1 ? ' tap' : ' taps') + '’ worth of sap.</strong> Ohio State\'s hobby guide puts an average taphole at 6 to 10 gallons a season, and the calculator uses 10.';
       }
 
       function setDir(d) {
@@ -664,7 +662,7 @@
             </svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
-          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch] mb-6">Pure maple from Canada, delivered to your table. Family-owned since 1978, certified organic, proudly Canadian.</p>
+          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch] mb-6">Single-origin maple syrup from one family farm in Quebec. Family owned since 1978.</p>
         </div>
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>

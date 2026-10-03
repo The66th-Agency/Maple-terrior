@@ -8,16 +8,16 @@
   <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <title>Canadian Maple Products | Syrup, Stroopwafels & Gifts | Maple Terroir</title>
-  <meta name="description" content="Shop the full Maple Terroir catalog of Canadian maple products: pure organic maple syrup, stroopwafels, maple tea, coffee, chocolates, cookies, and curated gift sets.">
+  <meta name="description" content="Shop the full Maple Terroir catalog: pure maple syrup, including certified organic bottles, plus stroopwafels, maple tea, coffee, chocolates, cookies and gift sets.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mapleterroir.com/products">
   <meta property="og:title" content="Canadian Maple Products | Syrup, Stroopwafels &amp; Gifts | Maple Terroir">
-  <meta property="og:description" content="Shop Canadian maple syrup, stroopwafels, chocolates, cookies, and gift sets from a Quebec family farm.">
+  <meta property="og:description" content="Shop maple syrup, stroopwafels, chocolates, cookies and gift sets from Maple Terroir, a family business since 1978.">
   <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434">
-  <meta property="og:image:alt" content="Canadian maple products from Maple Terroir — syrup, stroopwafels, and gift sets">
+  <meta property="og:image:alt" content="Maple Terroir organic maple syrup, 250 mL bottle">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Canadian Maple Products | Syrup, Stroopwafels &amp; Gifts | Maple Terroir">
-  <meta name="twitter:description" content="Shop Canadian maple syrup, stroopwafels, chocolates, cookies, and gift sets from a Quebec family farm.">
+  <meta name="twitter:description" content="Shop maple syrup, stroopwafels, chocolates, cookies and gift sets from Maple Terroir, a family business since 1978.">
   <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434">
   <script type="application/ld+json">
   {
@@ -227,11 +227,11 @@
         Our Collection
       </span>
       <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.08] max-w-4xl mb-6">
-        Beyond the bottle.<br>
-        <span class="text-amber-warm italic font-medium">A world of maple.</span>
+        Canadian maple syrup,<br>
+        <span class="text-amber-warm italic font-medium">stroopwafels and gifts.</span>
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[55ch] text-lg">
-        Every product starts with the same thing: pure, single-origin maple from Quebec's Appalachian Mountains. What we make from it is where the magic happens.
+        Maple syrup from one farm in Quebec's Appalachian Mountains, plus stroopwafels, cookies, chocolates, snacks, tea and coffee made with maple syrup. Orders ship from Vancouver to every Canadian province.
       </p>
     </div>
   </section>
@@ -269,10 +269,10 @@
             <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] p-10 md:p-16 min-h-[300px] md:min-h-[360px] flex flex-col md:flex-row items-center justify-between gap-10">
               <div class="absolute inset-0 bg-gradient-to-br from-amber-warm/10 via-amber-glow/5 to-cream"></div>
               <div class="relative z-10 max-w-xl">
-                <span class="eyebrow text-amber-deep mb-3 block">Premium Gifting</span>
-                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight mb-4 leading-[1.1]">Curated Gift Sets</h2>
+                <span class="eyebrow text-amber-deep mb-3 block">Boxed Sets</span>
+                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight mb-4 leading-[1.1]">Gift Sets</h2>
                 <p class="text-warm-gray-600 leading-relaxed mb-6 max-w-[45ch]">
-                  Beautifully presented collections of our finest maple products. Perfect for holidays, corporate gifting, or anyone who deserves something special.
+                  Boxed sets of our maple syrup, cookies, stroopwafels, tea and snacks. Each set lists what is inside on its product page.
                 </p>
                 <div id="gift-sets-buttons" class="flex flex-wrap gap-3"></div>
               </div>
@@ -296,9 +296,9 @@
       { handle: 'nuts-popcorn', eyebrow: 'Snack Packs', title: 'Snacks &amp; Treats', cols: 4 },
       { handle: 'tea-coffee', eyebrow: 'Beverages', title: 'Tea &amp; Coffee', cols: 3 },
       { handle: 'maple-cookies', eyebrow: 'Confections', title: 'Cookies &amp; Sweets', cols: 4 },
-      { handle: 'chocolates', eyebrow: 'Artisan Chocolate', title: 'Maple Chocolates', cols: 4 },
-      { handle: 'home-sets', eyebrow: 'Kitchen Essentials', title: 'Pantry Staples', cols: 3 },
-      { handle: 'gift-sets', eyebrow: 'Premium Gifting', title: 'Curated Gift Sets', cols: 0 }
+      { handle: 'chocolates', eyebrow: 'Chocolate', title: 'Maple Chocolates', cols: 4 },
+      { handle: 'home-sets', eyebrow: 'Bundles', title: 'Home Sets', cols: 3 },
+      { handle: 'gift-sets', eyebrow: 'Boxed Sets', title: 'Gift Sets', cols: 0 }
     ];
 
     var QUERY = 'query($handle:String!){collectionByHandle(handle:$handle){title products(first:50){edges{node{title handle images(first:1){edges{node{url altText}}} variants(first:1){edges{node{id priceV2{amount currencyCode} availableForSale}}}}}}}}';
@@ -432,8 +432,8 @@
         var price = '$' + Math.round(parseFloat(v.priceV2.amount));
         var label = p.title.replace(/Maple Terroir\s*/i, '').replace(/Gift\s*Set\s*/i, '').trim();
         btns += v.availableForSale
-          ? '<button class="atc-btn" data-variant-id="' + esc(v.id) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">' + label + '  -  ' + price + '</button>'
-          : '<span class="atc-btn" style="opacity:0.45;cursor:not-allowed;background:#EDE8DF;color:#8C8175">' + label + '  -  Sold Out</span>';
+          ? '<button class="atc-btn" data-variant-id="' + esc(v.id) + '" onclick="event.stopPropagation(); event.preventDefault(); MapleCart.addFromBtn(this)">' + label + ', ' + price + '</button>'
+          : '<span class="atc-btn" style="opacity:0.45;cursor:not-allowed;background:#EDE8DF;color:#8C8175">' + label + ', Sold Out</span>';
       });
       btnsEl.innerHTML = btns;
       var fi = products.length && products[0].images.edges.length ? products[0].images.edges[0].node : null;
@@ -542,7 +542,7 @@
         <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
           <path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M16 16C16 14.9 15.1 14 14 14C12.9 14 12 14.9 12 16M7 16H12M7 16H5.46C4.63 16 3.93 15.39 3.82 14.57L3 8H19M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/>
         </svg>
-        <span class="text-sm font-medium text-warm-gray-600">Free shipping on orders over <strong class="text-charcoal">$99 CAD</strong></span>
+        <span class="text-sm font-medium text-warm-gray-600">Free shipping on orders of <strong class="text-charcoal">$99 CAD</strong> or more</span>
       </div>
     </div>
   </section>
@@ -561,7 +561,7 @@
             </svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
-          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch] mb-6">Pure maple from Canada, delivered to your table. Family-owned since 1978, certified organic, proudly Canadian.</p>
+          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch] mb-6">Single-origin maple syrup from one family farm in Quebec. Family owned since 1978.</p>
         </div>
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>

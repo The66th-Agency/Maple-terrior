@@ -20,7 +20,7 @@ Premium editorial + headless e-commerce website for Maple Terroir, a third-gener
 
 ## Development
 Two build steps exist (the original "no build step" design no longer fully holds):
-1. `node scripts/build-products.mjs` regenerates `products/<handle>.html` from Shopify when the catalog changes.
+1. `node scripts/build-products.mjs` regenerates `products/<handle>.html` from Shopify when the catalog changes. It rebuilds each page whole, which wipes the Loox reviews and star data baked by `scripts/build-reviews.mjs`, so run `build-reviews.mjs` with the latest Loox export straight after it (found October 2, 2026). The trust badges on each product page (Certified Organic, Made in Canada, Origin) come from a per-handle map in the script: a claim shows only where a source confirms it.
 2. `npx tailwindcss@3 -c tailwind.config.js -i tailwind-input.css -o assets/tailwind.css --minify` recompiles the CSS. Run after adding ANY new Tailwind utility class to any HTML or JS, otherwise the class is silently unstyled (the CDN that used to JIT classes at runtime is gone). Editing existing classes needs no rebuild.
 3. `node scripts/build-souvenirs.mjs` rebakes the product shelf on `/canadian-souvenirs` (hero tiles, filtered grid, ItemList) from the curated handle list at the top of the script. Sold-out products are skipped at bake time and greyed out live by the page JS. Re-run after changing the list or when a product comes back in stock. It does not touch any other grid, so the star ratings `build-card-ratings.mjs` bakes elsewhere are safe.
 4. `node scripts/build-blocks.mjs` bakes the shared blocks of the Canada city pages and the homepage into every page carrying their marker pairs: `LOGOS` (the rating and retailer-logo strip under the hero), `REVIEWS` (three real reviews after the product grid, `set="syrup"` or `set="gifts"`, quoted from the product pages) and `FAMILY` (photo, three generations, who packs the orders). Each block's copy lives only in that script: change it there and re-run, never edit a page's copy of it.
@@ -65,23 +65,21 @@ Loaded by every page. Provides: announcement bar, search modal (Ctrl+K), back-to
 │   ├── shared.js           # Sitewide features (search, cart, announcement bar)
 │   ├── favicon.png + favicon-32.png + apple-touch-icon.png  (cropped from mt-logo.webp)
 │   ├── videos/             # Hero video, scroll-scrub video, exploding view
-│   ├── frames/             # 96 JPGs for scroll sequence (frame-0000.jpg to frame-0095.jpg)
 │   └── images/             # Static images
 └── sitemap.xml
 ```
 
 ### index.html section order
-1. Hero: full-bleed photo with the copy over a dark shade, the same markup as the Canada city page heroes. The photo is the Toronto gift page's own (`assets/images/cities/gift-baskets-toronto.webp`), Liam's pick, October 2, 2026 ("i only want that hero image to be there"). The old video split hero is gone.
-2. Rating and retailer-logo strip: the `LOGOS` block baked by `scripts/build-blocks.mjs`, one slow marquee, replacing the old two-row "Where to Find Us" section
-3. Products — bento-style asymmetric grid linking to collection pages
-4. Our Story — heritage, family narrative (static)
-5. Testimonials — social proof marquee
-6. Scroll Sequence — locomotive frame-by-frame animation
-7. Terroir — single-origin story editorial split
-8. Certifications — trust and credibility (dark section)
-9. Global Reach — markets served
-10. CTA Banner — final conversion push
-11. Footer
+Rebuilt October 2, 2026 (Liam: the hero, then "go through the site and look for ai slop"). The scroll sequence, Certifications, Terroir and Our Story sections were cut; their claims were false (late harvest for the early-harvest organic syrup, every product certified organic) and they repeated each other.
+1. Hero: full-bleed photo with the copy over a dark shade, the same markup as the Canada city page heroes. The photo is the Toronto gift page's own (`assets/images/cities/gift-baskets-toronto.webp`), Liam's pick ("i only want that hero image to be there"). It fills the first screen, with the strip on its bottom edge.
+2. Rating and retailer-logo strip: the `LOGOS` block baked by `scripts/build-blocks.mjs`
+3. Products: bento tiles by category (syrup, stroopwafels, chocolates, tea and coffee, gift and home sets, snacks, all products). Bento rule below: change every tile together.
+4. Two grades from one farm: Golden (organic, early harvest) and Dark (maple leaf bottle, late harvest, not organic), with the three certification logos on the organic card only
+5. Reviews: real quotes only (Loox and Google), no review counts
+6. Family: the `FAMILY` block baked by `scripts/build-blocks.mjs` (`id="family"`; the hero's second button points here)
+7. Where we sell: the globe, and the five markets with no ranking claims
+8. FAQ: 12 questions, structured data as microdata on the visible text
+9. CTA banner, last, so the page ends on a buy button
 
 ## Key Patterns
 
@@ -228,7 +226,7 @@ Maple Terroir's GSC data is pullable through the connected Google API (claude-se
 ### Copy and content facts locked in
 
 - **"Our Promise" stats on [terroir.html](terroir.html):** 3rd Generation Farm (not 4th), 3x Certified (not "4x Organic Certified"). Only the SYRUP is organic-certified, not the full product line — so claims like "4x organic certified" across the whole company are wrong. The 3 certs are Ecocert, Canada Organic, USDA Organic.
-- **FAQ source of truth is [index.html](index.html) homepage only** — no standalone FAQ page. Currently 12 Qs: 7 original (Shawn-edited) + 5 new (international shipping, storage, grades, organic cert, wholesale). When Shawn asks to "add more FAQs," append here.
+- **FAQ source of truth is [index.html](index.html) homepage only** — no standalone FAQ page. Currently 12 questions, rewritten October 2, 2026 so every answer matches the checkout and the published refund policy (returns: damaged or defective items, reported within 7 days). When Shawn asks to "add more FAQs," append here.
 - **Markets list (CA/JP/KR/CN/TW)**, no United States since 2026-10-02 (Liam: "remove all mentions of the united states"), is framed as "markets served" on the certifications page — that context is fine to list countries in. This is different from the global rule "don't list specific shipping countries in FAQ/shipping claims" (import regs vary). The distinction: market presence vs shipping offering.
 - **Where the online store ships (Shopify admin, checked 2026-10-02): the ten provinces only.** The one shipping zone, "Domestic", covers 10 of 13 regions; Yukon, the Northwest Territories and Nunavut are unticked, and no other country has a rate. Copy says "every Canadian province", never "anywhere in Canada", "every Canadian address" or "into the territories"; a territory or foreign address is sent to info@mapleterroir.com. US shipping was switched off on purpose: a "Standard International" rate at $29.99 ran until September 2025, the last US order took five weeks by UPS, and the US orders after it were cancelled and refunded by hand before the rate was removed. The US market in Shopify Markets is still active, so US visitors can fill a cart and get no rate at checkout. **The store does not sell to the US** (Liam, 2026-10-02: "no he doesnt want us orders, redirect them"): the US hub and its five city pages were removed and 301 to `/products`, and no page may offer the online store to a US buyer. No page mentions the United States as a market either: Liam, 2026-10-02, "remove all mentions of the united states". The certification keeps its name, "USDA Organic"; it is never spelled out. Blog posts still cite US facts (Vermont, export statistics, the American Heart Association); whether those go too is Liam's call. Re-check the zone before writing any shipping claim.
 - **No contractions rule** still holds for all user-facing MT copy. Drafted new FAQ entries this session follow this.

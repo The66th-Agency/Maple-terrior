@@ -13,10 +13,6 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/videos/*
   Cache-Control: public, max-age=31536000, immutable
-/assets/frames/*
-  Cache-Control: public, max-age=31536000, immutable
-/assets/frames-v2/*
-  Cache-Control: public, max-age=31536000, immutable
 # Self-hosted fonts (were Google Fonts; moved local 2026-07-07 to cut the
 # render-blocking third-party request).
 /assets/fonts/*

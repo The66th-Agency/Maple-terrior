@@ -11,6 +11,9 @@
 // Run:  node scripts/build-products.mjs
 // Output: products/<handle>.html  (served at /products/<handle>)
 // Re-run whenever the catalog changes (new products, renamed handles, copy edits).
+// Each page is rewritten whole from product.html, which drops the Loox reviews that
+// scripts/build-reviews.mjs baked in. Run that script with the Loox export right
+// after this one, or 22 product pages lose their reviews and star rating.
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -60,6 +63,42 @@ const META_OVERRIDES = {
     'Mini stroopwafels made with non-GMO Canadian flour and a pure maple syrup filling. The one-bite version of our full-size stroopwafel.',
 };
 
+// The claims a product page may make, by handle (October 2, 2026). A claim goes on
+// a page only where a source says it is true for that product; a handle missing
+// from this map gets none of them.
+// - organic: the "Certified Organic" badge. Only the organic maple syrups, which
+//   Ecocert, Canada Organic and USDA Organic certify (site facts files; both
+//   Shopify listings say "Certified Organic by EcoCert"). Not the maple sugar or
+//   the maple cream, whatever their Shopify names say, until Shawn confirms them.
+// - canada: the "Made in Canada" badge. The maple syrups (from one Quebec farm)
+//   and the popcorn (its Shopify listing calls it Canadian made). Never the tea,
+//   grown in Sri Lanka, or the coffee, grown in Nicaragua, and never a product no
+//   source covers.
+// - quebec: the "Origin: Quebec, Canada" row under Product Details. The maple
+//   syrups only.
+// No page says Non-GMO: no source supports it for the range.
+const SYRUP = ['canada', 'quebec'];
+const CLAIMS = {
+  'organic-pure-maple-syrup-250ml': ['organic', ...SYRUP],
+  'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': ['organic', ...SYRUP],
+  'pure-maple-syrup-maple-leaf-bottle-50ml': SYRUP,
+  'pure-maple-syrup-maple-leaf-bottle-100ml': SYRUP,
+  'pure-maple-syrup-maple-leaf-bottle-250ml': SYRUP,
+  'pure-maple-syrup-jug-100ml': SYRUP,
+  'handcrafted-pure-maple-syrup-butter-popcorn': ['canada'],
+};
+const BADGES = {
+  organic: `<div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Certified Organic</span>
+            </div>`,
+  canada: `<div class="trust-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C7 2 3 6 3 11c0 5 9 11 9 11s9-6 9-11c0-5-4-9-9-9z"/><circle cx="12" cy="11" r="3"/></svg>
+              <span>Made in Canada</span>
+            </div>`,
+};
+const ORIGIN = { quebec: 'Quebec, Canada' };
+
 // Cut at a sentence, or failing that a word, so no summary ends mid-word.
 function trimSummary(text, limit = 155) {
   if (text.length <= limit) return text;
@@ -75,7 +114,7 @@ function renderProduct(template, p) {
   const canonical = `${SITE}/products/${handle}`;
   const title = `${p.title} | Maple Terroir`;
   let desc = META_OVERRIDES[handle] || trimSummary((p.description || '').replace(/\s+/g, ' ').trim());
-  if (!desc) desc = `${p.title} from Maple Terroir. Single-origin Quebec maple, family-owned since 1978.`;
+  if (!desc) desc = `${p.title} from Maple Terroir, a family business since 1978.`;
 
   const imgNode = p.images.edges[0] && p.images.edges[0].node;
   const image = imgNode ? widthUrl(imgNode.url, 1200) : '';
@@ -145,6 +184,16 @@ function renderProduct(template, p) {
   );
 
   let html = absolutize(template);
+  // Badges and the Origin row from CLAIMS. The page script never adds badges, and
+  // it shows Origin only from this baked data-origin, so hydration cannot add a
+  // claim back.
+  const claims = CLAIMS[handle] || [];
+  html = html.replace(
+    /<!-- CLAIM BADGES:[^>]*-->\n\s*/,
+    claims.filter((c) => BADGES[c]).map((c) => BADGES[c] + '\n            ').join('')
+  );
+  const origin = claims.map((c) => ORIGIN[c]).find(Boolean) || '';
+  html = html.replace('id="product-details" data-origin=""', `id="product-details" data-origin="${escAttr(origin)}"`);
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escText(title)}</title>`);
   html = html.replace(/(<meta name="description" content=")[^"]*(">)/, `$1${escAttr(desc)}$2`);
   html = html.replace('</head>', headInject + '</head>');
@@ -183,6 +232,10 @@ async function main() {
   const json = await res.json();
   const products = (json.data && json.data.products.edges || []).map((e) => e.node);
   if (!products.length) throw new Error('No products returned from Shopify');
+
+  for (const h of Object.keys(CLAIMS)) {
+    if (!products.some((p) => p.handle === h)) console.warn(`CLAIMS lists ${h}, which Shopify no longer has: update the map`);
+  }
 
   await mkdir(join(ROOT, 'products'), { recursive: true });
   let count = 0;
