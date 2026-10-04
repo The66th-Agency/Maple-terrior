@@ -786,6 +786,16 @@
       var descHtml = p.descriptionHtml || ('<p>' + p.description + '</p>');
       var tempDiv = document.createElement('div');
       tempDiv.innerHTML = descHtml;
+      // The size buttons list the real packs. The "Available in packs of ..." line in the
+      // Shopify description was wrong on 19 of the 24 products that carry it (October 4,
+      // 2026: organic syrup said 6, 12, 24 and 48; the store sells 1, 12, 24, 36 and 48),
+      // so only the unit size it names is kept. The same edit is baked into the page.
+      var packWalk = document.createTreeWalker(tempDiv, NodeFilter.SHOW_TEXT), packNode;
+      while ((packNode = packWalk.nextNode())) {
+        if (/Available in\s+packs?\s+of/i.test(packNode.nodeValue)) packNode.nodeValue = packNode.nodeValue
+          .replace(/Available in\s+packs?\s+of[^.]*?units of\s+([^.]+?)\.\s*/gi, 'Sold in $1. ')
+          .replace(/Available in\s+packs?\s+of[^.]*\.\s*/gi, '');
+      }
       // The CSP frames nothing from YouTube, so an embed in a Shopify description
       // renders as a blocked box. Show it as a link to the video instead.
       tempDiv.querySelectorAll('iframe[src*="youtube"]').forEach(function (f) {
