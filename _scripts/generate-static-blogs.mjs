@@ -513,7 +513,7 @@ function template(article) {
     ml.forEach(function (l) { l.addEventListener('click', function () { mo = false; mm.style.opacity = '0'; mm.style.pointerEvents = 'none'; b1.style.transform = ''; b2.style.opacity = '1'; b3.style.transform = ''; document.body.style.overflow = ''; }); });
   </script>
 
-  <script src="../assets/shared.js" defer></script>
+  <script src="../assets/shared.js?v=2026-10-03" defer></script>
 </body>
 </html>`;
 }
