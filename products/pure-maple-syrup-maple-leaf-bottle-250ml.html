@@ -322,19 +322,12 @@
             Add to Cart
           </button>
 
-          <div class="grid grid-cols-2 gap-3 mb-8 py-6 border-y border-warm-gray-200/50">
-            <div class="trust-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C7 2 3 6 3 11c0 5 9 11 9 11s9-6 9-11c0-5-4-9-9-9z"/><circle cx="12" cy="11" r="3"/></svg>
-              <span>Made in Canada</span>
-            </div>
-            <div class="trust-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg>
-              <span>Free shipping $99+</span>
-            </div>
-            <div class="trust-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
-              <span>Free pickup in Vancouver</span>
-            </div>
+          <!-- Shipping, returns and pickup by the button (product page audit, October 4, 2026) -->
+          <div id="pdp-ship" class="space-y-3 mb-8 py-5 border-y border-warm-gray-200/50 text-sm leading-relaxed text-warm-gray-600">
+            <p class="flex gap-3"><svg class="w-4 h-4 mt-0.5 text-amber-warm flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span><strong class="font-semibold text-charcoal">Free shipping on orders of $99 or more.</strong> Ships to every Canadian province in 3 to 9 business days, $19.99 on orders under $99. <span id="pdp-ship-note" class="block mt-1 font-medium text-charcoal" style="display:none"></span></span></p>
+            <p class="flex gap-3"><svg class="w-4 h-4 mt-0.5 text-amber-warm flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Arrived damaged? We replace or refund any damaged or defective item reported within 7 days of delivery.</span></p>
+            <p class="flex gap-3"><svg class="w-4 h-4 mt-0.5 text-amber-warm flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Free pickup in Vancouver. Choose it at checkout.</span></p>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 pt-1"><span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C7 2 3 6 3 11c0 5 9 11 9 11s9-6 9-11c0-5-4-9-9-9z"/><circle cx="12" cy="11" r="3"/></svg><span>Made in Canada</span></span></div>
           </div>
 
           <!-- Product Info Accordions -->
@@ -455,15 +448,6 @@
   </section>
 
 
-  <!-- FREE SHIPPING -->
-  <section class="pb-16 px-4 md:px-8">
-    <div class="max-w-[1200px] mx-auto text-center">
-      <div class="inline-flex items-center gap-3 bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-full px-6 py-3">
-        <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg>
-        <span class="text-sm font-medium text-warm-gray-600">Free shipping on orders of <strong class="text-charcoal">$99 CAD</strong> or more</span>
-      </div>
-    </div>
-  </section>
 
 
   <!-- FOOTER -->
@@ -534,6 +518,7 @@
   <!-- Cart Drawer -->
 
 
+  <script src="/assets/pdp.js?v=c2ba2095"></script>
   <script>
     // ── Nav, Mobile Menu ──────────────────────────────────────
     var navbar = document.getElementById('navbar');
@@ -755,7 +740,8 @@
       variants.forEach(function (v, i) {
         var btn = document.createElement('button');
         btn.className = 'variant-btn' + (i === 0 ? ' active' : '') + (!v.availableForSale ? ' sold-out' : '');
-        btn.textContent = v.title + (!v.availableForSale ? ' (Sold Out)' : '');
+        if (window.MTPdp) btn.innerHTML = MTPdp.chip(v, variants, p.handle);
+        else btn.textContent = v.title + (!v.availableForSale ? ' (Sold Out)' : '');
         btn.dataset.variantId = v.id;
         btn.dataset.price = v.priceV2.amount;
         btn.dataset.available = v.availableForSale ? '1' : '';
@@ -766,6 +752,7 @@
           selectedVariantId = v.id;
           document.getElementById('product-price').textContent = '$' + parseFloat(v.priceV2.amount).toFixed(2);
           document.getElementById('sticky-price').textContent = '$' + parseFloat(v.priceV2.amount).toFixed(2) + ' CAD';
+          if (window.MTPdp) MTPdp.select(v, variants, p.handle);
           updateAtcState(v.availableForSale);
         });
         pickerEl.appendChild(btn);
@@ -783,6 +770,7 @@
       document.getElementById('product-price').textContent = '$' + parseFloat(initVariant.priceV2.amount).toFixed(2);
       document.getElementById('sticky-title').textContent = p.title;
       document.getElementById('sticky-price').textContent = '$' + parseFloat(initVariant.priceV2.amount).toFixed(2) + ' CAD';
+      if (window.MTPdp) { MTPdp.select(initVariant, variants, p.handle); if (!firstAvail) MTPdp.soldOut(p.handle); }
 
       // Description  -  separate paragraphs from bullet points
       var descHtml = p.descriptionHtml || ('<p>' + p.description + '</p>');
@@ -880,6 +868,8 @@
 
     // ── Recommendations ───────────────────────────────────────
     function loadRecommendations(currentHandle) {
+      // Suggestions that fit this product, from assets/pdp.js; the fixed list below is the fallback.
+      if (window.MTPdp) return MTPdp.related(currentHandle);
       var STOREFRONT_URL = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
       var STOREFRONT_TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
 
@@ -919,7 +909,7 @@
 // ── Shopify Cart (shared) ─────────────────────────────────
   </script>
 
-<script src="/assets/shared.js?v=858fca01" defer></script>
+<script src="/assets/shared.js?v=4b428157" defer></script>
   <script>
 function mtShowAllReviews(btn){
   var hidden = document.querySelectorAll('.mt-review.is-hidden');

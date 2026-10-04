@@ -523,8 +523,8 @@ setTimeout(loadGA, 3000);
     var remaining = FREE_SHIPPING_CAD - subtotal;
     var pct = Math.max(0, Math.min(100, (subtotal / FREE_SHIPPING_CAD) * 100));
     var text = remaining > 0
-      ? 'Add <strong>$' + remaining.toFixed(2) + ' CAD</strong> for free shipping across Canada.'
-      : 'This order ships free across Canada.';
+      ? 'Add <strong>$' + remaining.toFixed(2) + ' CAD</strong> for free shipping to every Canadian province.'
+      : 'This order ships free.';
     var html =
       '<span>' + text + '</span>' +
       '<div style="height:3px;background:rgba(26,23,20,0.12);border-radius:100px;margin-top:0.5rem;overflow:hidden">' +

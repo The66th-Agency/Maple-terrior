@@ -15,7 +15,7 @@
 // HTML, so Google reads them on every page. ship.mjs runs it on every publish,
 // and the QA bot fails any page whose nav or footer differs from the partials.
 //
-// It also stamps /assets/cart.js and assets/shared.js with a fingerprint of
+// It also stamps /assets/cart.js, assets/shared.js and /assets/pdp.js with a fingerprint of
 // their contents (?v=...). Browsers keep both files for a day, so a page that
 // changes with its script needs a new address for the script: on October 3,
 // 2026 Liam saw two search buttons because his browser paired the new nav with
@@ -24,7 +24,7 @@
 // Usage: node scripts/build-chrome.mjs [--check]
 //   --check changes nothing and exits 1 if any page is out of step.
 
-import { readFileSync, writeFileSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
@@ -36,6 +36,7 @@ const NAV = strip(readFileSync(join(ROOT, "partials/nav.html"), "utf8"));
 const FOOTER = strip(readFileSync(join(ROOT, "partials/footer.html"), "utf8"));
 const stamp = (f) => createHash("sha1").update(readFileSync(join(ROOT, f))).digest("hex").slice(0, 8);
 const CART_V = stamp("assets/cart.js"), SHARED_V = stamp("assets/shared.js");
+const PDP_V = existsSync(join(ROOT, "assets/pdp.js")) ? stamp("assets/pdp.js") : null; // product pages only
 const CART_TAG = `<script src="/assets/cart.js?v=${CART_V}"></script>`;
 const SKIP = new Set([".git", "node_modules", "_scripts", "scripts", "assets", "partials", "functions", "runs"]);
 
@@ -112,6 +113,7 @@ for (const file of pages(ROOT)) {
   h = h.replace(/<style([^>]*)>([\s\S]*?)<\/style>/g, (whole, attrs, css) => `<style${attrs}>${css.replace(CART_CSS, "")}</style>`);
   h = h.replace(/<script src="\/assets\/cart\.js(?:\?v=[^"]*)?"><\/script>/g, CART_TAG);
   h = h.replace(/(src="[^"]*assets\/shared\.js)(?:\?v=[^"]*)?"/g, `$1?v=${SHARED_V}"`);
+  if (PDP_V) h = h.replace(/(src="\/assets\/pdp\.js)(?:\?v=[^"]*)?"/g, `$1?v=${PDP_V}"`);
   if (!h.includes(CART_TAG)) {
     const shared = h.search(/<script[^>]*src="[^"]*shared\.js(?:\?v=[^"]*)?"/);
     h = shared >= 0 ? h.slice(0, shared) + CART_TAG + "\n  " + h.slice(shared) : h.replace(/<\/body>/i, `  ${CART_TAG}\n</body>`);
