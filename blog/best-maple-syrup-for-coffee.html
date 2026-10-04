@@ -133,17 +133,28 @@
         </a>
       </div>
 
-      <!-- Mobile Menu Toggle -->
-      <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
-        <div class="relative w-5 h-4 flex flex-col justify-between">
-          <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-          <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-          <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-        </div>
-      </button>
+      <!-- Search, cart and the menu button sit together on the right. -->
+      <div class="flex items-center gap-1 shrink-0">
+        <button id="search-toggle" aria-label="Search products" class="relative w-10 h-10 shrink-0 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300">
+          <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button id="cart-toggle" onclick="MapleCart.toggle()" aria-label="Open cart" class="relative w-10 h-10 shrink-0 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300">
+          <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="nav-cart-count" id="cart-count">0</span>
+        </button>
+        <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
+          <div class="relative w-5 h-4 flex flex-col justify-between">
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+          </div>
+        </button>
+      </div>
     </div>
   </nav>
-
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
@@ -382,49 +393,49 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
         <div class="md:col-span-5">
-          <a href="/" class="flex items-center gap-2.5 mb-6">
-            <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M20 12V32M14 18L20 22M26 18L20 22M12 24L20 28M28 24L20 28" stroke="currentColor" stroke-width="1" opacity="0.5"/></svg>
-            <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
-          </a>
+          <a href="/" class="inline-block mb-6" aria-label="Maple Terroir - home"><img src="/assets/images/mt-logo.webp" alt="Maple Terroir" class="h-11 w-auto" width="1280" height="500" loading="lazy" /></a>
           <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch]">Single-origin maple syrup from one family farm in Quebec. Family owned since 1978.</p>
         </div>
+
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
           <ul class="space-y-3">
-            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Our Story</a></li>
-            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Terroir</a></li>
-            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Certifications</a></li>
-            <li><a href="/shop/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Canadian Maple Syrup</a></li>
-            <li><a href="../locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Locations We Serve</a></li>
-
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Certifications</a></li>
+            <li><a href="/blog/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Blog</a></li>
             <li><a href="/tools/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Tools</a></li>
+            <li><a href="/locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Locations We Serve</a></li>
           </ul>
         </div>
+
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
           <ul class="space-y-3">
-            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">All Products</a></li>
-            <li><a href="../collections/premium-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Maple Syrup</a></li>
-            <li><a href="../collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Gift Sets</a></li>
-            <li><a href="/shop/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Wholesale</a></li>
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
+            <li><a href="/shop/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Canadian Maple Syrup</a></li>
+            <li><a href="/shop/organic-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Organic Maple Syrup</a></li>
+            <li><a href="/collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Gift Sets</a></li>
+            <li><a href="/collections/bestsellers" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Best Sellers</a></li>
+            <li><a href="/collections/new-arrivals" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">New Arrivals</a></li>
           </ul>
         </div>
+
         <div class="md:col-span-2">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
           <ul class="space-y-3">
-            <li><a href="mailto:info@mapleterroir.com" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Contact Us</a></li>
-            <li><a href="./" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors">Blog</a></li>
+            <li><a href="/contact" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
+            <li><a href="/shop/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
+            <li><a href="/press" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Press</a></li>
+            <li><a href="https://www.instagram.com/mapleterroir/" rel="noopener" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Instagram</a></li>
+            <li><a href="https://www.facebook.com/mapleterroir/" rel="noopener" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Facebook</a></li>
           </ul>
         </div>
       </div>
+
       <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
         <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
         <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
-        <div class="flex items-center gap-6">
-          <span class="text-xs text-warm-gray-300">Ecocert</span>
-          <span class="text-xs text-warm-gray-300">Canada Organic</span>
-          <span class="text-xs text-warm-gray-300">USDA Organic</span>
-        </div>
       </div>
     </div>
   </footer>
@@ -455,5 +466,6 @@
   </script>
 
   <script src="../assets/shared.js?v=2026-10-03" defer></script>
+  <script src="/assets/cart.js"></script>
 </body>
 </html>

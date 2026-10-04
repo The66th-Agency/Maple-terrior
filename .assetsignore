@@ -14,3 +14,6 @@ collection.html
 # Tailwind build inputs (the compiled output assets/tailwind.css IS served).
 tailwind.config.js
 tailwind-input.css
+
+# Shared components, baked into every page by scripts/build-chrome.mjs; not pages themselves.
+partials

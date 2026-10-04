@@ -90,39 +90,6 @@
     .filter-pill:hover { border-color: #C4841D; color: #1A1714; }
     .filter-pill.active { border-color: #C4841D; background: rgba(196,132,29,0.08); color: #1A1714; font-weight: 600; }
 
-    /* Cart Drawer */
-    .cart-overlay { position: fixed; inset: 0; background: rgba(26,23,20,0.35); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity 0.35s cubic-bezier(0.32, 0.72, 0, 1); }
-    .cart-overlay.open { opacity: 1; pointer-events: all; }
-    .cart-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 90vw); background: #FDFBF7; z-index: 201; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); display: flex; flex-direction: column; box-shadow: -16px 0 48px rgba(26,23,20,0.12); }
-    .cart-drawer.open { transform: translateX(0); }
-    .cart-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 1.75rem; border-bottom: 1px solid rgba(217,209,196,0.4); }
-    .cart-title { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; font-weight: 500; color: #1A1714; }
-    .cart-close { width: 2.2rem; height: 2.2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; color: #8C8175; background: none; border: none; cursor: pointer; }
-    .cart-close:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
-    .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.75rem; }
-    .cart-empty { text-align: center; padding: 4rem 1rem; color: #B8AD9E; font-size: 0.9rem; }
-    .cart-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(217,209,196,0.3); }
-    .cart-item:last-child { border-bottom: none; }
-    .cart-item-img { width: 72px; height: 72px; border-radius: 0.75rem; object-fit: cover; background: #F5F0E8; flex-shrink: 0; }
-    .cart-item-info { flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
-    .cart-item-name { font-family: 'Fraunces', Georgia, serif; font-size: 1rem; font-weight: 500; color: #1A1714; line-height: 1.3; }
-    .cart-item-variant { font-size: 0.72rem; color: #8C8175; }
-    .cart-item-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-    .cart-item-qty { display: flex; align-items: center; border: 1px solid rgba(217,209,196,0.5); border-radius: 100px; overflow: hidden; }
-    .cart-item-qty button {width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #8C8175; background: none; border: none; cursor: pointer; transition: background 0.15s, color 0.15s; }
-    .cart-item-qty button:hover { background: rgba(26,23,20,0.06); color: #1A1714; }
-    .cart-item-qty span { min-width: 1.5rem; text-align: center; font-size: 0.78rem; font-weight: 500; color: #1A1714; }
-    .cart-item-price { font-family: 'Fraunces', Georgia, serif; font-size: 1rem; font-weight: 500; color: #1A1714; }
-    .cart-footer { padding: 1.25rem 1.75rem 1.75rem; border-top: 1px solid rgba(217,209,196,0.4); }
-    .cart-subtotal { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
-    .cart-subtotal-label { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: #8C8175; }
-    .cart-subtotal-price { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; font-weight: 500; color: #1A1714; }
-    .cart-note { font-size: 0.72rem; color: #B8AD9E; margin-bottom: 1rem; }
-    .cart-checkout-btn { display: flex; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; padding: 1rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s cubic-bezier(0.32, 0.72, 0, 1), transform 0.2s; }
-    .cart-checkout-btn:hover { background: #C4841D; transform: translateY(-1px); }
-    .nav-cart-count { position: absolute; top: -2px; right: -4px; min-width: 17px; height: 17px; border-radius: 100px; background: #C4841D; color: #fff; font-size: 0.6rem; font-weight: 600; display: flex; align-items: center; justify-content: center; padding: 0 4px; opacity: 0; transform: scale(0.5); transition: opacity 0.25s cubic-bezier(0.32, 0.72, 0, 1), transform 0.25s cubic-bezier(0.32, 0.72, 0, 1); pointer-events: none; }
-    .nav-cart-count.visible { opacity: 1; transform: scale(1); }
-
     @media (prefers-reduced-motion: reduce) {
       .skeleton { animation: none; }
       .product-card:hover { transform: none; }
@@ -153,25 +120,43 @@
         </a>
       </div>
 
-      <!-- Cart Icon -->
-      <button id="cart-toggle" onclick="MapleCart.toggle()" aria-label="Open cart" class="relative w-10 h-10 shrink-0 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300 ml-2">
-        <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
-        </svg>
-        <span class="nav-cart-count" id="cart-count">0</span>
-      </button>
-
-      <!-- Mobile Menu Toggle -->
-      <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
-        <div class="relative w-5 h-4 flex flex-col justify-between">
-          <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-          <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-          <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-        </div>
-      </button>
+      <!-- Search, cart and the menu button sit together on the right. -->
+      <div class="flex items-center gap-1 shrink-0">
+        <button id="search-toggle" aria-label="Search products" class="relative w-10 h-10 shrink-0 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300">
+          <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button id="cart-toggle" onclick="MapleCart.toggle()" aria-label="Open cart" class="relative w-10 h-10 shrink-0 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300">
+          <svg class="w-5 h-5 text-charcoal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="nav-cart-count" id="cart-count">0</span>
+        </button>
+        <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
+          <div class="relative w-5 h-4 flex flex-col justify-between">
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+          </div>
+        </button>
+      </div>
     </div>
   </nav>
+  <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+    <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
+    <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
+      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/products"
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop Now
+        <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
@@ -259,51 +244,57 @@
   <!-- FOOTER -->
   <footer class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/50">
     <div class="max-w-[1400px] mx-auto">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <a href="/" class="flex items-center gap-2.5">
-          <svg class="w-7 h-7 text-amber-warm" viewBox="0 0 40 40" fill="none">
-            <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/>
-            <path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-          </svg>
-          <span class="font-display text-lg font-semibold text-charcoal tracking-tight">Maple Terroir</span>
-        </a>
-        <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd.</p>
-        <a href="/locations-we-serve/" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Locations We Serve</a>
-        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
-        <div class="flex items-center gap-6">
-          <span class="text-xs text-warm-gray-300">Ecocert</span>
-          <span class="text-xs text-warm-gray-300">Canada Organic</span>
-          <span class="text-xs text-warm-gray-300">USDA Organic</span>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 mb-16 md:mb-20">
+        <div class="md:col-span-5">
+          <a href="/" class="inline-block mb-6" aria-label="Maple Terroir - home"><img src="/assets/images/mt-logo.webp" alt="Maple Terroir" class="h-11 w-auto" width="1280" height="500" loading="lazy" /></a>
+          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch]">Single-origin maple syrup from one family farm in Quebec. Family owned since 1978.</p>
         </div>
+
+        <div class="md:col-span-2 md:col-start-7">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
+          <ul class="space-y-3">
+            <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
+            <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
+            <li><a href="/certifications" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Certifications</a></li>
+            <li><a href="/blog/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Blog</a></li>
+            <li><a href="/tools/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Tools</a></li>
+            <li><a href="/locations-we-serve/" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Locations We Serve</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
+          <ul class="space-y-3">
+            <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
+            <li><a href="/shop/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Canadian Maple Syrup</a></li>
+            <li><a href="/shop/organic-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Organic Maple Syrup</a></li>
+            <li><a href="/collections/maple-syrup-gift-set" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Gift Sets</a></li>
+            <li><a href="/collections/bestsellers" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Best Sellers</a></li>
+            <li><a href="/collections/new-arrivals" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">New Arrivals</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
+          <ul class="space-y-3">
+            <li><a href="/contact" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
+            <li><a href="/shop/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
+            <li><a href="/press" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Press</a></li>
+            <li><a href="https://www.instagram.com/mapleterroir/" rel="noopener" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Instagram</a></li>
+            <li><a href="https://www.facebook.com/mapleterroir/" rel="noopener" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-warm-gray-200/50">
+        <p class="text-xs text-warm-gray-400">&copy; 2026 Maple Terroir Products Ltd. All rights reserved.</p>
+        <a href="/privacy" class="text-xs text-warm-gray-400 hover:text-charcoal transition-colors duration-300">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
 
   <!-- Cart Drawer -->
-  <div class="cart-overlay" id="cart-overlay"></div>
-  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Shopping cart">
-    <div class="cart-header">
-      <h2 class="cart-title">Your Cart</h2>
-      <button class="cart-close" aria-label="Close cart" onclick="MapleCart.toggle()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="cart-items" id="cart-items">
-      <div class="cart-empty" id="cart-empty">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        <p>Your cart is empty</p>
-      </div>
-    </div>
-    <div class="cart-footer" id="cart-footer" style="display:none">
-      <div class="cart-subtotal">
-        <span class="cart-subtotal-label">Subtotal</span>
-        <span class="cart-subtotal-price" id="cart-subtotal">$0.00</span>
-      </div>
-      <p class="cart-note">Shipping &amp; taxes calculated at checkout</p>
-      <button class="cart-checkout-btn" onclick="MapleCart.checkout()">Checkout <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-    </div>
-  </aside>
 
 
   <script>
@@ -381,41 +372,9 @@
   </script>
 
 
+  <script src="/assets/cart.js"></script>
   <script>
-    // ── Shopify Cart ──────────────────────────────────────────
-    var MapleCart = (function () {
-      var cartId = localStorage.getItem('maple_cart_id') || null;
-      var cartData = null;
-      var CART_FRAGMENT = 'id checkoutUrl lines(first:50){edges{node{id quantity merchandise{...on ProductVariant{id title priceV2{amount currencyCode}image{url altText}product{title}}}}}}cost{subtotalAmount{amount currencyCode}}';
-      function gql(query, variables) { return fetch(STOREFRONT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: query, variables: variables || {} }) }).then(function (r) { return r.json(); }); }
-      function createCart(variantId, qty) { return gql('mutation($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{' + CART_FRAGMENT + '}userErrors{field message}}}', { lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }).then(function (res) { cartData = res.data.cartCreate.cart; cartId = cartData.id; localStorage.setItem('maple_cart_id', cartId); return cartData; }); }
-      function addLine(variantId, qty) { if (!cartId) return createCart(variantId, qty); return gql('mutation($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{' + CART_FRAGMENT + '}userErrors{field message}}}', { cartId: cartId, lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }).then(function (res) { if (res.data.cartLinesAdd.userErrors && res.data.cartLinesAdd.userErrors.length) { localStorage.removeItem('maple_cart_id'); cartId = null; return createCart(variantId, qty); } cartData = res.data.cartLinesAdd.cart; return cartData; }); }
-      function updateLine(lineId, qty) { return gql('mutation($cartId:ID!,$lines:[CartLineUpdateInput!]!){cartLinesUpdate(cartId:$cartId,lines:$lines){cart{' + CART_FRAGMENT + '}}}', { cartId: cartId, lines: [{ id: lineId, quantity: qty }] }).then(function (res) { cartData = res.data.cartLinesUpdate.cart; return cartData; }); }
-      function removeLine(lineId) { return gql('mutation($cartId:ID!,$lineIds:[ID!]!){cartLinesRemove(cartId:$cartId,lineIds:$lineIds){cart{' + CART_FRAGMENT + '}}}', { cartId: cartId, lineIds: [lineId] }).then(function (res) { cartData = res.data.cartLinesRemove.cart; return cartData; }); }
-      function fetchCart() { if (!cartId) return Promise.resolve(null); return gql('query($id:ID!){cart(id:$id){' + CART_FRAGMENT + '}}', { id: cartId }).then(function (res) { if (!res.data.cart) { localStorage.removeItem('maple_cart_id'); cartId = null; cartData = null; return null; } cartData = res.data.cart; return cartData; }); }
-      function getLines() { if (!cartData || !cartData.lines) return []; return cartData.lines.edges.map(function (e) { return e.node; }); }
-      function getTotalQty() { return getLines().reduce(function (s, l) { return s + l.quantity; }, 0); }
-      function renderBadge() { var el = document.getElementById('cart-count'); if (!el) return; var qty = getTotalQty(); el.textContent = qty; el.classList.toggle('visible', qty > 0); }
-      function renderDrawer() {
-        var itemsEl = document.getElementById('cart-items'); var emptyEl = document.getElementById('cart-empty'); var footerEl = document.getElementById('cart-footer'); var subtotalEl = document.getElementById('cart-subtotal'); var lines = getLines();
-        itemsEl.querySelectorAll('.cart-item').forEach(function (el) { el.remove(); });
-        if (!lines.length) { emptyEl.style.display = ''; footerEl.style.display = 'none'; return; }
-        emptyEl.style.display = 'none'; footerEl.style.display = '';
-        lines.forEach(function (line) {
-          var v = line.merchandise; var price = parseFloat(v.priceV2.amount) * line.quantity; var imgUrl = v.image ? v.image.url + '&width=144' : ''; var div = document.createElement('div'); div.className = 'cart-item';
-          div.innerHTML = (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (window.MapleEsc||String)(v.image.altText || v.product.title) + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + price.toFixed(2) + '</span></div></div>';
-          itemsEl.appendChild(div);
-        });
-        if (cartData.cost && cartData.cost.subtotalAmount) { subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2) + ' CAD'; }
-        itemsEl.querySelectorAll('[data-action]').forEach(function (btn) { btn.addEventListener('click', function () { var lineId = btn.dataset.line; var action = btn.dataset.action; var qtyEl = btn.parentNode.querySelector('span'); var current = parseInt(qtyEl.textContent, 10) || 0; var newQty = action === 'inc' ? current + 1 : current - 1; if (newQty < 0) return; qtyEl.textContent = newQty; var serverLine = lines.find(function (l) { return l.id === lineId; }); var unitPrice = serverLine ? parseFloat(serverLine.merchandise.priceV2.amount) : 0; var priceEl = btn.closest('.cart-item-bottom').querySelector('.cart-item-price'); if (priceEl) priceEl.textContent = '$' + (unitPrice * newQty).toFixed(2); var optBadge = 0, optSubtotal = 0; itemsEl.querySelectorAll('.cart-item-qty span').forEach(function (s) { optBadge += parseInt(s.textContent, 10) || 0; }); itemsEl.querySelectorAll('.cart-item-price').forEach(function (p) { optSubtotal += parseFloat(p.textContent.replace(/[^0-9.]/g, '')) || 0; }); subtotalEl.textContent = '$' + optSubtotal.toFixed(2) + ' CAD'; var badgeEl = document.getElementById('cart-count'); if (badgeEl) { badgeEl.textContent = optBadge; badgeEl.classList.toggle('visible', optBadge > 0); } var timers = window.__mtQtyTimers = window.__mtQtyTimers || {}; clearTimeout(timers[lineId]); timers[lineId] = setTimeout(function () { delete timers[lineId]; var finalQty = parseInt(qtyEl.textContent, 10); var op = finalQty <= 0 ? removeLine(lineId) : updateLine(lineId, finalQty); op.then(function () { var sl = getLines().find(function (l) { return l.id === lineId; }); if (finalQty <= 0 || !sl || sl.quantity !== finalQty) renderDrawer(); renderBadge(); }).catch(function () { renderDrawer(); renderBadge(); }); }, 300); }); });
-      }
-      function toggle() { var overlay = document.getElementById('cart-overlay'); var drawer = document.getElementById('cart-drawer'); var isOpen = drawer.classList.contains('open'); drawer.classList.toggle('open'); overlay.classList.toggle('open'); document.body.style.overflow = isOpen ? '' : 'hidden'; if (!isOpen) renderDrawer(); }
-      function addFromBtn(btn) { var variantId = btn.dataset.variantId; if (!variantId) return; var origHTML = btn.innerHTML; btn.classList.add('added'); btn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added'; addLine(variantId, 1).then(function () { renderBadge(); setTimeout(function () { btn.classList.remove('added'); btn.innerHTML = origHTML; }, 1400); }); }
-      function checkout() { if (!cartData || !cartData.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cartData.checkoutUrl); } else { window.location.href = cartData.checkoutUrl; } }
-      function init() { fetchCart().then(function () { renderBadge(); }); document.getElementById('cart-overlay').addEventListener('click', toggle); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle(); }); }
-      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
-      return { toggle: toggle, addFromBtn: addFromBtn, addLine: addLine, renderBadge: renderBadge, checkout: checkout };
-    })();
+// ── Shopify Cart ──────────────────────────────────────────
   </script>
 
 <script src="../assets/shared.js?v=2026-10-03" defer></script>

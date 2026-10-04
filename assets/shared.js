@@ -237,8 +237,8 @@ setTimeout(loadGA, 3000);
     document.body.appendChild(btt);
 
     // 4. CART LINK IN MOBILE MENU
-    // Only on pages with a cart drawer (the ones whose nav has #cart-toggle);
-    // elsewhere MapleCart is undefined and the link would do nothing.
+    // Every page loads assets/cart.js since October 3, 2026, so every nav has
+    // #cart-toggle; the check stays for a page that has not been rebaked.
     var mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu && document.getElementById('cart-toggle')) {
       var menuInner = mobileMenu.querySelector('.flex.flex-col');
@@ -281,8 +281,14 @@ setTimeout(loadGA, 3000);
     }, 1000);
 
     // 5. SEARCH ICON IN NAV
+    // The nav in partials/nav.html carries its own #search-toggle (October 3,
+    // 2026); this only wires it. The fallback builds one for a page that has
+    // not been rebaked yet.
+    var searchToggle = document.getElementById('search-toggle');
     var cartBtn = document.getElementById('cart-toggle');
-    if (cartBtn) {
+    if (searchToggle) {
+      searchToggle.addEventListener('click', toggleSearch);
+    } else if (cartBtn) {
       var searchBtn = document.createElement('button');
       searchBtn.setAttribute('aria-label', 'Search products');
       searchBtn.className = cartBtn.className.replace('ml-2', '');
