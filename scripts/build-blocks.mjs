@@ -89,10 +89,14 @@ const logos = () => `  <section aria-label="Customer rating and retailers" class
 const SETS = {
   syrup: [['organic-pure-maple-syrup-250ml', 'Amrit G.'], ['pure-maple-syrup-maple-leaf-bottle-250ml', 'Gary B.'], ['maple-syrup-mini-stroopwafel', 'Carol C.']],
   gifts: [['maple-frenzy-home-set', 'Simon S.'], ['pure-maple-syrup-stroopwafels-caddy', 'Yoshimi S.'], ['maple-syrup-mini-stroopwafel', 'Michelle Buchar']],
+  // The collections of things people eat rather than pour or send: cookies,
+  // chocolates, snacks, stroopwafels, tea and coffee (October 3, 2026).
+  treats: [['maple-leaf-mini-shortbread-cookies', 'Rowena A.'], ['handcrafted-pure-maple-syrup-butter-popcorn', 'Chris'], ['cocoa-chocolate-maple-stroopwafels-caddy', 'Kiko W.']],
 };
 const HEAD = {
   syrup: 'Rated 5.0 by the People Who Pour It',
   gifts: 'Rated 5.0 by the People Who Send It',
+  treats: 'Rated 5.0 by the People Who Snack on It',
 };
 function review(handle, name) {
   const f = join(ROOT, 'products', `${handle}.html`);
@@ -111,6 +115,8 @@ function review(handle, name) {
   }
   return null;
 }
+// A Shopify image is resized by the CDN; a card image of our own is served as is.
+const sizedImg = (url, w) => /cdn\.shopify\.com/.test(url) ? `${url}${url.includes('?') ? '&amp;' : '?'}width=${w}` : url.replace('https://mapleterroir.com', '');
 function reviews(set, where) {
   const picks = (SETS[set] || SETS.syrup).map(([h, n]) => review(h, n)).filter(Boolean);
   if (picks.length < 3) console.warn(`  ${where}: only ${picks.length} of the "${set}" reviews still published on their product pages`);
@@ -120,7 +126,7 @@ function reviews(set, where) {
   const big = lead ? `        <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
           <a href="${lead.href}" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
             <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
-            <img src="${lead.img}&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+            <img src="${sizedImg(lead.img, 700)}" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
           </a>
           <div class="p-7 md:p-10 flex flex-col justify-center">
             ${STARS}
@@ -129,7 +135,7 @@ function reviews(set, where) {
           </div>
         </figure>` : '';
   const small = (r, i) => `        <figure class="reveal reveal-delay-${i + 1} group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="${r.href}" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="${r.img}&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="${r.href}" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="${sizedImg(r.img, 300)}" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
           <div class="flex flex-col">
             ${STARS}
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;${r.text}&rdquo;</blockquote>
@@ -155,7 +161,7 @@ ${[big, ...rest.map(small)].filter(Boolean).join('\n')}
 const PHOTO = { src: '/assets/images/story/shawn-lytton.webp', w: 640, h: 800 };
 const ALT = 'Shawn Lytton, CEO of Maple Terroir, in front of a shelf of maple syrup and Canadian food gifts';
 const CAPTION = 'Shawn Lytton, CEO of Maple Terroir.';
-const family = () => `  <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
+const family = (where) => `  <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
     <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
       <figure class="reveal md:col-span-5 max-w-[420px] w-full mx-auto md:mx-0">
         <img src="${PHOTO.src}" alt="${ALT}" width="${PHOTO.w}" height="${PHOTO.h}" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[1.5rem]">
@@ -165,7 +171,7 @@ const family = () => `  <section id="family" class="scroll-mt-28 py-16 md:py-24 
         <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Three Generations of One Maple Family.</h2>
         <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and Gavin Lytton packs and ships the online orders from Vancouver.</p>
         <p class="text-warm-gray-600 leading-relaxed mb-8 max-w-[56ch]">When you order from mapleterroir.com, the order goes to that family, and they are the ones who pack it.</p>
-        <a href="/story" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Read the family story <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+${where === 'story.html' ? '' : `        <a href="/story" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Read the family story <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`}
       </div>
     </div>
   </section>`;
@@ -198,7 +204,7 @@ const cta = (attrs) => {
               <div class="flex flex-wrap gap-3 justify-center">
                 <a href="${c.href}" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
                   <span>${c.label}</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/8 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>${second}
@@ -235,7 +241,7 @@ for (const file of only.length ? only : walk(ROOT)) {
     if (end < 0) throw new Error(`${where}: ${kind}:END missing`);
     const set = (attrs.match(/set="([^"]+)"/) || [])[1] || 'syrup';
     const marker = kind === 'REVIEWS' ? `<!-- REVIEWS:START set="${set}" -->` : kind === 'CTA' ? `<!-- CTA:START${attrs.trimEnd() ? attrs.trimEnd() + ' ' : ' '}-->` : `<!-- ${kind}:START baked by scripts/build-blocks.mjs -->`;
-    const block = kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : kind === 'CTA' ? cta(attrs) : family();
+    const block = kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : kind === 'CTA' ? cta(attrs) : family(where);
     out += html.slice(pos, open) + marker + '\n' + block + '\n  ';
     pos = end;
     counts[kind] = (counts[kind] || 0) + 1;

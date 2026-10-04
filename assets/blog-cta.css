@@ -132,3 +132,24 @@
   .blog-cta .blog-cta__link { width: 100%; }
 }
 
+
+
+/* PRODUCTS INSIDE THE CARD.
+   Two real products with an add to cart button, baked by scripts/build-shelf.mjs
+   from a SHELF marker inside the aside (October 3, 2026). The card used to only
+   link to a product page, and the two biggest posts carrying it had about 690
+   visits in 28 days and no add to cart. The rules are scoped to the card and
+   doubled up for the same reason as the rest of this file: the article body
+   styles its own headings, paragraphs, links and images. */
+.blog-cta [data-shelf] { margin-top: 1.75rem; }
+.blog-cta .product-card { background: #fff; border-radius: 1.5rem; overflow: hidden; transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+.blog-cta .product-card:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -16px rgba(26, 23, 20, 0.14); }
+.blog-cta .product-card img { margin: 0; border-radius: 0; box-shadow: none; }
+.blog-cta .product-card h3 { margin: 0; font-size: 0.95rem; line-height: 1.35; }
+.blog-cta .product-card p { margin: 0; font-size: 0.75rem; line-height: 1.4; }
+.blog-cta .product-card [data-price] { font-size: 0.875rem; }
+.blog-cta .product-card a { color: inherit; text-decoration: none; border: 0; }
+.blog-cta .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.95rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+.blog-cta .atc-btn:hover { background: #C4841D; }
+.blog-cta .atc-btn.added { background: #5A5249; }
+.blog-cta .atc-btn:disabled { background: #B8AD9E; cursor: default; }

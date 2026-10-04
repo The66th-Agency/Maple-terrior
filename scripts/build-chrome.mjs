@@ -72,6 +72,20 @@ for (const file of pages(ROOT)) {
     mm = span(h, /<div id="mobile-menu"/, "div");
   }
 
+  // 1b. any second mobile menu. On 81 pages the old one sat behind a comment
+  // line, so the first bake (61a4aee) added the shared menu and left the old one
+  // in place: invisible, but every menu link twice and two ids alike.
+  const keep = h.indexOf('<div id="mobile-menu"');
+  for (let at; keep >= 0 && (at = h.indexOf('<div id="mobile-menu"', keep + 1)) > 0; ) {
+    const sp = span(h.slice(at), /<div id="mobile-menu"/, "div");
+    if (!sp) break;
+    const before = h.slice(0, at);
+    const cm = before.match(/[ \t]*<!--[^\n]*-->[ \t]*\n[ \t]*$/);
+    const start = cm && /mobile/i.test(cm[0]) ? at - cm[0].length : before.lastIndexOf("\n") + 1;
+    const end = at + sp[1];
+    h = h.slice(0, start) + h.slice(h[end] === "\n" ? end + 1 : end);
+  }
+
   // 2. footer
   const ft = span(h, /<footer\b/, "footer");
   if (ft) h = h.slice(0, ft[0]) + FOOTER + h.slice(ft[1]);

@@ -84,7 +84,12 @@ window.MapleCart = (function () {
     });
   }
   function toggle() { var overlay = document.getElementById('cart-overlay'); var drawer = document.getElementById('cart-drawer'); var isOpen = drawer.classList.contains('open'); drawer.classList.toggle('open'); overlay.classList.toggle('open'); document.body.style.overflow = isOpen ? '' : 'hidden'; if (!isOpen) renderDrawer(); }
-  function addFromBtn(btn) { var variantId = btn.dataset.variantId; if (!variantId) return; var origHTML = btn.innerHTML; btn.classList.add('added'); btn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added'; addLine(variantId, 1).then(function () { renderBadge(); setTimeout(function () { btn.classList.remove('added'); btn.innerHTML = origHTML; }, 1400); }); }
+  // An add button that sits inside a product card's link (the older city and shop
+  // pages build their cards that way) must not follow the link: stopPropagation in
+  // the button's onclick stops the card's own handler but not the browser opening
+  // the product page, which cancelled the add before the cart was saved (found
+  // October 3, 2026). Cancelling the click's default here covers every page.
+  function addFromBtn(btn) { var ev = window.event; if (ev && ev.type === 'click' && btn.closest && btn.closest('a[href]') && ev.preventDefault) ev.preventDefault(); var variantId = btn.dataset.variantId; if (!variantId) return; var origHTML = btn.innerHTML; btn.classList.add('added'); btn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg> Added'; addLine(variantId, 1).then(function () { renderBadge(); setTimeout(function () { btn.classList.remove('added'); btn.innerHTML = origHTML; }, 1400); }); }
   function checkout() { if (!cartData || !cartData.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cartData.checkoutUrl); } else { window.location.href = cartData.checkoutUrl; } }
   function init() { fetchCart().then(function () { renderBadge(); }); document.getElementById('cart-overlay').addEventListener('click', toggle); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle(); }); }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }

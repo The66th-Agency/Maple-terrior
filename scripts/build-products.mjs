@@ -16,6 +16,7 @@
 // after this one, or 22 product pages lose their reviews and star rating.
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -209,6 +210,16 @@ function renderProduct(template, p) {
     /(<div class="pdp-acc-inner" id="product-desc">)\s*<div class="skeleton"[^>]*><\/div>\s*(<\/div>)/,
     `$1${descHtml}$2`
   );
+  // Bake the card photo into the gallery. It used to arrive only after the page
+  // script had asked Shopify for the product, so the largest image waited on that
+  // round trip (PostHog, October 3, 2026: LCP p75 3.8 s on the First Tap Nouveau
+  // page). The script later writes the same URL, which the browser has cached.
+  if (existsSync(join(ROOT, 'assets/images/cards', `${handle}.webp`))) {
+    html = html.replace(
+      /(<div class="gallery-main" id="gallery-main">)\s*<div class="skeleton w-full h-full"><\/div>\s*(<\/div>)/,
+      `$1<img src="/assets/images/cards/${handle}.webp?v=1&amp;width=800" alt="${escAttr(p.title)}" width="1000" height="1000" fetchpriority="high">$2`
+    );
+  }
   // Bake the price into the visible span. Raw HTML used to show an empty node
   // (client JS fills it), so non-JS crawlers saw no price outside the JSON-LD.
   // The hydration script still overwrites this with the live Shopify price.

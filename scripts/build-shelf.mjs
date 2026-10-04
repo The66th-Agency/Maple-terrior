@@ -108,7 +108,11 @@ for (const file of only.length ? only : walk(ROOT)) {
     // Columns follow the count so no card sits alone on the last row (Liam saw a
     // fifth card stranded under a row of four on 2026-10-02).
     const n = items.length, cols = n <= 5 ? n : n % 4 === 0 ? 4 : n % 3 === 0 ? 3 : 4;
-    const inner = `\n      <div data-shelf class="grid grid-cols-2 ${({ 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4', 5: 'lg:grid-cols-5' })[cols]} gap-3 md:gap-5">\n${items.map((p) => '        ' + card(p)).join('\n')}\n      </div>\n      ${LIVE}\n      `;
+    // Below 1024px the shelf runs two columns, so an odd last card would sit alone:
+    // it spans the row instead, its photo the width of one column (October 3, 2026,
+    // first worked out on /terroir; Liam had flagged a stranded card on 2026-10-02).
+    const ODD = '<style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>';
+    const inner = `\n      ${ODD}\n      <div data-shelf class="grid grid-cols-2 ${({ 1: 'lg:grid-cols-1', 2: 'lg:grid-cols-2', 3: 'lg:grid-cols-3', 4: 'lg:grid-cols-4', 5: 'lg:grid-cols-5' })[cols]} gap-3 md:gap-5">\n${items.map((p) => '        ' + card(p)).join('\n')}\n      </div>\n      ${LIVE}\n      `;
     out += html.slice(pos, openEnd) + inner;
     pos = close;
   }

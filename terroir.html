@@ -1,36 +1,32 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://mapleterroir.com/terroir">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <title>Single-Origin Maple Syrup | Quebec Appalachians | Maple Terroir</title>
-  <meta name="description" content="Where Maple Terroir syrup comes from: one farm in Quebec's Appalachian Mountains, and how our early and late harvest syrups taste.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <title>Quebec Maple Syrup From One Farm | Maple Terroir</title>
+  <meta name="description" content="Quebec maple syrup from one farm in the Appalachian Mountains, in two grades: Golden from early in the season and Dark from late. See which to choose.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mapleterroir.com/terroir">
-  <meta property="og:title" content="Single-Origin Maple Syrup | Quebec Appalachians | Maple Terroir">
-  <meta property="og:description" content="Where Maple Terroir syrup comes from: one farm in Quebec's Appalachian Mountains, and how our early and late harvest syrups taste.">
-  <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434">
-  <meta property="og:image:alt" content="Maple Terroir organic maple syrup, 250 mL bottle">
+  <meta property="og:title" content="Quebec Maple Syrup From One Farm | Maple Terroir">
+  <meta property="og:description" content="Quebec maple syrup from one farm in the Appalachian Mountains, in two grades: Golden from early in the season and Dark from late. See which to choose.">
+  <meta property="og:image" content="https://mapleterroir.com/assets/images/terroir/quebec-maple-syrup-golden-and-dark.webp">
+  <meta property="og:image:alt" content="A bottle of Maple Terroir organic Golden maple syrup beside a maple leaf bottle of Dark maple syrup on a wooden table, lit from behind by a window onto a snowy maple forest">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Single-Origin Maple Syrup | Quebec Appalachians | Maple Terroir">
-  <meta name="twitter:description" content="Where Maple Terroir syrup comes from: one farm in Quebec's Appalachian Mountains, and how our early and late harvest syrups taste.">
-  <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434">
+  <meta name="twitter:title" content="Quebec Maple Syrup From One Farm | Maple Terroir">
+  <meta name="twitter:description" content="Quebec maple syrup from one farm in the Appalachian Mountains, in two grades: Golden from early in the season and Dark from late. See which to choose.">
+  <meta name="twitter:image" content="https://mapleterroir.com/assets/images/terroir/quebec-maple-syrup-golden-and-dark.webp">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "Terroir | Maple Terroir",
+    "@type": "WebPage",
+    "name": "Quebec Maple Syrup From One Farm",
     "url": "https://mapleterroir.com/terroir",
-    "description": "Where Maple Terroir's maple syrup comes from: one farm in Quebec's Appalachian Mountains.",
-    "mainEntity": {
-      "@type": "Place",
-      "name": "Quebec Appalachian Mountains",
-      "address": { "@type": "PostalAddress", "addressRegion": "QC", "addressCountry": "CA" }
-    }
+    "description": "Quebec maple syrup from one farm in the Appalachian Mountains, in two grades: Golden from early in the season and Dark from late in the season.",
+    "isPartOf": { "@type": "WebSite", "name": "Maple Terroir", "url": "https://mapleterroir.com" }
   }
   </script>
   <script type="application/ld+json">
@@ -46,7 +42,8 @@
 
   <link rel="preload" href="/assets/fonts.css" as="style">
   <link rel="stylesheet" href="/assets/fonts.css">
-
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="preload" as="image" href="/assets/images/terroir/quebec-maple-syrup-golden-and-dark.webp" fetchpriority="high">
   <link rel="stylesheet" href="/assets/tailwind.css">
 
   <style>
@@ -56,26 +53,123 @@
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
     .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
-    .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; } .reveal-delay-4 { transition-delay: 400ms; }
+    .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
     .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
     .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
-    .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+    .product-card { background: #fff; border-radius: 2rem; overflow: hidden; transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(26,23,20,0.12); }
+    .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+    .atc-btn:hover { background: #C4841D; }
+    .atc-btn.added { background: #5A5249; }
+    .sold-out-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 100px; background: rgba(140,129,117,0.12); color: #8C8175; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; }
+
+    /* ── Terroir page (October 3, 2026). Page styles scoped as .tr-* ── */
+    .tr-body a { color: #8A5A10; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; text-decoration-color: rgba(196,132,29,0.55); transition: color .3s, text-decoration-color .3s; }
+    .tr-body a:hover { color: #1A1714; text-decoration-color: #C4841D; }
+    .tr-body-dark a { color: #F4C77D; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; text-decoration-color: rgba(244,199,125,0.5); }
+    .tr-body-dark a:hover { color: #FDFBF7; text-decoration-color: #F4C77D; }
+
+    /* WHICH GRADE: label | Golden | Dark, folding to two columns on phones */
+    .tr-cmp { display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; }
+    .tr-cmp > * { min-width: 0; }
+    .tr-head { position: relative; border-radius: 28px; overflow: hidden; background: #F1E9DC; }
+    .tr-head img { display: block; width: 100%; aspect-ratio: 5 / 4; object-fit: cover; object-position: 50% 52%; transition: transform 1.2s cubic-bezier(.32,.72,0,1); }
+    .tr-head:hover img { transform: scale(1.03); }
+    .tr-swatch { height: 10px; border-radius: 999px; margin: 22px 0 16px; }
+    .tr-sw-golden { background: linear-gradient(90deg, #F6D78A, #E3A944); }
+    .tr-sw-dark { background: linear-gradient(90deg, #A9561A, #6A3210); }
+    .tr-name { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.1; letter-spacing: -0.015em; color: #1A1714; }
+    .tr-sub { font-size: 14px; color: #8C8175; margin-top: 6px; margin-bottom: 8px; }
+    .tr-lbl, .tr-cell { border-top: 1px solid #E7DFD3; padding: 18px 0; }
+    .tr-lbl { font-size: 13px; font-weight: 600; color: #8C8175; }
+    .tr-cell { font-size: 15px; line-height: 1.55; color: #2E2822; }
+    .tr-cell .tr-price { font-weight: 600; color: #1A1714; white-space: nowrap; }
+    .tr-buy { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; align-content: flex-start; }
+    .tr-buy .atc-btn { padding: 0.7rem 1.15rem; font-size: 0.75rem; }
+    @media (max-width: 767px) {
+      .tr-cmp { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 14px; }
+      .tr-corner { display: none; }
+      .tr-head { border-radius: 20px; }
+      .tr-swatch { margin: 14px 0 10px; height: 8px; }
+      .tr-lbl { grid-column: 1 / -1; padding: 16px 0 6px; }
+      .tr-cell { border-top: 0; padding: 0 0 14px; font-size: 14px; }
+      .tr-buy .atc-btn { width: 100%; justify-content: center; padding: 0.75rem 0.5rem; font-size: 0.7rem; }
+    }
+
+    /* WHAT GIVES IT ITS TASTE: one photo plate, three numbered points */
+    .tr-plate { border-radius: 2rem; overflow: hidden; background: #E9E1D4; }
+    .tr-plate img { display: block; width: 100%; aspect-ratio: 16 / 7.5; object-fit: cover; object-position: 60% 62%; }
+    .tr-points { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 56px; }
+    .tr-point { padding: 0 36px; border-left: 1px solid #E7DFD3; }
+    .tr-point:first-child { padding-left: 0; border-left: 0; }
+    .tr-point:last-child { padding-right: 0; }
+    .tr-num { font-family: "Fraunces", Georgia, serif; font-size: 15px; font-weight: 600; color: #C4841D; letter-spacing: .04em; }
+    .tr-point h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 26px; line-height: 1.15; letter-spacing: -0.01em; color: #1A1714; margin: 10px 0 12px; }
+    .tr-point p { font-size: 15px; line-height: 1.65; color: #5A5249; }
+    @media (max-width: 767px) {
+      .tr-plate img { aspect-ratio: 4 / 5; object-position: 74% 55%; }
+      .tr-points { grid-template-columns: minmax(0, 1fr); margin-top: 32px; }
+      .tr-point, .tr-point:first-child { padding: 24px 0 0; border-left: 0; border-top: 1px solid #E7DFD3; margin-top: 24px; }
+      .tr-point:first-child { margin-top: 0; }
+    }
+
+    /* THE SEASON: the syrup darkening from the first run to the last, on a dark ground */
+    .tr-season { background: #1C1410; color: #FDFBF7; }
+    .tr-notes { margin-top: 56px; padding-top: 40px; }
+    @media (min-width: 768px) { .tr-notes { margin-top: 80px; } }
+    .tr-axis { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; color: rgba(253,251,247,.6); margin-bottom: 14px; }
+    .tr-axis span:last-child { text-align: right; }
+    .tr-rib { position: relative; height: 76px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+    .tr-rib-fill { position: absolute; inset: 0; background: linear-gradient(90deg, #F5D689 0%, #EDBB57 12%, #DFA03D 24%, #C9852B 37%, #B06A20 50%, #934F17 62%, #743A12 75%, #55270C 87%, #351706 100%); clip-path: inset(0 100% 0 0); transition: clip-path 2.4s cubic-bezier(.32,.72,0,1); }
+    .tr-rib-fill::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0) 45%, rgba(0,0,0,.18)); }
+    [data-inview].is-in .tr-rib-fill { clip-path: inset(0 0 0 0); }
+    .tr-rib-div { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,.35); }
+    .tr-tap { position: absolute; top: 50%; left: 22px; width: 14px; height: 14px; margin-top: -7px; border-radius: 999px; background: #FDFBF7; box-shadow: 0 0 0 5px rgba(253,251,247,.25); opacity: 0; transition: opacity .6s 1.2s; }
+    [data-inview].is-in .tr-tap { opacity: 1; }
+    .tr-classes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 26px; }
+    .tr-class { padding: 0 28px 0 0; }
+    .tr-class h3 { display: flex; align-items: center; gap: 10px; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2; color: #FDFBF7; }
+    .tr-dot { width: 12px; height: 12px; border-radius: 999px; flex: none; box-shadow: 0 0 0 1px rgba(255,255,255,.25); }
+    .tr-class .tr-t { font-size: 14px; color: rgba(253,251,247,.65); margin-top: 6px; }
+    .tr-class.tr-off h3 { color: rgba(253,251,247,.42); }
+    .tr-class.tr-off .tr-t { color: rgba(253,251,247,.38); }
+    .tr-ours { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+    .tr-ours a { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #FDFBF7; }
+    .tr-ours img { width: 56px; height: 56px; border-radius: 14px; flex: none; }
+    .tr-ours b { display: block; font-size: 14px; font-weight: 600; line-height: 1.3; }
+    .tr-ours a:hover b { text-decoration: underline; text-underline-offset: 3px; }
+    .tr-ours small { display: block; font-size: 13px; color: rgba(253,251,247,.6); margin-top: 2px; }
+    @media (max-width: 1023px) {
+      .tr-classes { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+    }
+    @media (max-width: 639px) {
+      .tr-rib { height: 56px; }
+      .tr-tap { left: 16px; }
+      .tr-classes { grid-template-columns: minmax(0, 1fr); row-gap: 26px; }
+      .tr-class { padding: 0; }
+    }
+
+    /* FAQ: heading on the left, questions split by hairlines on the right */
+    .tr-faq { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: start; }
+    .tr-faq-head { position: sticky; top: 128px; }
+    .tr-q { border-top: 1px solid #E2D9CC; padding: 26px 0; }
+    .tr-q:last-child { border-bottom: 1px solid #E2D9CC; }
+    .tr-q h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 21px; line-height: 1.3; color: #1A1714; }
+    .tr-q p { font-size: 15px; line-height: 1.7; color: #5A5249; margin-top: 10px; max-width: 64ch; }
+    @media (max-width: 767px) {
+      .tr-faq { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .tr-faq-head { position: static; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .btn-premium { transition: none; }
+      .btn-premium, .tr-head img, .tr-rib-fill, .tr-tap { transition: none; }
       .btn-premium:hover { transform: none; box-shadow: none; }
-      .nav-glass { transition: none; }
-      .link-underline::after { transition: none; }
-      .marquee-track { animation: none; }
-      .float-slow, .float-medium { animation: none; }
-      .spin-slow { animation: none; }
-      .cert-shimmer { animation: none; }
-      .img-zoom { transition: none; }
-      .img-zoom:hover { transform: none; }
+      .tr-rib-fill { clip-path: none; }
+      .tr-tap { opacity: 1; }
       * { scroll-behavior: auto !important; }
     }
   </style>
@@ -142,158 +236,357 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-    <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
-    <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
-      <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
-        <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </div>
 
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- HERO                                                   -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="relative min-h-[75vh] md:min-h-[85vh] flex items-end pb-16 md:pb-24 px-4 md:px-8">
+
+  <!-- HERO -->
+  <section class="relative min-h-[calc(100svh-6.375rem)] md:min-h-[calc(100dvh-4.375rem)] flex items-end pt-32 pb-16 md:pb-24 px-4 md:px-8">
     <div class="absolute inset-0">
-      <img src="assets/images/terroir/appalachian-autumn.png" alt="Autumn maple forest in Quebec's Appalachian Mountains" class="w-full h-full object-cover">
+      <img src="/assets/images/terroir/quebec-maple-syrup-golden-and-dark.webp" alt="A bottle of Maple Terroir organic Golden maple syrup beside a maple leaf bottle of Dark maple syrup on a wooden table, lit from behind by a window onto a snowy maple forest" width="1920" height="1072" fetchpriority="high" class="w-full h-full object-cover" style="object-position:56% center">
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-charcoal/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-charcoal/10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/50 to-charcoal/10 md:hidden"></div>
     <div class="relative max-w-[1400px] mx-auto w-full">
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-cream tracking-tight leading-[1.08] max-w-4xl mb-6">The Appalachian Mountains of Quebec.
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-cream tracking-tight leading-[1.08] max-w-4xl">
+        Quebec Maple Syrup<br class="hidden md:block"> From One Farm.
       </h1>
-      <p class="reveal reveal-delay-2 text-cream/70 leading-relaxed max-w-[50ch] text-lg">
-        Our maple syrup comes from one farm in Quebec's Appalachian Mountains.
+      <p class="reveal reveal-delay-2 text-warm-gray-300 leading-relaxed max-w-[52ch] text-lg mt-6">
+        Every bottle we sell comes from one farm in Quebec's Appalachian Mountains, in two grades: Golden from early in the season and Dark from late in the season. Bottles start at $14.99.
       </p>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- WHAT IS TERROIR                                        -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="reveal max-w-3xl">
-        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
-          What is terroir?
-        </h2>
-        <div class="space-y-5 text-warm-gray-600 leading-relaxed">
-          <p>
-            In winemaking, terroir describes how a region's climate, soils, and terrain give a wine its distinctive character. A Bordeaux tastes different from a Napa Valley because the land is different.
-          </p>
-          <p>
-            The maple syrup we sell comes from sugar maples on one farm in Quebec's Appalachian Mountains. This is what we mean by <em>maple terroir</em>.
-          </p>
-        </div>
+      <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-4">
+        <a href="#shop" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+          <span>Shop Both Grades</span>
+          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+        <a href="#choose" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">Golden or Dark?</a>
       </div>
     </div>
   </section>
 
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- TWO HARVESTS                                           -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="pb-24 md:pb-40 px-4 md:px-8">
+  <!-- LOGOS:START baked by scripts/build-blocks.mjs -->
+  <section aria-label="Customer rating and retailers" class="border-b border-warm-gray-200/40">
+    <style>
+      @keyframes mt-strip { to { transform: translateX(-50%); } }
+      .mt-strip-track { animation: mt-strip 50s linear infinite; }
+      .mt-strip-mask { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+      .mt-strip-logo { filter: grayscale(1); opacity: .5; }
+      .mt-strip-logo[alt="CANEX"] { filter: brightness(0); opacity: .4; }
+      @media (prefers-reduced-motion: reduce) { .mt-strip-track { animation: none; } }
+    </style>
+    <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-5 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+      <p class="flex items-center gap-3 flex-shrink-0 text-sm text-charcoal"><span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span><span><b class="font-semibold">5.0</b> <span class="text-warm-gray-500">average customer rating</span></span></p>
+      <span class="hidden md:block w-px h-6 bg-warm-gray-200 flex-shrink-0" aria-hidden="true"></span>
+      <p class="text-sm text-warm-gray-500 flex-shrink-0 hidden md:block">Also stocked by</p>
+      <div class="mt-strip-mask relative flex-1 overflow-hidden">
+        <div class="mt-strip-track flex items-center" style="width:max-content">
+          <div class="flex items-center gap-12 md:gap-16 pr-12 md:pr-16"><img src="/assets/images/logos/costco.webp" alt="Costco" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/amazon.webp" alt="Amazon" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/walmart.webp" alt="Walmart" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/save-on-foods.png" alt="Save-On-Foods" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/shoppers.webp" alt="Shoppers Drug Mart" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/homesense.webp" alt="HomeSense" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/urban-fare.webp" alt="Urban Fare" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/nesters.png" alt="Nesters Market" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/canex.png" alt="CANEX" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"></div>
+          <div class="flex items-center gap-12 md:gap-16 pr-12 md:pr-16" aria-hidden="true"><img src="/assets/images/logos/costco.webp" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/amazon.webp" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/walmart.webp" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/save-on-foods.png" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/shoppers.webp" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/homesense.webp" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/urban-fare.webp" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/nesters.png" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"><img src="/assets/images/logos/canex.png" alt="" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- LOGOS:END -->
+
+
+  <!-- PRODUCT GRID -->
+  <section id="shop" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
     <div class="max-w-[1400px] mx-auto">
-      <div class="reveal max-w-3xl mb-12 md:mb-16">
-        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
-          Two harvests, two tastes.
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
+        <div>
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+            Shop Golden and Dark Maple Syrup
+          </h2>
+          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] text-lg mt-4">
+            The organic bottle and First Tap Nouveau hold our Golden syrup, and the maple leaf bottle holds our Dark. Each one also comes in packs of 12, 24, 36 and 48 at 10 to 25 percent off.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <a href="/shop/canadian-maple-syrup"
+             class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group whitespace-nowrap">
+            <span>View All Maple Syrup</span>
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+              <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+      <!-- SHELF:START handles="organic-pure-maple-syrup-250ml,organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition,pure-maple-syrup-maple-leaf-bottle-250ml,pure-maple-syrup-maple-leaf-bottle-100ml,pure-maple-syrup-maple-leaf-bottle-50ml,pure-maple-syrup-jug-100ml" -->
+      <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
+      <div data-shelf class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="hover:text-amber-warm transition-colors">Organic First Tap Nouveau Limited Edition Pure Maple Syrup</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$19.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815545397497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic First Tap Nouveau Limited Edition Pure Maple Syrup to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+      </div>
+      <script>
+      (function () {
+        if (window.__mtShelfLive) return; window.__mtShelfLive = true;
+        var btns = [].slice.call(document.querySelectorAll('[data-shelf] .atc-btn[data-variant-id]'));
+        var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); }).filter(function (id, i, a) { return a.indexOf(id) === i; });
+        if (!ids.length) return;
+        fetch('https://maple-terroir.myshopify.com/api/2026-01/graphql.json', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': '59618e3b6f5e626df6c5f527b4972d3d' }, body: JSON.stringify({ query: 'query($ids:[ID!]!){nodes(ids:$ids){... on ProductVariant{id availableForSale price{amount}}}}', variables: { ids: ids } }) })
+          .then(function (r) { return r.json(); }).then(function (r) {
+            var by = {}; ((r.data && r.data.nodes) || []).forEach(function (n) { if (n) by[n.id] = n; });
+            btns.forEach(function (b) {
+              var n = by[b.getAttribute('data-variant-id')]; if (!n) return;
+              var pe = b.closest('article') && b.closest('article').querySelector('[data-price]');
+              if (pe && n.price) pe.textContent = '$' + parseFloat(n.price.amount).toFixed(2) + ' CAD';
+              if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
+            });
+          }).catch(function () {});
+      })();
+    </script>
+      <!-- SHELF:END -->
+    </div>
+  </section>
+
+
+  <!-- REVIEWS:START set="syrup" -->
+  <section id="reviews" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
+        <div>
+          <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Pour It</h2>
+        </div>
+        <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
+        <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
+          <a href="/products/organic-pure-maple-syrup-250ml" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
+            <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+          </a>
+          <div class="p-7 md:p-10 flex flex-col justify-center">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="font-display text-2xl md:text-[1.7rem] leading-snug text-charcoal mt-5">&ldquo;Very delicious tasting maple syrup. I will definitely order it again.&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Amrit G.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/organic-pure-maple-syrup-250ml" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Organic Pure Maple Syrup 250ml</a></figcaption>
+          </div>
+        </figure>
+        <figure class="reveal reveal-delay-1 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
+          <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <div class="flex flex-col">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Genuine maple syrup!! Awesome service!!&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Gary B.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Pure Maple Syrup Maple Leaf Bottle 250ml</a></figcaption>
+          </div>
+        </figure>
+        <figure class="reveal reveal-delay-2 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
+          <a href="/products/maple-syrup-mini-stroopwafel" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/maple-syrup-mini-stroopwafel.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <div class="flex flex-col">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Great products. Fresh and delicious. I am very pleased with my purchase and the delivery was faster than expected. Thank you!&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Carol C.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/maple-syrup-mini-stroopwafel" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Maple Syrup Mini Stroopwafels</a></figcaption>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <!-- REVIEWS:END -->
+
+
+  <!-- WHICH GRADE -->
+  <section id="choose" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8 bg-white">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="max-w-3xl mb-10 md:mb-14">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
+          Golden or Dark: Which Maple Syrup to Buy
         </h2>
-        <p class="text-warm-gray-600 leading-relaxed">
-          We sell maple syrup from early and late in the maple season. All of it is Canada Grade A.
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] text-lg">
+          Both syrups come from the same farm in Quebec, harvested at two different points in the season. Pick the one that suits what you will pour it on.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-        <div class="reveal bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
-          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 h-full">
-            
-            <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mb-3">Golden, Delicate Taste</h3>
-<p class="text-amber-warm text-sm mt-1">Early harvest</p>
-            <p class="text-warm-gray-600 leading-relaxed mb-6">Sap collected early in the season makes our organic maple syrup and the First Tap Nouveau.</p>
-            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
-              <a href="/products/organic-pure-maple-syrup-250ml" class="link-underline text-amber-warm hover:text-amber-deep transition-colors">Organic Pure Maple Syrup 250ml</a>
-              <a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="link-underline text-amber-warm hover:text-amber-deep transition-colors">First Tap Nouveau</a>
-            </div>
-          </div>
+
+      <div class="tr-cmp reveal tr-body">
+        <div class="tr-corner" aria-hidden="true"></div>
+        <div>
+          <a href="/products/organic-pure-maple-syrup-250ml" class="tr-head block" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/organic-pure-maple-syrup-250ml.webp" alt="" width="1000" height="1000" loading="lazy" decoding="async"></a>
+          <div class="tr-swatch tr-sw-golden" aria-hidden="true"></div>
+          <h3 class="tr-name">Golden, Delicate Taste</h3>
+          <p class="tr-sub">Organic Pure Maple Syrup and First Tap Nouveau</p>
         </div>
-        <div class="reveal reveal-delay-1 bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
-          <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 h-full">
-            
-            <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mb-3">Dark, Robust Taste</h3>
-<p class="text-amber-warm text-sm mt-1">Late harvest</p>
-            <p class="text-warm-gray-600 leading-relaxed mb-6">Sap collected later in the season makes the syrup in our maple leaf bottles and 100 mL jug, which has a stronger maple flavor.</p>
-            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium">
-              <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="link-underline text-amber-warm hover:text-amber-deep transition-colors">Maple Leaf Bottle 250ml</a>
-            </div>
-          </div>
+        <div>
+          <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="tr-head block" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="" width="1000" height="1000" loading="lazy" decoding="async"></a>
+          <div class="tr-swatch tr-sw-dark" aria-hidden="true"></div>
+          <h3 class="tr-name">Dark, Robust Taste</h3>
+          <p class="tr-sub">Pure Maple Syrup in the maple leaf bottle</p>
+        </div>
+
+        <div class="tr-lbl">Harvest</div>
+        <div class="tr-cell">Early in the season</div>
+        <div class="tr-cell">Late in the season</div>
+
+        <div class="tr-lbl">Taste</div>
+        <div class="tr-cell">Light, with a delicate maple flavor</div>
+        <div class="tr-cell">Deeper, with a stronger maple flavor</div>
+
+        <div class="tr-lbl">Reach for it with</div>
+        <div class="tr-cell">Ice cream, yogurt, fresh fruit and cheese, or a light stack of pancakes</div>
+        <div class="tr-cell">Baking, coffee and glazes, or pancakes where you want the maple to come through the butter</div>
+
+        <div class="tr-lbl">Organic</div>
+        <div class="tr-cell">Certified by Ecocert, Canada Organic and USDA Organic. Our <a href="/certifications">certifications page</a> explains what each one checks.</div>
+        <div class="tr-cell">Not certified organic</div>
+
+        <div class="tr-lbl">Bottles</div>
+        <div class="tr-cell"><a href="/products/organic-pure-maple-syrup-250ml">Organic Pure Maple Syrup</a>, 250 mL, <span class="tr-price">$14.99</span><br><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition">First Tap Nouveau</a>, 250 mL in a gift box, <span class="tr-price">$19.99</span></div>
+        <div class="tr-cell"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml">Maple leaf glass bottle</a>, 250 mL, <span class="tr-price">$24.99</span></div>
+
+        <div class="tr-lbl tr-corner" aria-hidden="true"></div>
+        <div class="tr-cell tr-buy">
+          <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add Organic Golden</button>
+          <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815545397497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic First Tap Nouveau Limited Edition Pure Maple Syrup to cart">+ Add First Tap</button>
+        </div>
+        <div class="tr-cell tr-buy">
+          <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add Maple Leaf Dark</button>
+        </div>
+      </div>
+
+      <p class="reveal tr-body text-sm text-warm-gray-600 leading-relaxed mt-10 max-w-[64ch]">Neither syrup has anything added: no preservatives and no coloring. For recipes, read our guides to <a href="/blog/best-maple-syrup-for-baking">the best maple syrup for baking</a> and <a href="/blog/best-maple-syrup-for-pancakes-and-waffles">the best maple syrup for pancakes</a>.</p>
+    </div>
+  </section>
+
+
+  <!-- WHAT GIVES IT ITS TASTE -->
+  <section class="py-16 md:py-28 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-end mb-10 md:mb-14">
+        <h2 class="lg:col-span-6 reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+          What Gives Quebec Maple Syrup Its Taste
+        </h2>
+        <p class="lg:col-span-6 reveal reveal-delay-2 tr-body text-warm-gray-600 leading-relaxed text-lg max-w-[56ch]">
+          Maple syrup is maple sap boiled down, with nothing added. Quebec producers made <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/251211/dq251211f-eng.htm" rel="noopener">90 percent of Canada's maple syrup</a> in 2025, and our guide compares <a href="/blog/quebec-vs-vermont-maple-syrup">Quebec and Vermont maple syrup</a>. You taste three things in every bottle: the forest, the thaw and the boil.
+        </p>
+      </div>
+
+      <figure class="reveal tr-plate">
+        <img src="/assets/images/terroir/sugar-bush-early-spring.webp" alt="A maple forest in early spring, with blue sap tubing running between the trunks to a wooden sugar shack venting steam, and a bottle of Maple Terroir organic maple syrup on a snowy stump" width="1920" height="1072" loading="lazy" decoding="async">
+      </figure>
+
+      <div class="tr-points tr-body">
+        <div class="tr-point reveal">
+          <p class="tr-num">01</p>
+          <h3>The forest</h3>
+          <p>In Quebec, syrup comes from two kinds of tree, the sugar maple and the red maple, and the soil they grow in changes their sap: researchers at SUNY's College of Environmental Science and Forestry found <a href="https://www.esf.edu/melnhe/documents/WildMSThesis2014finalversion.pdf" rel="noopener">sweeter sap on soils with more available nitrogen</a>. Every bottle we sell comes from one forest, on one farm in Quebec's Appalachian Mountains.</p>
+        </div>
+        <div class="tr-point reveal reveal-delay-1">
+          <p class="tr-num">02</p>
+          <h3>The thaw</h3>
+          <p>Sap runs when a night below freezing turns into a day above it. In the warmth the wood expands and pushes sap out through the taps, and in the cold it contracts and draws more up from the roots. <a href="https://ppaq.ca/en/maple-production/step-by-step-production-maple-syrup/" rel="noopener">Quebec's season runs from late February into early May</a>, and a sugar bush makes its whole year of syrup in about 20 to 25 days.</p>
+        </div>
+        <div class="tr-point reveal reveal-delay-2">
+          <p class="tr-num">03</p>
+          <h3>The boil</h3>
+          <p>It takes about 40 liters of sap to make one liter of syrup. As the sap boils down, its sugars react with its amino acids and brown, in the same <a href="https://ppaq.ca/en/maple-production/step-by-step-production-maple-syrup/" rel="noopener">Maillard reaction</a> that browns a bread crust. The syrup gets its color and its maple flavor in that step.</p>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- SINGLE ORIGIN COMMITMENT                               -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8 bg-cream-dark">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
-        One farm in Quebec.
-      </h2>
-      <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed mb-8 max-w-[55ch] mx-auto text-lg">
-        Every bottle of Maple Terroir syrup comes from one farm in Quebec's Appalachian Mountains.
-      </p>
+  <!-- THE SEASON -->
+  <section id="season" class="tr-season py-16 md:py-28 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-end mb-12 md:mb-16">
+        <h2 class="lg:col-span-6 reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-cream tracking-tight leading-tight">
+          Why Early Syrup Is Golden and Late Syrup Is Dark
+        </h2>
+        <p class="lg:col-span-6 reveal reveal-delay-2 tr-body-dark text-warm-gray-300 leading-relaxed text-lg max-w-[58ch]">
+          Later in the season, in warmer weather, the sap holds less sugar and picks up more of the bacteria and yeast it meets once it leaves the tree. They break some of its sucrose into simpler sugars, which brown further in the boil, so <a href="https://extension.unh.edu/blog/2022/03/making-grade-color-flavor-maple-syrup" rel="noopener">the syrup comes out darker, with a stronger maple flavor</a>.
+        </p>
+      </div>
 
-      <!-- Stats -->
-      <div class="reveal reveal-delay-3 grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-12 border-t border-warm-gray-300/50">
-        <div>
-          <div class="font-display text-3xl md:text-4xl font-semibold text-amber-warm mb-1">1978</div>
-          <p class="text-xs text-warm-gray-500 uppercase tracking-wider">Founded</p>
+      <div class="reveal" data-inview>
+        <div class="tr-axis" aria-hidden="true"><span>First sap of the season</span><span>Last sap of the season</span></div>
+        <div class="tr-rib" role="img" aria-label="Maple syrup darkens from golden to very dark between the first and last sap of the season">
+          <div class="tr-rib-fill"></div>
+          <span class="tr-rib-div" style="left:25%"></span><span class="tr-rib-div" style="left:50%"></span><span class="tr-rib-div" style="left:75%"></span>
+          <span class="tr-tap"></span>
         </div>
-        <div>
-          <div class="font-display text-3xl md:text-4xl font-semibold text-amber-warm mb-1">3rd</div>
-          <p class="text-xs text-warm-gray-500 uppercase tracking-wider">Generation Business</p>
+        <div class="tr-classes">
+          <div class="tr-class">
+            <h3><span class="tr-dot" style="background:#EDBB57"></span>Golden</h3>
+            <p class="tr-t">Delicate Taste. Our early harvest.</p>
+            <div class="tr-ours">
+              <a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition"><img src="/assets/images/cards/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition.webp" alt="" width="56" height="56" loading="lazy" data-mt-keep><span><b>First Tap Nouveau</b><small>Boiled and bottled on the first day of the season, each bottle numbered</small></span></a>
+              <a href="/products/organic-pure-maple-syrup-250ml"><img src="/assets/images/cards/organic-pure-maple-syrup-250ml.webp" alt="" width="56" height="56" loading="lazy" data-mt-keep><span><b>Organic Pure Maple Syrup</b><small>250 mL, $14.99</small></span></a>
+            </div>
+          </div>
+          <div class="tr-class tr-off">
+            <h3><span class="tr-dot" style="background:#C9852B"></span>Amber</h3>
+            <p class="tr-t">Rich Taste. We do not sell this grade.</p>
+          </div>
+          <div class="tr-class">
+            <h3><span class="tr-dot" style="background:#934F17"></span>Dark</h3>
+            <p class="tr-t">Robust Taste. Our late harvest.</p>
+            <div class="tr-ours">
+              <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="" width="56" height="56" loading="lazy" data-mt-keep><span><b>Maple Leaf Bottle</b><small>250 mL, $24.99</small></span></a>
+            </div>
+          </div>
+          <div class="tr-class tr-off">
+            <h3><span class="tr-dot" style="background:#4A210A"></span>Very Dark</h3>
+            <p class="tr-t">Strong Taste. We do not sell this grade.</p>
+          </div>
         </div>
-        <div>
-          <div class="font-display text-3xl md:text-4xl font-semibold text-amber-warm mb-1">3x</div>
-          <p class="text-xs text-warm-gray-500 uppercase tracking-wider">Certified</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 tr-notes border-t border-white/10 tr-body-dark">
+        <p class="reveal text-warm-gray-300 leading-relaxed max-w-[58ch]"><span class="font-semibold text-cream">How Canada grades it.</span> The <a href="https://inspection.canada.ca/en/about-cfia/acts-and-regulations/list-acts-and-regulations/documents-incorporated-reference/canadian-grade-compendium-volume-7" rel="noopener">Canadian Food Inspection Agency</a> sorts Canada Grade A maple syrup into these four color classes by how much light passes through it, from 75 percent or more for Golden to less than 25 percent for Very Dark. Read our <a href="/blog/grade-a-vs-grade-b-maple-syrup">guide to the four grades</a> for what each one suits.</p>
+        <p class="reveal reveal-delay-1 text-warm-gray-300 leading-relaxed max-w-[58ch]"><span class="font-semibold text-cream">Why some late syrup stays light.</span> Sugarmakers clean their equipment often and welcome a cold snap, because both slow the bacteria and yeast and keep syrup lighter for longer. Both our grades come from one farm, so what you taste between them is how early or late in the season the sap ran.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-28 px-4 md:px-8 bg-warm-gray-100/30" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="max-w-[1400px] mx-auto tr-faq">
+      <div class="tr-faq-head">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-[16ch]">Questions About Golden and Dark Maple Syrup</h2>
+        <p class="reveal reveal-delay-2 tr-body text-warm-gray-600 leading-relaxed mt-5 max-w-[40ch]">Something else? Email <a href="mailto:info@mapleterroir.com">info@mapleterroir.com</a> and our family will answer.</p>
+      </div>
+      <div class="reveal tr-body">
+        <div class="tr-q" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name">Is dark maple syrup better than golden?</h3>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Neither is a better syrup. All four color classes are Canada Grade A, and Canada sets the same rules for each: the same density, no fermentation and no sediment. Choose by taste: Golden for a light, delicate maple flavor, and Dark when you want the maple to stand out.</p></div>
         </div>
-        <div>
-          <div class="font-display text-3xl md:text-4xl font-semibold text-amber-warm mb-1">5</div>
-          <p class="text-xs text-warm-gray-500 uppercase tracking-wider">Countries Served</p>
+        <div class="tr-q" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name">Why is some maple syrup darker than others?</h3>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Syrup made from late-season sap usually comes out darker. In warmer weather the sap carries less sugar and more bacteria and yeast, which turn some of its sucrose into simpler sugars that brown in the boil. Producers who boil their sap longer also get darker syrup.</p></div>
+        </div>
+        <div class="tr-q" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name">What do you use dark maple syrup for?</h3>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Use it in baking, coffee and glazes, where a lighter syrup fades behind the other ingredients, and on pancakes when you want to taste the maple through the butter. Our Dark syrup comes in the maple leaf bottle.</p></div>
+        </div>
+        <div class="tr-q" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name">Is golden maple syrup the same as golden syrup?</h3>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">No. Golden maple syrup is pure maple syrup in Canada's lightest color class. Golden syrup is a different product, a by-product of refining sugar cane into sugar. Our Golden syrup is pure maple syrup with nothing added.</p></div>
+        </div>
+        <div class="tr-q" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+          <h3 itemprop="name">Where can I buy Quebec maple syrup?</h3>
+          <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Order it here, and we ship it from our Vancouver location to every Canadian province. Orders of $99 CAD or more ship free. Below that, Standard delivery costs $19.99 and takes 3 to 9 business days, and Express costs $39.99 and takes 1 to 2.</p></div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- CTA:START title="Taste the difference terroir makes." text="Shop maple syrup from one farm in Quebec's Appalachian Mountains." href="/products" label="Shop Our Collection" href2="/certifications" label2="View Our Certifications" -->
+  <!-- CTA:START title="Taste the Season in Two Bottles." text="Golden from early in the season and Dark from late, both from one farm in Quebec's Appalachian Mountains." href="#shop" label="Shop Both Grades" href2="/story" label2="Read Our Story" -->
   <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
           <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Taste the difference terroir makes.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Shop maple syrup from one farm in Quebec's Appalachian Mountains.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Taste the Season in Two Bottles.</h2>
+              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Golden from early in the season and Dark from late, both from one farm in Quebec's Appalachian Mountains.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
-                  <span>Shop Our Collection</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/8 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                <a href="#shop" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                  <span>Shop Both Grades</span>
+                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/certifications" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">View Our Certifications</a>
+                <a href="/story" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Read Our Story</a>
               </div>
             </div>
             <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
@@ -303,6 +596,7 @@
     </div>
   </section>
   <!-- CTA:END -->
+
 
 
   <!-- FOOTER -->
@@ -315,7 +609,7 @@
         </div>
 
         <div class="md:col-span-2 md:col-start-7">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Explore</h4>
           <ul class="space-y-3">
             <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
             <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
@@ -327,7 +621,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Shop</h4>
           <ul class="space-y-3">
             <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
             <li><a href="/shop/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Canadian Maple Syrup</a></li>
@@ -339,7 +633,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Connect</h4>
           <ul class="space-y-3">
             <li><a href="/contact" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
             <li><a href="/shop/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
@@ -361,6 +655,8 @@
   <script>
     const revealObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+    const inviewObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-in'); inviewObserver.unobserve(entry.target); } }); }, { threshold: 0.35 });
+    document.querySelectorAll('[data-inview]').forEach((el) => inviewObserver.observe(el));
     const navbar = document.getElementById('navbar');
     const navInner = navbar.querySelector('.nav-glass');
     window.addEventListener('scroll', () => { navInner.classList.toggle('nav-scrolled', window.pageYOffset > 80); }, { passive: true });

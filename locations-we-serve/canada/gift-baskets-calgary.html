@@ -222,22 +222,6 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-    <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
-    <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
-      <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
-        <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </div>
 
 
   <!-- HERO -->
@@ -304,6 +288,7 @@
         </p>
       </div>
       <!-- SHELF:START handles="maple-extravaganza-gift-set,maple-mega-combo-gift-set,maple-treat-home-set,maple-tea-party-home-set,maple-enthusiast-home-set,maple-frenzy-home-set,maple-indulge-home-set,maple-organic-heaven-home-set,pure-maple-syrup-stroopwafels-caddy" -->
+      <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-extravaganza-gift-set" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleExtravaganzaGiftSet.png?v=1749671567&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-extravaganza-gift-set" class="hover:text-amber-warm transition-colors">Maple Extravaganza Gift Set</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]"></p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$75.00 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521339658489" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Extravaganza Gift Set to cart">+ Add</button></div></div></article>
         <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-mega-combo-gift-set" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-mega-combo-gift-set" class="hover:text-amber-warm transition-colors">Maple Mega Combo Gift Set</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]"></p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$240.00 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/43203560308985" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Mega Combo Gift Set to cart">+ Add</button></div></div></article>
@@ -366,7 +351,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-1 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/pure-maple-syrup-stroopwafels-caddy" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://mapleterroir.com/assets/images/cards/pure-maple-syrup-stroopwafels-caddy.webp&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/pure-maple-syrup-stroopwafels-caddy" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/pure-maple-syrup-stroopwafels-caddy.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Great customer service. Also I was pretty impressed how they did packaging well on shipment. Thank you.&rdquo;</blockquote>
@@ -374,7 +359,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-2 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/maple-syrup-mini-stroopwafel" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://mapleterroir.com/assets/images/cards/maple-syrup-mini-stroopwafel.webp&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/maple-syrup-mini-stroopwafel" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/maple-syrup-mini-stroopwafel.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Cookies were so good! Great gifts to give to family!&rdquo;</blockquote>
@@ -540,9 +525,12 @@
           <p class="text-warm-gray-300 leading-relaxed mt-2 max-w-[52ch]">One caddy holds 1,190 g of individually wrapped stroopwafels for a shared kitchen or a client meeting. A gift set for each person? See our <a href="/shop/maple-syrup-corporate-gift" class="text-cream underline underline-offset-4 hover:text-amber-warm">corporate gifts</a> or email <a href="mailto:info@mapleterroir.com" class="text-cream underline underline-offset-4 hover:text-amber-warm">info@mapleterroir.com</a>.</p>
         </div>
         <div class="md:col-span-3 p-6 md:p-10 md:pl-0 text-cream">
-          <p class="font-display text-4xl text-amber-warm">$35.99</p>
-          <p class="text-sm text-warm-gray-300 mt-1">each, by the case of eight, 10 percent off the $39.99 single caddy</p>
-          <button class="atc-btn mt-4" style="background:#C4841D" data-variant-id="gid://shopify/ProductVariant/42579003408633" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Stroopwafels to cart">+ Add one caddy</button>
+          <p class="font-display text-4xl text-amber-warm">$39.99</p>
+          <p class="text-sm text-warm-gray-300 mt-1">per caddy, or $35.99 each by the case of eight, 10 percent off</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <button class="atc-btn" style="background:#C4841D" data-variant-id="gid://shopify/ProductVariant/42579003408633" onclick="MapleCart.addFromBtn(this)" aria-label="Add one caddy of Pure Maple Syrup Stroopwafels to cart">+ Add one caddy</button>
+            <button class="atc-btn" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25)" data-variant-id="gid://shopify/ProductVariant/42579003441401" onclick="MapleCart.addFromBtn(this)" aria-label="Add a case of eight Pure Maple Syrup Stroopwafels caddies to cart">+ Add a case of 8</button>
+          </div>
         </div>
       </div>
     </div>
@@ -667,7 +655,7 @@
               <div class="flex flex-wrap gap-3 justify-center">
                 <a href="#shop" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
                   <span>Choose a Gift Box</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/8 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
@@ -693,7 +681,7 @@
         </div>
 
         <div class="md:col-span-2 md:col-start-7">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Explore</h4>
           <ul class="space-y-3">
             <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
             <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
@@ -705,7 +693,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Shop</h4>
           <ul class="space-y-3">
             <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
             <li><a href="/shop/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Canadian Maple Syrup</a></li>
@@ -717,7 +705,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Connect</h4>
           <ul class="space-y-3">
             <li><a href="/contact" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
             <li><a href="/shop/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>

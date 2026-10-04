@@ -158,22 +158,6 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-    <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
-    <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
-      <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
-        <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </div>
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -216,7 +200,7 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- PRODUCT GRID                                           -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="pb-24 md:pb-40 px-4 md:px-8">
+  <section class="pb-4 md:pb-8 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         <!-- Static crawlable grid baked by scripts/build-grids.mjs; page JS replaces it with the live hydrated version on load. -->
@@ -226,17 +210,47 @@
   </section>
 
 
-  <!-- FREE SHIPPING -->
-  <section class="pb-16 px-4 md:px-8">
-    <div class="max-w-[1400px] mx-auto text-center">
-      <div class="inline-flex items-center gap-3 bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-full px-6 py-3">
-        <svg class="w-4 h-4 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-          <path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/>
-        </svg>
-        <span class="text-sm font-medium text-warm-gray-600">Free shipping on orders of <strong class="text-charcoal">$99 CAD</strong> or more</span>
+  <!-- REVIEWS:START set="gifts" -->
+  <section id="reviews" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
+        <div>
+          <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Send It</h2>
+        </div>
+        <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
+        <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
+          <a href="/products/maple-frenzy-home-set" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
+            <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleFrenzyHomeSet.png?v=1749671518&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+          </a>
+          <div class="p-7 md:p-10 flex flex-col justify-center">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="font-display text-2xl md:text-[1.7rem] leading-snug text-charcoal mt-5">&ldquo;It was wonderful meeting Shawn. The experience was easy and simple! Loved the products and the team were a joy to deal with. Would highly recommend!&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Simon S.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/maple-frenzy-home-set" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Maple Frenzy Home Set</a></figcaption>
+          </div>
+        </figure>
+        <figure class="reveal reveal-delay-1 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
+          <a href="/products/pure-maple-syrup-stroopwafels-caddy" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/pure-maple-syrup-stroopwafels-caddy.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <div class="flex flex-col">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Great customer service. Also I was pretty impressed how they did packaging well on shipment. Thank you.&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Yoshimi S.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Pure Maple Syrup Stroopwafels</a></figcaption>
+          </div>
+        </figure>
+        <figure class="reveal reveal-delay-2 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
+          <a href="/products/maple-syrup-mini-stroopwafel" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/maple-syrup-mini-stroopwafel.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <div class="flex flex-col">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Cookies were so good! Great gifts to give to family!&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Michelle Buchar</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/maple-syrup-mini-stroopwafel" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Maple Syrup Mini Stroopwafels</a></figcaption>
+          </div>
+        </figure>
       </div>
     </div>
   </section>
+  <!-- REVIEWS:END -->
 
 
   <!-- CTA:START -->
@@ -251,7 +265,7 @@
               <div class="flex flex-wrap gap-3 justify-center">
                 <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
                   <span>Shop All Products</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/8 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
@@ -276,7 +290,7 @@
         </div>
 
         <div class="md:col-span-2 md:col-start-7">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Explore</h4>
           <ul class="space-y-3">
             <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
             <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
@@ -288,7 +302,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Shop</h4>
           <ul class="space-y-3">
             <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
             <li><a href="/shop/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Canadian Maple Syrup</a></li>
@@ -300,7 +314,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Connect</h4>
           <ul class="space-y-3">
             <li><a href="/contact" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
             <li><a href="/shop/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>

@@ -315,6 +315,31 @@
             <a class="blog-cta__button" href="/products/pure-maple-syrup-maple-leaf-bottle-250ml">See the maple leaf bottle</a>
             <a class="blog-cta__link" href="/blog/grade-a-vs-grade-b-maple-syrup">Which grade to buy</a>
           </div>
+          <!-- SHELF:START handles="pure-maple-syrup-maple-leaf-bottle-250ml,organic-pure-maple-syrup-250ml" -->
+      <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
+      <div data-shelf class="grid grid-cols-2 lg:grid-cols-2 gap-3 md:gap-5">
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
+      </div>
+      <script>
+      (function () {
+        if (window.__mtShelfLive) return; window.__mtShelfLive = true;
+        var btns = [].slice.call(document.querySelectorAll('[data-shelf] .atc-btn[data-variant-id]'));
+        var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); }).filter(function (id, i, a) { return a.indexOf(id) === i; });
+        if (!ids.length) return;
+        fetch('https://maple-terroir.myshopify.com/api/2026-01/graphql.json', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': '59618e3b6f5e626df6c5f527b4972d3d' }, body: JSON.stringify({ query: 'query($ids:[ID!]!){nodes(ids:$ids){... on ProductVariant{id availableForSale price{amount}}}}', variables: { ids: ids } }) })
+          .then(function (r) { return r.json(); }).then(function (r) {
+            var by = {}; ((r.data && r.data.nodes) || []).forEach(function (n) { if (n) by[n.id] = n; });
+            btns.forEach(function (b) {
+              var n = by[b.getAttribute('data-variant-id')]; if (!n) return;
+              var pe = b.closest('article') && b.closest('article').querySelector('[data-price]');
+              if (pe && n.price) pe.textContent = '$' + parseFloat(n.price.amount).toFixed(2) + ' CAD';
+              if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
+            });
+          }).catch(function () {});
+      })();
+    </script>
+      <!-- SHELF:END -->
         </aside>
         </div>
       </div>
@@ -573,7 +598,7 @@
               <div class="flex flex-wrap gap-3 justify-center">
                 <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
                   <span>Shop Maple Terroir</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/8 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
                     <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
@@ -599,7 +624,7 @@
         </div>
 
         <div class="md:col-span-2 md:col-start-7">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Explore</h4>
           <ul class="space-y-3">
             <li><a href="/story" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Our Story</a></li>
             <li><a href="/terroir" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Terroir</a></li>
@@ -611,7 +636,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Shop</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Shop</h4>
           <ul class="space-y-3">
             <li><a href="/products" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">All Products</a></li>
             <li><a href="/shop/canadian-maple-syrup" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Canadian Maple Syrup</a></li>
@@ -623,7 +648,7 @@
         </div>
 
         <div class="md:col-span-2">
-          <h4 class="eyebrow text-warm-gray-400 mb-4">Connect</h4>
+          <h4 class="text-sm font-semibold text-charcoal mb-4">Connect</h4>
           <ul class="space-y-3">
             <li><a href="/contact" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Contact Us</a></li>
             <li><a href="/shop/maple-syrup-wholesale" class="text-sm text-warm-gray-600 hover:text-charcoal transition-colors duration-300">Wholesale</a></li>
