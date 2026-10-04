@@ -510,12 +510,25 @@
       }).join('');
       pillsEl.innerHTML = pillsHtml;
 
+      /* Jump links scroll within this page. The offset clears the floating nav so the
+         heading is never hidden under it, and the address gains #section so a jump
+         can be shared or reopened at the same spot. */
+      function jumpTo(id, smooth) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var nav = document.getElementById('navbar');
+        var offset = (nav ? nav.getBoundingClientRect().bottom : 100) + 24;
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: smooth ? 'smooth' : 'auto' });
+      }
       pillsEl.querySelectorAll('.cat-pill').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var el = document.getElementById(btn.dataset.target);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          jumpTo(btn.dataset.target, true);
+          history.replaceState(null, '', '#' + btn.dataset.target.replace(/^cat-/, ''));
         });
       });
+      if (location.hash && document.getElementById('cat-' + location.hash.slice(1))) {
+        jumpTo('cat-' + location.hash.slice(1), false);
+      }
     }).catch(function (err) {
       console.error('Failed to load products:', err);
       loading.innerHTML = '<div class="text-center py-20"><p class="text-warm-gray-400 text-lg">Unable to load products. Please refresh the page.</p></div>';
