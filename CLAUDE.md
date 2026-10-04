@@ -77,7 +77,7 @@ Rebuilt October 2, 2026 (Liam: the hero, then "go through the site and look for 
 4. Two grades from one farm: Golden (organic, early harvest) and Dark (maple leaf bottle, late harvest, not organic), with the three certification logos on the organic card only
 5. Reviews: real quotes only (Loox and Google), no review counts
 6. Family: the `FAMILY` block baked by `scripts/build-blocks.mjs` (`id="family"`)
-7. Where we sell: the globe, and the five markets with no ranking claims
+7. Ways to use it (`id="ways-to-use"`, styles scoped as `.wv-*`), since October 3, 2026, replacing the globe (Liam: replace it with "a tasteful section"). Six verbs, Pour, Bake, Stir, Spread, Warm and Gift; hovering or tapping one swaps a Hedra food photo (`assets/images/verbs/`, no packaging in frame so no generated labels), the grade we recommend, one real product with add to cart, and the blog guide it came from. Every grade line is quoted from the guide it links; change one only with the guide. The five-market fact lives on story.html, press.html and certifications.html. The globe's three.js, topojson and world-atlas files were deleted with it.
 8. FAQ: 12 questions, structured data as microdata on the visible text
 9. CTA banner, last, so the page ends on a buy button
 
