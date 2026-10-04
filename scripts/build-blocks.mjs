@@ -93,7 +93,10 @@ function review(handle, name) {
     if (who !== name) continue;
     const text = ((a.match(/class="mt-review-text">([\s\S]*?)<\/p>/) || [])[1] || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
     const date = (a.match(/class="mt-review-date">([^<]*)/) || [])[1] || '';
-    return { name, text, date, product };
+    // The product photo sits beside the quote (Liam, 2026-10-03: the text-only
+    // cards had "no design taste or visuals").
+    const img = ((html.match(/<meta property="og:image" content="([^"]*)"/) || [])[1] || '').replace(/&amp;width=\d+/, '');
+    return { name, text, date, product, img, href: `/products/${handle}` };
   }
   return null;
 }
@@ -101,12 +104,28 @@ function reviews(set, where) {
   const picks = (SETS[set] || SETS.syrup).map(([h, n]) => review(h, n)).filter(Boolean);
   if (picks.length < 3) console.warn(`  ${where}: only ${picks.length} of the "${set}" reviews still published on their product pages`);
   const h2 = HEAD[set] || HEAD.syrup;
-  const card = (r) => `        <figure class="bg-white rounded-[2rem] p-6 md:p-7 ring-1 ring-warm-gray-200/40 flex flex-col">
-          ${STARS}
-          <blockquote class="text-charcoal leading-relaxed mt-4 flex-1">&ldquo;${r.text}&rdquo;</blockquote>
-          <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">${esc(r.name)}</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; ${esc(r.product)}</span></figcaption>
+  const caption = (r) => `<figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">${esc(r.name)}</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="${r.href}" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">${esc(r.product)}</a></figcaption>`;
+  const [lead, ...rest] = picks;
+  const big = lead ? `        <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
+          <a href="${lead.href}" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
+            <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
+            <img src="${lead.img}&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+          </a>
+          <div class="p-7 md:p-10 flex flex-col justify-center">
+            ${STARS}
+            <blockquote class="font-display text-2xl md:text-[1.7rem] leading-snug text-charcoal mt-5">&ldquo;${lead.text}&rdquo;</blockquote>
+            ${caption(lead)}
+          </div>
+        </figure>` : '';
+  const small = (r, i) => `        <figure class="reveal reveal-delay-${i + 1} group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
+          <a href="${r.href}" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="${r.img}&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <div class="flex flex-col">
+            ${STARS}
+            <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;${r.text}&rdquo;</blockquote>
+            ${caption(r)}
+          </div>
         </figure>`;
-  return `  <section id="reviews" class="scroll-mt-28 py-16 md:py-20 px-4 md:px-8">
+  return `  <section id="reviews" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
         <div>
@@ -114,8 +133,8 @@ function reviews(set, where) {
         </div>
         <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-${picks.map(card).join('\n')}
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
+${[big, ...rest.map(small)].filter(Boolean).join('\n')}
       </div>
     </div>
   </section>`;

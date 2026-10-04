@@ -171,6 +171,32 @@
       * { scroll-behavior: auto !important; }
     }
   </style>
+
+  <style>
+    /* Calgary gift page: the shipping label types itself when it scrolls into view */
+    .mt-label-line { display: block; overflow: hidden; white-space: nowrap; }
+    .mt-label-line > span { display: inline-block; clip-path: inset(0 100% 0 0); transition: clip-path 0.9s steps(22, end); }
+    .mt-label.is-in .mt-label-line > span { clip-path: inset(0 0 0 0); }
+    .mt-label.is-in .mt-label-line:nth-child(2) > span { transition-delay: 0.5s; }
+    .mt-label.is-in .mt-label-line:nth-child(3) > span { transition-delay: 1.1s; }
+    .mt-label.is-in .mt-label-line:nth-child(4) > span { transition-delay: 1.7s; }
+    .mt-mark { background: rgba(196,132,29,0.18); color: #8A5A10; border-radius: 6px; padding: 0 0.3em; box-shadow: inset 0 -2px 0 rgba(196,132,29,0.55); }
+    .mt-pin { opacity: 0; transform: translateY(6px); transition: opacity 0.6s cubic-bezier(0.32,0.72,0,1), transform 0.6s cubic-bezier(0.32,0.72,0,1); }
+    .mt-label.is-in .mt-pin { opacity: 1; transform: none; }
+    .mt-label.is-in .mt-pin-1 { transition-delay: 2.4s; } .mt-label.is-in .mt-pin-2 { transition-delay: 2.7s; }
+    /* free-shipping bar fills on view */
+    .mt-fill { transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(0.32,0.72,0,1) 0.2s; }
+    .mt-route.is-in .mt-fill { transform: scaleX(1); }
+    .mt-route-line { stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 1.8s cubic-bezier(0.32,0.72,0,1); }
+    .mt-route.is-in .mt-route-line { stroke-dashoffset: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      .mt-label-line > span { clip-path: none; transition: none; }
+      .mt-pin { opacity: 1; transform: none; transition: none; }
+      .mt-fill { transform: none; transition: none; }
+      .mt-route-line { stroke-dashoffset: 0; transition: none; }
+    }
+
+  </style>
 </head>
 
 <body>
@@ -339,7 +365,7 @@
 
 
   <!-- REVIEWS:START set="gifts" -->
-  <section id="reviews" class="scroll-mt-28 py-16 md:py-20 px-4 md:px-8">
+  <section id="reviews" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
         <div>
@@ -347,21 +373,33 @@
         </div>
         <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-        <figure class="bg-white rounded-[2rem] p-6 md:p-7 ring-1 ring-warm-gray-200/40 flex flex-col">
-          <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
-          <blockquote class="text-charcoal leading-relaxed mt-4 flex-1">&ldquo;It was wonderful meeting Shawn. The experience was easy and simple! Loved the products and the team were a joy to deal with. Would highly recommend!&rdquo;</blockquote>
-          <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Simon S.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; Maple Frenzy Home Set</span></figcaption>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
+        <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
+          <a href="/products/maple-frenzy-home-set" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
+            <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleFrenzyHomeSet.png?v=1749671518&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+          </a>
+          <div class="p-7 md:p-10 flex flex-col justify-center">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="font-display text-2xl md:text-[1.7rem] leading-snug text-charcoal mt-5">&ldquo;It was wonderful meeting Shawn. The experience was easy and simple! Loved the products and the team were a joy to deal with. Would highly recommend!&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Simon S.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/maple-frenzy-home-set" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Maple Frenzy Home Set</a></figcaption>
+          </div>
         </figure>
-        <figure class="bg-white rounded-[2rem] p-6 md:p-7 ring-1 ring-warm-gray-200/40 flex flex-col">
-          <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
-          <blockquote class="text-charcoal leading-relaxed mt-4 flex-1">&ldquo;Great customer service. Also I was pretty impressed how they did packaging well on shipment. Thank you.&rdquo;</blockquote>
-          <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Yoshimi S.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; Pure Maple Syrup Stroopwafels</span></figcaption>
+        <figure class="reveal reveal-delay-1 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
+          <a href="/products/pure-maple-syrup-stroopwafels-caddy" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15.png?v=1774746721&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <div class="flex flex-col">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Great customer service. Also I was pretty impressed how they did packaging well on shipment. Thank you.&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Yoshimi S.</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Pure Maple Syrup Stroopwafels</a></figcaption>
+          </div>
         </figure>
-        <figure class="bg-white rounded-[2rem] p-6 md:p-7 ring-1 ring-warm-gray-200/40 flex flex-col">
-          <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
-          <blockquote class="text-charcoal leading-relaxed mt-4 flex-1">&ldquo;Cookies were so good! Great gifts to give to family!&rdquo;</blockquote>
-          <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Michelle Buchar</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; Maple Syrup Mini Stroopwafels</span></figcaption>
+        <figure class="reveal reveal-delay-2 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
+          <a href="/products/maple-syrup-mini-stroopwafel" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_17_bac4a82c-094b-4140-944f-1fa18ad27e57.png?v=1774747403&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <div class="flex flex-col">
+            <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
+            <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Cookies were so good! Great gifts to give to family!&rdquo;</blockquote>
+            <figcaption class="mt-5 text-sm"><span class="font-medium text-charcoal">Michelle Buchar</span><span class="text-warm-gray-500"> &middot; Verified purchase &middot; </span><a href="/products/maple-syrup-mini-stroopwafel" class="text-warm-gray-600 underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Maple Syrup Mini Stroopwafels</a></figcaption>
+          </div>
         </figure>
       </div>
     </div>
@@ -370,68 +408,108 @@
 
 
   <!-- WHICH SET TO SEND -->
-  <section class="py-16 md:py-24 px-4 md:px-8">
+  <section class="py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-3xl mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">
+      <div class="max-w-3xl mb-10 md:mb-14">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
           Three Budgets, and What Each One Buys
         </h2>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed">
-          The $99 free-shipping line decides more than the gift itself. A $75 box with Standard shipping comes to $94.99 at checkout, and the $100 Maple Tea Party Home Set arrives with no shipping charge at all. So if your budget sits near $95, the larger box costs you about five dollars more.
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch]">
+          The $99 free-shipping line changes the math. Near $95, the bigger box costs you about five dollars more.
         </p>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-5">
-        <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-6 md:p-8 flex flex-col">
-          <p class="text-amber-warm text-sm font-semibold">$75 CAD, plus shipping</p>
-          <h3 class="font-display text-2xl font-semibold text-charcoal mt-2 mb-4">A thank-you or a hostess gift</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed mb-3"><a href="/products/maple-extravaganza-gift-set" class="font-medium text-charcoal underline hover:text-amber-warm">Maple Extravaganza Gift Set</a>: one each of eight maple foods, among them butter popcorn, roasted peanuts, cocoa almonds, stroopwafels, Ceylon tea and a 250 mL bottle of organic syrup.</p>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/products/maple-treat-home-set" class="font-medium text-charcoal underline hover:text-amber-warm">Maple Treat Home Set</a>: leans toward the kitchen, with organic syrup, organic maple butter and organic maple sugar next to the snacks.</p>
+
+      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-10 md:mb-14 max-w-4xl">
+        <div class="bg-white ring-1 ring-warm-gray-200/50 rounded-2xl px-5 py-4 flex items-center gap-4">
+          <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleExtravaganzaGiftSet.png?v=1749671567&amp;width=160" alt="" width="56" height="56" loading="lazy" class="w-14 h-14 object-contain mix-blend-multiply flex-shrink-0">
+          <p class="text-sm text-warm-gray-600 leading-snug flex-1">$75 set <span class="text-warm-gray-400">+</span> $19.99 Standard</p>
+          <p class="font-display text-2xl text-charcoal">$94.99</p>
         </div>
-        <div class="reveal reveal-delay-1 bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-6 md:p-8 flex flex-col">
-          <p class="text-amber-warm text-sm font-semibold">$100 to $150 CAD, ships free</p>
-          <h3 class="font-display text-2xl font-semibold text-charcoal mt-2 mb-4">Family, a holiday table, a new home</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed mb-3"><a href="/products/maple-tea-party-home-set" class="font-medium text-charcoal underline hover:text-amber-warm">Maple Tea Party Home Set</a>, $100: doubles of tea, mini stroopwafels, shortbread, caramel and syrup, so there is enough to share.</p>
-          <p class="text-sm text-warm-gray-600 leading-relaxed mb-3"><a href="/products/maple-frenzy-home-set" class="font-medium text-charcoal underline hover:text-amber-warm">Maple Frenzy Home Set</a>, $125: sixteen packs of snacks for a house with a sweet tooth.</p>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/products/maple-organic-heaven-home-set" class="font-medium text-charcoal underline hover:text-amber-warm">Maple Organic Heaven Home Set</a>, $150: four each of organic syrup, maple sugar and maple butter, for someone who bakes.</p>
-        </div>
-        <div class="reveal reveal-delay-2 bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-6 md:p-8 flex flex-col">
-          <p class="text-amber-warm text-sm font-semibold">$240 CAD, ships free</p>
-          <h3 class="font-display text-2xl font-semibold text-charcoal mt-2 mb-4">The one big box</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/products/maple-mega-combo-gift-set" class="font-medium text-charcoal underline hover:text-amber-warm">Maple Mega Combo Gift Set</a>: 25 items across ten maple products, from three bags of popcorn to two jars of organic maple butter. We would choose it for a whole family at Christmas, or for a team to open together.</p>
+        <div class="rounded-2xl px-5 py-4 flex items-center gap-4 text-cream" style="background:#2E2822;">
+          <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/CanadianMapleTeaPartyHomeSet.png?v=1749671760&amp;width=160" alt="" width="56" height="56" loading="lazy" class="w-14 h-14 object-contain rounded-xl bg-white p-1 flex-shrink-0">
+          <p class="text-sm text-warm-gray-300 leading-snug flex-1">$100 set <span class="text-warm-gray-500">+</span> free shipping</p>
+          <p class="font-display text-2xl text-amber-warm">$100.00</p>
         </div>
       </div>
-      <p class="reveal text-sm text-warm-gray-600 leading-relaxed mt-8 max-w-[62ch]">We do not pack fresh fruit, cheese, flowers or wine. If you were searching for a fruit basket, these boxes hold maple sweets, tea and syrup instead. Before you send a set to someone with an allergy, read the ingredients on its product page: several sets contain nuts, dairy or wheat.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        <article class="reveal group flex flex-col">
+          <a href="/products/maple-extravaganza-gift-set" class="relative block rounded-[2rem] overflow-hidden aspect-[4/5]" style="background:#F1E4CC;">
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleExtravaganzaGiftSet.png?v=1749671567&amp;width=800" alt="Maple Extravaganza Gift Set: popcorn, peanuts, cocoa almonds, stroopwafels, shortbread, caramel, Ceylon tea and organic maple syrup" width="800" height="800" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-8 md:p-10 mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-5 left-5 bg-white/90 backdrop-blur rounded-full px-4 py-2 text-sm font-semibold text-charcoal">$75, plus shipping</span>
+          </a>
+          <h3 class="font-display text-2xl font-semibold text-charcoal mt-5">A thank-you or a hostess gift</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed mt-2">The Maple Extravaganza Gift Set: one each of eight maple foods, from butter popcorn to a 250 mL bottle of organic syrup.</p>
+          <div class="mt-4 flex items-center gap-4">
+            <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521339658489" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Extravaganza Gift Set to cart">+ Add to cart</button>
+            <a href="/products/maple-treat-home-set" class="text-sm text-charcoal underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Or the Maple Treat Home Set</a>
+          </div>
+        </article>
+
+        <article class="reveal reveal-delay-1 group flex flex-col">
+          <a href="/products/maple-tea-party-home-set" class="relative block rounded-[2rem] overflow-hidden aspect-[4/5]" style="background:#E4E3D3;">
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/CanadianMapleTeaPartyHomeSet.png?v=1749671760&amp;width=800" alt="Maple Tea Party Home Set: two each of maple Ceylon tea, mini stroopwafels, shortbread, caramel and organic syrup" width="800" height="800" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-8 md:p-10 mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-5 left-5 bg-white/90 backdrop-blur rounded-full px-4 py-2 text-sm font-semibold text-charcoal">$100 to $150, ships free</span>
+          </a>
+          <h3 class="font-display text-2xl font-semibold text-charcoal mt-5">Family, a holiday table, a new home</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed mt-2">The Maple Tea Party Home Set doubles everything so there is enough to share. For a baker, the $150 Organic Heaven set.</p>
+          <div class="mt-4 flex items-center gap-4">
+            <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/43207995982073" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Tea Party Home Set to cart">+ Add to cart</button>
+            <a href="/products/maple-organic-heaven-home-set" class="text-sm text-charcoal underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">See Organic Heaven</a>
+          </div>
+        </article>
+
+        <article class="reveal reveal-delay-2 group flex flex-col">
+          <a href="/products/maple-mega-combo-gift-set" class="relative block rounded-[2rem] overflow-hidden aspect-[4/5]" style="background:#EBD3AE;">
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMegaComboGiftSet.png?v=1749671705&amp;width=800" alt="Maple Mega Combo Gift Set: 25 maple items including popcorn, stroopwafels, almonds, syrup, maple butter and maple sugar" width="800" height="800" loading="lazy" class="absolute inset-0 w-full h-full object-contain p-8 md:p-10 mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-5 left-5 bg-charcoal rounded-full px-4 py-2 text-sm font-semibold text-cream">$240, ships free</span>
+          </a>
+          <h3 class="font-display text-2xl font-semibold text-charcoal mt-5">The one big box</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed mt-2">The Maple Mega Combo Gift Set: 25 items across ten maple products. For a whole family at Christmas, or a team to open together.</p>
+          <div class="mt-4">
+            <button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/43203560308985" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Mega Combo Gift Set to cart">+ Add to cart</button>
+          </div>
+        </article>
+      </div>
+
+      <p class="reveal text-sm text-warm-gray-500 leading-relaxed mt-10 max-w-[64ch]">We do not pack fresh fruit, cheese, flowers or wine, so these boxes hold maple sweets, tea and syrup in place of a fruit basket. Several sets contain nuts, dairy or wheat: read the ingredients on the product page before you send one to someone with an allergy.</p>
     </div>
   </section>
 
 
   <!-- SENDING TO SOMEONE -->
-  <section class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
+  <section class="py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
-        <div class="md:col-span-5">
-          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <figure class="reveal lg:col-span-5 relative">
+          <img src="/assets/images/cities/calgary-doorstep.webp" alt="A sealed shipping box on a snowy wooden front step in low winter sun, with a bottle of Maple Terroir organic maple syrup and a box of maple shortbread beside it" width="1000" height="1241" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[2rem]">
+        </figure>
+        <div class="lg:col-span-7">
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
             Writing a Calgary Address So the Box Arrives
           </h2>
-          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed">
-            The City of Calgary writes every standard address with a quadrant at the end: NE, NW, SE or SW. The quadrant tells the driver which part of the city the street sits in, so type it in the street line when you check out.
+          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] mb-8">
+            The City of Calgary ends every standard address with a quadrant, NE, NW, SE or SW. It tells the driver which part of the city the street sits in, so type it in the street line at checkout.
           </p>
-        </div>
-        <div class="md:col-span-7 reveal reveal-delay-1">
-          <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/40 rounded-[2rem] p-6 md:p-10 space-y-6">
-            <div>
-              <h3 class="font-display text-lg font-semibold text-charcoal mb-1">The quadrant goes last</h3>
-              <p class="text-sm text-warm-gray-600 leading-relaxed">The City's own examples read <span class="font-medium text-charcoal">625 25 Av SE</span> and <span class="font-medium text-charcoal">800 Macleod Tr SW</span>. Copy the address exactly as the person you are sending to writes it, quadrant included.</p>
+
+          <div class="mt-label reveal relative bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/60 shadow-[0_30px_60px_-30px_rgba(26,23,20,0.25)] p-6 md:p-8 max-w-[560px]" data-inview>
+            <div class="flex items-center justify-between border-b border-dashed border-warm-gray-300 pb-4 mb-5">
+              <p class="text-sm font-semibold text-charcoal">Ship to</p>
+              <p class="text-xs text-warm-gray-400">The City's own example address</p>
             </div>
-            <div>
-              <h3 class="font-display text-lg font-semibold text-charcoal mb-1">A suite number comes first</h3>
-              <p class="text-sm text-warm-gray-600 leading-relaxed">For an apartment, condo or office tower, the City puts the suite ahead of the street number, as in <span class="font-medium text-charcoal">#100 2320 1 St SW</span>. You can also add it on the second address line at checkout.</p>
+            <div class="font-mono text-[15px] md:text-lg text-charcoal leading-loose">
+              <span class="mt-label-line"><span>Recipient's full name</span></span>
+              <span class="mt-label-line"><span><span class="mt-mark">#1101</span> 2404 1 St <span class="mt-mark">SW</span></span></span>
+              <span class="mt-label-line"><span>Calgary, AB</span></span>
+              <span class="mt-label-line"><span>Their postal code</span></span>
             </div>
-            <div>
-              <h3 class="font-display text-lg font-semibold text-charcoal mb-1">One order, one address</h3>
-              <p class="text-sm text-warm-gray-600 leading-relaxed">Each order ships to a single address. To send boxes to two people in Calgary, or to a parent in Calgary and a sibling in Edmonton, place one order for each. Put the recipient's name on the order, not yours.</p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="mt-pin mt-pin-1 inline-flex items-center gap-2 rounded-full bg-warm-gray-100 px-3 py-1.5 text-xs font-medium text-charcoal"><span class="w-2 h-2 rounded-full bg-amber-warm"></span>Suite number first</span>
+              <span class="mt-pin mt-pin-2 inline-flex items-center gap-2 rounded-full bg-warm-gray-100 px-3 py-1.5 text-xs font-medium text-charcoal"><span class="w-2 h-2 rounded-full bg-amber-warm"></span>Quadrant last</span>
             </div>
           </div>
+
+          <p class="reveal text-sm text-warm-gray-600 leading-relaxed mt-8 max-w-[56ch]"><span class="font-semibold text-charcoal">One order, one address.</span> To send boxes to two people, or to a parent in Calgary and a sibling in Edmonton, place one order for each, with the recipient's name on it.</p>
         </div>
       </div>
     </div>
@@ -439,23 +517,50 @@
 
 
   <!-- WHEN TO ORDER -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
-      <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-10 text-center">
+  <section class="py-16 md:py-28 px-4 md:px-8 bg-warm-gray-100/30">
+    <div class="max-w-[1400px] mx-auto">
+      <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-10 md:mb-14 max-w-3xl">
         When to Order for the Dates Calgary Gives Gifts
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-        <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-6 md:p-8">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Thanksgiving</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed">Alberta lists Thanksgiving Day as a general holiday on the second Monday of October, which falls on October 12 in 2026. A box of tea, shortbread and syrup makes a hostess gift for the dinner. The Monday is a holiday, so plan around the business days before it: order Standard at least two weeks out, or Express by the Wednesday before.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+        <article class="reveal group relative rounded-[2rem] overflow-hidden aspect-[2/3] sm:aspect-[4/5] md:aspect-[5/6]">
+          <img src="/assets/images/cities/calgary-thanksgiving.webp" alt="A Thanksgiving table with a roast turkey, pumpkin pie and brass candlesticks, and an open Maple Terroir gift box of maple snacks, tea and organic syrup beside a place setting" width="1000" height="1241" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 p-6 md:p-9 text-cream">
+            <h3 class="font-display text-3xl md:text-4xl font-semibold">Thanksgiving</h3>
+            <p class="text-warm-gray-300 mt-1">Monday, October 12, 2026, a general holiday in Alberta</p>
+            <div class="grid grid-cols-2 gap-3 mt-6">
+              <div class="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-4"><p class="text-xs text-warm-gray-300">Standard</p><p class="font-display text-lg md:text-xl mt-1">Two weeks out</p></div>
+              <div class="rounded-2xl bg-amber-warm/90 p-4"><p class="text-xs text-white/80">Express</p><p class="font-display text-lg md:text-xl mt-1 text-white">By Wed, Oct 7</p></div>
+            </div>
+          </div>
+        </article>
+        <article class="reveal reveal-delay-1 group relative rounded-[2rem] overflow-hidden aspect-[2/3] sm:aspect-[4/5] md:aspect-[5/6]">
+          <img src="/assets/images/cities/calgary-christmas.webp" alt="Hands opening a Maple Terroir gift box of maple tea, shortbread, stroopwafels, popcorn and organic syrup on a blanket in front of a lit Christmas tree" width="1000" height="1252" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent"></div>
+          <div class="absolute inset-x-0 bottom-0 p-6 md:p-9 text-cream">
+            <h3 class="font-display text-3xl md:text-4xl font-semibold">Christmas</h3>
+            <p class="text-warm-gray-300 mt-1">Standard takes up to nine business days, weekends not counted</p>
+            <div class="grid grid-cols-2 gap-3 mt-6">
+              <div class="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-4"><p class="text-xs text-warm-gray-300">Standard</p><p class="font-display text-lg md:text-xl mt-1">By Dec 7</p></div>
+              <div class="rounded-2xl bg-amber-warm/90 p-4"><p class="text-xs text-white/80">Express</p><p class="font-display text-lg md:text-xl mt-1 text-white">After Dec 7</p></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="reveal mt-5 md:mt-6 rounded-[2rem] overflow-hidden grid grid-cols-1 md:grid-cols-12 items-center" style="background:#2E2822;">
+        <div class="md:col-span-3 self-stretch min-h-[220px] relative">
+          <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15.png?v=1774746721&amp;width=600" alt="A caddy of individually wrapped Pure Maple Syrup Stroopwafels" width="600" height="600" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
         </div>
-        <div class="reveal reveal-delay-1 bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-6 md:p-8">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">Christmas</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed">Standard can take up to nine business days, close to two working weeks, so we suggest a Standard order no later than December 7 for a box to reach Calgary before Christmas. After that date, choose Express at checkout. Weekends do not count as business days, so they add to the wait in either case.</p>
+        <div class="md:col-span-6 p-6 md:p-10 text-cream">
+          <h3 class="font-display text-2xl md:text-3xl font-semibold">For a Calgary office</h3>
+          <p class="text-warm-gray-300 leading-relaxed mt-2 max-w-[52ch]">One caddy holds 1,190 g of individually wrapped stroopwafels for a shared kitchen or a client meeting. A gift set for each person? See our <a href="/shop/maple-syrup-corporate-gift" class="text-cream underline underline-offset-4 hover:text-amber-warm">corporate gifts</a> or email <a href="mailto:info@mapleterroir.com" class="text-cream underline underline-offset-4 hover:text-amber-warm">info@mapleterroir.com</a>.</p>
         </div>
-        <div class="reveal reveal-delay-2 bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-6 md:p-8 md:col-span-2">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2">For a Calgary office</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed">For a shared kitchen or a client meeting, one caddy of Pure Maple Syrup Stroopwafels holds 1,190 g of individually wrapped stroopwafels for $39.99 CAD, and a case of eight caddies is $35.99 each, 10 percent off. For a gift set per person, see our <a href="/shop/maple-syrup-corporate-gift" class="underline hover:text-charcoal">corporate gifts</a> or email <a href="mailto:info@mapleterroir.com" class="underline hover:text-charcoal">info@mapleterroir.com</a> with the number of boxes and addresses.</p>
+        <div class="md:col-span-3 p-6 md:p-10 md:pl-0 text-cream">
+          <p class="font-display text-4xl text-amber-warm">$35.99</p>
+          <p class="text-sm text-warm-gray-300 mt-1">each, by the case of eight, 10 percent off the $39.99 single caddy</p>
+          <button class="atc-btn mt-4" style="background:#C4841D" data-variant-id="gid://shopify/ProductVariant/42579003408633" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Stroopwafels to cart">+ Add one caddy</button>
         </div>
       </div>
     </div>
@@ -464,28 +569,59 @@
 
   <!-- DELIVERY -->
   <section class="py-20 md:py-28 px-4 md:px-8 overflow-hidden" style="background:#F5F0E8;">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12">
+    <div class="mt-route max-w-[1100px] mx-auto" data-inview>
+      <div class="text-center mb-10 md:mb-14">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
-          Shipping to Calgary, in Numbers
+          Vancouver to Calgary, Two Ways
         </h2>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] mx-auto mt-4">These are the options our checkout offers for a Calgary address. We leave from Vancouver, so nothing arrives the same day.</p>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[52ch] mx-auto mt-4">Our checkout's own options for a Calgary address. Every box leaves from Vancouver, so nothing arrives the same day.</p>
       </div>
-      <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] overflow-hidden">
-        <div class="grid grid-cols-3 px-6 md:px-10 py-4 text-xs uppercase tracking-[0.15em] text-warm-gray-500 border-b border-warm-gray-200/60">
-          <span>Option</span><span>Time</span><span class="text-right">Cost</span>
+
+      <div class="relative bg-white rounded-[2rem] ring-1 ring-warm-gray-200/50 p-6 md:p-10">
+        <svg viewBox="0 0 600 120" class="w-full h-auto" aria-hidden="true">
+          <path class="mt-route-line" d="M40 60 C 200 10, 400 10, 560 60" fill="none" stroke="#C4841D" stroke-width="3" stroke-linecap="round"/>
+          <path d="M40 60 C 200 110, 400 110, 560 60" fill="none" stroke="#B8AD9E" stroke-width="2" stroke-dasharray="6 8" stroke-linecap="round"/>
+          <circle cx="40" cy="60" r="9" fill="#2E2822"/><circle cx="560" cy="60" r="9" fill="#C4841D"/>
+        </svg>
+        <div class="flex justify-between -mt-2 text-sm font-semibold text-charcoal"><span>Vancouver</span><span>Calgary</span></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+          <div class="rounded-2xl p-5 md:p-6" style="background:#FBF1E0;">
+            <p class="text-sm font-semibold text-amber-warm">Express, the top line</p>
+            <p class="font-display text-3xl md:text-4xl text-charcoal mt-1">1-2 business days</p>
+            <p class="text-warm-gray-600 mt-1">$39.99</p>
+          </div>
+          <div class="rounded-2xl p-5 md:p-6 bg-warm-gray-100/60">
+            <p class="text-sm font-semibold text-warm-gray-500">Standard, the dotted line</p>
+            <p class="font-display text-3xl md:text-4xl text-charcoal mt-1">3-9 business days</p>
+            <p class="text-warm-gray-600 mt-1">$19.99</p>
+          </div>
         </div>
-        <div class="grid grid-cols-3 px-6 md:px-10 py-5 border-b border-warm-gray-200/40 text-charcoal">
-          <span class="font-medium">Standard</span><span>3 to 9 business days</span><span class="text-right font-display text-xl">$19.99</span>
-        </div>
-        <div class="grid grid-cols-3 px-6 md:px-10 py-5 border-b border-warm-gray-200/40 text-charcoal">
-          <span class="font-medium">Express</span><span>1 to 2 business days</span><span class="text-right font-display text-xl">$39.99</span>
-        </div>
-        <div class="grid grid-cols-3 px-6 md:px-10 py-5 text-charcoal">
-          <span class="font-medium">Orders of $99 CAD or more</span><span>Shipping at no charge</span><span class="text-right font-display text-xl text-amber-warm">$0</span>
+
+        <div class="mt-10">
+          <div class="flex items-end justify-between mb-3">
+            <p class="font-semibold text-charcoal">Free shipping at $99 CAD</p>
+            <p class="text-sm text-warm-gray-500">Either speed, on the whole order</p>
+          </div>
+          <div class="relative h-3 rounded-full bg-warm-gray-100 overflow-visible">
+            <div class="mt-fill absolute inset-y-0 left-0 rounded-full bg-amber-warm" style="width:75.8%"></div>
+            <span class="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white ring-2 ring-charcoal" style="left:calc(75.8% - 8px)"></span>
+          </div>
+          <div class="relative h-14 text-xs text-warm-gray-600 mt-2">
+            <span class="absolute left-0">$0</span>
+            <span class="absolute -translate-x-1/2 text-center" style="left:75.8%">$75 set<span class="hidden sm:inline"><br><span class="text-warm-gray-400">$24 short</span></span></span>
+            <span class="absolute right-0 text-right font-semibold text-charcoal">$99<br><span class="font-normal text-amber-warm">ships free</span></span>
+          </div>
         </div>
       </div>
     </div>
+    <script>
+      (function () {
+        var els = document.querySelectorAll('[data-inview]');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+        var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: 0.35 });
+        els.forEach(function (e) { io.observe(e); });
+      })();
+    </script>
   </section>
 
 
