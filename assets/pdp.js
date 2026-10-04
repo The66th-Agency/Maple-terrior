@@ -37,7 +37,17 @@
     '.pdp-nearest img{width:64px;height:64px;border-radius:0.75rem;object-fit:cover;background:#F1E9DC;flex-shrink:0}' +
     '.pdp-nearest-k{display:block;font-size:0.72rem;color:#6B6158}' +
     '.pdp-nearest b{display:block;font-size:0.88rem;color:#1A1714;font-weight:600}' +
-    '.pdp-nearest-p{font-size:0.75rem;color:#6B6158}';
+    '.pdp-nearest-p{font-size:0.75rem;color:#6B6158}' +
+    '#pdp-mix{margin:0 0 2rem;padding:1rem 1.1rem;border-radius:1rem;background:#F5F0E8}' +
+    '.pdp-mix-k{font-size:0.88rem;font-weight:600;color:#1A1714}' +
+    '.pdp-mix-t{font-size:0.8rem;color:#6B6158;margin:0.15rem 0 0.6rem}' +
+    '.pdp-mix-row{display:flex;align-items:center;gap:0.75rem;padding:0.45rem 0;border-top:1px solid rgba(217,209,196,0.6)}' +
+    '.pdp-mix-row img{width:48px;height:48px;border-radius:0.6rem;object-fit:cover;background:#F1E9DC;display:block}' +
+    '.pdp-mix-name{flex:1;font-size:0.82rem;color:#1A1714;text-decoration:none;line-height:1.3}' +
+    '.pdp-mix-name span{display:block;font-size:0.75rem;color:#6B6158}' +
+    '.pdp-mix-add{min-height:44px;padding:0 1rem;border-radius:100px;border:1.5px solid #1A1714;background:transparent;font-size:0.78rem;font-weight:600;color:#1A1714;cursor:pointer;white-space:nowrap}' +
+    '.pdp-mix-add:hover{background:#1A1714;color:#FDFBF7}' +
+    '.pdp-mix-add:disabled{opacity:0.6;cursor:default}';
   document.head.appendChild(st);
   var money = function (n) { return '$' + n.toFixed(2); };
 
@@ -242,6 +252,57 @@
       atc.parentNode.insertBefore(box, atc.nextSibling);
     }).catch(function () {});
   }
+
+  // ---------------------------------------------------------------- mix three caddies, top up a set
+  // From the who-buys read of October 4, 2026: 10 of the 50 orders in 90 days were exactly three
+  // caddies at $119.97, just over the free shipping line, and most caddy orders mixed flavors.
+  // So each caddy page offers the other flavors one tap away, and a set under $99 offers the one
+  // caddy that takes the order past it. Baked placeholder: <div id="pdp-mix" data-mode="caddy|topup">.
+  function addVariant(btn, id) {
+    if (!window.MapleCart || !id) return;
+    btn.disabled = true; btn.textContent = 'Adding';
+    Promise.resolve(window.MapleCart.addLine(id, 1)).then(function () { btn.textContent = 'Added'; }, function () { btn.disabled = false; btn.textContent = '+ Add'; });
+  }
+  function mixRow(p, v) {
+    return '<div class="pdp-mix-row"><a href="/products/' + p.handle + '"><img src="' + cardImg(p.handle) + '" alt="" width="48" height="48"></a>' +
+      '<a class="pdp-mix-name" href="/products/' + p.handle + '">' + esc(p.title) + '<span>' + money(parseFloat(v.priceV2.amount)) + '</span></a>' +
+      '<button type="button" class="pdp-mix-add" data-variant-id="' + v.id + '">+ Add</button></div>';
+  }
+  function mix() {
+    var el = document.getElementById('pdp-mix');
+    if (!el) return;
+    var handle = window.__PRODUCT_HANDLE__ || '', mode = el.getAttribute('data-mode');
+    var list = mode === 'caddy' ? CADDIES.filter(function (h) { return h !== handle; }) : ['pure-maple-syrup-stroopwafels-caddy'];
+    var q = list.map(function (h, i) {
+      return 'p' + i + ': product(handle: ' + JSON.stringify(h) + ') { handle title availableForSale variants(first: 1) { edges { node { id availableForSale priceV2 { amount } } } } }';
+    }).join(' ') + (mode === 'topup' ? ' self: product(handle: ' + JSON.stringify(handle) + ') { variants(first: 1) { edges { node { priceV2 { amount } } } } }' : '');
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': TOKEN }, body: JSON.stringify({ query: '{ ' + q + ' }' }) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        var d = res.data || {}, rows = [], first = null;
+        Object.keys(d).forEach(function (k) {
+          if (k === 'self' || !d[k] || !d[k].availableForSale) return;
+          var v = d[k].variants.edges[0] && d[k].variants.edges[0].node;
+          if (!v || !v.availableForSale) return;
+          if (!first) first = v;
+          rows.push(mixRow(d[k], v));
+        });
+        if (!rows.length) return;
+        var head;
+        if (mode === 'caddy') {
+          var three = first ? money(parseFloat(first.priceV2.amount) * 3) : '';
+          head = '<p class="pdp-mix-k">Mix three flavors</p><p class="pdp-mix-t">Three caddies come to ' + three + ' and ship free. Add another flavor:</p>';
+        } else {
+          var self = d.self && d.self.variants.edges[0] ? parseFloat(d.self.variants.edges[0].node.priceV2.amount) : 0;
+          if (!self || self >= FREE_SHIPPING_CAD) return;
+          head = '<p class="pdp-mix-k">Ship it free</p><p class="pdp-mix-t">This set is ' + money(self) + '. Add one caddy of stroopwafels and the order passes $' + FREE_SHIPPING_CAD + ' and ships free.</p>';
+        }
+        el.innerHTML = head + rows.slice(0, 4).join('');
+        el.style.display = '';
+        el.querySelectorAll('.pdp-mix-add').forEach(function (b) { b.addEventListener('click', function () { addVariant(b, b.getAttribute('data-variant-id')); }); });
+      }).catch(function () {});
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mix); else mix();
 
   window.MTPdp = { chip: chip, select: select, related: related, soldOut: soldOut, packed: packed };
 })();
