@@ -594,3 +594,40 @@ setTimeout(loadGA, 3000);
     watchFooter();
   }
 })();
+
+// ── Product card photos (October 3, 2026) ─────
+// Every product card shows /assets/images/cards/<handle>.webp: the product on one warm cream
+// ground in one light, so a grid reads as one set (Liam: the backgrounds were not cohesive).
+// One place swaps them for every grid on the site, baked or drawn from Shopify. A product with
+// no card keeps its Shopify photo, and so does the product page gallery (it has no product link).
+// Images styled to blend into a colored ground (mix-blend) or marked data-mt-keep are left alone.
+(function () {
+  var CARDS = window.MT_CARDS = ' blueberry-ceylon-tea cocoa-chocolate-maple-stroopwafels-caddy cocoa-dark-chocolate-covered-maple-roasted-almonds dark-chocolate-covered-blueberry-pure-maple-syrup dark-chocolate-covered-cherry-pure-maple-syrup dark-chocolate-covered-cranberry-pure-maple-syrup handcrafted-pure-maple-syrup-butter-popcorn hello-kitty-maple-cream-cookies maple-ceylon-tea maple-enthusiast-home-set maple-extravaganza-gift-set maple-frenzy-home-set maple-indulge-home-set maple-leaf-mini-shortbread-cookies maple-mega-combo-gift-set maple-organic-heaven-home-set maple-sugar-sea-salt-cookies maple-syrup-blueberry-cookies maple-syrup-cream-cookies-350g maple-syrup-medium-dark-roast-ground-coffee maple-syrup-milk-chocolate-covered-almonds maple-syrup-mini-stroopwafel maple-syrup-sea-salt-roasted-peanuts maple-syrup-stroopwafel maple-tea-party-home-set maple-treat-home-set matcha-green-tea-maple-stroopwafels-caddy organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition organic-maple-cream-butter-jar organic-pure-maple-sugar organic-pure-maple-syrup-250ml pure-maple-syrup-candy pure-maple-syrup-caramel pure-maple-syrup-jug-100ml pure-maple-syrup-maple-leaf-bottle-100ml pure-maple-syrup-maple-leaf-bottle-250ml pure-maple-syrup-maple-leaf-bottle-50ml pure-maple-syrup-stroopwafels-caddy strawberry-cream-maple-stroopwafels-caddy wild-blueberry-maple-stroopwafels-caddy ';
+  function handleOf(img) {
+    var a = img.closest && img.closest('a[href*="/products/"]');
+    if (!a) return null;
+    var m = (a.getAttribute('href') || '').match(/\/products\/([a-z0-9-]+)/);
+    return m && m[1];
+  }
+  function fix(img) {
+    var src = img.getAttribute('src') || '';
+    if (src.indexOf('cdn.shopify.com') < 0) return;
+    if (/mix-blend/.test(img.className) || img.closest('[data-mt-keep]')) return;
+    var h = handleOf(img);
+    if (!h || CARDS.indexOf(' ' + h + ' ') < 0) return;
+    img.removeAttribute('srcset');
+    img.src = '/assets/images/cards/' + h + '.webp';
+  }
+  function scan(n) {
+    if (n.nodeType !== 1) return;
+    if (n.tagName === 'IMG') fix(n);
+    else if (n.querySelectorAll) n.querySelectorAll('img').forEach(fix);
+  }
+  scan(document.documentElement);
+  new MutationObserver(function (ms) {
+    ms.forEach(function (m) {
+      if (m.type === 'attributes') fix(m.target);
+      else m.addedNodes.forEach(scan);
+    });
+  }).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
+})();

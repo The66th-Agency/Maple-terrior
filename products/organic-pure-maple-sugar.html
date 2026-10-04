@@ -684,7 +684,14 @@
       document.getElementById('product-title').textContent = p.title;
 
       // Images
-      var images = p.images.edges.map(function (e) { return e.node; });
+      // Gallery: the product's card photo first (/assets/images/cards, the same image every grid shows),
+      // then the Shopify photos. The beige studio renders uploaded as public_NN files on the stroopwafel
+      // products are left out: three of them print the brand as "Maple Terrior" (October 3, 2026).
+      var shopImages = p.images.edges.map(function (e) { return e.node; }).filter(function (n) {
+        return !(p.handle.indexOf('stroopwafel') !== -1 && /\/public_\d+[^\/]*$/.test(n.url.split('?')[0]));
+      });
+      var images = shopImages.slice();
+      if (window.MT_CARDS && window.MT_CARDS.indexOf(' ' + p.handle + ' ') !== -1) images.unshift({ url: '/assets/images/cards/' + p.handle + '.webp?v=1', altText: p.title });
       if (images.length) {
         var mainEl = document.getElementById('gallery-main');
         mainEl.innerHTML = '<img src="' + images[0].url + '&width=800" alt="' + (window.MapleEsc||String)(images[0].altText || p.title) + '">';
@@ -712,11 +719,11 @@
       }
 
       // Before/After slider for stroopwafels
-      if (images.length >= 3 && p.productType && p.productType.toLowerCase().indexOf('stroopwafel') !== -1) {
+      if (shopImages.length >= 3 && p.productType && p.productType.toLowerCase().indexOf('stroopwafel') !== -1) {
         var baSection = document.getElementById('ba-section');
         baSection.classList.remove('hidden');
-        document.getElementById('ba-before').src = images[0].url + '&width=800';
-        document.getElementById('ba-after').src = images[1].url + '&width=800';
+        document.getElementById('ba-before').src = shopImages[0].url + '&width=800';
+        document.getElementById('ba-after').src = shopImages[1].url + '&width=800';
         initBASlider();
       }
 
