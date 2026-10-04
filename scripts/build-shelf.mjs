@@ -18,7 +18,7 @@
 // Run: node scripts/build-shelf.mjs   (idempotent; rewrites only the marked blocks)
 
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
-import { join, dirname, relative } from 'node:path';
+import { join, dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -85,7 +85,9 @@ function walk(dir, out = []) {
 
 const cache = new Map();
 let pages = 0;
-for (const file of walk(ROOT)) {
+// Usage: node scripts/build-shelf.mjs [page.html ...]   (no files: every page)
+const only = process.argv.slice(2).filter((a) => a.endsWith('.html')).map((a) => resolve(a));
+for (const file of only.length ? only : walk(ROOT)) {
   let html = readFileSync(file, 'utf8');
   if (!OPEN.test(html)) continue;
   let pos = 0, out = '';

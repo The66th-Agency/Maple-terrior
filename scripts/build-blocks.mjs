@@ -13,6 +13,17 @@
 //     sits in the top half (visual.md). set="syrup" or set="gifts".
 //   <!-- FAMILY:START baked by scripts/build-blocks.mjs -->    <!-- FAMILY:END -->
 //     The family section: who started the company and who packs the orders.
+//   <!-- CTA:START title="..." text="..." href="..." label="..." href2="..." label2="..." -->  <!-- CTA:END -->
+//     The closing section, last before the footer: the homepage's amber panel
+//     (Liam, October 3, 2026: one component reused across all pages, after the
+//     site had grown photo, dark, grey and amber closers). Every attribute is
+//     optional. A page sets one only when its reader needs a different heading
+//     or button, as a city page or the press page does; left out, the page gets
+//     the homepage's copy. href2 and label2 add a quieter second button. Inside
+//     an attribute, write < > and " as &lt; &gt; and &quot;, so a link in the
+//     text survives.
+//
+// Usage: node scripts/build-blocks.mjs [page.html ...]   (no files: every page)
 //
 // Facts, checked 2026-10-02:
 // - The rating: Loox holds 93 reviews averaging 5.0 (Loox admin). The count is
@@ -34,7 +45,7 @@
 // Run: node scripts/build-blocks.mjs   (idempotent; rewrites only the marked blocks)
 
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { join, dirname, relative } from 'node:path';
+import { join, dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -160,7 +171,48 @@ const family = () => `  <section id="family" class="scroll-mt-28 py-16 md:py-24 
   </section>`;
 
 // ------------------------------------------------------------ bake
-const MARK = /<!-- (LOGOS|REVIEWS|FAMILY):START([^>]*?)-->/;
+// ------------------------------------------------------------ CTA
+const CTA_DEFAULT = {
+  title: 'Order straight from our family.',
+  text: 'Orders of $99 CAD or more ship free. Standard delivery takes 3 to 9 business days, and Express takes 1 to 2 business days for $39.99.',
+  href: '/products',
+  label: 'Shop All Products',
+};
+const attr = (attrs, k) => {
+  const m = attrs.match(new RegExp(`\\b${k}="([^"]*)"`));
+  return m ? m[1].replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"') : null;
+};
+const cta = (attrs) => {
+  const c = Object.fromEntries(Object.entries(CTA_DEFAULT).map(([k, v]) => [k, attr(attrs, k) ?? v]));
+  const href2 = attr(attrs, 'href2'), label2 = attr(attrs, 'label2');
+  const second = href2 && label2 ? `
+                <a href="${href2}" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">${label2}</a>` : '';
+  return `  <section class="pb-24 md:pb-40 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal">
+        <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+            <div class="relative">
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">${c.title}</h2>
+              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">${c.text}</p>
+              <div class="flex flex-wrap gap-3 justify-center">
+                <a href="${c.href}" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                  <span>${c.label}</span>
+                  <span class="w-7 h-7 rounded-full bg-charcoal/8 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </a>${second}
+              </div>
+            </div>
+            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+};
+
+const MARK = /<!-- (LOGOS|REVIEWS|FAMILY|CTA):START([^>]*?)-->/;
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     if (name.startsWith('.') || name === 'node_modules' || name === '_archive') continue;
@@ -170,7 +222,8 @@ function walk(dir, out = []) {
   return out;
 }
 const counts = {};
-for (const file of walk(ROOT)) {
+const only = process.argv.slice(2).filter((a) => a.endsWith('.html')).map((a) => resolve(a));
+for (const file of only.length ? only : walk(ROOT)) {
   const html = readFileSync(file, 'utf8');
   if (!MARK.test(html)) continue;
   const where = relative(ROOT, file);
@@ -181,8 +234,8 @@ for (const file of walk(ROOT)) {
     const end = html.indexOf(`<!-- ${kind}:END -->`, openEnd);
     if (end < 0) throw new Error(`${where}: ${kind}:END missing`);
     const set = (attrs.match(/set="([^"]+)"/) || [])[1] || 'syrup';
-    const marker = kind === 'REVIEWS' ? `<!-- REVIEWS:START set="${set}" -->` : `<!-- ${kind}:START baked by scripts/build-blocks.mjs -->`;
-    const block = kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : family();
+    const marker = kind === 'REVIEWS' ? `<!-- REVIEWS:START set="${set}" -->` : kind === 'CTA' ? `<!-- CTA:START${attrs.trimEnd() ? attrs.trimEnd() + ' ' : ' '}-->` : `<!-- ${kind}:START baked by scripts/build-blocks.mjs -->`;
+    const block = kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : kind === 'CTA' ? cta(attrs) : family();
     out += html.slice(pos, open) + marker + '\n' + block + '\n  ';
     pos = end;
     counts[kind] = (counts[kind] || 0) + 1;
