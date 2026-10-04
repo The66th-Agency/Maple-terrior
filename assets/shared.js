@@ -611,7 +611,10 @@ setTimeout(loadGA, 3000);
   var CARDS = window.MT_CARDS = ' blueberry-ceylon-tea cocoa-chocolate-maple-stroopwafels-caddy cocoa-dark-chocolate-covered-maple-roasted-almonds dark-chocolate-covered-blueberry-pure-maple-syrup dark-chocolate-covered-cherry-pure-maple-syrup dark-chocolate-covered-cranberry-pure-maple-syrup handcrafted-pure-maple-syrup-butter-popcorn hello-kitty-maple-cream-cookies maple-ceylon-tea maple-enthusiast-home-set maple-extravaganza-gift-set maple-frenzy-home-set maple-indulge-home-set maple-leaf-mini-shortbread-cookies maple-mega-combo-gift-set maple-organic-heaven-home-set maple-sugar-sea-salt-cookies maple-syrup-blueberry-cookies maple-syrup-cream-cookies-350g maple-syrup-medium-dark-roast-ground-coffee maple-syrup-milk-chocolate-covered-almonds maple-syrup-mini-stroopwafel maple-syrup-sea-salt-roasted-peanuts maple-syrup-stroopwafel maple-tea-party-home-set maple-treat-home-set matcha-green-tea-maple-stroopwafels-caddy organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition organic-maple-cream-butter-jar organic-pure-maple-sugar organic-pure-maple-syrup-250ml pure-maple-syrup-candy pure-maple-syrup-caramel pure-maple-syrup-jug-100ml pure-maple-syrup-maple-leaf-bottle-100ml pure-maple-syrup-maple-leaf-bottle-250ml pure-maple-syrup-maple-leaf-bottle-50ml pure-maple-syrup-stroopwafels-caddy strawberry-cream-maple-stroopwafels-caddy wild-blueberry-maple-stroopwafels-caddy ';
   // Card files are cached for a year, so a remade card gets a new version here and in any
   // page that links it directly (First Tap, October 4, 2026: the box, not the bottle window).
-  var CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 2 };
+  // A card listed in CARD_LARGE also has a 2048px copy in cards/large/, which the product
+  // page gallery shows (it is shown up to 1,100px wide and zooms 1.8 times on hover).
+  var CARD_V = window.MT_CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 3 };
+  window.MT_CARD_LARGE = ' organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition ';
   function handleOf(img) {
     var a = img.closest && img.closest('a[href*="/products/"]');
     if (!a) return null;
