@@ -184,16 +184,9 @@
     .mt-pin { opacity: 0; transform: translateY(6px); transition: opacity 0.6s cubic-bezier(0.32,0.72,0,1), transform 0.6s cubic-bezier(0.32,0.72,0,1); }
     .mt-label.is-in .mt-pin { opacity: 1; transform: none; }
     .mt-label.is-in .mt-pin-1 { transition-delay: 2.4s; } .mt-label.is-in .mt-pin-2 { transition-delay: 2.7s; }
-    /* free-shipping bar fills on view */
-    .mt-fill { transform: scaleX(0); transform-origin: left; transition: transform 1.6s cubic-bezier(0.32,0.72,0,1) 0.2s; }
-    .mt-route.is-in .mt-fill { transform: scaleX(1); }
-    .mt-route-line { stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 1.8s cubic-bezier(0.32,0.72,0,1); }
-    .mt-route.is-in .mt-route-line { stroke-dashoffset: 0; }
     @media (prefers-reduced-motion: reduce) {
       .mt-label-line > span { clip-path: none; transition: none; }
       .mt-pin { opacity: 1; transform: none; transition: none; }
-      .mt-fill { transform: none; transition: none; }
-      .mt-route-line { stroke-dashoffset: 0; transition: none; }
     }
 
   </style>
@@ -415,21 +408,8 @@
           Three Budgets, and What Each One Buys
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch]">
-          The $99 free-shipping line changes the math. Near $95, the bigger box costs you about five dollars more.
+          Pick by who it is for. Each product page lists every item in the box.
         </p>
-      </div>
-
-      <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-10 md:mb-14 max-w-4xl">
-        <div class="bg-white ring-1 ring-warm-gray-200/50 rounded-2xl px-5 py-4 flex items-center gap-4">
-          <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleExtravaganzaGiftSet.png?v=1749671567&amp;width=160" alt="" width="56" height="56" loading="lazy" class="w-14 h-14 object-contain mix-blend-multiply flex-shrink-0">
-          <p class="text-sm text-warm-gray-600 leading-snug flex-1">$75 set <span class="text-warm-gray-400">+</span> $19.99 Standard</p>
-          <p class="font-display text-2xl text-charcoal">$94.99</p>
-        </div>
-        <div class="rounded-2xl px-5 py-4 flex items-center gap-4 text-cream" style="background:#2E2822;">
-          <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/CanadianMapleTeaPartyHomeSet.png?v=1749671760&amp;width=160" alt="" width="56" height="56" loading="lazy" class="w-14 h-14 object-contain rounded-xl bg-white p-1 flex-shrink-0">
-          <p class="text-sm text-warm-gray-300 leading-snug flex-1">$100 set <span class="text-warm-gray-500">+</span> free shipping</p>
-          <p class="font-display text-2xl text-amber-warm">$100.00</p>
-        </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
@@ -486,33 +466,48 @@
         </figure>
         <div class="lg:col-span-7">
           <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
-            Writing a Calgary Address So the Box Arrives
+            Send It Straight to Them
           </h2>
-          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] mb-8">
-            The City of Calgary ends every standard address with a quadrant, NE, NW, SE or SW. It tells the driver which part of the city the street sits in, so type it in the street line at checkout.
+          <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] mb-8">
+            You order here, and we ship the box to the person in Calgary, not to you.
           </p>
 
-          <div class="mt-label reveal relative bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/60 shadow-[0_30px_60px_-30px_rgba(26,23,20,0.25)] p-6 md:p-8 max-w-[560px]" data-inview>
-            <div class="flex items-center justify-between border-b border-dashed border-warm-gray-300 pb-4 mb-5">
-              <p class="text-sm font-semibold text-charcoal">Ship to</p>
-              <p class="text-xs text-warm-gray-400">The City's own example address</p>
-            </div>
-            <div class="font-mono text-[15px] md:text-lg text-charcoal leading-loose">
-              <span class="mt-label-line"><span>Recipient's full name</span></span>
-              <span class="mt-label-line"><span><span class="mt-mark">#1101</span> 2404 1 St <span class="mt-mark">SW</span></span></span>
-              <span class="mt-label-line"><span>Calgary, AB</span></span>
-              <span class="mt-label-line"><span>Their postal code</span></span>
-            </div>
-            <div class="flex flex-wrap gap-2 mt-6">
-              <span class="mt-pin mt-pin-1 inline-flex items-center gap-2 rounded-full bg-warm-gray-100 px-3 py-1.5 text-xs font-medium text-charcoal"><span class="w-2 h-2 rounded-full bg-amber-warm"></span>Suite number first</span>
-              <span class="mt-pin mt-pin-2 inline-flex items-center gap-2 rounded-full bg-warm-gray-100 px-3 py-1.5 text-xs font-medium text-charcoal"><span class="w-2 h-2 rounded-full bg-amber-warm"></span>Quadrant last</span>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+            <ol class="md:col-span-5 space-y-5">
+              <li class="reveal flex gap-4"><span class="font-display text-3xl font-semibold text-amber-warm leading-none w-7 flex-shrink-0">1</span><p class="text-charcoal leading-snug"><span class="font-semibold">Pick a set</span><br><span class="text-sm text-warm-gray-600">Any of the boxes above.</span></p></li>
+              <li class="reveal reveal-delay-1 flex gap-4"><span class="font-display text-3xl font-semibold text-amber-warm leading-none w-7 flex-shrink-0">2</span><p class="text-charcoal leading-snug"><span class="font-semibold">Put their name and address under Shipping</span><br><span class="text-sm text-warm-gray-600">Keep the SW, NE, NW or SE at the end. Calgary addresses need it.</span></p></li>
+            </ol>
+
+            <div class="md:col-span-7 mt-label reveal relative bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/60 shadow-[0_30px_60px_-30px_rgba(26,23,20,0.25)] p-6 md:p-7" data-inview>
+              <div class="flex items-center justify-between border-b border-dashed border-warm-gray-300 pb-4 mb-5">
+                <p class="text-sm font-semibold text-charcoal">Shipping address</p>
+                <p class="text-xs text-warm-gray-400">Step 2, filled in for them</p>
+              </div>
+              <div class="font-mono text-[15px] md:text-base text-charcoal leading-loose">
+                <span class="mt-label-line"><span>Their name, not yours</span></span>
+                <span class="mt-label-line"><span><span class="mt-mark">#1101</span> 2404 1 St <span class="mt-mark">SW</span></span></span>
+                <span class="mt-label-line"><span>Calgary, AB</span></span>
+                <span class="mt-label-line"><span>Their postal code</span></span>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-6">
+                <span class="mt-pin mt-pin-1 inline-flex items-center gap-2 rounded-full bg-warm-gray-100 px-3 py-1.5 text-xs font-medium text-charcoal"><span class="w-2 h-2 rounded-full bg-amber-warm"></span>Unit number first</span>
+                <span class="mt-pin mt-pin-2 inline-flex items-center gap-2 rounded-full bg-warm-gray-100 px-3 py-1.5 text-xs font-medium text-charcoal"><span class="w-2 h-2 rounded-full bg-amber-warm"></span>Quadrant last</span>
+              </div>
             </div>
           </div>
 
-          <p class="reveal text-sm text-warm-gray-600 leading-relaxed mt-8 max-w-[56ch]"><span class="font-semibold text-charcoal">One order, one address.</span> To send boxes to two people, or to a parent in Calgary and a sibling in Edmonton, place one order for each, with the recipient's name on it.</p>
+          <p class="reveal text-sm text-warm-gray-600 leading-relaxed mt-8 max-w-[56ch]"><span class="font-semibold text-charcoal">Sending to more than one person?</span> Each order ships to one address, so place one order per person.</p>
         </div>
       </div>
     </div>
+    <script>
+      (function () {
+        var els = document.querySelectorAll('[data-inview]');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+        var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: 0.35 });
+        els.forEach(function (e) { io.observe(e); });
+      })();
+    </script>
   </section>
 
 
@@ -540,7 +535,7 @@
           <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent"></div>
           <div class="absolute inset-x-0 bottom-0 p-6 md:p-9 text-cream">
             <h3 class="font-display text-3xl md:text-4xl font-semibold">Christmas</h3>
-            <p class="text-warm-gray-300 mt-1">Standard takes up to nine business days, weekends not counted</p>
+            <p class="text-warm-gray-300 mt-1">For a box under the tree by December 25</p>
             <div class="grid grid-cols-2 gap-3 mt-6">
               <div class="rounded-2xl bg-white/10 backdrop-blur border border-white/15 p-4"><p class="text-xs text-warm-gray-300">Standard</p><p class="font-display text-lg md:text-xl mt-1">By Dec 7</p></div>
               <div class="rounded-2xl bg-amber-warm/90 p-4"><p class="text-xs text-white/80">Express</p><p class="font-display text-lg md:text-xl mt-1 text-white">After Dec 7</p></div>
@@ -564,64 +559,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- DELIVERY -->
-  <section class="py-20 md:py-28 px-4 md:px-8 overflow-hidden" style="background:#F5F0E8;">
-    <div class="mt-route max-w-[1100px] mx-auto" data-inview>
-      <div class="text-center mb-10 md:mb-14">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
-          Vancouver to Calgary, Two Ways
-        </h2>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[52ch] mx-auto mt-4">Our checkout's own options for a Calgary address. Every box leaves from Vancouver, so nothing arrives the same day.</p>
-      </div>
-
-      <div class="relative bg-white rounded-[2rem] ring-1 ring-warm-gray-200/50 p-6 md:p-10">
-        <svg viewBox="0 0 600 120" class="w-full h-auto" aria-hidden="true">
-          <path class="mt-route-line" d="M40 60 C 200 10, 400 10, 560 60" fill="none" stroke="#C4841D" stroke-width="3" stroke-linecap="round"/>
-          <path d="M40 60 C 200 110, 400 110, 560 60" fill="none" stroke="#B8AD9E" stroke-width="2" stroke-dasharray="6 8" stroke-linecap="round"/>
-          <circle cx="40" cy="60" r="9" fill="#2E2822"/><circle cx="560" cy="60" r="9" fill="#C4841D"/>
-        </svg>
-        <div class="flex justify-between -mt-2 text-sm font-semibold text-charcoal"><span>Vancouver</span><span>Calgary</span></div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-          <div class="rounded-2xl p-5 md:p-6" style="background:#FBF1E0;">
-            <p class="text-sm font-semibold text-amber-warm">Express, the top line</p>
-            <p class="font-display text-3xl md:text-4xl text-charcoal mt-1">1-2 business days</p>
-            <p class="text-warm-gray-600 mt-1">$39.99</p>
-          </div>
-          <div class="rounded-2xl p-5 md:p-6 bg-warm-gray-100/60">
-            <p class="text-sm font-semibold text-warm-gray-500">Standard, the dotted line</p>
-            <p class="font-display text-3xl md:text-4xl text-charcoal mt-1">3-9 business days</p>
-            <p class="text-warm-gray-600 mt-1">$19.99</p>
-          </div>
-        </div>
-
-        <div class="mt-10">
-          <div class="flex items-end justify-between mb-3">
-            <p class="font-semibold text-charcoal">Free shipping at $99 CAD</p>
-            <p class="text-sm text-warm-gray-500">Either speed, on the whole order</p>
-          </div>
-          <div class="relative h-3 rounded-full bg-warm-gray-100 overflow-visible">
-            <div class="mt-fill absolute inset-y-0 left-0 rounded-full bg-amber-warm" style="width:75.8%"></div>
-            <span class="absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white ring-2 ring-charcoal" style="left:calc(75.8% - 8px)"></span>
-          </div>
-          <div class="relative h-14 text-xs text-warm-gray-600 mt-2">
-            <span class="absolute left-0">$0</span>
-            <span class="absolute -translate-x-1/2 text-center" style="left:75.8%">$75 set<span class="hidden sm:inline"><br><span class="text-warm-gray-400">$24 short</span></span></span>
-            <span class="absolute right-0 text-right font-semibold text-charcoal">$99<br><span class="font-normal text-amber-warm">ships free</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      (function () {
-        var els = document.querySelectorAll('[data-inview]');
-        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
-        var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { threshold: 0.35 });
-        els.forEach(function (e) { io.observe(e); });
-      })();
-    </script>
   </section>
 
 
