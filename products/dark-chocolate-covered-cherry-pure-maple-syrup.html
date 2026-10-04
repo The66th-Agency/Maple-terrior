@@ -42,6 +42,8 @@
     }
     .gallery-main:hover img { transform: scale(1.8); }
     .gallery-main:active { cursor: zoom-out; }
+    #product-desc ul { list-style: disc; padding-left: 1.25rem; margin: 0.5rem 0 1rem; }
+    #product-desc li { margin: 0.15rem 0; }
     .gallery-thumbs {
       display: flex; gap: 0.5rem; margin-top: 0.75rem; overflow-x: auto;
       scrollbar-width: none; -ms-overflow-style: none;
@@ -741,6 +743,9 @@
         });
       }
 
+      // A product with one size comes from Shopify as one variant named "Default Title";
+      // its button said exactly that on all eight gift and home sets (October 4, 2026).
+      if (variants.length === 1 && variants[0].title === 'Default Title') pickerEl.style.display = 'none';
       variants.forEach(function (v, i) {
         var btn = document.createElement('button');
         btn.className = 'variant-btn' + (i === 0 ? ' active' : '') + (!v.availableForSale ? ' sold-out' : '');
@@ -793,6 +798,12 @@
       var lists = tempDiv.querySelectorAll('ul');
       var highlights = [];
       lists.forEach(function (ul) {
+        // A list introduced by a line ending in a colon is the answer to that line, such as
+        // a gift set's contents, so it stays in the description (October 4, 2026: the eight
+        // sets said "contains the following:" and then nothing, the list closed away below).
+        var lead = ul.previousElementSibling;
+        while (lead && !lead.textContent.trim()) lead = lead.previousElementSibling;
+        if (lead && /:\s*$/.test(lead.textContent.trim())) return;
         ul.querySelectorAll('li').forEach(function (li) {
           var text = li.textContent.trim();
           if (text) highlights.push(text);
