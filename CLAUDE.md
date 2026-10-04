@@ -240,6 +240,7 @@ Maple Terroir's GSC data is pullable through the connected Google API (claude-se
 
 ## Writing rules
 
+- Say Quebec only where it is needed (Liam, October 3, 2026: "lets just not mention it if its not needed, like right now it feels like you are overdoing it a bit with the Quebec"). Quebec is needed where the place is the subject: the terroir page, the line on the story page that says where the farm is, facts such as Quebec's share of Canadian production, and pages about Quebec or Montreal. Everywhere else, name it at most once on a page, in the sentence that says where the syrup comes from, and never in a heading, a page title, a meta description, the footer or a closing panel.
 - Agency Rule: only people act. Abstract nouns (clarity, results, change, strategy, leadership) cannot be the subject of a sentence. Recast so a person or group is the subject. The abstract noun becomes an object, modifier, or part of a prepositional phrase.
   - AVOID: "SEO drives traffic." USE: "We build pages that bring in buyers."
   - Exception: real systems taking real actions are fine. "Shopify handles the cart" and "Cloudflare serves the page" are correct.
