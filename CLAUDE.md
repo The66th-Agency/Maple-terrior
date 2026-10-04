@@ -71,12 +71,12 @@ Loaded by every page. Provides: announcement bar, search modal (Ctrl+K), back-to
 
 ### index.html section order
 Rebuilt October 2, 2026 (Liam: the hero, then "go through the site and look for ai slop"). The scroll sequence, Certifications, Terroir and Our Story sections were cut; their claims were false (late harvest for the early-harvest organic syrup, every product certified organic) and they repeated each other.
-1. Hero: full-bleed photo with the copy over a dark shade, the same markup as the Canada city page heroes. The photo is the Toronto gift page's own (`assets/images/cities/gift-baskets-toronto.webp`), Liam's pick ("i only want that hero image to be there"). It fills the first screen, with the strip on its bottom edge.
+1. Hero: full-bleed photo with the copy over a dark shade, the same markup as the Canada city page heroes. The photo is the Toronto gift page's own (`assets/images/cities/gift-baskets-toronto.webp`), Liam's pick ("i only want that hero image to be there"). It fills the first screen, with the strip on its bottom edge. Copy rewritten October 3, 2026 after Liam: "is this seriously the hero copy we want": the H1 names the product and the origin (Maple Syrup from One Family Farm in Quebec), one line says what the store sells and since when, and the buttons are the two things the photo shows, syrup and gift sets. Shipping and prices are said further down the page, never in the hero.
 2. Rating and retailer-logo strip: the `LOGOS` block baked by `scripts/build-blocks.mjs`
 3. Products: bento tiles by category (syrup, stroopwafels, chocolates, tea and coffee, gift and home sets, snacks, all products). Bento rule below: change every tile together.
 4. Two grades from one farm: Golden (organic, early harvest) and Dark (maple leaf bottle, late harvest, not organic), with the three certification logos on the organic card only
 5. Reviews: real quotes only (Loox and Google), no review counts
-6. Family: the `FAMILY` block baked by `scripts/build-blocks.mjs` (`id="family"`; the hero's second button points here)
+6. Family: the `FAMILY` block baked by `scripts/build-blocks.mjs` (`id="family"`)
 7. Where we sell: the globe, and the five markets with no ranking claims
 8. FAQ: 12 questions, structured data as microdata on the visible text
 9. CTA banner, last, so the page ends on a buy button
