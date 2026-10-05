@@ -6,7 +6,7 @@
   <url><loc>https://mapleterroir.com/story</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/terroir</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/certifications</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/tools/</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/tools/</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/tools/sugar-to-maple-syrup-conversion</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/press</loc><priority>0.6</priority></url>
   <url><loc>https://mapleterroir.com/contact</loc><priority>0.6</priority></url>
@@ -23,22 +23,22 @@
   <!-- Location pages -->
   <url><loc>https://mapleterroir.com/locations-we-serve/</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-vancouver</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-vancouver</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-toronto</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-montreal</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-calgary</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-montreal</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-calgary</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <!-- Static blog posts (CF Pages served, not Shopify) -->
   <url><loc>https://mapleterroir.com/blog/best-canadian-gifts-2026</loc><lastmod>2026-10-04</lastmod><priority>0.9</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-canadian-maple-syrup-brands-2026</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/blog/grade-a-vs-grade-b-maple-syrup</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/grade-a-vs-grade-b-maple-syrup</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/quebec-vs-vermont-maple-syrup</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/organic-vs-conventional-maple-syrup</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/pure-maple-syrup-vs-table-syrup</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/blog/does-maple-syrup-go-bad-shelf-life-storage</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/does-maple-syrup-go-bad-shelf-life-storage</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/maple-syrup-vs-honey</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <!-- Collection pages -->
   <url><loc>https://mapleterroir.com/collections/premium-maple-syrup</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/collections/maple-stroopwafels</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/collections/maple-stroopwafels</loc><lastmod>2026-10-05</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/tea-coffee</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/cookies</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/chocolates</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
@@ -97,12 +97,12 @@
   <url><loc>https://mapleterroir.com/blog/maple-terroir-partners-with-ted2024-fueling-innovators-with-iconic-stroopwafels</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/15-easy-gluten-free-maple-cake-recipes-your-family-will-love-in-2025</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/canadian-maple-syrup-production-report-2025-hidden-market-opportunities-revealed</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/blog/authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/canadian-maple-syrup-production-report-2025</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/the-truth-about-maple-syrup-hidden-uses-most-people-dont-know</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/homemade-vs-store-bought-waffle-snacks-which-tastes-better-2025</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/blog/the-complete-guide-to-canadian-maple-syrup</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/the-complete-guide-to-canadian-maple-syrup</loc><lastmod>2026-10-05</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/can-you-tap-any-maple-tree-the-truth-about-backyard-syrup-making</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide</loc><lastmod>2026-10-04</lastmod><priority>0.7</priority></url>
@@ -145,6 +145,11 @@
   <url>
     <loc>https://mapleterroir.com/locations-we-serve/canada/gift-baskets-calgary</loc>
     <lastmod>2026-10-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/tools/maple-syrup-shelf-life</loc>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
