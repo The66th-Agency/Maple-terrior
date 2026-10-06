@@ -613,7 +613,7 @@ setTimeout(loadGA, 3000);
   // page that links it directly (First Tap, October 4, 2026: the box, not the bottle window).
   // A card listed in CARD_LARGE also has a 2048px copy in cards/large/, which the product
   // page gallery shows (it is shown up to 1,100px wide and zooms 1.8 times on hover).
-  var CARD_V = window.MT_CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 3 };
+  var CARD_V = window.MT_CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 3, 'wild-blueberry-maple-stroopwafels-caddy': 2 };
   window.MT_CARD_LARGE = ' organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition ';
   function handleOf(img) {
     var a = img.closest && img.closest('a[href*="/products/"]');
