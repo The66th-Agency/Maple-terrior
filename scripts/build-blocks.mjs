@@ -23,11 +23,20 @@
 //     an attribute, write < > and " as &lt; &gt; and &quot;, so a link in the
 //     text survives.
 //
+//   <!-- PROOF:START baked by scripts/build-blocks.mjs -->     <!-- PROOF:END -->
+//     The store-wide ratings under Add to Cart on every product page: Google and
+//     our own customer reviews, each with its total (Liam, October 12, 2026: "for
+//     all product pages we should have general conversion social proofs like
+//     google reviews logo with how many in total and loox").
+//
 // Usage: node scripts/build-blocks.mjs [page.html ...]   (no files: every page)
 //
-// Facts, checked 2026-10-02:
-// - The rating: Loox holds 93 reviews averaging 5.0 (Loox admin). The count is
-//   never printed (visual.md: the average rating stands alone).
+// Facts:
+// - RATINGS below is the one place the numbers live; the LOGOS strip and the
+//   PROOF block both read it. Google: 4.9 from 42 reviews on the Maple Terroir
+//   profile at 9291 Shaughnessy St (Google Maps via DataForSEO, 2026-10-12).
+//   Loox: 93 reviews averaging 5.0 (Loox admin, 2026-10-02). Update both when
+//   either moves, then re-run.
 // - The logos are the nine on the homepage's "Where to Find Us" strip, the set
 //   Shawn reviewed in June 2026. They stay unlinked: trust, never a route away
 //   from the store (site CLAUDE.md, 2026-06-29).
@@ -53,6 +62,23 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>';
 const STARS = `<span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars">${STAR.repeat(5)}</span>`;
 
+// ------------------------------------------------------------ RATINGS
+const RATINGS = {
+  google: { value: '4.9', count: 42 },
+  loox: { value: '5.0', count: 93 },
+};
+const GOOGLE_G = '<svg viewBox="0 0 48 48" aria-hidden="true" class="w-4 h-4 flex-shrink-0"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.9 6.1C12.5 13.6 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.7c4.3-4 6.9-9.9 6.9-17z"/><path fill="#FBBC05" d="M10.6 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.9-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.7c-2.1 1.4-4.8 2.2-8.5 2.2-6.2 0-11.5-4.1-13.4-9.8l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>';
+const smallStars = (label) => `<span class="inline-flex gap-px text-amber-warm" role="img" aria-label="${label}">${STAR.replace('w-4 h-4', 'w-3.5 h-3.5').repeat(5)}</span>`;
+const googleLine = () => `<span class="inline-flex items-center gap-2">${GOOGLE_G}<b class="font-semibold text-charcoal">${RATINGS.google.value}</b>${smallStars(`${RATINGS.google.value} out of 5 stars on Google`)}<span class="text-warm-gray-500">${RATINGS.google.count} Google reviews</span></span>`;
+const looxLine = () => `<span class="inline-flex items-center gap-2"><b class="font-semibold text-charcoal">${RATINGS.loox.value}</b>${smallStars(`${RATINGS.loox.value} out of 5 stars from our customers`)}<span class="text-warm-gray-500">${RATINGS.loox.count} customer reviews</span></span>`;
+
+// ------------------------------------------------------------ PROOF
+const proof = () => `          <div class="flex flex-wrap items-center gap-x-5 gap-y-2 mb-6 text-sm" aria-label="Store ratings">
+            ${googleLine()}
+            <span class="hidden sm:block w-px h-4 bg-warm-gray-200" aria-hidden="true"></span>
+            ${looxLine()}
+          </div>`;
+
 // ------------------------------------------------------------ LOGOS
 const LOGOS = [
   ['costco.webp', 'Costco'], ['amazon.webp', 'Amazon'], ['walmart.webp', 'Walmart'],
@@ -71,7 +97,7 @@ const logos = () => `  <section aria-label="Customer rating and retailers" class
       @media (prefers-reduced-motion: reduce) { .mt-strip-track { animation: none; } }
     </style>
     <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-5 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-      <p class="flex items-center gap-3 flex-shrink-0 text-sm text-charcoal">${STARS}<span><b class="font-semibold">5.0</b> <span class="text-warm-gray-500">average customer rating</span></span></p>
+      <p class="flex flex-wrap items-center gap-x-5 gap-y-2 flex-shrink-0 text-sm">${googleLine()}${looxLine()}</p>
       <span class="hidden md:block w-px h-6 bg-warm-gray-200 flex-shrink-0" aria-hidden="true"></span>
       <p class="text-sm text-warm-gray-500 flex-shrink-0 hidden md:block">Also stocked by</p>
       <div class="mt-strip-mask relative flex-1 overflow-hidden">
@@ -218,7 +244,7 @@ const cta = (attrs) => {
   </section>`;
 };
 
-const MARK = /<!-- (LOGOS|REVIEWS|FAMILY|CTA):START([^>]*?)-->/;
+const MARK = /<!-- (LOGOS|REVIEWS|FAMILY|CTA|PROOF):START([^>]*?)-->/;
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     if (name.startsWith('.') || name === 'node_modules' || name === '_archive') continue;
@@ -241,8 +267,8 @@ for (const file of only.length ? only : walk(ROOT)) {
     if (end < 0) throw new Error(`${where}: ${kind}:END missing`);
     const set = (attrs.match(/set="([^"]+)"/) || [])[1] || 'syrup';
     const marker = kind === 'REVIEWS' ? `<!-- REVIEWS:START set="${set}" -->` : kind === 'CTA' ? `<!-- CTA:START${attrs.trimEnd() ? attrs.trimEnd() + ' ' : ' '}-->` : `<!-- ${kind}:START baked by scripts/build-blocks.mjs -->`;
-    const block = kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : kind === 'CTA' ? cta(attrs) : family(where);
-    out += html.slice(pos, open) + marker + '\n' + block + '\n  ';
+    const block = kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : kind === 'CTA' ? cta(attrs) : kind === 'PROOF' ? proof() : family(where);
+    out += html.slice(pos, open) + marker + '\n' + block + '\n' + (kind === 'PROOF' ? '          ' : '  ');
     pos = end;
     counts[kind] = (counts[kind] || 0) + 1;
   }
