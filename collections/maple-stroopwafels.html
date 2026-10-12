@@ -260,6 +260,55 @@
   </section>
 
 
+  <!-- SMALLER PACKS (October 12, 2026: sizes and prices from Shopify that day) -->
+  <section class="py-12 md:py-16 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="max-w-[60ch] mb-8">
+        <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">A Bag or a Box to Try First</h2>
+        <p class="text-warm-gray-600 leading-relaxed">Each caddy above holds 35 individually wrapped stroopwafels. To try them before you commit to a caddy, start with a 136 g bag of full-size maple stroopwafels or a box of 15 minis, $8.99 each.</p>
+      </div>
+      <!-- SHELF:START handles="maple-syrup-stroopwafel,maple-syrup-mini-stroopwafel" -->
+      <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
+      <div data-shelf class="grid grid-cols-2 lg:grid-cols-2 gap-3 md:gap-5">
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maple-syrup-stroopwafel-136g-box-front.jpg?v=1786496064&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Stroopwafel</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">136 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Stroopwafel to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-mini-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_17_bac4a82c-094b-4140-944f-1fa18ad27e57.png?v=1774747403&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-mini-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Mini Stroopwafels</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">128 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815580229881" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Mini Stroopwafels to cart">+ Add</button></div></div></article>
+      </div>
+      <script>
+      (function () {
+        if (window.__mtShelfLive) return; window.__mtShelfLive = true;
+        var btns = [].slice.call(document.querySelectorAll('[data-shelf] .atc-btn[data-variant-id]'));
+        var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); }).filter(function (id, i, a) { return a.indexOf(id) === i; });
+        if (!ids.length) return;
+        fetch('https://maple-terroir.myshopify.com/api/2026-01/graphql.json', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': '59618e3b6f5e626df6c5f527b4972d3d' }, body: JSON.stringify({ query: 'query($ids:[ID!]!){nodes(ids:$ids){... on ProductVariant{id availableForSale price{amount}}}}', variables: { ids: ids } }) })
+          .then(function (r) { return r.json(); }).then(function (r) {
+            var by = {}; ((r.data && r.data.nodes) || []).forEach(function (n) { if (n) by[n.id] = n; });
+            btns.forEach(function (b) {
+              var n = by[b.getAttribute('data-variant-id')]; if (!n) return;
+              var pe = b.closest('article') && b.closest('article').querySelector('[data-price]');
+              if (pe && n.price) pe.textContent = '$' + parseFloat(n.price.amount).toFixed(2) + ' CAD';
+              if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
+            });
+          }).catch(function () {});
+      })();
+    </script>
+      <!-- SHELF:END -->
+    </div>
+  </section>
+
+
+  <!-- WHAT IS A STROOPWAFEL (Wikipedia, Stroopwafel, checked October 12, 2026; ingredients from the product pages) -->
+  <section class="py-12 md:py-16 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="max-w-[60ch]">
+        <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">What Is a Stroopwafel?</h2>
+        <p class="text-warm-gray-600 leading-relaxed mb-4">Stroopwafel is Dutch for syrup waffle: two thin layers of baked dough held together by a caramel syrup filling. Bakers in Gouda, in the Netherlands, first made them in the late 18th or early 19th century, according to <a href="https://en.wikipedia.org/wiki/Stroopwafel" class="underline underline-offset-4" rel="noopener">Wikipedia</a>.</p>
+        <p class="text-warm-gray-600 leading-relaxed mb-4">Ours keep the Dutch shape and change the syrup. The filling is sweetened with pure maple syrup, and the first ingredient is Canadian-grown flour.</p>
+        <p class="text-warm-gray-600 leading-relaxed">To eat one the Dutch way, set it on top of a hot cup of coffee or tea for a minute, so the steam warms the waffle and softens the filling. To bake your own, follow our <a href="/blog/authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats" class="underline underline-offset-4">stroopwafel recipe</a>.</p>
+      </div>
+    </div>
+  </section>
+
+
   <!-- REVIEWS:START set="treats" -->
   <section id="reviews" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
