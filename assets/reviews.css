@@ -22,35 +22,6 @@
 
 .mt-stars svg.is-empty { fill: rgba(26, 23, 20, 0.15); }
 
-/* ---------- The compact rating under the product title ----------
-   This placement carries the conversion weight: a buyer reads it while
-   deciding, rather than after scrolling past the whole page. */
-
-.mt-rating-inline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 0.875rem;
-  color: #1A1714;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.mt-rating-inline:hover { opacity: 0.65; }
-.mt-rating-inline .mt-stars { font-size: 0.95rem; }
-
-.mt-rating-inline b {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.mt-rating-inline span {
-  color: rgba(26, 23, 20, 0.55);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba(26, 23, 20, 0.2);
-}
 
 /* ---------- Reviews section ---------- */
 
@@ -300,7 +271,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mt-rating-inline,
   .mt-reviews-source a,
   .mt-reviews-more { transition: none; }
 }

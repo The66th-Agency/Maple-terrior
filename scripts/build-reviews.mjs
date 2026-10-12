@@ -193,16 +193,10 @@ function buildPage(file, list, photoFor) {
     );
   }
 
-  // 2. The compact rating, between the product title and the price.
-  const ratingLink = `\n          <a class="mt-rating-inline" href="#reviews-section">`
-    + stars(avgText, `${avgText} out of 5 stars`)
-    + `<b>${avgText}</b><span>${count} ${count === 1 ? 'review' : 'reviews'}</span></a>\n`;
-
+  // 2. No per-product rating under the title: the store-wide Google and customer
+  // review totals sit under Add to Cart instead (PROOF in build-blocks.mjs; Liam,
+  // October 12, 2026: "so then remove these ones"). Clears one left by an older run.
   html = html.replace(/\n\s*<a class="mt-rating-inline"[\s\S]*?<\/a>\n/, '\n');
-  html = html.replace(
-    /(<h1 id="product-title"[\s\S]*?<\/h1>)/,
-    `$1${ratingLink}`
-  );
 
   // 3. The reviews themselves, replacing the Loox widget that never renders here.
   html = html.replace(
