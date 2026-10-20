@@ -170,6 +170,19 @@
     .cmp-table td:first-child { color: #1A1714; font-weight: 500; width: 34%; }
 
   </style>
+
+  <style>
+    .toc { background: #fff; border-radius: 1.5rem; padding: 1.5rem 1.5rem 1.25rem; box-shadow: 0 0 0 1px rgba(214,206,194,.55); }
+    @media (min-width: 768px) { .toc { padding: 1.75rem 2.25rem 1.5rem; } }
+    .toc-title { font-family: 'Fraunces', Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #1A1714; margin-bottom: .75rem; }
+    .toc ol, .toc ul { padding-left: 1.4rem; color: #8a7f72; }
+    .toc ol { list-style: decimal; } .toc ul { list-style: disc; margin-top: .25rem; }
+    @media (min-width: 768px) { .toc ol.toc-cols { columns: 2; column-gap: 2.5rem; } }
+    .toc li { padding: .3rem 0; line-height: 1.45; break-inside: avoid; }
+    .toc a { color: #2E2822; text-decoration: underline; text-decoration-color: rgba(196,132,29,.45); text-underline-offset: 3px; transition: color .3s, text-decoration-color .3s; }
+    .toc a:hover { color: #C4841D; text-decoration-color: #C4841D; }
+    h2[id], h3[id] { scroll-margin-top: 7rem; }
+  </style>
 </head>
 
 <body>
@@ -247,12 +260,17 @@
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl mb-6">
         Sugar maple vs red maple comes down to the leaf notch, the bud color and the sap. A sugar maple has five smooth lobes with rounded gaps, tan buds and the sweetest sap of any maple. A red maple has toothed lobes with sharp gaps, red buds, and sap that needs about half again as much to make the same syrup.
       </p>
-      <div class="reveal reveal-delay-3 flex items-center gap-3 text-sm text-warm-gray-500">
-        <span>By Maple Terroir</span>
-        <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
-        <time datetime="2026-10-19">October 19, 2026</time>
-        <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
-        <span>8 min read</span>
+      <div class="reveal reveal-delay-3 text-sm text-warm-gray-500">
+        <div class="flex items-center gap-3">
+          <span>By Maple Terroir</span>
+          <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
+          <span>8 min read</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
+          <span>Published <time datetime="2026-10-19">October 19, 2026</time></span>
+          <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
+          <span>Last updated <time datetime="2026-10-19">October 19, 2026</time></span>
+        </div>
       </div>
     </div>
   </section>
@@ -289,12 +307,34 @@
     </div>
   </section>
 
+  <!-- CONTENTS -->
+  <section class="py-4 md:py-6 px-4 md:px-8">
+    <div class="max-w-[760px] mx-auto">
+      <nav class="reveal toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ol>
+          <li><a href="#at-a-glance">Sugar Maple vs Red Maple at a Glance</a></li>
+          <li><a href="#leaf">How to Tell Them Apart by the Leaf</a></li>
+          <li><a href="#winter">How to Tell Them Apart in Winter</a></li>
+          <li><a href="#flowers-and-seeds">Flowers and Seeds</a></li>
+          <li><a href="#fall-color">Fall Color</a></li>
+          <li><a href="#range-and-wood">Where Each Grows, and What the Wood Is For</a></li>
+          <li><a href="#sap-and-syrup">Sap and Syrup: Which Tree to Tap</a></li>
+          <li><a href="#norway-and-silver-maple">What About Norway Maple and Silver Maple?</a></li>
+          <li><a href="#which-tree">Which Tree Fits What You Want</a></li>
+          <li><a href="#faq">Questions</a></li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+
 
   <!-- TABLE -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[900px] mx-auto">
       <div class="reveal mb-8 md:mb-10 text-center">
-        <h2 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Sugar Maple vs Red Maple at a Glance</h2>
+        <h2 id="at-a-glance" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Sugar Maple vs Red Maple at a Glance</h2>
       </div>
       <div class="reveal cmp-wrap">
         <table class="cmp-table">
@@ -324,7 +364,7 @@
   <!-- LEAF -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto prose-body">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart by the Leaf</h2>
+      <h2 id="leaf" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart by the Leaf</h2>
       <p>Look at the gap between the lobes. A sugar maple leaf has five lobes separated by rounded, U-shaped gaps, and a red maple leaf has sharp, V-shaped gaps, the one feature both the <a href="https://arboretum.uoguelph.ca/print/145" target="_blank" rel="noopener">University of Guelph Arboretum</a> and the University of New Hampshire Extension lead with. The Extension's memory aid: there is a U in sugar.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Count the lobes</h3>
       <p>A sugar maple leaf almost always has five lobes, delicately rounded at the base. A red maple leaf has three main lobes, and many leaves carry two small extra lobes near the stem, which is why field guides list it as three to five.</p>
@@ -339,7 +379,7 @@
   <!-- WINTER -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto prose-body">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart in Winter</h2>
+      <h2 id="winter" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart in Winter</h2>
       <p>Check the buds first, then the bark. Red maple buds are bright red and stand out against snow, while sugar maple buds are brown to tan and very sharp-pointed, with tight scales. This matters because sap runs in late winter and early spring, when the trees are bare and the leaf test is gone.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Buds and twigs</h3>
       <p>Red maple twigs are reddish and glossy, with small pale dots (lenticels, the breathing pores in the bark). Sugar maple twigs are brown, slender and shiny, and the bud at the tip of each twig comes to a sharp point.</p>
@@ -353,7 +393,7 @@
   <!-- FLOWERS AND SEEDS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto prose-body">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Flowers and Seeds</h2>
+      <h2 id="flowers-and-seeds" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Flowers and Seeds</h2>
       <p>Red maple flowers first and drops its seeds first. Its flowers are usually bright red and open in early spring, before the leaves, and its winged seeds ripen in late spring and early summer, according to the <a href="https://dendro.cnre.vt.edu/dendrology/syllabus/factsheet.cfm?ID=1" target="_blank" rel="noopener">Virginia Tech dendrology fact sheet</a>.</p>
       <p>Sugar maple flowers are small, light yellow-green clusters on long stalks that open with the leaves or just before them. Its seeds, the paired "helicopters" children throw, are horseshoe-shaped, about an inch long, and turn brown when they ripen in the fall.</p>
     </div>
@@ -363,7 +403,7 @@
   <!-- FALL COLOR -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto prose-body">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Fall Color</h2>
+      <h2 id="fall-color" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Fall Color</h2>
       <p>Red maples turn scarlet and sugar maples carry most of the orange. The University of Guelph Arboretum describes red maple leaves turning "a stunning shade of scarlet," and credits the sugar maple with most of the orange in an Ontario fall. Both can show red on the same hillside, so in October the leaf shape is still the better test.</p>
     </div>
   </section>
@@ -372,7 +412,7 @@
   <!-- HABITAT AND WOOD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto prose-body">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Where Each Grows, and What the Wood Is For</h2>
+      <h2 id="range-and-wood" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Where Each Grows, and What the Wood Is For</h2>
       <p>Sugar maple is a forest tree of rich hardwood stands, and red maple grows almost anywhere. The Canadian Encyclopedia places sugar maple in hardwood forests from Ontario to the Maritimes, and red maple in "a variety of habitats from swamps to dry woods," which is why one of its old names is swamp maple.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Size</h3>
       <p>A sugar maple grows up to 35 m tall with a dense, rounded crown and is often the dominant tree in the canopy of northeastern hardwood forests. A red maple is a medium-sized tree, up to about 90 feet.</p>
@@ -385,7 +425,7 @@
   <!-- SAP AND SYRUP -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto prose-body">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Sap and Syrup: Which Tree to Tap</h2>
+      <h2 id="sap-and-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Sap and Syrup: Which Tree to Tap</h2>
       <p>Both trees make real maple syrup; the sugar maple makes it with less boiling. The University of Guelph Arboretum gives sugar maple sap the highest sugar content of Ontario's maples, about 3 to 6 percent, so 30 to 40 liters of sap make one liter of syrup. Red maple sap is less sweet, at about 60 gallons of sap per gallon of syrup by the University of New Hampshire Extension's figure.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Why the sugar reading matters</h3>
       <p>Finished syrup is about 66 percent sugar, so every point of sugar in the sap cuts the boiling. The <a href="/blog/the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide">Rule of 86</a> turns a sap reading into gallons: divide 86 by the sugar percentage. Our <a href="/tools/sap-to-syrup-ratio">sap to syrup ratio calculator</a> does it for any reading or species.</p>
@@ -401,7 +441,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
-        <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">What About Norway Maple and Silver Maple?</h2>
+        <h2 id="norway-and-silver-maple" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">What About Norway Maple and Silver Maple?</h2>
         <div class="prose-body">
           <p><strong class="text-charcoal font-semibold">Norway maple</strong> is the street tree most often taken for a sugar maple. <a href="https://extension.purdue.edu/news/county/whitley/2025/05/distinguishing-between-norway-sugar-and-black-maples.html" target="_blank" rel="noopener">Purdue Extension</a> gives the quickest test: snap off a leaf stem and squeeze it, and a Norway maple bleeds milky sap where a sugar maple's is clear. Its leaves often carry five to seven lobes, and its paired seeds spread out almost flat. It came from Europe and, per the Canadian Encyclopedia, is becoming naturalized in parts of Canada; its sap is less sweet than a sugar maple's.</p>
           <p><strong class="text-charcoal font-semibold">Silver maple</strong> leaves are deeply cut, with silvery undersides. Its sap runs heavily but carries even less sugar than red maple's, as low as one percent, and our <a href="/tools/sap-to-syrup-ratio">sap calculator</a> lists it beside the other three.</p>
@@ -414,7 +454,7 @@
   <!-- WHICH IS RIGHT -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[760px] mx-auto prose-body">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Tree Fits What You Want</h2>
+      <h2 id="which-tree" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Tree Fits What You Want</h2>
       <ul class="list-disc pl-6 space-y-3 text-warm-gray-600">
         <li><strong class="text-charcoal font-semibold">The most syrup per hour of boiling:</strong> sugar maple.</li>
         <li><strong class="text-charcoal font-semibold">A tree for a damp corner of the yard:</strong> red maple, which grows from swamps to dry woods.</li>
@@ -430,7 +470,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[900px] mx-auto">
       <div class="reveal mb-10 md:mb-14 text-center">
-        <h2 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Sugar Maple and Red Maple FAQ</h2>
+        <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Sugar Maple and Red Maple FAQ</h2>
       </div>
       <div class="space-y-3">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">

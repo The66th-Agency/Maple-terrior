@@ -130,6 +130,19 @@
     .gift-table td { padding: .9rem 1.25rem; color: #5c544b; border-top: 1px solid rgba(214,206,194,.5); vertical-align: top; }
     .gift-table td:first-child { color: #1A1714; font-weight: 500; width: 42%; }
   </style>
+
+  <style>
+    .toc { background: #fff; border-radius: 1.5rem; padding: 1.5rem 1.5rem 1.25rem; box-shadow: 0 0 0 1px rgba(214,206,194,.55); }
+    @media (min-width: 768px) { .toc { padding: 1.75rem 2.25rem 1.5rem; } }
+    .toc-title { font-family: 'Fraunces', Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #1A1714; margin-bottom: .75rem; }
+    .toc ol, .toc ul { padding-left: 1.4rem; color: #8a7f72; }
+    .toc ol { list-style: decimal; } .toc ul { list-style: disc; margin-top: .25rem; }
+    @media (min-width: 768px) { .toc ol.toc-cols { columns: 2; column-gap: 2.5rem; } }
+    .toc li { padding: .3rem 0; line-height: 1.45; break-inside: avoid; }
+    .toc a { color: #2E2822; text-decoration: underline; text-decoration-color: rgba(196,132,29,.45); text-underline-offset: 3px; transition: color .3s, text-decoration-color .3s; }
+    .toc a:hover { color: #C4841D; text-decoration-color: #C4841D; }
+    h2[id], h3[id] { scroll-margin-top: 7rem; }
+  </style>
 </head>
 
 <body>
@@ -207,12 +220,17 @@
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl mb-6">
         Fifteen Canadian gifts, ranked by what people keep using once the wrapping is off. Give them at home for the holidays, send them to family abroad, or pack them for the flight back.
       </p>
-      <div class="reveal reveal-delay-3 flex items-center gap-3 text-sm text-warm-gray-500">
-        <span>By Maple Terroir</span>
-        <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
-        <time datetime="2026-05-19">May 19, 2026</time>
-        <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
-        <span>8 min read</span>
+      <div class="reveal reveal-delay-3 text-sm text-warm-gray-500">
+        <div class="flex items-center gap-3">
+          <span>By Maple Terroir</span>
+          <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
+          <span>8 min read</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
+          <span>Published <time datetime="2026-05-19">May 19, 2026</time></span>
+          <span class="w-1 h-1 rounded-full bg-warm-gray-400"></span>
+          <span>Last updated <time datetime="2026-10-19">October 19, 2026</time></span>
+        </div>
       </div>
     </div>
   </section>
@@ -237,6 +255,37 @@
     </div>
   </section>
 
+  <!-- CONTENTS -->
+  <section class="py-4 md:py-6 px-4 md:px-8">
+    <div class="max-w-[760px] mx-auto">
+      <nav class="reveal toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ol class="toc-cols">
+          <li><a href="#pure-canadian-maple-syrup">Pure Canadian Maple Syrup</a></li>
+          <li><a href="#niagara-ice-wine">Niagara Ice Wine</a></li>
+          <li><a href="#hudsons-bay-stripes-point-blanket">Hudson's Bay Stripes Point Blanket</a></li>
+          <li><a href="#inuit-and-coast-salish-art">Inuit and Coast Salish Art</a></li>
+          <li><a href="#maple-sugar-maple-candy-and-maple-chocolate">Maple Sugar, Maple Candy and Maple Chocolate</a></li>
+          <li><a href="#royal-canadian-mint-maple-leaf-coins">Royal Canadian Mint Maple Leaf Coins</a></li>
+          <li><a href="#canadian-whisky">Canadian Whisky</a></li>
+          <li><a href="#pacific-smoked-salmon">Pacific Smoked Salmon</a></li>
+          <li><a href="#tim-hortons-coffee-and-mugs">Tim Hortons Coffee and Mugs</a></li>
+          <li><a href="#canadian-chocolate-bars">Canadian Chocolate Bars</a></li>
+          <li><a href="#a-jersey-from-a-canadian-nhl-team">A Jersey from a Canadian NHL Team</a></li>
+          <li><a href="#toques-mittens-and-wool-socks-made-in-canada">Toques, Mittens and Wool Socks Made in Canada</a></li>
+          <li><a href="#saskatoon-berry-jam-and-birch-syrup">Saskatoon Berry Jam and Birch Syrup</a></li>
+          <li><a href="#an-inuksuk-carved-by-an-inuit-artist">An Inuksuk Carved by an Inuit Artist</a></li>
+          <li><a href="#canadian-outdoor-gear">Canadian Outdoor Gear</a></li>
+        </ol>
+        <ul>
+          <li><a href="#how-we-ranked">How we ranked them</a></li>
+          <li><a href="#faq">Questions</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+
 
   <!-- THE LIST: SECTION HEADER -->
   <section class="py-8 md:py-12 px-4 md:px-8">
@@ -255,17 +304,17 @@
     <div class="max-w-[900px] mx-auto space-y-6 md:space-y-8">
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">01</span><h3>Pure Canadian Maple Syrup</h3></div>
+        <div class="gift-head"><span class="gift-num">01</span><h3 id="pure-canadian-maple-syrup">Pure Canadian Maple Syrup</h3></div>
         <p class="gift-for">Best for: anyone who cooks, and anyone abroad who misses Canada</p>
         <div class="prose-body">
           <p>Canada makes about 71 percent of the world's maple syrup, according to Maple from Canada, and a bottle gets used long after the holidays: on pancakes, in coffee, in salad dressing. Look for a label that names where the syrup comes from. For organic syrup, the certifications to look for are Ecocert, Canada Organic and USDA Organic.</p>
           <p>We sell maple syrup, so read this pick with that in mind. Plenty of Canadian producers make excellent syrup, and our <a href="/blog/best-canadian-maple-syrup-brands-2026">ranking of Canadian maple syrup brands</a> compares them side by side.</p>
         </div>
-        <p class="gift-buy"><strong>Where to buy:</strong> grocery stores across Canada, sugar shacks in Quebec, Ontario and the Maritimes, or <a href="/products">our online store</a>.</p>
+        <p class="gift-buy"><strong>Where to buy:</strong> grocery stores across Canada, sugar shacks in eastern Canada, or <a href="/products">our online store</a>.</p>
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">02</span><h3>Niagara Ice Wine</h3></div>
+        <div class="gift-head"><span class="gift-num">02</span><h3 id="niagara-ice-wine">Niagara Ice Wine</h3></div>
         <p class="gift-for">Best for: a host, or a dessert-wine fan</p>
         <div class="prose-body">
           <p>Ice wine is made from grapes picked frozen on the vine at minus eight Celsius or colder, which concentrates the sugar. Niagara, in Ontario, is the best-known region for it. Half-bottles of 200 or 375 mL are the usual gift size and travel well in checked luggage.</p>
@@ -274,7 +323,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">03</span><h3>Hudson's Bay Stripes Point Blanket</h3></div>
+        <div class="gift-head"><span class="gift-num">03</span><h3 id="hudsons-bay-stripes-point-blanket">Hudson's Bay Stripes Point Blanket</h3></div>
         <p class="gift-for">Best for: a once-in-a-lifetime gift</p>
         <div class="prose-body">
           <p>The Hudson's Bay point blanket dates to 1779, and its green, red, yellow and indigo stripes are known around the world as Canadian. The Hudson's Bay stores closed in June 2025, and Canadian Tire bought the brand and its stripes the same year. A real one is heavy, expensive and lasts decades.</p>
@@ -283,16 +332,16 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">04</span><h3>Inuit and Coast Salish Art</h3></div>
+        <div class="gift-head"><span class="gift-num">04</span><h3 id="inuit-and-coast-salish-art">Inuit and Coast Salish Art</h3></div>
         <p class="gift-for">Best for: a gift that supports the artist directly</p>
         <div class="prose-body">
-          <p>Inuit soapstone carvings and prints, Coast Salish prints, Haida silver jewelry and Métis beadwork are art, not souvenirs, and buying from the artist or an Indigenous-owned gallery keeps the money with the community. For Inuit work, look for the Igloo Tag, a label the federal government created in 1958 and the Inuit Art Foundation has run since 2017. It names the artist, the community and the year the work was made.</p>
+          <p>Inuit soapstone carvings and prints, Coast Salish prints, Haida silver jewelry and Métis beadwork are works of art, and buying from the artist or an Indigenous-owned gallery keeps the money with the community. For Inuit work, look for the Igloo Tag, a label the federal government created in 1958 and the Inuit Art Foundation has run since 2017. It names the artist, the community and the year the work was made.</p>
         </div>
         <p class="gift-buy"><strong>Where to buy:</strong> <a href="https://www.dorsetfinearts.com/" target="_blank" rel="nofollow noopener">Dorset Fine Arts</a>, the marketing arm of the Kinngait co-operative, or a licensed gallery. The <a href="https://www.inuitartfoundation.org/igloo-tag-trademark/about-igloo-tag" target="_blank" rel="nofollow noopener">Inuit Art Foundation's Igloo Tag page</a> explains what the label means.</p>
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">05</span><h3>Maple Sugar, Maple Candy and Maple Chocolate</h3></div>
+        <div class="gift-head"><span class="gift-num">05</span><h3 id="maple-sugar-maple-candy-and-maple-chocolate">Maple Sugar, Maple Candy and Maple Chocolate</h3></div>
         <p class="gift-for">Best for: a stocking or a care package, since nothing can spill</p>
         <div class="prose-body">
           <p>Maple syrup boiled until it crystallizes becomes maple sugar, which keeps without refrigeration and weighs less than the syrup. Maple candy and maple chocolate make the same idea easier to share. Every sugar shack and most Canadian maple producers make their own.</p>
@@ -301,7 +350,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">06</span><h3>Royal Canadian Mint Maple Leaf Coins</h3></div>
+        <div class="gift-head"><span class="gift-num">06</span><h3 id="royal-canadian-mint-maple-leaf-coins">Royal Canadian Mint Maple Leaf Coins</h3></div>
         <p class="gift-for">Best for: a keepsake that holds its value</p>
         <div class="prose-body">
           <p>The Royal Canadian Mint makes the Gold Maple Leaf and Silver Maple Leaf, both legal tender and bullion coins. The one-ounce silver coin sits on a shelf as a keepsake and can be sold to a precious-metals dealer later. The Mint also makes collector coins for each year.</p>
@@ -310,7 +359,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">07</span><h3>Canadian Whisky</h3></div>
+        <div class="gift-head"><span class="gift-num">07</span><h3 id="canadian-whisky">Canadian Whisky</h3></div>
         <p class="gift-for">Best for: a whisky drinker, or a gift box with maple syrup</p>
         <div class="prose-body">
           <p>Crown Royal comes in its purple bag and reads as Canadian at a glance; Canadian Club is the older name. Both are Canadian rye-style whiskies sold in every province.</p>
@@ -319,7 +368,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">08</span><h3>Pacific Smoked Salmon</h3></div>
+        <div class="gift-head"><span class="gift-num">08</span><h3 id="pacific-smoked-salmon">Pacific Smoked Salmon</h3></div>
         <p class="gift-for">Best for: a food lover, packed in checked luggage</p>
         <div class="prose-body">
           <p>West Coast First Nations have smoked salmon for thousands of years. Look for wild sockeye from British Columbia, either hot-smoked in a shelf-stable gift box or vacuum-packed and kept cold.</p>
@@ -328,7 +377,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">09</span><h3>Tim Hortons Coffee and Mugs</h3></div>
+        <div class="gift-head"><span class="gift-num">09</span><h3 id="tim-hortons-coffee-and-mugs">Tim Hortons Coffee and Mugs</h3></div>
         <p class="gift-for">Best for: a Canadian living abroad, under $25</p>
         <div class="prose-body">
           <p>Tim Hortons is one of the best-known coffee chains in Canada and part of growing up here for many Canadians. A bag of Original Blend and a mug cost little and mean a lot to someone far from home.</p>
@@ -337,7 +386,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">10</span><h3>Canadian Chocolate Bars</h3></div>
+        <div class="gift-head"><span class="gift-num">10</span><h3 id="canadian-chocolate-bars">Canadian Chocolate Bars</h3></div>
         <p class="gift-for">Best for: friends abroad, under $15</p>
         <div class="prose-body">
           <p>Coffee Crisp and Caramilk are two bars Canadians grow up on and visitors rarely find at home. A mixed bag from any grocery store makes an easy add-on to a bigger gift.</p>
@@ -346,7 +395,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">11</span><h3>A Jersey from a Canadian NHL Team</h3></div>
+        <div class="gift-head"><span class="gift-num">11</span><h3 id="a-jersey-from-a-canadian-nhl-team">A Jersey from a Canadian NHL Team</h3></div>
         <p class="gift-for">Best for: a hockey fan</p>
         <div class="prose-body">
           <p>Seven NHL teams play in Canada: Montreal, Toronto, Ottawa, Winnipeg, Calgary, Edmonton and Vancouver. A replica jersey costs less than an authentic one and looks the same from a few steps away.</p>
@@ -355,7 +404,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">12</span><h3>Toques, Mittens and Wool Socks Made in Canada</h3></div>
+        <div class="gift-head"><span class="gift-num">12</span><h3 id="toques-mittens-and-wool-socks-made-in-canada">Toques, Mittens and Wool Socks Made in Canada</h3></div>
         <p class="gift-for">Best for: someone heading into their first Canadian winter</p>
         <div class="prose-body">
           <p>The toque, the Canadian word for a knit winter hat, is the most Canadian piece of clothing there is. Look for a Made in Canada label: Stanfield's has made wool clothing in Truro, Nova Scotia, since the 1800s.</p>
@@ -364,16 +413,16 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">13</span><h3>Saskatoon Berry Jam and Birch Syrup</h3></div>
+        <div class="gift-head"><span class="gift-num">13</span><h3 id="saskatoon-berry-jam-and-birch-syrup">Saskatoon Berry Jam and Birch Syrup</h3></div>
         <p class="gift-for">Best for: someone who has already tried maple syrup</p>
         <div class="prose-body">
-          <p>Saskatoon berries grow wild across the Prairies and taste a little like a blueberry with almond notes. Birch syrup is made in small batches in Canada, from Quebec to the Yukon, and tastes sharper and more savory than maple. Both jars keep on a shelf.</p>
+          <p>Saskatoon berries grow wild across the Prairies and taste a little like a blueberry with almond notes. Birch syrup is made in small batches across Canada, as far north as the Yukon, and tastes sharper and more savory than maple. Both jars keep on a shelf.</p>
         </div>
         <p class="gift-buy"><strong>Where to buy:</strong> farmers' markets on the Prairies, and specialty food shops that stock local producers.</p>
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">14</span><h3>An Inuksuk Carved by an Inuit Artist</h3></div>
+        <div class="gift-head"><span class="gift-num">14</span><h3 id="an-inuksuk-carved-by-an-inuit-artist">An Inuksuk Carved by an Inuit Artist</h3></div>
         <p class="gift-for">Best for: a gift with a story</p>
         <div class="prose-body">
           <p>An inuksuk is a stone figure Inuit built as a marker on the land, and one became the emblem of the 2010 Vancouver Winter Olympics. A small carved inuksuk by an Inuit artist is worth far more than the printed versions on mugs and keychains.</p>
@@ -382,7 +431,7 @@
       </article>
 
       <article class="reveal gift-card">
-        <div class="gift-head"><span class="gift-num">15</span><h3>Canadian Outdoor Gear</h3></div>
+        <div class="gift-head"><span class="gift-num">15</span><h3 id="canadian-outdoor-gear">Canadian Outdoor Gear</h3></div>
         <p class="gift-for">Best for: a splurge</p>
         <div class="prose-body">
           <p>Arc'teryx is based in North Vancouver, Roots is a Toronto heritage brand known for sweats and leather, and Canada Goose makes its parkas in Canada. Each is a gift the recipient wears for years.</p>
@@ -398,7 +447,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
     <div class="max-w-[900px] mx-auto">
       <div class="text-center mb-10 md:mb-14">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">How We Ranked Them</h2>
+        <h2 id="how-we-ranked" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">How We Ranked Them</h2>
       </div>
       <div class="reveal prose-body">
         <p>Each pick had to come from Canada and get used after the wrapping comes off. Gifts used every week ranked above gifts kept on a shelf, and gifts that travel well ranked above fragile ones. Flying with a gift? Airport security in Canada limits liquids such as syrup, jam and wine in a carry-on to containers of 100 mL or less, so larger bottles go in checked luggage.</p>
@@ -447,7 +496,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
     <div class="max-w-[1000px] mx-auto">
       <div class="text-center mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 id="faq" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
           Best Canadian Gifts FAQ
         </h2>
       </div>
