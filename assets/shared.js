@@ -477,7 +477,7 @@ setTimeout(loadGA, 3000);
 // same Shopify mutation to fire add_to_cart, so the moment of a successful add
 // is already known in one place.
 (function () {
-  var FREE_SHIPPING_CAD = 99; // The banner's promise. Change both together.
+  var FREE_SHIPPING_CAD = 99; // The banner's promise. Change it with assets/pdp.js, assets/cart.js and the banner.
 
   function drawerIsOpen() {
     var d = document.getElementById('cart-drawer');
@@ -599,6 +599,36 @@ setTimeout(loadGA, 3000);
   } else {
     watchFooter();
   }
+})();
+
+// ── Email links (October 23, 2026) ─────
+// The wholesale and corporate gift pages ask buyers to email info@mapleterroir.com. In the 90 days
+// to October 23, 2026, 76 of the 100 email-link clicks came from computers, where a mailto link
+// opens nothing unless a mail app is set up. So a click also copies the address and says so, and
+// counts the click in PostHog as email_click with its page.
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="mailto:"]') : null;
+    if (!a) return;
+    var addr = decodeURIComponent((a.getAttribute('href') || '').slice(7).split('?')[0]);
+    if (!addr) return;
+    try { if (window.posthog && typeof window.posthog.capture === 'function') window.posthog.capture('email_click', { page: location.pathname, address: addr }); } catch (err) {}
+    if (!navigator.clipboard || typeof navigator.clipboard.writeText !== 'function') return;
+    navigator.clipboard.writeText(addr).then(function () {
+      var t = document.getElementById('mt-mail-toast');
+      if (!t) {
+        t = document.createElement('div');
+        t.id = 'mt-mail-toast';
+        t.setAttribute('role', 'status');
+        t.style.cssText = 'position:fixed;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:300;max-width:calc(100vw - 2rem);padding:0.75rem 1.1rem;border-radius:100px;background:#1A1714;color:#FDFBF7;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:0.82rem;line-height:1.4;text-align:center;box-shadow:0 8px 24px rgba(26,23,20,0.2);opacity:0;transition:opacity 0.25s;pointer-events:none;';
+        document.body.appendChild(t);
+      }
+      t.textContent = 'Address copied: ' + addr;
+      t.style.opacity = '1';
+      clearTimeout(t._mtHide);
+      t._mtHide = setTimeout(function () { t.style.opacity = '0'; }, 5000);
+    }).catch(function () {});
+  });
 })();
 
 // ── Product card photos (October 3, 2026) ─────

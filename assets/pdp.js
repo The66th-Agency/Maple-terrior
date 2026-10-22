@@ -16,7 +16,7 @@
 //   soldOut(handle)             on a product with nothing in stock, the nearest product
 //                               that is in stock, under the button.
 (function () {
-  var FREE_SHIPPING_CAD = 99; // the same line as assets/shared.js and the banner; change all together
+  var FREE_SHIPPING_CAD = 99; // the same line as assets/shared.js, assets/cart.js and the banner; change all together
   var API = 'https://maple-terroir.myshopify.com/api/2026-01/graphql.json';
   var TOKEN = '59618e3b6f5e626df6c5f527b4972d3d';
   var esc = function (s) { return (window.MapleEsc || String)(s); };
