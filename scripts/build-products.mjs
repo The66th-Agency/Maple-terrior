@@ -54,14 +54,35 @@ function absolutize(html) {
 // Hand-written meta summaries for products whose Shopify copy reads badly once cut.
 // Keyed by handle, each a complete thought under 160 characters.
 const META_OVERRIDES = {
+  // Shawn's notes on the running sheet, October 23, 2026 (his email of that day).
   'maple-syrup-medium-dark-roast-ground-coffee':
-    'Medium-dark roast Arabica coffee from the Jinotega region of Nicaragua, blended with pure Maple Terroir maple syrup.',
+    'Medium-dark roast Arabica ground coffee from South America, blended with pure Maple Terroir maple syrup.',
   'maple-syrup-stroopwafel':
     'Canadian-style Dutch stroopwafels from Maple Terroir, filled with pure maple syrup and no artificial maple flavour.',
   'maple-leaf-mini-shortbread-cookies':
-    'Bite-size maple leaf shortbread made with Canadian flour, butter and eggs, sweetened with pure Maple Terroir maple syrup.',
+    'Bite-size maple leaf shortbread cookies made with Canadian flour, butter and eggs, sweetened with pure Maple Terroir maple syrup.',
   'maple-syrup-mini-stroopwafel':
     'Mini stroopwafels made with non-GMO Canadian flour and a pure maple syrup filling. The one-bite version of our full-size stroopwafel.',
+  'cocoa-chocolate-maple-stroopwafels-caddy':
+    'Chocolate Maple Stroopwafels: individually wrapped 34g stroopwafels made with Canadian-grown flour and pure cocoa, sweetened with maple syrup.',
+  'maple-ceylon-tea':
+    'Premium Ceylon dried non-GMO black tea leaves from Sri Lanka, blended with Maple Terroir pure maple syrup and pure maple extract packed in Canada.',
+  'maple-sugar-sea-salt-cookies':
+    'Maple Terroir’s Maple Sugar & Sea Salt Cookies are made with Maple Terroir pure maple sugar, a touch of sea salt and Canadian non-GMO flour.',
+  'maple-syrup-blueberry-cookies':
+    'Maple Terroir’s Maple Syrup & Blueberry Cookies are made with Maple Terroir pure maple syrup, BC grown dried blueberries and Canadian non-GMO flour.',
+  'maple-syrup-milk-chocolate-covered-almonds':
+    'Maple syrup milk chocolate dipped roasted almonds are so popular, but we decided to make them even more mouth-watering.',
+  'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition':
+    'First Tap Organic Maple Syrup Nouveau is made on the first day of maple season, from the first tap of the tree. Each bottle is given a distinct serial number.',
+  'handcrafted-pure-maple-syrup-butter-popcorn':
+    'Handmade maple butter popcorn, made in small batches from Canadian grown non-GMO sweet corn. Gluten-free, 0g trans fat, no preservatives, no artificial colours.',
+  'pure-maple-syrup-maple-leaf-bottle-100ml':
+    'Our iconic 100ml maple leaf jar of pure maple syrup, Canada #1 Grade A Dark with a robust, rich taste. An ideal souvenir gift from Canada for friends and family.',
+  'pure-maple-syrup-maple-leaf-bottle-250ml':
+    'Our iconic 250ml maple leaf jar of pure maple syrup, Canada #1 Grade A Dark with a robust, rich taste. An ideal souvenir gift from Canada for friends and family.',
+  'pure-maple-syrup-maple-leaf-bottle-50ml':
+    'Our iconic 50ml maple leaf jar of pure maple syrup, Canada #1 Grade A Dark with a robust, rich taste. An ideal souvenir gift from Canada for friends and family.',
 };
 
 // The claims a product page may make, by handle (October 2, 2026). A claim goes on
@@ -73,7 +94,7 @@ const META_OVERRIDES = {
 //   the maple cream, whatever their Shopify names say, until Shawn confirms them.
 // - canada: the "Made in Canada" badge. The maple syrups (from one Quebec farm)
 //   and the popcorn (its Shopify listing calls it Canadian made). Never the tea,
-//   grown in Sri Lanka, or the coffee, grown in Nicaragua, and never a product no
+//   grown in Sri Lanka, or the coffee, grown in South America (Shawn, October 23, 2026), and never a product no
 //   source covers.
 // - quebec: the "Origin: Quebec, Canada" row under Product Details. The maple
 //   syrups only.

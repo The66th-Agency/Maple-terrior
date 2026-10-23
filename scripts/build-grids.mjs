@@ -54,7 +54,8 @@ const BOF_PAGES = {
 // Mirror of HIDDEN_PRODUCTS in products.html: products deliberately kept out of
 // the catalog UI stay out of the static grid too.
 const HIDDEN = ['blueberry-ceylon', 'blueberry ceylon', 'blueberry-tea', 'blueberry tea',
-  'kettle-chip', 'kettle chip', 'maple kettle', 'chocolates-bare-50', 'chocolate bare 50', 'chocolate-bar-50'];
+  'kettle-chip', 'kettle chip', 'maple kettle', 'chocolates-bare-50', 'chocolate bare 50', 'chocolate-bar-50',
+  'hello-kitty', 'hello kitty'];  // discontinued (Shawn, October 23, 2026)
 const isHidden = (p) => {
   const h = (p.handle || '').toLowerCase(), t = (p.title || '').toLowerCase();
   return HIDDEN.some((x) => h.includes(x) || t.includes(x));

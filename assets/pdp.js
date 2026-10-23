@@ -139,9 +139,9 @@
   var SYRUPS = ['organic-pure-maple-syrup-250ml', 'pure-maple-syrup-maple-leaf-bottle-250ml', 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition', 'pure-maple-syrup-maple-leaf-bottle-100ml', 'pure-maple-syrup-maple-leaf-bottle-50ml', 'pure-maple-syrup-jug-100ml'];
   var CADDIES = ['pure-maple-syrup-stroopwafels-caddy', 'cocoa-chocolate-maple-stroopwafels-caddy', 'wild-blueberry-maple-stroopwafels-caddy', 'strawberry-cream-maple-stroopwafels-caddy', 'matcha-green-tea-maple-stroopwafels-caddy'];
   var STROOP = ['maple-syrup-stroopwafel', 'maple-syrup-mini-stroopwafel'].concat(CADDIES);
-  var COOKIES = ['maple-leaf-mini-shortbread-cookies', 'maple-sugar-sea-salt-cookies', 'maple-syrup-blueberry-cookies', 'maple-syrup-cream-cookies-350g', 'hello-kitty-maple-cream-cookies'];
+  var COOKIES = ['maple-leaf-mini-shortbread-cookies', 'maple-sugar-sea-salt-cookies', 'maple-syrup-blueberry-cookies', 'maple-syrup-cream-cookies-350g'];
   var SNACKS = ['cocoa-dark-chocolate-covered-maple-roasted-almonds', 'maple-syrup-milk-chocolate-covered-almonds', 'dark-chocolate-covered-cranberry-pure-maple-syrup', 'dark-chocolate-covered-cherry-pure-maple-syrup', 'dark-chocolate-covered-blueberry-pure-maple-syrup', 'handcrafted-pure-maple-syrup-butter-popcorn', 'maple-syrup-sea-salt-roasted-peanuts'];
-  var DRINKS = ['maple-ceylon-tea', 'maple-syrup-medium-dark-roast-ground-coffee', 'blueberry-ceylon-tea'];
+  var DRINKS = ['maple-ceylon-tea', 'maple-syrup-medium-dark-roast-ground-coffee'];
   var PANTRY = ['organic-maple-cream-butter-jar', 'organic-pure-maple-sugar', 'pure-maple-syrup-candy', 'pure-maple-syrup-caramel'];
   var SETS = ['maple-extravaganza-gift-set', 'maple-treat-home-set', 'maple-tea-party-home-set', 'maple-organic-heaven-home-set', 'maple-enthusiast-home-set', 'maple-frenzy-home-set', 'maple-indulge-home-set', 'maple-mega-combo-gift-set'];
   // For each kind of product: things that go with it, and the alternatives a shopper

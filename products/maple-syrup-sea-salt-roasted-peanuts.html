@@ -669,7 +669,10 @@
       document.title = p.title + ' | Maple Terroir';
       var metaDesc = document.querySelector('meta[name="description"]');
       if (!metaDesc) { metaDesc = document.createElement('meta'); metaDesc.name = 'description'; document.head.appendChild(metaDesc); }
-      var pdpDesc = (p.description || '').replace(/\s+/g, ' ').trim().substring(0, 155);
+      // A baked page keeps its own summary (META_OVERRIDES in build-products.mjs, or the cut Shopify copy);
+      // the template, loaded without a baked handle, takes Shopify's.
+      var bakedDesc = window.__PRODUCT_HANDLE__ ? (metaDesc.getAttribute('content') || '').trim() : '';
+      var pdpDesc = bakedDesc || (p.description || '').replace(/\s+/g, ' ').trim().substring(0, 155);
       if (!pdpDesc) pdpDesc = p.title + ' from Maple Terroir, a family business since 1978.';
       metaDesc.setAttribute('content', pdpDesc);
       // OG + Twitter meta
