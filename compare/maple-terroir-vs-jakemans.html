@@ -27,7 +27,7 @@
   "url": "https://mapleterroir.com/compare/maple-terroir-vs-jakemans",
   "description": "Maple Terroir vs Jakeman's maple syrup: one farm or Ontario blend, organic grades, sizes and price per 100 mL compared, and which one suits you.",
   "datePublished": "2026-10-19",
-  "dateModified": "2026-10-19",
+  "dateModified": "2026-10-24",
   "publisher": {
     "@type": "Organization",
     "name": "Maple Terroir",
@@ -186,6 +186,48 @@
     }
     .cmp-vs { --vs-name: "Jakeman\27 s"; }
 
+    /* Visuals (October 24, 2026, Liam: "add some more visuals"): the hero photo, the farm photo, the price chart and the product shelf. */
+    .vs-fig { margin: 1.75rem 0 .5rem; border-radius: 1.5rem; overflow: hidden; background: #EFE8DC; }
+    .vs-fig img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+    .pc { background: #fff; border-radius: 1.5rem; box-shadow: 0 0 0 1px rgba(214,206,194,.45); padding: 1.25rem 1rem 1rem; }
+    .pc-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.25rem; font-size: .85rem; color: #5C544B; padding: 0 .5rem; margin-bottom: .75rem; }
+    .pc-head b { color: #1A1714; font-weight: 600; }
+    .pc-key { display: inline-flex; gap: 1rem; }
+    .pc-key > span { display: inline-flex; align-items: center; gap: .4rem; }
+    .pc-sw { display: inline-block; width: .7rem; height: .7rem; border-radius: 3px; background: #8C8175; }
+    .pc-sw-mt { background: #C4841D; }
+    .pc-rows { list-style: none; margin: 0; padding: 0; }
+    .pc-row { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 3.25rem; align-items: center; gap: 1rem; padding: .5rem; border-radius: .75rem; outline: none; transition: background .2s; }
+    .pc-row:hover, .pc-row:focus-visible { background: #F5F0E8; }
+    .pc-label { font-size: .85rem; line-height: 1.3; color: #1A1714; }
+    .pc-track { position: relative; height: 14px; }
+    .pc-bar { position: absolute; inset: 0 auto 0 0; width: calc(var(--v) * 10%); border-radius: 0 4px 4px 0; background: #8C8175; transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(0.32, 0.72, 0, 1) calc(var(--i) * 70ms + 150ms), background .2s; }
+    .is-mt .pc-bar { background: #C4841D; }
+    .pc.visible .pc-bar { transform: scaleX(1); }
+    .pc-row:hover .pc-bar, .pc-row:focus-visible .pc-bar { background: #5A5249; }
+    .pc-row.is-mt:hover .pc-bar, .pc-row.is-mt:focus-visible .pc-bar { background: #A86E12; }
+    .pc-tip { position: absolute; bottom: calc(100% + 8px); left: calc(var(--v) * 10%); transform: translateX(-100%); white-space: nowrap; background: #1A1714; color: #FDFBF7; font-size: .72rem; font-weight: 500; padding: .3rem .6rem; border-radius: .5rem; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 1; }
+    .pc-row:hover .pc-tip, .pc-row:focus-visible .pc-tip { opacity: 1; }
+    .pc-val { font-size: .85rem; font-weight: 600; color: #1A1714; text-align: right; font-variant-numeric: tabular-nums; }
+    .pc-table summary { display: inline-flex; align-items: center; min-height: 44px; font-size: .85rem; color: #5C544B; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #C4841D; }
+    @media (max-width: 640px) {
+      .pc { padding: 1rem .5rem .75rem; }
+      .pc-row { grid-template-columns: minmax(0, 1fr) 3.25rem; gap: .35rem .75rem; }
+      .pc-label { grid-column: 1 / -1; }
+    }
+    .product-card { background: #fff; border-radius: 2rem; overflow: hidden; transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -16px rgba(26,23,20,0.12); }
+    .atc-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 100px; background: #1A1714; color: #FDFBF7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em; border: none; cursor: pointer; transition: background 0.3s, transform 0.2s; }
+    .atc-btn:hover { background: #C4841D; }
+    .atc-btn.added { background: #5A5249; }
+    .sold-out-badge { display: inline-block; padding: 0.35rem 0.85rem; border-radius: 100px; background: rgba(140,129,117,0.12); color: #8C8175; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; }
+    @media (prefers-reduced-motion: reduce) {
+      .pc-bar { transform: none; transition: none; }
+      .pc-row, .pc-tip { transition: none; }
+      .product-card { transition: none; }
+      .product-card:hover { transform: none; }
+    }
+
   </style>
 </head>
 
@@ -257,10 +299,10 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- HERO -->
   <section class="pt-36 md:pt-44 pb-12 md:pb-16 px-4 md:px-8">
-    <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-4xl">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-7">
         <a href="/compare/" class="reveal inline-flex items-center gap-2 text-sm text-warm-gray-500 hover:text-charcoal transition-colors mb-6">Compare Maple Terroir</a>
-        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.08]">Maple Terroir vs Jakeman's Maple Syrup</h1>
+        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl font-semibold text-charcoal tracking-tight leading-[1.08]">Maple Terroir vs Jakeman's Maple Syrup</h1>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[62ch] text-lg mt-6">
           Jakeman's blends syrup from farms across Ontario and sells it in grocery stores, from $12.99 for 250 mL or $37.81 for a liter. Maple Terroir bottles syrup from one farm, with a certified organic Golden grade from $14.99 for 250 mL. Choose Jakeman's for the lowest price per liter. Choose ours when you want to know which forest your syrup came from.
         </p>
@@ -273,8 +315,11 @@
           </a>
           <a href="#side-by-side" class="btn-premium inline-flex items-center gap-3 bg-white ring-1 ring-warm-gray-200/60 text-charcoal rounded-full px-7 py-4 text-sm font-medium">See the Comparison</a>
         </div>
-        <p class="reveal text-sm text-warm-gray-500 mt-8">Published <time datetime="2026-10-19">October 19, 2026</time> &middot; Last updated <time datetime="2026-10-19">October 19, 2026</time> &middot; Maple Terroir publishes this page. Jakeman's prices are from <a href="https://jakemansmaplesyrup.com/collections" rel="nofollow noopener" class="underline underline-offset-4">its own website</a>, checked the same day.</p>
+        <p class="reveal text-sm text-warm-gray-500 mt-8">Published <time datetime="2026-10-19">October 19, 2026</time> &middot; Last updated <time datetime="2026-10-24">October 24, 2026</time> &middot; Maple Terroir publishes this page. Jakeman's prices are from <a href="https://jakemansmaplesyrup.com/collections" rel="nofollow noopener" class="underline underline-offset-4">its own website</a>, checked on October 19, 2026.</p>
       </div>
+      <figure class="vs-hero-img relative min-w-0 lg:col-span-5 rounded-[2rem] overflow-hidden bg-warm-gray-100 aspect-[16/10] lg:aspect-[4/5]">
+        <img src="/assets/images/terroir/quebec-maple-syrup-golden-and-dark.webp" alt="A bottle of Maple Terroir organic Golden maple syrup beside a maple leaf bottle of Dark maple syrup on a wooden table, lit from behind by a window onto a snowy maple forest" width="1920" height="1072" fetchpriority="high" decoding="async" class="absolute inset-0 w-full h-full object-cover">
+      </figure>
     </div>
   </section>
 
@@ -334,6 +379,9 @@
         <h2 class="reveal">One Farm or Many Farms</h2>
         <p class="reveal">Jakeman's buys syrup from producers across Ontario and blends it. Its product pages describe syrup "sourced from local farms across Ontario," including Mennonite communities around St. Jacobs and sugar bushes in Northern Ontario, and its organic page calls the result an "award-winning blend" (<a href="https://jakemansmaplesyrup.com/products/pure-maple-syrup" rel="nofollow noopener">Jakeman's pure maple syrup</a>, <a href="https://jakemansmaplesyrup.com/products/organic-maple-syrup" rel="nofollow noopener">Jakeman's organic maple syrup</a>). Blending many farms gives a steady taste from bottle to bottle and keeps a large grocery supply on the shelf.</p>
         <p class="reveal">Every bottle of ours comes from one forest on one farm. Sap changes with the trees, the soil and the weather of each spring, so a single farm's syrup carries that one place and that one season. Our <a href="/terroir">terroir page</a> explains what shapes the taste, and why early syrup comes out golden and late syrup dark.</p>
+        <figure class="reveal vs-fig">
+          <img src="/assets/images/terroir/sugar-bush-early-spring-1280.webp" alt="A maple forest in early spring, with blue sap tubing running between the trunks to a wooden sugar shack venting steam, and a bottle of Maple Terroir organic maple syrup on a snowy stump" width="1280" height="715" loading="lazy" decoding="async" class="img-zoom">
+        </figure>
 
         <h2 class="reveal">Organic Certification</h2>
         <p class="reveal">Both brands sell a certified organic syrup. Our Golden grade is certified by Ecocert, Canada Organic and USDA Organic, and our <a href="/certifications">certifications page</a> explains what each body checks. Our Dark grade in the maple leaf bottle is not certified organic.</p>
@@ -341,7 +389,25 @@
 
         <h2 class="reveal">Price per 100 mL</h2>
         <p class="reveal">Jakeman's costs less per milliliter, most of all in big formats. Prices below are each brand's own website on October 19, 2026, in Canadian dollars. Our <a href="/research/canadian-maple-syrup-price-index">maple syrup price index</a> compares 34 bottles from 16 brands.</p>
-        <div class="reveal cmp-wrap my-6">
+        <figure class="reveal pc my-6" aria-labelledby="pc-title">
+          <figcaption class="pc-head">
+            <span id="pc-title"><b>Price per 100 mL</b>, Canadian dollars, lowest first</span>
+            <span class="pc-key" aria-hidden="true"><span><i class="pc-sw pc-sw-mt"></i>Maple Terroir</span><span><i class="pc-sw"></i>Jakeman's</span></span>
+          </figcaption>
+          <ol class="pc-rows">
+            <li class="pc-row" style="--v:3.78;--i:0" tabindex="0"><span class="pc-label">Jakeman's 1 L plastic jug</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$37.81 for 1 L</span></span><span class="pc-val">$3.78</span></li>
+            <li class="pc-row" style="--v:4.40;--i:1" tabindex="0"><span class="pc-label">Jakeman's 500 mL glass</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$21.99 for 500 mL</span></span><span class="pc-val">$4.40</span></li>
+            <li class="pc-row is-mt" style="--v:4.50;--i:2" tabindex="0"><span class="pc-label">Maple Terroir organic Golden, 250 mL in a case of 48</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$11.25 a bottle</span></span><span class="pc-val">$4.50</span></li>
+            <li class="pc-row" style="--v:4.80;--i:3" tabindex="0"><span class="pc-label">Jakeman's organic, 500 mL</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$23.99 for 500 mL</span></span><span class="pc-val">$4.80</span></li>
+            <li class="pc-row" style="--v:5.20;--i:4" tabindex="0"><span class="pc-label">Jakeman's 250 mL glass</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$12.99 for 250 mL</span></span><span class="pc-val">$5.20</span></li>
+            <li class="pc-row is-mt" style="--v:6.00;--i:5" tabindex="0"><span class="pc-label">Maple Terroir organic Golden, 250 mL</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$14.99 for 250 mL</span></span><span class="pc-val">$6.00</span></li>
+            <li class="pc-row" style="--v:8.38;--i:6" tabindex="0"><span class="pc-label">Jakeman's autumn leaf glass, 250 mL</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$20.95 for 250 mL</span></span><span class="pc-val">$8.38</span></li>
+            <li class="pc-row is-mt" style="--v:10.00;--i:7" tabindex="0"><span class="pc-label">Maple Terroir Dark, maple leaf bottle, 250 mL</span><span class="pc-track"><span class="pc-bar"></span><span class="pc-tip" role="tooltip">$24.99 for 250 mL</span></span><span class="pc-val">$10.00</span></li>
+          </ol>
+        </figure>
+        <details class="pc-table mb-6">
+          <summary>See the prices as a table</summary>
+        <div class="cmp-wrap mt-3">
           <table class="cmp-table cmp-price">
             <thead><tr><th>Bottle</th><th>Price</th><th>Per 100 mL</th></tr></thead>
             <tbody>
@@ -356,6 +422,7 @@
             </tbody>
           </table>
         </div>
+        </details>
         <p class="reveal">Our bottles come in cases of 12, 24, 36 and 48 at 10 to 25 percent off, which brings the organic Golden to $4.50 per 100 mL. The leaf-shaped bottles cost more at both brands because you pay for the glass as a keepsake.</p>
 
         <h2 class="reveal">Grades and Taste</h2>
@@ -364,6 +431,36 @@
 
         <h2 class="reveal">Bottles and Gifts</h2>
         <p class="reveal">Jakeman's has more gift formats: crated leaf bottles, a 50 mL sampler of five, and a case of 48 mini bottles for wedding favors at $216. We sell the maple leaf bottle in 50, 100 and 250 mL, and boxed <a href="/shop/canadian-gift-baskets">gift sets from $75</a> that pair our syrup with stroopwafels, shortbread and maple tea.</p>
+      </div>
+      <div class="max-w-6xl mx-auto mt-10">
+      <!-- SHELF:START handles="organic-pure-maple-syrup-250ml,pure-maple-syrup-maple-leaf-bottle-250ml,pure-maple-syrup-maple-leaf-bottle-100ml,pure-maple-syrup-maple-leaf-bottle-50ml,maple-extravaganza-gift-set" -->
+      <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
+      <div data-shelf class="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1753993530&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-syrup-maple-leaf-50ml.jpg?v=1749671439&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 50ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">50 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$7.99 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815537697017" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 50ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-extravaganza-gift-set" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleExtravaganzaGiftSet.png?v=1749671567&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-extravaganza-gift-set" class="hover:text-amber-warm transition-colors">Maple Extravaganza Gift Set</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]"></p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$75.00 CAD</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42521339658489" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Extravaganza Gift Set to cart">+ Add</button></div></div></article>
+      </div>
+      <script>
+      (function () {
+        if (window.__mtShelfLive) return; window.__mtShelfLive = true;
+        var btns = [].slice.call(document.querySelectorAll('[data-shelf] .atc-btn[data-variant-id]'));
+        var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); }).filter(function (id, i, a) { return a.indexOf(id) === i; });
+        if (!ids.length) return;
+        fetch('https://maple-terroir.myshopify.com/api/2026-01/graphql.json', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': '59618e3b6f5e626df6c5f527b4972d3d' }, body: JSON.stringify({ query: 'query($ids:[ID!]!){nodes(ids:$ids){... on ProductVariant{id availableForSale price{amount}}}}', variables: { ids: ids } }) })
+          .then(function (r) { return r.json(); }).then(function (r) {
+            var by = {}; ((r.data && r.data.nodes) || []).forEach(function (n) { if (n) by[n.id] = n; });
+            btns.forEach(function (b) {
+              var n = by[b.getAttribute('data-variant-id')]; if (!n) return;
+              var pe = b.closest('article') && b.closest('article').querySelector('[data-price]');
+              if (pe && n.price) pe.textContent = '$' + parseFloat(n.price.amount).toFixed(2) + ' CAD';
+              if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
+            });
+          }).catch(function () {});
+      })();
+    </script>
+      <!-- SHELF:END -->
       </div>
     </div>
   </section>
