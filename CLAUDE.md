@@ -16,7 +16,7 @@ Premium editorial + headless e-commerce website for Maple Terroir, a third-gener
 - **Fonts**: Fraunces (variable serif headings, optical sizing) + Plus Jakarta Sans (body)
 - **Color palette**: cream `#FDFBF7`, amber-warm `#C4841D`, charcoal `#1A1714`, warm-gray scale
 - **Animations**: IntersectionObserver scroll reveals, requestAnimationFrame video scrubbing, CSS marquees
-- **Hosting**: Cloudflare **Worker** with Workers Static Assets (NOT Pages), GitHub repo at The66th-Agency/Maple-terrior. Honors `_redirects` and `_headers`. Does NOT run Pages Functions (`functions/` is inert).
+- **Hosting**: Cloudflare **Worker** with Workers Static Assets (NOT Pages), GitHub repo at The66th-Agency/Maple-terrior. Honors `_redirects` and `_headers`. Does NOT run Pages Functions (`functions/` is inert). A missing address gets `404.html` with a 404 status through `"not_found_handling": "404-page"` in `wrangler.jsonc` (October 25, 2026); before that it was a 404 with an empty page, which loads no analytics.
 
 ## Development
 Two build steps exist (the original "no build step" design no longer fully holds):
