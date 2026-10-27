@@ -330,7 +330,7 @@
 
           <!-- Shipping, returns and pickup by the button (product page audit, October 4, 2026) -->
           <div id="pdp-ship" class="space-y-3 mb-8 py-5 border-y border-warm-gray-200/50 text-sm leading-relaxed text-warm-gray-600">
-            <p class="flex gap-3"><svg class="w-4 h-4 mt-0.5 text-amber-warm flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span><strong class="font-semibold text-charcoal">Free shipping on orders of $99 or more.</strong> Ships to every Canadian province in 3 to 9 business days, $19.99 on orders under $99. <span id="pdp-ship-note" class="block mt-1 font-medium text-charcoal" style="display:none"></span></span></p>
+            <p class="flex gap-3"><svg class="w-4 h-4 mt-0.5 text-amber-warm flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span><strong class="font-semibold text-charcoal">Free shipping on orders of $99 or more.</strong> Under $99, Standard is $19.99 and takes 3 to 9 business days, and Express is $39.99 and takes 1 to 2. We ship to the ten Canadian provinces; for any other address, email info@mapleterroir.com before you order.</span></p>
             <p class="flex gap-3"><svg class="w-4 h-4 mt-0.5 text-amber-warm flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Arrived damaged? We replace or refund any damaged or defective item reported within 7 days of delivery.</span></p>
             <p class="flex gap-3"><svg class="w-4 h-4 mt-0.5 text-amber-warm flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Free pickup in Vancouver. Choose it at checkout.</span></p>
             <div class="flex flex-wrap gap-x-6 gap-y-2 pt-1"><span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Family owned since 1978</span></span><span class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C7 2 3 6 3 11c0 5 9 11 9 11s9-6 9-11c0-5-4-9-9-9z"/><circle cx="12" cy="11" r="3"/></svg><span>Made in Canada</span></span></div>
@@ -383,21 +383,6 @@
                 </div>
               </div>
             </div>
-            <!-- Shipping & Returns -->
-            <div class="pdp-acc border-b border-warm-gray-200/50">
-              <button class="pdp-acc-q" onclick="togglePdpAcc(this)">
-                <span>Shipping &amp; Returns</span>
-                <span class="pdp-acc-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span>
-              </button>
-              <div class="pdp-acc-a">
-                <div class="pdp-acc-inner">
-                  <div class="pdp-detail-row"><span class="pdp-detail-label">Ships to</span><span class="pdp-detail-value">The ten Canadian provinces</span></div>
-                  <div class="pdp-detail-row"><span class="pdp-detail-label">Standard</span><span class="pdp-detail-value">3 to 9 business days, $19.99, free on orders of $99 or more</span></div>
-                  <div class="pdp-detail-row"><span class="pdp-detail-label">Express</span><span class="pdp-detail-value">1 to 2 business days, $39.99</span></div>
-                  <div class="pdp-detail-row"><span class="pdp-detail-label">Returns</span><span class="pdp-detail-value">We replace or refund a damaged or defective item reported within 7 days of delivery</span></div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -442,7 +427,6 @@
       <div id="faq-list">
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How should I store this product?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Keep maple syrup and maple cream in the fridge once opened, and unopened bottles in a cool, dry place. For maple sugar, cookies, chocolates, snacks, tea and coffee, follow the storage note on the package.</div></div></div>
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Is this product organic and certified?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Our organic maple syrups, the Organic Pure Maple Syrup 250ml and the Organic First Tap Nouveau, are certified organic by Ecocert, Canada Organic and USDA Organic. The maple leaf bottles and the 100 mL jug are not organic, and our cookies, stroopwafels, chocolates, snacks, tea and coffee are not certified organic.</div></div></div>
-        <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Do you ship internationally?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Our online checkout ships to the ten Canadian provinces, and shipping is free on orders of $99 or more. For an address in the territories or another country, email info@mapleterroir.com before you order and we will confirm whether we can ship there and what it costs.</div></div></div>
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What is your return policy?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">If an item arrives damaged or defective, email info@mapleterroir.com within 7 days of delivery and we will replace it or refund it. Because these are food products, we cannot accept returns of opened items or returns for a change of mind.</div></div></div>
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Are your products suitable for people with allergies?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Pure maple syrup, maple sugar and maple cream are made from maple syrup alone. Our stroopwafels, cookies, chocolates and snacks may contain wheat, dairy, eggs, soy and nuts. Please check the label on each product for allergen information, or email info@mapleterroir.com before you order.</div></div></div>
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What grade is your maple syrup?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">All our maple syrup is Canada Grade A. The organic 250 mL bottle and the First Tap Nouveau are Golden, Delicate Taste. The maple leaf bottles and the 100 mL jug are Dark, Robust Taste, with a stronger maple flavor.</div></div></div>
@@ -541,7 +525,7 @@
   <!-- Cart Drawer -->
 
 
-  <script src="/assets/pdp.js?v=bbd2d581"></script>
+  <script src="/assets/pdp.js?v=67ac68d9"></script>
   <script>
     // ── Nav, Mobile Menu ──────────────────────────────────────
     var navbar = document.getElementById('navbar');

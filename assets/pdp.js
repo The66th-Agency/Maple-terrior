@@ -291,7 +291,7 @@
         var head;
         if (mode === 'caddy') {
           var three = first ? money(parseFloat(first.priceV2.amount) * 3) : '';
-          head = '<p class="pdp-mix-k">Mix three flavors</p><p class="pdp-mix-t">Three caddies come to ' + three + ' and ship free. Add another flavor:</p>';
+          head = '<p class="pdp-mix-k">Mix three flavors</p><p class="pdp-mix-t">Three caddies come to ' + three + '. Add another flavor:</p>';
         } else {
           var self = d.self && d.self.variants.edges[0] ? parseFloat(d.self.variants.edges[0].node.priceV2.amount) : 0;
           if (!self || self >= FREE_SHIPPING_CAD) return;
