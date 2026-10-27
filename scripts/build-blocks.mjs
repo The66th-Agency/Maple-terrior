@@ -46,8 +46,11 @@
 // - Family: Wayne Lytton, born in Nanaimo, founded the company with his wife
 //   Kaori in 1978, and the brand calls itself three generations (old Shopify
 //   About page, maple-terroir.myshopify.com/pages/about). Shawn Lytton is President
-//   (he prefers it to CEO, October 23, 2026). Gavin Lytton fulfils orders from the Vancouver location at 9291
-//   Shaughnessy Street (Shopify order timelines). The photo is Shawn, from the old
+//   (he prefers it to CEO, October 23, 2026). Who packs is said in Shawn's words
+//   (his Cansumer answers, October 23, 2026): "our online orders are packed by family
+//   members at our facility", with no Vancouver packing line and no name (Liam,
+//   October 27, 2026: "Yes, change the line to Shawn's wording on every page: our
+//   online orders are packed by family members at our facility."). The photo is Shawn, from the old
 //   About page, cropped to keep another company's packaging out of frame. When the
 //   family group photo arrives, replace PHOTO and ALT below and re-run.
 //
@@ -195,7 +198,7 @@ const family = (where) => `  <section id="family" class="scroll-mt-28 py-16 md:p
       </figure>
       <div class="reveal reveal-delay-1 md:col-span-7">
         <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Three Generations of One Maple Family.</h2>
-        <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and Gavin Lytton packs and ships the online orders from Vancouver.</p>
+        <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and our online orders are packed by family members at our facility.</p>
         <p class="text-warm-gray-600 leading-relaxed mb-8 max-w-[56ch]">When you order from mapleterroir.com, the order goes to that family, and they are the ones who pack it.</p>
 ${where === 'story.html' ? '' : `        <a href="/story" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Read the family story <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`}
       </div>
