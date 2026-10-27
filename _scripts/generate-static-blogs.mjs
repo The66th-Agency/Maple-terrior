@@ -65,7 +65,7 @@ const BLOG_CROSS_LINKS = {
   ],
   "is-organic-maple-syrup-better": [
     { after: /certif|Ecocert|USDA|Canada Organic|organic/i, sentence: 'Shoppers looking for certified-organic syrup can compare options in our <a href="../organic-maple-syrup">organic maple syrup collection</a>, where every bottle carries Ecocert, Canada Organic, and USDA Organic certifications.' },
-    { after: /buy|purchas|choose|select|bottle/i, sentence: 'For anyone ready to skip the comparison and start with a known producer, our <a href="../product?handle=organic-pure-maple-syrup-250ml">organic pure maple syrup 250ml</a> is the bottle we ship most often.' },
+    { after: /buy|purchas|choose|select|bottle/i, sentence: 'For anyone ready to skip the comparison and start with a known brand, our <a href="../product?handle=organic-pure-maple-syrup-250ml">organic pure maple syrup 250ml</a> is the bottle we ship most often.' },
     { after: /compar|conventional|difference|vs/i, sentence: 'For a deeper comparison of the four real differences, read our <a href="organic-vs-conventional-maple-syrup">organic vs conventional maple syrup breakdown</a>.' },
   ],
   "maple-terroir-partners-with-ted2024-fueling-innovators-with-iconic-stroopwafels": [
@@ -107,7 +107,7 @@ const BLOG_CROSS_LINKS = {
   "the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide": [
     { after: /sap|tap|tree|season|spring|winter|harvest/i, sentence: 'The hands-on side of that process, what actually happens from tap to bottle, is covered thoroughly in <a href="from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">From Sap to Sweetness</a>.' },
     { after: /Quebec|Canada|supply|production|industry|market/i, sentence: 'For the broader market picture, the <a href="canadian-maple-syrup-production-report-2025">2025 Canadian maple syrup production report</a> tracks where the industry stands and where it is heading.' },
-    { after: /price|cost|value|premium|consumer|bottle/i, sentence: 'Buyers who want a finished bottle from a producer with full traceability can find that in our <a href="../product?handle=organic-pure-maple-syrup-250ml">organic pure maple syrup</a>, drawn from the same Quebec sugar bush season after season.' },
+    { after: /price|cost|value|premium|consumer|bottle/i, sentence: 'Buyers who want a finished bottle from a brand with full traceability can find that in our <a href="../product?handle=organic-pure-maple-syrup-250ml">organic pure maple syrup</a>, drawn from the same Quebec sugar bush season after season.' },
   ],
   "can-you-tap-any-maple-tree-the-truth-about-backyard-syrup-making": [
     { after: /sap|boil|evaporat|reduc|40|ratio|gallon/i, sentence: 'If you want to understand what actually happens to that sap after collection, <a href="from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">From Sap to Sweetness</a> follows the full journey from tree to bottle.' },
@@ -459,7 +459,7 @@ function template(article) {
             <svg class="w-8 h-8 text-amber-warm" viewBox="0 0 40 40" fill="none"><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" fill="currentColor" opacity="0.15"/><path d="M20 4C20 4 14 10 10 16C6 22 8 30 14 34C16 35.5 18 36 20 36C22 36 24 35.5 26 34C32 30 34 22 30 16C26 10 20 4 20 4Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
             <span class="font-display text-xl font-semibold text-charcoal tracking-tight">Maple Terroir</span>
           </a>
-          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch]">Single-origin maple syrup from one family farm in Quebec. Family owned since 1978.</p>
+          <p class="text-sm text-warm-gray-500 leading-relaxed max-w-[40ch]">Single-origin maple syrup from one farm in Quebec. Family owned since 1978.</p>
         </div>
         <div class="md:col-span-2 md:col-start-7">
           <h4 class="eyebrow text-warm-gray-400 mb-4">Explore</h4>
