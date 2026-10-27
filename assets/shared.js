@@ -175,7 +175,7 @@ setTimeout(loadGA, 3000);
     // 1. ANNOUNCEMENT BAR (rotating slider)
     if (!localStorage.getItem('mt_announce_dismissed')) {
       var announceMessages = [
-        '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span>Free shipping on Canadian orders of <strong style="color:#F4C77D">$99 CAD</strong> or more</span>',
+        '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 16H20L22 12H7M16 16C16 17.1 15.1 18 14 18C12.9 18 12 17.1 12 16M7 16H12M7 16C7 17.1 6.1 18 5 18C3.9 18 3 17.1 3 16C3 14.9 3.9 14 5 14C6.1 14 7 14.9 7 16Z"/></svg><span>Free shipping on Canadian orders of <strong style="color:#F4C77D">$99</strong> or more</span>',
         '<svg style="width:14px;height:14px;flex-shrink:0;color:#C4841D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Local to Vancouver? Choose <strong style="color:#F4C77D">local pickup</strong> free at checkout.</span>'
       ];
       var announceIndex = 0;
@@ -411,7 +411,7 @@ setTimeout(loadGA, 3000);
         a.addEventListener('mouseenter', function () { a.style.background = 'rgba(217,209,196,0.2)'; });
         a.addEventListener('mouseleave', function () { a.style.background = 'none'; });
         a.innerHTML = (img ? '<img src="' + esc(img.url) + '&width=80" alt="' + esc(img.altText || p.title) + '" style="width:48px;height:48px;border-radius:0.75rem;object-fit:cover;background:#F5F0E8;flex-shrink:0">' : '<div style="width:48px;height:48px;border-radius:0.75rem;background:#F5F0E8;flex-shrink:0"></div>') +
-          '<div style="flex:1;min-width:0"><div style="font-weight:500;font-size:0.88rem;color:#1A1714;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(p.title) + '</div><div style="font-size:0.75rem;color:#8C8175">$' + esc(price) + ' CAD</div></div>' +
+          '<div style="flex:1;min-width:0"><div style="font-weight:500;font-size:0.88rem;color:#1A1714;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(p.title) + '</div><div style="font-size:0.75rem;color:#8C8175">$' + esc(price) + '</div></div>' +
           '<svg style="width:16px;height:16px;color:#D9D1C4;flex-shrink:0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>';
         a.addEventListener('click', function () { toggleSearch(); });
         results.appendChild(a);
@@ -468,7 +468,7 @@ setTimeout(loadGA, 3000);
 // forward, so the cart sits there and the session ends.
 //
 // The second half is the shipping promise. The banner offers free shipping over
-// $99 CAD and the drawer never mentions it again. A basket at $24.99 shows a
+// $99 and the drawer never mentions it again. A basket at $24.99 shows a
 // subtotal and a checkout button and no reason to add the second bottle.
 //
 // Both fixes live HERE, in the one file all 116 pages load, and not in the cart
@@ -523,7 +523,7 @@ setTimeout(loadGA, 3000);
     var remaining = FREE_SHIPPING_CAD - subtotal;
     var pct = Math.max(0, Math.min(100, (subtotal / FREE_SHIPPING_CAD) * 100));
     var text = remaining > 0
-      ? 'Add <strong>$' + remaining.toFixed(2) + ' CAD</strong> for free shipping to every Canadian province.'
+      ? 'Add <strong>$' + remaining.toFixed(2) + '</strong> for free shipping to every Canadian province.'
       : 'This order ships free.';
     var html =
       '<span>' + text + '</span>' +

@@ -104,7 +104,7 @@ window.MapleCart = (function () {
       div.innerHTML = (imgUrl ? '<img class="cart-item-img" src="' + imgUrl + '" alt="' + (window.MapleEsc||String)(v.image.altText || v.product.title) + '">' : '<div class="cart-item-img"></div>') + '<div class="cart-item-info"><div class="cart-item-name">' + v.product.title + '</div><div class="cart-item-variant">' + v.title + '</div><div class="cart-item-bottom"><div class="cart-item-qty"><button aria-label="Decrease" data-line="' + line.id + '" data-action="dec">&minus;</button><span>' + line.quantity + '</span><button aria-label="Increase" data-line="' + line.id + '" data-action="inc">+</button></div><span class="cart-item-price">$' + price.toFixed(2) + '</span></div></div>';
       itemsEl.appendChild(div);
     });
-    if (cartData.cost && cartData.cost.subtotalAmount) { subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2) + ' CAD'; }
+    if (cartData.cost && cartData.cost.subtotalAmount) { subtotalEl.textContent = '$' + parseFloat(cartData.cost.subtotalAmount.amount).toFixed(2); }
     renderTopup();
     // Optimistic +/-: update DOM immediately, debounce the Shopify roundtrip 300ms so
     // rapid clicks coalesce. PostHog rage-click cluster on this control (May 2026) was
@@ -126,7 +126,7 @@ window.MapleCart = (function () {
         var optBadge = 0, optSubtotal = 0;
         itemsEl.querySelectorAll('.cart-item-qty span').forEach(function (s) { optBadge += parseInt(s.textContent, 10) || 0; });
         itemsEl.querySelectorAll('.cart-item-price').forEach(function (p) { optSubtotal += parseFloat(p.textContent.replace(/[^0-9.]/g, '')) || 0; });
-        subtotalEl.textContent = '$' + optSubtotal.toFixed(2) + ' CAD';
+        subtotalEl.textContent = '$' + optSubtotal.toFixed(2);
         var badgeEl = document.getElementById('cart-count');
         if (badgeEl) { badgeEl.textContent = optBadge; badgeEl.classList.toggle('visible', optBadge > 0); }
         clearTimeout(pendingTimers[lineId]);

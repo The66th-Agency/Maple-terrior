@@ -86,7 +86,7 @@ function card(p) {
       `<h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug sv-title"><a href="/products/${esc(p.handle)}" class="hover:text-amber-warm transition-colors">${esc(p.title)}</a></h3>` +
       `<p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">${esc(p.size)}</p>` +
       '<div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap">' +
-        `<p class="text-sm font-medium text-charcoal" data-price>$${p.price} CAD</p>` + button(p) +
+        `<p class="text-sm font-medium text-charcoal" data-price>$${p.price}</p>` + button(p) +
       '</div>' +
     '</div>' +
   '</article>';
@@ -104,7 +104,7 @@ function heroTile(p, h) {
     `<div class="p-4${h.big ? ' md:p-6' : ''}">` +
       `<p class="font-display ${h.big ? 'text-lg md:text-xl' : 'text-[15px]'} font-semibold text-charcoal leading-snug sv-title"><a href="/products/${esc(p.handle)}" class="hover:text-amber-warm transition-colors">${esc(p.title)}</a></p>` +
       '<div class="mt-3 flex items-center justify-between gap-2 flex-wrap">' +
-        `<p class="text-sm font-medium text-charcoal" data-price>$${p.price} CAD</p>` + button(p) +
+        `<p class="text-sm font-medium text-charcoal" data-price>$${p.price}</p>` + button(p) +
       '</div>' +
     '</div>' +
   '</article>';
