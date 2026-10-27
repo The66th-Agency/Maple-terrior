@@ -1,8 +1,8 @@
 # Maple Terroir
 
-> Maple Terroir is a third-generation, family-owned Canadian maple syrup company, founded in 1978. It produces single-origin pure maple syrup, triple organic certified by Ecocert, Canada Organic, and USDA Organic.
+> Maple Terroir is a third-generation, family-owned Canadian maple syrup company, founded in 1978. It sells single-origin pure maple syrup from one farm, and its organic syrup is certified by Ecocert, Canada Organic, and USDA Organic.
 
-Maple Terroir is based in Vancouver, British Columbia, and sources its single-origin sap from Quebec's Appalachian Mountains. The company sells pure maple syrup and maple products, including maple cream, maple sugar, maple stroopwafels, chocolates, and gift sets. The online store ships to every Canadian province, and the brand is also sold in Japan, South Korea, China and Taiwan. Only the syrup line carries organic certification, not the full product range.
+Maple Terroir is based in Vancouver, British Columbia, and its syrup comes from one farm in Quebec's Appalachian Mountains. The company sells pure maple syrup and maple products, including maple cream, maple sugar, maple stroopwafels, chocolates, and gift sets. The online store ships to every Canadian province, and the brand is also sold in Japan, South Korea, China and Taiwan. Only the syrup line carries organic certification, not the full product range.
 
 ## Guides
 - [Organic vs Conventional Maple Syrup](https://mapleterroir.com/blog/organic-vs-conventional-maple-syrup): The four real production differences, plus an honest take on whether organic is better and whether it is worth the price.
@@ -18,6 +18,7 @@ Maple Terroir is based in Vancouver, British Columbia, and sources its single-or
 - [All Products](https://mapleterroir.com/products)
 
 ## About
+- [Maple Terroir Answers](https://mapleterroir.com/answers/): Who Maple Terroir is, where its syrup comes from, who it suits, prices, how it compares with grocery store syrup and other brands, and how to order.
 - [Our Story](https://mapleterroir.com/story): Family-owned since 1978.
 - [Terroir](https://mapleterroir.com/terroir): Single-origin maple from Quebec's Appalachian Mountains.
 - [Certifications](https://mapleterroir.com/certifications): Ecocert, Canada Organic, and USDA Organic.
