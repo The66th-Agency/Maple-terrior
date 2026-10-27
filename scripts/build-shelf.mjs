@@ -48,7 +48,7 @@ const card = (p) => `<article class="product-card ring-1 ring-warm-gray-200/30 f
     `<h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/${esc(p.handle)}" class="hover:text-amber-warm transition-colors">${esc(p.title)}</a></h3>` +
     `<p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">${esc(p.size)}</p>` +
     '<div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap">' +
-      `<p class="text-sm font-medium text-charcoal" data-price>$${p.price} CAD</p>` +
+      `<p class="text-sm font-medium text-charcoal" data-price>$${p.price}</p>` +
       `<button class="atc-btn" data-variant-id="${esc(p.variant.id)}" onclick="MapleCart.addFromBtn(this)" aria-label="Add ${esc(p.title)} to cart">+ Add</button>` +
     '</div>' +
   '</div>' +
@@ -67,7 +67,7 @@ const LIVE = `<script>
             btns.forEach(function (b) {
               var n = by[b.getAttribute('data-variant-id')]; if (!n) return;
               var pe = b.closest('article') && b.closest('article').querySelector('[data-price]');
-              if (pe && n.price) pe.textContent = '$' + parseFloat(n.price.amount).toFixed(2) + ' CAD';
+              if (pe && n.price) pe.textContent = '$' + parseFloat(n.price.amount).toFixed(2);
               if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
             });
           }).catch(function () {});

@@ -206,7 +206,7 @@ ${where === 'story.html' ? '' : `        <a href="/story" class="inline-flex ite
 // ------------------------------------------------------------ CTA
 const CTA_DEFAULT = {
   title: 'Order straight from our family.',
-  text: 'Orders of $99 CAD or more ship free. Standard delivery takes 3 to 9 business days, and Express takes 1 to 2 business days for $39.99.',
+  text: 'Orders of $99 or more ship free. Standard delivery takes 3 to 9 business days, and Express takes 1 to 2 business days for $39.99.',
   href: '/products',
   label: 'Shop All Products',
 };

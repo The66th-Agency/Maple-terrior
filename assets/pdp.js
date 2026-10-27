@@ -189,7 +189,7 @@
       '<div class="aspect-square rounded-2xl overflow-hidden mb-3 bg-cream-dark ring-1 ring-warm-gray-200/30">' +
       '<img src="' + cardImg(p.handle) + '" alt="' + esc(p.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" width="400" height="400"></div>' +
       '<h3 class="font-medium text-sm text-charcoal mb-1">' + esc(p.title) + '</h3>' +
-      (price !== null ? '<p class="text-xs text-warm-gray-500">' + money(price) + ' CAD</p>' : '') + '</a>';
+      (price !== null ? '<p class="text-xs text-warm-gray-500">' + money(price) + '</p>' : '') + '</a>';
   }
   function related(handle) {
     var rec = document.getElementById('recommendations');
@@ -248,7 +248,7 @@
       box.className = 'pdp-nearest';
       box.innerHTML = '<img src="' + cardImg(p.handle) + '" alt="" width="64" height="64">' +
         '<span><span class="pdp-nearest-k">Sold out for now. The closest one in stock:</span>' +
-        '<b>' + esc(p.title) + '</b><span class="pdp-nearest-p">' + money(price) + ' CAD</span></span>';
+        '<b>' + esc(p.title) + '</b><span class="pdp-nearest-p">' + money(price) + '</span></span>';
       atc.parentNode.insertBefore(box, atc.nextSibling);
     }).catch(function () {});
   }

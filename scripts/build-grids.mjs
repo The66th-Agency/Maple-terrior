@@ -86,7 +86,7 @@ function card(p) {
       `<h3 class="font-medium text-sm text-charcoal mb-1" style="min-height:2.5rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${esc(p.title)}</h3>` +
     '</a>' +
     '<div class="flex items-center justify-between">' +
-      `<p class="text-xs text-warm-gray-500">$${price} CAD</p>` +
+      `<p class="text-xs text-warm-gray-500">$${price}</p>` +
       (soldOut ? '<span class="sold-out-badge">Sold Out</span>' : '') +
     '</div>' +
   '</div>';
