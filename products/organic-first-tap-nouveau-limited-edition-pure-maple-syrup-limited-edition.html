@@ -687,7 +687,7 @@
       var shopImages = p.images.edges.map(function (e) { return e.node; }).filter(function (n) {
         return !(p.handle.indexOf('stroopwafel') !== -1 && /\/public_\d+[^\/]*$/.test(n.url.split('?')[0]));
       });
-      var images = shopImages.slice();
+      var images = ((window.MT_GALLERY || {})[p.handle] || shopImages).slice();
       if (window.MT_CARDS && window.MT_CARDS.indexOf(' ' + p.handle + ' ') !== -1) images.unshift({ url: '/assets/images/cards/' + ((window.MT_CARD_LARGE || '').indexOf(' ' + p.handle + ' ') !== -1 ? 'large/' : '') + p.handle + '.webp?v=' + ((window.MT_CARD_V || {})[p.handle] || 1), altText: p.title });
       if (images.length) {
         var mainEl = document.getElementById('gallery-main');
@@ -916,6 +916,6 @@
 // ── Shopify Cart (shared) ─────────────────────────────────
   </script>
 
-<script src="/assets/shared.js?v=cad33be0" defer></script>
+<script src="/assets/shared.js?v=5f2ead39" defer></script>
 </body>
 </html>

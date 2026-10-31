@@ -643,8 +643,15 @@ setTimeout(loadGA, 3000);
   // page that links it directly (First Tap, October 4, 2026: the box, not the bottle window).
   // A card listed in CARD_LARGE also has a 2048px copy in cards/large/, which the product
   // page gallery shows (it is shown up to 1,100px wide and zooms 1.8 times on hover).
-  var CARD_V = window.MT_CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 3, 'wild-blueberry-maple-stroopwafels-caddy': 2 };
+  var CARD_V = window.MT_CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 3, 'wild-blueberry-maple-stroopwafels-caddy': 2, 'pure-maple-syrup-maple-leaf-bottle-50ml': 2, 'pure-maple-syrup-maple-leaf-bottle-100ml': 2 };
   window.MT_CARD_LARGE = ' organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition ';
+  // Product photos the site shows in place of Shopify's, for products whose packaging changed
+  // before the Shopify photos did. The 50 and 100 mL leaf bottles carry a tag, not a label,
+  // since October 2026 (Gavin's photos, October 30, 2026); the 250 mL keeps its label.
+  window.MT_GALLERY = {
+    'pure-maple-syrup-maple-leaf-bottle-50ml': ['tag', 'tag-turned', 'side', 'back'].map(function (v) { return { url: '/assets/images/products/maple-leaf-bottle/maple-leaf-bottle-50ml-' + v + '.webp?v=1', altText: 'Pure Maple Syrup Maple Leaf Bottle, 50 mL, ' + (v === 'back' ? 'back of the tag' : v === 'side' ? 'side' : 'with its tag') }; }),
+    'pure-maple-syrup-maple-leaf-bottle-100ml': ['tag', 'front', 'side', 'back'].map(function (v) { return { url: '/assets/images/products/maple-leaf-bottle/maple-leaf-bottle-100ml-' + v + '.webp?v=1', altText: 'Pure Maple Syrup Maple Leaf Bottle, 100 mL, ' + (v === 'back' ? 'back of the tag' : v === 'side' ? 'side' : v === 'front' ? 'front' : 'with its tag') }; })
+  };
   function handleOf(img) {
     var a = img.closest && img.closest('a[href*="/products/"]');
     if (!a) return null;
