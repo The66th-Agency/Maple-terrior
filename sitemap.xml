@@ -22,10 +22,10 @@
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/banff-souvenirs</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
   <!-- Location pages -->
   <url><loc>https://mapleterroir.com/locations-we-serve/</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/canada/</loc><lastmod>2026-10-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-vancouver</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-toronto</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-montreal</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-montreal</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-calgary</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
   <!-- Static blog posts (CF Pages served, not Shopify) -->
   <url><loc>https://mapleterroir.com/blog/best-canadian-gifts-2026</loc><lastmod>2026-10-27</lastmod><priority>0.9</priority></url>
@@ -167,7 +167,7 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/locations-we-serve/canada/canadian-souvenirs-montreal</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -192,7 +192,7 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/shop/canadian-gift-baskets</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -222,7 +222,7 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/shop/canadian-stocking-stuffers</loc>
-    <lastmod>2026-10-27</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -242,12 +242,17 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/locations-we-serve/canada/gift-baskets-winnipeg</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mapleterroir.com/alternatives/honey-stinger-waffles</loc>
     <lastmod>2026-10-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/locations-we-serve/canada/gift-baskets-montreal</loc>
+    <lastmod>2026-10-31</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>
