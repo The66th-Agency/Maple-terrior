@@ -252,6 +252,7 @@
 
     var CATEGORIES = [
       { handle: 'maple-syrup-all', title: 'Pure Maple Syrups', cols: 4 },
+      { handle: 'maple-syrup-all', id: 'maple-cream-sugar', title: 'Maple Cream &amp; Sugar', cols: 4 },
       { handle: 'stroopwafels', title: 'Maple Stroopwafels', cols: 5 },
       { handle: 'nuts-popcorn', title: 'Snacks &amp; Treats', cols: 4 },
       { handle: 'tea-coffee', title: 'Tea &amp; Coffee', cols: 3 },
@@ -285,8 +286,13 @@
       }).then(function (r) { return r.json(); }).then(function (j) { return j.data && j.data.productByHandle; });
     }
 
+    /* ── The Shopify collection maple-syrup-all also holds these. Cream and sugar get
+       their own section, and the home set shows under Home Sets (Liam, November 4, 2026). ── */
+    var CREAM_SUGAR = ['organic-maple-cream-butter-jar', 'organic-pure-maple-sugar'];
+    var NOT_SYRUP = CREAM_SUGAR.concat(['maple-organic-heaven-home-set']);
+
     /* ── Product ordering for maple-syrup-all ── */
-    var SYRUP_ORDER = ['leaf bottle 50', 'leaf bottle 100', 'leaf bottle 250', 'jug 100', 'organic pure maple syrup 250', 'nouveau', 'butter jar', 'pure maple sugar', 'home set'];
+    var SYRUP_ORDER = ['leaf bottle 50', 'leaf bottle 100', 'leaf bottle 250', 'jug 100', 'organic pure maple syrup 250', 'nouveau', 'butter jar', 'pure maple sugar'];
     function syrupSortKey(title) {
       var t = title.toLowerCase();
       for (var i = 0; i < SYRUP_ORDER.length; i++) { if (t.indexOf(SYRUP_ORDER[i]) !== -1) return i; }
@@ -370,7 +376,7 @@
     }
 
     function renderCategory(cat, products) {
-      var html = '<div id="cat-' + cat.handle + '" class="mb-20 md:mb-28">' +
+      var html = '<div id="cat-' + (cat.id || cat.handle) + '" class="mb-20 md:mb-28">' +
         '<div class="flex items-end justify-between mb-10"><div>' +
           '<h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">' + cat.title + '</h2>' +
         '</div></div>' +
@@ -439,6 +445,9 @@
         }
         // Custom sort for maple syrup collection
         if (cat.handle === 'maple-syrup-all') {
+          products = products.filter(function (p) {
+            return cat.id ? CREAM_SUGAR.indexOf(p.handle) !== -1 : NOT_SYRUP.indexOf(p.handle) === -1;
+          });
           products.sort(function (a, b) { return syrupSortKey(a.title) - syrupSortKey(b.title); });
         }
         // Custom sort for cookies & sweets collection
