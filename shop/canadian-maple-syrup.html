@@ -613,26 +613,88 @@
   </section>
 
   <!-- REAL MAPLE SYRUP -->
-  <section id="real" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
+  <!-- ANATOMY:START key="canadian-label" -->
+  <style>
+    .st-copy a { color: #9A6514; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color .3s; }
+    .st-copy a:hover { color: #1A1714; }
+    .st-anat { display: grid; grid-template-columns: 1fr minmax(0, 460px) 1fr; gap: 40px; align-items: center; }
+    .st-anat-col { display: grid; gap: 40px; }
+    .st-anat-col:first-child { text-align: right; }
+    .st-note { display: grid; gap: 6px; padding: 4px 0; transition: transform .5s cubic-bezier(.32,.72,0,1); }
+    .st-note h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2; color: #1A1714; display: flex; align-items: center; gap: 12px; }
+    .st-anat-col:first-child .st-note h3 { justify-content: flex-end; }
+    .st-note p { color: #5A5249; line-height: 1.65; font-size: 15px; }
+    .st-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 999px; background: #1A1714; color: #FDFBF7; font: 600 13px/28px 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; }
+    .st-anat-col:first-child .st-num { order: 2; }
+    .st-bottle { position: relative; aspect-ratio: 4 / 5; border-radius: 2rem; overflow: hidden; background: #F3EADF; box-shadow: 0 40px 80px -40px rgba(26,23,20,.35); }
+    .st-zoom { position: absolute; width: 142%; left: 50%; top: 50%; transform: translate(-50%, -50.5%); }
+    .st-zoom img { display: block; width: 100%; height: auto; }
+    .st-dot { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 999px; background: #1A1714; color: #FDFBF7; font: 600 13px/30px 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; box-shadow: 0 0 0 4px rgba(253,251,247,.9); transition: background .3s, transform .4s cubic-bezier(.32,.72,0,1); }
+    .st-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 999px; border: 2px solid #C4841D; opacity: 0; transform: scale(.8); transition: opacity .3s, transform .4s; }
+    .st-dot.is-on { background: #C4841D; transform: scale(1.12); }
+    .st-dot.is-on::after { opacity: 1; transform: scale(1.35); }
+    .st-note.is-on { transform: translateY(-2px); }
+    .st-note.is-on .st-num { background: #C4841D; }
+    @media (max-width: 1023px) {
+      .st-anat { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+      .st-bottle { grid-column: 1 / -1; grid-row: 1; max-width: 440px; width: 100%; margin: 0 auto; }
+      .st-anat-col, .st-anat-col:first-child { text-align: left; gap: 28px; }
+      .st-anat-col:first-child .st-note h3 { justify-content: flex-start; }
+      .st-anat-col:first-child .st-num { order: 0; }
+    }
+    @media (max-width: 639px) { .st-anat { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .st-note, .st-dot { transition: none; } }
+  </style>
+  <section id="real" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
     <div class="max-w-[1400px] mx-auto">
-      <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">How to Tell Real Canadian Maple Syrup</h2>
-      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[65ch] mb-10">Three checks separate pure maple syrup from a table syrup that only looks the part. Our <a href="/blog/pure-maple-syrup-vs-table-syrup" class="underline underline-offset-4 decoration-amber-warm text-charcoal">guide to pure maple syrup and table syrup</a> goes through each label in detail.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Read the ingredients</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Pure maple syrup lists one ingredient: maple syrup. A table syrup lists glucose or corn syrup and flavoring.</p>
+      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">How to Tell Real Canadian Maple Syrup</h2>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] mx-auto st-copy">Three checks on the label separate pure maple syrup from a table syrup that only looks the part, and the price is a fourth. Our <a href="/blog/pure-maple-syrup-vs-table-syrup">guide to pure maple syrup and table syrup</a> goes through each label in detail.</p>
+      </div>
+      <div class="st-anat st-copy" data-anat>
+        <div class="st-anat-col">
+          <div class="st-note reveal" data-n="1">
+            <h3><span class="st-num">1</span>Read the ingredients</h3>
+            <p>Pure maple syrup lists one ingredient: maple syrup. A table syrup lists glucose or corn syrup and flavoring.</p>
           </div>
-          <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Look for the grade</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Retail maple syrup in Canada carries Canada Grade A and a color class such as Golden, Delicate Taste. Our <a href="/blog/grade-a-vs-grade-b-maple-syrup" class="underline underline-offset-4 decoration-amber-warm text-charcoal">maple syrup grades guide</a> explains each one.</p>
+          <div class="st-note reveal reveal-delay-1" data-n="2">
+            <h3><span class="st-num">2</span>Look for the grade</h3>
+            <p>Retail maple syrup in Canada carries Canada Grade A and a color class such as Golden, Delicate Taste. Our <a href="/blog/grade-a-vs-grade-b-maple-syrup">maple syrup grades guide</a> explains each one.</p>
           </div>
-          <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Check the price</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">In our price index, pure maple syrup had a median of $2.76 per 100 mL against $0.54 for table syrup. Even the cheapest pure syrup, at $1.57, cost 2.8 times the pricier table syrup.</p>
+        </div>
+        <figure class="st-bottle reveal">
+          <div class="st-zoom">
+            <img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="The label on a 250 mL Maple Terroir maple leaf bottle, showing the ingredients, Canada Grade A Dark, Robust Taste and Product of Canada" width="1000" height="1000" loading="lazy">
+            <span class="st-dot" data-n="1" style="left:38.5%;top:66.8%" aria-hidden="true">1</span>
+            <span class="st-dot" data-n="2" style="left:62%;top:62.5%" aria-hidden="true">2</span>
+            <span class="st-dot" data-n="3" style="left:62.5%;top:70%" aria-hidden="true">3</span>
           </div>
+        </figure>
+        <div class="st-anat-col">
+          <div class="st-note reveal" data-n="3">
+            <h3><span class="st-num">3</span>Find the country</h3>
+            <p>A Canadian bottle says so. Ours reads Product of Canada, in English and French.</p>
+          </div>
+          <div class="st-note reveal reveal-delay-1">
+            <h3>Check the price</h3>
+            <p>In our price index, pure maple syrup had a median of $2.76 per 100 mL against $0.54 for table syrup. Even the cheapest pure syrup, at $1.57, cost 2.8 times the pricier table syrup.</p>
+          </div>
+        </div>
       </div>
     </div>
+    <script>
+      (function () {
+        var root = document.querySelector('[data-anat]'); if (!root) return;
+        function on(n, v) { root.querySelectorAll('[data-n="' + n + '"]').forEach(function (e) { e.classList.toggle('is-on', v); }); }
+        root.querySelectorAll('.st-note[data-n]').forEach(function (note) {
+          var n = note.getAttribute('data-n');
+          note.addEventListener('mouseenter', function () { on(n, true); });
+          note.addEventListener('mouseleave', function () { on(n, false); });
+        });
+      })();
+    </script>
   </section>
+  <!-- ANATOMY:END -->
 
   <!-- FAMILY:START baked by scripts/build-blocks.mjs -->
   <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">

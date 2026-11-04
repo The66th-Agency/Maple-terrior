@@ -23,6 +23,9 @@
 //     an attribute, write < > and " as &lt; &gt; and &quot;, so a link in the
 //     text survives.
 //
+//   <!-- ANATOMY:START key="organic" -->   <!-- ANATOMY:END -->
+//     The product photo with numbered points around it. On a product page, leave out the key.
+//
 //   <!-- PROOF:START baked by scripts/build-blocks.mjs -->     <!-- PROOF:END -->
 //     The store-wide ratings under Add to Cart on every product page: Google and
 //     our own customer reviews, each with its total (Liam, October 12, 2026: "for
@@ -111,6 +114,161 @@ const logos = () => `  <section aria-label="Customer rating and retailers" class
       </div>
     </div>
   </section>`;
+
+// ------------------------------------------------------------ ANATOMY
+// The product photo with numbered points around it, taken from /story (Liam,
+// November 4, 2026, on that section: "u should add stuff liek this on relevant
+// apges"). A dot's left and top are percentages of the photo. A note with no dot
+// sits unnumbered. A product page gets its block by handle and carries no buy row,
+// because Add to Cart is already on that page; any other page names a key.
+const G = '/assets/images/cards/';
+const ORGANIC_NOTES = [
+  { t: 'From one farm', p: 'Single origin, from one farm, and made from sap collected early in the season.', at: [40, 43] },
+  { t: 'Nothing added', p: 'No additives, chemicals, preservatives or coloring, so maple syrup is all you pour.', at: [44, 84] },
+  { t: 'Three organic certifications', p: 'Ecocert, Canada Organic and USDA Organic certify this syrup, and our <a href="/certifications">certifications page</a> explains what each one checks. Our maple leaf bottles are not organic.', at: [65.5, 72.5] },
+  { t: 'Grade A Golden, Delicate Taste', p: 'A light syrup for drizzling and desserts. For cooking and baking, the <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml">maple leaf bottle</a> holds our Dark, Robust syrup.', at: [35.5, 67.5] },
+];
+const LEAF_GRADE = 'From the late harvest, when the syrup turns darker and the maple flavor stronger. Our <a href="/blog/grade-a-vs-grade-b-maple-syrup">guide to maple syrup grades</a> compares Dark with the lighter grades.';
+const LEAF_PURE = 'Pure maple syrup with no additives, chemicals, preservatives or coloring.';
+const LEAF_FARM = 'The syrup comes from one farm in Quebec, and the Lytton family has run Maple Terroir since 1978.';
+const LEAF_GLASS = 'Clear glass shows the color of the syrup through the leaf. All three sizes hold the same syrup, so a 50 mL bottle tastes like the 250 mL one.';
+const ANATOMY = {
+  organic: { handle: 'organic-pure-maple-syrup-250ml', variant: '45815550673145', size: '250 mL', title: 'What Is in Our Organic Syrup', pdpTitle: 'What Is in This Bottle', intro: 'Our Organic Pure Maple Syrup in the 250 mL bottle is the one we suggest if you are trying us for the first time. Here is what is in it.', alt: 'A 250 mL bottle of Maple Terroir Organic Pure Maple Syrup, Canada Grade A Golden, Delicate Taste, with the Ecocert and Canada Organic marks on its label', more: 'Packs of 12 to 48 save 10 to 25 percent', notes: ORGANIC_NOTES },
+  'first-tap': { handle: 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition', title: 'What Is in This Bottle', alt: 'Maple Terroir Organic First Tap Nouveau in its red gift box, with the bottle number and Canada Grade A Golden, Delicate Taste showing through the window', notes: [
+    { t: 'Made on the first day', p: 'The sap comes from the first tap of the season, and the syrup is boiled, bottled and labeled that same day.', at: [40.5, 28] },
+    { t: 'Three organic certifications', p: 'Ecocert, Canada Organic and USDA Organic certify this syrup, and our <a href="/certifications">certifications page</a> explains what each one checks.', at: [55.5, 43.5] },
+    { t: 'Its own number', p: 'Each bottle carries a serial number from the limited amount collected that day, and comes in a gift box.', at: [59, 67.6] },
+    { t: 'Grade A Golden, Delicate Taste', p: 'A light syrup with a delicate maple flavor, for ice cream, fruit and cheese.', at: [38.5, 70.5] },
+  ] },
+  'leaf-250': { handle: 'pure-maple-syrup-maple-leaf-bottle-250ml', variant: '45815541301497', size: '250 mL', title: 'What Is in the Bottle', pdpTitle: 'What Is in This Bottle', intro: 'The label on our 250 mL leaf bottle says what you are buying. Here is what it means.', alt: 'A 250 mL maple leaf bottle of Maple Terroir Pure Maple Syrup, Canada Grade A Dark, Robust Taste, with the ingredients and grade on its label', more: 'Packs of 12 to 48 save 10 to 25 percent', notes: [
+    { t: 'Grade A Dark, Robust Taste', p: LEAF_GRADE, at: [62, 63] },
+    { t: 'Nothing added', p: LEAF_PURE, at: [38.5, 66.8] },
+    { t: 'From one farm', p: LEAF_FARM, at: [62, 55] },
+    { t: 'A clear glass leaf', p: LEAF_GLASS, at: [27, 58] },
+  ] },
+  'leaf-100': { handle: 'pure-maple-syrup-maple-leaf-bottle-100ml', title: 'What Is in This Bottle', alt: 'A 100 mL maple leaf bottle of Maple Terroir Pure Maple Syrup with a tag that reads Canada Grade A, Dark, Robust Taste', notes: [
+    { t: 'Grade A Dark, Robust Taste', p: LEAF_GRADE, at: [32.5, 62] },
+    { t: 'Nothing added', p: LEAF_PURE, at: [66, 58] },
+    { t: 'From one farm', p: LEAF_FARM, at: [62.5, 68] },
+    { t: 'A clear glass leaf', p: LEAF_GLASS, at: [49, 30] },
+  ] },
+  'leaf-50': { handle: 'pure-maple-syrup-maple-leaf-bottle-50ml', title: 'What Is in This Bottle', alt: 'A 50 mL maple leaf bottle of Maple Terroir Pure Maple Syrup with a tag that reads Canada Grade A, Dark, Robust Taste', notes: [
+    { t: 'Grade A Dark, Robust Taste', p: LEAF_GRADE, at: [35, 54.5] },
+    { t: 'Nothing added', p: LEAF_PURE, at: [41, 73] },
+    { t: 'From one farm', p: LEAF_FARM, at: [59, 61] },
+    { t: 'A clear glass leaf', p: LEAF_GLASS, at: [25.5, 66] },
+  ] },
+  cream: { handle: 'organic-maple-cream-butter-jar', title: 'What Is in This Jar', alt: 'A 160 g glass jar of Maple Terroir Organic Maple Cream Butter, with the pale cream showing above the label', notes: [
+    { t: 'Maple syrup and nothing else', p: 'Made only from pure organic maple syrup, with nothing added.', at: [40.5, 79] },
+    { t: 'No butter in it', p: 'The name comes from how it spreads. There is no butter in the jar, and it is fat free.', at: [66, 45.5] },
+    { t: 'Boiled, then whipped', p: 'The syrup is boiled to 112 degrees Celsius, then whipped into a smooth cream.', at: [31, 35] },
+    { t: 'A 160 g jar', p: 'Spread it on toast, pancakes or waffles.', at: [56.5, 83] },
+  ] },
+  sugar: { handle: 'organic-pure-maple-sugar', variant: '45815552213241', size: '100 g', title: 'What Is in Our Maple Sugar', pdpTitle: 'What Is in This Box', zoom: 126, intro: 'Maple sugar is maple syrup cooked until it dries into granules. Here is what is in each box.', alt: 'Two 100 g boxes of Maple Terroir Organic Maple Sugar, with the golden granules showing through a window in the front box', more: 'Save by the case', notes: [
+    { t: 'One ingredient', p: 'Organic maple syrup is the only ingredient.', at: [70.5, 82] },
+    { t: 'Golden granules', p: 'The window in the box shows the granules inside.', at: [53.5, 71] },
+    { t: 'Swap it cup for cup', p: 'One cup of maple sugar replaces one cup of white sugar in a recipe.', at: [84, 44] },
+    { t: 'A 100 g box', p: 'Stir it into coffee or tea, or sprinkle it over crepes, yogurt and ice cream.', at: [55.5, 87.5] },
+  ] },
+  'canadian-label': { handle: 'pure-maple-syrup-maple-leaf-bottle-250ml', id: 'real', title: 'How to Tell Real Canadian Maple Syrup', intro: 'Three checks on the label separate pure maple syrup from a table syrup that only looks the part, and the price is a fourth. Our <a href="/blog/pure-maple-syrup-vs-table-syrup">guide to pure maple syrup and table syrup</a> goes through each label in detail.', alt: 'The label on a 250 mL Maple Terroir maple leaf bottle, showing the ingredients, Canada Grade A Dark, Robust Taste and Product of Canada', notes: [
+    { t: 'Read the ingredients', p: 'Pure maple syrup lists one ingredient: maple syrup. A table syrup lists glucose or corn syrup and flavoring.', at: [38.5, 66.8] },
+    { t: 'Look for the grade', p: 'Retail maple syrup in Canada carries Canada Grade A and a color class such as Golden, Delicate Taste. Our <a href="/blog/grade-a-vs-grade-b-maple-syrup">maple syrup grades guide</a> explains each one.', at: [62, 62.5] },
+    { t: 'Find the country', p: 'A Canadian bottle says so. Ours reads Product of Canada, in English and French.', at: [62.5, 70] },
+    { t: 'Check the price', p: 'In our price index, pure maple syrup had a median of $2.76 per 100 mL against $0.54 for table syrup. Even the cheapest pure syrup, at $1.57, cost 2.8 times the pricier table syrup.' },
+  ] },
+};
+const ANATOMY_BY_HANDLE = { 'organic-pure-maple-syrup-250ml': 'organic', 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 'first-tap', 'pure-maple-syrup-maple-leaf-bottle-250ml': 'leaf-250', 'pure-maple-syrup-maple-leaf-bottle-100ml': 'leaf-100', 'pure-maple-syrup-maple-leaf-bottle-50ml': 'leaf-50', 'organic-maple-cream-butter-jar': 'cream', 'organic-pure-maple-sugar': 'sugar' };
+const ANATOMY_CSS = `<style>
+    .st-copy a { color: #9A6514; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color .3s; }
+    .st-copy a:hover { color: #1A1714; }
+    .st-anat { display: grid; grid-template-columns: 1fr minmax(0, 460px) 1fr; gap: 40px; align-items: center; }
+    .st-anat-col { display: grid; gap: 40px; }
+    .st-anat-col:first-child { text-align: right; }
+    .st-note { display: grid; gap: 6px; padding: 4px 0; transition: transform .5s cubic-bezier(.32,.72,0,1); }
+    .st-note h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 22px; line-height: 1.2; color: #1A1714; display: flex; align-items: center; gap: 12px; }
+    .st-anat-col:first-child .st-note h3 { justify-content: flex-end; }
+    .st-note p { color: #5A5249; line-height: 1.65; font-size: 15px; }
+    .st-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 999px; background: #1A1714; color: #FDFBF7; font: 600 13px/28px 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; }
+    .st-anat-col:first-child .st-num { order: 2; }
+    .st-bottle { position: relative; aspect-ratio: 4 / 5; border-radius: 2rem; overflow: hidden; background: #F3EADF; box-shadow: 0 40px 80px -40px rgba(26,23,20,.35); }
+    .st-zoom { position: absolute; width: 142%; left: 50%; top: 50%; transform: translate(-50%, -50.5%); }
+    .st-zoom img { display: block; width: 100%; height: auto; }
+    .st-dot { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 999px; background: #1A1714; color: #FDFBF7; font: 600 13px/30px 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; box-shadow: 0 0 0 4px rgba(253,251,247,.9); transition: background .3s, transform .4s cubic-bezier(.32,.72,0,1); }
+    .st-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 999px; border: 2px solid #C4841D; opacity: 0; transform: scale(.8); transition: opacity .3s, transform .4s; }
+    .st-dot.is-on { background: #C4841D; transform: scale(1.12); }
+    .st-dot.is-on::after { opacity: 1; transform: scale(1.35); }
+    .st-note.is-on { transform: translateY(-2px); }
+    .st-note.is-on .st-num { background: #C4841D; }
+    @media (max-width: 1023px) {
+      .st-anat { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+      .st-bottle { grid-column: 1 / -1; grid-row: 1; max-width: 440px; width: 100%; margin: 0 auto; }
+      .st-anat-col, .st-anat-col:first-child { text-align: left; gap: 28px; }
+      .st-anat-col:first-child .st-note h3 { justify-content: flex-start; }
+      .st-anat-col:first-child .st-num { order: 0; }
+    }
+    @media (max-width: 639px) { .st-anat { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .st-note, .st-dot { transition: none; } }
+  </style>`;
+function anatomy(attrs, where) {
+  const handleFromPath = (where.match(/^products\/(.+)\.html$/) || [])[1];
+  const key = (attrs.match(/key="([^"]+)"/) || [])[1] || ANATOMY_BY_HANDLE[handleFromPath];
+  if (!key) return '';
+  const a = ANATOMY[key];
+  if (!a) throw new Error(`${where}: no ANATOMY entry "${key}"`);
+  const pdp = !!handleFromPath;
+  const moreHref = (attrs.match(/more="([^"]+)"/) || [])[1] || `/products/${a.handle}`;
+  let n = 0;
+  const numbered = a.notes.map((x) => ({ ...x, n: x.at ? ++n : 0 }));
+  const note = (x, i) => `          <div class="st-note reveal${i % 2 ? ' reveal-delay-1' : ''}"${x.n ? ` data-n="${x.n}"` : ''}>
+            <h3>${x.n ? `<span class="st-num">${x.n}</span>` : ''}${x.t}</h3>
+            <p>${x.p}</p>
+          </div>`;
+  const dots = numbered.filter((x) => x.n).map((x) => `            <span class="st-dot" data-n="${x.n}" style="left:${x.at[0]}%;top:${x.at[1]}%" aria-hidden="true">${x.n}</span>`).join('\n');
+  const half = Math.ceil(numbered.length / 2);
+  const pageHtml = readFileSync(join(ROOT, 'products', `${a.handle}.html`), 'utf8');
+  const price = (pageHtml.match(/"price":\s*"?([\d.]+)/) || [])[1];
+  const buy = !pdp && a.variant ? `
+      <div class="reveal mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <p class="font-display text-2xl font-semibold text-charcoal">$${Number(price).toFixed(2)} <span class="text-sm font-normal text-warm-gray-500" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif">for ${a.size}</span></p>
+        <button class="atc-btn" style="padding:.75rem 1.4rem;font-size:.8rem" data-variant-id="gid://shopify/ProductVariant/${a.variant}" onclick="MapleCart.addFromBtn(this)" aria-label="Add ${a.size} to cart">+ Add to cart</button>
+        <a href="${moreHref}" class="text-sm text-charcoal underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">${a.more}</a>
+      </div>` : '';
+  const intro = !pdp && a.intro ? `
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] mx-auto st-copy">${a.intro}</p>` : '';
+  return `  ${ANATOMY_CSS}
+  <section${a.id ? ` id="${a.id}"` : ''} class="${a.id ? 'scroll-mt-28 ' : ''}py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">${pdp && a.pdpTitle ? a.pdpTitle : a.title}</h2>${intro}
+      </div>
+      <div class="st-anat st-copy" data-anat>
+        <div class="st-anat-col">
+${numbered.slice(0, half).map(note).join('\n')}
+        </div>
+        <figure class="st-bottle reveal">
+          <div class="st-zoom"${a.zoom ? ` style="width:${a.zoom}%"` : ''}>
+            <img src="${G}${a.handle}.webp" alt="${a.alt}" width="1000" height="1000" loading="lazy">
+${dots}
+          </div>
+        </figure>
+        <div class="st-anat-col">
+${numbered.slice(half).map(note).join('\n')}
+        </div>
+      </div>${buy}
+    </div>
+    <script>
+      (function () {
+        var root = document.querySelector('[data-anat]'); if (!root) return;
+        function on(n, v) { root.querySelectorAll('[data-n="' + n + '"]').forEach(function (e) { e.classList.toggle('is-on', v); }); }
+        root.querySelectorAll('.st-note[data-n]').forEach(function (note) {
+          var n = note.getAttribute('data-n');
+          note.addEventListener('mouseenter', function () { on(n, true); });
+          note.addEventListener('mouseleave', function () { on(n, false); });
+        });
+      })();
+    </script>
+  </section>`;
+}
 
 // ------------------------------------------------------------ REVIEWS
 // [product handle, reviewer name as published]. Chosen to answer what a buyer
@@ -247,7 +405,7 @@ const cta = (attrs) => {
   </section>`;
 };
 
-const MARK = /<!-- (LOGOS|REVIEWS|FAMILY|CTA|PROOF):START([^>]*?)-->/;
+const MARK = /<!-- (LOGOS|REVIEWS|FAMILY|CTA|PROOF|ANATOMY):START([^>]*?)-->/;
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     if (name.startsWith('.') || name === 'node_modules' || name === '_archive') continue;
@@ -269,8 +427,8 @@ for (const file of only.length ? only : walk(ROOT)) {
     const end = html.indexOf(`<!-- ${kind}:END -->`, openEnd);
     if (end < 0) throw new Error(`${where}: ${kind}:END missing`);
     const set = (attrs.match(/set="([^"]+)"/) || [])[1] || 'syrup';
-    const marker = kind === 'REVIEWS' ? `<!-- REVIEWS:START set="${set}" -->` : kind === 'CTA' ? `<!-- CTA:START${attrs.trimEnd() ? attrs.trimEnd() + ' ' : ' '}-->` : `<!-- ${kind}:START baked by scripts/build-blocks.mjs -->`;
-    const block = kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : kind === 'CTA' ? cta(attrs) : kind === 'PROOF' ? proof() : family(where);
+    const marker = kind === 'ANATOMY' ? `<!-- ANATOMY:START${attrs.trimEnd() ? attrs.trimEnd() + ' ' : ' '}-->` : kind === 'REVIEWS' ? `<!-- REVIEWS:START set="${set}" -->` : kind === 'CTA' ? `<!-- CTA:START${attrs.trimEnd() ? attrs.trimEnd() + ' ' : ' '}-->` : `<!-- ${kind}:START baked by scripts/build-blocks.mjs -->`;
+    const block = kind === 'ANATOMY' ? anatomy(attrs, where) : kind === 'LOGOS' ? logos() : kind === 'REVIEWS' ? reviews(set, where) : kind === 'CTA' ? cta(attrs) : kind === 'PROOF' ? proof() : family(where);
     out += html.slice(pos, open) + marker + '\n' + block + '\n' + (kind === 'PROOF' ? '          ' : '  ');
     pos = end;
     counts[kind] = (counts[kind] || 0) + 1;
