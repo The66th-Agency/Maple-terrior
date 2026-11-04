@@ -131,6 +131,23 @@ function trimSummary(text, limit = 155) {
   return (wordEnd > 0 ? cut.slice(0, wordEnd) : cut).replace(/[,;:]$/, '').trim();
 }
 
+// What Google's product results need to know about delivery (Liam, November 4,
+// 2026). Terms are the ones on /answers/: packed in 1 to 3 business days, Standard
+// takes 3 to 9 for $19.99 and is free on orders of $99 or more, to the ten provinces.
+const PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'ON', 'PE', 'QC', 'SK'];
+function shippingDetails(price) {
+  return {
+    '@type': 'OfferShippingDetails',
+    shippingRate: { '@type': 'MonetaryAmount', value: Number(price) >= 99 ? '0.00' : '19.99', currency: 'CAD' },
+    shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'CA', addressRegion: PROVINCES },
+    deliveryTime: {
+      '@type': 'ShippingDeliveryTime',
+      handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+      transitTime: { '@type': 'QuantitativeValue', minValue: 3, maxValue: 9, unitCode: 'DAY' },
+    },
+  };
+}
+
 function renderProduct(template, p) {
   const handle = p.handle;
   const canonical = `${SITE}/products/${handle}`;
@@ -169,6 +186,7 @@ function renderProduct(template, p) {
   if (price) ld.offers = {
     '@type': 'Offer', price, priceCurrency: currency, availability, url: canonical,
     itemCondition: 'https://schema.org/NewCondition', priceValidUntil,
+    shippingDetails: shippingDetails(price),
   };
 
   // Mirrors the visible Home / Products / <name> breadcrumb already in the template.
