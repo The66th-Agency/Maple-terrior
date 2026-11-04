@@ -478,11 +478,11 @@
       // Build filter pills only for categories that actually rendered
       var pillsEl = document.getElementById('category-filter-pills');
       var rendered = CATEGORIES.filter(function (cat) {
-        return document.getElementById('cat-' + cat.handle);
+        return document.getElementById('cat-' + (cat.id || cat.handle));
       });
       var pillsHtml = rendered.map(function (cat) {
         var label = cat.title.replace(/&amp;/g, '&');
-        return '<button class="cat-pill" data-target="cat-' + cat.handle + '">' + label + '</button>';
+        return '<button class="cat-pill" data-target="cat-' + (cat.id || cat.handle) + '">' + label + '</button>';
       }).join('');
       pillsEl.innerHTML = pillsHtml;
 
