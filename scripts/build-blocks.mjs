@@ -116,7 +116,7 @@ const logos = () => `  <section aria-label="Customer rating and retailers" class
 // [product handle, reviewer name as published]. Chosen to answer what a buyer
 // on that page worries about: the taste, the gift, the delivery and packing.
 const SETS = {
-  syrup: [['organic-pure-maple-syrup-250ml', 'Amrit G.'], ['pure-maple-syrup-maple-leaf-bottle-250ml', 'Gary B.'], ['maple-syrup-mini-stroopwafel', 'Carol C.']],
+  syrup: [['organic-pure-maple-syrup-250ml', 'Amrit G.'], ['pure-maple-syrup-maple-leaf-bottle-250ml', 'Gary B.'], ['pure-maple-syrup-maple-leaf-bottle-50ml', 'Fred B.']],
   gifts: [['maple-frenzy-home-set', 'Simon S.'], ['pure-maple-syrup-stroopwafels-caddy', 'Yoshimi S.'], ['maple-syrup-mini-stroopwafel', 'Michelle Buchar']],
   // The collections of things people eat rather than pour or send: cookies,
   // chocolates, snacks, stroopwafels, tea and coffee (October 3, 2026).

@@ -61,6 +61,12 @@ const isHidden = (p) => {
   return HIDDEN.some((x) => h.includes(x) || t.includes(x));
 };
 
+// The Shopify collection maple-syrup-all also holds these three, so the syrup
+// pages leave them out (Liam, November 4, 2026). Removing them in Shopify would
+// drop the cream and sugar from /products, which lists them through that collection.
+const NOT_SYRUP = ['organic-maple-cream-butter-jar', 'organic-pure-maple-sugar', 'maple-organic-heaven-home-set'];
+const isListed = (p, handle) => !isHidden(p) && !(handle === 'maple-syrup-all' && NOT_SYRUP.includes(p.handle));
+
 const esc = (s) => String(s == null ? '' : s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -150,7 +156,7 @@ async function main() {
     );
     const c = json.data && json.data.collectionByHandle;
     if (!c) { console.warn(`SKIP ${file}: collection "${handle}" not found`); continue; }
-    const products = c.products.edges.map((e) => e.node).filter((p) => !isHidden(p));
+    const products = c.products.edges.map((e) => e.node).filter((p) => isListed(p, handle));
     if (!products.length) { console.warn(`SKIP ${file}: 0 products`); continue; }
     const path = join(ROOT, file);
     let html = await readFile(path, 'utf8');
@@ -167,7 +173,7 @@ async function main() {
     );
     const c = json.data && json.data.collectionByHandle;
     if (!c) { console.warn(`SKIP ${file}: collection "${handle}" not found`); continue; }
-    const products = c.products.edges.map((e) => e.node).filter((p) => !isHidden(p));
+    const products = c.products.edges.map((e) => e.node).filter((p) => isListed(p, handle));
     if (!products.length) { console.warn(`SKIP ${file}: 0 products`); continue; }
     const path = join(ROOT, file);
     let html = await readFile(path, 'utf8');

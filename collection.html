@@ -343,7 +343,9 @@
         var ld1 = document.createElement('script'); ld1.type = 'application/ld+json'; ld1.textContent = JSON.stringify(collSchema); document.head.appendChild(ld1);
         var ld2 = document.createElement('script'); ld2.type = 'application/ld+json'; ld2.textContent = JSON.stringify(bcSchema); document.head.appendChild(ld2);
 
-        var products = c.products.edges.map(function (e) { return e.node; });
+        // maple-syrup-all also holds the cream, sugar and a home set. Its view sells syrup only (Liam, November 4, 2026).
+        var NOT_SYRUP = handle === 'maple-syrup-all' ? ['organic-maple-cream-butter-jar', 'organic-pure-maple-sugar', 'maple-organic-heaven-home-set'] : [];
+        var products = c.products.edges.map(function (e) { return e.node; }).filter(function (p) { return NOT_SYRUP.indexOf(p.handle) === -1; });
         document.getElementById('product-count').textContent = products.length + ' product' + (products.length !== 1 ? 's' : '');
 
         // Render grid
