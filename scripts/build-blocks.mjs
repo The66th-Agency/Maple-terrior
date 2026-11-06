@@ -176,8 +176,36 @@ const ANATOMY = {
     { t: 'Find the country', p: 'A Canadian bottle says so. Ours reads Product of Canada, in English and French.', at: [62.5, 70] },
     { t: 'Check the price', p: 'In our price index, pure maple syrup had a median of $2.76 per 100 mL against $0.54 for table syrup. Even the cheapest pure syrup, at $1.57, cost 2.8 times the pricier table syrup.' },
   ] },
+  // Maple Ceylon Tea (November 6, 2026). Facts: the box front (15 pyramid tea bags,
+  // premium mountain grown), the Shopify description (Sri Lanka leaves, maple syrup
+  // and maple extract, the tasting note), the Sri Lanka Tea Board on Ceylon tea.
+  tea: { handle: 'maple-ceylon-tea', variant: '45815601922297', size: '30 g', title: 'What Is in Our Maple Tea', pdpTitle: 'What Is in This Box', intro: 'Maple tea is black tea blended with maple. Here is what is in each box of ours.', alt: 'A box of Maple Terroir Maple Ceylon Tea, premium mountain grown, with falling maple leaves on a green box and 15 pyramid tea bags printed at the bottom', more: 'Save by the case', notes: [
+    { t: 'Ceylon black tea', p: 'Ceylon tea is tea grown in Sri Lanka, and the box calls ours premium mountain grown.', at: [66.8, 55.4] },
+    { t: 'Real maple in the blend', p: 'The leaves are blended with pure maple syrup and pure maple extract in Canada.', at: [52, 40] },
+    { t: 'A sweet maple aroma', p: 'Our tasting note: a sweet, smoky maple aroma, a caramel taste and a bright copper color in the cup.', at: [44, 69.5] },
+    { t: '15 pyramid tea bags', p: '30 g of tea in 15 pyramid bags, one bag to a cup.', at: [61.5, 85.2] },
+  ] },
+  // Dark chocolate covered cherries and blueberries (November 6, 2026). Facts: the
+  // box fronts (English and French names, 100 g), the Shopify descriptions (Canadian
+  // fruit, pure maple syrup, semi-sweet dark chocolate) and tags (dried fruit), the
+  // nutrition panels on the product listings. The -pdp keys add an unnumbered note
+  // linking the product page to its /shop/ page; the /shop/ pages use the plain keys.
+  ...chocFruit('cherries', 'dark-chocolate-covered-cherry-pure-maple-syrup', '45815594451193', 'Cherries', 'cherries', 'Cerises', '440', '7', [36, 61.7],
+    { t: 'Cherries or cherry cordials', p: 'These are dried cherries in dark chocolate, not a cordial with a liquid centre. Our <a href="/shop/chocolate-covered-cherries">chocolate covered cherries</a> page compares the two and lists the case prices.' }),
+  ...chocFruit('blueberries', 'dark-chocolate-covered-blueberry-pure-maple-syrup', '45815592911097', 'Blueberries', 'blueberries', 'Myrtilles', '450', '8', [35.5, 60.6],
+    { t: 'Real blueberries inside', p: 'Cut a piece open and the dried berry fills the centre. Our <a href="/shop/chocolate-covered-blueberries">chocolate covered blueberries</a> page shows the inside and lists the case prices.' }),
 };
-const ANATOMY_BY_HANDLE = { 'organic-pure-maple-syrup-250ml': 'organic', 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 'first-tap', 'pure-maple-syrup-maple-leaf-bottle-250ml': 'leaf-250', 'pure-maple-syrup-maple-leaf-bottle-100ml': 'leaf-100', 'pure-maple-syrup-maple-leaf-bottle-50ml': 'leaf-50', 'organic-maple-cream-butter-jar': 'cream', 'organic-pure-maple-sugar': 'sugar' };
+function chocFruit(key, handle, variant, Name, name, french, kcal, fibre, frenchAt, pdpNote) {
+  const notes = [
+    { t: 'Family owned since 1978', p: 'Maple Terroir is a family business, and family members pack every online order at our facility.', at: [50, 27.6] },
+    { t: `Canadian ${name}`, p: `The fruit is Canadian ${name}, dried and sweetened with pure maple syrup. The French line on the box says it too: ${french.toLowerCase()} au sirop d'érable, ${name} in maple syrup.`, at: frenchAt },
+    { t: 'Semi-sweet dark chocolate', p: `A shell of semi-sweet dark chocolate around each piece. The centre is the dried fruit itself, with no liquid filling.`, at: [41.5, 77] },
+    { t: 'A 100 g box', p: `The whole box is ${kcal} calories, with ${fibre} g of fibre, by the nutrition panel on the box.`, at: [45, 85.4] },
+  ];
+  const base = { handle, variant, size: '100 g', title: `What Is in Our Chocolate Covered ${Name}`, pdpTitle: 'What Is in This Box', intro: `Here is what the box of Dark Chocolate Maple ${Name} holds, point by point.`, alt: `A 100 g box of Maple Terroir Dark Chocolate Maple ${Name}, with falling maple leaves and the French name, ${french} au sirop d'érable enrobées de chocolat noir, on the front`, more: 'Save by the case', notes };
+  return { [key]: base, [`${key}-pdp`]: { ...base, notes: [...notes, pdpNote] } };
+}
+const ANATOMY_BY_HANDLE = { 'organic-pure-maple-syrup-250ml': 'organic', 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 'first-tap', 'pure-maple-syrup-maple-leaf-bottle-250ml': 'leaf-250', 'pure-maple-syrup-maple-leaf-bottle-100ml': 'leaf-100', 'pure-maple-syrup-maple-leaf-bottle-50ml': 'leaf-50', 'organic-maple-cream-butter-jar': 'cream', 'organic-pure-maple-sugar': 'sugar', 'maple-ceylon-tea': 'tea', 'dark-chocolate-covered-cherry-pure-maple-syrup': 'cherries-pdp', 'dark-chocolate-covered-blueberry-pure-maple-syrup': 'blueberries-pdp' };
 const ANATOMY_CSS = `<style>
     .st-copy a { color: #9A6514; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color .3s; }
     .st-copy a:hover { color: #1A1714; }

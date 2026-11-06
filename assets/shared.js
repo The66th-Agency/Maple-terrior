@@ -643,7 +643,7 @@ setTimeout(loadGA, 3000);
   // page that links it directly (First Tap, October 4, 2026: the box, not the bottle window).
   // A card listed in CARD_LARGE also has a 2048px copy in cards/large/, which the product
   // page gallery shows (it is shown up to 1,100px wide and zooms 1.8 times on hover).
-  var CARD_V = window.MT_CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 3, 'wild-blueberry-maple-stroopwafels-caddy': 2, 'pure-maple-syrup-maple-leaf-bottle-50ml': 2, 'pure-maple-syrup-maple-leaf-bottle-100ml': 2 };
+  var CARD_V = window.MT_CARD_V = { 'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition': 3, 'wild-blueberry-maple-stroopwafels-caddy': 2, 'pure-maple-syrup-maple-leaf-bottle-50ml': 2, 'pure-maple-syrup-maple-leaf-bottle-100ml': 2, 'dark-chocolate-covered-blueberry-pure-maple-syrup': 2 };
   window.MT_CARD_LARGE = ' organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition ';
   // Product photos the site shows in place of Shopify's, for products whose packaging changed
   // before the Shopify photos did. The 50 and 100 mL leaf bottles carry a tag, not a label,

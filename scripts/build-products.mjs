@@ -65,8 +65,9 @@ const META_OVERRIDES = {
     'Mini stroopwafels made with non-GMO Canadian flour and a pure maple syrup filling. The one-bite version of our full-size stroopwafel.',
   'cocoa-chocolate-maple-stroopwafels-caddy':
     'Chocolate Maple Stroopwafels: individually wrapped 34g stroopwafels made with Canadian-grown flour and pure cocoa, sweetened with maple syrup.',
+  // "Maple tea" leads, for the search (840 a month, Mangools, November 6, 2026); the rest is Shawn's.
   'maple-ceylon-tea':
-    'Premium Ceylon dried non-GMO black tea leaves from Sri Lanka, blended with Maple Terroir pure maple syrup and pure maple extract packed in Canada.',
+    'Maple tea: premium Ceylon dried non-GMO black tea leaves from Sri Lanka, blended with Maple Terroir pure maple syrup and pure maple extract packed in Canada.',
   'maple-sugar-sea-salt-cookies':
     'Maple Terroir’s Maple Sugar & Sea Salt Cookies are made with Maple Terroir pure maple sugar, a touch of sea salt and Canadian non-GMO flour.',
   'maple-syrup-blueberry-cookies':

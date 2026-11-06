@@ -34,14 +34,14 @@
   <url><loc>https://mapleterroir.com/blog/quebec-vs-vermont-maple-syrup</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/organic-vs-conventional-maple-syrup</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/pure-maple-syrup-vs-table-syrup</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/blog/does-maple-syrup-go-bad-shelf-life-storage</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/does-maple-syrup-go-bad-shelf-life-storage</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/maple-syrup-vs-honey</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <!-- Collection pages -->
   <url><loc>https://mapleterroir.com/collections/premium-maple-syrup</loc><lastmod>2026-11-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/maple-stroopwafels</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/tea-coffee</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/collections/cookies</loc><lastmod>2026-11-01</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/collections/chocolates</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/collections/cookies</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/collections/chocolates</loc><lastmod>2026-11-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/nuts-snacks</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/maple-syrup-gift-set</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/home-sets</loc><lastmod>2026-10-27</lastmod><priority>0.8</priority></url>
@@ -51,12 +51,12 @@
   <url><loc>https://mapleterroir.com/products/maple-syrup-milk-chocolate-covered-almonds</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/cocoa-dark-chocolate-covered-maple-roasted-almonds</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/maple-syrup-medium-dark-roast-ground-coffee</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/products/maple-ceylon-tea</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/products/maple-ceylon-tea</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/pure-maple-syrup-candy</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/pure-maple-syrup-caramel</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/dark-chocolate-covered-cranberry-pure-maple-syrup</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/products/dark-chocolate-covered-cherry-pure-maple-syrup</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/products/dark-chocolate-covered-blueberry-pure-maple-syrup</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/products/dark-chocolate-covered-cherry-pure-maple-syrup</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/products/dark-chocolate-covered-blueberry-pure-maple-syrup</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/maple-syrup-blueberry-cookies</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/maple-syrup-stroopwafel</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/maple-syrup-sea-salt-roasted-peanuts</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
@@ -87,7 +87,7 @@
   <url><loc>https://mapleterroir.com/products/maple-treat-home-set</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/products/maple-tea-party-home-set</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <!-- Shopify-sourced blog posts (now served as static HTML at /blog/[slug]) -->
-  <url><loc>https://mapleterroir.com/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/5-surprising-maple-syrup-benefits-you-need-to-know</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/canadian-maple-syrup-heist-a-30-million-theft-unveiled</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/the-rich-story-of-maple-syrup-canada-discover-vancouvers-maple-terroir</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
@@ -105,7 +105,7 @@
   <url><loc>https://mapleterroir.com/blog/the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-organic-maple-syrup</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-baking</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-baking</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-pancakes-and-waffles</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-coffee</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-ottawa</loc><lastmod>2026-11-06</lastmod><priority>0.7</priority></url>
@@ -117,7 +117,7 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/shop/maple-sugar</loc>
-    <lastmod>2026-11-04</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -322,6 +322,41 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/shop/maple-syrup-wedding-favours</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/blog/how-to-make-maple-butter</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/blog/how-to-make-maple-taffy</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/blog/maple-fudge</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/shop/chocolate-covered-blueberries</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/shop/chocolate-covered-cherries</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/shop/maple-cream-cookies</loc>
+    <lastmod>2026-11-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/shop/maple-leaf-cookies</loc>
     <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
