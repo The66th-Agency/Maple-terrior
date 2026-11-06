@@ -147,6 +147,8 @@
       .btn-premium:hover { transform: none; box-shadow: none; }
       * { scroll-behavior: auto !important; }
     }
+    /* Two products in a full-width card: keep the shelf to the text column so the cards stay product-sized. */
+    .blog-cta-slot .blog-cta [data-shelf] { max-width: 760px; }
   </style>
 </head>
 
@@ -214,7 +216,7 @@
 
   <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-12 md:pb-16 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[900px]">
       <a href="./" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
         <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
         Back to the Maple Terroir Blog
@@ -237,13 +239,13 @@
           <span>Last updated <time datetime="2026-11-06">November 6, 2026</time></span>
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- HERO IMAGE -->
   <section class="px-4 md:px-8 mb-8 md:mb-16">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="rounded-[2rem] overflow-hidden aspect-[16/9] md:aspect-[21/9]">
         <img src="/assets/images/covers/grade-a-vs-grade-b-maple-syrup.webp" alt="Four bottles of maple syrup showing the grades from golden to very dark" class="w-full h-full object-cover">
       </div>
@@ -253,17 +255,14 @@
 
   <!-- INTRO -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-7 max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">There is no Grade B maple syrup in Canada, and there never was.</strong> Canada's old grades were numbered: Canada No. 1, No. 2 and No. 3. In December 2014, Canada replaced them with Canada Grade A, sorted into four color classes, plus a separate Canada Processing Grade, and producers had until December 2016 to switch (<a href="https://gazette.gc.ca/rp-pr/p2/2014/2014-12-31/html/sor-dors297-eng.html" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal transition-colors" rel="noopener noreferrer nofollow" target="_blank">Canada Gazette, SOR/2014-297</a>). "Grade B" was an American grade: until March 2015 the U.S. standard filed the darkest, strongest syrup as "Grade B for Reprocessing", which is why the name still turns up in old recipes (<a href="https://www.govinfo.gov/content/pkg/FR-2015-01-29/pdf/2015-01618.pdf" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal transition-colors" rel="noopener noreferrer nofollow" target="_blank">Federal Register, January 29, 2015</a>).</p>
       <p>Retail maple syrup in Canada is now sold as Canada Grade A, in four color classes (Golden Delicate, Amber Rich, Dark Robust and Very Dark Strong). Every class has to pass the same Grade A tests, so the classes differ in color and strength of flavor, and the label names both.</p>
       <p>The reason this matters: shoppers still see "Grade B" in old recipes and assume it is a separate, lower-quality product. The short answer is that the color tracks the season. Syrup from sap harvested at the start of the season is pale and mild, and syrup from late-season sap is darker and stronger (<a href="https://www.maplefromcanada.com/about/grades/" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal transition-colors" rel="noopener noreferrer nofollow" target="_blank">Maple from Canada</a>). The flavor changes. The grade requirements do not.</p>
     </div>
-  </section>
-
-
-  <!-- CONTENTS -->
-  <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+      <div class="lg:col-span-5">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ol>
@@ -280,23 +279,25 @@
         </ol>
       </nav>
     </div>
+    </div>
+    </div>
   </section>
 
 
   <!-- SECTION 1: OLD SYSTEM -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-10 md:mb-14 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-10 md:mb-14">
         <h2 id="old-system" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
           The Old System (Before December 2014)
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto">
+      <div class="prose-body max-w-[760px]">
         <p>Canada's old system, under the Maple Products Regulations, graded syrup as Canada No. 1, No. 2 or No. 3, with color classes beneath them: Extra Light, Light and Medium under No. 1, Amber under No. 2 and Dark under No. 3. A number reads like a ranking, so a darker syrup labeled No. 2 looked second-rate on the shelf.</p>
         <p>The industry told the regulator that this misled shoppers. In the regulation's summary, the International Maple Syrup Institute "believes that this misleads consumers into thinking that these syrups are of inferior quality to the lighter coloured ones graded as Canada No. 1, when such is not the case." The old grades also did not line up with the grades used by two provinces, Ontario among them, or with the United States grades, which made the same syrup carry different names depending on where it was sold.</p>
         <p>Here are the old and new systems side by side, as that regulation records them (<a href="https://gazette.gc.ca/rp-pr/p2/2014/2014-12-31/html/sor-dors297-eng.html" rel="noopener noreferrer nofollow" target="_blank">Canada Gazette, SOR/2014-297</a>):</p>
       </div>
-      <div class="max-w-[900px] mx-auto mt-8">
+      <div class="max-w-[900px] mt-8">
         <div class="grade-chart-scroll">
           <table class="grade-chart">
             <thead>
@@ -318,18 +319,18 @@
 
 
   <!-- SECTION 2: THE 2014 CHANGE -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="the-2014-change" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 id="the-2014-change" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           The 2014 Change and What It Created
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto mb-12">
+      <div class="prose-body max-w-[760px] mb-12">
         <p>Canada's new system, in force since December 2014, puts retail syrup under Canada Grade A, in four color classes named for color and taste. The International Maple Syrup Institute, which represents producers, associations and governments in Canada and the United States, asked for the change on both sides of the border. The regulation states its purpose as "to address potential consumer confusion with regard to the grading of dark and stronger tasting maple syrups" (<a href="https://gazette.gc.ca/rp-pr/p2/2014/2014-12-31/html/sor-dors297-eng.html" rel="noopener noreferrer nofollow" target="_blank">Canada Gazette, SOR/2014-297</a>). The USDA adopted the same four classes and the same light cut-offs on March 2, 2015 (<a href="https://www.govinfo.gov/content/pkg/FR-2015-01-29/pdf/2015-01618.pdf" rel="noopener noreferrer nofollow" target="_blank">Federal Register, January 29, 2015</a>), so a Golden or a Very Dark label means the same thing in both countries.</p>
       </div>
       <!-- Grade color and flavor chart (added 2026-08-23) -->
-      <div class="max-w-[900px] mx-auto mb-12">
+      <div class="max-w-[900px] mb-12">
         <style>
           .grade-chart-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 1.5rem; border: 1px solid rgba(217,209,196,0.5); background: #FFFFFF; }
           .grade-chart { width: 100%; min-width: 680px; border-collapse: collapse; font-size: 0.92rem; }
@@ -356,7 +357,7 @@
         <p class="grade-chart-note">"Light through it" is how the grades are measured: the percent of light that passes through a sample of the syrup. The cut-offs are identical in the <a href="https://www.govinfo.gov/content/pkg/FR-2015-01-29/pdf/2015-01618.pdf" rel="noopener noreferrer nofollow" target="_blank" style="text-decoration:underline;">USDA standard</a> and the <a href="https://inspection.canada.ca/en/about-cfia/acts-and-regulations/list-acts-and-regulations/documents-incorporated-reference/canadian-grade-compendium-volume-7" rel="noopener noreferrer nofollow" target="_blank" style="text-decoration:underline;">Canadian Food Inspection Agency grade compendium</a>. The season and taste columns follow <a href="https://www.maplefromcanada.com/about/grades/" rel="noopener noreferrer nofollow" target="_blank" style="text-decoration:underline;">Maple from Canada's grade guide</a>; the uses are our kitchen suggestions.</p>
       </div>
 
-      <div class="max-w-[900px] mx-auto space-y-10 md:space-y-12">
+      <div class="max-w-[900px] space-y-10 md:space-y-12">
 
         <article class="reveal">
           <div class="flex items-baseline gap-4 mb-3">
@@ -404,7 +405,7 @@
 
   <!-- Blog call-to-action, built for this post. Styles in /assets/blog-cta.css -->
   <section class="blog-cta-slot px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <aside class="blog-cta">
         <h2 class="blog-cta__title">What Americans called Grade B is now, roughly, Grade A Very Dark.</h2>
         <p class="blog-cta__body">Very dark syrup with no off-flavors moved into Grade A in 2015. Our darkest syrup is Dark, Robust Taste, in the maple leaf bottle, and our organic syrup is the Golden one, from the early harvest.</p>
@@ -445,13 +446,13 @@
 
   <!-- SECTION 2b: HOW A GRADE IS MEASURED (added 2026-11-02) -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="how-grades-are-measured" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 id="how-grades-are-measured" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           How a Maple Syrup Grade Is Measured
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto">
+      <div class="prose-body max-w-[760px]">
         <p><strong class="text-charcoal font-semibold">Every grade comes down to two measurements: how much sugar the syrup holds, and how much light passes through it.</strong> The rules are in the Canadian Food Inspection Agency's grade compendium, which the Safe Food for Canadians Regulations incorporate by reference (<a href="https://inspection.canada.ca/en/about-cfia/acts-and-regulations/list-acts-and-regulations/documents-incorporated-reference/canadian-grade-compendium-volume-7" rel="noopener noreferrer nofollow" target="_blank">Canadian Grade Compendium, Volume 7</a>). Taste counts too: a Grade A syrup has to have the maple flavor its color class calls for.</p>
         <p>First, the sugar. Every grade has to hold 66 to 68.9 percent soluble solids, read with a refractometer or a hydrometer at 20 degrees Celsius. The 68.9 percent ceiling arrived with the 2014 rules, which added it to help keep syrup from crystallizing (<a href="https://gazette.gc.ca/rp-pr/p2/2014/2014-12-31/html/sor-dors297-eng.html" rel="noopener noreferrer nofollow" target="_blank">Canada Gazette, SOR/2014-297</a>). Because every grade sits in the same window of under 3 points, a Golden and a Very Dark syrup hold close to the same amount of sugar.</p>
         <p>Then the color class, the part the label shows. A spectrophotometer shines light at a wavelength of 560 nanometers through a square glass cell with a 10 mm light path, and reads the percent that comes out the other side, against analytical-grade glycerol set at 100 percent. A visual glass comparator built to the same optics may be used instead. Pick a class below to see the test.</p>
@@ -459,7 +460,7 @@
 
       <!-- Light test diagram (added 2026-11-06). Cut-offs from Canadian Grade Compendium Vol. 7, s. 5 -->
       <style>
-        .lt { margin: 2.5rem auto 0; max-width: 960px; background: #fff; border-radius: 2rem; box-shadow: 0 0 0 1px rgba(214,206,194,.55); padding: 1.25rem; }
+        .lt { margin: 2.5rem 0 0; max-width: 960px; background: #fff; border-radius: 2rem; box-shadow: 0 0 0 1px rgba(214,206,194,.55); padding: 1.25rem; }
         @media (min-width: 768px) { .lt { padding: 2rem 2.25rem; } }
         .lt-grid { display: grid; gap: 1.5rem; }
         @media (min-width: 900px) { .lt-grid { grid-template-columns: 1.35fr 1fr; align-items: center; gap: 2.25rem; } }
@@ -484,7 +485,7 @@
         .lt-marker { position: absolute; top: -5px; width: 4px; height: 28px; margin-left: -2px; border-radius: 2px; background: #1A1714; box-shadow: 0 0 0 2px #fff; transition: left .7s cubic-bezier(.32,.72,0,1); }
         .lt-src { font-size: .75rem; color: #B8AD9E; line-height: 1.6; margin-top: 1rem; }
         .lt-src a { text-decoration: underline; }
-        .gt { display: grid; gap: 1rem; max-width: 960px; margin: 3rem auto 0; }
+        .gt { display: grid; gap: 1rem; max-width: 960px; margin: 3rem 0 0; }
         @media (min-width: 768px) { .gt { grid-template-columns: 1.4fr 1fr; } }
         .gt-card { background: #fff; border-radius: 2rem; box-shadow: 0 0 0 1px rgba(214,206,194,.55); padding: 1.5rem; }
         @media (min-width: 768px) { .gt-card { padding: 2rem; } }
@@ -574,15 +575,15 @@
       })();
       </script>
 
-      <div class="prose-body max-w-[760px] mx-auto mt-10">
+      <div class="prose-body max-w-[760px] mt-10">
         <p>The French names on a Canadian label, Doré, Ambré, Foncé and Très Foncé, follow the same four cut-offs. The darker the class, the stronger the taste, and the later in the season the syrup tends to come from: <a href="https://www.maplefromcanada.com/about/grades/" rel="noopener noreferrer nofollow" target="_blank">Maple from Canada</a> describes early syrup as clear with a slightly sweet taste, and late-season syrup as darker and more caramelized.</p>
       </div>
 
       <div class="gt">
         <div class="gt-card reveal">
           <h3>The five tests for Canada Grade A</h3>
-          <p>From section 3 of the compendium. Every Grade A bottle, Golden to Very Dark, passes all five.</p>
-          <ol class="gt-list">
+          <p class="max-w-[760px]">From section 3 of the compendium. Every Grade A bottle, Golden to Very Dark, passes all five.</p>
+          <ol class="gt-list max-w-[760px]">
             <li>66% to 68.9% soluble solids, read at 20 °C</li>
             <li>Free from fermentation</li>
             <li>Uniform in color, with no sediment, cloudiness or turbidity</li>
@@ -592,8 +593,8 @@
         </div>
         <div class="gt-card gt-card--dark reveal reveal-delay-1">
           <h3>Canada Processing Grade</h3>
-          <p>From section 4. The same sugar window as Grade A, for syrup that does not meet tests 3, 4 or 5. It has no color class.</p>
-          <ol class="gt-list" style="counter-reset: gt 0">
+          <p class="max-w-[760px]">From section 4. The same sugar window as Grade A, for syrup that does not meet tests 3, 4 or 5. It has no color class.</p>
+          <ol class="gt-list max-w-[760px]" style="counter-reset: gt 0">
             <li>66% to 68.9% soluble solids</li>
             <li>Fails at least one of tests 3 to 5, such as an off-flavor or a cloudy syrup</li>
           </ol>
@@ -604,14 +605,14 @@
 
 
   <!-- SECTION 2c: PROCESSING GRADE (added 2026-11-02) -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="processing-grade" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 id="processing-grade" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           Canada Processing Grade, the Second Grade
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto">
+      <div class="prose-body max-w-[760px]">
         <p><strong class="text-charcoal font-semibold">Canada has two maple syrup grades, not one.</strong> Grade A is the grade you find in stores. The other is Canada Processing Grade, which the 2014 regulation created for "off-flavoured, and otherwise defective syrups," allowing "other uses for processing grade such as further food processing or other non-food uses" (<a href="https://gazette.gc.ca/rp-pr/p2/2014/2014-12-31/html/sor-dors297-eng.html" rel="noopener noreferrer nofollow" target="_blank">Canada Gazette, SOR/2014-297</a>).</p>
         <p>Processing Grade is still maple syrup, with the same sugar content. It is the grade for syrup that fails tests 3 to 5 above: its color is uneven or it carries sediment or cloudiness, it cannot be given a color class, or its flavor is off. It carries no color class, so a bottle that names Golden, Amber, Dark or Very Dark on its label is Grade A.</p>
         <p>The regulator does not stop Processing Grade being sold in stores, but the grade name has to be on the label, so a shopper can always tell the two apart.</p>
@@ -623,13 +624,13 @@
 
   <!-- SECTION 3: WHY THE CHANGE MATTERED -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="why-it-mattered" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 id="why-it-mattered" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           Why the Change Mattered
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto">
+      <div class="prose-body max-w-[760px]">
         <p>The new names describe color and taste, so the label tells a shopper what the syrup tastes like instead of implying a ranking.</p>
         <p>The change did three things the old numbers could not. It put every retail syrup, light or dark, under one grade with the same five tests, so a darker bottle no longer carries a lower number. It moved defective syrup into a grade of its own, so a defect is named on the label instead of hiding inside a color. And it gave Canada and the United States the same four classes and the same light cut-offs, so a bottle of Very Dark means the same thing on both sides of the border.</p>
         <p>For a cook, the practical result is a label that answers the real question. "Golden Color, Delicate Taste" says what is in the bottle and what it will do to the dish.</p>
@@ -639,14 +640,14 @@
 
 
   <!-- SECTION 4: WHICH GRADE TO USE -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="which-grade" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 id="which-grade" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           Which Grade Should I Use?
         </h2>
       </div>
-      <div class="max-w-[900px] mx-auto space-y-6">
+      <div class="max-w-[900px] space-y-6">
 
         <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-2xl p-6 md:p-8">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-start">
@@ -720,13 +721,13 @@
 
   <!-- SECTION 5: HOW MAPLE TERROIR HANDLES GRADES -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="our-grades" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 id="our-grades" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           How Maple Terroir Handles Grades
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto">
+      <div class="prose-body max-w-[760px]">
         <p>We sell two of the four color classes, both Canada Grade A and both from one farm in Quebec. Golden, Delicate Taste comes in our <a href="/products/organic-pure-maple-syrup-250ml">certified organic 250 mL bottle</a> and the First Tap Nouveau. Dark, Robust Taste comes in the <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml">maple leaf bottle</a>. If you are choosing between them, Golden is the one for pouring over fruit, yogurt or ice cream, and Dark is the one for baking and coffee. Our organic syrups are certified by Ecocert, Canada Organic and USDA Organic, and the <a href="/certifications">certifications page</a> explains each one.</p>
       </div>
     </div>
@@ -734,14 +735,14 @@
 
 
   <!-- SECTION 6: WHAT PEOPLE STILL CALL GRADE B -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 id="grade-b" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 id="grade-b" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           What People Still Call Grade B
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto">
+      <div class="prose-body max-w-[760px]">
         <p>Old recipe cards, cookbooks and forum threads still say "Grade B", because for decades it was the American name for the darkest, strongest syrup. Before March 2015 the U.S. standard called it "Grade B for Reprocessing" and did not intend it for retail sale, even though, as the USDA itself noted, shoppers were "increasingly seeking the darkest color class of maple syrup for cooking and table use" (<a href="https://www.govinfo.gov/content/pkg/FR-2015-01-29/pdf/2015-01618.pdf" rel="noopener noreferrer nofollow" target="_blank">Federal Register, January 29, 2015</a>).</p>
         <p>The 2015 change moved that syrup, when it has no damage or off-flavors, into Grade A so it could be sold in retail bottles. In both countries today, the nearest match to an old Grade B is Grade A Very Dark, Strong Taste, and a recipe that asks for Grade B will work with Very Dark or, for a slightly milder result, Dark.</p>
         <p>So recognize the old term when you see it and do not chase it as a separate product. The decision the cook is making is how strong a maple taste the dish needs, and the four color classes answer that directly.</p>
@@ -752,7 +753,7 @@
 
   <!-- SECTION 7: MISCONCEPTIONS -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
         <div class="md:col-span-4">
           <h2 id="misconceptions" class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">
@@ -760,15 +761,15 @@
           </h2>
         </div>
         <div class="md:col-span-7 md:col-start-6 divide-y divide-warm-gray-200/50">
-          <div class="reveal pb-8 prose-body">
+          <div class="reveal pb-8 prose-body max-w-[760px]">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"Grade A is better than Grade B"</h3>
             <p>Not today. Under the old U.S. standard, Grade B named the darkest syrup and its intended use, reprocessing, which is why it read as second-rate. Since 2015 that syrup, free of off-flavors, is Grade A Very Dark and passes the same Grade A tests as Golden. A letter on an old recipe card tells you the color, not the quality.</p>
           </div>
-          <div class="reveal py-8 prose-body">
+          <div class="reveal py-8 prose-body max-w-[760px]">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"Darker maple syrup is lower quality"</h3>
             <p>Wrong. Every Grade A class has to be free from fermentation, sediment and cloudiness and carry a maple flavor true to its color, so a Very Dark bottle meets the same requirements as a Golden one. A dark syrup that fails those tests is not a darker class; it is Processing Grade, and the label has to say so.</p>
           </div>
-          <div class="reveal pt-8 prose-body">
+          <div class="reveal pt-8 prose-body max-w-[760px]">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"All Grade A tastes the same"</h3>
             <p>Wrong. Grade A is one set of quality tests, not one flavor. Its four classes run from Golden, which Maple from Canada calls mildly sweet, to Very Dark, its most pronounced taste. Taste a Golden and a Very Dark side by side and the difference is obvious, which is why the class and its taste are printed on the label.</p>
           </div>
@@ -779,7 +780,8 @@
 
 
   <!-- CTA -->
-  <section class="relative py-24 md:py-32 px-4 md:px-8 overflow-hidden">
+  <section class="px-4 md:px-8 py-8 md:py-12">
+    <div class="relative max-w-[1400px] mx-auto rounded-[2rem] overflow-hidden bg-charcoal py-24 md:py-32 px-6 md:px-12">
     <div class="absolute inset-0">
       <img src="../assets/images/story/sap-in-bucket.png" alt="Canadian maple syrup sap dripping into a collection bucket in a Quebec sugar bush" class="w-full h-full object-cover">
     </div>
@@ -799,13 +801,14 @@
         <a href="/shop/canadian-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Shop Canadian Maple Syrup</a>
       </div>
     </div>
+  </div>
   </section>
 
 
   <!-- FAQ -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
         <h2 id="faq" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
           Maple Syrup Grades FAQ
         </h2>
@@ -817,7 +820,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Grade B was an American grade, never a Canadian one. Until March 2015 the U.S. standard graded the darkest, strongest-tasting syrup as Grade B for Reprocessing, a grade not intended for retail sale. Since then, that syrup is graded Grade A Very Dark, Strong Taste when it has no off-flavors. In Canada, retail syrup has been Canada Grade A, in four color classes, since December 2014.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Grade B was an American grade, never a Canadian one. Until March 2015 the U.S. standard graded the darkest, strongest-tasting syrup as Grade B for Reprocessing, a grade not intended for retail sale. Since then, that syrup is graded Grade A Very Dark, Strong Taste when it has no off-flavors. In Canada, retail syrup has been Canada Grade A, in four color classes, since December 2014.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -826,7 +829,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Neither is better. The very dark syrup once called Grade B now meets the same Grade A requirements as Golden: the same sugar range, no cloudiness or sediment, and a flavor true to its color class. It tastes stronger, which suits baking, glazes and marinades, while the lighter classes suit the table and finishing.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Neither is better. The very dark syrup once called Grade B now meets the same Grade A requirements as Golden: the same sugar range, no cloudiness or sediment, and a flavor true to its color class. It tastes stronger, which suits baking, glazes and marinades, while the lighter classes suit the table and finishing.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -835,7 +838,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. Under the U.S. grades in force since March 2, 2015, very dark syrup with no off-flavors or damage is Grade A Very Dark, Strong Taste. Canada's matching class, Canada Grade A Very Dark, Strong Taste, has existed since December 2014. Syrup that fails Grade A goes to Processing Grade in both countries.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Yes. Under the U.S. grades in force since March 2, 2015, very dark syrup with no off-flavors or damage is Grade A Very Dark, Strong Taste. Canada's matching class, Canada Grade A Very Dark, Strong Taste, has existed since December 2014. Syrup that fails Grade A goes to Processing Grade in both countries.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -844,7 +847,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">The one that matches the job. Golden suits cheese, yogurt and ice cream; Amber is the all-round table syrup; Dark holds up in baking and coffee; Very Dark suits glazes and marinades. Every class meets the same Grade A requirements, so the choice is about taste, not quality.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">The one that matches the job. Golden suits cheese, yogurt and ice cream; Amber is the all-round table syrup; Dark holds up in baking and coffee; Very Dark suits glazes and marinades. Every class meets the same Grade A requirements, so the choice is about taste, not quality.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -853,7 +856,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Neither, in any way the grades measure. Every grade has to hold 66 to 68.9 percent sugar solids, so every grade is mostly sugar: a 15 mL tablespoon of maple syrup holds about 12 grams of sugar in the Canadian Nutrient File. Our guide to <a href="/blog/5-surprising-maple-syrup-benefits-you-need-to-know" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal">whether maple syrup is healthy</a> has the full nutrition per serving and what studies have found.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Neither, in any way the grades measure. Every grade has to hold 66 to 68.9 percent sugar solids, so every grade is mostly sugar: a 15 mL tablespoon of maple syrup holds about 12 grams of sugar in the Canadian Nutrient File. Our guide to <a href="/blog/5-surprising-maple-syrup-benefits-you-need-to-know" class="underline decoration-amber-warm/50 underline-offset-2 hover:text-charcoal">whether maple syrup is healthy</a> has the full nutrition per serving and what studies have found.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -862,7 +865,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Not in the grades Canada or the USDA use today. Both have Grade A, in the same four color classes, and a Processing Grade for syrup that does not meet Grade A.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Not in the grades Canada or the USDA use today. Both have Grade A, in the same four color classes, and a Processing Grade for syrup that does not meet Grade A.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -871,7 +874,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Two color classes, measured by light. Dark, Robust Taste lets 25 to under 50 percent of the test light through; Very Dark, Strong Taste lets less than 25 percent through. Very Dark tastes the strongest and comes from late in the season, so it suits dishes where maple has to stand up to salt, smoke or spice.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Two color classes, measured by light. Dark, Robust Taste lets 25 to under 50 percent of the test light through; Very Dark, Strong Taste lets less than 25 percent through. Very Dark tastes the strongest and comes from late in the season, so it suits dishes where maple has to stand up to salt, smoke or spice.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -880,7 +883,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">By light. A spectrophotometer reads how much light at a wavelength of 560 nanometers passes through a 10 mm sample of the syrup, against glycerol set at 100 percent; a matching glass comparator can be used instead. Golden lets 75 percent or more through, Amber 50 to under 75, Dark 25 to under 50, and Very Dark under 25. Every grade must also hold 66 to 68.9 percent soluble solids, read with a refractometer or hydrometer at 20 degrees Celsius.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">By light. A spectrophotometer reads how much light at a wavelength of 560 nanometers passes through a 10 mm sample of the syrup, against glycerol set at 100 percent; a matching glass comparator can be used instead. Golden lets 75 percent or more through, Amber 50 to under 75, Dark 25 to under 50, and Very Dark under 25. Every grade must also hold 66 to 68.9 percent soluble solids, read with a refractometer or hydrometer at 20 degrees Celsius.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -889,7 +892,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Canada's grades before December 2014. Canada No. 1 covered the Extra Light, Light and Medium color classes, Canada No. 2 was Amber and Canada No. 3 was Dark. The International Maple Syrup Institute pushed for the change because it believed the numbers led shoppers to think the darker syrups were of inferior quality. Producers had a two-year transition to switch to Canada Grade A.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Canada's grades before December 2014. Canada No. 1 covered the Extra Light, Light and Medium color classes, Canada No. 2 was Amber and Canada No. 3 was Dark. The International Maple Syrup Institute pushed for the change because it believed the numbers led shoppers to think the darker syrups were of inferior quality. Producers had a two-year transition to switch to Canada Grade A.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -898,7 +901,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">The second of Canada's two grades. It covers pure maple syrup with the right sugar content that fails one of the last three Grade A tests: uniform color with no sediment or cloudiness, a color class, or a maple flavor with no objectionable odor or taste. It carries no color class, so a bottle labeled Golden, Amber, Dark or Very Dark is Grade A.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">The second of Canada's two grades. It covers pure maple syrup with the right sugar content that fails one of the last three Grade A tests: uniform color with no sediment or cloudiness, a color class, or a maple flavor with no objectionable odor or taste. It carries no color class, so a bottle labeled Golden, Amber, Dark or Very Dark is Grade A.</p>
           </div>
         </div>
       </div>

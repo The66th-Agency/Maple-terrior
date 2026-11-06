@@ -201,8 +201,8 @@ function buildPage(file, list, photoFor) {
   // 3. The reviews themselves, replacing the Loox widget that never renders here.
   html = html.replace(
     /<section id="reviews-section"[\s\S]*?<\/section>/,
-    `<section id="reviews-section" class="py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
-    <div class="max-w-[1400px] mx-auto">
+    `<section id="reviews-section" class="px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24">
       <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-12">What Our Customers Say</h2>
       ${section}
     </div>

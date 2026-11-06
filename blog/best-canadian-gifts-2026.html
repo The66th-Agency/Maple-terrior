@@ -120,6 +120,7 @@
     .gift-head h3 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.5rem, 2.4vw, 1.875rem); font-weight: 600; color: #1A1714; letter-spacing: -0.01em; line-height: 1.2; }
     .gift-for { margin: .5rem 0 1rem; font-size: .875rem; color: #8a7f72; }
     .gift-card .prose-body p:last-child { margin-bottom: 0; }
+    .gift-card > * { max-width: 760px; }
     .gift-buy { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(214,206,194,.6); font-size: .95rem; color: #5c544b; line-height: 1.6; }
     .gift-buy strong { color: #1A1714; font-weight: 600; }
     .gift-buy a { color: #C4841D; text-decoration: underline; text-underline-offset: 3px; }
@@ -209,7 +210,7 @@
 
   <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-12 md:pb-16 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[900px]">
       <a href="./" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
         <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
         Back to the Maple Terroir Blog
@@ -232,13 +233,13 @@
           <span>Last updated <time datetime="2026-10-19">October 19, 2026</time></span>
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- HERO IMAGE -->
   <section class="px-4 md:px-8 mb-8 md:mb-16">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="rounded-[2rem] overflow-hidden aspect-[16/9] md:aspect-[21/9]">
         <img src="/assets/images/covers/best-canadian-gifts-2026.webp" alt="An open Canadian gift box with maple syrup, maple candy, tea and a plaid wool scarf" class="w-full h-full object-cover">
       </div>
@@ -248,16 +249,14 @@
 
   <!-- INTRO -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-7 max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">A Canadian gift has two jobs: it has to say Canada, and it has to get used.</strong> This list covers holiday gifts, gifts to send abroad and souvenirs for visitors heading home.</p>
       <p>A good Canadian souvenir does three things: it comes from Canada, it gets used after the trip ends, and it tells the recipient something specific about the country.</p>
       <p>The list below ranks 15 Canadian gifts and souvenirs, weighted toward items people keep using once they get home. Maple syrup leads the list. We sell it, so read the pick with that in mind: it travels well, keeps for years in a sealed bottle, and gets used in the kitchen long after the trip.</p>
     </div>
-  </section>
-
-  <!-- CONTENTS -->
-  <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+      <div class="lg:col-span-5">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ol class="toc-cols">
@@ -283,14 +282,16 @@
         </ul>
       </nav>
     </div>
+    </div>
+    </div>
   </section>
 
 
 
   <!-- THE LIST: SECTION HEADER -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-10 md:mb-14 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-10 md:mb-14">
         <h2 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
           15 Best Canadian Gifts and Souvenirs, Ranked
         </h2>
@@ -301,7 +302,7 @@
 
   <!-- THE LIST: 15 PICKS, ONE CARD EACH -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto space-y-6 md:space-y-8">
+    <div class="max-w-[1400px] mx-auto space-y-6 md:space-y-8">
 
       <article class="reveal gift-card">
         <div class="gift-head"><span class="gift-num">01</span><h3 id="pure-canadian-maple-syrup">Pure Canadian Maple Syrup</h3></div>
@@ -444,12 +445,12 @@
 
 
   <!-- HOW WE RANKED THEM -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[900px] mx-auto">
-      <div class="text-center mb-10 md:mb-14">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-10 md:mb-14">
         <h2 id="how-we-ranked" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">How We Ranked Them</h2>
       </div>
-      <div class="reveal prose-body">
+      <div class="reveal prose-body max-w-[760px]">
         <p>Each pick had to come from Canada and get used after the wrapping comes off. Gifts used every week ranked above gifts kept on a shelf, and gifts that travel well ranked above fragile ones. Flying with a gift? Airport security in Canada limits liquids such as syrup, jam and wine in a carry-on to containers of 100 mL or less, so larger bottles go in checked luggage.</p>
       </div>
       <div class="reveal gift-table-wrap mt-10">
@@ -469,7 +470,8 @@
 
 
   <!-- CTA -->
-  <section class="relative py-24 md:py-32 px-4 md:px-8 overflow-hidden">
+  <section class="px-4 md:px-8 py-8 md:py-12">
+    <div class="relative max-w-[1400px] mx-auto rounded-[2rem] overflow-hidden bg-charcoal py-24 md:py-32 px-6 md:px-12">
     <div class="absolute inset-0">
       <img src="../assets/images/story/sap-in-bucket.png" alt="Canadian maple syrup sap dripping into a collection bucket in a sugar bush" class="w-full h-full object-cover">
     </div>
@@ -489,13 +491,14 @@
         <a href="/locations-we-serve/canada/canadian-gifts-vancouver" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Visiting Vancouver?</a>
       </div>
     </div>
+  </div>
   </section>
 
 
   <!-- FAQ -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
         <h2 id="faq" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
           Best Canadian Gifts FAQ
         </h2>
@@ -507,7 +510,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">We think pure Canadian maple syrup is the best souvenir, because people use it at home long after the trip. We sell it, so weigh our pick accordingly. The version worth buying is single-origin from one farm. Other strong choices include ice wine from Niagara, Hudson's Bay blankets, and Indigenous art from Coast Salish or Inuit artists.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">We think pure Canadian maple syrup is the best souvenir, because people use it at home long after the trip. We sell it, so weigh our pick accordingly. The version worth buying is single-origin from one farm. Other strong choices include ice wine from Niagara, Hudson's Bay blankets, and Indigenous art from Coast Salish or Inuit artists.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -516,7 +519,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">The most distinctly Canadian gifts are maple syrup, ice wine, Hudson's Bay striped blankets, hockey jerseys, Tim Hortons coffee, maple-infused chocolates, Canadian whisky, smoked Pacific salmon, Inuit and Coast Salish art, Royal Canadian Mint maple leaf coins, toques, and Canadian-made wool mittens. The strongest gifts pair a national symbol with something the recipient can actually use.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">The most distinctly Canadian gifts are maple syrup, ice wine, Hudson's Bay striped blankets, hockey jerseys, Tim Hortons coffee, maple-infused chocolates, Canadian whisky, smoked Pacific salmon, Inuit and Coast Salish art, Royal Canadian Mint maple leaf coins, toques, and Canadian-made wool mittens. The strongest gifts pair a national symbol with something the recipient can actually use.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -525,7 +528,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Maple syrup is produced almost entirely in Canada and the northern United States, with Quebec accounting for most of the world supply. Other Canadian foods that travel well include Niagara ice wine, butter tarts, Saskatoon berry preserves, Pacific smoked salmon, and Canadian chocolate bars such as Coffee Crisp and Caramilk.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Maple syrup is produced almost entirely in Canada and the northern United States, with Quebec accounting for most of the world supply. Other Canadian foods that travel well include Niagara ice wine, butter tarts, Saskatoon berry preserves, Pacific smoked salmon, and Canadian chocolate bars such as Coffee Crisp and Caramilk.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -534,7 +537,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Maple syrup is allowed in checked luggage with no quantity limit. For carry-on, the 100 mL liquid rule applies, so most full-size bottles must travel in checked baggage. Visitors who live in another Canadian province can have it shipped home instead. We ship to every province, but not outside Canada.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Maple syrup is allowed in checked luggage with no quantity limit. For carry-on, the 100 mL liquid rule applies, so most full-size bottles must travel in checked baggage. Visitors who live in another Canadian province can have it shipped home instead. We ship to every province, but not outside Canada.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -543,7 +546,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">For maple products, look for a bottle that says where the syrup comes from. Our single-origin maple syrup is sold online at <a href="/products" class="text-amber-warm hover:text-amber-deep transition-colors">mapleterroir.com</a> and is also carried by Costco, Save-On-Foods, Urban Fare and Shoppers Drug Mart. To send a boxed maple gift set to someone in another city, our gift basket pages for <a href="/locations-we-serve/canada/gift-baskets-edmonton" class="text-amber-warm hover:text-amber-deep transition-colors">Edmonton</a>, <a href="/locations-we-serve/canada/gift-baskets-ottawa" class="text-amber-warm hover:text-amber-deep transition-colors">Ottawa</a> and <a href="/locations-we-serve/canada/gift-baskets-toronto" class="text-amber-warm hover:text-amber-deep transition-colors">Toronto</a> compare the boxes by price and occasion, and our list of <a href="/blog/best-canadian-gift-basket-companies" class="text-amber-warm hover:text-amber-deep transition-colors">the best Christmas gift basket companies in Canada</a> compares eight companies that send baskets across the country. For non-food gifts, buy from Indigenous artisan co-ops and from the Royal Canadian Mint, which sells online.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">For maple products, look for a bottle that says where the syrup comes from. Our single-origin maple syrup is sold online at <a href="/products" class="text-amber-warm hover:text-amber-deep transition-colors">mapleterroir.com</a> and is also carried by Costco, Save-On-Foods, Urban Fare and Shoppers Drug Mart. To send a boxed maple gift set to someone in another city, our gift basket pages for <a href="/locations-we-serve/canada/gift-baskets-edmonton" class="text-amber-warm hover:text-amber-deep transition-colors">Edmonton</a>, <a href="/locations-we-serve/canada/gift-baskets-ottawa" class="text-amber-warm hover:text-amber-deep transition-colors">Ottawa</a> and <a href="/locations-we-serve/canada/gift-baskets-toronto" class="text-amber-warm hover:text-amber-deep transition-colors">Toronto</a> compare the boxes by price and occasion, and our list of <a href="/blog/best-canadian-gift-basket-companies" class="text-amber-warm hover:text-amber-deep transition-colors">the best Christmas gift basket companies in Canada</a> compares eight companies that send baskets across the country. For non-food gifts, buy from Indigenous artisan co-ops and from the Royal Canadian Mint, which sells online.</p>
           </div>
         </div>
       </div>

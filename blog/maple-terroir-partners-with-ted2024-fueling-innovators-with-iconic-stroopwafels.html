@@ -44,7 +44,7 @@
     .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
-    .article-body { max-width: 720px; margin: 0 auto; }
+    .article-body { max-width: 720px; margin: 0; }
     .article-body h1, .article-body h2, .article-body h3, .article-body h4 { font-family: 'Fraunces', Georgia, serif; color: #1A1714; margin-top: 2rem; margin-bottom: 0.75rem; font-weight: 600; line-height: 1.25; }
     .article-body h2 { font-size: 1.5rem; }
     .article-body h3 { font-size: 1.25rem; }
@@ -59,7 +59,7 @@
     .ted-hero { aspect-ratio: 3 / 2; }
     .ted-hero img { object-position: 50% 70%; }
     @media (min-width: 768px) { .ted-hero { aspect-ratio: 16 / 9; } }
-    .ted-caption { max-width: 720px; margin: 0.9rem auto 0; font-size: 0.8rem; line-height: 1.6; color: #6B6158; }
+    .ted-caption { max-width: 720px; margin: 0.9rem 0 0; font-size: 0.8rem; line-height: 1.6; color: #6B6158; }
     .article-body figure { margin: 2rem 0; }
     .article-body figure img { margin: 0; width: 100%; }
     .article-body figcaption { margin-top: 0.75rem; font-size: 0.8rem; line-height: 1.6; color: #6B6158; }
@@ -133,7 +133,7 @@
 
 
   <section class="pt-32 md:pt-40 pb-12 md:pb-16 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[900px]">
       <a href="./" class="inline-flex items-center gap-2 text-amber-warm mb-6 hover:text-amber-deep transition-colors text-sm font-medium">
         <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
         Back to the Maple Terroir Blog
@@ -151,20 +151,20 @@
           <span>Last updated <time datetime="2026-10-29">October 29, 2026</time></span>
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 
   <section class="px-4 md:px-8 mb-8 md:mb-16">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="ted-hero rounded-[2rem] overflow-hidden bg-cream-dark">
         <img src="/assets/images/blog/ted2026-maple-terroir-stroopwafel-in-kind-partner.webp" fetchpriority="high" width="1600" height="1065" alt="A TED2026 attendee opens a Maple Terroir Pure Maple Syrup Stroopwafel at a table beside a card that reads TED thanks our in-kind partners, with the red TED letters behind her" class="w-full h-full object-cover">
       </div>
-      <p class="ted-caption">TED2026 in Vancouver: an attendee opens one of our Pure Maple Syrup Stroopwafels beside TED's card thanking its in-kind partners. Photo: Felicia Chang for TED.</p>
+      <p class="ted-caption max-w-[760px]">TED2026 in Vancouver: an attendee opens one of our Pure Maple Syrup Stroopwafels beside TED's card thanking its in-kind partners. Photo: Felicia Chang for TED.</p>
     </div>
   </section>
 
   <article class="py-8 md:py-12 px-4 md:px-8">
-    <div class="article-body">
+    <div class="max-w-[1400px] mx-auto"><div class="article-body">
       <p>TED served Maple Terroir stroopwafels to the people at its conference in Vancouver three years in a row: TED2024, TED2025 and TED2026. We took part as an in-kind partner, which means we gave the stroopwafels and TED set them out for its attendees between talks. This page tells that story with TED's own facts and with photos from the conference.</p>
 
       <div class="ted-glance">
@@ -249,7 +249,7 @@
     </script>
       <!-- SHELF:END -->
       </aside>
-    </div>
+    </div></div>
   </article>
 
   <!-- CTA:START title="Maple Stroopwafels for Your Next Event." text="Individually wrapped, 35 to a caddy, in five flavors." href="/shop/maple-syrup-corporate-gift" label="Corporate Gifts" href2="/collections/maple-stroopwafels" label2="Shop Stroopwafels" -->

@@ -223,6 +223,8 @@
     .toc a { color: #2E2822; text-decoration: underline; text-decoration-color: rgba(196,132,29,.45); text-underline-offset: 3px; transition: color .3s, text-decoration-color .3s; }
     .toc a:hover { color: #C4841D; text-decoration-color: #C4841D; }
     h2[id], h3[id] { scroll-margin-top: 7rem; }
+    /* Two products in a full-width card: keep the shelf to the text column so the cards stay product-sized. */
+    .blog-cta-slot .blog-cta [data-shelf] { max-width: 760px; }
   </style>
 </head>
 
@@ -290,7 +292,7 @@
 
   <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-12 md:pb-16 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[900px]">
       <a href="./" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
         <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
         Back to the Maple Terroir Blog
@@ -313,13 +315,13 @@
           <span>Last updated <time datetime="2026-10-19">October 19, 2026</time></span>
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- HERO IMAGE -->
   <section class="px-4 md:px-8 mb-8 md:mb-16">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="rounded-[2rem] overflow-hidden aspect-[16/9] md:aspect-[21/9]">
         <img src="/assets/images/covers/maple-glazed-salmon.webp" fetchpriority="high" alt="Four maple glazed salmon fillets with a caramelized maple syrup glaze on a parchment-lined baking tray, with lemon wedges and a bowl of glaze" class="w-full h-full object-cover" width="1600" height="893">
       </div>
@@ -329,15 +331,13 @@
 
   <!-- INTRO -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-7 max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">Maple syrup and salmon work because each fixes what the other lacks.</strong> Salmon is rich and mild, and the syrup's sugar caramelizes on its surface into a glossy crust, while soy sauce and mustard add the salt and sharpness that keep the glaze from tasting like dessert.</p>
       <p>Below is the recipe card, then everything around it: what each ingredient does, how to tell the fish is done, four other ways to cook it, which maple syrup makes the best glaze, what to serve with it, and how to store leftovers.</p>
     </div>
-  </section>
-
-  <!-- CONTENTS -->
-  <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+      <div class="lg:col-span-5">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ol>
@@ -355,13 +355,15 @@
         </ol>
       </nav>
     </div>
+    </div>
+    </div>
   </section>
 
 
 
   <!-- RECIPE CARD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="reveal rcp-card">
         <h2 id="recipe" class="rcp-h">Maple Glazed Salmon</h2>
         <div class="rcp-stats">
@@ -402,7 +404,7 @@
 
   <!-- INGREDIENTS EXPLAINED -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="ingredients" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">What Each Ingredient Does</h2>
       <p>Every ingredient in the glaze has one job: the maple sweetens and browns, the soy salts, the mustard thickens and sharpens, and the garlic and pepper add depth. Knowing the jobs lets you swap an ingredient without breaking the balance.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Pure maple syrup</h3>
@@ -411,13 +413,13 @@
       <p>Soy sauce brings the salt, so season the fish lightly and taste the glaze before adding more. Dijon mustard does two things: its sharpness cuts the sweetness, and it holds the glaze together so it clings to the fish instead of running onto the tray.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">The salmon</h3>
       <p>Choose fillets of an even thickness, about 2.5 cm (1 inch) at the thickest point, so they finish at the same time. Skin-on fillets hold together better on the tray, and the skin slides off easily after baking if you would rather not eat it.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- STEP BY STEP -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="step-by-step" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Make Maple Glazed Salmon, Step by Step</h2>
       <p>The method is three brushings of glaze around one short bake. The details below are the ones that decide whether the glaze turns glossy or burns.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Set some glaze aside before it touches the fish</h3>
@@ -426,23 +428,23 @@
       <p>Pat each fillet dry with paper towel so the glaze sticks instead of sliding off in a puddle. Brush a thin coat on the top and sides; a thick first coat burns before the fish is cooked.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Brush again halfway</h3>
       <p>At the six- or seven-minute mark, pull the tray out and brush on a second coat. Maple syrup is mostly sugar, so it browns fast at 400°F: dark edges are the glaze caramelizing, and if they darken before the center is done, lay a sheet of foil loosely over the tray for the last few minutes.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- DONENESS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="doneness" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Tell When Salmon Is Done</h2>
       <p>Salmon is done when the thickest part reaches 70°C (158°F), the safe internal temperature for fish in <a href="https://www.canada.ca/en/health-canada/services/general-food-safety-tips/safe-internal-cooking-temperatures.html" target="_blank" rel="noopener">Health Canada's cooking temperature chart</a>. An instant-read thermometer pushed in from the side of the fillet gives the most reliable reading.</p>
       <p>Without a thermometer, press the thickest part with a fork. Cooked salmon turns from translucent to opaque all the way through and separates into flakes along its natural lines.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- OTHER METHODS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="other-methods" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Four Other Ways to Cook It</h2>
       <p>The glaze works with any method; what changes is when it goes on. The hotter and closer the heat, the later you brush, because the sugar scorches before the fish is done.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">On the grill</h3>
@@ -453,24 +455,24 @@
       <p>Line the basket with a parchment liner, brush the fillets and cook at 400°F, checking the temperature at eight minutes. Fillets thinner than 2.5 cm finish sooner.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Under the broiler</h3>
       <p>For a darker crust, bake as written, brush on the reserved glaze and finish under the broiler for one to two minutes. Stay at the oven door; the glaze goes from glossy to burnt quickly.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- WHICH SYRUP -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup Makes the Best Glaze</h2>
       <p>A dark, robust syrup makes the best salmon glaze, because its flavor holds up against soy sauce and mustard. A golden syrup works too and gives a lighter, sweeter glaze; the difference between the grades is color and strength of taste, explained in our <a href="/blog/grade-a-vs-grade-b-maple-syrup">guide to maple syrup grades</a>.</p>
       <p>At Maple Terroir we sell one of each, both from one farm. A 250 mL bottle holds enough for this recipe four times over.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- SHOP CARD -->
   <link rel="stylesheet" href="/assets/blog-cta.css">
   <section class="blog-cta-slot px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <aside class="blog-cta">
         <h2 class="blog-cta__title">Two syrups, two glazes.</h2>
         <p class="blog-cta__body">The maple leaf bottle is our Dark grade, for a deeper glaze. The organic bottle is Golden, for a lighter one.</p>
@@ -506,7 +508,7 @@
 
   <!-- VARIATIONS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="variations" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Five Ways to Change the Glaze</h2>
       <p>Keep the maple and the soy, and change one other ingredient at a time. Each of these goes into the bowl before you set the reserved third aside.</p>
       <ul class="list-disc pl-6 space-y-3 text-warm-gray-600">
@@ -516,13 +518,13 @@
         <li><strong class="text-charcoal font-semibold">Sesame:</strong> a teaspoon of toasted sesame oil in the glaze and sesame seeds on top.</li>
         <li><strong class="text-charcoal font-semibold">Whole-grain mustard:</strong> in place of Dijon, for a glaze with texture.</li>
       </ul>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- SERVE WITH -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="sides" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">What to Serve With Maple Salmon</h2>
       <p>Serve it with something plain to soak up the glaze and something green to cut the sweetness. Steamed rice and a quick vegetable cover both in the time the fish bakes.</p>
       <ul class="list-disc pl-6 space-y-3 text-warm-gray-600">
@@ -531,24 +533,24 @@
         <li><strong class="text-charcoal font-semibold">Maple glazed carrots</strong> for a full maple dinner; our <a href="/blog/maple-glazed-carrots">maple glazed carrots</a> recipe cooks on the stovetop in 25 minutes while the salmon bakes, and our list of <a href="/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide">maple syrup uses beyond pancakes</a> has more sides.</li>
         <li><strong class="text-charcoal font-semibold">A green salad</strong> with a maple vinaigrette, one of the <a href="/blog/the-truth-about-maple-syrup-hidden-uses-most-people-dont-know">everyday uses for maple syrup</a> most people skip.</li>
       </ul>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- STORAGE -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <h2 id="leftovers" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Storing and Reheating Leftovers</h2>
       <p>Cooked salmon keeps 3 to 4 days in the fridge and 4 to 6 months in the freezer, according to <a href="https://www.canada.ca/en/health-canada/services/general-food-safety-tips/safe-food-storage.html" target="_blank" rel="noopener">Health Canada's food storage chart</a>. Store it in a sealed container in a fridge at 4°C (40°F) or colder.</p>
       <p>Reheat it gently, covered, in a low oven, so the fish warms through without drying out, or eat it cold, flaked over a salad or rice bowl. The glaze itself keeps in the fridge too; the <a href="/tools/maple-syrup-shelf-life">maple syrup shelf life checker</a> covers how long the bottle lasts once it is open.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- FAQ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
-      <div class="reveal mb-10 md:mb-14 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-10 md:mb-14">
         <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Salmon Questions</h2>
       </div>
       <div class="space-y-3">
@@ -558,7 +560,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Health Canada's safe internal temperature for fish is 70°C (158°F). Check the thickest part of the fillet with an instant-read thermometer.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Health Canada's safe internal temperature for fish is 70°C (158°F). Check the thickest part of the fillet with an instant-read thermometer.</p>
           </div>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
@@ -567,7 +569,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">About 12 to 15 minutes for fillets 2.5 cm (1 inch) thick. Thinner fillets finish sooner, so start checking the temperature at 10 minutes.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">About 12 to 15 minutes for fillets 2.5 cm (1 inch) thick. Thinner fillets finish sooner, so start checking the temperature at 10 minutes.</p>
           </div>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
@@ -576,7 +578,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">You can, but the glaze will taste of plain sugar with no maple in it. Pancake syrup is usually corn syrup with flavoring, and pure maple syrup is boiled-down maple sap with nothing added.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">You can, but the glaze will taste of plain sugar with no maple in it. Pancake syrup is usually corn syrup with flavoring, and pure maple syrup is boiled-down maple sap with nothing added.</p>
           </div>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
@@ -585,7 +587,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Maple syrup is mostly sugar, and sugar scorches under strong heat. Brush thin coats, add the last one at the end, and cover the tray loosely with foil if the edges darken early.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Maple syrup is mostly sugar, and sugar scorches under strong heat. Brush thin coats, add the last one at the end, and cover the tray loosely with foil if the edges darken early.</p>
           </div>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
@@ -594,7 +596,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. Whisk it, cover it and keep it in the fridge for a few days. Stir it again before brushing, since the mustard settles.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Yes. Whisk it, cover it and keep it in the fridge for a few days. Stir it again before brushing, since the mustard settles.</p>
           </div>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
@@ -603,7 +605,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Three to four days at 4°C (40°F) or colder, and four to six months in the freezer, according to Health Canada.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Three to four days at 4°C (40°F) or colder, and four to six months in the freezer, according to Health Canada.</p>
           </div>
         </div>
       </div>
@@ -613,10 +615,10 @@
 
   <!-- KEY TAKEAWAYS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
         <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Key Takeaways</h2>
-        <ul class="list-disc pl-6 space-y-2 text-warm-gray-600">
+        <ul class="list-disc pl-6 space-y-2 text-warm-gray-600 max-w-[760px]">
           <li>The glaze is ¼ cup maple syrup, 2 tablespoons soy sauce, 1 tablespoon Dijon, a garlic clove and pepper.</li>
           <li>Bake at 400°F (200°C) for 12 to 15 minutes, to 70°C (158°F) inside.</li>
           <li>Set a third of the glaze aside before it touches raw fish, and brush it on at the end.</li>

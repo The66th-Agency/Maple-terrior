@@ -93,7 +93,7 @@ const LOGOS = [
 ];
 const logoRow = (hidden) => LOGOS.map(([f, a]) =>
   `<img src="/assets/images/logos/${f}" alt="${hidden ? '' : a}" class="mt-strip-logo h-6 md:h-7 w-auto object-contain flex-shrink-0" loading="lazy">`).join('');
-const logos = () => `  <section aria-label="Customer rating and retailers" class="border-b border-warm-gray-200/40">
+const logos = () => `  <section aria-label="Customer rating and retailers" class="px-4 md:px-8">
     <style>
       @keyframes mt-strip { to { transform: translateX(-50%); } }
       .mt-strip-track { animation: mt-strip 50s linear infinite; }
@@ -102,7 +102,7 @@ const logos = () => `  <section aria-label="Customer rating and retailers" class
       .mt-strip-logo[alt="CANEX"] { filter: brightness(0); opacity: .4; }
       @media (prefers-reduced-motion: reduce) { .mt-strip-track { animation: none; } }
     </style>
-    <div class="max-w-[1400px] mx-auto px-4 md:px-8 py-5 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
+    <div class="max-w-[1400px] mx-auto border-b border-warm-gray-200/40 py-5 flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
       <p class="flex flex-wrap items-center gap-x-5 gap-y-2 flex-shrink-0 text-sm">${googleLine()}${looxLine()}</p>
       <span class="hidden md:block w-px h-6 bg-warm-gray-200 flex-shrink-0" aria-hidden="true"></span>
       <p class="text-sm text-warm-gray-500 flex-shrink-0 hidden md:block">Also stocked by</p>
@@ -376,8 +376,8 @@ ${[big, ...rest.map(small)].filter(Boolean).join('\n')}
 const PHOTO = { src: '/assets/images/story/shawn-lytton.webp', w: 640, h: 800 };
 const ALT = 'Shawn Lytton, President of Maple Terroir, in front of a shelf of maple syrup and Canadian food gifts';
 const CAPTION = 'Shawn Lytton, President of Maple Terroir.';
-const family = (where) => `  <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
-    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
+const family = (where) => `  <section id="family" class="scroll-mt-28 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
       <figure class="reveal md:col-span-5 max-w-[420px] w-full mx-auto md:mx-0">
         <img src="${PHOTO.src}" alt="${ALT}" width="${PHOTO.w}" height="${PHOTO.h}" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[1.5rem]">
         <figcaption class="text-xs text-warm-gray-400 mt-3">${CAPTION}</figcaption>

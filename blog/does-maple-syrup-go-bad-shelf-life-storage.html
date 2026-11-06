@@ -118,6 +118,8 @@
       .btn-premium:hover { transform: none; box-shadow: none; }
       * { scroll-behavior: auto !important; }
     }
+    /* Two products in a full-width card: keep the shelf to the text column so the cards stay product-sized. */
+    .blog-cta-slot .blog-cta [data-shelf] { max-width: 760px; }
   </style>
 </head>
 
@@ -185,7 +187,7 @@
 
   <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-12 md:pb-16 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[900px]">
       <a href="./" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
         <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
         Back to the Maple Terroir Blog
@@ -208,13 +210,13 @@
           <span>Last updated <time datetime="2026-10-02">October 2, 2026</time></span>
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- HERO IMAGE -->
   <section class="px-4 md:px-8 mb-8 md:mb-16">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="rounded-[2rem] overflow-hidden aspect-[16/9] md:aspect-[21/9]">
         <img src="/assets/images/covers/does-maple-syrup-go-bad-shelf-life-storage.webp" alt="Sealed and opened bottles of maple syrup on a pantry shelf beside the fridge" class="w-full h-full object-cover">
       </div>
@@ -224,17 +226,17 @@
 
   <!-- INTRO -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">The short answer: pure maple syrup does not really go bad, but it can grow mold once the bottle is open.</strong> An unopened bottle kept somewhere cool and dark stays good for years. The moment you break the seal, the rules change, and the bottle needs the refrigerator.</p>
       <p>The reason sits in the syrup itself. Pure maple syrup is roughly two-thirds sugar, with very little free water left for mold or bacteria to use. That high sugar concentration is what lets an unopened bottle last so long. Open the bottle and you let in air and a little moisture, and over enough time, surface mold can form.</p>
       <p>This guide covers how long maple syrup lasts in each situation, exactly where to store it, what to do if you find mold or crystals, and the storage choices Maple Terroir makes so a bottle reaches you in the best possible shape. Everything below draws on food-safety guidance from university extension programs that study maple syrup directly.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- SECTION 1: SHORT ANSWER (featured card) -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="bg-gradient-to-br from-amber-glow/15 to-amber-warm/10 ring-1 ring-amber-warm/20 rounded-[2.5rem] p-8 md:p-14">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           <div class="md:col-span-12">
@@ -256,7 +258,7 @@
 
   <!-- SECTION 2: SHELF LIFE TABLE / INFOGRAPHIC -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
         <div class="md:col-span-4">
           <div class="flex items-center gap-3 mb-4">
@@ -310,10 +312,10 @@
 
   <!-- Blog call-to-action, built for this post. Styles in /assets/blog-cta.css -->
   <section class="blog-cta-slot px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-        <div class="hidden md:block md:col-span-4" aria-hidden="true"></div>
-        <div class="md:col-span-8">
+        
+        <div class="md:col-span-12">
         <aside class="blog-cta">
           <h2 class="blog-cta__title">Glass buys you about a year. Plastic buys you three months.</h2>
           <p class="blog-cta__body">Those are the numbers in the table above. Our maple leaf bottles are glass. Our syrup comes from one farm in Quebec, and our organic syrups are certified by Ecocert, Canada Organic and USDA Organic.</p>
@@ -355,8 +357,8 @@
 
 
   <!-- SECTION 3: HOW TO STORE -->
-  <section class="py-8 md:py-12 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
+  <section class="py-8 md:py-12 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
         <div class="md:col-span-4">
           <div class="flex items-center gap-3 mb-4">
@@ -374,17 +376,17 @@
             <div class="bg-white rounded-3xl ring-1 ring-warm-gray-200/60 p-6">
               <span class="w-11 h-11 rounded-full bg-amber-glow/20 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21V12h6v9"/></svg></span>
               <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Pantry, before opening</h3>
-              <p class="text-sm text-warm-gray-600 leading-relaxed">Keep the sealed bottle somewhere cool, dark, and dry. A cupboard away from the stove is ideal. No fridge needed until you open it.</p>
+              <p class="text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Keep the sealed bottle somewhere cool, dark, and dry. A cupboard away from the stove is ideal. No fridge needed until you open it.</p>
             </div>
             <div class="bg-white rounded-3xl ring-1 ring-warm-gray-200/60 p-6">
               <span class="w-11 h-11 rounded-full bg-amber-glow/20 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M6 12h12M10 6v2M10 16v2"/></svg></span>
               <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Fridge, after opening</h3>
-              <p class="text-sm text-warm-gray-600 leading-relaxed">Once the seal is broken, the refrigerator is the right home. Cold storage slows or prevents the surface mold that opened syrup can grow at room temperature.</p>
+              <p class="text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Once the seal is broken, the refrigerator is the right home. Cold storage slows or prevents the surface mold that opened syrup can grow at room temperature.</p>
             </div>
             <div class="bg-white rounded-3xl ring-1 ring-warm-gray-200/60 p-6">
               <span class="w-11 h-11 rounded-full bg-amber-glow/20 flex items-center justify-center mb-4"><svg class="w-5 h-5 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 5l14 14M19 5L5 19M2 12h20"/></svg></span>
               <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Freezer, long term</h3>
-              <p class="text-sm text-warm-gray-600 leading-relaxed">For a bottle you will not finish soon, the freezer holds flavor indefinitely. The syrup stays pourable and needs about an hour at room temperature to loosen fully.</p>
+              <p class="text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">For a bottle you will not finish soon, the freezer holds flavor indefinitely. The syrup stays pourable and needs about an hour at room temperature to loosen fully.</p>
             </div>
           </div>
 
@@ -399,7 +401,7 @@
 
   <!-- SECTION 4: MOLD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
         <div class="md:col-span-4">
           <div class="flex items-center gap-3 mb-4">
@@ -420,8 +422,8 @@
 
 
   <!-- SECTION 5: CRYSTALLIZATION -->
-  <section class="py-8 md:py-12 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
+  <section class="py-8 md:py-12 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
         <div class="md:col-span-4">
           <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight mt-4">Crystallized Maple Syrup</h2>
@@ -440,13 +442,13 @@
 
   <!-- SECTION 6: MAPLE TERROIR APPROACH -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl mx-auto">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
           How Maple Terroir Approaches This
         </h2>
       </div>
-      <div class="prose-body max-w-[760px] mx-auto">
+      <div class="prose-body max-w-[760px]">
         <p>Our <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml">maple leaf bottles</a> are glass, the container that keeps an opened bottle&rsquo;s color and flavor longest. Our 100 mL jug is plastic, so finish it within three to six months of opening.</p>
         <p>What goes into the bottle matters just as much for how long it keeps. Our syrup is single-origin, drawn from one family sugarbush, then graded and filled as pure maple syrup with nothing added. There is no diluting water and no additive to shorten its life, which is exactly why a sealed bottle lasts for years. You can read the full process in our <a href="../blog/the-complete-guide-to-canadian-maple-syrup">complete guide to Canadian maple syrup</a>.</p>
         <p>Our organic syrups are certified by Ecocert, Canada Organic and USDA Organic, three separate certification programs. To choose the grade and flavor that suits you, see our guide to <a href="../blog/grade-a-vs-grade-b-maple-syrup">Grade A vs Grade B maple syrup</a>, and to tell the real thing from imitation, see <a href="../blog/pure-maple-syrup-vs-table-syrup">pure maple syrup vs table syrup</a>. When you are ready to stock up, our <a href="../collections/premium-maple-syrup">pure maple syrup collection</a> and our <a href="/shop/organic-maple-syrup">organic maple syrup</a> are the place to start.</p>
@@ -456,8 +458,8 @@
 
 
   <!-- SECTION 7: MISCONCEPTIONS -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
         <div class="md:col-span-4">
           <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">
@@ -465,15 +467,15 @@
           </h2>
         </div>
         <div class="md:col-span-7 md:col-start-6 divide-y divide-warm-gray-200/50">
-          <div class="reveal pb-8 prose-body">
+          <div class="reveal pb-8 prose-body max-w-[760px]">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"Maple syrup never goes bad"</h3>
             <p>Half true. A sealed bottle lasts for years, but an opened bottle left at room temperature can grow surface mold. The seal is the dividing line. Once it is broken, the bottle needs the refrigerator.</p>
           </div>
-          <div class="reveal py-8 prose-body">
+          <div class="reveal py-8 prose-body max-w-[760px]">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"You can scrape the mold off and reboil it"</h3>
             <p>Not safe. Mold can leave mycotoxins that survive boiling, so removing the visible layer does not make the syrup safe again. If mold has formed, the safe choice is to discard the bottle and rely on refrigeration to prevent it next time.</p>
           </div>
-          <div class="reveal pt-8 prose-body">
+          <div class="reveal pt-8 prose-body max-w-[760px]">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"Crystals mean the syrup has spoiled"</h3>
             <p>Not true. Crystals are pure sugar separating out as a little water evaporates, which is harmless. Warm the syrup gently and stir until they dissolve, and the bottle is good as new.</p>
           </div>
@@ -485,7 +487,7 @@
 
   <!-- KEY TAKEAWAYS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="bg-gradient-to-br from-amber-glow/15 to-amber-warm/10 ring-1 ring-amber-warm/20 rounded-[2.5rem] p-8 md:p-14">
         <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight mt-4 mb-6">Key Takeaways</h2>
         <ul style="list-style: disc; padding-left: 1.25rem; display: grid; gap: 0.9rem; max-width: 760px;">
@@ -501,7 +503,8 @@
 
 
   <!-- CTA -->
-  <section class="relative py-24 md:py-32 px-4 md:px-8 overflow-hidden">
+  <section class="px-4 md:px-8 py-8 md:py-12">
+    <div class="relative max-w-[1400px] mx-auto rounded-[2rem] overflow-hidden bg-charcoal py-24 md:py-32 px-6 md:px-12">
     <div class="absolute inset-0">
       <img src="../assets/images/story/sap-in-bucket.png" alt="Maple sap dripping into a collection bucket in a Quebec sugarbush" class="w-full h-full object-cover">
     </div>
@@ -521,13 +524,14 @@
         <a href="../collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Browse the Syrup</a>
       </div>
     </div>
+  </div>
   </section>
 
 
   <!-- FAQ -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
+  <section class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
           Maple Syrup Storage FAQ
         </h2>
@@ -539,7 +543,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Pure maple syrup does not spoil the way fresh food does, because it is roughly two-thirds sugar and holds very little free water for microbes to use. An unopened bottle kept cool and dark stays good for years. Once a bottle is opened, mold can grow on the surface over time, so opened syrup belongs in the refrigerator. Stored that way, pure maple syrup keeps its flavor and stays safe far longer than most pantry foods.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Pure maple syrup does not spoil the way fresh food does, because it is roughly two-thirds sugar and holds very little free water for microbes to use. An unopened bottle kept cool and dark stays good for years. Once a bottle is opened, mold can grow on the surface over time, so opened syrup belongs in the refrigerator. Stored that way, pure maple syrup keeps its flavor and stays safe far longer than most pantry foods.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -548,7 +552,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. Once a bottle is opened, the University of Maine Cooperative Extension and Michigan State University Extension both advise refrigerating pure maple syrup to slow or prevent surface mold. An opened bottle left in the pantry will eventually grow mold. Cold storage keeps the syrup safe and protects its flavor.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Yes. Once a bottle is opened, the University of Maine Cooperative Extension and Michigan State University Extension both advise refrigerating pure maple syrup to slow or prevent surface mold. An opened bottle left in the pantry will eventually grow mold. Cold storage keeps the syrup safe and protects its flavor.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -557,7 +561,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Opened pure maple syrup in a glass or tin container keeps for about one year in the refrigerator. Syrup in a plastic container is best used within three to six months, because plastic lets in a small amount of air that changes the color and flavor over time. For longer storage, the freezer keeps maple syrup indefinitely.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Opened pure maple syrup in a glass or tin container keeps for about one year in the refrigerator. Syrup in a plastic container is best used within three to six months, because plastic lets in a small amount of air that changes the color and flavor over time. For longer storage, the freezer keeps maple syrup indefinitely.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -566,7 +570,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes, and the freezer is the best option for long-term storage. Because pure maple syrup is so high in sugar, it does not freeze solid. It thickens into a pourable syrup that needs about an hour at room temperature to return to normal consistency. Freezing holds the flavor and quality for an indefinite period.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Yes, and the freezer is the best option for long-term storage. Because pure maple syrup is so high in sugar, it does not freeze solid. It thickens into a pourable syrup that needs about an hour at room temperature to return to normal consistency. Freezing holds the flavor and quality for an indefinite period.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -575,7 +579,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">No. The common advice to scrape the mold and reboil the syrup is not the safe choice. Michigan State University Extension notes that mold can leave behind mycotoxins that survive the boiling process, so removing the visible mold does not make the syrup safe. If mold has formed, the safe step is to discard the syrup. Refrigerating opened syrup prevents the problem in the first place.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">No. The common advice to scrape the mold and reboil the syrup is not the safe choice. Michigan State University Extension notes that mold can leave behind mycotoxins that survive the boiling process, so removing the visible mold does not make the syrup safe. If mold has formed, the safe step is to discard the syrup. Refrigerating opened syrup prevents the problem in the first place.</p>
           </div>
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
@@ -584,7 +588,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Crystals at the bottom of the bottle are sugar, not spoilage. They form when some water evaporates and the syrup becomes more concentrated than it can hold, which is common near the end of a bottle or after long storage. To fix it, stand the bottle in a bowl of warm water, or warm the syrup gently on the stove or in short bursts in the microwave, and stir until the crystals dissolve. The syrup is perfectly good to use.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed max-w-[760px]">Crystals at the bottom of the bottle are sugar, not spoilage. They form when some water evaporates and the syrup becomes more concentrated than it can hold, which is common near the end of a bottle or after long storage. To fix it, stand the bottle in a bowl of warm water, or warm the syrup gently on the stove or in short bursts in the microwave, and stir until the crystals dissolve. The syrup is perfectly good to use.</p>
           </div>
         </div>
       </div>
