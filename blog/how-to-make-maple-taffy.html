@@ -328,6 +328,25 @@
     .tls p { font-size: .9rem; line-height: 1.55; color: #5A5249; margin: 0; }
     @media (prefers-reduced-motion: reduce) { .tl-fill { transition: none; width: var(--w); } }
 
+    /* One container (Liam, November 6, 2026): every section sits in max-w-[1400px] mx-auto, text on its left edge. */
+    .tg-fig { margin-top: 1.5rem; }
+    .tg-b { margin-top: 2rem; }
+    @media (min-width: 1024px) {
+      .tgrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 3rem; align-items: start; }
+      .tgrid > .tg-a { grid-column: 1 / span 7; grid-row: 1; }
+      .tgrid > .tg-b { grid-column: 1 / span 7; grid-row: 2; }
+      .tgrid > .tg-fig { grid-column: 8 / span 5; grid-row: 1 / span 2; margin-top: 0; position: sticky; top: 7rem; }
+      .lg\:col-span-5 > .toc ol.toc-cols { columns: 1; }
+      .blog-cta-slot .blog-cta { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 3rem; align-items: start; padding: 3rem; }
+      .blog-cta-slot .blog-cta > .blog-cta__title { grid-column: 1; grid-row: 1; }
+      .blog-cta-slot .blog-cta > .blog-cta__body { grid-column: 1; grid-row: 2; }
+      .blog-cta-slot .blog-cta > [data-shelf] { grid-column: 2; grid-row: 1 / span 3; }
+      .kt ul { columns: 2; column-gap: 3rem; }
+      .kt li { break-inside: avoid; }
+    }
+    /* Rise without the 0.98 scale, so a heading waiting to reveal already sits on the container edge. */
+    .reveal { transform: translateY(2.5rem); }
+    @media (prefers-reduced-motion: reduce) { .reveal { transform: none; } }
   </style>
 </head>
 
@@ -394,9 +413,8 @@
 
 
   <!-- HERO -->
-  <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4 md:px-8">
-    <div class="max-w-[1200px] mx-auto rh">
+    <div class="max-w-[1400px] mx-auto rh">
       <div>
         <a href="/recipes/" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
           <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
@@ -436,19 +454,15 @@
       </figure>
     </div>
   </section>
-
-
-  <!-- INTRO -->
+<!-- INTRO AND CONTENTS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-7 max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">Maple taffy is pure maple syrup boiled until it is thick enough to set on cold snow, then poured in a ribbon and rolled up on a wooden stick.</strong> In French it is tire d'érable, or tire sur la neige, and it is the treat sugar shacks in Quebec are known for each spring. In New England it goes by sugar on snow.</p>
       <p>You need one ingredient, a saucepan, a thermometer and something cold to pour onto. The whole recipe takes about 20 minutes, and one 250 mL bottle of syrup makes about eight sticks. Below the recipe card you will find the temperature and why it matters, how to test the syrup without a thermometer, three ways to make it without snow, which grade of syrup to use and how to scale it for a party.</p>
     </div>
-  </section>
-
-  <!-- CONTENTS -->
-  <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+      <div class="lg:col-span-5">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ol class="toc-cols">
@@ -467,12 +481,15 @@
         </ol>
       </nav>
     </div>
+    </div>
+    </div>
   </section>
 
 
-  <!-- RECIPE CARD -->
+<!-- RECIPE CARD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
       <div class="reveal rcp-card">
         <h2 id="recipe" class="rcp-h">Maple Taffy on Snow</h2>
         <div class="rcp-stats">
@@ -514,13 +531,13 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- STEPS AROUND THE BOTTLE -->
+<!-- STEPS AROUND THE BOTTLE -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="max-w-[760px] mx-auto prose-body mb-6">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
+      <div class="max-w-[760px] prose-body mb-6">
         <h2 id="steps" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">Boil, Pour, Roll</h2>
         <p>The method is four moves, and the only one that needs care is the temperature. Everything else is about speed: the syrup sets on the snow in seconds, so have the sticks ready before you pour.</p>
       </div>
@@ -536,17 +553,17 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- TEMPERATURE -->
+<!-- TEMPERATURE -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto tgrid">
+    <div class="tg-a max-w-[760px] prose-body">
       <h2 id="temperature" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">What Temperature for Maple Taffy</h2>
       <p>Boil maple syrup to 113°C (235°F) for taffy you can roll on a stick. That is the finish temperature for maple on snow in the <a href="https://blogs.cornell.edu/cornellmaple/files/2021/04/Confection-Notebook5th-edition-with-bookmarks.pdf" target="_blank" rel="nofollow noopener">New York State Maple Confections Notebook</a> from Cornell's maple program, and it sits 13°C (23°F) above the point where water boils at sea level.</p>
       <p>Every maple treat is the same syrup boiled to a different point. The longer it boils, the more water leaves, and the firmer it sets as it cools. The chart below shows where taffy sits beside the other confections, from the same Cornell table. The bar is the temperature.</p>
     </div>
-    <div class="max-w-[900px] mx-auto mt-6">
+    <div class="tg-fig">
       <div class="reveal tl" role="figure" aria-label="Finish temperatures for maple syrup confections, from Cornell's maple program">
         <div class="tl-row"><div class="tl-t">104°C<small>219°F</small></div><div class="tl-bar"><div class="tl-fill" style="--w:18%"></div></div><div class="tl-name">Maple syrup, the bottle you buy</div></div>
         <div class="tl-row"><div class="tl-t">111.5°C<small>234°F</small></div><div class="tl-bar"><div class="tl-fill" style="--w:52%"></div></div><div class="tl-name">Maple cream, also called <a href="/blog/how-to-make-maple-butter">maple butter</a></div></div>
@@ -557,19 +574,19 @@
         <p class="tl-note">Sea-level readings from the Cornell table, which adds that each one has to be adjusted to the day you cook. Bars start at 100°C, where water boils.</p>
       </div>
     </div>
-    <div class="max-w-[760px] mx-auto prose-body mt-8">
+    <div class="tg-b max-w-[760px] prose-body">
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-4 mb-4">Adjust for your kitchen</h3>
       <p>Water does not boil at exactly 100°C everywhere. It boils lower at altitude and moves a little with the weather, and thermometers drift. The Cornell guide's advice for maple cream applies here too: measure the temperature at which water boils, on the day, with the thermometer you will use.</p>
       <p>Bring a pot of water to a rolling boil and read the thermometer. Add 13°C (23°F) to that number, and that is your taffy temperature. If water boils at 98°C in your kitchen, take the syrup off at 111°C. The <a href="https://www.massmaple.org/?p=44" target="_blank" rel="nofollow noopener">Massachusetts Maple Producers Association</a> gives a range of 22 to 28°F (12 to 16°C) above boiling water, and says the higher end makes a stiffer taffy.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Softer or chewier</h3>
       <p>At 113°C (235°F) the taffy is soft and stretchy and rolls easily. Taken to 115°C (239°F), the temperature Ricardo uses in his <a href="https://www.ricardocuisine.com/en/recipes/3117-homemade-maple-taffy-on-snow" target="_blank" rel="nofollow noopener">maple taffy on snow</a>, it sets firmer and chewier on the stick. Go much past that and the strips harden before you can roll them.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- NO THERMOMETER -->
+<!-- NO THERMOMETER -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="no-thermometer" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Test Maple Taffy Without a Thermometer</h2>
       <p>A thermometer is the reliable way, but two tests tell you when the syrup is close. Start testing once the bubbles turn small and the syrup coats a spoon in a thick layer.</p>
       <div class="duo">
@@ -584,12 +601,12 @@
       </div>
       <p>Take the pan off the heat while you test, so the syrup does not keep climbing past the point you want.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- WITHOUT SNOW -->
+<!-- WITHOUT SNOW -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="without-snow" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Make Maple Taffy Without Snow</h2>
       <p>Maple taffy only needs a surface cold enough to set the syrup before crystals form. The Cornell notebook explains that syrup poured onto snow or fine shaved ice thickens so quickly that it sets smooth instead of grainy. Any of these three works.</p>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Crushed ice in a baking pan</h3>
@@ -599,12 +616,12 @@
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Snow saved in the freezer</h3>
       <p>Scoop clean snow into the pan on a snowy day, cover it and keep it in the freezer until you want it. Fresh snow from away from roads and paths, with the top layer scraped off, is the cleanest to use.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- WHICH SYRUP -->
+<!-- WHICH SYRUP -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup to Use for Taffy</h2>
       <p>Use pure maple syrup, made only from boiled maple sap. The taste of the taffy is the taste of the syrup, concentrated, so the grade you pick shows. Table syrup is mostly corn syrup with flavoring and will not taste of maple; our guide to <a href="/blog/pure-maple-syrup-vs-table-syrup">pure maple syrup vs table syrup</a> explains how to read the label.</p>
       <figure class="reveal rcp-fig">
@@ -617,13 +634,12 @@
       </figure>
       <p>Maple from Canada suggests an amber syrup for a rich taste. Between our two, the Dark bottle gives the strongest maple flavor and the Golden gives the gentlest, so pick by taste. Both come from one farm and have nothing added. The differences between grades are set out in our <a href="/blog/grade-a-vs-grade-b-maple-syrup">guide to maple syrup grades</a>.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- SHOP CARD -->
+<!-- SHOP CARD -->
   <link rel="stylesheet" href="/assets/blog-cta.css">
   <section class="blog-cta-slot px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <aside class="blog-cta">
         <h2 class="blog-cta__title">The syrup for the taffy.</h2>
         <p class="blog-cta__body">Each 250 mL bottle makes one batch, about eight sticks. The maple leaf bottle is our Dark grade, the organic bottle is Golden, and the 100 mL leaf bottle makes about three sticks.</p>
@@ -656,11 +672,10 @@
       </aside>
     </div>
   </section>
-
-
-  <!-- CROWD -->
+<!-- CROWD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="crowd" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Making Maple Taffy for a Crowd</h2>
       <p>Allow about 2 tablespoons of finished taffy per stick. Food writer Valerie Lugonja of <a href="https://acanadianfoodie.com/?p=71308" target="_blank" rel="nofollow noopener">A Canadian Foodie</a> plans one cup of syrup for six to eight people. Boil one cup at a time: a small batch reaches temperature in about 10 minutes, and it stays hot and pourable while you work through the pan.</p>
       <div class="reveal cmp-wrap">
@@ -676,12 +691,12 @@
       </div>
       <p>For a party, keep spare pans of snow or crushed ice in the freezer and swap them in as the first ones fill. Each batch of syrup takes about 10 minutes on the stove, so the next one is ready by the time the last strip is rolled.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- FIXES -->
+<!-- FIXES -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="fixes" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">When Maple Taffy Goes Wrong</h2>
       <p>Nearly every problem comes down to the temperature or the snow. These are the four you are most likely to meet, and how to fix each one without starting over.</p>
       <div class="fix-list">
@@ -691,22 +706,22 @@
         <div><h3>It sinks and leaves a hole</h3><p>The snow is too loose or too warm. Pack it harder and keep the pan outside or in the freezer until the moment you pour.</p></div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- TRADITION -->
+<!-- TRADITION -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="tradition" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">The Sugar Shack Tradition</h2>
       <p>Maple taffy belongs to sugaring season, the few weeks each spring when the sap runs and producers boil it into syrup. At a sugar shack, or cabane à sucre, taffy is made alongside the syrup: poured hot onto clean snow and picked up on a wooden stick.</p>
       <p>The New England version comes with its own side dishes. The Massachusetts Maple Producers Association lists sour pickles to cut the sweetness, served with saltines or plain doughnuts. It sounds odd and works well, and it is a good way to keep a group eating more than one stick. To learn how the syrup itself is made before it reaches the pan, read <a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">how maple syrup is made, from sap to bottle</a>.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- SAFETY -->
+<!-- SAFETY -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="safety" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Safety and Leftovers</h2>
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-4 mb-4">Hot syrup burns</h3>
       <p>At 113°C, boiling syrup is hotter than boiling water, and it sticks to skin. Let an adult do the boiling and the pouring. Children can stand on the far side of the pan and roll the strips once they are on the snow, which is the part they want to do anyway.</p>
@@ -716,16 +731,15 @@
       <p>Whatever is left in the pan sets as it cools. Warm it gently with a spoonful of water and pour it over pancakes or ice cream, or soak the pan in hot water and it will dissolve.</p>
       <p>An opened bottle of syrup belongs in the fridge between batches. Our <a href="/tools/maple-syrup-shelf-life">maple syrup shelf life checker</a> says how long yours will last.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- FAQ -->
+<!-- FAQ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
-      <div class="reveal mb-10 md:mb-14 text-center">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+      <div class="reveal md:col-span-4">
         <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Taffy Questions</h2>
       </div>
-      <div class="space-y-3">
+      <div class="space-y-3 md:col-span-8">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
             <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What is maple taffy made of?</h3>
@@ -783,11 +797,9 @@
       </div>
     </div>
   </section>
-
-
-  <!-- KEY TAKEAWAYS -->
+<!-- KEY TAKEAWAYS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto kt">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
         <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Key Takeaways</h2>
         <ul class="list-disc pl-6 space-y-2 text-warm-gray-600">
@@ -800,8 +812,6 @@
       </div>
     </div>
   </section>
-
-
   <!-- CTA:START title="Pure Maple Syrup, Family Owned Since 1978." text="Our syrup comes from one farm, in 250 mL bottles from $14.99." href="/collections/premium-maple-syrup" label="Shop Maple Syrup" href2="/recipes/" label2="More Recipes" -->
   <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">

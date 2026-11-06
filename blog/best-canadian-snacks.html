@@ -347,6 +347,10 @@
     .snack-photo img { display: block; width: 100%; height: auto; }
     .travel-grid { display: grid; gap: .75rem; }
     @media (min-width: 768px) { .travel-grid { grid-template-columns: 1fr 1fr; } }
+    .disclose { max-width: 720px; }
+    .toc { max-width: 760px; }
+    /* reveal scales from the left edge, so a heading never leaves the container line while it animates in */
+    .reveal { transform-origin: left top; }
 
   </style>
 </head>
@@ -416,7 +420,7 @@
   <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4 md:px-8">
     <link rel="stylesheet" href="/assets/blog-cta.css">
-    <div class="max-w-[1100px] mx-auto grid gap-10 hero-grid">
+    <div class="max-w-[1400px] mx-auto grid gap-10 hero-grid">
       <div>
         <a href="./" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
           <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
@@ -436,13 +440,13 @@
   </section>
 
   <section class="py-6 md:py-10 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto prose-body">
       <p class="disclose"><strong class="text-charcoal font-semibold">We make three of the snacks on this list.</strong> Maple Terroir is a family maple business, and our stroopwafels, popcorn and cookies are entries 1 to 3. We chose the criteria, and we scored our snacks on the same rules as the other nine. Facts about the other snacks come from their makers' own websites and named independent sources, read on November 6, 2026.</p>
     </div>
   </section>
 
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <h2 id="short-answer" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">The Short Answer</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[62ch] mb-8">The best Canadian snack to buy is a maple one: our maple syrup stroopwafels, made in Canada with Canadian-grown flour and a pure maple syrup filling, score 10 out of 10, with our maple popcorn and maple cookies beside them. The most popular Canadian snacks are ketchup chips, All Dressed chips, Coffee Crisp and Jos. Louis, going by nine Canadian snack lists.</p>
       <div class="reveal answer-grid">
@@ -455,7 +459,7 @@
   </section>
 
   <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ol class="toc-cols">
@@ -484,7 +488,7 @@
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <h2 id="most-named" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">The Snacks Canadians Name Most</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[64ch] mb-8">We read the nine Canadian snack lists on the first page of Google Canada for "canadian snacks" and counted how many named each snack. Ketchup chips appear on five of the nine. Something made with maple appears on five of the nine too, from maple cream cookies to maple taffy, though no single maple snack reaches more than two.</p>
       <div class="reveal tally">
@@ -508,10 +512,10 @@
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-8 md:mb-10 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-8 md:mb-10">
         <h2 id="compare" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">All Twelve Canadian Snacks Side by Side</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[62ch] mx-auto mt-4">Each criterion scores 0, 1 or 2 points, for 10 in all. The rules are under the table. On a phone, swipe the table sideways.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[62ch] mt-4">Each criterion scores 0, 1 or 2 points, for 10 in all. The rules are under the table. On a phone, swipe the table sideways.</p>
       </div>
       <div class="reveal gift-table-wrap">
         <table class="gift-table">
@@ -532,12 +536,12 @@
           </tbody>
         </table>
       </div>
-      <p class="fine text-center mt-4">Scores out of 10. Snacks with the same score are listed by how many of the nine lists name them.</p>
+      <p class="fine mt-4">Scores out of 10. Snacks with the same score are listed by how many of the nine lists name them.</p>
     </div>
   </section>
 
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <h2 id="how-we-scored" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">How We Scored Them</h2>
       <div class="reveal prose-body max-w-[70ch] mb-8">
         <p>We took the packaged snacks the nine lists name most often, added three Canadian-made snacks the lists missed (Swedish Berries, Purdys Hedgehogs and Caramilk) and our own three, and checked each one on its maker's website on November 6, 2026. Dishes and bakery treats such as poutine and butter tarts are covered separately below, because you eat them where they are made.</p>
@@ -554,10 +558,10 @@
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="reveal mb-8 md:mb-10 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-8 md:mb-10">
         <h2 id="the-list" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">The 12 Best Canadian Snacks</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[60ch] mx-auto mt-4">What each snack is, who makes it, where it is made and what that means if you want to send it or bring it home.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[60ch] mt-4">What each snack is, who makes it, where it is made and what that means if you want to send it or bring it home.</p>
       </div>
       <div class="space-y-6 md:space-y-8">
         <article id="maple-stroopwafels" class="reveal gift-card is-ours">
@@ -685,9 +689,9 @@
   </section>
 
   <section class="py-6 md:py-10 px-4 md:px-8" id="shop">
-    <div class="max-w-[1100px] mx-auto">
-      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-3 text-center">Our Canadian Maple Snacks</h2>
-      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mx-auto text-center mb-6 md:mb-8">Stroopwafels, popcorn, cookies and nuts made with our maple syrup. Prices in Canadian dollars.</p>
+    <div class="max-w-[1400px] mx-auto">
+      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-3">Our Canadian Maple Snacks</h2>
+      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mb-6 md:mb-8">Stroopwafels, popcorn, cookies and nuts made with our maple syrup. Prices in Canadian dollars.</p>
       <!-- SHELF:START handles="maple-syrup-stroopwafel,handcrafted-pure-maple-syrup-butter-popcorn,maple-sugar-sea-salt-cookies,maple-leaf-mini-shortbread-cookies,maple-syrup-mini-stroopwafel,maple-syrup-sea-salt-roasted-peanuts,cocoa-dark-chocolate-covered-maple-roasted-almonds,maple-syrup-blueberry-cookies" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
@@ -723,7 +727,7 @@
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <h2 id="treats-to-eat-here" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">Canadian Treats to Eat in Canada</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[64ch] mb-8">Four of the most-named treats are fresh foods rather than packaged snacks, so they are not scored above. They are worth eating while you are here, or baking at home.</p>
       <div class="reveal travel-grid">
@@ -741,8 +745,8 @@
   </section>
 
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
         <h2 id="faq" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Canadian Snack Questions</h2>
       </div>
       <div class="reveal reveal-delay-2 space-y-3">

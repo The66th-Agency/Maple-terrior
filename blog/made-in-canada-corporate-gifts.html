@@ -343,6 +343,12 @@
     @media (min-width: 860px) { .event { grid-template-columns: 1.1fr 1fr; gap: 3rem; } }
     .event img { width: 100%; height: auto; border-radius: 2rem; }
     @media (prefers-reduced-motion: reduce) { .idea, .bar i { transition: none; } }
+
+    /* one container: left-aligned controls */
+    .chips { justify-content: flex-start; }
+    .scroll-hint { text-align: left; }
+    .reveal { transform-origin: left top; }
+    @media (min-width: 860px) { .event { grid-template-columns: 1fr 1.1fr; } }
   </style>
 </head>
 
@@ -411,7 +417,7 @@
   <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4 md:px-8">
     <link rel="stylesheet" href="/assets/blog-cta.css">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[900px]">
       <a href="./" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
         <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
         Back to the Maple Terroir Blog
@@ -434,13 +440,13 @@
           <span>Last updated <time datetime="2026-11-06">November 6, 2026</time></span>
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- HERO IMAGE -->
   <section class="px-4 md:px-8 mb-8 md:mb-14">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="rounded-[2rem] overflow-hidden aspect-[16/9] md:aspect-[21/9] bg-cream-dark">
         <img src="/assets/images/covers/made-in-canada-corporate-gifts.webp" alt="A row of Maple Terroir gifts on a cream background: maple syrup ground coffee, organic maple syrup, Maple Ceylon Tea, maple leaf mini shortbread, a 250 mL maple leaf bottle of maple syrup, a pack of maple syrup stroopwafels and a jar of maple cream" class="w-full h-full object-cover" width="1920" height="824" fetchpriority="high">
       </div>
@@ -450,17 +456,17 @@
 
   <!-- SHORT ANSWER -->
   <section class="py-6 md:py-10 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">A good corporate gift made in Canada gets used, suits someone you know mostly from work, and tells the recipient where it came from.</strong> Food and drink fit all three, which is why half of these ideas are things to eat or drink: pure maple syrup, maple stroopwafels, maple tea and coffee, and boxed sets for a client. The other half come from Canadian makers you can find in your own city, such as a candle maker, a potter, a knitter or an Indigenous artist.</p>
       <p>We sell maple products, and eight of the sixteen ideas are ours, with the price from our store on November 6, 2026. We include them because they fit the brief, and we say so here so you can weigh them with that in mind. The other eight we do not sell, so their price is set by whoever makes them.</p>
       <p>If you already know the gift and want to compare where to order it, our list of the <a href="/blog/best-corporate-gift-companies-canada">best corporate gift companies in Canada</a> scores seven companies on price per gift, case prices, made in Canada, Google rating and lead time, and lists who adds a logo or ships to many addresses.</p>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- CONTENTS -->
   <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px]">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ul>
@@ -473,16 +479,16 @@
           <li><a href="#faq">Questions</a></li>
         </ul>
       </nav>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- IDEAS -->
   <section class="py-12 md:py-16 px-4 md:px-8">
-    <div class="max-w-[1200px] mx-auto">
-      <div class="reveal mb-8 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-8">
         <h2 id="ideas" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">16 Corporate Gift Ideas Made in Canada</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[62ch] mx-auto mt-4">Show only the ideas that suit who you are buying for. White cards are ours, with prices from our store. Cream cards are ideas from other Canadian makers.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[62ch] mt-4">Show only the ideas that suit who you are buying for. White cards are ours, with prices from our store. Cream cards are ideas from other Canadian makers.</p>
       </div>
       <div class="reveal chips mb-3" role="group" aria-label="Show ideas for">
         <button type="button" class="chip" data-filter="all" aria-pressed="true">All 16</button>
@@ -491,7 +497,7 @@
         <button type="button" class="chip" data-filter="team" aria-pressed="false">A team or event</button>
         <button type="button" class="chip" data-filter="under15" aria-pressed="false">Under $15 each</button>
       </div>
-      <p class="text-sm text-warm-gray-600 text-center mb-8" id="filter-note" aria-live="polite">Showing all 16 ideas.</p>
+      <p class="text-sm text-warm-gray-600 mb-8" id="filter-note" aria-live="polite">Showing all 16 ideas.</p>
       <div class="idea-grid" id="idea-grid">
         <article class="idea" id="maple-leaf-bottle" data-tags="clients employees team under15">
           <div class="idea-img"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-50ml.webp" alt="Maple Leaf Bottle of Maple Syrup from Maple Terroir" loading="lazy" width="600" height="450"></div>
@@ -628,8 +634,8 @@
 
   <!-- SHELF -->
   <section class="py-6 md:py-10 px-4 md:px-8" id="shop">
-    <div class="max-w-[1100px] mx-auto">
-      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-6 md:mb-8 text-center">Our Ideas, Ready to Add to the Cart</h2>
+    <div class="max-w-[1400px] mx-auto">
+      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-6 md:mb-8">Our Ideas, Ready to Add to the Cart</h2>
       <!-- SHELF:START handles="pure-maple-syrup-maple-leaf-bottle-50ml,maple-syrup-stroopwafel,maple-ceylon-tea,maple-syrup-medium-dark-roast-ground-coffee,organic-pure-maple-syrup-250ml,organic-maple-cream-butter-jar,pure-maple-syrup-stroopwafels-caddy,maple-extravaganza-gift-set" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
@@ -667,10 +673,10 @@
 
   <!-- TEAM COST -->
   <section class="py-14 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-8 md:mb-10 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-8 md:mb-10">
         <h2 id="team-cost" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">What a Corporate Gift for the Whole Team Costs</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mx-auto mt-4">Most of our products come in cases of 12, 24, 36 and 48 at 10 to 25 percent off the single price. Pick a gift and the number of people, and the calculator finds the cheapest mix of cases and single packs.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mt-4">Most of our products come in cases of 12, 24, 36 and 48 at 10 to 25 percent off the single price. Pick a gift and the number of people, and the calculator finds the cheapest mix of cases and single packs.</p>
       </div>
       <div class="reveal calc">
         <div>
@@ -699,7 +705,7 @@
           <a class="calc-link" id="calc-link" href="/products/pure-maple-syrup-maple-leaf-bottle-50ml">Choose the case size</a>
         </div>
       </div>
-      <div class="reveal prose-body max-w-[760px] mx-auto mt-10">
+      <div class="reveal prose-body max-w-[760px] mt-10">
         <p>Two examples show where the case prices matter. Thirty maple leaf bottles cost $239.70 bought one at a time and $211.14 as a case of 24 plus 6 single bottles, $7.04 a person. For 45 people, a full case of 48 at $287.52 costs less than a case of 36 plus 9 singles at $302.31, so the calculator suggests the bigger case and tells you how many are spare. A spare gift or two is useful for a new hire or a forgotten name.</p>
       </div>
     </div>
@@ -707,11 +713,11 @@
 
 
   <!-- MADE IN CANADA -->
-  <section class="py-14 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-10 text-center">
+  <section class="py-14 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-10">
         <h2 id="made-in-canada" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">How to Check a Corporate Gift Is Made in Canada</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mx-auto mt-4">"Product of Canada" and "Made in Canada" are different claims under Canadian rules, and a company based in Canada can sell gifts made anywhere. Here is what each label claim means.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mt-4">"Product of Canada" and "Made in Canada" are different claims under Canadian rules, and a company based in Canada can sell gifts made anywhere. Here is what each label claim means.</p>
       </div>
       <div class="reveal rule-grid">
         <div class="rule">
@@ -727,10 +733,10 @@
           <div class="label-claim"><b>"Made in Canada"</b><span>At least 51 percent Canadian content, the last substantial transformation in Canada, and a qualifying statement that the product contains imported content.</span><div class="bar" aria-hidden="true"><i style="--w:51%"></i></div><p class="bar-cap">51 percent Canadian content</p></div>
         </div>
       </div>
-      <p class="text-sm text-warm-gray-600 leading-relaxed text-center max-w-[70ch] mx-auto mt-5">Sources: <a class="text-amber-warm underline" href="https://inspection.canada.ca/en/food-labels/labelling/industry/origin-claims" target="_blank" rel="noopener">Canadian Food Inspection Agency, origin claims on food labels</a> and <a class="text-amber-warm underline" href="https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/product-canada-and-made-canada-claims" target="_blank" rel="noopener">Competition Bureau, Product of Canada and Made in Canada claims</a>, both read November 6, 2026.</p>
+      <p class="text-sm text-warm-gray-600 leading-relaxed max-w-[70ch] mt-5">Sources: <a class="text-amber-warm underline" href="https://inspection.canada.ca/en/food-labels/labelling/industry/origin-claims" target="_blank" rel="noopener">Canadian Food Inspection Agency, origin claims on food labels</a> and <a class="text-amber-warm underline" href="https://competition-bureau.canada.ca/en/how-we-foster-competition/education-and-outreach/publications/product-canada-and-made-canada-claims" target="_blank" rel="noopener">Competition Bureau, Product of Canada and Made in Canada claims</a>, both read November 6, 2026.</p>
 
-      <div class="reveal max-w-[900px] mx-auto mt-12">
-        <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight text-center mb-6">Three Questions to Ask Before You Order</h3>
+      <div class="reveal max-w-[900px] mt-12">
+        <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-6">Three Questions to Ask Before You Order</h3>
         <ol class="steps">
           <li><strong>What does the label say, word for word?</strong> "Product of Canada" is the stronger claim. "Made in Canada" with a qualifying statement means some content came from elsewhere. A Canadian brand name or address on the box describes the company, so read the origin claim itself.</li>
           <li><strong>Where does the main ingredient or material come from?</strong> Cocoa, coffee and tea do not grow in Canada, so Canadian chocolate, coffee and tea are made or finished here from imported ingredients. That is normal, and the label should say so.</li>
@@ -738,7 +744,7 @@
         </ol>
       </div>
 
-      <div class="reveal prose-body max-w-[760px] mx-auto mt-10">
+      <div class="reveal prose-body max-w-[760px] mt-10">
         <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mb-4">Our own products, read the same way</h3>
         <p>Our maple syrup comes from one farm in Quebec, and the organic syrup is certified organic by Ecocert, Canada Organic and USDA Organic. Our stroopwafels and shortbread are made in Canada with Canadian-grown flour and Canadian eggs. Two products are built on an ingredient Canada does not grow: the Maple Ceylon Tea is black tea from Sri Lanka, blended with our maple syrup in Canada, and the coffee is Arabica from South America, roasted in Canada with maple syrup. We tell you that here because a buyer choosing gifts for being Canadian should know it.</p>
       </div>
@@ -748,10 +754,10 @@
 
   <!-- EMPLOYEES AND CLIENTS -->
   <section class="py-14 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-10 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-10">
         <h2 id="employees-and-clients" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Corporate Gifts for Employees and for Clients</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mx-auto mt-4">The same gift lands differently depending on who receives it, and a gift to employees has a tax rule attached.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mt-4">The same gift lands differently depending on who receives it, and a gift to employees has a tax rule attached.</p>
       </div>
       <div class="reveal split">
         <div class="split-card">
@@ -780,10 +786,9 @@
 
 
   <!-- EVENT GIFTS -->
-  <section class="py-14 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
+  <section class="py-14 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
       <div class="reveal event">
-        <img src="/assets/images/blog/ted2026-maple-terroir-stroopwafel-in-kind-partner.webp" alt="A TED2026 attendee opens a Maple Terroir Pure Maple Syrup Stroopwafel at a table beside a card that reads TED thanks our in-kind partners" width="1600" height="1065" loading="lazy">
         <div>
           <h2 id="event-gifts" class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">Corporate Gifts for an Event or Conference</h2>
           <div class="prose-body mt-5">
@@ -791,6 +796,7 @@
             <p>For a registration desk or a booth, a stroopwafel caddy holds 1,190 g of individually wrapped 34 g stroopwafels for $39.99, or $35.99 each in a case of 8. For delegate bags, a 50 mL maple leaf bottle is small enough to pack and says Canada at a glance, which suits visitors from abroad.</p>
           </div>
         </div>
+        <img src="/assets/images/blog/ted2026-maple-terroir-stroopwafel-in-kind-partner.webp" alt="A TED2026 attendee opens a Maple Terroir Pure Maple Syrup Stroopwafel at a table beside a card that reads TED thanks our in-kind partners" width="1600" height="1065" loading="lazy">
       </div>
     </div>
   </section>
@@ -798,22 +804,22 @@
 
   <!-- WHERE TO ORDER -->
   <section class="py-14 md:py-24 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
-      <div class="reveal text-center mb-8">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px]">
+      <div class="reveal mb-8">
         <h2 id="where-to-order" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Where to Order Made-in-Canada Corporate Gifts</h2>
       </div>
       <div class="reveal prose-body">
         <p>For any of our eight ideas, our <a href="/shop/maple-syrup-corporate-gift">maple syrup corporate gifts</a> page brings the gift sets and ordering together, and each product page sells cases of 12 to 48. For an order larger than our cases, email <a href="mailto:info@mapleterroir.com">info@mapleterroir.com</a> with the quantity, the date and the destination, and we reply with pricing and lead times.</p>
         <p>If you need a logo on every gift, or one order shipped to dozens of home addresses, other companies publish those services and we do not. Our comparison of the <a href="/blog/best-corporate-gift-companies-canada">best corporate gift companies in Canada</a> shows which ones do, with prices. For gifts between colleagues rather than from the company, our <a href="/blog/christmas-gifts-for-coworkers">Christmas gifts for coworkers</a> list covers Secret Santa budgets, and stores buying to resell can start at <a href="/shop/maple-syrup-wholesale">maple syrup wholesale</a>.</p>
       </div>
-    </div>
+    </div></div>
   </section>
 
 
   <!-- FAQ -->
-  <section class="py-14 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="text-center mb-12 md:mb-14">
+  <section class="py-14 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto"><div class="max-w-[1000px]">
+      <div class="mb-12 md:mb-14">
         <h2 id="faq" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Corporate Gift Idea Questions</h2>
       </div>
       <div class="reveal space-y-3">
@@ -863,7 +869,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div></div>
   </section>
 
 

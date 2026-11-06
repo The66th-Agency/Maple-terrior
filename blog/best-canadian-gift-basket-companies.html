@@ -304,6 +304,10 @@
     @media (min-width: 1024px) { .hero-grid { grid-template-columns: minmax(0,1fr) 380px; align-items: end; } }
     .gift-table td:first-child { min-width: 10.5rem; }
     .gift-table td:nth-child(2) { min-width: 11rem; }
+    .disclose { max-width: 720px; }
+    .toc { max-width: 760px; }
+    /* reveal scales from the left edge, so a heading never leaves the container line while it animates in */
+    .reveal { transform-origin: left top; }
 
   </style>
 </head>
@@ -373,7 +377,7 @@
   <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4 md:px-8">
     <link rel="stylesheet" href="/assets/blog-cta.css">
-    <div class="max-w-[1100px] mx-auto grid gap-10 hero-grid">
+    <div class="max-w-[1400px] mx-auto grid gap-10 hero-grid">
       <div>
         <a href="./" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
           <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
@@ -402,13 +406,13 @@
   </section>
 
   <section class="py-6 md:py-10 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto prose-body">
       <p class="disclose"><strong class="text-charcoal font-semibold">We publish this list and sell one of the picks.</strong> Maple Terroir is a family maple business, and our boxed gift sets are entry 1. We chose the criteria, and we scored ourselves on the same rules as everyone else. Every fact about the other seven companies comes from their own websites and Google listings, read on November 6, 2026.</p>
     </div>
   </section>
 
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <h2 id="short-answer" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">The Short Answer</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[62ch] mb-8">The best Christmas gift basket company in Canada for a food gift is Maple Terroir: boxed sets of Canadian maple products from $75, with certified organic maple syrup, every item listed by size and a 4.9 rating on Google. The other companies suit other needs.</p>
       <div class="reveal answer-grid">
@@ -421,7 +425,7 @@
   </section>
 
   <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ol class="toc-cols">
@@ -446,10 +450,10 @@
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-8 md:mb-10 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-8 md:mb-10">
         <h2 id="compare" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">All Eight Companies Side by Side</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[62ch] mx-auto mt-4">Each criterion scores 0, 1 or 2 points, for 12 in all. The rules for each score are under the table. On a phone, swipe the table sideways.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[62ch] mt-4">Each criterion scores 0, 1 or 2 points, for 12 in all. The rules for each score are under the table. On a phone, swipe the table sideways.</p>
       </div>
       <div class="reveal gift-table-wrap">
         <table class="gift-table">
@@ -466,12 +470,12 @@
           </tbody>
         </table>
       </div>
-      <p class="fine text-center mt-4">Scores out of 12. Companies with the same score are listed by Google rating, then by number of Google reviews.</p>
+      <p class="fine mt-4">Scores out of 12. Companies with the same score are listed by Google rating, then by number of Google reviews.</p>
     </div>
   </section>
 
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <h2 id="how-we-scored" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">How We Scored Them</h2>
       <div class="reveal prose-body max-w-[70ch] mb-8">
         <p>We picked companies that ship Christmas gift baskets to buyers anywhere in the provinces and appear on the first page of Google Canada for "christmas gift baskets canada", "best gift baskets canada" or "gift basket companies canada" on November 6, 2026. A local shop that delivers only in one city is not on this list; our city pages, such as <a href="/locations-we-serve/canada/gift-baskets-toronto">gift baskets in Toronto</a> and <a href="/locations-we-serve/canada/gift-baskets-vancouver">gift baskets in Vancouver</a>, cover local delivery.</p>
@@ -490,10 +494,10 @@
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="reveal mb-8 md:mb-10 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-8 md:mb-10">
         <h2 id="the-list" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">The Eight Gift Basket Companies</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[60ch] mx-auto mt-4">What each one sells for Christmas, a basket in the $75 to $100 range, and where it is strongest and weakest.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[60ch] mt-4">What each one sells for Christmas, a basket in the $75 to $100 range, and where it is strongest and weakest.</p>
       </div>
       <div class="space-y-6 md:space-y-8">
         <article id="maple-terroir" class="reveal gift-card is-ours">
@@ -581,9 +585,9 @@
   </section>
 
   <section class="py-6 md:py-10 px-4 md:px-8" id="shop">
-    <div class="max-w-[1100px] mx-auto">
-      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-3 text-center">Our Eight Gift Sets, Ready to Add to the Cart</h2>
-      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mx-auto text-center mb-6 md:mb-8">Boxed sets of our maple products, from $75. Prices in Canadian dollars.</p>
+    <div class="max-w-[1400px] mx-auto">
+      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-3">Our Eight Gift Sets, Ready to Add to the Cart</h2>
+      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mb-6 md:mb-8">Boxed sets of our maple products, from $75. Prices in Canadian dollars.</p>
       <!-- SHELF:START handles="maple-treat-home-set,maple-extravaganza-gift-set,maple-tea-party-home-set,maple-enthusiast-home-set,maple-frenzy-home-set,maple-indulge-home-set,maple-organic-heaven-home-set,maple-mega-combo-gift-set" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
@@ -619,10 +623,10 @@
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="reveal mb-8 text-center">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal mb-8">
         <h2 id="christmas-delivery" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Christmas Delivery and Order-By Dates</h2>
-        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mx-auto mt-4">Gift baskets across Canada travel by courier, so the order-by date matters more than the price of delivery. These are the dates and areas each company published on November 6, 2026. A basket for the territories needs the earliest order.</p>
+        <p class="text-warm-gray-600 leading-relaxed max-w-[64ch] mt-4">Gift baskets across Canada travel by courier, so the order-by date matters more than the price of delivery. These are the dates and areas each company published on November 6, 2026. A basket for the territories needs the earliest order.</p>
       </div>
       <div class="reveal gift-table-wrap">
         <table class="gift-table">
@@ -639,12 +643,12 @@
           </tbody>
         </table>
       </div>
-      <p class="fine text-center mt-4">Our own delivery terms are on our checkout: Standard 3 to 9 business days, Express 1 to 2, free on orders of $99 or more, and free pickup in Vancouver.</p>
+      <p class="fine mt-4">Our own delivery terms are on our checkout: Standard 3 to 9 business days, Express 1 to 2, free on orders of $99 or more, and free pickup in Vancouver.</p>
     </div>
   </section>
 
   <section class="py-10 md:py-14 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <h2 id="how-to-choose" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">How to Choose a Christmas Gift Basket Company</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[64ch] mb-8">Start with the person and the address, then the budget. The table above shows the scores; this is the short version by situation.</p>
       <div class="reveal answer-grid">
@@ -665,8 +669,8 @@
   </section>
 
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1000px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
         <h2 id="faq" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Gift Basket Questions</h2>
       </div>
       <div class="reveal reveal-delay-2 space-y-3">

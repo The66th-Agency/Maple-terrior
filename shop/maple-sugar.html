@@ -190,6 +190,8 @@
     /* Maple sugar page: the pack picker rows and the sugar and syrup comparison grid. */
     .ms-pack + .ms-pack { border-top: 1px solid #EDE8DF; }
     .ms-row + .ms-row { border-top: 1px solid #EDE8DF; }
+    /* Reveal slides up only: a scale would pull each heading off the container's left edge while it waits. */
+    @media (prefers-reduced-motion: no-preference) { .reveal { transform: translateY(2.5rem); } .reveal.visible { transform: none; } }
   </style>
 </head>
 
@@ -310,15 +312,15 @@
 
 
   <!-- PRODUCT GRID -->
-  <section id="shop" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+  <section id="shop" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-        <figure class="reveal lg:col-span-5 rounded-[2rem] overflow-hidden" style="background:#EFE4D2;">
+        <figure class="reveal lg:col-span-5 lg:order-2 rounded-[2rem] overflow-hidden" style="background:#EFE4D2;">
           <a href="/products/organic-pure-maple-sugar" class="block" tabindex="-1" aria-hidden="true">
             <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-sugar-box.jpg?v=1749671374&amp;width=800" alt="" width="800" height="800" loading="lazy" class="w-full aspect-square object-contain p-6 md:p-10 mix-blend-multiply">
           </a>
         </figure>
-        <div class="lg:col-span-7">
+        <div class="lg:col-span-7 lg:order-1">
           <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
             Buy It by the Box or by the Case
           </h2>
@@ -463,11 +465,11 @@
     @media (max-width: 639px) { .st-anat { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { .st-note, .st-dot { transition: none; } }
   </style>
-  <section class="py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
+  <section class="py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="max-w-3xl mb-12 md:mb-16">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">What Is in Our Maple Sugar</h2>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] mx-auto st-copy">Maple sugar is maple syrup cooked until it dries into granules. Here is what is in each box.</p>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] st-copy">Maple sugar is maple syrup cooked until it dries into granules. Here is what is in each box.</p>
       </div>
       <div class="st-anat st-copy" data-anat>
         <div class="st-anat-col">
@@ -575,15 +577,16 @@
     </div>
   </section>
 
-  <section id="use" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
-    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+  <section id="use" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+    <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-10 md:mb-12">
+      How to Use Maple Sugar
+    </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
       <figure class="reveal lg:col-span-5">
         <img src="/assets/images/shop/maple-sugar-yogurt.webp" alt="A bowl of yogurt with blueberries and raspberries dusted with golden maple sugar, a folded crepe sprinkled with maple sugar, a small dish of maple sugar with a brass spoon and a latte on a pale oak table" width="1000" height="1241" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[2rem]">
       </figure>
       <div class="lg:col-span-7">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-8">
-          How to Use Maple Sugar
-        </h2>
         <div class="reveal rounded-[1.5rem] bg-charcoal text-cream p-6 md:p-8 flex flex-col sm:flex-row sm:items-center gap-4 md:gap-8">
           <p class="font-display text-3xl md:text-4xl leading-tight">1 cup white sugar<br><span class="text-amber-glow">=</span> 1 cup maple sugar</p>
           <p class="text-sm text-warm-gray-300 leading-relaxed max-w-[32ch]">Swap it in equal amounts in recipes that call for white sugar, so there is nothing to convert. That is the swap the Massachusetts Maple Producers Association gives.</p>
@@ -608,17 +611,17 @@
         </dl>
       </div>
     </div>
+    </div>
   </section>
 
 
   <!-- MAPLE SUGAR OR MAPLE SYRUP -->
   <section id="sugar-or-syrup" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-10 md:mb-14 max-w-2xl">
-        Maple Sugar or Maple Syrup
-      </h2>
-      <div class="grid grid-cols-2 md:grid-cols-12 gap-x-3 md:gap-8">
-        <div class="hidden md:block md:col-span-4"></div>
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-12 gap-x-3 md:gap-8" style="row-gap:2rem">
+        <h2 class="reveal reveal-delay-1 col-span-2 md:col-span-4 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+          Maple Sugar or Maple Syrup
+        </h2>
         <a href="/products/organic-pure-maple-sugar" class="reveal md:col-span-4 group block">
           <span class="block rounded-[1.5rem] overflow-hidden aspect-[4/3]" style="background:#EFE4D2;"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-sugar-box.jpg?v=1749671374&amp;width=800" alt="" width="800" height="800" loading="lazy" class="w-full h-full object-contain p-4 md:p-6 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"></span>
           <span class="block font-display text-lg md:text-2xl font-semibold text-charcoal mt-4">Maple sugar</span>
@@ -664,7 +667,7 @@
 
   <!-- FAMILY:START baked by scripts/build-blocks.mjs -->
   <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
-    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
       <figure class="reveal md:col-span-5 max-w-[420px] w-full mx-auto md:mx-0">
         <img src="/assets/images/story/shawn-lytton.webp" alt="Shawn Lytton, President of Maple Terroir, in front of a shelf of maple syrup and Canadian food gifts" width="640" height="800" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[1.5rem]">
         <figcaption class="text-xs text-warm-gray-400 mt-3">Shawn Lytton, President of Maple Terroir.</figcaption>
@@ -681,14 +684,14 @@
 
 
   <!-- FAQ -->
-  <section id="faq" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
+  <section id="faq" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+      <div class="lg:col-span-4">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
           Questions About Maple Sugar
         </h2>
       </div>
-      <div class="reveal reveal-delay-2 space-y-3">
+      <div class="reveal reveal-delay-2 space-y-3 lg:col-span-8">
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
             <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What is maple sugar?</h3>

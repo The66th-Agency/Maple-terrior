@@ -237,8 +237,11 @@
       .cmp-table td:nth-child(2)::before { content: attr(data-h) ": "; font-weight: 600; color: #1A1714; }
       .cmp-table td:nth-child(3)::before { content: attr(data-h) ": "; font-weight: 600; color: #1A1714; }
     }
+    /* One left edge: reveals rise without scaling, so a heading never starts off the container's edge mid-animation */
+    body .reveal:not(.visible) { transform: translateY(2.5rem); }
     @media (prefers-reduced-motion: reduce) {
       .cf-box { animation: none; }
+      body .reveal:not(.visible) { transform: none; }
       .cf-photo img { transition: none; }
     }
 
@@ -396,11 +399,11 @@
     @media (max-width: 639px) { .st-anat { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { .st-note, .st-dot { transition: none; } }
   </style>
-  <section class="py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
+  <section class="py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="max-w-3xl mb-12 md:mb-16">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">What Is in Our Chocolate Covered Cherries</h2>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] mx-auto st-copy">Here is what the box of Dark Chocolate Maple Cherries holds, point by point.</p>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] st-copy">Here is what the box of Dark Chocolate Maple Cherries holds, point by point.</p>
       </div>
       <div class="st-anat st-copy" data-anat>
         <div class="st-anat-col">
@@ -454,15 +457,15 @@
   <!-- ANATOMY:END -->
 
   <!-- CASES -->
-  <section id="cases" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+  <section id="cases" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-        <figure class="reveal lg:col-span-5 rounded-[2rem] overflow-hidden" style="background:#EFE4D2;">
+        <figure class="reveal lg:col-span-5 lg:order-2 rounded-[2rem] overflow-hidden" style="background:#EFE4D2;">
           <a href="/products/dark-chocolate-covered-cherry-pure-maple-syrup" class="block" tabindex="-1" aria-hidden="true" data-mt-keep>
             <img src="/assets/images/cards/dark-chocolate-covered-cherry-pure-maple-syrup.webp" alt="" width="1000" height="1000" loading="lazy" class="w-full aspect-square object-cover">
           </a>
         </figure>
-        <div class="lg:col-span-7">
+        <div class="lg:col-span-7 lg:order-1">
           <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Buy Chocolate Covered Cherries by the Box or the Case</h2>
           <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] cf-copy">
             Every box is our <a href="/products/dark-chocolate-covered-cherry-pure-maple-syrup">Dark Chocolate Covered Cherry &amp; Pure Maple Syrup</a>, 100 g. A case is the same box in a larger order, and the price of each box falls as the case grows. Prices are in Canadian dollars.
@@ -495,7 +498,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-        <div class="lg:col-span-5 flex justify-center">
+        <div class="lg:col-span-5 lg:order-2 flex justify-center lg:justify-end">
           <svg class="cf-layers reveal" viewBox="0 0 420 420" role="img" aria-labelledby="cf-layers-t">
             <title id="cf-layers-t">Drawing of one chocolate covered cherry cut in half: a dark chocolate shell around a dried cherry sweetened with maple syrup</title>
             <defs>
@@ -518,7 +521,7 @@
             </g>
           </svg>
         </div>
-        <div class="lg:col-span-7">
+        <div class="lg:col-span-7 lg:order-1">
           <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How Our Chocolate Covered Cherries Taste</h2>
           <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mb-8">Each piece is two layers, and you meet them in order. The drawing shows one cut in half.</p>
           <div class="space-y-6 max-w-[60ch]">
@@ -532,9 +535,9 @@
   </section>
 
   <!-- CHERRIES OR CORDIALS -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+  <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Dried Cherries or Cherry Cordials</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-8 max-w-[65ch]">Search for chocolate covered cherries and two different sweets come up under one name. A cherry cordial is a single cherry around a liquid centre, and many home recipes wrap a maraschino cherry in fondant before dipping it. Ours are the other kind: small dried cherries coated in chocolate and eaten by the handful.</p>
         <div class="reveal cmp-wrap">
@@ -557,7 +560,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-        <div class="lg:col-span-7 lg:order-2">
+        <div class="lg:col-span-7">
           <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Are Chocolate Covered Cherries Healthy?</h2>
           <div class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] space-y-4 cf-copy">
             <p>They are a treat, and the label says so plainly. The nutrition panel lists one serving as 100 g, which is the whole box: 440 calories, 56 g of sugars and 13 g of saturated fat.</p>
@@ -565,7 +568,7 @@
             <p>Shared four ways, each share is 110 calories and 14 g of sugars.</p>
           </div>
         </div>
-        <div class="lg:col-span-5 lg:order-1 flex justify-center">
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
           <div class="cf-label reveal" role="table" aria-label="Nutrition facts for one 100 g box of Maple Terroir chocolate covered cherries">
             <h3>Nutrition Facts</h3>
             <p class="cf-fr">Valeur nutritive</p>
@@ -596,12 +599,12 @@
   </section>
 
   <!-- WHO THEY SUIT -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+  <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Who Buys Our Chocolate Covered Cherries</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch]">A box is small enough to finish and big enough to share. Here are four ways to use a box, and the order size that suits each.</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
             <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Dark chocolate fans</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">A handful after dinner, with coffee or a glass of red wine. One box, $9.99, is the way to try them.</p>
@@ -668,7 +671,7 @@
   <!-- STORAGE -->
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Store Chocolate Covered Cherries</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch] cf-copy">Follow the storage note on the box first. For chocolate in general, <a href="https://blogs.extension.iastate.edu/answerline/2023/11/07/chocolate-shelf-life-storage-and-bloom/" rel="nofollow noopener" target="_blank">Iowa State University Extension</a> gives four rules, and they suit these too.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -695,9 +698,9 @@
   </section>
 
   <!-- HOW AN ORDER WORKS -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+  <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-10">From Our Shelf to Yours</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
@@ -722,7 +725,7 @@
 
   <!-- FAMILY:START baked by scripts/build-blocks.mjs -->
   <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
-    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
       <figure class="reveal md:col-span-5 max-w-[420px] w-full mx-auto md:mx-0">
         <img src="/assets/images/story/shawn-lytton.webp" alt="Shawn Lytton, President of Maple Terroir, in front of a shelf of maple syrup and Canadian food gifts" width="640" height="800" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[1.5rem]">
         <figcaption class="text-xs text-warm-gray-400 mt-3">Shawn Lytton, President of Maple Terroir.</figcaption>
@@ -740,7 +743,7 @@
   <!-- FAQ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-3xl mx-auto">
+      <div class="max-w-4xl">
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-8">Chocolate Covered Cherry Questions</h2>
         <div class="reveal space-y-3">
           <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">

@@ -262,11 +262,11 @@ function anatomy(attrs, where) {
         <a href="${moreHref}" class="text-sm text-charcoal underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">${a.more}</a>
       </div>` : '';
   const intro = !pdp && a.intro ? `
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] mx-auto st-copy">${a.intro}</p>` : '';
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] st-copy">${a.intro}</p>` : '';
   return `  ${ANATOMY_CSS}
-  <section${a.id ? ` id="${a.id}"` : ''} class="${a.id ? 'scroll-mt-28 ' : ''}py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
+  <section${a.id ? ` id="${a.id}"` : ''} class="${a.id ? 'scroll-mt-28 ' : ''}py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="max-w-3xl mb-12 md:mb-16">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">${pdp && a.pdpTitle ? a.pdpTitle : a.title}</h2>${intro}
       </div>
       <div class="st-anat st-copy" data-anat>
@@ -377,7 +377,7 @@ const PHOTO = { src: '/assets/images/story/shawn-lytton.webp', w: 640, h: 800 };
 const ALT = 'Shawn Lytton, President of Maple Terroir, in front of a shelf of maple syrup and Canadian food gifts';
 const CAPTION = 'Shawn Lytton, President of Maple Terroir.';
 const family = (where) => `  <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
-    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
       <figure class="reveal md:col-span-5 max-w-[420px] w-full mx-auto md:mx-0">
         <img src="${PHOTO.src}" alt="${ALT}" width="${PHOTO.w}" height="${PHOTO.h}" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[1.5rem]">
         <figcaption class="text-xs text-warm-gray-400 mt-3">${CAPTION}</figcaption>

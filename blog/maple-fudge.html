@@ -320,6 +320,25 @@
     .tls p { font-size: .9rem; line-height: 1.55; color: #5A5249; margin: 0; }
     @media (prefers-reduced-motion: reduce) { .tl-fill { transition: none; width: var(--w); } }
 
+    /* One container (Liam, November 6, 2026): every section sits in max-w-[1400px] mx-auto, text on its left edge. */
+    .tg-fig { margin-top: 1.5rem; }
+    .tg-b { margin-top: 2rem; }
+    @media (min-width: 1024px) {
+      .tgrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 3rem; align-items: start; }
+      .tgrid > .tg-a { grid-column: 1 / span 7; grid-row: 1; }
+      .tgrid > .tg-b { grid-column: 1 / span 7; grid-row: 2; }
+      .tgrid > .tg-fig { grid-column: 8 / span 5; grid-row: 1 / span 2; margin-top: 0; position: sticky; top: 7rem; }
+      .lg\:col-span-5 > .toc ol.toc-cols { columns: 1; }
+      .blog-cta-slot .blog-cta { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 3rem; align-items: start; padding: 3rem; }
+      .blog-cta-slot .blog-cta > .blog-cta__title { grid-column: 1; grid-row: 1; }
+      .blog-cta-slot .blog-cta > .blog-cta__body { grid-column: 1; grid-row: 2; }
+      .blog-cta-slot .blog-cta > [data-shelf] { grid-column: 2; grid-row: 1 / span 3; }
+      .kt ul { columns: 2; column-gap: 3rem; }
+      .kt li { break-inside: avoid; }
+    }
+    /* Rise without the 0.98 scale, so a heading waiting to reveal already sits on the container edge. */
+    .reveal { transform: translateY(2.5rem); }
+    @media (prefers-reduced-motion: reduce) { .reveal { transform: none; } }
   </style>
 </head>
 
@@ -386,9 +405,8 @@
 
 
   <!-- HERO -->
-  <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4 md:px-8">
-    <div class="max-w-[1200px] mx-auto rh">
+    <div class="max-w-[1400px] mx-auto rh">
       <div>
         <a href="/recipes/" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
           <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
@@ -428,19 +446,15 @@
       </figure>
     </div>
   </section>
-
-
-  <!-- INTRO -->
+<!-- INTRO AND CONTENTS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-7 max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">Maple fudge is maple syrup and cream boiled to 114 to 115°C (237 to 239°F), cooled without stirring, then beaten until tiny sugar crystals form and turn it thick, pale and creamy.</strong> The maple syrup is the only sweetener, so the fudge tastes of maple first and caramel second.</p>
       <p>This is the old-fashioned method, and it rewards a thermometer and a little patience. The recipe card below makes 36 squares in a 20 cm (8 inch) pan from two 250 mL bottles of syrup. After it you will find a picture of each stage, why the temperatures matter, how to fix grainy or soft fudge, which syrup to use, how to top it with maple sugar and how long it keeps.</p>
     </div>
-  </section>
-
-  <!-- CONTENTS -->
-  <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+      <div class="lg:col-span-5">
       <nav class="reveal toc" aria-label="On this page">
         <p class="toc-title">On this page</p>
         <ol class="toc-cols">
@@ -458,12 +472,15 @@
         </ol>
       </nav>
     </div>
+    </div>
+    </div>
   </section>
 
 
-  <!-- RECIPE CARD -->
+<!-- RECIPE CARD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
       <div class="reveal rcp-card">
         <h2 id="recipe" class="rcp-h">Maple Walnut Fudge</h2>
         <div class="rcp-stats">
@@ -509,13 +526,13 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- STAGES -->
+<!-- STAGES -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
+      <div class="max-w-[760px] prose-body">
         <h2 id="stages" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">The Four Stages of Maple Fudge</h2>
         <p>Fudge is a question of controlling when the sugar crystallizes. You concentrate the syrup, cool it while it stays smooth, then make it crystallize all at once by beating, so the crystals stay too small to feel. Each stage has a number to watch.</p>
       </div>
@@ -526,18 +543,18 @@
         <div><div class="deg">2 to 3<small>hours</small></div><h3>4. Set</h3><p>In the pan, in the fridge, until firm enough to cut clean squares.</p></div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- TEMPERATURE -->
+<!-- TEMPERATURE -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto tgrid">
+    <div class="tg-a max-w-[760px] prose-body">
       <h2 id="temperature" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Why the Temperatures Matter</h2>
       <p>The cooking temperature sets how firm the fudge is. Maple from Canada's <a href="https://maplefromcanada.ca/recipes/maple-fudge/" target="_blank" rel="nofollow noopener">maple fudge recipe</a> cooks to 114 to 115°C (237 to 239°F) and calls the thermometer the secret to success. Ricardo's <a href="https://www.ricardocuisine.com/en/recipes/4683-maple-fudge-the-best" target="_blank" rel="nofollow noopener">maple fudge</a> goes to 240°F (115°C). Below 114°C there is too much water left and the fudge stays soft; much above 115°C it sets hard and crumbly.</p>
       <p>The cooling temperature sets how smooth it is. Both recipes cool the fudge to about 43°C (110°F) before beating. Cornell's maple program explains why in its <a href="https://blogs.cornell.edu/cornellmaple/files/2021/04/Confection-Notebook5th-edition-with-bookmarks.pdf" target="_blank" rel="nofollow noopener">confections notebook</a>: stirring hot fudge starts crystals too early and gives it a gritty texture, while the cooler the syrup is when you start, the smaller the crystals stay.</p>
       <p>Maple syrup goes through the same stages on its own, without cream. The chart shows where fudge sits beside the pure maple confections, using Cornell's finish temperatures.</p>
     </div>
-    <div class="max-w-[900px] mx-auto mt-6">
+    <div class="tg-fig">
       <div class="reveal tl" role="figure" aria-label="Finish temperatures for maple syrup confections, with maple fudge">
         <div class="tl-row"><div class="tl-t">104°C<small>219°F</small></div><div class="tl-bar"><div class="tl-fill" style="--w:18%"></div></div><div class="tl-name">Maple syrup, the bottle you buy</div></div>
         <div class="tl-row"><div class="tl-t">111.5°C<small>234°F</small></div><div class="tl-bar"><div class="tl-fill" style="--w:52%"></div></div><div class="tl-name">Maple cream, also called <a href="/blog/how-to-make-maple-butter">maple butter</a></div></div>
@@ -548,26 +565,26 @@
         <p class="tl-note">Pure maple stages from the Cornell table, at sea level. The fudge range is from Maple from Canada's recipe. Bars start at 100°C, where water boils.</p>
       </div>
     </div>
-    <div class="max-w-[760px] mx-auto prose-body mt-8">
+    <div class="tg-b max-w-[760px] prose-body">
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-4 mb-4">Check your thermometer first</h3>
       <p>A thermometer that reads two degrees off moves you from fudge to soup. Put it in a pot of boiling water: at sea level it should read 100°C (212°F). If it reads 98°C, because of altitude or the thermometer itself, take the fudge off at 112 to 113°C instead. Clip it so the tip sits in the syrup and does not touch the bottom of the pot.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- NO THERMOMETER -->
+<!-- NO THERMOMETER -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="no-thermometer" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Can You Make Maple Fudge Without a Thermometer?</h2>
       <p>You can, using the soft-ball test, though it takes practice. As the bubbles turn small and slow, drop half a teaspoon of the mixture into a glass of very cold water. At the soft-ball stage it gathers into a soft, sticky ball you can pick up, which flattens when you take it out of the water. If it dissolves into threads, keep cooking and test again every minute or two.</p>
       <p>A candy thermometer takes the guessing out of the one step that decides whether the fudge sets, which is why both recipes we checked call for one.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- FIXES -->
+<!-- FIXES -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="fixes" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Why Maple Fudge Turns Out Grainy, Soft or Hard</h2>
       <p>Every fudge problem traces back to one of three numbers: how hot it boiled, how cool it was before beating, and how long it was beaten.</p>
       <div class="fix-list">
@@ -577,12 +594,12 @@
         <div><h3>Boiled over</h3><p>The pot was too small. Syrup and cream foam up far above where they start, which is why the recipe calls for a pot of 4 L or more.</p></div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- WHICH SYRUP -->
+<!-- WHICH SYRUP -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup to Use for Fudge</h2>
       <p>Use a dark syrup. Maple from Canada recommends dark syrup for this recipe for its robust flavor, and it holds its own against a cup of cream. The same goes for most baking, as our guide to the <a href="/blog/best-maple-syrup-for-baking">best maple syrup for baking</a> explains. Use pure maple syrup only: table syrup is mostly corn syrup and will not set or taste the same.</p>
       <figure class="reveal rcp-fig">
@@ -595,13 +612,12 @@
       </figure>
       <p>Both bottles come from one farm, with nothing added to the syrup. How the grades differ in color and taste is set out in our <a href="/blog/grade-a-vs-grade-b-maple-syrup">guide to maple syrup grades</a>.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- SHOP CARD -->
+<!-- SHOP CARD -->
   <link rel="stylesheet" href="/assets/blog-cta.css">
   <section class="blog-cta-slot px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <aside class="blog-cta">
         <h2 class="blog-cta__title">Everything maple in the fudge.</h2>
         <p class="blog-cta__body">Two 250 mL bottles make one pan. The maple leaf bottle is our Dark grade, the one we would use; the organic bottle is Golden. The maple sugar goes on top.</p>
@@ -634,12 +650,11 @@
       </aside>
     </div>
   </section>
-
-
-  <!-- MAPLE SUGAR -->
+<!-- MAPLE SUGAR -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="max-w-[760px] mx-auto prose-body mb-6">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
+      <div class="max-w-[760px] prose-body mb-6">
         <h2 id="maple-sugar" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">A Maple Sugar Top</h2>
         <p>Maple sugar is maple syrup boiled until almost no water is left and stirred into dry granules, the last stage on the chart above. Scattered over the fudge right after you pour it, it adds a light crunch and a second hit of maple, with nothing that is not maple.</p>
       </div>
@@ -654,16 +669,16 @@
           <div class="ps-step"><b>4</b><h3>Add salt if you like</h3><p>A pinch of flaky salt with the sugar makes a salted maple fudge. Use it sparingly; a little goes a long way.</p></div>
         </div>
       </div>
-      <div class="max-w-[760px] mx-auto prose-body mt-6">
+      <div class="max-w-[760px] prose-body mt-6">
         <p>One 100 g box of our <a href="/products/organic-pure-maple-sugar">organic maple sugar</a> tops several pans. The rest goes into coffee, over yogurt or in place of brown sugar in baking; our <a href="/blog/the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient">guide to maple sugar</a> covers how to use it.</p>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- VARIATIONS -->
+<!-- VARIATIONS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="variations" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Five Variations</h2>
       <p>Keep the syrup, cream, butter and temperatures the same, and change what goes in after beating or on top.</p>
       <ul class="list-disc pl-6 space-y-3 text-warm-gray-600">
@@ -674,26 +689,25 @@
         <li><strong class="text-charcoal font-semibold">Double batch:</strong> four bottles of syrup, 2 cups of cream and 6 tablespoons of butter in a 23 x 33 cm (9 x 13 inch) pan. Use a bigger pot and expect it to take longer to cool.</li>
       </ul>
     </div>
+    </div>
   </section>
-
-
-  <!-- STORING -->
+<!-- STORING -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="storing" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Storing and Gifting Maple Fudge</h2>
       <p>Keep the fudge in an airtight container in the fridge, as Maple from Canada advises, with parchment between the layers. It also freezes well, according to Ricardo: wrap the squares, freeze them in a sealed container and thaw them in the fridge.</p>
       <p>For a gift, cut the squares neatly with a knife dipped in hot water and wiped dry between cuts, then pack them in a tin lined with parchment. Add a bottle of the syrup it was made from, such as our <a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml">100 mL maple leaf bottle</a>, and the gift explains itself.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- FAQ -->
+<!-- FAQ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
-      <div class="reveal mb-10 md:mb-14 text-center">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+      <div class="reveal md:col-span-4">
         <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Fudge Questions</h2>
       </div>
-      <div class="space-y-3">
+      <div class="space-y-3 md:col-span-8">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
             <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What temperature do you cook maple fudge to?</h3>
@@ -751,11 +765,9 @@
       </div>
     </div>
   </section>
-
-
-  <!-- KEY TAKEAWAYS -->
+<!-- KEY TAKEAWAYS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto kt">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
         <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Key Takeaways</h2>
         <ul class="list-disc pl-6 space-y-2 text-warm-gray-600">
@@ -768,8 +780,6 @@
       </div>
     </div>
   </section>
-
-
   <!-- CTA:START title="Pure Maple Syrup, Family Owned Since 1978." text="Our syrup comes from one farm, in 250 mL bottles from $14.99." href="/collections/premium-maple-syrup" label="Shop Maple Syrup" href2="/recipes/" label2="More Recipes" -->
   <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">

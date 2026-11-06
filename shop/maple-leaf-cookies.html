@@ -148,8 +148,8 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(2.5rem); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
     .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
@@ -429,11 +429,11 @@
   <!-- LOGOS:END -->
 
   <!-- WHAT IS IN THE BOX -->
-  <section id="box" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
+  <section id="box" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="max-w-[720px] mb-12 md:mb-16">
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">What Is in the Box</h2>
-        <p class="reveal text-warm-gray-600 leading-relaxed max-w-[56ch] mx-auto text-lg">Our Maple Leaf Mini Shortbread Cookies are small, crisp maple leaves in a bilingual box. Here is what the box tells you.</p>
+        <p class="reveal text-warm-gray-600 leading-relaxed max-w-[56ch] text-lg">Our Maple Leaf Mini Shortbread Cookies are small, crisp maple leaves in a bilingual box. Here is what the box tells you.</p>
       </div>
       <div class="ck-anat mt-copy" data-anat>
         <div class="ck-anat-col">
@@ -470,7 +470,7 @@
   <!-- INGREDIENTS AND NUTRITION -->
   <section id="ingredients" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Ingredients, Allergens and Nutrition</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch]">Six ingredients, copied from the back of the box. Read the allergy line before you buy for anyone with a food allergy.</p>
         <div class="ck-label">
@@ -504,9 +504,9 @@
   </section>
 
   <!-- WHAT BUYERS SAY -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+  <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Rated 5.0 by the People Who Bought Them</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch] mt-copy">All seven reviews of this cookie give it five stars. Each one comes from a verified order, and you can read them all on the <a href="/products/maple-leaf-mini-shortbread-cookies#reviews-section">product page</a>.</p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -533,11 +533,11 @@
   <!-- TWO MAPLE LEAF COOKIES -->
   <section id="two-cookies" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+      <div class="max-w-[720px] mb-12 md:mb-16">
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Shortbread or Cream: Our Two Maple Leaf Cookies</h2>
-        <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mx-auto text-lg mt-copy">Many people searching for maple leaf cookies mean the cream sandwich cookie. We make that one too, and it returns in 2027. The shortbread is the one you can order today.</p>
+        <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] text-lg mt-copy">Many people searching for maple leaf cookies mean the cream sandwich cookie. We make that one too, and it returns in 2027. The shortbread is the one you can order today.</p>
       </div>
-      <div class="ck-pair max-w-5xl mx-auto">
+      <div class="ck-pair">
         <div class="ck-side reveal">
           <div class="ck-thumb ring-1 ring-warm-gray-200/60"><img src="/assets/images/shop/maple-leaf-cookies-plate.webp" alt="Mini maple leaf shortbread cookies from Maple Terroir on a white plate" width="750" height="750" loading="lazy"></div>
           <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mt-6">Maple Leaf Mini Shortbread</h3>
@@ -570,9 +570,9 @@
   </section>
 
   <!-- BY THE CASE -->
-  <section id="cases" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8" style="background:#FBF6EE;">
+  <section id="cases" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-10">
           <div class="lg:col-span-7">
             <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Maple Leaf Cookies by the Case</h2>
@@ -602,7 +602,7 @@
   <!-- WHERE A BOX FITS -->
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Where a Box of Maple Leaf Cookies Fits</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch]">Small cookies in a small box go a long way. These are the ways our buyers use them.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-copy">
@@ -636,9 +636,9 @@
   </section>
 
   <!-- HOW AN ORDER WORKS -->
-  <section class="py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+  <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <div class="max-w-5xl mx-auto">
+      <div>
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-10">From Our Shelf to Yours</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
@@ -663,7 +663,7 @@
 
   <!-- FAMILY:START baked by scripts/build-blocks.mjs -->
   <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
-    <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
       <figure class="reveal md:col-span-5 max-w-[420px] w-full mx-auto md:mx-0">
         <img src="/assets/images/story/shawn-lytton.webp" alt="Shawn Lytton, President of Maple Terroir, in front of a shelf of maple syrup and Canadian food gifts" width="640" height="800" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[1.5rem]">
         <figcaption class="text-xs text-warm-gray-400 mt-3">Shawn Lytton, President of Maple Terroir.</figcaption>
@@ -680,11 +680,11 @@
 
   <!-- FAQ -->
   <section id="faq" class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="text-center mb-12 md:mb-16">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+      <div class="lg:col-span-4">
         <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Leaf Cookie Questions</h2>
       </div>
-      <div class="reveal space-y-3 mt-copy">
+      <div class="reveal space-y-3 mt-copy lg:col-span-8">
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
             <h3 class="font-display text-lg font-semibold text-charcoal">Where can I buy maple leaf cookies in Canada?</h3>

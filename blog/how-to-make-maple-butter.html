@@ -332,6 +332,25 @@
     .tls p { font-size: .9rem; line-height: 1.55; color: #5A5249; margin: 0; }
     @media (prefers-reduced-motion: reduce) { .tl-fill { transition: none; width: var(--w); } }
 
+    /* One container (Liam, November 6, 2026): every section sits in max-w-[1400px] mx-auto, text on its left edge. */
+    .tg-fig { margin-top: 1.5rem; }
+    .tg-b { margin-top: 2rem; }
+    @media (min-width: 1024px) {
+      .tgrid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 3rem; align-items: start; }
+      .tgrid > .tg-a { grid-column: 1 / span 7; grid-row: 1; }
+      .tgrid > .tg-b { grid-column: 1 / span 7; grid-row: 2; }
+      .tgrid > .tg-fig { grid-column: 8 / span 5; grid-row: 1 / span 2; margin-top: 0; position: sticky; top: 7rem; }
+      .lg\:col-span-5 > .toc ol.toc-cols { columns: 1; }
+      .blog-cta-slot .blog-cta { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: 3rem; align-items: start; padding: 3rem; }
+      .blog-cta-slot .blog-cta > .blog-cta__title { grid-column: 1; grid-row: 1; }
+      .blog-cta-slot .blog-cta > .blog-cta__body { grid-column: 1; grid-row: 2; }
+      .blog-cta-slot .blog-cta > [data-shelf] { grid-column: 2; grid-row: 1 / span 3; }
+      .kt ul { columns: 2; column-gap: 3rem; }
+      .kt li { break-inside: avoid; }
+    }
+    /* Rise without the 0.98 scale, so a heading waiting to reveal already sits on the container edge. */
+    .reveal { transform: translateY(2.5rem); }
+    @media (prefers-reduced-motion: reduce) { .reveal { transform: none; } }
   </style>
 </head>
 
@@ -398,9 +417,8 @@
 
 
   <!-- HERO -->
-  <!-- HERO -->
   <section class="pt-32 md:pt-40 pb-10 md:pb-14 px-4 md:px-8">
-    <div class="max-w-[1200px] mx-auto rh">
+    <div class="max-w-[1400px] mx-auto rh">
       <div>
         <a href="/recipes/" class="reveal inline-flex items-center gap-2 text-amber-warm mb-6 text-sm font-medium">
           <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2L2 6l6 4"/></svg>
@@ -440,21 +458,42 @@
       </figure>
     </div>
   </section>
-
-
-  <!-- INTRO -->
+<!-- INTRO AND CONTENTS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div class="lg:col-span-7 max-w-[760px] prose-body">
       <p><strong class="text-charcoal font-semibold">To make maple butter, boil pure maple syrup to 12 to 13°C (22 to 24°F) above the temperature water boils at, cool it quickly without moving it, then stir it slowly until it turns opaque and thick.</strong> The stirring makes billions of tiny sugar crystals, and they turn clear syrup into a pale, smooth spread. Nothing else goes in.</p>
       <p>Maple butter is also sold as maple cream or maple spread, and the method here follows the one Cornell's maple program publishes for producers. It takes about an hour, most of it waiting for the syrup to cool. If you came for the other maple butter, softened butter whipped with maple syrup, that recipe is further down and takes five minutes.</p>
+    </div>
+      <div class="lg:col-span-5">
+      <nav class="reveal toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ol class="toc-cols">
+          <li><a href="#recipe">The recipe card</a></li>
+          <li><a href="#temperature">The Temperature</a></li>
+          <li><a href="#stirring">What Stirring Looks Like</a></li>
+          <li><a href="#which-syrup">Which Maple Syrup to Use</a></li>
+          <li><a href="#fixes">Grainy, Runny or Hard</a></li>
+          <li><a href="#whipped">Whipped Maple Butter</a></li>
+          <li><a href="#shortcut">The Shortcut: Our Jar</a></li>
+          <li><a href="#storing">Storing It</a></li>
+          <li><a href="#using">How to Use It</a></li>
+          <li><a href="#faq">Questions</a></li>
+          <li><a href="#takeaways">Key Takeaways</a></li>
+        </ol>
+      </nav>
+    </div>
+    </div>
     </div>
   </section>
 
 
-  <!-- TWO KINDS -->
+<!-- TWO KINDS -->
   <section class="py-6 md:py-10 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-2 text-center">Two Things Called Maple Butter</h2>
+    <div class="max-w-[1400px] mx-auto">
+    <div>
+      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-2">Two Things Called Maple Butter</h2>
       <div class="reveal duo">
         <div class="on">
           <h3>Maple butter, or maple cream</h3>
@@ -476,34 +515,12 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- CONTENTS -->
-  <section class="py-4 md:py-6 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
-      <nav class="reveal toc" aria-label="On this page">
-        <p class="toc-title">On this page</p>
-        <ol class="toc-cols">
-          <li><a href="#recipe">The recipe card</a></li>
-          <li><a href="#temperature">The Temperature</a></li>
-          <li><a href="#stirring">What Stirring Looks Like</a></li>
-          <li><a href="#which-syrup">Which Maple Syrup to Use</a></li>
-          <li><a href="#fixes">Grainy, Runny or Hard</a></li>
-          <li><a href="#whipped">Whipped Maple Butter</a></li>
-          <li><a href="#shortcut">The Shortcut: Our Jar</a></li>
-          <li><a href="#storing">Storing It</a></li>
-          <li><a href="#using">How to Use It</a></li>
-          <li><a href="#faq">Questions</a></li>
-          <li><a href="#takeaways">Key Takeaways</a></li>
-        </ol>
-      </nav>
     </div>
   </section>
-
-
-  <!-- RECIPE CARD -->
+<!-- RECIPE CARD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
       <div class="reveal rcp-card">
         <h2 id="recipe" class="rcp-h">Maple Butter (Maple Cream)</h2>
         <div class="rcp-stats">
@@ -545,17 +562,17 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- TEMPERATURE -->
+<!-- TEMPERATURE -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto tgrid">
+    <div class="tg-a max-w-[760px] prose-body">
       <h2 id="temperature" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">The Temperature That Makes Maple Butter</h2>
       <p>Cornell's maple program says to heat the syrup to 22 to 24°F (12 to 13°C) above the boiling point of water, and to boil to the higher end on rainy or humid days. Its guide, published in the <a href="https://blogs.cornell.edu/cornellmaple/files/2021/04/Confection-Notebook5th-edition-with-bookmarks.pdf" target="_blank" rel="nofollow noopener">New York State Maple Confections Notebook</a>, stresses measuring the boiling point of water on the day you cook, because it changes with the weather and with altitude.</p>
       <p>At sea level that puts maple butter at 112 to 113°C (234 to 236°F). Our own jar is boiled to 112°C. A degree or two lower and the cream stays runny and separates in the jar; a few degrees higher and you are making maple candy. The chart shows how close together the maple confections sit.</p>
     </div>
-    <div class="max-w-[900px] mx-auto mt-6">
+    <div class="tg-fig">
       <div class="reveal tl" role="figure" aria-label="Finish temperatures for maple syrup confections, from Cornell's maple program">
         <div class="tl-row"><div class="tl-t">104°C<small>219°F</small></div><div class="tl-bar"><div class="tl-fill" style="--w:18%"></div></div><div class="tl-name">Maple syrup, the bottle you buy</div></div>
         <div class="tl-row on"><div class="tl-t">111.5°C<small>234°F</small></div><div class="tl-bar"><div class="tl-fill" style="--w:52%"></div></div><div class="tl-name">Maple cream or spread: this maple butter</div></div>
@@ -566,18 +583,18 @@
         <p class="tl-note">Sea-level readings from Cornell's standard chart. The same guide says to set the finish by the day's boiling point instead, which is the 22 to 24°F rule above. Bars start at 100°C, where water boils.</p>
       </div>
     </div>
-    <div class="max-w-[760px] mx-auto prose-body mt-8">
+    <div class="tg-b max-w-[760px] prose-body">
       <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-4 mb-4">Why it has to cool first</h3>
       <p>Boiled to that point, the syrup holds more sugar than it can keep dissolved once it cools. Cornell explains that if you stir it while it is warm, a few large crystals form and the spread turns grainy and separates sooner. Cooled, still, to 24°C (75°F) or below before stirring, it forms a great many small crystals instead, and those stay small in the jar for weeks.</p>
       <p>That is also why you should not stir it, move it or scrape it while it cools. Any knock can start crystals early.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- STIRRING -->
+<!-- STIRRING -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
+      <div class="max-w-[760px] prose-body">
         <h2 id="stirring" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">What Stirring Looks Like</h2>
         <p>Stir slowly and keep going. Cornell's instructions for stirring by hand say not to beat or whip it, and to expect it to take some time and strength. These are the four changes you will see, in order.</p>
       </div>
@@ -587,16 +604,16 @@
         <div><div class="deg">3</div><h3>Pale and thicker</h3><p>It lightens in color and stiffens with every turn of the spoon.</p></div>
         <div><div class="deg">4</div><h3>Opaque and matte</h3><p>The gloss is gone and it holds a soft shape. Stop here and jar it.</p></div>
       </div>
-      <div class="max-w-[760px] mx-auto prose-body mt-4">
+      <div class="max-w-[760px] prose-body mt-4">
         <p>In the maple cream recipe at <a href="https://theviewfromgreatisland.com/minimal-monday-maple-cream/" target="_blank" rel="nofollow noopener">The View From Great Island</a>, this takes 10 to 30 minutes with a wooden spoon. That recipe advises stirring by hand rather than with a mixer, because the texture changes fast near the end. Cornell suggests two people: one to hold the bowl and one to stir.</p>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- WHICH SYRUP -->
+<!-- WHICH SYRUP -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup to Use</h2>
       <p>Use a light syrup. Cornell's guide says maple cream is generally made from light or medium colored syrup, because what decides whether it creams is the syrup's invert sugar, the share of its sugar already split into glucose and fructose. The guide recommends 0.5 to 3 percent, which home cooks cannot measure, so a light syrup is the safest bet.</p>
       <figure class="reveal rcp-fig">
@@ -605,12 +622,12 @@
       </figure>
       <p>Every bottle of Canada Grade A syrup starts in the same range: the <a href="https://inspection.canada.ca/en/about-cfia/acts-and-regulations/list-acts-and-regulations/documents-incorporated-reference/canadian-grade-compendium-volume-7" target="_blank" rel="nofollow noopener">Canadian Grade Compendium</a> sets its sugar content at 66 to 68.9 percent. Boiling to 112°C takes it to about 80 percent, the level Cornell gives for maple cream. That is where the yield comes from: 500 mL of syrup weighs about 660 g, and losing that water leaves about 540 g of maple butter.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- FIXES -->
+<!-- FIXES -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="fixes" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Grainy, Runny or Hard: How to Fix It</h2>
       <p>These fixes come from Cornell's guide, which is written for producers making it by the pot and holds just as well at home.</p>
       <div class="fix-list">
@@ -621,13 +638,13 @@
       </div>
       <p class="mt-6">Do not warm finished maple butter above 49°C (120°F) to soften it. Cornell warns that reheating makes it grainy and separate sooner.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- WHIPPED -->
+<!-- WHIPPED -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
-      <div class="max-w-[760px] mx-auto prose-body mb-6">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
+      <div class="max-w-[760px] prose-body mb-6">
         <h2 id="whipped" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">Whipped Maple Butter: The Five-Minute Version</h2>
         <p>Many recipes called maple butter are this one: dairy butter whipped with maple syrup, for warm bread, cornbread or pancakes. It needs no thermometer. A dark syrup suits it best, because the maple has to come through a lot of butter.</p>
       </div>
@@ -657,17 +674,17 @@
           </div>
         </div>
       </div>
-      <div class="max-w-[760px] mx-auto prose-body mt-6">
+      <div class="max-w-[760px] prose-body mt-6">
         <p>The ratio and storage times follow <a href="https://cheflindseyfarr.com/homemade-maple-butter/" target="_blank" rel="nofollow noopener">Chef Lindsey Farr</a>, who keeps it two weeks in the fridge or three months frozen. For a stronger maple taste, <a href="https://www.thekitchn.com/maple-butter-recipe-23235463" target="_blank" rel="nofollow noopener">The Kitchn</a> simmers ½ cup of syrup until it reduces by a quarter, cools it, then whips it into a stick of butter.</p>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- SHORTCUT -->
+<!-- SHORTCUT -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[1100px] mx-auto">
-      <div class="max-w-[760px] mx-auto prose-body mb-6">
+    <div class="max-w-[1400px] mx-auto">
+    <div>
+      <div class="max-w-[760px] prose-body mb-6">
         <h2 id="shortcut" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">The Shortcut: Our Organic Maple Butter</h2>
         <p>If an hour of cooling and stirring is not how you want to spend a morning, our <a href="/products/organic-maple-cream-butter-jar">organic maple butter</a> is made the way this page describes, by people who make it every day.</p>
       </div>
@@ -683,13 +700,12 @@
         </div>
       </div>
     </div>
+    </div>
   </section>
-
-
-  <!-- SHOP CARD -->
+<!-- SHOP CARD -->
   <link rel="stylesheet" href="/assets/blog-cta.css">
   <section class="blog-cta-slot px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <aside class="blog-cta">
         <h2 class="blog-cta__title">Make it, or open a jar.</h2>
         <p class="blog-cta__body">The jar is ready to spread. The Golden organic bottle is the syrup to make your own, two to a batch. The Dark maple leaf bottle is the one for whipped butter.</p>
@@ -722,22 +738,21 @@
       </aside>
     </div>
   </section>
-
-
-  <!-- STORING -->
+<!-- STORING -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="storing" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Store Maple Butter</h2>
       <p>Keep maple butter in the fridge. It has no preservatives, so Cornell's guide gives it less than a month at room temperature, where it can mold on the surface or separate. In a sealed glass jar in the fridge it keeps a month or two with little separation, and the guide puts its refrigerated shelf life at six months. For up to a year, freeze it.</p>
       <p>A thin layer of syrup on top in storage is normal. Stir it back in. Whipped dairy maple butter is different: treat it like butter and use it within two weeks.</p>
       <p>The same rules on mold and crystals that apply to the syrup itself are set out in our guide to <a href="/blog/does-maple-syrup-go-bad-shelf-life-storage">whether maple syrup goes bad</a>.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- USING -->
+<!-- USING -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto prose-body">
+    <div class="max-w-[1400px] mx-auto">
+    <div class="max-w-[760px] prose-body">
       <h2 id="using" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Use Maple Butter</h2>
       <p>Spread it on anything warm and bready. Cornell lists toast, bagels, muffins, pancakes and doughnuts, and it softens into a thin glaze on hot food.</p>
       <ul class="list-disc pl-6 space-y-3 text-warm-gray-600">
@@ -748,16 +763,15 @@
       </ul>
       <p class="mt-6">More ways to cook with maple, from the same syrup, are in our list of <a href="/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide">maple syrup uses beyond pancakes</a>, and the confections one step hotter are on our <a href="/blog/how-to-make-maple-taffy">maple taffy</a> and <a href="/blog/maple-fudge">maple fudge</a> recipes.</p>
     </div>
+    </div>
   </section>
-
-
-  <!-- FAQ -->
+<!-- FAQ -->
   <section class="py-16 md:py-24 px-4 md:px-8">
-    <div class="max-w-[900px] mx-auto">
-      <div class="reveal mb-10 md:mb-14 text-center">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+      <div class="reveal md:col-span-4">
         <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Butter Questions</h2>
       </div>
-      <div class="space-y-3">
+      <div class="space-y-3 md:col-span-8">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
             <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is there butter in maple butter?</h3>
@@ -815,11 +829,9 @@
       </div>
     </div>
   </section>
-
-
-  <!-- KEY TAKEAWAYS -->
+<!-- KEY TAKEAWAYS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
-    <div class="max-w-[760px] mx-auto">
+    <div class="max-w-[1400px] mx-auto kt">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
         <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Key Takeaways</h2>
         <ul class="list-disc pl-6 space-y-2 text-warm-gray-600">
@@ -832,8 +844,6 @@
       </div>
     </div>
   </section>
-
-
   <!-- CTA:START title="Maple Butter, Ready to Spread." text="Our organic maple butter is pure maple syrup, boiled and whipped, in a 160 g jar." href="/products/organic-maple-cream-butter-jar" label="Shop Maple Butter" href2="/recipes/" label2="More Recipes" -->
   <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
