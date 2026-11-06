@@ -26,6 +26,8 @@
   "name": "Maple Candy | Maple Terroir",
   "url": "https://mapleterroir.com/shop/maple-candy",
   "description": "Maple leaf candy made with pure Canadian maple syrup, 20 wrapped pieces for $9.99. It is sold out right now, so see how it is made and what to order instead.",
+  "datePublished": "2026-08-26",
+  "dateModified": "2026-11-06",
   "isPartOf": {
     "@type": "WebSite",
     "name": "Maple Terroir",
@@ -101,7 +103,23 @@
       "name": "Where can I buy maple candy in Canada?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Here, once it is back. We pack every order at our Vancouver location and ship it to the ten provinces: Standard takes 3 to 9 business days for $19.99, Express takes 1 to 2 business days for $39.99, and orders of $99 or more ship free. Pickup at the Vancouver location is free."
+        "text": "Here on mapleterroir.com, once it is back in stock. The delivery options and times are under what happens after you order."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I buy maple candy in bulk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The candy comes in cases of 12 boxes for $107.88, 24 boxes for $203.76 and 40 boxes for $319.60, which works out to $8.99, $8.49 and $7.99 a box against $9.99 for one. For larger or recurring orders, see wholesale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many candies are in a box?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Twenty. The box is marked 120 g and 20 pieces, and each maple leaf candy is wrapped on its own."
       }
     }
   ]
@@ -155,6 +173,42 @@
   <style>
     /* Maple candy page: the price tiles over the cream ground. */
     .mc-price { background: rgba(255,255,255,0.7); }
+    /* The box, with numbered callouts on what it says and holds. */
+    .mcx-stage { position: relative; border-radius: 2rem; overflow: hidden; background: #F4F1EA; }
+    .mcx-stage img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; mix-blend-mode: multiply; }
+    .mcx-pin { position: absolute; width: 2rem; height: 2rem; margin: -1rem 0 0 -1rem; border-radius: 999px; border: 2px solid #FDFBF7; background: #1A1714; color: #FDFBF7; font-size: .8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px -6px rgba(26,23,20,.5); cursor: pointer; transition: transform .35s cubic-bezier(.32,.72,0,1), background .3s; }
+    .mcx-pin::before { content: ''; position: absolute; inset: -6px; border-radius: 999px; border: 2px solid rgba(196,132,29,.55); opacity: 0; transform: scale(.7); transition: opacity .35s, transform .35s; }
+    .mcx-pin.on, .mcx-pin:hover, .mcx-pin:focus-visible { background: #C4841D; transform: scale(1.12); }
+    .mcx-pin.on::before { opacity: 1; transform: scale(1); }
+    .mcx-list { counter-reset: mcx; display: grid; gap: .55rem; }
+    .mcx-list li { counter-increment: mcx; position: relative; padding: .8rem 1rem .8rem 3.1rem; border-radius: 1rem; background: rgba(255,255,255,.7); border: 1px solid rgba(26,23,20,.07); transition: background .3s, border-color .3s; }
+    .mcx-list li::before { content: counter(mcx); position: absolute; left: .9rem; top: .8rem; width: 1.6rem; height: 1.6rem; border-radius: 999px; background: #1A1714; color: #FDFBF7; font-size: .75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background .3s; }
+    .mcx-list li.on { background: #fff; border-color: rgba(196,132,29,.45); }
+    .mcx-list li.on::before { background: #C4841D; }
+    .mcx-list b { display: block; color: #1A1714; font-weight: 600; font-size: .95rem; }
+    .mcx-list span { display: block; color: #6B6158; font-size: .82rem; line-height: 1.55; margin-top: .15rem; }
+    @keyframes mcx-pop { from { opacity: 0; transform: scale(.4); } to { opacity: 1; transform: scale(1); } }
+    .reveal.visible .mcx-pin { animation: mcx-pop .6s cubic-bezier(.32,.72,0,1) both; }
+    .reveal.visible .mcx-pin:nth-of-type(2) { animation-delay: .12s; } .reveal.visible .mcx-pin:nth-of-type(3) { animation-delay: .24s; } .reveal.visible .mcx-pin:nth-of-type(4) { animation-delay: .36s; } .reveal.visible .mcx-pin:nth-of-type(5) { animation-delay: .48s; }
+    /* Two kinds of maple candy, side by side. */
+    .mck { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .mck > div { border-radius: 1.5rem; padding: 1.5rem; border: 1px solid rgba(26,23,20,.08); background: #fff; }
+    .mck > div.mck-us { background: #1A1714; border-color: #1A1714; color: #F4EFE6; }
+    .mck dl { display: grid; grid-template-columns: 7.5rem 1fr; gap: .55rem 1rem; margin-top: 1rem; font-size: .88rem; }
+    .mck dt { color: #8A8076; } .mck-us dt { color: #B9AFA3; }
+    .mck dd { color: #2E2822; } .mck-us dd { color: #F4EFE6; }
+    /* What happens after you order. */
+    .mcs { counter-reset: mcs; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; position: relative; }
+    .mcs li { counter-increment: mcs; position: relative; background: #fff; border: 1px solid rgba(26,23,20,.08); border-radius: 1.5rem; padding: 3.6rem 1.25rem 1.4rem; }
+    .mcs li::before { content: counter(mcs, decimal-leading-zero); position: absolute; top: 1.2rem; left: 1.25rem; font-family: 'Fraunces', Georgia, serif; font-size: 1.5rem; font-weight: 600; color: #C4841D; }
+    @media (max-width: 1023px) { .mcs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) {
+      .mck { grid-template-columns: 1fr; }
+      .mck dl { grid-template-columns: 6.5rem 1fr; }
+      .mcs { grid-template-columns: 1fr; }
+      .mcx-pin { width: 1.7rem; height: 1.7rem; margin: -.85rem 0 0 -.85rem; font-size: .72rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .reveal.visible .mcx-pin { animation: none; } .mcx-pin, .mcx-pin::before { transition: none; } }
   </style>
 </head>
 
@@ -246,6 +300,7 @@
           </a>
           <a href="#how-made" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">How Maple Candy Is Made</a>
         </div>
+        <p class="reveal reveal-delay-3 text-xs text-warm-gray-300 mt-6">Published <time datetime="2026-08-26">August 26, 2026</time> &middot; Last updated <time datetime="2026-11-06">November 6, 2026</time></p>
       </div>
     </div>
   </section>
@@ -374,19 +429,46 @@
   <!-- OUR MAPLE CANDY -->
   <section id="our-candy" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8" style="background:#FBF6EE;">
     <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-      <figure class="reveal lg:col-span-5 relative rounded-[2rem] overflow-hidden" style="background:#E6EADF;">
-        <a href="/products/pure-maple-syrup-candy" class="block" tabindex="-1" aria-hidden="true">
-          <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplecandy.jpg?v=1749672050&amp;width=800" alt="" width="800" height="800" loading="lazy" class="w-full aspect-square object-contain p-6 md:p-10 mix-blend-multiply">
-        </a>
-        <span class="absolute top-5 left-5 bg-charcoal text-cream rounded-full px-4 py-2 text-sm font-semibold">Sold out right now</span>
+      <figure class="reveal lg:col-span-5 relative">
+        <div class="mcx-stage">
+          <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maplecandy.jpg?v=1749672050&amp;width=900" alt="Two boxes of Maple Terroir Pure Maple Syrup Candy, one green and one white, named in English and French and marked 120 g and 20 pieces, with maple leaf candies on the front" width="900" height="900" loading="lazy">
+          <button type="button" class="mcx-pin" data-n="1" style="left:11%;top:26%" aria-label="1: the name in English and French">1</button>
+          <button type="button" class="mcx-pin" data-n="2" style="left:17%;top:47%" aria-label="2: maple leaf candies, each wrapped">2</button>
+          <button type="button" class="mcx-pin" data-n="3" style="left:33%;top:84%" aria-label="3: 120 g and 20 pieces">3</button>
+          <button type="button" class="mcx-pin" data-n="4" style="left:51%;top:79%" aria-label="4: made with pure maple syrup">4</button>
+          <button type="button" class="mcx-pin" data-n="5" style="left:17%;top:80%" aria-label="5: 0 g trans fat">5</button>
+          <span class="absolute top-5 left-5 bg-charcoal text-cream rounded-full px-4 py-2 text-sm font-semibold">Sold out right now</span>
+        </div>
       </figure>
       <div class="lg:col-span-7">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
           Our Maple Candy, Box by Box
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[58ch]">
-          Each 120 g box holds 20 maple leaf candies made with pure Canadian maple syrup. Every candy is wrapped on its own, so a box shares easily around a table or an office.
+          Our candy is a hard maple leaf candy. Here is what the box says and what is inside it, read straight off the label.
         </p>
+        <ol class="reveal mcx-list mt-6 max-w-[60ch]" id="mcx-list">
+          <li data-n="1"><b>A bilingual box</b><span>The name is printed in English and in French, so the box reads as a Canadian gift in either language.</span></li>
+          <li data-n="2"><b>Maple leaf shapes, each wrapped on its own</b><span>Clear wrappers keep every piece separate, so a box shares around a table or an office without sticking together.</span></li>
+          <li data-n="3"><b>20 pieces in a 120 g box</b><span>Printed along the bottom of the front panel.</span></li>
+          <li data-n="4"><b>Made with pure maple syrup</b><span>The yellow badge on the front. Our product listing adds that the syrup is Canadian.</span></li>
+          <li data-n="5"><b>0 g trans fat</b><span>The red ribbon in the corner, printed in English and French.</span></li>
+        </ol>
+        <script>
+          (function () {
+            var pins = document.querySelectorAll('.mcx-pin'), items = document.querySelectorAll('#mcx-list li');
+            function on(n) {
+              pins.forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-n') === n); });
+              items.forEach(function (i) { i.classList.toggle('on', i.getAttribute('data-n') === n); });
+            }
+            pins.forEach(function (p) {
+              p.addEventListener('mouseenter', function () { on(p.getAttribute('data-n')); });
+              p.addEventListener('focus', function () { on(p.getAttribute('data-n')); });
+              p.addEventListener('click', function () { on(p.getAttribute('data-n')); });
+            });
+            items.forEach(function (i) { i.addEventListener('mouseenter', function () { on(i.getAttribute('data-n')); }); });
+          })();
+        </script>
         <dl class="reveal grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-8">
           <div class="mc-price rounded-2xl ring-1 ring-warm-gray-200/60 p-4 md:p-5"><dt class="text-xs text-warm-gray-500">1 box</dt><dd class="font-display text-2xl md:text-3xl text-charcoal mt-1">$9.99</dd><dd class="text-xs text-warm-gray-500 mt-1">20 pieces</dd></div>
           <div class="mc-price rounded-2xl ring-1 ring-warm-gray-200/60 p-4 md:p-5"><dt class="text-xs text-warm-gray-500">12 boxes</dt><dd class="font-display text-2xl md:text-3xl text-charcoal mt-1">$8.99</dd><dd class="text-xs text-warm-gray-500 mt-1">a box, 10 percent off</dd></div>
@@ -401,15 +483,54 @@
   </section>
 
 
+  <!-- TWO KINDS OF MAPLE CANDY -->
+  <section id="kinds" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="max-w-3xl mb-10">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
+          Two Kinds of Maple Candy
+        </h2>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[58ch]">
+          Search for maple candy and you will find two different sweets under one name. Ours is the first kind. The second is the one you can make at home.
+        </p>
+      </div>
+      <div class="reveal mck">
+        <div class="mck-us">
+          <p class="eyebrow text-amber-light">What we sell</p>
+          <h3 class="font-display text-2xl font-semibold text-cream mt-2">Hard maple leaf candy</h3>
+          <dl>
+            <dt>Made with</dt><dd>Pure Canadian maple syrup</dd>
+            <dt>Looks like</dt><dd>Clear amber leaves, as in the photo above</dd>
+            <dt>Packed</dt><dd>Each piece in its own wrapper, 20 to a 120 g box</dd>
+            <dt>Best for</dt><dd>Gifts, desk jars and sharing</dd>
+            <dt>Get it</dt><dd>Here, when it is back in stock</dd>
+          </dl>
+        </div>
+        <div>
+          <p class="eyebrow text-amber-deep">Made at home</p>
+          <h3 class="font-display text-2xl font-semibold text-charcoal mt-2">Traditional maple sugar candy</h3>
+          <dl>
+            <dt>Made with</dt><dd>Maple syrup and nothing else</dd>
+            <dt>Looks like</dt><dd>Lighter than the syrup, because stirring changes its color</dd>
+            <dt>Packed</dt><dd>Set in molds and unmolded once chilled</dd>
+            <dt>Best for</dt><dd>A kitchen project with a candy thermometer</dd>
+            <dt>Get it</dt><dd>With the four steps below</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- HOW MAPLE CANDY IS MADE -->
   <section id="how-made" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8 bg-charcoal">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-3xl mb-10">
         <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-cream tracking-tight leading-tight mb-5">
-          How Maple Candy Is Made From Maple Syrup
+          How Maple Sugar Candy Is Made From Maple Syrup
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-300 leading-relaxed max-w-[58ch] mt-copy-dark">
-          Traditional maple candy has one ingredient. This is the method Maple from Canada publishes for it, and you need a cup of <a href="/shop/canadian-maple-syrup">pure maple syrup</a>, a candy thermometer and a wooden spoon.
+          Traditional maple sugar candy has one ingredient. This is the method Maple from Canada publishes for it, and you need a cup of <a href="/shop/canadian-maple-syrup">pure maple syrup</a>, a candy thermometer and a wooden spoon.
         </p>
       </div>
       <div class="reveal hidden md:block" aria-hidden="true">
@@ -496,6 +617,65 @@
   </section>
 
 
+  <!-- WHO IT IS FOR -->
+  <section id="uses" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 bg-warm-gray-100/30">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="max-w-3xl mb-10">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
+          Where a Box of Maple Candy Fits
+        </h2>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[58ch]">
+          Wrapped pieces in a small bilingual box suit four kinds of order. Each links to the page with everything else we stock for it.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <a href="/shop/canadian-stocking-stuffers" class="reveal group block rounded-[1.5rem] bg-white ring-1 ring-warm-gray-200/40 p-6 md:p-7 hover:ring-amber-warm/40 transition">
+          <p class="eyebrow text-amber-deep">Stockings</p>
+          <h3 class="font-display text-xl font-semibold text-charcoal mt-3">A stocking stuffer</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed mt-2">A 120 g box slips into a stocking, and every piece inside is wrapped.</p>
+          <p class="text-sm font-medium text-charcoal mt-4 group-hover:text-amber-warm">Canadian stocking stuffers &rarr;</p>
+        </a>
+        <a href="/shop/maple-syrup-corporate-gift" class="reveal reveal-delay-1 group block rounded-[1.5rem] bg-white ring-1 ring-warm-gray-200/40 p-6 md:p-7 hover:ring-amber-warm/40 transition">
+          <p class="eyebrow text-amber-deep">Teams and clients</p>
+          <h3 class="font-display text-xl font-semibold text-charcoal mt-3">An office or client gift</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed mt-2">Cases of 12, 24 or 40 boxes bring the price down from $9.99 to $8.99, $8.49 or $7.99 a box.</p>
+          <p class="text-sm font-medium text-charcoal mt-4 group-hover:text-amber-warm">Maple corporate gifts &rarr;</p>
+        </a>
+        <a href="/canadian-souvenirs" class="reveal reveal-delay-2 group block rounded-[1.5rem] bg-white ring-1 ring-warm-gray-200/40 p-6 md:p-7 hover:ring-amber-warm/40 transition">
+          <p class="eyebrow text-amber-deep">Visitors</p>
+          <h3 class="font-display text-xl font-semibold text-charcoal mt-3">A taste of Canada to take home</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed mt-2">Maple leaves on a box printed in English and French, light enough for a suitcase.</p>
+          <p class="text-sm font-medium text-charcoal mt-4 group-hover:text-amber-warm">Canadian souvenirs &rarr;</p>
+        </a>
+        <a href="/shop/canadian-gift-baskets" class="reveal reveal-delay-3 group block rounded-[1.5rem] bg-white ring-1 ring-warm-gray-200/40 p-6 md:p-7 hover:ring-amber-warm/40 transition">
+          <p class="eyebrow text-amber-deep">Baskets</p>
+          <h3 class="font-display text-xl font-semibold text-charcoal mt-3">One piece of a bigger gift</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed mt-2">A box sits well next to syrup, cookies and maple cream in a basket you put together.</p>
+          <p class="text-sm font-medium text-charcoal mt-4 group-hover:text-amber-warm">Canadian gift baskets &rarr;</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- AFTER YOU ORDER -->
+  <section id="order" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="max-w-3xl mb-10">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
+          What Happens After You Order
+        </h2>
+      </div>
+      <ol class="reveal mcs">
+        <li><h3 class="font-display text-lg font-semibold text-charcoal">Pick a quantity</h3><p class="text-sm text-warm-gray-600 leading-relaxed mt-2">On the candy&rsquo;s product page, choose 1, 12, 24 or 40 boxes. The larger the case, the lower the price a box.</p></li>
+        <li><h3 class="font-display text-lg font-semibold text-charcoal">Our family packs it</h3><p class="text-sm text-warm-gray-600 leading-relaxed mt-2">Our online orders are packed by family members at our facility and leave within 1 to 3 business days.</p></li>
+        <li><h3 class="font-display text-lg font-semibold text-charcoal">It ships to your door</h3><p class="text-sm text-warm-gray-600 leading-relaxed mt-2">Standard delivery takes 3 to 9 business days for $19.99, free on orders of $99 or more. Express takes 1 to 2 business days for $39.99. Free local pickup is a choice at checkout.</p></li>
+        <li><h3 class="font-display text-lg font-semibold text-charcoal">While it is sold out</h3><p class="text-sm text-warm-gray-600 leading-relaxed mt-2 mt-copy">The <a href="/products/pure-maple-syrup-candy">product page</a> shows when it is back, or ask us at <a href="mailto:info@mapleterroir.com">info@mapleterroir.com</a>. The <a href="#shop">maple sweets above</a> are in stock now.</p></li>
+      </ol>
+    </div>
+  </section>
+
+
   <!-- FAMILY:START baked by scripts/build-blocks.mjs -->
   <section id="family" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8 border-t border-warm-gray-200/30">
     <div class="max-w-[1100px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
@@ -565,7 +745,25 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed mt-copy">Here, once it is back. We pack every order at our Vancouver location and ship it to the ten provinces: Standard takes 3 to 9 business days for $19.99, Express takes 1 to 2 business days for $39.99, and orders of $99 or more ship free. Pickup at the Vancouver location is free.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed mt-copy">Here on mapleterroir.com, once it is back in stock. The delivery options and times are under <a href="#order">what happens after you order</a>.</p>
+          </div>
+        </div>
+        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I buy maple candy in bulk?</h3>
+            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed mt-copy">Yes. The candy comes in cases of 12 boxes for $107.88, 24 boxes for $203.76 and 40 boxes for $319.60, which works out to $8.99, $8.49 and $7.99 a box against $9.99 for one. For larger or recurring orders, see <a href="/shop/maple-syrup-wholesale">wholesale</a>.</p>
+          </div>
+        </div>
+        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
+          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How many candies are in a box?</h3>
+            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="accordion-content px-6">
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed mt-copy">Twenty. The box is marked 120 g and 20 pieces, and each maple leaf candy is wrapped on its own.</p>
           </div>
         </div>
       </div>
