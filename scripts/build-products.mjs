@@ -11,9 +11,15 @@
 // Run:  node scripts/build-products.mjs
 // Output: products/<handle>.html  (served at /products/<handle>)
 // Re-run whenever the catalog changes (new products, renamed handles, copy edits).
-// Each page is rewritten whole from product.html, which drops the Loox reviews that
-// scripts/build-reviews.mjs baked in. Run that script with the Loox export right
-// after this one, or 22 product pages lose their reviews and star rating.
+// A product page that already exists is UPDATED IN PLACE: only what comes from
+// Shopify is rewritten (title, meta, canonical, OG, JSON-LD, the H1, the description,
+// the price, the Origin row). Everything else on the page stays as it is: the Loox
+// reviews (build-reviews.mjs), the PROOF and CTA blocks (build-blocks.mjs), the
+// PDP-ABOUT and ANATOMY blocks, the badges, the breadcrumb (build-chrome.mjs) and any
+// hand edit to the page's script. Until November 9, 2026 every page was rewritten
+// whole from product.html, which had drifted from the live pages, so one re-run wiped
+// all of that on 38 pages. Only a NEW product is rendered from product.html.
+// A page that sets window.__PRODUCT_TITLE__ keeps that title in <title>, OG and the H1.
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -125,6 +131,13 @@ const BADGES = {
 };
 const ORIGIN = { quebec: 'Quebec, Canada' };
 
+// The "Available in packs of ..." line in Shopify's copy is wrong on most products
+// (October 4, 2026); the size buttons list the real packs, so only the unit size is
+// kept, in the body and the schema alike. The page script makes the same edit.
+const fixPacks = (t) => String(t)
+  .replace(/Available in\s+packs?\s+of[^.<]*?units of\s+([^.<]+?)\.\s*/gi, 'Sold in $1. ')
+  .replace(/Available in\s+packs?\s+of[^.<]*\.\s*/gi, '');
+
 // Cut at a sentence, or failing that a word, so no summary ends mid-word.
 function trimSummary(text, limit = 155) {
   if (text.length <= limit) return text;
@@ -152,10 +165,14 @@ function shippingDetails(price) {
   };
 }
 
-function renderProduct(template, p) {
+function renderProduct(template, p, existing = null) {
   const handle = p.handle;
   const canonical = `${SITE}/products/${handle}`;
-  const title = `${p.title} | Maple Terroir`;
+  // A page that leads with its search term keeps its baked display title (the page
+  // script reads the same window.__PRODUCT_TITLE__).
+  const bakedTitle = existing ? ((existing.match(/window\.__PRODUCT_TITLE__=("(?:[^"\\]|\\.)*")/) || [])[1] || '') : '';
+  const shown = bakedTitle ? JSON.parse(bakedTitle) : p.title;
+  const title = `${shown} | Maple Terroir`;
   let desc = META_OVERRIDES[handle] || trimSummary((p.description || '').replace(/\s+/g, ' ').trim());
   if (!desc) desc = `${p.title} from Maple Terroir, a family business since 1978.`;
 
@@ -171,7 +188,7 @@ function renderProduct(template, p) {
   // priceValidUntil one year out keeps the Offer eligible for product rich results.
   const priceValidUntil = new Date(Date.now() + 365 * 86400000).toISOString().slice(0, 10);
   // Full, clean description for schema; meta/OG stay capped at 155 chars (desc, above).
-  const ldDesc = ((p.description || '').replace(/\s+/g, ' ').trim() || desc).slice(0, 5000);
+  const ldDesc = fixPacks((p.description || '').replace(/\s+/g, ' ').trim() || desc).slice(0, 5000);
 
   const ld = {
     '@context': 'https://schema.org', '@type': 'Product',
@@ -187,11 +204,21 @@ function renderProduct(template, p) {
   if (barcode && gtinDigits === barcode && [8, 12, 13, 14].includes(gtinDigits.length)) {
     ld['gtin' + gtinDigits.length] = gtinDigits;
   }
+  const oldLd = existing ? (() => {
+    for (const m of existing.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)) {
+      try { const j = JSON.parse(m[1]); if (j['@type'] === 'Product') return j; } catch {}
+    }
+    return null;
+  })() : null;
+  const ownImage = oldLd && typeof oldLd.image === 'string' && oldLd.image.startsWith(SITE + '/') ? oldLd.image : '';
+  if (ownImage) ld.image = ownImage;
   if (price) ld.offers = {
     '@type': 'Offer', price, priceCurrency: currency, availability, url: canonical,
     itemCondition: 'https://schema.org/NewCondition', priceValidUntil,
     shippingDetails: shippingDetails(price),
   };
+
+  if (oldLd) for (const k of Object.keys(oldLd)) if (!(k in ld) && k !== 'gtin8' && !/^gtin/.test(k)) ld[k] = oldLd[k];
 
   // Mirrors the visible Home / Products / <name> breadcrumb already in the template.
   // Every other page type ships BreadcrumbList; PDPs were the one gap.
@@ -210,14 +237,14 @@ function renderProduct(template, p) {
     `<meta property="og:url" content="${escAttr(canonical)}">` +
     `<meta property="og:title" content="${escAttr(title)}">` +
     `<meta property="og:description" content="${escAttr(desc)}">` +
-    (image ? `<meta property="og:image" content="${escAttr(image)}">` : '') +
+    ((ownImage || image) ? `<meta property="og:image" content="${escAttr(ownImage || image)}">` : '') +
     `<meta name="twitter:card" content="summary_large_image">` +
     `<meta name="twitter:title" content="${escAttr(title)}">` +
     `<meta name="twitter:description" content="${escAttr(desc)}">` +
-    (image ? `<meta name="twitter:image" content="${escAttr(image)}">` : '') +
+    ((ownImage || image) ? `<meta name="twitter:image" content="${escAttr(ownImage || image)}">` : '') +
     `<script type="application/ld+json">${JSON.stringify(ld)}</script>` +
     `<script type="application/ld+json">${JSON.stringify(breadcrumbLd)}</script>` +
-    `<script>window.__PRODUCT_HANDLE__=${JSON.stringify(handle)};</script>\n`;
+    `<script>window.__PRODUCT_HANDLE__=${JSON.stringify(handle)};${bakedTitle ? `window.__PRODUCT_TITLE__=${JSON.stringify(shown)};` : ''}</script>\n`;
 
   // The CSP frames nothing from YouTube, so an embed in a Shopify description
   // renders as a blocked box. Bake it as a link to the video instead (the page
@@ -226,7 +253,9 @@ function renderProduct(template, p) {
     /<iframe[^>]*src="https:\/\/www\.youtube(?:-nocookie)?\.com\/embed\/([\w-]+)[^"]*"[^>]*><\/iframe>/g,
     '<a href="https://www.youtube.com/watch?v=$1" target="_blank" rel="noopener" class="text-amber-warm underline">Watch the video on YouTube</a>'
   );
+  const descBody = fixPacks(descHtml);
 
+  if (existing) return updateInPlace(existing, { p, shown, bakedTitle, title, desc, headInject, descHtml: descBody, price, handle });
   let html = absolutize(template);
   // Badges and the Origin row from CLAIMS. The page script never adds badges, and
   // it shows Origin only from this baked data-origin, so hydration cannot add a
@@ -238,20 +267,20 @@ function renderProduct(template, p) {
   );
   const origin = claims.map((c) => ORIGIN[c]).find(Boolean) || '';
   html = html.replace('id="product-details" data-origin=""', `id="product-details" data-origin="${escAttr(origin)}"`);
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escText(title)}</title>`);
-  html = html.replace(/(<meta name="description" content=")[^"]*(">)/, `$1${escAttr(desc)}$2`);
-  html = html.replace('</head>', headInject + '</head>');
+  html = html.replace(/<title>[\s\S]*?<\/title>/, () => `<title>${escText(title)}</title>`);
+  html = html.replace(/(<meta name="description" content=")[^"]*(">)/, (_, a, b) => a + escAttr(desc) + b);
+  html = html.replace('</head>', () => headInject + '</head>');
   html = html.replace(
     /(<li [^>]*id="breadcrumb-title"[^>]*>)[\s\S]*?(<\/li>)/,
     `$1${escText(p.title)}$2`
   );
   html = html.replace(
     /(<h1 id="product-title"[^>]*>)[\s\S]*?(<\/h1>)/,
-    `$1${escText(p.title)}$2`
+    `$1${escText(shown)}$2`
   );
   html = html.replace(
     /(<div class="pdp-acc-inner" id="product-desc">)\s*<div class="skeleton"[^>]*><\/div>\s*(<\/div>)/,
-    `$1${descHtml}$2`
+    (_, a, b) => a + descBody + b
   );
   // Bake the card photo into the gallery. It used to arrive only after the page
   // script had asked Shopify for the product, so the largest image waited on that
@@ -275,6 +304,45 @@ function renderProduct(template, p) {
   return html;
 }
 
+// Rewrite one region exactly once, or stop: a page whose anchor moved is a page
+// this script no longer understands, and guessing would damage it.
+function once(html, re, to, what, handle) {
+  const n = (html.match(new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g')) || []).length;
+  if (n !== 1) throw new Error(`${handle}: expected one ${what}, found ${n}. Fix the page or the anchor before re-running.`);
+  return html.replace(re, to);
+}
+
+// The inside of <div ... id="product-desc">, matched by depth, since Shopify's copy
+// can hold divs of its own.
+function replaceDesc(html, inner, handle) {
+  const open = html.indexOf('id="product-desc">');
+  if (open < 0 || html.indexOf('id="product-desc">', open + 1) >= 0) throw new Error(`${handle}: expected one #product-desc`);
+  const start = open + 'id="product-desc">'.length;
+  const tag = /<(\/?)div\b[^>]*>/g;
+  tag.lastIndex = start;
+  let depth = 1, m;
+  while ((m = tag.exec(html))) {
+    depth += m[1] ? -1 : 1;
+    if (depth === 0) return html.slice(0, start) + inner + html.slice(m.index);
+  }
+  throw new Error(`${handle}: #product-desc never closes`);
+}
+
+function updateInPlace(html, { p, shown, bakedTitle, title, desc, headInject, descHtml, price, handle }) {
+  const wrap = (inner) => (_, a, b) => a + inner + b;
+  html = once(html, /<title>[\s\S]*?<\/title>/, () => `<title>${escText(title)}</title>`, '<title>', handle);
+  html = once(html, /(<meta name="description" content=")[^"]*(">)/, wrap(escAttr(desc)), 'meta description', handle);
+  html = once(html, /^<link rel="canonical"[^\n]*\n/m, () => headInject, 'baked head block', handle);
+  html = once(html, /(<li [^>]*id="breadcrumb-title"[^>]*>)[\s\S]*?(<\/li>)/, wrap(escText(p.title)), 'breadcrumb title', handle);
+  // A page with its own title (window.__PRODUCT_TITLE__) also chose its own H1.
+  if (!bakedTitle) html = once(html, /(<h1 id="product-title"[^>]*>)[\s\S]*?(<\/h1>)/, wrap(escText(shown)), 'H1', handle);
+  html = replaceDesc(html, descHtml, handle);
+  if (price) html = once(html, /(<span id="product-price"[^>]*>)[\s\S]*?(<\/span>)/, wrap('$' + parseFloat(price).toFixed(2)), 'price', handle);
+  const origin = (CLAIMS[handle] || []).map((c) => ORIGIN[c]).find(Boolean) || '';
+  html = once(html, /id="product-details" data-origin="[^"]*"/, () => `id="product-details" data-origin="${escAttr(origin)}"`, 'data-origin', handle);
+  return html;
+}
+
 async function main() {
   const template = await readFile(join(ROOT, 'product.html'), 'utf8');
 
@@ -292,14 +360,18 @@ async function main() {
   }
 
   await mkdir(join(ROOT, 'products'), { recursive: true });
-  let count = 0;
+  let count = 0, created = 0;
   for (const p of products) {
     if (!p.handle) continue;
-    const html = renderProduct(template, p);
-    await writeFile(join(ROOT, 'products', `${p.handle}.html`), html, 'utf8');
-    count++;
+    const file = join(ROOT, 'products', `${p.handle}.html`);
+    const existing = existsSync(file) ? await readFile(file, 'utf8') : null;
+    const html = renderProduct(template, p, existing);
+    if (existing === html) continue;
+    await writeFile(file, html, 'utf8');
+    if (existing) count++; else created++;
   }
-  console.log(`Generated ${count} product pages into products/`);
+  console.log(`Updated ${count} existing product pages in place, created ${created} new ones from product.html`);
+  if (created) console.log('A new page comes from product.html: run build-reviews.mjs, build-blocks.mjs and build-chrome.mjs after, and check it against an existing page.');
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
