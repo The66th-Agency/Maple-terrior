@@ -68,6 +68,9 @@ const META_OVERRIDES = {
   // "Maple tea" leads, for the search (840 a month, Mangools, November 6, 2026); the rest is Shawn's.
   'maple-ceylon-tea':
     'Maple tea: premium Ceylon dried non-GMO black tea leaves from Sri Lanka, blended with Maple Terroir pure maple syrup and pure maple extract packed in Canada.',
+  // "Maple butter" leads, for the search (3,800 a month, Mangools, November 6, 2026); the facts are the Shopify description's.
+  'organic-maple-cream-butter-jar':
+    'Maple butter made from pure maple syrup alone, boiled to 112°C and whipped into a smooth cream, with no butter or dairy in it. A 160 g jar for $11.99.',
   'maple-sugar-sea-salt-cookies':
     'Maple Terroir’s Maple Sugar & Sea Salt Cookies are made with Maple Terroir pure maple sugar, a touch of sea salt and Canadian non-GMO flour.',
   'maple-syrup-blueberry-cookies':
