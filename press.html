@@ -141,11 +141,15 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <section class="pt-36 md:pt-44 pb-12 md:pb-16 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <nav class="flex items-center gap-2 text-xs text-warm-gray-400 mb-8" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-charcoal transition-colors">Home</a>
-        <span>/</span>
-        <span class="text-warm-gray-600">Press</span>
+      <!-- CRUMBS:START (baked by scripts/build-chrome.mjs from this page's BreadcrumbList; edit the schema, never this copy) -->
+      <nav class="crumbs flex text-xs text-warm-gray-400 mb-8" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <li><a href="/" class="hover:text-charcoal transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-warm-gray-600">Press</li>
+        </ol>
       </nav>
+      <!-- CRUMBS:END -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-end">
         <div class="md:col-span-8">
           <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.05] mb-6">A Canadian maple family, ready to talk terroir.

@@ -81,7 +81,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Locations",
+      "name": "Locations We Serve",
       "item": "https://mapleterroir.com/locations-we-serve/"
     },
     {
@@ -252,6 +252,19 @@
     <div class="absolute inset-0 hidden md:block bg-gradient-to-t from-charcoal/50 via-transparent to-charcoal/20"></div>
     <div class="absolute inset-0 hidden md:block bg-gradient-to-r from-charcoal/85 via-charcoal/45 to-transparent"></div>
     <div class="relative max-w-[1400px] mx-auto w-full">
+      <!-- CRUMBS:START (baked by scripts/build-chrome.mjs from this page's BreadcrumbList; edit the schema, never this copy) -->
+      <nav class="crumbs flex text-xs text-cream/75 mb-8" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <li><a href="/" class="hover:text-cream transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/locations-we-serve/" class="hover:text-cream transition-colors">Locations We Serve</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/locations-we-serve/canada/" class="hover:text-cream transition-colors">Canada</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-cream">Banff Souvenirs</li>
+        </ol>
+      </nav>
+      <!-- CRUMBS:END -->
       <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-cream tracking-tight leading-[1.08] max-w-4xl">
         Banff Souvenirs<br>for the Trip Home.
       </h1>
@@ -507,7 +520,8 @@
             <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="bf-item"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="Pure Maple Syrup Maple Leaf Bottle, 250 mL" width="1000" height="1000" loading="lazy"><span class="bf-item-cap block"><span class="block text-sm font-semibold text-charcoal leading-snug">Maple leaf bottle</span><span class="block text-xs text-warm-gray-500 mt-0.5">250 mL, $24.99</span></span></a>
             <a href="/products/organic-pure-maple-syrup-250ml" class="bf-item"><img src="/assets/images/cards/organic-pure-maple-syrup-250ml.webp" alt="Organic Pure Maple Syrup, 250 mL" width="1000" height="1000" loading="lazy"><span class="bf-item-cap block"><span class="block text-sm font-semibold text-charcoal leading-snug">Organic syrup</span><span class="block text-xs text-warm-gray-500 mt-0.5">250 mL, $14.99</span></span></a>
             <a href="/products/organic-maple-cream-butter-jar" class="bf-item"><img src="/assets/images/cards/organic-maple-cream-butter-jar.webp" alt="Organic Maple Cream Butter jar" width="1000" height="1000" loading="lazy"><span class="bf-item-cap block"><span class="block text-sm font-semibold text-charcoal leading-snug">Maple butter</span><span class="block text-xs text-warm-gray-500 mt-0.5">160 g, $11.99</span></span></a>
-            <a href="/canadian-souvenirs" class="bf-slot"><span class="font-display text-lg font-semibold leading-snug">More to bring home</span><span class="text-xs text-warm-gray-300 mt-1.5 leading-relaxed">See every Canadian souvenir</span><svg class="w-4 h-4 mt-3" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <!-- data-listing-skip: the "see every souvenir" tile that closes the checked-bag tray, a link to the full shelf rather than a product, so it has no product photo by design. -->
+            <a href="/canadian-souvenirs" class="bf-slot" data-listing-skip><span class="font-display text-lg font-semibold leading-snug">More to bring home</span><span class="text-xs text-warm-gray-300 mt-1.5 leading-relaxed">See every Canadian souvenir</span><svg class="w-4 h-4 mt-3" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
       </div>

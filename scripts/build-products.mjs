@@ -242,7 +242,7 @@ function renderProduct(template, p) {
   html = html.replace(/(<meta name="description" content=")[^"]*(">)/, `$1${escAttr(desc)}$2`);
   html = html.replace('</head>', headInject + '</head>');
   html = html.replace(
-    /(<span id="breadcrumb-title"[^>]*>)[\s\S]*?(<\/span>)/,
+    /(<li [^>]*id="breadcrumb-title"[^>]*>)[\s\S]*?(<\/li>)/,
     `$1${escText(p.title)}$2`
   );
   html = html.replace(

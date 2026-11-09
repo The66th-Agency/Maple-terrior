@@ -279,13 +279,17 @@
   <!-- BREADCRUMB -->
   <div class="pt-32 md:pt-36 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <nav class="flex items-center gap-2 text-xs text-warm-gray-400" aria-label="Breadcrumb">
-        <a href="/" class="hover:text-charcoal transition-colors">Home</a>
-        <span>/</span>
-        <a href="/products" class="hover:text-charcoal transition-colors">Products</a>
-        <span>/</span>
-        <span id="breadcrumb-title" class="text-warm-gray-600">Loading...</span>
+      <!-- CRUMBS:START (the sitewide breadcrumb from scripts/build-chrome.mjs; the product name is filled by build-products.mjs and the page script) -->
+      <nav class="crumbs flex text-xs text-warm-gray-400" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <li><a href="/" class="hover:text-charcoal transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/products" class="hover:text-charcoal transition-colors">Products</a></li>
+          <li aria-hidden="true">/</li>
+          <li aria-current="page" class="text-warm-gray-600" id="breadcrumb-title">Loading...</li>
+        </ol>
       </nav>
+      <!-- CRUMBS:END -->
     </div>
   </div>
 
@@ -388,8 +392,7 @@
       <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-3">Packaged vs. Unwrapped</h2>
       <p class="text-sm text-warm-gray-500 mb-8">Drag the slider to reveal what is inside the box</p>
       <div class="ba-slider" id="ba-slider">
-        <img id="ba-before" src="" alt="Product packaged" class="ba-before">
-        <img id="ba-after" src="" alt="Product unpackaged" class="ba-after">
+        <!-- The two photos are added by the page script when the slider turns on (stroopwafels with 3+ Shopify photos), so no empty img ships in the server HTML. -->
         <div class="ba-line" id="ba-line"></div>
         <div class="ba-handle" id="ba-handle">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 4l-4 8 4 8M16 4l4 8-4 8"/></svg>
@@ -711,8 +714,17 @@
       if (shopImages.length >= 3 && p.productType && p.productType.toLowerCase().indexOf('stroopwafel') !== -1) {
         var baSection = document.getElementById('ba-section');
         baSection.classList.remove('hidden');
-        document.getElementById('ba-before').src = shopImages[0].url + '&width=800';
-        document.getElementById('ba-after').src = shopImages[1].url + '&width=800';
+        var baSlider = document.getElementById('ba-slider');
+        if (!document.getElementById('ba-before')) {
+          [['ba-before', 0, ', in its package'], ['ba-after', 1, ', out of the package']].reverse().forEach(function (b) {
+            var im = document.createElement('img');
+            im.id = b[0];
+            im.className = b[0];
+            im.alt = p.title + b[2];
+            im.src = shopImages[b[1]].url + '&width=800';
+            baSlider.insertBefore(im, baSlider.firstChild);
+          });
+        }
         initBASlider();
       }
 
