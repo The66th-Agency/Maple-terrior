@@ -307,11 +307,15 @@ const SETS = {
   // The collections of things people eat rather than pour or send: cookies,
   // chocolates, snacks, stroopwafels, tea and coffee (October 3, 2026).
   treats: [['maple-leaf-mini-shortbread-cookies', 'Rowena A.'], ['handcrafted-pure-maple-syrup-butter-popcorn', 'Chris'], ['cocoa-chocolate-maple-stroopwafels-caddy', 'Kiko W.']],
+  // The stroopwafel collection, so every quote is about a stroopwafel (November 10,
+  // 2026: the treats set put cookie and popcorn reviews on that page).
+  stroopwafels: [['wild-blueberry-maple-stroopwafels-caddy', 'Sheryl V.'], ['strawberry-cream-maple-stroopwafels-caddy', 'Coby C.'], ['cocoa-chocolate-maple-stroopwafels-caddy', 'Kiko W.']],
 };
 const HEAD = {
   syrup: 'Rated 5.0 by the People Who Pour It',
   gifts: 'Rated 5.0 by the People Who Send It',
   treats: 'Rated 5.0 by the People Who Snack on It',
+  stroopwafels: 'What Our Stroopwafel Buyers Say',
 };
 function review(handle, name) {
   const f = join(ROOT, 'products', `${handle}.html`);
