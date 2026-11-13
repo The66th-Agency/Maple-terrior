@@ -377,8 +377,8 @@ ${[big, ...rest.map(small)].filter(Boolean).join('\n')}
 }
 
 // ------------------------------------------------------------ FAMILY
-const PHOTO = { src: '/assets/images/story/shawn-lytton.webp', w: 640, h: 800 };
-const ALT = 'Shawn Lytton, President of Maple Terroir, in front of a shelf of maple syrup and Canadian food gifts';
+const PHOTO = { src: '/assets/images/story/shawn-lytton-portrait.webp', w: 800, h: 1000 };
+const ALT = 'Shawn Lytton, President of Maple Terroir'; // Shawn, November 12, 2026: the shelf background did not look good; his own portrait replaces it
 const CAPTION = 'Shawn Lytton, President of Maple Terroir.';
 const family = (where) => `  <section id="family" class="scroll-mt-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
