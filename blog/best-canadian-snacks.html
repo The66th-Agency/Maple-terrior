@@ -27,7 +27,7 @@
   "description": "Twelve Canadian snacks scored on pure maple, where they are made, Canadian ingredients, how well they travel and whether the maker sells them online.",
   "image": "https://mapleterroir.com/assets/images/covers/best-canadian-snacks.webp",
   "datePublished": "2026-11-06",
-  "dateModified": "2026-11-06",
+  "dateModified": "2026-11-12",
   "author": {
     "@type": "Organization",
     "name": "Maple Terroir",
@@ -160,15 +160,7 @@
       "name": "Where can I buy Canadian snacks online?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We sell our maple stroopwafels, popcorn, cookies and nuts online and ship to all ten provinces, free on orders of $99 or more. Purdys sells its chocolates online. The chips, chocolate bars and candy on this list are sold in grocery and convenience stores rather than by their makers."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this list biased toward Maple Terroir?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We make three of the twelve snacks and say so at the top. We chose the five criteria and scored our snacks on the same rules as the others, from what each maker publishes. Every score and rule is on this page so you can check it."
+        "text": "Maple Terroir sells its maple stroopwafels, popcorn, cookies and nuts online and ships to all ten provinces, free on orders of $99 or more. Purdys sells its chocolates online. The chips, chocolate bars and candy on this list are sold in grocery and convenience stores rather than by their makers."
       }
     }
   ]
@@ -240,7 +232,6 @@
   <style>
     .gift-card { background: #fff; border-radius: 2rem; padding: 1.75rem; box-shadow: 0 0 0 1px rgba(214,206,194,.45); }
     @media (min-width: 768px) { .gift-card { padding: 2.5rem 3rem; } }
-    .gift-card.is-ours { background: #FBF4E8; box-shadow: 0 0 0 1px rgba(196,132,29,.28); }
     .gift-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
     .gift-num { font-family: 'Fraunces', Georgia, serif; font-size: 2.25rem; font-weight: 600; line-height: 1; color: rgba(196,132,29,.6); flex-shrink: 0; }
     .gift-head h3 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(1.5rem, 2.4vw, 1.875rem); font-weight: 600; color: #1A1714; letter-spacing: -0.01em; line-height: 1.2; flex: 1 1 auto; }
@@ -254,7 +245,6 @@
     .gift-body > * { min-width: 0; }
     @media (min-width: 900px) { .gift-body { grid-template-columns: minmax(0,1fr) 300px; align-items: start; } }
     .crit { border-radius: 1.25rem; background: #F7F2EA; padding: 1rem 1.15rem; }
-    .is-ours .crit { background: #fff; }
     .crit-title { font-size: .8rem; font-weight: 600; color: #1A1714; margin-bottom: .5rem; }
     .crit-row { display: grid; grid-template-columns: 1fr auto; gap: .75rem; align-items: center; padding: .45rem 0; border-top: 1px solid rgba(214,206,194,.6); font-size: .85rem; color: #5c544b; }
     .crit-row:first-of-type { border-top: 0; }
@@ -286,7 +276,6 @@
     .gift-table th { text-align: left; padding: .95rem 1rem; font-weight: 600; color: #1A1714; background: #F5F0E8; font-size: .82rem; vertical-align: bottom; }
     .gift-table td { padding: .85rem 1rem; color: #5c544b; border-top: 1px solid rgba(214,206,194,.5); vertical-align: middle; }
     .gift-table td:first-child { color: #1A1714; font-weight: 500; }
-    .gift-table tr.is-ours td { background: #FBF4E8; }
     .gift-table td a { color: #1A1714; text-decoration: underline; text-decoration-color: rgba(196,132,29,.55); text-underline-offset: 3px; }
     .gift-table td.num { text-align: center; }
     .gift-table td.total { font-weight: 700; color: #1A1714; text-align: center; font-size: 1rem; }
@@ -300,12 +289,10 @@
     .sb-row .n { color: #8a7f72; font-size: .78rem; }
     .sb-row .track { height: 8px; border-radius: 999px; background: #F1ECE4; overflow: hidden; }
     .sb-row .fill { display: block; height: 100%; border-radius: 999px; background: #C9BCA8; }
-    .sb-row.is-ours .fill { background: #C4841D; }
     .sb-row .v { text-align: right; font-weight: 600; font-size: .85rem; }
     .answer-grid { display: grid; gap: .75rem; }
     @media (min-width: 768px) { .answer-grid { grid-template-columns: 1fr 1fr; } }
     .answer { background: #fff; border-radius: 1.25rem; padding: 1.1rem 1.25rem; box-shadow: 0 0 0 1px rgba(214,206,194,.5); }
-    .answer.is-ours { background: #FBF4E8; box-shadow: 0 0 0 1px rgba(196,132,29,.28); }
     .answer h3 { font-family: 'Fraunces', Georgia, serif; font-size: 1.05rem; font-weight: 600; color: #1A1714; margin-bottom: .3rem; }
     .answer p { font-size: .9rem; color: #5c544b; line-height: 1.55; }
     .answer a { color: #1A1714; text-decoration: underline; text-decoration-color: rgba(196,132,29,.6); text-underline-offset: 3px; }
@@ -314,7 +301,6 @@
     .method div { background: #fff; border-radius: 1.25rem; padding: 1.1rem 1.25rem; box-shadow: 0 0 0 1px rgba(214,206,194,.5); }
     .method h3 { font-size: .95rem; font-weight: 600; color: #1A1714; margin-bottom: .35rem; }
     .method p { font-size: .86rem; color: #5c544b; line-height: 1.55; }
-    .disclose { border-left: 3px solid #C4841D; padding: .25rem 0 .25rem 1rem; font-size: .95rem; color: #5c544b; line-height: 1.6; }
     .toc { background: #fff; border-radius: 1.5rem; padding: 1.5rem 1.5rem 1.25rem; box-shadow: 0 0 0 1px rgba(214,206,194,.55); }
     @media (min-width: 768px) { .toc { padding: 1.75rem 2.25rem 1.5rem; } }
     .toc-title { font-family: 'Fraunces', Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #1A1714; margin-bottom: .75rem; }
@@ -338,16 +324,12 @@
     @media (min-width: 768px) { .t-row { grid-template-columns: 12rem 1fr 2rem; } }
     .t-row .track { height: 12px; border-radius: 999px; background: #F1ECE4; overflow: hidden; }
     .t-row .fill { display: block; height: 100%; border-radius: 999px; background: #C9BCA8; }
-    .t-row.is-maple .fill { background: #C4841D; }
     .t-row .v { text-align: right; font-weight: 600; }
     .t-axis { display: grid; grid-template-columns: minmax(0, 9.5rem) 1fr 1.5rem; gap: .75rem; font-size: .72rem; color: #8a7f72; margin-top: .25rem; }
     @media (min-width: 768px) { .t-axis { grid-template-columns: 12rem 1fr 2rem; } }
     .t-axis span:nth-child(2) { display: flex; justify-content: space-between; }
-    .snack-photo { margin-top: 1.25rem; border-radius: 1.25rem; overflow: hidden; background: #F1E9DC; max-width: 360px; }
-    .snack-photo img { display: block; width: 100%; height: auto; }
     .travel-grid { display: grid; gap: .75rem; }
     @media (min-width: 768px) { .travel-grid { grid-template-columns: 1fr 1fr; } }
-    .disclose { max-width: 720px; }
     .toc { max-width: 760px; }
     /* reveal scales from the left edge, so a heading never leaves the container line while it animates in */
     .reveal { transform-origin: left top; }
@@ -434,10 +416,10 @@
         </nav>
         <!-- CRUMBS:END -->
         <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">The Best Canadian Snacks, Ranked for 2026</h1>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl mb-6">Twelve Canadian snacks scored on five things you can check: whether they are made with pure maple, whether they are made in Canada, whether the maker names Canadian ingredients, how well they travel and whether you can buy them from the maker. Our maple stroopwafels, popcorn and cookies take the top three places.</p>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl mb-6">Twelve Canadian snacks scored on five things you can check: whether they are made with pure maple, whether they are made in Canada, whether the maker names Canadian ingredients, how well they travel and whether you can buy them from the maker. Maple Terroir stroopwafels, maple popcorn and maple cookies take the top three places.</p>
         <div class="reveal reveal-delay-3 text-sm text-warm-gray-500">
           <div class="flex items-center gap-3"><span>By Maple Terroir</span><span class="w-1 h-1 rounded-full bg-warm-gray-400"></span><span>11 min read</span></div>
-          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2"><span>Published <time datetime="2026-11-06">November 6, 2026</time></span><span class="w-1 h-1 rounded-full bg-warm-gray-400"></span><span>Last updated <time datetime="2026-11-06">November 6, 2026</time></span></div>
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2"><span>Published <time datetime="2026-11-06">November 6, 2026</time></span><span class="w-1 h-1 rounded-full bg-warm-gray-400"></span><span>Last updated <time datetime="2026-11-12">November 12, 2026</time></span></div>
         </div>
       </div>
       <figure class="reveal reveal-delay-2 hero-figure">
@@ -446,18 +428,13 @@
     </div>
   </section>
 
-  <section class="py-6 md:py-10 px-4 md:px-8">
-    <div class="max-w-[1400px] mx-auto prose-body">
-      <p class="disclose"><strong class="text-charcoal font-semibold">We make three of the snacks on this list.</strong> Maple Terroir is a family maple business, and our stroopwafels, popcorn and cookies are entries 1 to 3. We chose the criteria, and we scored our snacks on the same rules as the other nine. Facts about the other snacks come from their makers' own websites and named independent sources, read on November 6, 2026.</p>
-    </div>
-  </section>
 
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <h2 id="short-answer" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">The Short Answer</h2>
-      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[62ch] mb-8">The best Canadian snack to buy is a maple one: our maple syrup stroopwafels, made in Canada with Canadian-grown flour and a pure maple syrup filling, score 10 out of 10, with our maple popcorn and maple cookies beside them. The most popular Canadian snacks are ketchup chips, All Dressed chips, Coffee Crisp and Jos. Louis, going by nine Canadian snack lists.</p>
+      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[62ch] mb-8">The best Canadian snack to buy is a maple one: Maple Terroir stroopwafels, made in Canada with Canadian-grown flour and a pure maple syrup filling, score 10 out of 10, with the same maker's maple popcorn and maple cookies beside them. The most popular Canadian snacks are ketchup chips, All Dressed chips, Coffee Crisp and Jos. Louis, going by nine Canadian snack lists.</p>
       <div class="reveal answer-grid">
-        <div class="answer is-ours"><h3>Best overall: maple stroopwafels</h3><p><a href="#maple-stroopwafels">Our maple stroopwafels</a>, popcorn and cookies: made in Canada with pure maple and Canadian-grown flour or corn, shelf-stable, from $4.99. 10 out of 10.</p></div>
+        <div class="answer"><h3>Best overall: maple stroopwafels</h3><p><a href="#maple-stroopwafels">Maple Terroir stroopwafels</a>, popcorn and cookies: made in Canada with pure maple and Canadian-grown flour or corn, shelf-stable, from $4.99. 10 out of 10.</p></div>
         <div class="answer"><h3>For the snack Canadians name most</h3><p><a href="#ketchup-chips">Ketchup chips</a>, named by 5 of the 9 lists, from Lay's or Old Dutch.</p></div>
         <div class="answer"><h3>For a classic made in one Canadian town</h3><p><a href="#hawkins-cheezies">Hawkins Cheezies</a>, made in Belleville, Ontario, with aged Canadian cheddar.</p></div>
         <div class="answer"><h3>For a Canadian chocolate bar</h3><p><a href="#coffee-crisp">Coffee Crisp</a>, made in Toronto and named by 4 of the 9 lists.</p></div>
@@ -511,7 +488,7 @@
         <div class="t-row"><span>Hawkins Cheezies</span><span class="track"><span class="fill" style="width:33%"></span></span><span class="v">3</span></div>
         <div class="t-row"><span>Nanaimo bars</span><span class="track"><span class="fill" style="width:22%"></span></span><span class="v">2</span></div>
         <div class="t-row"><span>Hickory Sticks</span><span class="track"><span class="fill" style="width:22%"></span></span><span class="v">2</span></div>
-        <div class="t-row is-maple"><span>Maple syrup</span><span class="track"><span class="fill" style="width:22%"></span></span><span class="v">2</span></div>
+        <div class="t-row"><span>Maple syrup</span><span class="track"><span class="fill" style="width:22%"></span></span><span class="v">2</span></div>
         <div class="t-axis"><span></span><span><i>0</i><i>9 lists</i></span><span></span></div>
       </div>
       <p class="reveal fine mt-4">The lists: getlost.blog, &quot;Top Canadian Snacks&quot;; Narcity, &quot;I Tried 7 Canadian Snacks For The First Time&quot;; Narcity, &quot;7 Canadian snacks I didn&#x27;t know existed&quot;; Reformatt, &quot;15 Typical Canadian Snacks and Drinks&quot;; TasteAtlas, &quot;6 Best Snacks in Canada&quot;; Canadian Food Focus, &quot;The Snack Story&quot;; PSS Removals, &quot;Popular Canadian Foods&quot;; Klondike Kettle Corn, &quot;The Best Canadian Snacks to Try Right Now&quot;; Merry About Town, &quot;Yummy Canadian Products&quot;. Brands are merged where a list names the same snack (Lay's and Old Dutch ketchup chips count as ketchup chips).</p>
@@ -528,9 +505,9 @@
         <table class="gift-table">
           <thead><tr><th scope="col">Snack</th><th scope="col">Maker</th><th scope="col" class="text-center">Made with pure maple</th><th scope="col" class="text-center">Made in Canada</th><th scope="col" class="text-center">Canadian ingredients</th><th scope="col" class="text-center">Travels well</th><th scope="col" class="text-center">Buy from the maker</th><th scope="col" class="text-center">Total</th></tr></thead>
           <tbody>
-            <tr class="is-ours"><td><a href="#maple-stroopwafels">1. Maple Syrup Stroopwafels</a></td><td>Maple Terroir</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="total">10</td></tr>
-            <tr class="is-ours"><td><a href="#maple-popcorn">2. Pure Maple Syrup Butter Popcorn</a></td><td>Maple Terroir</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="total">10</td></tr>
-            <tr class="is-ours"><td><a href="#maple-cookies">3. Maple Sugar and Sea Salt Cookies</a></td><td>Maple Terroir</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="total">10</td></tr>
+            <tr><td><a href="#maple-stroopwafels">1. Maple Syrup Stroopwafels</a></td><td>Maple Terroir</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="total">10</td></tr>
+            <tr><td><a href="#maple-popcorn">2. Pure Maple Syrup Butter Popcorn</a></td><td>Maple Terroir</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="total">10</td></tr>
+            <tr><td><a href="#maple-cookies">3. Maple Sugar and Sea Salt Cookies</a></td><td>Maple Terroir</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="total">10</td></tr>
             <tr><td><a href="#ketchup-chips">4. Ketchup Chips</a></td><td>Lay&#x27;s (PepsiCo Canada) and Old Dutch</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span><span class="sub">0</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span><span class="sub">1</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span><span class="sub">1</span></td><td class="total">6</td></tr>
             <tr><td><a href="#hawkins-cheezies">5. Hawkins Cheezies</a></td><td>W.T. Hawkins Ltd., Belleville, Ontario</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span><span class="sub">0</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span><span class="sub">1</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span><span class="sub">1</span></td><td class="total">6</td></tr>
             <tr><td><a href="#all-dressed-chips">6. Ruffles All Dressed</a></td><td>Ruffles (PepsiCo Canada)</td><td class="num"><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span><span class="sub">0</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span><span class="sub">0</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span><span class="sub">2</span></td><td class="num"><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span><span class="sub">1</span></td><td class="total">5</td></tr>
@@ -551,7 +528,7 @@
     <div class="max-w-[1400px] mx-auto">
       <h2 id="how-we-scored" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">How We Scored Them</h2>
       <div class="reveal prose-body max-w-[70ch] mb-8">
-        <p>We took the packaged snacks the nine lists name most often, added three Canadian-made snacks the lists missed (Swedish Berries, Purdys Hedgehogs and Caramilk) and our own three, and checked each one on its maker's website on November 6, 2026. Dishes and bakery treats such as poutine and butter tarts are covered separately below, because you eat them where they are made.</p>
+        <p>We took the packaged snacks the nine lists name most often, added three Canadian-made snacks the lists missed (Swedish Berries, Purdys Hedgehogs and Caramilk) and three Maple Terroir snacks, and checked each one on its maker's website on November 6, 2026. Dishes and bakery treats such as poutine and butter tarts are covered separately below, because you eat them where they are made.</p>
         <p>How often the lists name a snack is shown in the chart above and used only to order snacks with the same score. We did not run a taste test, so taste is not scored. Every score comes from what a maker or a named source publishes, which is what you can check yourself.</p>
       </div>
       <div class="reveal method">
@@ -571,41 +548,41 @@
         <p class="text-warm-gray-600 leading-relaxed max-w-[60ch] mt-4">What each snack is, who makes it, where it is made and what that means if you want to send it or bring it home.</p>
       </div>
       <div class="space-y-6 md:space-y-8">
-        <article id="maple-stroopwafels" class="reveal gift-card is-ours">
+        <article id="maple-stroopwafels" class="reveal gift-card">
           <div class="gift-head"><span class="gift-num">01</span><h3>Maple Syrup Stroopwafels</h3><span class="score-total">10<small>/ 10</small></span></div>
           <p class="gift-for">Maple Terroir. $8.99 for a 136 g pack, made in Canada.</p>
           <div class="gift-body">
-            <div class="prose-body"><p>A stroopwafel is two thin waffle layers pressed around a caramel filling. Ours is filled with our maple syrup, from one farm in Quebec, and the product page lists Canadian-grown flour as the first ingredient, with Canadian eggs and no margarine or glucose-fructose. Set one on top of a hot cup of tea or coffee for a minute and the filling softens.</p><p>Our stroopwafels were supplied to the TED Conference in Vancouver in 2024, 2025 and 2026. For a smaller bite, the <a href="/products/maple-syrup-mini-stroopwafel">mini stroopwafels</a> come 15 to a box at $8.99.</p><a class="snack-photo" href="/products/maple-syrup-stroopwafel" style="display:block"><img src="/assets/images/cards/maple-syrup-stroopwafel.webp" alt="Maple Syrup Stroopwafels by Maple Terroir, in its package" width="1000" height="1000" loading="lazy"></a></div>
+            <div class="prose-body"><p>A stroopwafel is two thin waffle layers pressed around a caramel filling. Maple Terroir fills its stroopwafels with maple syrup from one farm in Quebec, and its product page lists Canadian-grown flour as the first ingredient, with Canadian eggs and no margarine or glucose-fructose. Set one on top of a hot cup of tea or coffee for a minute and the filling softens.</p><p>Maple Terroir stroopwafels were supplied to the TED Conference in Vancouver in 2024, 2025 and 2026. For a smaller bite, the <a href="/products/maple-syrup-mini-stroopwafel">mini stroopwafels</a> come 15 to a box at $8.99.</p></div>
             <div class="crit"><p class="crit-title">Score by criterion</p><div class="crit-row"><span>Made with pure maple</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Made in Canada</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Canadian ingredients</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Travels well</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Buy from the maker</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div></div>
           </div>
-          <dl class="gift-facts"><div><dt>Price</dt><dd>$8.99 for 136 g; minis $8.99 for 15 pieces</dd></div><div><dt>Made in</dt><dd>Canada</dd></div><div><dt>Canadian ingredients</dt><dd>Canadian-grown flour and Canadian eggs, per our product page</dd></div><div><dt>Keeps</dt><dd>Shelf-stable</dd></div></dl>
-          <p class="fine">Source: our product pages, read November 6, 2026.</p>
+          <dl class="gift-facts"><div><dt>Price</dt><dd>$8.99 for 136 g; minis $8.99 for 15 pieces</dd></div><div><dt>Made in</dt><dd>Canada</dd></div><div><dt>Canadian ingredients</dt><dd>Canadian-grown flour and Canadian eggs, per the maker's product page</dd></div><div><dt>Keeps</dt><dd>Shelf-stable</dd></div></dl>
+          <p class="fine">Source: the Maple Terroir product pages, read November 6, 2026.</p>
         </article>
-        <article id="maple-popcorn" class="reveal gift-card is-ours">
+        <article id="maple-popcorn" class="reveal gift-card">
           <div class="gift-head"><span class="gift-num">02</span><h3>Pure Maple Syrup Butter Popcorn</h3><span class="score-total">10<small>/ 10</small></span></div>
           <p class="gift-for">Maple Terroir. $4.99 for a 100 g bag, made in Canada.</p>
           <div class="gift-body">
-            <div class="prose-body"><p>Our popcorn is made in small batches from Canadian-grown, non-GMO corn, coated with pure maple syrup and butter. It is nut-free, egg-free and gluten-free, and it contains dairy, so it suits a gift for someone who avoids nuts.</p><p>A bag costs $4.99, and in a pack of twelve each bag costs $3.99.</p><a class="snack-photo" href="/products/handcrafted-pure-maple-syrup-butter-popcorn" style="display:block"><img src="/assets/images/cards/handcrafted-pure-maple-syrup-butter-popcorn.webp" alt="Pure Maple Syrup Butter Popcorn by Maple Terroir, in its package" width="1000" height="1000" loading="lazy"></a></div>
+            <div class="prose-body"><p>Maple Terroir popcorn is made in small batches from Canadian-grown, non-GMO corn, coated with pure maple syrup and butter. It is nut-free, egg-free and gluten-free, and it contains dairy, so it suits a gift for someone who avoids nuts.</p><p>A bag costs $4.99, and in a pack of twelve each bag costs $3.99.</p></div>
             <div class="crit"><p class="crit-title">Score by criterion</p><div class="crit-row"><span>Made with pure maple</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Made in Canada</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Canadian ingredients</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Travels well</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Buy from the maker</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div></div>
           </div>
           <dl class="gift-facts"><div><dt>Price</dt><dd>$4.99 for 100 g; $3.99 each in a 12-pack</dd></div><div><dt>Made in</dt><dd>Canada</dd></div><div><dt>Canadian ingredients</dt><dd>Canadian-grown non-GMO corn</dd></div><div><dt>Allergens</dt><dd>Nut-free, egg-free, gluten-free; contains dairy</dd></div></dl>
-          <p class="fine">Source: our product page, read November 6, 2026.</p>
+          <p class="fine">Source: the Maple Terroir product page, read November 6, 2026.</p>
         </article>
-        <article id="maple-cookies" class="reveal gift-card is-ours">
+        <article id="maple-cookies" class="reveal gift-card">
           <div class="gift-head"><span class="gift-num">03</span><h3>Maple Sugar and Sea Salt Cookies</h3><span class="score-total">10<small>/ 10</small></span></div>
           <p class="gift-for">Maple Terroir. $8.99 for 10 wrapped cookies, made in Canada.</p>
           <div class="gift-body">
-            <div class="prose-body"><p>These are crisp cookies made with our maple sugar, a little sea salt and Canadian non-GMO flour, ten to a box and each one wrapped, so they work as a lunch-bag snack or a stocking stuffer.</p><p>For something closer to a classic maple cookie, our <a href="/products/maple-leaf-mini-shortbread-cookies">maple leaf mini shortbread</a> holds 45 bite-size cookies made with Canadian flour, butter and eggs, in a peanut-free facility, for $8.99.</p><a class="snack-photo" href="/products/maple-sugar-sea-salt-cookies" style="display:block"><img src="/assets/images/cards/maple-sugar-sea-salt-cookies.webp" alt="Maple Sugar and Sea Salt Cookies by Maple Terroir, in its package" width="1000" height="1000" loading="lazy"></a></div>
+            <div class="prose-body"><p>These are crisp cookies made with pure maple sugar, a little sea salt and Canadian non-GMO flour, ten to a box and each one wrapped, so they work as a lunch-bag snack or a stocking stuffer.</p><p>For something closer to a classic maple cookie, the Maple Terroir <a href="/products/maple-leaf-mini-shortbread-cookies">maple leaf mini shortbread</a> holds 45 bite-size cookies made with Canadian flour, butter and eggs, in a peanut-free facility, for $8.99.</p></div>
             <div class="crit"><p class="crit-title">Score by criterion</p><div class="crit-row"><span>Made with pure maple</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Made in Canada</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Canadian ingredients</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Travels well</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Buy from the maker</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div></div>
           </div>
           <dl class="gift-facts"><div><dt>Price</dt><dd>$8.99 for 100 g (10 cookies)</dd></div><div><dt>Made in</dt><dd>Canada</dd></div><div><dt>Canadian ingredients</dt><dd>Canadian non-GMO flour</dd></div><div><dt>Keeps</dt><dd>Shelf-stable, individually wrapped</dd></div></dl>
-          <p class="fine">Source: our product page, read November 6, 2026.</p>
+          <p class="fine">Source: the Maple Terroir product page, read November 6, 2026.</p>
         </article>
         <article id="ketchup-chips" class="reveal gift-card">
           <div class="gift-head"><span class="gift-num">04</span><h3>Ketchup Chips</h3><span class="score-total">6<small>/ 10</small></span></div>
           <p class="gift-for">Lay&#x27;s (PepsiCo Canada) and Old Dutch. Named by 5 of the 9 lists, more than any other snack.</p>
           <div class="gift-body">
-            <div class="prose-body"><p>Ketchup chips are the snack Canadians name first: five of the nine lists we read include them, more than any other snack. The Canadian Encyclopedia says Hostess sold most of them in the 1970s and 1980s, and that nobody knows for certain who made them first.</p><p>Lay's says its ketchup chips are "Made in Canada from domestic and imported ingredients." Old Dutch, a family-owned company that started in Winnipeg in 1954, says it makes its chips for the Canadian market in four facilities across Canada. Both are grocery store chips; neither maker sells online.</p><figure class="evidence"><a class="shot" href="https://www.olddutchfoods.ca/" rel="nofollow noopener" target="_blank"><span class="bar"><i></i><i></i><i></i><span>olddutchfoods.ca</span></span><img src="/assets/images/blog/best-canadian-snacks/old-dutch-ketchup-maker-page.webp" alt="Screenshot: The Old Dutch home page, showing its Ketchup chips" width="1440" height="900" loading="lazy"></a><figcaption>The Old Dutch home page, showing its Ketchup chips, captured November 6, 2026.</figcaption></figure></div>
+            <div class="prose-body"><p>Ketchup chips are the snack Canadians name first: five of the nine lists we read include them, more than any other snack. The Canadian Encyclopedia says Hostess sold most of them in the 1970s and 1980s, and that nobody knows for certain who made them first.</p><p>Lay's says its ketchup chips are "Made in Canada from domestic and imported ingredients." Old Dutch, a family-owned company that started in Winnipeg in 1954, says it makes its chips for the Canadian market in four facilities across Canada. Both are grocery store chips; neither maker sells online.</p></div>
             <div class="crit"><p class="crit-title">Score by criterion</p><div class="crit-row"><span>Made with pure maple</span><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span></div><div class="crit-row"><span>Made in Canada</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Canadian ingredients</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div><div class="crit-row"><span>Travels well</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Buy from the maker</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div></div>
           </div>
           <dl class="gift-facts"><div><dt>Sizes</dt><dd>66 g to 425 g bags in grocery stores</dd></div><div><dt>Made in</dt><dd>Canada, per both makers</dd></div><div><dt>Canadian ingredients</dt><dd>&quot;Domestic and imported&quot; (Lay&#x27;s)</dd></div><div><dt>Keeps</dt><dd>Shelf-stable; the bag can crush in a suitcase</dd></div></dl>
@@ -615,7 +592,7 @@
           <div class="gift-head"><span class="gift-num">05</span><h3>Hawkins Cheezies</h3><span class="score-total">6<small>/ 10</small></span></div>
           <p class="gift-for">W.T. Hawkins Ltd., Belleville, Ontario. Named by 3 of the 9 lists.</p>
           <div class="gift-body">
-            <div class="prose-body"><p>Cheezies are corn snacks made with real aged cheddar cheese, as the bag says. The Canadian Encyclopedia says the Cheezie has not changed since it was invented in 1949 and is made with aged Canadian cheddar. The family-owned maker says they are "Proudly made in Belleville Ontario."</p><p>The maker's site lists bags from 28 g to 285 g and multipacks, with no online shop, so you buy them in grocery and convenience stores.</p><figure class="evidence"><a class="shot" href="https://cheezies.com/products/" rel="nofollow noopener" target="_blank"><span class="bar"><i></i><i></i><i></i><span>cheezies.com/products</span></span><img src="/assets/images/blog/best-canadian-snacks/hawkins-cheezies-maker-page.webp" alt="Screenshot: The Hawkins Cheezies products page, which says they are made in Belleville, Ontario" width="1440" height="900" loading="lazy"></a><figcaption>The Hawkins Cheezies products page, which says they are made in Belleville, Ontario, captured November 6, 2026.</figcaption></figure></div>
+            <div class="prose-body"><p>Cheezies are corn snacks made with real aged cheddar cheese, as the bag says. The Canadian Encyclopedia says the Cheezie has not changed since it was invented in 1949 and is made with aged Canadian cheddar. The family-owned maker says they are "Proudly made in Belleville Ontario."</p><p>The maker's site lists bags from 28 g to 285 g and multipacks, with no online shop, so you buy them in grocery and convenience stores.</p></div>
             <div class="crit"><p class="crit-title">Score by criterion</p><div class="crit-row"><span>Made with pure maple</span><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span></div><div class="crit-row"><span>Made in Canada</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Canadian ingredients</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div><div class="crit-row"><span>Travels well</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Buy from the maker</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div></div>
           </div>
           <dl class="gift-facts"><div><dt>Sizes</dt><dd>28 g to 285 g bags and multipacks</dd></div><div><dt>Made in</dt><dd>Belleville, Ontario, per the maker</dd></div><div><dt>Canadian ingredients</dt><dd>Aged Canadian cheddar, per The Canadian Encyclopedia</dd></div><div><dt>Keeps</dt><dd>Shelf-stable</dd></div></dl>
@@ -645,7 +622,7 @@
           <div class="gift-head"><span class="gift-num">08</span><h3>Purdys Hedgehogs</h3><span class="score-total">5<small>/ 10</small></span></div>
           <p class="gift-for">Purdys Chocolatier. Not on the 9 lists; sold online by the maker.</p>
           <div class="gift-body">
-            <div class="prose-body"><p>Hedgehogs are milk chocolates shaped like a hedgehog and filled with hazelnut gianduja. Purdys, which calls itself Canada's chocolatier since 1907, says they are handcrafted "right here in Canada."</p><p>Purdys sells them online in boxes of 10 and 20, and it is the only maker on this list besides us with its own online shop. They are chocolate, so they need a cool place.</p><figure class="evidence"><a class="shot" href="https://www.purdys.com/chocolate/chocolate-hedgehogs" rel="nofollow noopener" target="_blank"><span class="bar"><i></i><i></i><i></i><span>purdys.com/chocolate/chocolate-hedgehogs</span></span><img src="/assets/images/blog/best-canadian-snacks/purdys-hedgehogs-maker-page.webp" alt="Screenshot: The Purdys Chocolate Hedgehogs page" width="1440" height="720" loading="lazy"></a><figcaption>The Purdys Chocolate Hedgehogs page, captured November 6, 2026.</figcaption></figure></div>
+            <div class="prose-body"><p>Hedgehogs are milk chocolates shaped like a hedgehog and filled with hazelnut gianduja. Purdys, which calls itself Canada's chocolatier since 1907, says they are handcrafted "right here in Canada."</p><p>Purdys sells them online in boxes of 10 and 20, and it is the only maker on this list besides Maple Terroir with its own online shop. They are chocolate, so they need a cool place.</p></div>
             <div class="crit"><p class="crit-title">Score by criterion</p><div class="crit-row"><span>Made with pure maple</span><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span></div><div class="crit-row"><span>Made in Canada</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div><div class="crit-row"><span>Canadian ingredients</span><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span></div><div class="crit-row"><span>Travels well</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div><div class="crit-row"><span>Buy from the maker</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip on"></i></span></div></div>
           </div>
           <dl class="gift-facts"><div><dt>Size</dt><dd>Boxes of 10 and 20</dd></div><div><dt>Made in</dt><dd>Canada, per the maker</dd></div><div><dt>Canadian ingredients</dt><dd>Not stated</dd></div><div><dt>Keeps</dt><dd>Chocolate; keep it cool</dd></div></dl>
@@ -675,11 +652,11 @@
           <div class="gift-head"><span class="gift-num">11</span><h3>Jos. Louis</h3><span class="score-total">3<small>/ 10</small></span></div>
           <p class="gift-for">Vachon. Named by 4 of the 9 lists.</p>
           <div class="gift-body">
-            <div class="prose-body"><p>A Jos. Louis is a chocolate snack cake with a cream filling. CBC Life says Vachon invented it in 1932, and The Canadian Encyclopedia says it was named after the Vachon family's sons, Joseph and Louis, and that the company still runs a plant in Sainte-Marie-de-Beauce.</p><p>We could not open Vachon's own site to read a made-in statement, so the score for that criterion comes from the encyclopedia. It is a soft cake that crushes easily, sold in grocery stores in six-packs.</p></div>
+            <div class="prose-body"><p>A Jos. Louis is a chocolate snack cake with a cream filling. CBC Life says Vachon invented it in 1932, and The Canadian Encyclopedia says it was named after the Vachon family's sons, Joseph and Louis, and that the company still runs a plant in Sainte-Marie-de-Beauce.</p><p>Vachon's own Jos. Louis page names no place of manufacture, so the score for that criterion comes from the encyclopedia. It is a soft cake that crushes easily, sold in grocery stores in six-packs.</p></div>
             <div class="crit"><p class="crit-title">Score by criterion</p><div class="crit-row"><span>Made with pure maple</span><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span></div><div class="crit-row"><span>Made in Canada</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div><div class="crit-row"><span>Canadian ingredients</span><span class="pips" aria-hidden="true"><i class="pip"></i><i class="pip"></i></span></div><div class="crit-row"><span>Travels well</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div><div class="crit-row"><span>Buy from the maker</span><span class="pips" aria-hidden="true"><i class="pip on"></i><i class="pip"></i></span></div></div>
           </div>
           <dl class="gift-facts"><div><dt>Size</dt><dd>6-pack, 324 g</dd></div><div><dt>Made in</dt><dd>Canada, per The Canadian Encyclopedia</dd></div><div><dt>Canadian ingredients</dt><dd>Not found</dd></div><div><dt>Keeps</dt><dd>Soft cake; crushes in a bag</dd></div></dl>
-          <p class="fine">Source: The Canadian Encyclopedia, &quot;Canadian Snacks and Flavours&quot;, and CBC Life, read November 6, 2026; vachon.com refused our request.</p>
+          <p class="fine">Source: The Canadian Encyclopedia, &quot;Canadian Snacks and Flavours&quot;, and CBC Life, read November 6, 2026; the Jos. Louis page on vachon.com, read November 12, 2026.</p>
         </article>
         <article id="hickory-sticks" class="reveal gift-card">
           <div class="gift-head"><span class="gift-num">12</span><h3>Hickory Sticks</h3><span class="score-total">3<small>/ 10</small></span></div>
@@ -697,8 +674,8 @@
 
   <section class="py-6 md:py-10 px-4 md:px-8" id="shop">
     <div class="max-w-[1400px] mx-auto">
-      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-3">Our Canadian Maple Snacks</h2>
-      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mb-6 md:mb-8">Stroopwafels, popcorn, cookies and nuts made with our maple syrup. Prices in Canadian dollars.</p>
+      <h2 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-3">Canadian Maple Snacks</h2>
+      <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mb-6 md:mb-8">Maple Terroir stroopwafels, popcorn, cookies and nuts, made with pure maple syrup. Prices in Canadian dollars.</p>
       <!-- SHELF:START handles="maple-syrup-stroopwafel,handcrafted-pure-maple-syrup-butter-popcorn,maple-sugar-sea-salt-cookies,maple-leaf-mini-shortbread-cookies,maple-syrup-mini-stroopwafel,maple-syrup-sea-salt-roasted-peanuts,cocoa-dark-chocolate-covered-maple-roasted-almonds,maple-syrup-blueberry-cookies" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
@@ -738,15 +715,15 @@
       <h2 id="treats-to-eat-here" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-3">Canadian Treats to Eat in Canada</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[64ch] mb-8">Four of the most-named treats are fresh foods rather than packaged snacks, so they are not scored above. They are worth eating while you are here, or baking at home.</p>
       <div class="reveal travel-grid">
-        <div class="answer"><h3>Butter tarts</h3><p><strong class="text-charcoal font-medium">named by 4 lists.</strong> Small pastry tarts with a sweet, buttery filling. The Canadian Encyclopedia says the first published recipe appeared in 1900, in a cookbook from the Women&#x27;s Auxiliary of the Royal Victoria Hospital. To bake them at home, our <a href="/blog/maple-butter-tarts">maple butter tarts</a> use pure maple syrup in the filling.</p></div>
-        <div class="answer"><h3>Poutine</h3><p><strong class="text-charcoal font-medium">named by 4 lists.</strong> Fries, cheese curds and gravy. The Canadian Encyclopedia says the combination first appeared in rural snack bars in the late 1950s. It is a hot dish, so it is a snack to eat in Canada rather than pack.</p></div>
-        <div class="answer"><h3>BeaverTails</h3><p><strong class="text-charcoal font-medium">named by 3 lists.</strong> Fried pastries made from a Hooker family recipe. Pam and Grant Hooker first sold them at the Killaloe Craft and Community Fair in 1978, according to the company&#x27;s own history, and today they are made fresh in BeaverTails shops.</p></div>
-        <div class="answer"><h3>Nanaimo bars</h3><p><strong class="text-charcoal font-medium">named by 2 lists.</strong> A no-bake chocolate square. The Canadian Encyclopedia dates the first version to a 1952 Nanaimo Hospital cookbook; the City of Nanaimo calls its origin &quot;elusive.&quot;</p></div>
+        <div class="answer"><h3>Butter tarts</h3><p><strong class="text-charcoal font-medium">Named by 4 lists.</strong> Small pastry tarts with a sweet, buttery filling. The Canadian Encyclopedia says the first published recipe appeared in 1900, in a cookbook from the Women&#x27;s Auxiliary of the Royal Victoria Hospital. To bake them at home, the <a href="/blog/maple-butter-tarts">maple butter tarts</a> recipe uses pure maple syrup in the filling.</p></div>
+        <div class="answer"><h3>Poutine</h3><p><strong class="text-charcoal font-medium">Named by 4 lists.</strong> Fries, cheese curds and gravy. The Canadian Encyclopedia says the combination first appeared in rural snack bars in the late 1950s. It is a hot dish, so it is a snack to eat in Canada rather than pack.</p></div>
+        <div class="answer"><h3>BeaverTails</h3><p><strong class="text-charcoal font-medium">Named by 3 lists.</strong> Fried pastries made from a Hooker family recipe. Pam and Grant Hooker first sold them at the Killaloe Craft and Community Fair in 1978, according to the company&#x27;s own history, and today they are made fresh in BeaverTails shops.</p></div>
+        <div class="answer"><h3>Nanaimo bars</h3><p><strong class="text-charcoal font-medium">Named by 2 lists.</strong> A no-bake chocolate square. The Canadian Encyclopedia dates the first version to a 1952 Nanaimo Hospital cookbook; the City of Nanaimo calls its origin &quot;elusive.&quot;</p></div>
       </div>
       <div class="reveal prose-body max-w-[70ch] mt-10">
         <h3 class="font-display text-2xl font-semibold text-charcoal mb-3">Choosing Canadian snacks to send or bring home</h3>
         <p>Pick snacks that are wrapped, shelf-stable and hard to crush. Stroopwafels, popcorn, wrapped cookies, gummies and Cheezies all hold up in a bag; chips crush, and chocolate bars and Jos. Louis cakes melt or squash in the heat. If the label matters to the person, check that the maker says the snack is made in Canada: of the nine other snacks here, eight carry that claim from the maker or an independent source.</p>
-        <p>For a ready-made gift, our <a href="/shop/canadian-gift-baskets">maple gift sets</a> put stroopwafels, popcorn, shortbread and syrup in one box, and our list of <a href="/blog/best-canadian-gift-basket-companies">the best Christmas gift basket companies in Canada</a> compares eight companies that send gift baskets. For more ideas, see <a href="/blog/best-canadian-gifts-2026">the 15 best Canadian gifts</a> and our <a href="/canadian-souvenirs">Canadian souvenirs</a>.</p>
+        <p>For a ready-made gift, Maple Terroir <a href="/shop/canadian-gift-baskets">maple gift sets</a> put stroopwafels, popcorn, shortbread and syrup in one box, and a list of <a href="/blog/best-canadian-gift-basket-companies">the best Christmas gift basket companies in Canada</a> compares eight companies that send gift baskets. For more ideas, see <a href="/blog/best-canadian-gifts-2026">the 15 best Canadian gifts</a> and these <a href="/canadian-souvenirs">Canadian souvenirs</a>.</p>
       </div>
     </div>
   </section>
@@ -790,16 +767,7 @@
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">We sell our maple stroopwafels, popcorn, cookies and nuts online and ship to all ten provinces, free on orders of $99 or more. Purdys sells its chocolates online. The chips, chocolate bars and candy on this list are sold in grocery and convenience stores rather than by their makers.</p>
-          </div>
-        </div>
-        <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
-          <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is this list biased toward Maple Terroir?</h3>
-            <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
-          </button>
-          <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">We make three of the twelve snacks and say so at the top. We chose the five criteria and scored our snacks on the same rules as the others, from what each maker publishes. Every score and rule is on this page so you can check it.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Maple Terroir sells its maple stroopwafels, popcorn, cookies and nuts online and ships to all ten provinces, free on orders of $99 or more. Purdys sells its chocolates online. The chips, chocolate bars and candy on this list are sold in grocery and convenience stores rather than by their makers.</p>
           </div>
         </div>
       </div>
@@ -807,7 +775,7 @@
   </section>
 
 
-  <!-- CTA:START title="Canadian Snacks Made With Maple." text="Maple stroopwafels, popcorn and cookies, made in Canada with our maple syrup, from $4.99." href="/collections/maple-stroopwafels" label="Shop Stroopwafels" href2="/collections/nuts-snacks" label2="Shop Maple Snacks" -->
+  <!-- CTA:START title="Canadian Snacks Made With Maple." text="Maple stroopwafels, popcorn and cookies, made in Canada with pure maple syrup, from $4.99." href="/collections/maple-stroopwafels" label="Shop Stroopwafels" href2="/collections/nuts-snacks" label2="Shop Maple Snacks" -->
   <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
@@ -815,7 +783,7 @@
           <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
               <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Canadian Snacks Made With Maple.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Maple stroopwafels, popcorn and cookies, made in Canada with our maple syrup, from $4.99.</p>
+              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Maple stroopwafels, popcorn and cookies, made in Canada with pure maple syrup, from $4.99.</p>
               <div class="flex flex-wrap gap-3 justify-center">
                 <a href="/collections/maple-stroopwafels" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
                   <span>Shop Stroopwafels</span>
