@@ -26,6 +26,7 @@ window.MapleCart = (function () {
   var cartId = localStorage.getItem('maple_cart_id') || null;
   var cartData = null;
   var pendingTimers = {}; // per-line debounce so rapid +/- clicks coalesce into one API call
+  var pendingRuns = {}; // the waiting update per line, so Checkout can send it first
   var CART_FRAGMENT = 'id checkoutUrl lines(first:50){edges{node{id quantity merchandise{...on ProductVariant{id title priceV2{amount currencyCode}image{url altText}product{title}}}}}}cost{subtotalAmount{amount currencyCode}}';
   function gql(query, variables) { return fetch(STOREFRONT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: query, variables: variables || {} }) }).then(function (r) { return r.json(); }); }
   function createCart(variantId, qty) { return gql('mutation($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{' + CART_FRAGMENT + '}userErrors{field message}}}', { lines: [{ merchandiseId: variantId, quantity: qty || 1 }] }).then(function (res) { cartData = res.data.cartCreate.cart; cartId = cartData.id; localStorage.setItem('maple_cart_id', cartId); return cartData; }); }
@@ -133,16 +134,18 @@ window.MapleCart = (function () {
         var badgeEl = document.getElementById('cart-count');
         if (badgeEl) { badgeEl.textContent = optBadge; badgeEl.classList.toggle('visible', optBadge > 0); }
         clearTimeout(pendingTimers[lineId]);
-        pendingTimers[lineId] = setTimeout(function () {
-          delete pendingTimers[lineId];
+        var run = function () {
+          delete pendingTimers[lineId]; delete pendingRuns[lineId];
           var finalQty = parseInt(qtyEl.textContent, 10);
           var op = finalQty <= 0 ? removeLine(lineId) : updateLine(lineId, finalQty);
-          op.then(function () {
+          return op.then(function () {
             var sl = getLines().find(function (l) { return l.id === lineId; });
             if (finalQty <= 0 || !sl || sl.quantity !== finalQty) renderDrawer(); else renderTopup();
             renderBadge();
           }).catch(function () { renderDrawer(); renderBadge(); });
-        }, 300);
+        };
+        pendingRuns[lineId] = run;
+        pendingTimers[lineId] = setTimeout(run, 300);
       });
     });
   }
@@ -175,7 +178,19 @@ window.MapleCart = (function () {
       btns.forEach(function (b) { if (soldOut[b.dataset.variantId]) markSoldOut(b); });
     }).catch(function () {});
   }
-  function checkout() { if (!cartData || !cartData.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cartData.checkoutUrl); } else { window.location.href = cartData.checkoutUrl; } }
+  // A + or - tap still inside its 300 ms wait is sent before checkout opens (CRO Lite,
+  // November 13, 2026: a tap within about 0.3 s of Checkout was lost, so the cart showed 5
+  // and checkout opened with 4).
+  function checkout() {
+    var waiting = Object.keys(pendingRuns);
+    if (waiting.length) {
+      var b = document.getElementById('cart-checkout'); if (b) b.disabled = true;
+      Promise.all(waiting.map(function (id) { clearTimeout(pendingTimers[id]); var r = pendingRuns[id]; return r ? r() : null; })).then(go, go);
+      return;
+    }
+    go();
+    function go() { var b = document.getElementById('cart-checkout'); if (b) b.disabled = false; if (!cartData || !cartData.checkoutUrl) return; if (window.MapleSafeCheckout) { window.MapleSafeCheckout(cartData.checkoutUrl); } else { window.location.href = cartData.checkoutUrl; } }
+  }
   function init() { fetchCart().then(function () { renderBadge(); }); checkStock(); setTimeout(checkStock, 2500); document.getElementById('cart-overlay').addEventListener('click', toggle); document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.getElementById('cart-drawer').classList.contains('open')) toggle(); }); }
   if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
   return { toggle: toggle, addFromBtn: addFromBtn, addLine: addLine, renderBadge: renderBadge, checkout: checkout };
