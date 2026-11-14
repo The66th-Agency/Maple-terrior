@@ -377,8 +377,8 @@ ${[big, ...rest.map(small)].filter(Boolean).join('\n')}
 }
 
 // ------------------------------------------------------------ FAMILY
-const PHOTO = { src: '/assets/images/story/lytton-three-generations.webp', w: 1000, h: 932 };
-const ALT = 'Wayne, Shawn and Gavin Lytton, three generations of the family behind Maple Terroir'; // Shawn, November 13, 2026: his photo with Grandpa and Gavin replaces his portrait ("Can you change the image you uploaded of me to the attached?"); the hand on Gavin's shoulder was edited out at his request
+const PHOTO = { src: '/assets/images/story/lytton-three-generations-v2.webp', w: 1000, h: 932 };
+const ALT = 'Wayne, Shawn and Gavin Lytton, three generations of the family behind Maple Terroir'; // Shawn, November 13, 2026: his photo with Grandpa and Gavin replaces his portrait ("Can you change the image you uploaded of me to the attached?"); the hands on Gavin's and Wayne's shoulders were edited out at his request (November 13, 2026)
 const CAPTION = 'From left: Wayne, Shawn and Gavin Lytton.';
 const family = (where) => `  <section id="family" class="scroll-mt-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
