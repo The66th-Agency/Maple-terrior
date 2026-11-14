@@ -377,13 +377,13 @@ ${[big, ...rest.map(small)].filter(Boolean).join('\n')}
 }
 
 // ------------------------------------------------------------ FAMILY
-const PHOTO = { src: '/assets/images/story/shawn-lytton-portrait.webp', w: 800, h: 1000 };
-const ALT = 'Shawn Lytton, President of Maple Terroir'; // Shawn, November 12, 2026: the shelf background did not look good; his own portrait replaces it
-const CAPTION = 'Shawn Lytton, President of Maple Terroir.';
+const PHOTO = { src: '/assets/images/story/lytton-three-generations.webp', w: 1000, h: 932 };
+const ALT = 'Wayne, Shawn and Gavin Lytton, three generations of the family behind Maple Terroir'; // Shawn, November 13, 2026: his photo with Grandpa and Gavin replaces his portrait ("Can you change the image you uploaded of me to the attached?"); the hand on Gavin's shoulder was edited out at his request
+const CAPTION = 'From left: Wayne, Shawn and Gavin Lytton.';
 const family = (where) => `  <section id="family" class="scroll-mt-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
       <figure class="reveal md:col-span-5 max-w-[420px] w-full mx-auto md:mx-0">
-        <img src="${PHOTO.src}" alt="${ALT}" width="${PHOTO.w}" height="${PHOTO.h}" loading="lazy" class="w-full aspect-[4/5] object-cover rounded-[1.5rem]">
+        <img src="${PHOTO.src}" alt="${ALT}" width="${PHOTO.w}" height="${PHOTO.h}" loading="lazy" class="w-full h-auto rounded-[1.5rem]">
         <figcaption class="text-xs text-warm-gray-400 mt-3">${CAPTION}</figcaption>
       </figure>
       <div class="reveal reveal-delay-1 md:col-span-7">
