@@ -81,9 +81,14 @@
   }
   function packed(variants) { return !(variants.length === 1 && variants[0].title === 'Default Title'); }
 
+  // A caddy holds 35 wrapped stroopwafels, and the 35-pack was invisible at the button
+  // (CRO Lite review, November 13, 2026, finding 4). So caddy packs name the stroopwafels.
+  var PER_CADDY = 35;
+  function isCaddy(handle) { return /stroopwafels-caddy$/.test(handle || ''); }
   function chip(v, variants, handle) {
     var p = pack(v, variants, handle);
     var sub = !v.availableForSale ? 'Sold out'
+      : isCaddy(handle) ? money(p.price) + ' · ' + (p.count * PER_CADDY) + ' stroopwafels' + (p.count > 1 ? ', ' + money(p.price / (p.count * PER_CADDY)) + ' each' : '')
       : p.count === 1 ? money(p.price)
       : money(p.price) + ' · ' + money(p.each) + ' each';
     var tag = v.availableForSale && p.save > 0 ? '<span class="vb-save">Save ' + p.save + '%</span>' : '';
@@ -119,7 +124,9 @@
       unitEl.className = 'text-sm text-warm-gray-500';
       priceEl.parentNode.appendChild(unitEl);
     }
-    if (unitEl) unitEl.textContent = packed(variants) && current.count > 1
+    if (unitEl && isCaddy(handle)) {
+      unitEl.textContent = (current.count * PER_CADDY) + ' stroopwafels, about ' + money(current.price / (current.count * PER_CADDY)) + ' each' + (current.save > 0 ? ', save ' + current.save + '%' : '');
+    } else if (unitEl) unitEl.textContent = packed(variants) && current.count > 1
       ? money(current.each) + ' per ' + current.unit + (current.save > 0 ? ', save ' + current.save + '%' : '')
       : '';
     shipNote();

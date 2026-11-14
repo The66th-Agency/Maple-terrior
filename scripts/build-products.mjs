@@ -69,6 +69,9 @@ const META_OVERRIDES = {
     'Bite-size maple leaf shortbread cookies made with Canadian flour, butter and eggs, sweetened with pure Maple Terroir maple syrup.',
   'maple-syrup-mini-stroopwafel':
     'Mini stroopwafels made with non-GMO Canadian flour and a pure maple syrup filling. The one-bite version of our full-size stroopwafel.',
+  // The caddy's count and price each lead, for the brand searches that reach it (content map item 27, November 13, 2026).
+  'pure-maple-syrup-stroopwafels-caddy':
+    'A caddy of 35 individually wrapped 34 g maple syrup stroopwafels for $39.99, about $1.14 each. Made in Canada with Canadian flour. Kosher and non-GMO.',
   'cocoa-chocolate-maple-stroopwafels-caddy':
     'Chocolate Maple Stroopwafels: individually wrapped 34g stroopwafels made with Canadian-grown flour and pure cocoa, sweetened with maple syrup.',
   // "Maple tea" leads, for the search (840 a month, Mangools, November 6, 2026); the rest is Shawn's.

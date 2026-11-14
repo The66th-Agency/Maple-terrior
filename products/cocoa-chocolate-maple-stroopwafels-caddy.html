@@ -385,6 +385,222 @@
   </section>
 
 
+  <!-- CADDY:START baked by scripts/build-caddy.mjs, 2026-11-14; edit the script, never this copy -->
+  <style>
+    .cd a:not(.cd-flavor-img):not(.cd-row-act) { color: #8B5E14; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    .cd a:not(.cd-flavor-img):not(.cd-row-act):hover { color: #1A1714; }
+    .cd-top { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center; }
+    @media (min-width: 1024px) { .cd-top { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 72px; } }
+    .cd-lede { color: #5A5249; line-height: 1.7; font-size: 17px; max-width: 40rem; }
+    .cd-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 28px; max-width: 40rem; }
+    .cd-fact { border-top: 2px solid #1A1714; padding-top: 12px; }
+    .cd-fact b { display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(28px, 4vw, 40px); line-height: 1; color: #1A1714; letter-spacing: -0.02em; }
+    .cd-fact span { display: block; margin-top: 8px; font-size: 13px; line-height: 1.45; color: #6B6158; }
+    .cd-box { border-radius: 2rem; background: #F3EADF; padding: 28px; box-shadow: 0 40px 80px -48px rgba(26,23,20,.35); }
+    .cd-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+    .cd-grid span { position: relative; aspect-ratio: 1; border-radius: 9px; background: rgba(255,255,255,.55); border-top: 2px dashed rgba(26,23,20,.10); border-bottom: 2px dashed rgba(26,23,20,.10); padding: 9%; }
+    .cd-grid span::before { content: ''; position: absolute; inset: 11%; border-radius: 50%; background: repeating-linear-gradient(45deg, rgba(110,62,8,.38) 0 1.5px, transparent 1.5px 6px), repeating-linear-gradient(-45deg, rgba(110,62,8,.38) 0 1.5px, transparent 1.5px 6px), #C98A2E; box-shadow: inset 0 0 0 2px rgba(110,62,8,.35), 0 3px 6px -3px rgba(26,23,20,.4); }
+    .cd-box-cap { display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; font-size: 13px; color: #5A5249; }
+    .cd-box-cap b { color: #1A1714; }
+    .cd-h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15; color: #1A1714; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .cd-ladder { display: grid; gap: 12px; }
+    .cd-row { border-radius: 1.5rem; padding: 20px 22px; background: #FDFBF7; box-shadow: inset 0 0 0 1px #EDE8DF; }
+    .cd-row.is-best { background: #1A1714; box-shadow: none; }
+    .cd-row-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 16px; color: #1A1714; }
+    .cd-row.is-best .cd-row-top, .cd-row.is-best .cd-row-num b { color: #FDFBF7; }
+    .cd-save { font-size: 12px; font-weight: 600; color: #1A1714; background: #F4C77D; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+    .cd-bar { height: 8px; border-radius: 999px; background: #EDE5D8; margin: 14px 0 10px; overflow: hidden; }
+    .cd-bar span { display: block; height: 100%; border-radius: 999px; background: #C4841D; }
+    .cd-row.is-best .cd-bar { background: rgba(253,251,247,.14); }
+    .cd-row-num { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; font-size: 14px; color: #6B6158; }
+    .cd-row-num b { color: #1A1714; font-weight: 600; }
+    .cd-row p { margin-top: 8px; font-size: 14px; line-height: 1.55; color: #6B6158; }
+    .cd-row.is-best .cd-row-num, .cd-row.is-best p { color: #CFC6BA; }
+    .cd-flavors { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+    @media (max-width: 1023px) { .cd-flavors { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 639px) {
+      .cd-flavors { grid-template-columns: 1fr; gap: 10px; }
+      .cd-flavors .cd-flavor { display: grid; grid-template-columns: 120px 1fr; column-gap: 14px; align-items: start; padding: 10px; border-radius: 1.5rem; }
+      .cd-flavors .cd-flavor-img { grid-row: 1 / span 4; border-radius: 1rem; }
+      .cd-flavors .cd-flavor h4 { margin: 4px 0 4px; font-size: 18px; }
+      .cd-flavors .cd-flavor p { margin: 0; }
+      .cd-flavors .cd-flavor .cd-flavor-price { margin: 6px 0 8px; display: block; }
+      .cd-flavors .cd-add, .cd-flavors .cd-here { margin: 0; justify-content: flex-start; }
+      .cd-flavors .cd-add { justify-self: start; padding: 0 18px; }
+    }
+    .cd-flavor { display: flex; flex-direction: column; border-radius: 2rem; padding: 12px 12px 18px; background: #F5F0E8; }
+    .cd-flavor.is-here { background: #FDFBF7; box-shadow: inset 0 0 0 2px #C4841D; }
+    .cd-flavor-img { display: block; border-radius: 1.4rem; overflow: hidden; background: #F1E9DC; aspect-ratio: 1; }
+    .cd-flavor-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s cubic-bezier(.32,.72,0,1); }
+    .cd-flavor:hover .cd-flavor-img img { transform: scale(1.04); }
+    .cd-flavor h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 19px; line-height: 1.2; margin: 14px 6px 6px; }
+    .cd .cd-flavor h4 a { color: #1A1714; text-decoration: none; font-weight: 600; }
+    .cd-flavor p { margin: 0 6px; font-size: 13.5px; line-height: 1.5; color: #6B6158; }
+    .cd-flavor .cd-flavor-price { margin-top: 10px; margin-bottom: 12px; font-size: 14px; font-weight: 600; color: #1A1714; flex: 1; display: flex; align-items: flex-end; }
+    .cd-add { min-height: 44px; margin: 0 6px; border-radius: 999px; border: 1.5px solid #1A1714; background: transparent; font-size: 13px; font-weight: 600; color: #1A1714; cursor: pointer; transition: background .25s, color .25s; }
+    .cd-add:hover { background: #1A1714; color: #FDFBF7; }
+    .cd-add:disabled { opacity: .6; cursor: default; }
+    .cd-here { min-height: 44px; margin: 0 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: #8B5E14; }
+    .cd-uses { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 768px) { .cd-uses { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
+    .cd-use { border-top: 2px solid #1A1714; padding-top: 18px; }
+    .cd-use h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 21px; color: #1A1714; margin-bottom: 8px; }
+    .cd-use p { font-size: 15px; line-height: 1.65; color: #5A5249; }
+    .cd-use blockquote { margin-top: 14px; font-family: 'Fraunces', Georgia, serif; font-size: clamp(20px, 1.8vw, 23px); line-height: 1.45; color: #1A1714; }
+    .cd-use figcaption { margin-top: 8px; font-size: 12.5px; color: #8C8175; }
+    .cd-note { margin-top: 20px; font-size: 13.5px; line-height: 1.6; color: #6B6158; max-width: 46rem; }
+    .cd-row-act { margin-top: 14px; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #1A1714; background: transparent; font-size: 13px; font-weight: 600; color: #1A1714; cursor: pointer; display: inline-flex; align-items: center; text-decoration: none; transition: background .25s, color .25s; }
+    .cd .cd-row-act { color: #1A1714; text-decoration: none; }
+    .cd-row-act:hover, .cd .cd-row-act:hover { background: #1A1714; color: #FDFBF7; }
+    .cd-row.is-best .cd-row-act { background: #C4841D; border-color: #C4841D; color: #1A1714; }
+    .cd-row.is-best .cd-row-act:hover { background: #F4C77D; border-color: #F4C77D; }
+    .cd-row-act:disabled { opacity: .6; cursor: default; }
+    @media (max-width: 639px) { .cd-box { padding: 16px; max-width: 360px; } .cd-grid { gap: 4px; } .cd-grid span { border-radius: 6px; } .cd-row { padding: 18px; } }
+    @media (prefers-reduced-motion: reduce) { .cd-flavor-img img { transition: none; } }
+  </style>
+  <section id="caddy" class="cd scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="cd-top mb-16 md:mb-24">
+        <div>
+          <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">35 Stroopwafels in Every Caddy</h2>
+          <p class="reveal reveal-delay-1 cd-lede">Each caddy holds 35 stroopwafels, and each 34 g stroopwafel is sealed in its own wrapper, 1,190 g in all. At $39.99 a caddy, that is about $1.14 a stroopwafel. All five flavors are made in Canada with Canadian flour and maple syrup.</p>
+          <div class="cd-facts reveal reveal-delay-2">
+            <div class="cd-fact"><b>35</b><span>stroopwafels, each wrapped</span></div>
+            <div class="cd-fact"><b>34 g</b><span>each, 1,190 g a caddy</span></div>
+            <div class="cd-fact"><b>$1.14</b><span>each, $1.03 by eight caddies</span></div>
+          </div>
+        </div>
+        <figure class="cd-box reveal" aria-label="Diagram counting the 35 individually wrapped stroopwafels in one caddy">
+          <div class="cd-grid" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span></div>
+          <figcaption class="cd-box-cap"><span>One caddy, counted out</span><b>35 &times; 34 g</b></figcaption>
+        </figure>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-16 md:mb-24">
+        <div class="lg:col-span-5">
+          <h3 class="reveal cd-h3">How Many to Buy</h3>
+          <p class="reveal text-warm-gray-600 leading-relaxed mb-3">Every flavor costs the same, so a caddy is $1.14 a stroopwafel however you mix them. Eight caddies of one flavor take 10 percent off each caddy, $35.99 instead of $39.99.</p>
+          <p class="reveal text-warm-gray-600 leading-relaxed">To try them first, a <a href="/products/maple-syrup-stroopwafel">box of four full-size stroopwafels</a> is $8.99. For gifts to clients or staff, see our <a href="/shop/maple-syrup-corporate-gift">corporate gifts</a>, and for every stroopwafel we sell, the <a href="/collections/maple-stroopwafels">stroopwafel collection</a>.</p>
+        </div>
+        <div class="lg:col-span-7 cd-ladder reveal">
+            <div class="cd-row">
+              <div class="cd-row-top"><b>One caddy</b></div>
+              <div class="cd-bar" aria-hidden="true"><span style="width:13%"></span></div>
+              <div class="cd-row-num"><span>35 stroopwafels</span><span><b>$39.99</b> &middot; $1.14 each</span></div>
+              <p>One flavor for a home or a desk. One a day lasts five weeks.</p>
+              <button type="button" class="cd-row-act" data-variant-id="gid://shopify/ProductVariant/42578985779449" data-label="Add 1 Chocolate Maple caddy">Add 1 Chocolate Maple caddy</button>
+            </div>
+            <div class="cd-row">
+              <div class="cd-row-top"><b>Three caddies, three flavors</b></div>
+              <div class="cd-bar" aria-hidden="true"><span style="width:38%"></span></div>
+              <div class="cd-row-num"><span>105 stroopwafels</span><span><b>$119.97</b> &middot; $1.14 each</span></div>
+              <p>Add two more flavors from the list below.</p>
+              <a class="cd-row-act" href="#caddy-flavors">Choose two more flavors</a>
+            </div>
+            <div class="cd-row is-best">
+              <div class="cd-row-top"><b>Eight caddies, one flavor</b><span class="cd-save">Save 10%</span></div>
+              <div class="cd-bar" aria-hidden="true"><span style="width:100%"></span></div>
+              <div class="cd-row-num"><span>280 stroopwafels</span><span><b>$287.92</b> &middot; $1.03 each</span></div>
+              <p>For an office, a team or a club.</p>
+              <button type="button" class="cd-row-act" data-variant-id="gid://shopify/ProductVariant/42578985812217" data-label="Add 8 Chocolate Maple caddies">Add 8 Chocolate Maple caddies</button>
+            </div>
+        </div>
+      </div>
+
+      <div id="caddy-flavors" class="scroll-mt-28 mb-16 md:mb-24">
+        <h3 class="reveal cd-h3">Five Flavors, Side by Side</h3>
+        <p class="reveal text-warm-gray-600 leading-relaxed mb-8 max-w-2xl">Same caddy, same 35 wrapped stroopwafels, same price. All five are Kosher and non-GMO. Check the label on the caddy for allergens.</p>
+        <div class="cd-flavors">
+          <article class="cd-flavor">
+            <a href="/products/pure-maple-syrup-stroopwafels-caddy" class="cd-flavor-img"><img src="/assets/images/cards/pure-maple-syrup-stroopwafels-caddy.webp" alt="A caddy of Maple Terroir Pure Maple Syrup Stroopwafels" width="400" height="400" loading="lazy"></a>
+            <h4><a href="/products/pure-maple-syrup-stroopwafels-caddy">Pure Maple</a></h4>
+            <p>Canadian flour, sweetened with pure maple syrup. The maple taste on its own.</p>
+            <p class="cd-flavor-price">$39.99 for 35</p>
+            <button type="button" class="cd-add" data-variant-id="gid://shopify/ProductVariant/42579003408633" aria-label="Add one caddy of Pure Maple Syrup Stroopwafels to the cart">+ Add a caddy</button>
+          </article>
+          <article class="cd-flavor is-here">
+            <a href="/products/cocoa-chocolate-maple-stroopwafels-caddy" class="cd-flavor-img" aria-current="page"><img src="/assets/images/cards/cocoa-chocolate-maple-stroopwafels-caddy.webp" alt="A caddy of Maple Terroir Chocolate Maple Stroopwafels" width="400" height="400" loading="lazy"></a>
+            <h4><a href="/products/cocoa-chocolate-maple-stroopwafels-caddy">Chocolate Maple</a></h4>
+            <p>Canadian-grown flour and pure cocoa, sweetened with maple syrup.</p>
+            <p class="cd-flavor-price">$39.99 for 35</p>
+            <span class="cd-here">You are on this flavor</span>
+          </article>
+          <article class="cd-flavor">
+            <a href="/products/wild-blueberry-maple-stroopwafels-caddy" class="cd-flavor-img"><img src="/assets/images/cards/wild-blueberry-maple-stroopwafels-caddy.webp" alt="A caddy of Maple Terroir Blueberry Maple Stroopwafels" width="400" height="400" loading="lazy"></a>
+            <h4><a href="/products/wild-blueberry-maple-stroopwafels-caddy">Blueberry Maple</a></h4>
+            <p>Canadian flour and real wild blueberry powder, with maple syrup.</p>
+            <p class="cd-flavor-price">$39.99 for 35</p>
+            <button type="button" class="cd-add" data-variant-id="gid://shopify/ProductVariant/42579042271481" aria-label="Add one caddy of Blueberry Maple Stroopwafels to the cart">+ Add a caddy</button>
+          </article>
+          <article class="cd-flavor">
+            <a href="/products/strawberry-cream-maple-stroopwafels-caddy" class="cd-flavor-img"><img src="/assets/images/cards/strawberry-cream-maple-stroopwafels-caddy.webp" alt="A caddy of Maple Terroir Strawberry Maple Stroopwafels" width="400" height="400" loading="lazy"></a>
+            <h4><a href="/products/strawberry-cream-maple-stroopwafels-caddy">Strawberry Maple</a></h4>
+            <p>Canadian-grown flour and pure strawberry powder, sweetened with maple syrup.</p>
+            <p class="cd-flavor-price">$39.99 for 35</p>
+            <button type="button" class="cd-add" data-variant-id="gid://shopify/ProductVariant/42579029197049" aria-label="Add one caddy of Strawberry Maple Stroopwafels to the cart">+ Add a caddy</button>
+          </article>
+          <article class="cd-flavor">
+            <a href="/products/matcha-green-tea-maple-stroopwafels-caddy" class="cd-flavor-img"><img src="/assets/images/cards/matcha-green-tea-maple-stroopwafels-caddy.webp" alt="A caddy of Maple Terroir Matcha Maple Stroopwafels" width="400" height="400" loading="lazy"></a>
+            <h4><a href="/products/matcha-green-tea-maple-stroopwafels-caddy">Matcha Maple</a></h4>
+            <p>Canadian flour, sea salt and matcha powder from Kyoto, sweetened with pure maple syrup.</p>
+            <p class="cd-flavor-price">$39.99 for 35</p>
+            <button type="button" class="cd-add" data-variant-id="gid://shopify/ProductVariant/42579018121465" aria-label="Add one caddy of Matcha Maple Stroopwafels to the cart">+ Add a caddy</button>
+          </article>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="reveal cd-h3">Who Buys a Caddy</h3>
+        <p class="reveal text-warm-gray-600 leading-relaxed mb-8 max-w-2xl">Three ways buyers use them, each beside what a buyer wrote in a review of the Pure Maple caddy.</p>
+        <div class="cd-uses">
+          <figure class="cd-use">
+            <h4>On long rides</h4>
+            <p>Each one is sealed in its own wrapper, so a few go in a pocket or a pack.</p>
+            <blockquote>&ldquo;They are tasty and helpful fuel my adventures!&rdquo;</blockquote>
+            <figcaption>daniel s., Pure Maple caddy, March 2025, verified purchase</figcaption>
+          </figure>
+          <figure class="cd-use">
+            <h4>To share and give</h4>
+            <p>Thirty-five wrapped stroopwafels go a long way, handed out one at a time at work or with family.</p>
+            <blockquote>&ldquo;They are great gifts for my family and friends in Japan.&rdquo;</blockquote>
+            <figcaption>Kaoru H., Pure Maple caddy, July 2025, verified purchase</figcaption>
+          </figure>
+          <figure class="cd-use">
+            <h4>In a lunch box</h4>
+            <p>One wrapped 34 g stroopwafel is a snack that goes in a lunch box as it is.</p>
+            <blockquote>&ldquo;My kids favorite snack!&rdquo;</blockquote>
+            <figcaption>Yori N., Pure Maple caddy, March 2025, verified purchase</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var btns = Array.prototype.slice.call(document.querySelectorAll('#caddy .cd-add, #caddy button.cd-row-act'));
+        // Stock is checked live, so a flavor that sells out after the bake shows Sold out instead of failing on a tap.
+        var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); });
+        fetch('https://maple-terroir.myshopify.com/api/2026-01/graphql.json', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': '59618e3b6f5e626df6c5f527b4972d3d' }, body: JSON.stringify({ query: 'query($ids:[ID!]!){ nodes(ids:$ids){ ... on ProductVariant { id availableForSale } } }', variables: { ids: ids } }) })
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            ((res.data && res.data.nodes) || []).forEach(function (n) {
+              if (!n || n.availableForSale) return;
+              btns.forEach(function (b) { if (b.getAttribute('data-variant-id') === n.id) { b.disabled = true; b.textContent = 'Sold out for now'; } });
+            });
+          }).catch(function () {});
+        btns.forEach(function (b) {
+          var label = b.textContent;
+          b.addEventListener('click', function () {
+            if (!window.MapleCart) { location.href = b.closest('.cd-flavor') ? b.closest('.cd-flavor').querySelector('h4 a').href : '#pdp-atc'; return; }
+            b.disabled = true; b.textContent = 'Adding';
+            Promise.resolve(window.MapleCart.addLine(b.getAttribute('data-variant-id'), 1)).then(function () { b.textContent = 'Added'; }, function () { b.disabled = false; b.textContent = label; });
+          });
+        });
+      })();
+    </script>
+  </section>
+  <!-- CADDY:END -->
+
+
   <!-- BEFORE / AFTER SLIDER (stroopwafels only) -->
   <section id="ba-section" class="hidden py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto" style="padding-right:max(0px,calc(100% - 900px))">
@@ -519,7 +735,7 @@ Happy to hear you enjoyed the cocoa chocolate and thought it was rich!</p></div>
   <!-- Cart Drawer -->
 
 
-  <script src="/assets/pdp.js?v=67ac68d9"></script>
+  <script src="/assets/pdp.js?v=7ad8f20d"></script>
   <script>
     // ── Nav, Mobile Menu ──────────────────────────────────────
     var navbar = document.getElementById('navbar');
