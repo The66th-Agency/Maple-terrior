@@ -67,8 +67,9 @@ const META_OVERRIDES = {
     'Canadian-style Dutch stroopwafels from Maple Terroir, filled with pure maple syrup and no artificial maple flavour.',
   'maple-leaf-mini-shortbread-cookies':
     'Bite-size maple leaf shortbread cookies made with Canadian flour, butter and eggs, sweetened with pure Maple Terroir maple syrup.',
+  // The count, weight and price lead, for "mini stroopwafels" (content map item 29, November 15, 2026).
   'maple-syrup-mini-stroopwafel':
-    'Mini stroopwafels made with non-GMO Canadian flour and a pure maple syrup filling. The one-bite version of our full-size stroopwafel.',
+    'Mini stroopwafels sweetened with pure maple syrup: 15 bite-size pieces in a 128 g box for $8.99, about 60 cents each. Made in Canada with Canadian flour.',
   // The caddy's count and price each lead, for the brand searches that reach it (content map item 27, November 13, 2026).
   'pure-maple-syrup-stroopwafels-caddy':
     'A caddy of 35 individually wrapped 34 g maple syrup stroopwafels for $39.99, about $1.14 each. Made in Canada with Canadian flour. Kosher and non-GMO.',
