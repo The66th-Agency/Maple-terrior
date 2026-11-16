@@ -91,8 +91,9 @@ const META_OVERRIDES = {
     'First Tap Organic Maple Syrup Nouveau is made on the first day of maple season, from the first tap of the tree. Each bottle is given a distinct serial number.',
   'handcrafted-pure-maple-syrup-butter-popcorn':
     'Handmade maple butter popcorn, made in small batches from Canadian grown non-GMO sweet corn. Gluten-free, 0g trans fat, no preservatives, no artificial colours.',
+  // The size, grade and pack price lead, for "maple syrup 100ml" (content map item 31, November 16, 2026).
   'pure-maple-syrup-maple-leaf-bottle-100ml':
-    'Our iconic 100ml maple leaf jar of pure maple syrup, Canada #1 Grade A Dark with a robust, rich taste. An ideal souvenir gift from Canada for friends and family.',
+    'Pure maple syrup, 100 mL, in a glass maple leaf bottle. Canada Grade A, Dark Robust Taste. $11.99 a bottle, or $8.99 each in a pack of 48.',
   'pure-maple-syrup-maple-leaf-bottle-250ml':
     'Our iconic 250ml maple leaf jar of pure maple syrup, Canada #1 Grade A Dark with a robust, rich taste. An ideal souvenir gift from Canada for friends and family.',
   'pure-maple-syrup-maple-leaf-bottle-50ml':

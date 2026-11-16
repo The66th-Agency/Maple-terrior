@@ -203,7 +203,7 @@ function block(list, self) {
         <div class="lg:col-span-5">
           <h3 class="reveal cd-h3">How Many to Buy</h3>
           <p class="reveal text-warm-gray-600 leading-relaxed mb-3">Every flavor costs the same, so a caddy is ${money(each)} a stroopwafel however you mix them. Eight caddies of one flavor take ${save} percent off each caddy, ${money(eight / 8)} instead of ${money(one)}.</p>
-          <p class="reveal text-warm-gray-600 leading-relaxed">To try them first, a <a href="/products/maple-syrup-stroopwafel">box of four full-size stroopwafels</a> is $8.99. For gifts to clients or staff, see our <a href="/shop/maple-syrup-corporate-gift">corporate gifts</a>, and for every stroopwafel we sell, the <a href="/collections/maple-stroopwafels">stroopwafel collection</a>.</p>
+          <p class="reveal text-warm-gray-600 leading-relaxed">To try them first, a <a href="/products/maple-syrup-stroopwafel">box of four full-size stroopwafels</a> is $8.99. For gifts to clients or staff, see our <a href="/shop/maple-syrup-corporate-gift">corporate gifts</a>, and for every stroopwafel we sell, the <a href="/collections/maple-stroopwafels">stroopwafel collection</a>. Ordering for a group? The <a href="/tools/stroopwafel-order-calculator">stroopwafel order calculator</a> works out how many caddies to buy from the people and the days.</p>
         </div>
         <div class="lg:col-span-7 cd-ladder reveal">${ladder}
         </div>
