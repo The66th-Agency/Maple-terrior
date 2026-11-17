@@ -89,8 +89,9 @@ const META_OVERRIDES = {
     'Maple syrup milk chocolate dipped roasted almonds are so popular, but we decided to make them even more mouth-watering.',
   'organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition':
     'First Tap Organic Maple Syrup Nouveau is made on the first day of maple season, from the first tap of the tree. Each bottle is given a distinct serial number.',
+  // "Maple popcorn" leads, with the bag size and case price (content map item 33, November 17, 2026).
   'handcrafted-pure-maple-syrup-butter-popcorn':
-    'Handmade maple butter popcorn, made in small batches from Canadian grown non-GMO sweet corn. Gluten-free, 0g trans fat, no preservatives, no artificial colours.',
+    'Maple butter popcorn in 100 g bags, made in Vancouver with Canadian non-GMO corn and pure maple syrup. $4.99 a bag, or $3.25 a bag in a case of 44.',
   // The size, grade and pack price lead, for "maple syrup 100ml" (content map item 31, November 16, 2026).
   'pure-maple-syrup-maple-leaf-bottle-100ml':
     'Pure maple syrup, 100 mL, in a glass maple leaf bottle. Canada Grade A, Dark Robust Taste. $11.99 a bottle, or $8.99 each in a pack of 48.',
