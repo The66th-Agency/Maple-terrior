@@ -40,7 +40,7 @@
   <url><loc>https://mapleterroir.com/collections/premium-maple-syrup</loc><lastmod>2026-11-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/maple-stroopwafels</loc><lastmod>2026-11-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/tea-coffee</loc><lastmod>2026-11-09</lastmod><priority>0.8</priority></url>
-  <url><loc>https://mapleterroir.com/collections/cookies</loc><lastmod>2026-11-09</lastmod><priority>0.8</priority></url>
+  <url><loc>https://mapleterroir.com/collections/cookies</loc><lastmod>2026-11-18</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/chocolates</loc><lastmod>2026-11-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/nuts-snacks</loc><lastmod>2026-11-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://mapleterroir.com/collections/maple-syrup-gift-set</loc><lastmod>2026-11-09</lastmod><priority>0.8</priority></url>
@@ -102,10 +102,10 @@
   <url><loc>https://mapleterroir.com/blog/homemade-vs-store-bought-waffle-snacks-which-tastes-better-2025</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/the-complete-guide-to-canadian-maple-syrup</loc><lastmod>2026-11-16</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/can-you-tap-any-maple-tree-the-truth-about-backyard-syrup-making</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/blog/the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/the-ultimate-guide-to-maple-sugar-why-chefs-and-foodies-love-this-secret-ingredient</loc><lastmod>2026-11-18</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-organic-maple-syrup</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
-  <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-baking</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-baking</loc><lastmod>2026-11-18</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-pancakes-and-waffles</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/blog/best-maple-syrup-for-coffee</loc><lastmod>2026-11-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://mapleterroir.com/locations-we-serve/canada/buy-maple-syrup-ottawa</loc><lastmod>2026-11-14</lastmod><priority>0.7</priority></url>
@@ -117,7 +117,7 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/shop/maple-sugar</loc>
-    <lastmod>2026-11-14</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -187,7 +187,7 @@
   </url>
   <url>
     <loc>https://mapleterroir.com/recipes/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -378,6 +378,11 @@
   <url>
     <loc>https://mapleterroir.com/tools/stroopwafel-order-calculator</loc>
     <lastmod>2026-11-16</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mapleterroir.com/blog/maple-cookies-recipe</loc>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>

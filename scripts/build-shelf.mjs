@@ -54,10 +54,15 @@ const card = (p) => `<article class="product-card ring-1 ring-warm-gray-200/30 f
   '</div>' +
 '</article>';
 
-// Runs once per page however many shelves it has.
+// Runs once per page however many shelves it has, and waits until the whole page is
+// parsed: the script sits inside the first shelf, so running at once it only ever saw
+// that shelf's buttons and a second shelf never had its price or stock refreshed
+// (found on /blog/maple-cookies-recipe, November 18, 2026).
 const LIVE = `<script>
       (function () {
         if (window.__mtShelfLive) return; window.__mtShelfLive = true;
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+        function run() {
         var btns = [].slice.call(document.querySelectorAll('[data-shelf] .atc-btn[data-variant-id]'));
         var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); }).filter(function (id, i, a) { return a.indexOf(id) === i; });
         if (!ids.length) return;
@@ -71,6 +76,7 @@ const LIVE = `<script>
               if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
             });
           }).catch(function () {});
+        }
       })();
     </script>`;
 
