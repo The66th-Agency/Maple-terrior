@@ -801,34 +801,10 @@
         });
       }
 
-      // Pack sizes: Shopify names them plainly ("100ml x 12") so Google Shopping accepts them;
-      // the per-unit price and saving are worked out here from the variant prices.
-      function packName(t) {
-        var s = String(t || '').replace(/\s*\(.*$/, '');
-        var bags = s.match(/^\d+\s*Bags?/i);
-        return (bags ? bags[0] : s).replace(/\s+/g, ' ').trim();
-      }
-      function packCount(t) {
-        var m = t.match(/\bx\s*(\d+)$/i) || t.match(/^(\d+)\s*Bags?$/i);
-        return m ? parseInt(m[1], 10) : 1;
-      }
-      var unitPrice = null;
-      variants.forEach(function (v) {
-        if (unitPrice === null && packCount(packName(v.title)) === 1) unitPrice = parseFloat(v.priceV2.amount);
-      });
-      function packLabel(v) {
-        var name = packName(v.title);
-        var n = packCount(name);
-        if (n < 2 || !unitPrice) return name;
-        var each = parseFloat(v.priceV2.amount) / n;
-        var save = Math.round((1 - each / unitPrice) * 100);
-        return name + ' · $' + each.toFixed(2) + ' each' + (save > 0 ? ' · Save ' + save + '%' : '');
-      }
-
       variants.forEach(function (v, i) {
         var btn = document.createElement('button');
         btn.className = 'variant-btn' + (i === 0 ? ' active' : '') + (!v.availableForSale ? ' sold-out' : '');
-        btn.textContent = packLabel(v) + (!v.availableForSale ? ' (Sold Out)' : '');
+        btn.textContent = v.title + (!v.availableForSale ? ' (Sold Out)' : '');
         btn.dataset.variantId = v.id;
         btn.dataset.price = v.priceV2.amount;
         btn.dataset.available = v.availableForSale ? '1' : '';
