@@ -1,0 +1,1656 @@
+{
+ "captured": "2026-11-19",
+ "source": "maple-terroir.myshopify.com/products.json",
+ "products": [
+  {
+   "product_id": 7573009105145,
+   "handle": "cocoa-chocolate-maple-stroopwafels-caddy",
+   "title": "Chocolate Maple Stroopwafels",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "1190g caddy x 1",
+      "1190g caddy x 8 ($35.99 ea./10% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 42578985779449,
+     "title": "1190g caddy x 1",
+     "option1": "1190g caddy x 1",
+     "option2": null,
+     "price": "39.99",
+     "compare_at_price": null,
+     "sku": "393"
+    },
+    {
+     "id": 42578985812217,
+     "title": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option1": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option2": null,
+     "price": "287.92",
+     "compare_at_price": null,
+     "sku": "393-8"
+    }
+   ]
+  },
+  {
+   "product_id": 7562620731641,
+   "handle": "maple-syrup-cream-cookies-350g",
+   "title": "Maple Syrup Cream Cookies",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "300g x 1",
+      "300g x 6 ($8.10 ea./10% Off!)",
+      "300g x 24 ($7.65 ea./15% Off!)",
+      "300g x 36 ($7.20 ea./20% Off!)",
+      "300g x 40 ($5.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 46289732567289,
+     "title": "300g x 1",
+     "option1": "300g x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521322455289,
+     "title": "300g x 6 ($8.10 ea./10% Off!)",
+     "option1": "300g x 6 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "48.60",
+     "compare_at_price": null,
+     "sku": "750-12"
+    },
+    {
+     "id": 42521322488057,
+     "title": "300g x 24 ($7.65 ea./15% Off!)",
+     "option1": "300g x 24 ($7.65 ea./15% Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "750-24"
+    },
+    {
+     "id": 46289732600057,
+     "title": "300g x 36 ($7.20 ea./20% Off!)",
+     "option1": "300g x 36 ($7.20 ea./20% Off!)",
+     "option2": null,
+     "price": "259.20",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521322520825,
+     "title": "300g x 40 ($5.99 ea./25% Off!)",
+     "option1": "300g x 40 ($5.99 ea./25% Off!)",
+     "option2": null,
+     "price": "239.60",
+     "compare_at_price": null,
+     "sku": "750-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7710982668537,
+   "handle": "maple-syrup-mini-stroopwafel",
+   "title": "Maple Syrup Mini Stroopwafels",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "128g x 1",
+      "128g x 12 ($8.10 ea./10% Off!)",
+      "128g x 24 ($7.65 ea./15%  Off!)",
+      "128g x 36 ($7.20 ea./20%  Off!)",
+      "128g x 48 ($5.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815580229881,
+     "title": "128g x 1",
+     "option1": "128g x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": "389"
+    },
+    {
+     "id": 43086597423353,
+     "title": "128g x 12 ($8.10 ea./10% Off!)",
+     "option1": "128g x 12 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "97.20",
+     "compare_at_price": null,
+     "sku": "389-12"
+    },
+    {
+     "id": 43086597456121,
+     "title": "128g x 24 ($7.65 ea./15%  Off!)",
+     "option1": "128g x 24 ($7.65 ea./15%  Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "389-24"
+    },
+    {
+     "id": 46289722114297,
+     "title": "128g x 36 ($7.20 ea./20%  Off!)",
+     "option1": "128g x 36 ($7.20 ea./20%  Off!)",
+     "option2": null,
+     "price": "259.20",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 43086597488889,
+     "title": "128g x 48 ($5.99 ea./25% Off!)",
+     "option1": "128g x 48 ($5.99 ea./25% Off!)",
+     "option2": null,
+     "price": "287.52",
+     "compare_at_price": null,
+     "sku": "389-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7709665919225,
+   "handle": "maple-leaf-mini-shortbread-cookies",
+   "title": "Maple Leaf Mini Shortbread Cookies",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "113g x 1",
+      "113g x 12 ($8.10 ea./10% Off!)",
+      "113g x 24 ($7.65 ea./15%  Off!)",
+      "113g x 36 ($7.20 ea./20% Off!)",
+      "113g x 48 ($5.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815578919161,
+     "title": "113g x 1",
+     "option1": "113g x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": "388"
+    },
+    {
+     "id": 43082594255097,
+     "title": "113g x 12 ($8.10 ea./10% Off!)",
+     "option1": "113g x 12 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "97.20",
+     "compare_at_price": null,
+     "sku": "388-12"
+    },
+    {
+     "id": 43082594287865,
+     "title": "113g x 24 ($7.65 ea./15%  Off!)",
+     "option1": "113g x 24 ($7.65 ea./15%  Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "388-24"
+    },
+    {
+     "id": 46289722441977,
+     "title": "113g x 36 ($7.20 ea./20% Off!)",
+     "option1": "113g x 36 ($7.20 ea./20% Off!)",
+     "option2": null,
+     "price": "259.20",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 43082594320633,
+     "title": "113g x 48 ($5.99 ea./25% Off!)",
+     "option1": "113g x 48 ($5.99 ea./25% Off!)",
+     "option2": null,
+     "price": "287.52",
+     "compare_at_price": null,
+     "sku": "388-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562621092089,
+   "handle": "maple-sugar-sea-salt-cookies",
+   "title": "Maple Sugar & Sea Salt Cookies",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.10 ea./10% Off!)",
+      "100g x 24 ($7.65 ea./15% Off!)",
+      "100g x 36 ($7.20 ea./20% Off!)",
+      "100g x 48 ($5.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815573643513,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": "759"
+    },
+    {
+     "id": 42521323438329,
+     "title": "100g x 12 ($8.10 ea./10% Off!)",
+     "option1": "100g x 12 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "97.20",
+     "compare_at_price": null,
+     "sku": "759-12"
+    },
+    {
+     "id": 42521323471097,
+     "title": "100g x 24 ($7.65 ea./15% Off!)",
+     "option1": "100g x 24 ($7.65 ea./15% Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "759-24"
+    },
+    {
+     "id": 46289727652089,
+     "title": "100g x 36 ($7.20 ea./20% Off!)",
+     "option1": "100g x 36 ($7.20 ea./20% Off!)",
+     "option2": null,
+     "price": "259.20",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521323503865,
+     "title": "100g x 48 ($5.99 ea./25% Off!)",
+     "option1": "100g x 48 ($5.99 ea./25% Off!)",
+     "option2": null,
+     "price": "287.52",
+     "compare_at_price": null,
+     "sku": "759-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562617061625,
+   "handle": "maple-syrup-blueberry-cookies",
+   "title": "Maple Syrup & Blueberry Cookies",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.10 ea./10% Off!)",
+      "100g x 24 ($7.65 ea./20% Off!)",
+      "100g x 36 ($7.20 ea./20% Off!)",
+      "100g x 48 ($5.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815577903353,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": "309"
+    },
+    {
+     "id": 42521316917497,
+     "title": "100g x 12 ($8.10 ea./10% Off!)",
+     "option1": "100g x 12 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "97.20",
+     "compare_at_price": null,
+     "sku": "309-12"
+    },
+    {
+     "id": 42521316950265,
+     "title": "100g x 24 ($7.65 ea./20% Off!)",
+     "option1": "100g x 24 ($7.65 ea./20% Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "309-24"
+    },
+    {
+     "id": 46289728110841,
+     "title": "100g x 36 ($7.20 ea./20% Off!)",
+     "option1": "100g x 36 ($7.20 ea./20% Off!)",
+     "option2": null,
+     "price": "259.20",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521316983033,
+     "title": "100g x 48 ($5.99 ea./25% Off!)",
+     "option1": "100g x 48 ($5.99 ea./25% Off!)",
+     "option2": null,
+     "price": "287.52",
+     "compare_at_price": null,
+     "sku": "309-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7582159536377,
+   "handle": "pure-maple-syrup-jug-100ml",
+   "title": "Pure Maple Syrup Jug 100ml",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100ml x 1",
+      "100ml x 12 ($8.10 ea./10% Off!)",
+      "100ml x 24 ($7.65 ea./15% Off!)",
+      "100ml x 36 ($7.20 ea./20% Off!)",
+      "100ml x 48 ($6.75 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815543496953,
+     "title": "100ml x 1",
+     "option1": "100ml x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": "900"
+    },
+    {
+     "id": 42578493669625,
+     "title": "100ml x 12 ($8.10 ea./10% Off!)",
+     "option1": "100ml x 12 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "97.20",
+     "compare_at_price": null,
+     "sku": "900-12"
+    },
+    {
+     "id": 42578493702393,
+     "title": "100ml x 24 ($7.65 ea./15% Off!)",
+     "option1": "100ml x 24 ($7.65 ea./15% Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "900-24"
+    },
+    {
+     "id": 46289713561849,
+     "title": "100ml x 36 ($7.20 ea./20% Off!)",
+     "option1": "100ml x 36 ($7.20 ea./20% Off!)",
+     "option2": null,
+     "price": "259.20",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42578493735161,
+     "title": "100ml x 48 ($6.75 ea./25% Off!)",
+     "option1": "100ml x 48 ($6.75 ea./25% Off!)",
+     "option2": null,
+     "price": "324.00",
+     "compare_at_price": null,
+     "sku": "900-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7572995801337,
+   "handle": "strawberry-cream-maple-stroopwafels-caddy",
+   "title": "Strawberry Maple Stroopwafels",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "1190g caddy x 1",
+      "1190g caddy x 8 ($35.99 ea./10% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 42579029197049,
+     "title": "1190g caddy x 1",
+     "option1": "1190g caddy x 1",
+     "option2": null,
+     "price": "39.99",
+     "compare_at_price": null,
+     "sku": "395"
+    },
+    {
+     "id": 42579029229817,
+     "title": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option1": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option2": null,
+     "price": "287.92",
+     "compare_at_price": null,
+     "sku": "395-8"
+    }
+   ]
+  },
+  {
+   "product_id": 7573009891577,
+   "handle": "pure-maple-syrup-stroopwafels-caddy",
+   "title": "Pure Maple Syrup Stroopwafels",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "1190g caddy x 1",
+      "1190g caddy x 8 ($35.99 ea./10% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 42579003408633,
+     "title": "1190g caddy x 1",
+     "option1": "1190g caddy x 1",
+     "option2": null,
+     "price": "39.99",
+     "compare_at_price": null,
+     "sku": "391"
+    },
+    {
+     "id": 42579003441401,
+     "title": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option1": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option2": null,
+     "price": "287.92",
+     "compare_at_price": null,
+     "sku": "391-8"
+    }
+   ]
+  },
+  {
+   "product_id": 7572358168825,
+   "handle": "wild-blueberry-maple-stroopwafels-caddy",
+   "title": "Blueberry Maple Stroopwafels",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "1190g caddy x 1",
+      "1190g caddy x 8 ($35.99 ea./10% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 42579042271481,
+     "title": "1190g caddy x 1",
+     "option1": "1190g caddy x 1",
+     "option2": null,
+     "price": "39.99",
+     "compare_at_price": null,
+     "sku": "394"
+    },
+    {
+     "id": 42579042337017,
+     "title": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option1": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option2": null,
+     "price": "287.92",
+     "compare_at_price": null,
+     "sku": "394-8"
+    }
+   ]
+  },
+  {
+   "product_id": 7562628301049,
+   "handle": "matcha-green-tea-maple-stroopwafels-caddy",
+   "title": "Matcha Maple Stroopwafels",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "1190g x 1",
+      "1190g caddy x 8 ($35.99 ea./10% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 42579018121465,
+     "title": "1190g x 1",
+     "option1": "1190g x 1",
+     "option2": null,
+     "price": "39.99",
+     "compare_at_price": null,
+     "sku": "392"
+    },
+    {
+     "id": 42579018154233,
+     "title": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option1": "1190g caddy x 8 ($35.99 ea./10% Off!)",
+     "option2": null,
+     "price": "287.92",
+     "compare_at_price": null,
+     "sku": "392-8"
+    }
+   ]
+  },
+  {
+   "product_id": 7567236694265,
+   "handle": "organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition",
+   "title": "Organic First Tap Nouveau Limited Edition Pure Maple Syrup",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "250ml x 1",
+      "250ml x 12 ($17.99 ea./10% Off!)",
+      "250ml x 24 ($16.99 ea./15% Off!)",
+      "250ml x 36 ($15.99 ea./20% Off!)",
+      "250ml x 48 ($14.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815545397497,
+     "title": "250ml x 1",
+     "option1": "250ml x 1",
+     "option2": null,
+     "price": "19.99",
+     "compare_at_price": null,
+     "sku": "988"
+    },
+    {
+     "id": 42531889381625,
+     "title": "250ml x 12 ($17.99 ea./10% Off!)",
+     "option1": "250ml x 12 ($17.99 ea./10% Off!)",
+     "option2": null,
+     "price": "215.88",
+     "compare_at_price": null,
+     "sku": "988-12"
+    },
+    {
+     "id": 42531889414393,
+     "title": "250ml x 24 ($16.99 ea./15% Off!)",
+     "option1": "250ml x 24 ($16.99 ea./15% Off!)",
+     "option2": null,
+     "price": "407.76",
+     "compare_at_price": null,
+     "sku": "988-24"
+    },
+    {
+     "id": 46289714479353,
+     "title": "250ml x 36 ($15.99 ea./20% Off!)",
+     "option1": "250ml x 36 ($15.99 ea./20% Off!)",
+     "option2": null,
+     "price": "575.64",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42573709574393,
+     "title": "250ml x 48 ($14.99 ea./25% Off!)",
+     "option1": "250ml x 48 ($14.99 ea./25% Off!)",
+     "option2": null,
+     "price": "719.52",
+     "compare_at_price": null,
+     "sku": "988-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562619977977,
+   "handle": "organic-maple-cream-butter-jar",
+   "title": "Organic Maple Cream Butter Jar",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "160g x 1",
+      "160g x 12 ($10.80 ea./10% Off!)",
+      "160g x 24 ($10.20 ea./15% Off!)",
+      "160g x 48 ($9.60 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815552999673,
+     "title": "160g x 1",
+     "option1": "160g x 1",
+     "option2": null,
+     "price": "11.99",
+     "compare_at_price": null,
+     "sku": "744"
+    },
+    {
+     "id": 42521321341177,
+     "title": "160g x 12 ($10.80 ea./10% Off!)",
+     "option1": "160g x 12 ($10.80 ea./10% Off!)",
+     "option2": null,
+     "price": "129.60",
+     "compare_at_price": null,
+     "sku": "744-12"
+    },
+    {
+     "id": 42521321373945,
+     "title": "160g x 24 ($10.20 ea./15% Off!)",
+     "option1": "160g x 24 ($10.20 ea./15% Off!)",
+     "option2": null,
+     "price": "244.80",
+     "compare_at_price": null,
+     "sku": "744-24"
+    },
+    {
+     "id": 46289780572409,
+     "title": "160g x 48 ($9.60 ea./20% Off!)",
+     "option1": "160g x 48 ($9.60 ea./20% Off!)",
+     "option2": null,
+     "price": "460.80",
+     "compare_at_price": null,
+     "sku": null
+    }
+   ]
+  },
+  {
+   "product_id": 7562614407417,
+   "handle": "cocoa-dark-chocolate-covered-maple-roasted-almonds",
+   "title": "Cocoa Chocolate Maple Roasted Almonds",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.99 ea./10% Off!)",
+      "100g x 24 ($8.49 ea./15% Off!)",
+      "100g x 40 ($7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815586849017,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": "213H"
+    },
+    {
+     "id": 42521306071289,
+     "title": "100g x 12 ($8.99 ea./10% Off!)",
+     "option1": "100g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "213H-12"
+    },
+    {
+     "id": 42521306104057,
+     "title": "100g x 24 ($8.49 ea./15% Off!)",
+     "option1": "100g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "213H-24"
+    },
+    {
+     "id": 42521306136825,
+     "title": "100g x 40 ($7.99 ea./20% Off!)",
+     "option1": "100g x 40 ($7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": "213H-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562621714681,
+   "handle": "pure-maple-syrup-maple-leaf-bottle-250ml",
+   "title": "Pure Maple Syrup Maple Leaf Bottle 250ml",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "250ml x 1",
+      "250ml x 12 ($22.50 ea./10% Off!)",
+      "250ml x 24 ($21.25 ea./15% Off!)",
+      "250ml x 36 ($19.99 ea./20% Off!)",
+      "250ml x 48 ($18.75 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815541301497,
+     "title": "250ml x 1",
+     "option1": "250ml x 1",
+     "option2": null,
+     "price": "24.99",
+     "compare_at_price": null,
+     "sku": "920"
+    },
+    {
+     "id": 42521324585209,
+     "title": "250ml x 12 ($22.50 ea./10% Off!)",
+     "option1": "250ml x 12 ($22.50 ea./10% Off!)",
+     "option2": null,
+     "price": "270.00",
+     "compare_at_price": null,
+     "sku": "920-12"
+    },
+    {
+     "id": 42521324617977,
+     "title": "250ml x 24 ($21.25 ea./15% Off!)",
+     "option1": "250ml x 24 ($21.25 ea./15% Off!)",
+     "option2": null,
+     "price": "510.00",
+     "compare_at_price": null,
+     "sku": "920-24"
+    },
+    {
+     "id": 46289711104249,
+     "title": "250ml x 36 ($19.99 ea./20% Off!)",
+     "option1": "250ml x 36 ($19.99 ea./20% Off!)",
+     "option2": null,
+     "price": "719.64",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42573690405113,
+     "title": "250ml x 48 ($18.75 ea./25% Off!)",
+     "option1": "250ml x 48 ($18.75 ea./25% Off!)",
+     "option2": null,
+     "price": "900.00",
+     "compare_at_price": null,
+     "sku": "920-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562621518073,
+   "handle": "pure-maple-syrup-maple-leaf-bottle-100ml",
+   "title": "Pure Maple Syrup Maple Leaf Bottle 100ml",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100ml x 1",
+      "100ml x 12 ($10.80 ea./10% Off!)",
+      "100ml x 24 ($10.20 ea./15% Off!)",
+      "100ml x 36 ($9.60 ea./20% Off!)",
+      "100ml x 48 ($8.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815538843897,
+     "title": "100ml x 1",
+     "option1": "100ml x 1",
+     "option2": null,
+     "price": "11.99",
+     "compare_at_price": null,
+     "sku": "919"
+    },
+    {
+     "id": 42521324224761,
+     "title": "100ml x 12 ($10.80 ea./10% Off!)",
+     "option1": "100ml x 12 ($10.80 ea./10% Off!)",
+     "option2": null,
+     "price": "129.60",
+     "compare_at_price": null,
+     "sku": "919-12"
+    },
+    {
+     "id": 42521324257529,
+     "title": "100ml x 24 ($10.20 ea./15% Off!)",
+     "option1": "100ml x 24 ($10.20 ea./15% Off!)",
+     "option2": null,
+     "price": "244.80",
+     "compare_at_price": null,
+     "sku": "919-24"
+    },
+    {
+     "id": 46289709236473,
+     "title": "100ml x 36 ($9.60 ea./20% Off!)",
+     "option1": "100ml x 36 ($9.60 ea./20% Off!)",
+     "option2": null,
+     "price": "345.60",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521324290297,
+     "title": "100ml x 48 ($8.99 ea./25% Off!)",
+     "option1": "100ml x 48 ($8.99 ea./25% Off!)",
+     "option2": null,
+     "price": "431.52",
+     "compare_at_price": null,
+     "sku": "919-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562621387001,
+   "handle": "pure-maple-syrup-maple-leaf-bottle-50ml",
+   "title": "Pure Maple Syrup Maple Leaf Bottle 50ml",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "50ml x 1",
+      "50ml x 12 ($7.20 ea./10% Off!)",
+      "50ml x 24 ($6.80 ea./15% Off!)",
+      "50ml x 36 ($6.40 ea./20% Off!)",
+      "50ml x 48 ($5.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815537697017,
+     "title": "50ml x 1",
+     "option1": "50ml x 1",
+     "option2": null,
+     "price": "7.99",
+     "compare_at_price": null,
+     "sku": "917"
+    },
+    {
+     "id": 42521323962617,
+     "title": "50ml x 12 ($7.20 ea./10% Off!)",
+     "option1": "50ml x 12 ($7.20 ea./10% Off!)",
+     "option2": null,
+     "price": "86.40",
+     "compare_at_price": null,
+     "sku": "917-12"
+    },
+    {
+     "id": 42521323995385,
+     "title": "50ml x 24 ($6.80 ea./15% Off!)",
+     "option1": "50ml x 24 ($6.80 ea./15% Off!)",
+     "option2": null,
+     "price": "163.20",
+     "compare_at_price": null,
+     "sku": "917-24"
+    },
+    {
+     "id": 46289708286201,
+     "title": "50ml x 36 ($6.40 ea./20% Off!)",
+     "option1": "50ml x 36 ($6.40 ea./20% Off!)",
+     "option2": null,
+     "price": "230.40",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521324060921,
+     "title": "50ml x 48 ($5.99 ea./25% Off!)",
+     "option1": "50ml x 48 ($5.99 ea./25% Off!)",
+     "option2": null,
+     "price": "287.52",
+     "compare_at_price": null,
+     "sku": "917-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562621255929,
+   "handle": "organic-pure-maple-syrup-250ml",
+   "title": "Organic Pure Maple Syrup 250ml",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "250ml x 1",
+      "250ml x 12 ($13.50 ea./10% Off!)",
+      "250ml x 24 ($12.75 ea./15% Off!)",
+      "250ml x 36 ($12.00 ea./20% Off!)",
+      "250ml x 48 ($11.25 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815550673145,
+     "title": "250ml x 1",
+     "option1": "250ml x 1",
+     "option2": null,
+     "price": "14.99",
+     "compare_at_price": null,
+     "sku": "908"
+    },
+    {
+     "id": 42521323766009,
+     "title": "250ml x 12 ($13.50 ea./10% Off!)",
+     "option1": "250ml x 12 ($13.50 ea./10% Off!)",
+     "option2": null,
+     "price": "162.00",
+     "compare_at_price": null,
+     "sku": "908-12"
+    },
+    {
+     "id": 42521323798777,
+     "title": "250ml x 24 ($12.75 ea./15% Off!)",
+     "option1": "250ml x 24 ($12.75 ea./15% Off!)",
+     "option2": null,
+     "price": "306.00",
+     "compare_at_price": null,
+     "sku": "908-24"
+    },
+    {
+     "id": 46289714053369,
+     "title": "250ml x 36 ($12.00 ea./20% Off!)",
+     "option1": "250ml x 36 ($12.00 ea./20% Off!)",
+     "option2": null,
+     "price": "432.00",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42573697155321,
+     "title": "250ml x 48 ($11.25 ea./25% Off!)",
+     "option1": "250ml x 48 ($11.25 ea./25% Off!)",
+     "option2": null,
+     "price": "540.00",
+     "compare_at_price": null,
+     "sku": "908-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562620600569,
+   "handle": "organic-pure-maple-sugar",
+   "title": "Organic Pure Maple Sugar",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.99 ea./10% Off!)",
+      "100g x 24 ($8.49 ea./15% Off!)",
+      "100g x 40 ($7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815552213241,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": "748"
+    },
+    {
+     "id": 42521322193145,
+     "title": "100g x 12 ($8.99 ea./10% Off!)",
+     "option1": "100g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "748-12"
+    },
+    {
+     "id": 42521322225913,
+     "title": "100g x 24 ($8.49 ea./15% Off!)",
+     "option1": "100g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "748-24"
+    },
+    {
+     "id": 46289777885433,
+     "title": "100g x 40 ($7.99 ea./20% Off!)",
+     "option1": "100g x 40 ($7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": null
+    }
+   ]
+  },
+  {
+   "product_id": 7562619650297,
+   "handle": "handcrafted-pure-maple-syrup-butter-popcorn",
+   "title": "Pure Maple Syrup Butter Popcorn",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($3.99 ea./20% Off!)",
+      "100g x 24 ($3.50 ea./30% Off!)",
+      "100g x 44 ($3.25 ea./35% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815596810489,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "4.99",
+     "compare_at_price": null,
+     "sku": "743"
+    },
+    {
+     "id": 42521320849657,
+     "title": "100g x 12 ($3.99 ea./20% Off!)",
+     "option1": "100g x 12 ($3.99 ea./20% Off!)",
+     "option2": null,
+     "price": "47.88",
+     "compare_at_price": null,
+     "sku": "743-12"
+    },
+    {
+     "id": 42521320882425,
+     "title": "100g x 24 ($3.50 ea./30% Off!)",
+     "option1": "100g x 24 ($3.50 ea./30% Off!)",
+     "option2": null,
+     "price": "84.00",
+     "compare_at_price": null,
+     "sku": "743-24"
+    },
+    {
+     "id": 42521320947961,
+     "title": "100g x 44 ($3.25 ea./35% Off!)",
+     "option1": "100g x 44 ($3.25 ea./35% Off!)",
+     "option2": null,
+     "price": "143.00",
+     "compare_at_price": null,
+     "sku": "743-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562619388153,
+   "handle": "maple-syrup-sea-salt-roasted-peanuts",
+   "title": "Maple Syrup & Sea Salt Roasted Peanuts",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($5.69 ea./5% Off!)",
+      "100g x 24 ($5.39 ea./10% Off!)",
+      "100g x 40 ($5.09 ea./15% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815598121209,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "5.99",
+     "compare_at_price": null,
+     "sku": "741H"
+    },
+    {
+     "id": 42521320390905,
+     "title": "100g x 12 ($5.69 ea./5% Off!)",
+     "option1": "100g x 12 ($5.69 ea./5% Off!)",
+     "option2": null,
+     "price": "68.28",
+     "compare_at_price": null,
+     "sku": "741H-12"
+    },
+    {
+     "id": 42521320423673,
+     "title": "100g x 24 ($5.39 ea./10% Off!)",
+     "option1": "100g x 24 ($5.39 ea./10% Off!)",
+     "option2": null,
+     "price": "129.36",
+     "compare_at_price": null,
+     "sku": "741H-24"
+    },
+    {
+     "id": 42521320489209,
+     "title": "100g x 40 ($5.09 ea./15% Off!)",
+     "option1": "100g x 40 ($5.09 ea./15% Off!)",
+     "option2": null,
+     "price": "203.60",
+     "compare_at_price": null,
+     "sku": "741H-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562618274041,
+   "handle": "maple-syrup-stroopwafel",
+   "title": "Maple Syrup Stroopwafel",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "136g x 1",
+      "136g x 12 ($8.10 ea./10% Off!)",
+      "136g x 24 ($7.65 ea./15% Off!)",
+      "136g x 36 ($7.20 ea./20% Off!)",
+      "136g x 48 ($5.99 ea./25% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815583441145,
+     "title": "136g x 1",
+     "option1": "136g x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": "390"
+    },
+    {
+     "id": 42521318588665,
+     "title": "136g x 12 ($8.10 ea./10% Off!)",
+     "option1": "136g x 12 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "97.20",
+     "compare_at_price": null,
+     "sku": "390-12"
+    },
+    {
+     "id": 42521318621433,
+     "title": "136g x 24 ($7.65 ea./15% Off!)",
+     "option1": "136g x 24 ($7.65 ea./15% Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "390-24"
+    },
+    {
+     "id": 46289728831737,
+     "title": "136g x 36 ($7.20 ea./20% Off!)",
+     "option1": "136g x 36 ($7.20 ea./20% Off!)",
+     "option2": null,
+     "price": "259.20",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521318654201,
+     "title": "136g x 48 ($5.99 ea./25% Off!)",
+     "option1": "136g x 48 ($5.99 ea./25% Off!)",
+     "option2": null,
+     "price": "287.52",
+     "compare_at_price": null,
+     "sku": "390-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562616897785,
+   "handle": "dark-chocolate-covered-blueberry-pure-maple-syrup",
+   "title": "Dark Chocolate Covered Blueberry & Pure Maple Syrup",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.99 ea./10% Off!)",
+      "100g x 24 ($8.49 ea./15% Off!)",
+      "100g x 40 ($$7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815592911097,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": "304"
+    },
+    {
+     "id": 42521316589817,
+     "title": "100g x 12 ($8.99 ea./10% Off!)",
+     "option1": "100g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "304-12"
+    },
+    {
+     "id": 42521316622585,
+     "title": "100g x 24 ($8.49 ea./15% Off!)",
+     "option1": "100g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "304-24"
+    },
+    {
+     "id": 42521316655353,
+     "title": "100g x 40 ($$7.99 ea./20% Off!)",
+     "option1": "100g x 40 ($$7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": "304-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562616799481,
+   "handle": "dark-chocolate-covered-cherry-pure-maple-syrup",
+   "title": "Dark Chocolate Covered Cherry & Pure Maple Syrup",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.99 ea./10% Off!)",
+      "100g x 24 ($8.49 ea./15% Off!)",
+      "100g x 40 ($7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815594451193,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": "303"
+    },
+    {
+     "id": 42521316360441,
+     "title": "100g x 12 ($8.99 ea./10% Off!)",
+     "option1": "100g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "303-12"
+    },
+    {
+     "id": 42521316393209,
+     "title": "100g x 24 ($8.49 ea./15% Off!)",
+     "option1": "100g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "303-24"
+    },
+    {
+     "id": 42521316425977,
+     "title": "100g x 40 ($7.99 ea./20% Off!)",
+     "option1": "100g x 40 ($7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": "303-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562616570105,
+   "handle": "dark-chocolate-covered-cranberry-pure-maple-syrup",
+   "title": "Dark Chocolate Covered Cranberry & Pure Maple Syrup",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.99 ea./10% Off!)",
+      "100g x 24 ($8.49 ea./15% Off!)",
+      "100g x 40 ($7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815591076089,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": "300"
+    },
+    {
+     "id": 42521315770617,
+     "title": "100g x 12 ($8.99 ea./10% Off!)",
+     "option1": "100g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "300-12"
+    },
+    {
+     "id": 42521315803385,
+     "title": "100g x 24 ($8.49 ea./15% Off!)",
+     "option1": "100g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "300-24"
+    },
+    {
+     "id": 42521315836153,
+     "title": "100g x 40 ($7.99 ea./20% Off!)",
+     "option1": "100g x 40 ($7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": "300-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562616209657,
+   "handle": "pure-maple-syrup-caramel",
+   "title": "Pure Maple Syrup Caramel",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "120g x 1",
+      "120g x 12 ($8.99 ea./10% Off!)",
+      "120g x 24 ($8.49 ea./15% Off!)",
+      "120g x 40 ($7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 42521315049721,
+     "title": "120g x 1",
+     "option1": "120g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": "265"
+    },
+    {
+     "id": 42521315082489,
+     "title": "120g x 12 ($8.99 ea./10% Off!)",
+     "option1": "120g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "265-12"
+    },
+    {
+     "id": 42521315115257,
+     "title": "120g x 24 ($8.49 ea./15% Off!)",
+     "option1": "120g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "265-24"
+    },
+    {
+     "id": 42521315148025,
+     "title": "120g x 40 ($7.99 ea./20% Off!)",
+     "option1": "120g x 40 ($7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": "265-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562616045817,
+   "handle": "pure-maple-syrup-candy",
+   "title": "Pure Maple Syrup Candy",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "120g x 1",
+      "120g x 12 ($8.99 ea./10% Off!)",
+      "120g x 24 ($8.49 ea./15% Off!)",
+      "120g x 40 ($$7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 46289771495673,
+     "title": "120g x 1",
+     "option1": "120g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 42521314787577,
+     "title": "120g x 12 ($8.99 ea./10% Off!)",
+     "option1": "120g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "261-12"
+    },
+    {
+     "id": 42521314820345,
+     "title": "120g x 24 ($8.49 ea./15% Off!)",
+     "option1": "120g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "261-24"
+    },
+    {
+     "id": 42521314853113,
+     "title": "120g x 40 ($$7.99 ea./20% Off!)",
+     "option1": "120g x 40 ($$7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": "261-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562615423225,
+   "handle": "maple-ceylon-tea",
+   "title": "Maple Ceylon Tea",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "30g x 1",
+      "30g x 12 ($8.10 ea./10% Off!)",
+      "30g x 24 ($7.65 ea./15% Off!)",
+      "30g x 40 ($7.20 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815601922297,
+     "title": "30g x 1",
+     "option1": "30g x 1",
+     "option2": null,
+     "price": "8.99",
+     "compare_at_price": null,
+     "sku": "242"
+    },
+    {
+     "id": 42521313542393,
+     "title": "30g x 12 ($8.10 ea./10% Off!)",
+     "option1": "30g x 12 ($8.10 ea./10% Off!)",
+     "option2": null,
+     "price": "97.20",
+     "compare_at_price": null,
+     "sku": "242-12"
+    },
+    {
+     "id": 42521313575161,
+     "title": "30g x 24 ($7.65 ea./15% Off!)",
+     "option1": "30g x 24 ($7.65 ea./15% Off!)",
+     "option2": null,
+     "price": "183.60",
+     "compare_at_price": null,
+     "sku": "242-24"
+    },
+    {
+     "id": 42521313640697,
+     "title": "30g x 40 ($7.20 ea./20% Off!)",
+     "option1": "30g x 40 ($7.20 ea./20% Off!)",
+     "option2": null,
+     "price": "288.00",
+     "compare_at_price": null,
+     "sku": "242-48"
+    }
+   ]
+  },
+  {
+   "product_id": 7562615062777,
+   "handle": "maple-syrup-medium-dark-roast-ground-coffee",
+   "title": "Maple Syrup Medium-Dark Roast Ground Coffee",
+   "options": [
+    {
+     "name": "Amount",
+     "values": [
+      "1 Bag x  $14.99",
+      "6 Bags x $14.25 Each / 5% Off",
+      "12 Bags x $13.50 Each / 10% Off",
+      "24 Bags $12.75 Each / 15% Off",
+      "48 Bags $11.99 Each / 20% Off"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 46304596099321,
+     "title": "1 Bag x  $14.99",
+     "option1": "1 Bag x  $14.99",
+     "option2": null,
+     "price": "14.99",
+     "compare_at_price": null,
+     "sku": "236"
+    },
+    {
+     "id": 47381410382073,
+     "title": "6 Bags x $14.25 Each / 5% Off",
+     "option1": "6 Bags x $14.25 Each / 5% Off",
+     "option2": null,
+     "price": "85.50",
+     "compare_at_price": null,
+     "sku": null
+    },
+    {
+     "id": 46304596132089,
+     "title": "12 Bags x $13.50 Each / 10% Off",
+     "option1": "12 Bags x $13.50 Each / 10% Off",
+     "option2": null,
+     "price": "162.00",
+     "compare_at_price": null,
+     "sku": "237"
+    },
+    {
+     "id": 46304596164857,
+     "title": "24 Bags $12.75 Each / 15% Off",
+     "option1": "24 Bags $12.75 Each / 15% Off",
+     "option2": null,
+     "price": "306.00",
+     "compare_at_price": null,
+     "sku": "238"
+    },
+    {
+     "id": 46304596197625,
+     "title": "48 Bags $11.99 Each / 20% Off",
+     "option1": "48 Bags $11.99 Each / 20% Off",
+     "option2": null,
+     "price": "575.52",
+     "compare_at_price": null,
+     "sku": "239"
+    }
+   ]
+  },
+  {
+   "product_id": 7562614079737,
+   "handle": "maple-syrup-milk-chocolate-covered-almonds",
+   "title": "Milk Chocolate Maple Roasted Almonds",
+   "options": [
+    {
+     "name": "Please Select",
+     "values": [
+      "100g x 1",
+      "100g x 12 ($8.99 ea./10% Off!)",
+      "100g x 24 ($8.49 ea./15% Off!)",
+      "100g x 40 ($7.99 ea./20% Off!)"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": 45815589241081,
+     "title": "100g x 1",
+     "option1": "100g x 1",
+     "option2": null,
+     "price": "9.99",
+     "compare_at_price": null,
+     "sku": "209A"
+    },
+    {
+     "id": 42521305514233,
+     "title": "100g x 12 ($8.99 ea./10% Off!)",
+     "option1": "100g x 12 ($8.99 ea./10% Off!)",
+     "option2": null,
+     "price": "107.88",
+     "compare_at_price": null,
+     "sku": "209A-12"
+    },
+    {
+     "id": 42521305547001,
+     "title": "100g x 24 ($8.49 ea./15% Off!)",
+     "option1": "100g x 24 ($8.49 ea./15% Off!)",
+     "option2": null,
+     "price": "203.76",
+     "compare_at_price": null,
+     "sku": "209A-24"
+    },
+    {
+     "id": 42521305579769,
+     "title": "100g x 40 ($7.99 ea./20% Off!)",
+     "option1": "100g x 40 ($7.99 ea./20% Off!)",
+     "option2": null,
+     "price": "319.60",
+     "compare_at_price": null,
+     "sku": "209A-48"
+    }
+   ]
+  }
+ ]
+}
