@@ -561,11 +561,13 @@
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
         <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
         <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1753993530&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1794510133&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
         if (window.__mtShelfLive) return; window.__mtShelfLive = true;
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+        function run() {
         var btns = [].slice.call(document.querySelectorAll('[data-shelf] .atc-btn[data-variant-id]'));
         var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); }).filter(function (id, i, a) { return a.indexOf(id) === i; });
         if (!ids.length) return;
@@ -579,6 +581,7 @@
               if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
             });
           }).catch(function () {});
+        }
       })();
     </script>
       <!-- SHELF:END -->
@@ -713,6 +716,30 @@
 
 
   <!-- CTA:START title="Pure Maple Syrup, Family Owned Since 1978." text="Our syrup comes from one farm, in 250 mL bottles from $14.99." href="/collections/premium-maple-syrup" label="Shop Maple Syrup" href2="/recipes/" label2="More Recipes" -->
+  <section class="pb-24 md:pb-40 px-4 md:px-8">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="reveal">
+        <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+            <div class="relative">
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Pure Maple Syrup, Family Owned Since 1978.</h2>
+              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Our syrup comes from one farm, in 250 mL bottles from $14.99.</p>
+              <div class="flex flex-wrap gap-3 justify-center">
+                <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                  <span>Shop Maple Syrup</span>
+                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </a>
+                <a href="/recipes/" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">More Recipes</a>
+              </div>
+            </div>
+            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- CTA:END -->
 
 

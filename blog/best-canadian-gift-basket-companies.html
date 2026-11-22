@@ -577,6 +577,8 @@
       <script>
       (function () {
         if (window.__mtShelfLive) return; window.__mtShelfLive = true;
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+        function run() {
         var btns = [].slice.call(document.querySelectorAll('[data-shelf] .atc-btn[data-variant-id]'));
         var ids = btns.map(function (b) { return b.getAttribute('data-variant-id'); }).filter(function (id, i, a) { return a.indexOf(id) === i; });
         if (!ids.length) return;
@@ -590,6 +592,7 @@
               if (!n.availableForSale) { b.disabled = true; b.removeAttribute('onclick'); b.textContent = 'Sold out'; }
             });
           }).catch(function () {});
+        }
       })();
     </script>
       <!-- SHELF:END -->
