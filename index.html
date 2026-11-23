@@ -217,8 +217,52 @@
     /* Unslop polish, November 22, 2026 (homepage only until the sitewide pass).
        Grade swatch: the one signature, a dot in the colour of each syrup grade. */
     .mt-grade { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:8px; vertical-align:0; box-shadow: inset 0 0 0 1px rgba(26,23,20,.12); }
-    .mt-grade--golden { background:#E2AC45; }
-    .mt-grade--dark { background:#6E3A12; }
+    .mt-grade--golden { background:#E2A93B; }
+    .mt-grade--dark { background:#8A4A12; }
+
+    /* Grounds. Every coloured section takes a maple syrup grade: pale golden for the
+       syrup and the questions, very dark for the family, amber for the close. Cream between them. */
+    .mt-ground-golden { background:#F4E4C1; }
+    .mt-ground-golden .text-warm-gray-500 { color:#6B5E4E; }
+    .mt-ground-golden .border-t { border-top-color:transparent; }
+
+    /* Canada's four colour classes of Grade A syrup, ours marked. Builds in left to right. */
+    .mt-scale { margin-bottom:48px; }
+    .mt-scale-bar { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; height:56px; }
+    .mt-scale-bar span { border-radius:8px; transform-origin:left center; transform:scaleX(0); transition:transform .6s cubic-bezier(0.32,0.72,0,1); }
+    .mt-scale-bar span:first-child { border-radius:16px 8px 8px 16px; }
+    .mt-scale-bar span:last-child { border-radius:8px 16px 16px 8px; }
+    .mt-scale.visible .mt-scale-bar span { transform:none; }
+    .mt-scale.visible .mt-scale-bar span:nth-child(2) { transition-delay:.08s; }
+    .mt-scale.visible .mt-scale-bar span:nth-child(3) { transition-delay:.16s; }
+    .mt-scale.visible .mt-scale-bar span:nth-child(4) { transition-delay:.24s; }
+    .mt-scale-names { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:4px; margin-top:12px; }
+    .mt-scale-names li { font-size:14px; line-height:1.4; color:#6B5E4E; }
+    .mt-scale-names li.ours { color:#1A1714; font-weight:500; }
+    .mt-scale-names li small { display:block; font-size:13px; font-weight:400; color:#7A5310; margin-top:2px; }
+    .mt-scale-note { font-size:14px; color:#5A5249; margin-bottom:16px; }
+
+    /* Family on the very dark ground, close to the photo's own black so the photo sits in it. */
+    .mt-home-family #family > div { border-top-color:transparent; }
+    .mt-home-family #family h2 { color:#FDFBF7; }
+    .mt-home-family #family p { color:rgba(253,251,247,.74); }
+    .mt-home-family #family figcaption { color:rgba(253,251,247,.5); }
+    .mt-home-family #family a { color:#FDFBF7; }
+    .mt-home-family #family a:hover { color:#E8A84C; }
+    .mt-home-family { background:#070605; }
+
+    /* The close: the amber panel opens into a full-width amber ground, content on the container edge. */
+    .mt-home-cta { background:#C4841D; position:relative; }
+    .mt-home-cta > section { padding-top:128px; padding-bottom:128px; }
+    .mt-home-cta > section .reveal { max-width:50%; }
+    .mt-cta-photo { position:absolute; inset:96px 32px; pointer-events:none; }
+    .mt-cta-photo > div { position:relative; max-width:1400px; height:100%; margin:0 auto; }
+    .mt-cta-photo img { position:absolute; right:0; top:0; width:min(46%, 640px); height:100%; object-fit:cover; object-position:88% 60%; border-radius:32px; }
+    .mt-home-cta .bg-warm-gray-100\/50 { background:transparent; box-shadow:none; padding:0; border-radius:0; }
+    .mt-home-cta .bg-gradient-to-br { background:transparent; padding:0; min-height:0; text-align:left; align-items:flex-start; border-radius:0; }
+    .mt-home-cta h2, .mt-home-cta p { margin-left:0; }
+    .mt-home-cta .justify-center { justify-content:flex-start; }
+    @media (prefers-reduced-motion: reduce) { .mt-scale-bar span { transform:none; transition:none; } }
     /* Reviews: a still row people scroll themselves, no loop */
     .mt-reviews-row { overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-left:0; scrollbar-width:none; overscroll-behavior-x:contain; }
     .mt-reviews-row::-webkit-scrollbar { display:none; }
@@ -231,7 +275,7 @@
     .mt-home-family #family > div { padding-top:96px; padding-bottom:96px; }
     .mt-home-family #family h2 { font-weight:500; }
     .mt-home-cta > section { padding-bottom:96px; }
-    .mt-home-cta .bg-gradient-to-br { background-image:none; background-color:#C4841D; color:#1A1714; }
+    .mt-home-cta .bg-gradient-to-br { background-image:none; color:#1A1714; }
     .mt-home-cta .bg-gradient-to-br > .absolute.inset-0 { display:none; }
     .mt-home-cta h2 { font-weight:500; }
     .mt-home-cta p { color: rgba(26,23,20,.9); }
@@ -240,7 +284,12 @@
     .mt-home-cta a.btn-premium > span:last-child { background-color: rgba(253,251,247,.12); }
     @media (max-width:767px) {
       .mt-home-family #family > div { padding-top:64px; padding-bottom:64px; }
-      .mt-home-cta > section { padding-bottom:64px; }
+      .mt-home-cta > section { padding-bottom:64px; padding-top:64px; }
+      .mt-home-cta > section .reveal { max-width:none; }
+      .mt-cta-photo { display:none; }
+      .mt-scale-bar { height:40px; }
+      .mt-scale-names li { font-size:12px; }
+      .mt-scale-names li small { font-size:12px; }
     }
 
   </style>
@@ -473,7 +522,7 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- SYRUPS  -  Our two grades, from one farm        -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="syrups" class="py-16 md:py-24 px-4 md:px-8">
+  <section id="syrups" class="mt-ground-golden py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <!-- Section header -->
       <div class="max-w-3xl mb-10 md:mb-12">
@@ -483,6 +532,18 @@
           Every bottle of our syrup comes from one farm. We sell two grades from that farm: Golden from early in the season, and Dark from late in the season.
         </p>
       </div>
+
+      <!-- The grade scale: Canada's four colour classes of Grade A maple syrup, the two we sell marked -->
+      <figure class="mt-scale reveal" aria-label="Canada's four color classes of Grade A maple syrup. We sell Golden and Dark.">
+        <p class="mt-scale-note">In Canada, Grade A maple syrup is sorted by color into four classes. We sell two of them.</p>
+        <div class="mt-scale-bar" aria-hidden="true"><span style="background:#E2A93B"></span><span style="background:#C47A1C"></span><span style="background:#8A4A12"></span><span style="background:#4A260C"></span></div>
+        <ol class="mt-scale-names">
+          <li class="ours">Golden, Delicate Taste<small>Our organic syrup</small></li>
+          <li>Amber, Rich Taste</li>
+          <li class="ours">Dark, Robust Taste<small>Our maple leaf bottle</small></li>
+          <li>Very Dark, Strong Taste</li>
+        </ol>
+      </figure>
 
       <!-- The two syrups -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
@@ -886,7 +947,7 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- FAQ  -  Static, non-accordion, SEO-focused               -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="px-4 md:px-8" itemscope itemtype="https://schema.org/FAQPage">
+  <section class="mt-ground-golden px-4 md:px-8" itemscope itemtype="https://schema.org/FAQPage">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24">
       <div class="mb-10 md:mb-12">
         <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-[1.1]">Frequently asked questions</h2>
@@ -1009,6 +1070,7 @@
     </div>
   </section>
   <!-- CTA:END -->
+  <div class="mt-cta-photo" aria-hidden="true"><div><img src="/assets/images/bento/gift-sets.webp" alt="" width="1400" height="1087" loading="lazy" decoding="async"></div></div>
   </div>
 
 
