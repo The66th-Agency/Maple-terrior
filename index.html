@@ -96,15 +96,14 @@
     /* Scroll reveal animations */
     .reveal {
       opacity: 0;
-      transform: translateY(2.5rem) scale(0.98);
-      transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1),
-                  transform 0.9s cubic-bezier(0.32, 0.72, 0, 1),
-                  filter 0.9s cubic-bezier(0.32, 0.72, 0, 1);
+      transform: translateY(16px);
+      transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1),
+                  transform 0.6s cubic-bezier(0.32, 0.72, 0, 1);
     }
 
     .reveal.visible {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: none;
     }
 
     .reveal-delay-1 { transition-delay: 100ms; }
@@ -113,76 +112,23 @@
     .reveal-delay-4 { transition-delay: 400ms; }
     .reveal-delay-5 { transition-delay: 500ms; }
 
-    /* Parallax subtle float */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .float-slow {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .float-medium {
-      animation: float 4.5s ease-in-out infinite;
-      animation-delay: -1.5s;
-    }
-
-    /* Kinetic marquee */
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .marquee-track {
-      animation: marquee 40s linear infinite;
-    }
-
-    .marquee-track:hover {
-      animation-play-state: paused;
-    }
-
-    /* Maple leaf SVG rotation */
-    @keyframes spin-slow {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .spin-slow {
-      animation: spin-slow 30s linear infinite;
-    }
-
     /* Premium button hover */
     .btn-premium {
-      transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     }
-
-    .btn-premium:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3);
-    }
-
-    .btn-premium:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    /* Image hover zoom */
-    .img-zoom {
-      transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1);
-    }
-
-    .img-zoom:hover {
-      transform: scale(1.05);
-    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
 
     /* Navbar blur transition */
     .nav-glass {
       backdrop-filter: blur(20px) saturate(1.8);
       -webkit-backdrop-filter: blur(20px) saturate(1.8);
-      transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .nav-scrolled { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255,0.5); }
+    .nav-scrolled { box-shadow: 0 1px 2px rgba(26, 23, 20, 0.04); }
 
     /* Horizontal scroll for product categories */
     .scroll-hide::-webkit-scrollbar { display: none; }
@@ -206,7 +152,7 @@
       cursor: pointer;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
       z-index: 10;
       position: relative;
     }
@@ -246,19 +192,6 @@
     }
 
 
-    /* Testimonial horizontal scroll */
-    @keyframes testimonial-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .testimonial-track {
-      animation: testimonial-scroll 45s linear infinite;
-    }
-
-    .testimonial-track:hover {
-      animation-play-state: paused;
-    }
 
     /* ─── Reduced Motion ─────────────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
@@ -278,21 +211,36 @@
         transition: none;
       }
 
-      .float-slow,
-      .float-medium,
-      .spin-slow { animation: none; }
-
-      .marquee-track,
-      .testimonial-track { animation: none; }
     }
 
-    /* Maple leaf decorative SVG */
-    .maple-svg {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+
+    /* Unslop polish, November 22, 2026 (homepage only until the sitewide pass).
+       Grade swatch: the one signature, a dot in the colour of each syrup grade. */
+    .mt-grade { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:8px; vertical-align:0; box-shadow: inset 0 0 0 1px rgba(26,23,20,.12); }
+    .mt-grade--golden { background:#E2AC45; }
+    .mt-grade--dark { background:#6E3A12; }
+    /* Reviews: a still row people scroll themselves, no loop */
+    .mt-reviews-row { overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-left:0; scrollbar-width:none; overscroll-behavior-x:contain; }
+    .mt-reviews-row::-webkit-scrollbar { display:none; }
+    .mt-reviews-row > .flex > div { scroll-snap-align:start; }
+    .mt-rev-btn { width:44px; height:44px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; color:#1A1714; box-shadow: inset 0 0 0 1px rgba(26,23,20,.14); transition: background-color .2s ease, opacity .2s ease; }
+    .mt-rev-btn:hover { background:#F5F0E8; }
+    .mt-rev-btn:disabled { opacity:.35; cursor:default; background:transparent; }
+    .mt-rev-btn:focus-visible { outline:2px solid #8B5E14; outline-offset:2px; }
+    /* Shared blocks baked by build-blocks.mjs, overridden here on the homepage only */
+    .mt-home-family #family > div { padding-top:96px; padding-bottom:96px; }
+    .mt-home-family #family h2 { font-weight:500; }
+    .mt-home-cta > section { padding-bottom:96px; }
+    .mt-home-cta .bg-gradient-to-br { background-image:none; background-color:#C4841D; color:#1A1714; }
+    .mt-home-cta .bg-gradient-to-br > .absolute.inset-0 { display:none; }
+    .mt-home-cta h2 { font-weight:500; }
+    .mt-home-cta p { color: rgba(26,23,20,.9); }
+    .mt-home-cta a.btn-premium { font-weight:500; background-color:#1A1714; color:#FDFBF7; }
+    .mt-home-cta a.btn-premium:hover { background-color:#2E2822; }
+    .mt-home-cta a.btn-premium > span:last-child { background-color: rgba(253,251,247,.12); }
+    @media (max-width:767px) {
+      .mt-home-family #family > div { padding-top:64px; padding-bottom:64px; }
+      .mt-home-cta > section { padding-bottom:64px; }
     }
 
   </style>
@@ -371,18 +319,18 @@
     <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-charcoal/10"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/50 to-charcoal/10 md:hidden"></div>
     <div class="relative max-w-[1400px] mx-auto w-full">
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-cream tracking-tight leading-[1.08] max-w-4xl">
-        Canadian Maple Products,<br class="hidden md:block"> Family Owned Since 1978.
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-medium text-cream tracking-tight leading-[1.08] max-w-4xl">
+        Canadian maple products,<br class="hidden md:block"> family owned since 1978
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-300 leading-relaxed max-w-[46ch] text-lg md:text-xl mt-6">
         Pure maple syrup from one farm, plus maple stroopwafels, chocolates, tea and gift sets.
       </p>
       <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-4">
-        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
-          <span>Shop All Products</span>
-          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-charcoal rounded-full px-6 py-3.5 text-sm font-medium group">
+          <span>Shop all products</span>
+          <span class="w-6 h-6 rounded-full bg-charcoal/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
-        <a href="/collections/home-sets" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">Shop Gift Sets</a>
+        <a href="/collections/home-sets" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-6 py-3.5 text-sm font-medium hover:bg-white/15">Shop gift sets</a>
       </div>
     </div>
   </section>
@@ -416,19 +364,19 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- PRODUCTS  -  Bento-style collection grid                  -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="products" class="py-24 md:py-40 px-4 md:px-8">
+  <section id="products" class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <!-- Section header. The heading sizes with the window from md up so it stays on one line beside the button (Shawn, November 12, 2026: "Can we have this phrase all on one line?"); on a phone it wraps, balanced. -->
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 md:mb-24">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12">
         <div>
-          <h2 class="reveal reveal-delay-1 font-display text-3xl [text-wrap:balance] md:text-[clamp(1.75rem,calc((100vw-18.75rem)/19),3.75rem)] font-semibold text-charcoal tracking-tight leading-[1.1]">Maple syrup, and the treats made with it.
+          <h2 class="reveal reveal-delay-1 font-display text-3xl [text-wrap:balance] md:text-[clamp(1.75rem,calc((100vw-18.75rem)/19),3rem)] font-medium text-charcoal tracking-tight leading-[1.1]">Maple syrup, and the treats made with it
           </h2>
         </div>
         <div class="reveal reveal-delay-2">
           <a href="/products"
              class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group whitespace-nowrap">
-            <span>View All Products</span>
-            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+            <span>View all products</span>
+            <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
               <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </a>
@@ -439,13 +387,13 @@
            on a ground the color of a maple syrup grade. Every label shown is the real package, from the store's own product photos. -->
       <style>
         .gs-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
-        .gs-tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-radius:28px;padding:36px;isolation:isolate;text-decoration:none}
+        .gs-tile{position:relative;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;border-radius:32px;padding:36px;isolation:isolate;text-decoration:none}
         .gs-media{position:absolute;inset:0;z-index:-1}
         .gs-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.32,.72,0,1)}
         .gs-tile:hover .gs-media img{transform:scale(1.035)}
-        .gs-tile h3{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(24px,2.2vw,34px);letter-spacing:-.015em;line-height:1.08}
+        .gs-tile h3{font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(24px,2.2vw,34px);letter-spacing:-.015em;line-height:1.08}
         .gs-sub{display:block;font-size:14px;margin-top:6px}
-        .gs-go{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 18px;font-size:13px;font-weight:600;white-space:nowrap;transition:gap .4s}
+        .gs-go{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:11px 18px;font-size:13px;font-weight:500;white-space:nowrap;transition:gap .2s ease}
         .gs-go svg{width:14px;height:14px}
         .gs-tile:hover .gs-go{gap:12px}
         .gs-light{color:#1F1A17}.gs-light .gs-sub{color:rgba(31,26,23,.72)}.gs-light .gs-go{background:#1F1A17;color:#FAF6EF}
@@ -485,36 +433,36 @@
       <div class="gs-grid">
         <a href="/collections/premium-maple-syrup" class="gs-tile gs-syrup gs-light reveal">
           <span class="gs-media"><img src="/assets/images/bento/syrup.webp" alt="A bottle of Maple Terroir organic maple syrup, with syrup pouring into a small glass dish" width="1800" height="1005" loading="lazy" decoding="async"></span>
-          <div class="gs-copy"><h3>Pure Maple Syrup</h3><span class="gs-sub">One Farm, Bottles From $14.99</span></div>
-          <span class="gs-go">Shop Syrups <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          <div class="gs-copy"><h3>Pure maple syrup</h3><span class="gs-sub">One farm, bottles from $14.99</span></div>
+          <span class="gs-go">Shop syrups <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
         </a>
         <a href="/collections/maple-stroopwafels" class="gs-tile gs-stroop gs-dark reveal">
           <span class="gs-media"><img src="/assets/images/bento/stroopwafels.webp" alt="A box of Maple Terroir Maple Syrup Mini Stroopwafels with a broken stroopwafel and maple caramel in front" width="1300" height="1097" loading="lazy" decoding="async"></span>
-          <div class="gs-copy"><h3>Maple Stroopwafels</h3><span class="gs-sub">5 Flavors</span></div>
-          <span class="gs-go">Explore Flavors <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          <div class="gs-copy"><h3>Maple stroopwafels</h3><span class="gs-sub">5 flavors</span></div>
+          <span class="gs-go">Explore flavors <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
         </a>
         <a href="/collections/chocolates" class="gs-tile gs-choc gs-dark reveal">
           <span class="gs-media"><img src="/assets/images/bento/chocolates.webp" alt="A box of Maple Terroir Milk Chocolate Maple Roasted Almonds with chocolate almonds on the table" width="1500" height="837" loading="lazy" decoding="async"></span>
-          <div class="gs-copy"><h3>Chocolates &amp; Sweets</h3><span class="gs-sub">Chocolate-Covered Fruit and Almonds</span></div>
-          <span class="gs-go">Shop Sweets <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          <div class="gs-copy"><h3>Chocolates and sweets</h3><span class="gs-sub">Chocolate-covered fruit and almonds</span></div>
+          <span class="gs-go">Shop sweets <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
         </a>
         <a href="/collections/tea-coffee" class="gs-tile gs-tea gs-light reveal">
           <span class="gs-media"><img src="/assets/images/bento/tea.webp" alt="A tin of Maple Terroir Maple Ceylon Tea beside a glass cup of tea" width="1000" height="1000" loading="lazy" decoding="async"></span>
-          <div class="gs-copy"><h3>Maple Tea and Coffee</h3><span class="gs-sub">Ceylon Tea, Arabica Coffee</span></div>
-          <span class="gs-go">Shop Tea and Coffee <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          <div class="gs-copy"><h3>Maple tea and coffee</h3><span class="gs-sub">Ceylon tea, Arabica coffee</span></div>
+          <span class="gs-go">Shop tea and coffee <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
         </a>
         <a href="/collections/home-sets" class="gs-tile gs-gift gs-dark reveal">
           <span class="gs-media"><img src="/assets/images/bento/gift-sets.webp" alt="The Maple Terroir Maple Extravaganza gift set: syrup, shortbread, stroopwafel cookies, almonds, popcorn, peanuts, coffee and tea tied with a gold bow" width="1400" height="1087" loading="lazy" decoding="async"></span>
-          <div class="gs-copy"><h3>Gift and Home Sets</h3><span class="gs-sub">Six Boxed Sets, From $75</span></div>
-          <span class="gs-go">Shop Sets <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          <div class="gs-copy"><h3>Gift and home sets</h3><span class="gs-sub">Six boxed sets, from $75</span></div>
+          <span class="gs-go">Shop sets <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
         </a>
         <a href="/collections/nuts-snacks" class="gs-tile gs-snack gs-light reveal">
           <span class="gs-media"><img src="/assets/images/bento/snacks.webp" alt="A bag of Maple Terroir Pure Maple Butter Popcorn with popcorn on the table" width="1800" height="764" loading="lazy" decoding="async"></span>
-          <div class="gs-copy"><h3>Maple Snacks</h3><span class="gs-sub">Popcorn and Roasted Peanuts</span></div>
-          <span class="gs-go">Shop Snacks <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+          <div class="gs-copy"><h3>Maple snacks</h3><span class="gs-sub">Popcorn and roasted peanuts</span></div>
+          <span class="gs-go">Shop snacks <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
         </a>
         <a href="/products" class="gs-tile gs-shelf gs-dark reveal">
-          <span class="gs-top"><div class="gs-copy"><h3>Shop All</h3><span class="gs-sub">Every product, one family since 1978</span></div><span class="gs-go">View All <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span></span>
+          <span class="gs-top"><div class="gs-copy"><h3>Shop all</h3><span class="gs-sub">Every product, one family since 1978</span></div><span class="gs-go">View all <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span></span>
           <span class="gs-row" aria-hidden="true"><img src="/assets/images/bento/shelf-tea.webp" alt="" loading="lazy"><img src="/assets/images/bento/shelf-almonds.webp" alt="" loading="lazy"><img src="/assets/images/bento/shelf-syrup.webp" alt="" loading="lazy"><img src="/assets/images/bento/shelf-stroopwafels.webp" alt="" loading="lazy"><img src="/assets/images/bento/shelf-popcorn.webp" alt="" loading="lazy"></span>
         </a>
       </div>
@@ -525,11 +473,11 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- SYRUPS  -  Our two grades, from one farm        -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="syrups" class="py-24 md:py-40 px-4 md:px-8">
+  <section id="syrups" class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <!-- Section header -->
-      <div class="max-w-3xl mb-16 md:mb-20">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">Two grades from one farm.
+      <div class="max-w-3xl mb-10 md:mb-12">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-[1.1] mb-6">Two grades from one farm
         </h2>
         <p class="reveal reveal-delay-2 text-base md:text-lg text-warm-gray-600 leading-relaxed max-w-[60ch]">
           Every bottle of our syrup comes from one farm. We sell two grades from that farm: Golden from early in the season, and Dark from late in the season.
@@ -548,10 +496,10 @@
               </a>
               <div class="sm:order-1 flex flex-col h-full">
                 
-                <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Golden, Delicate Taste</h3>
-<p class="text-amber-warm text-sm mt-1">Certified Organic</p>
+                <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-4">Golden, Delicate Taste</h3>
+<p class="text-amber-deep text-sm -mt-2 mb-4"><span class="mt-grade mt-grade--golden" aria-hidden="true"></span>Certified organic</p>
                 <p class="text-base text-warm-gray-600 leading-relaxed mb-6 max-w-[46ch]">
-                  A light, delicate syrup for drizzling and desserts. Ecocert, Canada Organic and USDA Organic certify this <a href="/shop/organic-maple-syrup" class="underline underline-offset-4 decoration-amber-warm text-charcoal">organic maple syrup</a>. The 250 mL bottle is $14.99, and the limited <a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="text-amber-warm hover:text-charcoal transition-colors duration-300">First Tap Nouveau</a> comes in a gift box for $19.99.
+                  A light, delicate syrup for drizzling and desserts. Ecocert, Canada Organic and USDA Organic certify this <a href="/shop/organic-maple-syrup" class="underline underline-offset-4 decoration-amber-warm text-charcoal">organic maple syrup</a>. The 250 mL bottle is $14.99, and the limited <a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="text-amber-deep underline underline-offset-4 decoration-amber-warm hover:text-charcoal transition-colors duration-300">First Tap Nouveau</a> comes in a gift box for $19.99.
                 </p>
                 <div class="flex items-center gap-4 mb-8">
                   <img src="assets/images/eco-cert.png" alt="Ecocert" width="499" height="356" class="h-9 w-auto object-contain" loading="lazy">
@@ -561,7 +509,7 @@
                 <div class="mt-auto">
                   <a href="/products/organic-pure-maple-syrup-250ml" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                     <span>Shop organic syrup</span>
-                    <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+                    <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
                       <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </span>
                   </a>
@@ -580,15 +528,15 @@
               </a>
               <div class="sm:order-1 flex flex-col h-full">
                 
-                <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Dark, Robust Taste</h3>
-<p class="text-amber-warm text-sm mt-1">Maple Leaf Bottle</p>
+                <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-4">Dark, Robust Taste</h3>
+<p class="text-amber-deep text-sm -mt-2 mb-4"><span class="mt-grade mt-grade--dark" aria-hidden="true"></span>Maple leaf bottle</p>
                 <p class="text-base text-warm-gray-600 leading-relaxed mb-8 max-w-[46ch]">
                   A stronger maple flavor for cooking and baking, in a maple leaf shaped glass bottle. It is not certified organic. The 250 mL bottle is $24.99.
                 </p>
                 <div class="mt-auto">
                   <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                     <span>Shop the maple leaf bottle</span>
-                    <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+                    <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
                       <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </span>
                   </a>
@@ -610,18 +558,23 @@
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- TESTIMONIALS  -  Social proof marquee                      -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="py-24 md:py-40 px-4 md:px-8 overflow-hidden">
-    <div class="max-w-[1400px] mx-auto mb-12 md:mb-16">
+  <section class="py-16 md:py-24 px-4 md:px-8 overflow-hidden">
+    <div class="max-w-[1400px] mx-auto mb-10 md:mb-12 flex items-end justify-between gap-6">
       <div>
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1]">Reviews from our customers, word for word.
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-[1.1]">Reviews from our customers, word for word
         </h2>
+      </div>
+      <div class="hidden md:flex gap-2 shrink-0">
+        <button type="button" class="mt-rev-btn" data-rev="-1" aria-label="Previous reviews"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></button>
+        <button type="button" class="mt-rev-btn" data-rev="1" aria-label="Next reviews"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></button>
       </div>
     </div>
 
-    <!-- Scrolling testimonial cards. Every quote is a real review. -->
-    <div class="relative max-w-[1400px] mx-auto overflow-hidden">
-      <div class="flex testimonial-track" style="width: max-content;">
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+    <!-- Review cards in a row the reader scrolls. Every quote is a real review. -->
+    <div class="relative max-w-[1400px] mx-auto">
+      <div class="mt-reviews-row" id="mt-reviews-row" tabindex="0" aria-label="Customer reviews">
+      <div class="flex gap-4" style="width: max-content;">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -629,12 +582,12 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;Maple Terroir is the absolute best. Their maple syrups, Stroopwaffles, shortbread cookies, and popcorn make for amazing gifts for friends and family. Every time I bring them home or to work, they’re always gone immediately. On top of that, I love supporting a local and family business.&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">KL</div>
-              <div><div class="text-sm font-semibold text-charcoal">Kimberly Liu</div><div class="text-xs text-warm-gray-400">Google review</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">KL</div>
+              <div><div class="text-sm font-medium text-charcoal">Kimberly Liu</div><div class="text-xs text-warm-gray-400">Google review</div></div>
             </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -642,12 +595,12 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;Simply the BEST! These Stroopwafels are the best that I have tried! Not only the blueberry, but the others as well! Great Canadian quality product! Everything is packed with care! Love that they are individually wrapped!&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">SV</div>
-              <div><div class="text-sm font-semibold text-charcoal">Sheryl V.</div><div class="text-xs text-warm-gray-400">Blueberry Maple Stroopwafels</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">SV</div>
+              <div><div class="text-sm font-medium text-charcoal">Sheryl V.</div><div class="text-xs text-warm-gray-400">Blueberry Maple Stroopwafels</div></div>
             </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -655,12 +608,12 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;&hellip;The outside has a nice crunch and the inside is this soft, gooey maple cream that actually tastes like real maple syrup, not fake flavouring. I’ve been ordering them regularly for like two years now. My only complaint is that I can’t stop at just one.&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">MM</div>
-              <div><div class="text-sm font-semibold text-charcoal">macy mason</div><div class="text-xs text-warm-gray-400">Google review</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">MM</div>
+              <div><div class="text-sm font-medium text-charcoal">macy mason</div><div class="text-xs text-warm-gray-400">Google review</div></div>
             </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -668,12 +621,12 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;On weekends we have complementary hot apple cider along with a little treat, usually a mini donut for our customers. Last weekend for the first time, we had your delicious mini maple shortbread cookies. All of our customers, along with our staff, loved them. Thank you.&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">CS</div>
-              <div><div class="text-sm font-semibold text-charcoal">Christina S.</div><div class="text-xs text-warm-gray-400">Maple Leaf Mini Shortbread Cookies</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">CS</div>
+              <div><div class="text-sm font-medium text-charcoal">Christina S.</div><div class="text-xs text-warm-gray-400">Maple Leaf Mini Shortbread Cookies</div></div>
             </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -681,12 +634,12 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;&hellip;Later the company reached out to me themselves, explained what happened, and refunded the shipping cost without me even asking. Really appreciated the honesty and attention to detail.&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">AK</div>
-              <div><div class="text-sm font-semibold text-charcoal">Andrii Kramarenko</div><div class="text-xs text-warm-gray-400">Google review</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">AK</div>
+              <div><div class="text-sm font-medium text-charcoal">Andrii Kramarenko</div><div class="text-xs text-warm-gray-400">Google review</div></div>
             </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -694,12 +647,12 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;I first ordered this back in early November, I just put in my THIRD order! I keep handing it out to friends and family ( so much for waiting for Christmas) EVERYONE LOVES it!! Definitely BEST Popcorn ever!&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">KM</div>
-              <div><div class="text-sm font-semibold text-charcoal">Kim Martens</div><div class="text-xs text-warm-gray-400">Pure Maple Syrup Butter Popcorn</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">KM</div>
+              <div><div class="text-sm font-medium text-charcoal">Kim Martens</div><div class="text-xs text-warm-gray-400">Pure Maple Syrup Butter Popcorn</div></div>
             </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -707,12 +660,12 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;The waffles are fantastic! I am using them for a quick carb snack before a morning run. Easy and delicious. Loved the personal touch-the personal note and company history was appreciated and will make me order more from this proud Canadian company.&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">HR</div>
-              <div><div class="text-sm font-semibold text-charcoal">Heidi R.</div><div class="text-xs text-warm-gray-400">Blueberry Maple Stroopwafels</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">HR</div>
+              <div><div class="text-sm font-medium text-charcoal">Heidi R.</div><div class="text-xs text-warm-gray-400">Blueberry Maple Stroopwafels</div></div>
             </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
+        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px]">
           <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
             <div class="flex items-start justify-between gap-3 mb-4">
               <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
@@ -720,71 +673,38 @@
             </div>
             <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;Ordered from the UK for my friend in Vancouver, who was missing Amsterdam, he enjoyed the blueberry waffles. Efficient and helpful service in contacting my friend so that he could arrange to pickup the order.&rdquo;</p>
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">DB</div>
-              <div><div class="text-sm font-semibold text-charcoal">David Broughton</div><div class="text-xs text-warm-gray-400">Blueberry Maple Stroopwafels</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
-          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
-            <div class="flex items-start justify-between gap-3 mb-4">
-              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
-              <span class="mt-card-src"><svg class="mt-src-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 2-1.6 5-4.5 7l6.9 5.3c4.1-3.8 6.6-9.4 6.6-15.6z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8 41.1 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-7.1-5.6C2.9 17 2 20.4 2 24s.9 7 2.4 10z"/><path fill="#EA4335" d="M24 10.7c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.5 29.9 2 24 2 15.4 2 8 6.9 4.4 14l7.1 5.6c1.8-5.3 6.7-8.9 12.5-8.9z"/></svg>Google</span>
-            </div>
-            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;Maple Terroir is the absolute best. Their maple syrups, Stroopwaffles, shortbread cookies, and popcorn make for amazing gifts for friends and family. Every time I bring them home or to work, they’re always gone immediately. On top of that, I love supporting a local and family business.&rdquo;</p>
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">KL</div>
-              <div><div class="text-sm font-semibold text-charcoal">Kimberly Liu</div><div class="text-xs text-warm-gray-400">Google review</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
-          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
-            <div class="flex items-start justify-between gap-3 mb-4">
-              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
-              <span class="mt-card-src"><svg class="mt-src-mark mt-src-mark--check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Loox verified</span>
-            </div>
-            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;Simply the BEST! These Stroopwafels are the best that I have tried! Not only the blueberry, but the others as well! Great Canadian quality product! Everything is packed with care! Love that they are individually wrapped!&rdquo;</p>
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">SV</div>
-              <div><div class="text-sm font-semibold text-charcoal">Sheryl V.</div><div class="text-xs text-warm-gray-400">Blueberry Maple Stroopwafels</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
-          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
-            <div class="flex items-start justify-between gap-3 mb-4">
-              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
-              <span class="mt-card-src"><svg class="mt-src-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 2-1.6 5-4.5 7l6.9 5.3c4.1-3.8 6.6-9.4 6.6-15.6z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8 41.1 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-7.1-5.6C2.9 17 2 20.4 2 24s.9 7 2.4 10z"/><path fill="#EA4335" d="M24 10.7c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.5 29.9 2 24 2 15.4 2 8 6.9 4.4 14l7.1 5.6c1.8-5.3 6.7-8.9 12.5-8.9z"/></svg>Google</span>
-            </div>
-            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;&hellip;The outside has a nice crunch and the inside is this soft, gooey maple cream that actually tastes like real maple syrup, not fake flavouring. I’ve been ordering them regularly for like two years now. My only complaint is that I can’t stop at just one.&rdquo;</p>
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">MM</div>
-              <div><div class="text-sm font-semibold text-charcoal">macy mason</div><div class="text-xs text-warm-gray-400">Google review</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 w-[min(340px,85vw)] md:w-[400px] mx-3">
-          <div class="bg-white ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 h-full flex flex-col">
-            <div class="flex items-start justify-between gap-3 mb-4">
-              <div class="flex items-center gap-1"><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-amber-warm" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
-              <span class="mt-card-src"><svg class="mt-src-mark mt-src-mark--check" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Loox verified</span>
-            </div>
-            <p class="text-sm text-warm-gray-600 leading-relaxed mb-5 flex-1">&ldquo;On weekends we have complementary hot apple cider along with a little treat, usually a mini donut for our customers. Last weekend for the first time, we had your delicious mini maple shortbread cookies. All of our customers, along with our staff, loved them. Thank you.&rdquo;</p>
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-semibold text-amber-deep">CS</div>
-              <div><div class="text-sm font-semibold text-charcoal">Christina S.</div><div class="text-xs text-warm-gray-400">Maple Leaf Mini Shortbread Cookies</div></div>
+              <div class="w-9 h-9 rounded-full bg-amber-warm/10 flex items-center justify-center text-xs font-medium text-amber-deep">DB</div>
+              <div><div class="text-sm font-medium text-charcoal">David Broughton</div><div class="text-xs text-warm-gray-400">Blueberry Maple Stroopwafels</div></div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Fade edges -->
-      <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-cream to-transparent pointer-events-none z-10"></div>
-      <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-cream to-transparent pointer-events-none z-10"></div>
+      </div>
     </div>
+    <script>
+    (function () {
+      var row = document.getElementById('mt-reviews-row');
+      var btns = document.querySelectorAll('.mt-rev-btn');
+      function card() { var c = row.querySelector('.flex > div'); return c ? c.offsetWidth + 16 : 400; }
+      function sync() {
+        var max = row.scrollWidth - row.clientWidth - 2;
+        btns.forEach(function (b) { b.disabled = b.dataset.rev === '-1' ? row.scrollLeft <= 2 : row.scrollLeft >= max; });
+      }
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          row.scrollBy({ left: Number(b.dataset.rev) * card(), behavior: reduce ? 'auto' : 'smooth' });
+        });
+      });
+      row.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync);
+      sync();
+    })();
+    </script>
   </section>
 
 
+  <div class="mt-home-family">
   <!-- FAMILY:START baked by scripts/build-blocks.mjs -->
   <section id="family" class="scroll-mt-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-14 items-center">
@@ -801,6 +721,7 @@
     </div>
   </section>
   <!-- FAMILY:END -->
+  </div>
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -808,18 +729,18 @@
   <!-- and our guide. Every grade line is quoted from the      -->
   <!-- guide it links. Styles scoped as .wv-*                   -->
   <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="ways-to-use" class="py-24 md:py-36 px-4 md:px-8">
+  <section id="ways-to-use" class="py-16 md:py-24 px-4 md:px-8">
     <style>
       .wv-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:48px;align-items:center}
       .wv-list{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:28px}
-      .wv-verb{position:relative;display:inline-flex;align-items:flex-start;gap:10px;background:none;border:0;padding:0;cursor:pointer;font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(52px,6.2vw,96px);line-height:1.02;letter-spacing:-.035em;color:#D9D1C4;transition:color .5s cubic-bezier(.32,.72,0,1),transform .6s cubic-bezier(.32,.72,0,1)}
+      .wv-verb{position:relative;display:inline-flex;align-items:flex-start;gap:10px;background:none;border:0;padding:0;cursor:pointer;font-family:"Fraunces",Georgia,serif;font-weight:500;font-size:clamp(52px,6.2vw,96px);line-height:1.02;letter-spacing:-.035em;color:#D9D1C4;transition:color .5s cubic-bezier(.32,.72,0,1),transform .6s cubic-bezier(.32,.72,0,1)}
       .wv-verb:nth-child(even){margin-left:clamp(28px,4vw,72px)}
-      .wv-verb sup{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;line-height:1;margin-top:.9em;color:#B8AD9E;transition:color .5s}
+      .wv-verb sup{font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:12px;font-weight:500;letter-spacing:.04em;line-height:1;margin-top:.9em;color:#B8AD9E;transition:color .5s}
       .wv-verb:hover{color:#8C8175}
       .wv-verb[aria-selected="true"]{color:#1A1714;transform:translateX(8px)}
-      .wv-verb[aria-selected="true"] sup{color:#C4841D}
+      .wv-verb[aria-selected="true"] sup{color:#8B5E14}
       .wv-verb:focus-visible{outline:2px solid #C4841D;outline-offset:6px;border-radius:8px}
-      .wv-photo{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:#F5F0E8}
+      .wv-photo{position:relative;aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:#F5F0E8}
       .wv-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.045);transition:opacity .7s cubic-bezier(.32,.72,0,1),transform 1.4s cubic-bezier(.32,.72,0,1)}
       .wv-photo img.on{opacity:1;transform:scale(1)}
       .wv-panels{display:grid;align-items:center}
@@ -827,17 +748,17 @@
       .wv-panel[hidden]{display:block;visibility:hidden}
       .wv-panel:not([hidden]){animation:wvIn .6s cubic-bezier(.32,.72,0,1)}
       @keyframes wvIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-      .wv-step{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C4841D}
+      .wv-step{font-size:14px;font-weight:500;color:#8B5E14}
       .wv-line{font-family:"Fraunces",Georgia,serif;font-size:22px;line-height:1.3;letter-spacing:-.01em;color:#1A1714;margin-top:14px}
       .wv-prod{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid #EDE8DF}
-      .wv-prod img{width:72px;height:72px;border-radius:14px;flex:none;background:#F1E9DC}
-      .wv-prod a.t{font-size:14px;font-weight:600;color:#1A1714;line-height:1.3;text-decoration:none}
+      .wv-prod img{width:72px;height:72px;border-radius:16px;flex:none;background:#F1E9DC}
+      .wv-prod a.t{font-size:14px;font-weight:500;color:#1A1714;line-height:1.3;text-decoration:none}
       .wv-prod a.t:hover{text-decoration:underline}
       .wv-prod p{font-size:13px;color:#8C8175;margin-top:3px}
       .wv-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:20px}
-      .wv-add{display:inline-flex;align-items:center;gap:6px;background:#1A1714;color:#FDFBF7;border:0;border-radius:999px;padding:12px 20px;font-size:13px;font-weight:600;cursor:pointer;transition:transform .3s}
-      .wv-add:hover{transform:translateY(-1px)}
-      .wv-guide{font-size:13px;font-weight:600;color:#1A1714;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#D9D1C4}
+      .wv-add{display:inline-flex;align-items:center;gap:6px;background:#1A1714;color:#FDFBF7;border:0;border-radius:999px;padding:12px 20px;font-size:13px;font-weight:500;cursor:pointer;transition:background-color .2s ease,transform .2s ease}
+      .wv-add:hover{background:#2E2822}.wv-add:active{transform:scale(.98)}
+      .wv-guide{font-size:13px;font-weight:500;color:#1A1714;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#D9D1C4}
       .wv-guide:hover{text-decoration-color:#C4841D}
       @media (max-width:1023px){
         .wv-grid{grid-template-columns:minmax(0,1fr);gap:28px}
@@ -854,7 +775,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="wv-grid">
         <div>
-          <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-[1.15] max-w-[16ch]">Six ways to use maple, and what to buy for each.</h2>
+          <h2 class="reveal reveal-delay-1 font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight leading-[1.15] max-w-[16ch]">Six ways to use maple, and what to buy for each</h2>
           <div class="wv-list" role="tablist" aria-label="Ways to use maple">
             <button class="wv-verb" role="tab" id="wv-t-pour" aria-controls="wv-p-pour" aria-selected="true" data-v="pour">Pour<sup>01</sup></button>
             <button class="wv-verb" role="tab" id="wv-t-bake" aria-controls="wv-p-bake" aria-selected="false" tabindex="-1" data-v="bake">Bake<sup>02</sup></button>
@@ -878,38 +799,38 @@
           <div class="wv-panel" role="tabpanel" id="wv-p-pour" aria-labelledby="wv-t-pour">
             <p class="wv-step">On pancakes and waffles</p>
             <p class="wv-line">Pour Golden for a light, delicate stack. Pour Dark when you want the maple to come through the butter and berries.</p>
-            <div class="wv-prod"><img src="/assets/images/cards/organic-pure-maple-syrup-250ml.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/organic-pure-maple-syrup-250ml">Organic Pure Maple Syrup, Golden</a><p>250 mL, $14.99</p></div></div>
-            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)">+ Add to Cart</button><a class="wv-guide" href="/blog/best-maple-syrup-for-pancakes-and-waffles">Read the pancake guide</a></div>
+            <div class="wv-prod"><img src="/assets/images/cards/organic-pure-maple-syrup-250ml.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/organic-pure-maple-syrup-250ml"><span class="mt-grade mt-grade--golden" aria-hidden="true"></span>Organic Pure Maple Syrup, Golden</a><p>250 mL, $14.99</p></div></div>
+            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)">Add to cart</button><a class="wv-guide" href="/blog/best-maple-syrup-for-pancakes-and-waffles">Read the pancake guide</a></div>
           </div>
           <div class="wv-panel" role="tabpanel" id="wv-p-bake" aria-labelledby="wv-t-bake" hidden>
             <p class="wv-step">In cookies, cakes and glazes</p>
             <p class="wv-line">Bake with Dark. It has the strongest flavor of our two grades, so you still taste the maple after the oven, where a lighter grade fades.</p>
-            <div class="wv-prod"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/pure-maple-syrup-maple-leaf-bottle-250ml">Pure Maple Syrup Maple Leaf Bottle, Dark</a><p>250 mL, $24.99</p></div></div>
-            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)">+ Add to Cart</button><a class="wv-guide" href="/blog/best-maple-syrup-for-baking">Read the baking guide</a></div>
+            <div class="wv-prod"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/pure-maple-syrup-maple-leaf-bottle-250ml"><span class="mt-grade mt-grade--dark" aria-hidden="true"></span>Pure Maple Syrup Maple Leaf Bottle, Dark</a><p>250 mL, $24.99</p></div></div>
+            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)">Add to cart</button><a class="wv-guide" href="/blog/best-maple-syrup-for-baking">Read the baking guide</a></div>
           </div>
           <div class="wv-panel" role="tabpanel" id="wv-p-stir" aria-labelledby="wv-t-stir" hidden>
             <p class="wv-step">In coffee</p>
             <p class="wv-line">Stir Golden into black coffee and Dark into a latte, one to two teaspoons a cup. Or brew our coffee, roasted with maple syrup.</p>
             <div class="wv-prod"><img src="/assets/images/cards/maple-syrup-medium-dark-roast-ground-coffee.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/maple-syrup-medium-dark-roast-ground-coffee">Maple Syrup Medium-Dark Roast Ground Coffee</a><p>One bag, $14.99</p></div></div>
-            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/46304596099321" onclick="MapleCart.addFromBtn(this)">+ Add to Cart</button><a class="wv-guide" href="/blog/best-maple-syrup-for-coffee">Read the coffee guide</a></div>
+            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/46304596099321" onclick="MapleCart.addFromBtn(this)">Add to cart</button><a class="wv-guide" href="/blog/best-maple-syrup-for-coffee">Read the coffee guide</a></div>
           </div>
           <div class="wv-panel" role="tabpanel" id="wv-p-spread" aria-labelledby="wv-t-spread" hidden>
             <p class="wv-step">On toast</p>
             <p class="wv-line">Maple cream is pure maple syrup boiled and whipped smooth, with nothing added. Spread it on toast, pancakes or waffles.</p>
             <div class="wv-prod"><img src="/assets/images/cards/organic-maple-cream-butter-jar.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/organic-maple-cream-butter-jar">Organic Maple Cream Butter Jar</a><p>160 g, $11.99</p></div></div>
-            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815552999673" onclick="MapleCart.addFromBtn(this)">+ Add to Cart</button><a class="wv-guide" href="/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide">15 more ways to use maple</a></div>
+            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815552999673" onclick="MapleCart.addFromBtn(this)">Add to cart</button><a class="wv-guide" href="/blog/15-unexpected-maple-syrup-uses-that-go-beyond-pancakes-2025-guide">15 more ways to use maple</a></div>
           </div>
           <div class="wv-panel" role="tabpanel" id="wv-p-warm" aria-labelledby="wv-t-warm" hidden>
             <p class="wv-step">Over a hot drink</p>
             <p class="wv-line">Rest a stroopwafel on your cup and let the steam soften the filling. It takes about thirty seconds.</p>
             <div class="wv-prod"><img src="/assets/images/cards/maple-syrup-stroopwafel.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/maple-syrup-stroopwafel">Maple Syrup Stroopwafel</a><p>136 g, $8.99</p></div></div>
-            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)">+ Add to Cart</button><a class="wv-guide" href="/blog/authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats">Read the stroopwafel story</a></div>
+            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)">Add to cart</button><a class="wv-guide" href="/blog/authentic-dutch-stroopwafel-recipe-a-bakers-guide-to-making-these-caramel-filled-treats">Read the stroopwafel story</a></div>
           </div>
           <div class="wv-panel" role="tabpanel" id="wv-p-gift" aria-labelledby="wv-t-gift" hidden>
             <p class="wv-step">For someone else</p>
             <p class="wv-line">Maple syrup tops our list of Canadian gifts. It travels well and keeps for years in a sealed bottle.</p>
             <div class="wv-prod"><img src="/assets/images/cards/maple-extravaganza-gift-set.webp" width="72" height="72" loading="lazy" alt=""><div><a class="t" href="/products/maple-extravaganza-gift-set">Maple Extravaganza Gift Set</a><p>Syrup, stroopwafels, tea and more, $75</p></div></div>
-            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/42521339658489" onclick="MapleCart.addFromBtn(this)">+ Add to Cart</button><a class="wv-guide" href="/blog/best-canadian-gifts-2026">Read the gift list</a></div>
+            <div class="wv-actions"><button class="wv-add" data-variant-id="gid://shopify/ProductVariant/42521339658489" onclick="MapleCart.addFromBtn(this)">Add to cart</button><a class="wv-guide" href="/blog/best-canadian-gifts-2026">Read the gift list</a></div>
           </div>
         </div>
       </div>
@@ -966,94 +887,94 @@
   <!-- FAQ  -  Static, non-accordion, SEO-focused               -->
   <!-- ═══════════════════════════════════════════════════════ -->
   <section class="px-4 md:px-8" itemscope itemtype="https://schema.org/FAQPage">
-    <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-20 md:py-32">
-      <div class="mb-14 md:mb-20">
-        <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight">Frequently Asked Questions</h2>
+    <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24">
+      <div class="mb-10 md:mb-12">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-[1.1]">Frequently asked questions</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10 md:gap-y-14">
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Where does your maple syrup come from?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">Where does your maple syrup come from?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Every bottle of our maple syrup comes from one farm in Quebec's Appalachian Mountains, and we ship it to you from our Vancouver location. We sell two grades from that farm: Golden, from early in the season, and Dark, from late in the season.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Do you offer any discounts for bulk purchases?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">Do you offer any discounts for bulk purchases?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. Many of our products come in multi-packs that cost less per item, and each product page lists its pack sizes and prices. Our 250 mL syrup bottles, for example, come in packs of 12, 24, 36 and 48 at 10, 15, 20 and 25 percent off: a bottle of our organic syrup is $14.99 on its own and $11.25 each in a pack of 48. For larger orders, see our <a href="/shop/maple-syrup-wholesale" class="text-amber-warm hover:text-charcoal transition-colors duration-300">wholesale page</a>.</p>
+            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. Many of our products come in multi-packs that cost less per item, and each product page lists its pack sizes and prices. Our 250 mL syrup bottles, for example, come in packs of 12, 24, 36 and 48 at 10, 15, 20 and 25 percent off: a bottle of our organic syrup is $14.99 on its own and $11.25 each in a pack of 48. For larger orders, see our <a href="/shop/maple-syrup-wholesale" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">wholesale page</a>.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">How quickly will my order ship?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">How quickly will my order ship?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">We pack and ship orders from our Vancouver location within 1 to 3 business days. Standard delivery then takes 3 to 9 business days and costs $19.99, or nothing on orders of $99 or more. Express takes 1 to 2 business days and costs $39.99.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">What is your return policy?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">What is your return policy?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">If an item arrives damaged or defective, email info@mapleterroir.com or call +1 (604) 324-6556 within 7 days of delivery, and we will replace it or refund it. Because we sell food, we cannot accept returns of opened items or returns for a change of mind. Our <a href="/answers/" class="text-amber-warm hover:text-charcoal transition-colors duration-300">answers page</a> explains how to send a damaged item back.</p>
+            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">If an item arrives damaged or defective, email info@mapleterroir.com or call +1 (604) 324-6556 within 7 days of delivery, and we will replace it or refund it. Because we sell food, we cannot accept returns of opened items or returns for a change of mind. Our <a href="/answers/" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">answers page</a> explains how to send a damaged item back.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Where can I buy Maple Terroir maple syrup in Canada?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">Where can I buy Maple Terroir maple syrup in Canada?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Order on this site and we ship to <a href="/locations-we-serve/" class="text-amber-warm hover:text-charcoal transition-colors duration-300">every Canadian province</a> from our Vancouver location. To shop by city, see our pages for <a href="/locations-we-serve/canada/buy-maple-syrup-vancouver" class="text-amber-warm hover:text-charcoal transition-colors duration-300">Vancouver</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-toronto" class="text-amber-warm hover:text-charcoal transition-colors duration-300">Toronto</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-montreal" class="text-amber-warm hover:text-charcoal transition-colors duration-300">Montreal</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-calgary" class="text-amber-warm hover:text-charcoal transition-colors duration-300">Calgary</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-ottawa" class="text-amber-warm hover:text-charcoal transition-colors duration-300">Ottawa</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-edmonton" class="text-amber-warm hover:text-charcoal transition-colors duration-300">Edmonton</a> and <a href="/locations-we-serve/canada/buy-maple-syrup-winnipeg" class="text-amber-warm hover:text-charcoal transition-colors duration-300">Winnipeg</a>.</p>
+            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Order on this site and we ship to <a href="/locations-we-serve/" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">every Canadian province</a> from our Vancouver location. To shop by city, see our pages for <a href="/locations-we-serve/canada/buy-maple-syrup-vancouver" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">Vancouver</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-toronto" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">Toronto</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-montreal" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">Montreal</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-calgary" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">Calgary</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-ottawa" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">Ottawa</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-edmonton" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">Edmonton</a> and <a href="/locations-we-serve/canada/buy-maple-syrup-winnipeg" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">Winnipeg</a>.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Are your products suitable for gifts?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">Are your products suitable for gifts?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. We sell gift sets and home sets from $75 to $240, and our First Tap Nouveau syrup comes in its own gift box. Each set's page lists what is inside. See the <a href="/collections/maple-syrup-gift-set" class="text-amber-warm hover:text-charcoal transition-colors duration-300">gift sets</a> and <a href="/collections/home-sets" class="text-amber-warm hover:text-charcoal transition-colors duration-300">home sets</a>.</p>
+            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. We sell gift sets and home sets from $75 to $240, and our First Tap Nouveau syrup comes in its own gift box. Each set's page lists what is inside. See the <a href="/collections/maple-syrup-gift-set" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">gift sets</a> and <a href="/collections/home-sets" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">home sets</a>.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">How can I contact customer service?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">How can I contact customer service?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Email info@mapleterroir.com or call +1 (604) 324-6556, Monday to Friday, 10 AM to 3 PM Pacific time, except statutory holidays. You can also reach us through our <a href="/contact" class="text-amber-warm hover:text-charcoal transition-colors duration-300">contact page</a>.</p>
+            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Email info@mapleterroir.com or call +1 (604) 324-6556, Monday to Friday, 10 AM to 3 PM Pacific time, except statutory holidays. You can also reach us through our <a href="/contact" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">contact page</a>.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Do you ship internationally?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">Do you ship internationally?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">We ship online orders to the ten Canadian provinces only, not to Yukon, the Northwest Territories, Nunavut or other countries. For one of those addresses, email info@mapleterroir.com before you order, and we will tell you whether we can send it and what it would cost.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">How should I store my maple syrup once it is opened?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">How should I store my maple syrup once it is opened?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Keep unopened bottles in a cool, dry cupboard. Once a bottle is open, keep it in the fridge and use it within 6 months; our <a href="/tools/maple-syrup-shelf-life" class="underline underline-offset-4">shelf life checker</a> gives the date for your bottle. If sugar crystals form, warm the bottle gently in hot water until the syrup is smooth again.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">What is the difference between Golden and Dark maple syrup?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">What is the difference between Golden and Dark maple syrup?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">In Canada, Grade A maple syrup is sorted by color into four classes, each named for its taste, and we sell two of them. Our organic syrups are Golden, Delicate Taste: they come from early in the season and have a light flavor for drizzling and desserts. Our maple leaf bottles are Dark, Robust Taste: they come from late in the season and have a stronger maple flavor for cooking and baking.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Are your products certified organic?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">Are your products certified organic?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Our organic maple syrups, the organic 250 mL bottle and First Tap Nouveau, are certified organic by Ecocert, Canada Organic and USDA Organic, and they are the only products we sell with that certification. Our maple leaf bottles and our syrup jug are not certified organic. Each product page lists its ingredients.</p>
           </div>
         </div>
 
         <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-          <h3 itemprop="name" class="font-display text-lg font-semibold text-charcoal mb-3">Do you sell wholesale?</h3>
+          <h3 itemprop="name" class="font-display text-lg font-medium text-charcoal mb-3">Do you sell wholesale?</h3>
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. We supply grocers, gourmet food halls, gift shops and corporate gifting programs, and we also sell our syrup in Japan, South Korea, China and Taiwan. Our minimum wholesale order is one full case. See our <a href="/shop/maple-syrup-wholesale" class="text-amber-warm hover:text-charcoal transition-colors duration-300">wholesale page</a> for how to order.</p>
+            <p itemprop="text" class="text-sm text-warm-gray-600 leading-relaxed">Yes. We supply grocers, gourmet food halls, gift shops and corporate gifting programs, and we also sell our syrup in Japan, South Korea, China and Taiwan. Our minimum wholesale order is one full case. See our <a href="/shop/maple-syrup-wholesale" class="text-amber-deep underline underline-offset-4 decoration-amber-warm/40 hover:text-charcoal transition-colors duration-300">wholesale page</a> for how to order.</p>
           </div>
         </div>
 
@@ -1062,6 +983,7 @@
   </section>
 
 
+  <div class="mt-home-cta">
   <!-- CTA:START -->
   <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
@@ -1087,6 +1009,7 @@
     </div>
   </section>
   <!-- CTA:END -->
+  </div>
 
 
   <!-- ═══════════════════════════════════════════════════════ -->
