@@ -272,13 +272,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -542,8 +547,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -563,9 +568,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -574,14 +579,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -605,7 +610,7 @@
         </nav>
         <!-- CRUMBS:END -->
       <div class="sn-hero">
-        <h1 class="reveal reveal-delay-1 font-display font-semibold text-charcoal tracking-tight">Canadian Food Products and the Brands That Make Them</h1>
+        <h1 class="reveal reveal-delay-1 font-display font-medium text-charcoal tracking-tight">Canadian Food Products and the Brands That Make Them</h1>
         <div class="sn-hero-side">
           <p class="reveal reveal-delay-2">22 Canadian food products, from maple syrup to mustard, grouped by kind.<span class="sw-more"> For each one: what to buy, where the brand says it is made and who owns it, read on each company's own site on November 19, 2026.</span></p>
           <div class="reveal reveal-delay-3 sn-byline">
@@ -632,7 +637,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="sn-split">
         <div>
-          <h2 id="short-answer" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">The Short Answer</h2>
+          <h2 id="short-answer" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">The Short Answer</h2>
           <p class="reveal sn-body">Canadian food products worth buying include maple syrup, maple stroopwafels and maple popcorn from Maple Terroir, Covered Bridge chips, Ganong's Chicken Bones, Kicking Horse coffee, Kozlik's mustard and Chapman's ice cream. Being Canadian means two different things: where a food is made, which the label tells you, and who owns the brand, which it does not. Three of the 22 brands here are owned by companies based outside Canada.</p>
         </div>
         <dl class="reveal sn-picks">
@@ -683,7 +688,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="sn-split">
         <div>
-          <h2 id="labels" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">What the Labels Mean</h2>
+          <h2 id="labels" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">What the Labels Mean</h2>
           <div class="reveal prose-body">
             <p>Canada's food labels have rules for origin claims, set by the Canadian Food Inspection Agency. Making a claim is voluntary, but a claim a company makes should meet CFIA's guidelines. Here is what each one tells you, strongest first.</p>
             <p>None of them tells you who owns the brand: the rules cover the food, its ingredients and its processing, and say nothing about ownership, which is why the list above has an Owned by line for every brand.</p>
@@ -705,7 +710,7 @@
     <div class="max-w-[1400px] mx-auto cf-group">
       <div class="cf-side">
         <p class="cf-count">1 brand</p>
-        <h2 id="maple" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Syrup</h2>
+        <h2 id="maple" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Maple Syrup</h2>
         <p class="reveal cf-lede">Look for the grade and colour class on the label, and for an organic certification if that matters to you. Syrup sold from one province to another has to be graded, so the grade and colour class are on the label.</p>
         <p class="cf-more">Eight more maple syrup brands sold in Canada are compared in <a href="/blog/best-canadian-maple-syrup-brands-2026">the best Canadian maple syrup brands</a>.</p>
         
@@ -725,7 +730,7 @@
     <div class="max-w-[1400px] mx-auto cf-group">
       <div class="cf-side">
         <p class="cf-count">6 brands</p>
-        <h2 id="snacks" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Snacks and Cookies</h2>
+        <h2 id="snacks" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Snacks and Cookies</h2>
         <p class="reveal cf-lede">Chips, cookies and bars from Canadian bakeries and family companies. Check the pack for where it was made: two of these companies also bake outside Canada.</p>
         <p class="cf-more">Twelve Canadian snacks, ketchup chips and Coffee Crisp among them, are ranked in <a href="/blog/best-canadian-snacks">the best Canadian snacks</a>, and the ones their makers do not sell in the US are in <a href="/blog/canadian-snacks-not-in-america">Canadian snacks not sold in America</a>.</p>
         <ol class="cf-roster"><li><a href="#maple-terroir-stroopwafels"><span class="n">02</span><span>Maple Terroir Pure Maple Syrup Stroopwafels</span></a></li><li><a href="#maple-terroir-popcorn"><span class="n">03</span><span>Maple Terroir Pure Maple Syrup Butter Popcorn</span></a></li><li><a href="#covered-bridge"><span class="n">04</span><span>Covered Bridge Potato Chips</span></a></li><li><a href="#dare"><span class="n">05</span><span>Dare Foods</span></a></li><li><a href="#madegood"><span class="n">06</span><span>MadeGood</span></a></li><li><a href="#leclerc"><span class="n">07</span><span>Leclerc</span></a></li></ol>
@@ -775,7 +780,7 @@
     <div class="max-w-[1400px] mx-auto cf-group">
       <div class="cf-side">
         <p class="cf-count">3 brands</p>
-        <h2 id="chocolate" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Chocolate and Candy</h2>
+        <h2 id="chocolate" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Chocolate and Candy</h2>
         <p class="reveal cf-lede">Three candy makers founded between 1873 and 1913, each still selling from its own online shop.</p>
         
         <ol class="cf-roster"><li><a href="#ganong"><span class="n">08</span><span>Ganong</span></a></li><li><a href="#rogers-chocolates"><span class="n">09</span><span>Rogers&#x27; Chocolates</span></a></li><li><a href="#laura-secord"><span class="n">10</span><span>Laura Secord</span></a></li></ol>
@@ -807,7 +812,7 @@
     <div class="max-w-[1400px] mx-auto cf-group">
       <div class="cf-side">
         <p class="cf-count">4 brands</p>
-        <h2 id="tea-coffee" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Tea and Coffee</h2>
+        <h2 id="tea-coffee" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Tea and Coffee</h2>
         <p class="reveal cf-lede">Coffee and tea grow outside Canada, so the Canadian part is the roasting, blending and packing. A label can still say "Made in Canada from imported ingredients".</p>
         
         <ol class="cf-roster"><li><a href="#maple-terroir-tea"><span class="n">11</span><span>Maple Terroir Maple Ceylon Tea</span></a></li><li><a href="#kicking-horse"><span class="n">12</span><span>Kicking Horse Coffee</span><i>Owned outside Canada</i></a></li><li><a href="#murchies"><span class="n">13</span><span>Murchie&#x27;s Tea &amp; Coffee</span></a></li><li><a href="#davidstea"><span class="n">14</span><span>DAVIDsTEA</span></a></li></ol>
@@ -845,7 +850,7 @@
     <div class="max-w-[1400px] mx-auto cf-group">
       <div class="cf-side">
         <p class="cf-count">4 brands</p>
-        <h2 id="pantry" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Pantry Staples</h2>
+        <h2 id="pantry" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Pantry Staples</h2>
         <p class="reveal cf-lede">Mustard, pasta, honey and flour from Canadian makers and mills. Two of the four are owned by companies based outside Canada, and one does not say who owns it.</p>
         
         <ol class="cf-roster"><li><a href="#kozliks"><span class="n">15</span><span>Kozlik&#x27;s Canadian Mustard</span></a></li><li><a href="#italpasta"><span class="n">16</span><span>Italpasta</span></a></li><li><a href="#billy-bee"><span class="n">17</span><span>Billy Bee</span><i>Owned outside Canada</i></a></li><li><a href="#rogers-foods"><span class="n">18</span><span>Rogers Foods</span><i>Owned outside Canada</i></a></li></ol>
@@ -883,7 +888,7 @@
     <div class="max-w-[1400px] mx-auto cf-group">
       <div class="cf-side">
         <p class="cf-count">4 brands</p>
-        <h2 id="dairy-frozen" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Dairy, Frozen and Juice</h2>
+        <h2 id="dairy-frozen" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Dairy, Frozen and Juice</h2>
         <p class="reveal cf-lede">Butter, ice cream, fries and juice you buy in a grocery store rather than online. Each is a Canadian name in the dairy case or the freezer.</p>
         
         <ol class="cf-roster"><li><a href="#gay-lea"><span class="n">19</span><span>Gay Lea Foods</span></a></li><li><a href="#chapmans"><span class="n">20</span><span>Chapman&#x27;s</span></a></li><li><a href="#mccain"><span class="n">21</span><span>McCain Foods</span></a></li><li><a href="#sunrype"><span class="n">22</span><span>SunRype</span></a></li></ol>
@@ -921,7 +926,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="sn-split">
         <div>
-          <h2 id="how-to-choose" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">How to Choose Canadian Food</h2>
+          <h2 id="how-to-choose" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">How to Choose Canadian Food</h2>
           <div class="reveal prose-body">
             <p>Start with what you want your money to do. If you want the food itself grown and made here, read the label. If you want the company to be Canadian, read the brand's own site, because the label will not say.</p>
           </div>
@@ -938,19 +943,19 @@
 
   <section class="py-6 md:py-10 px-4 md:px-8" id="shop">
     <div class="max-w-[1400px] mx-auto">
-      <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-4">Maple Terroir Products to Buy</h2>
+      <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-4">Maple Terroir Products to Buy</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] mb-6 md:mb-8">The maple syrup, stroopwafels, popcorn and tea from this list, with the maple leaf bottle, a single box of stroopwafels, the maple butter and the maple coffee. Prices in Canadian dollars. <a class="sw-link" href="/products">All Maple Terroir products</a> are on one page.</p>
       <!-- SHELF:START handles="organic-pure-maple-syrup-250ml,pure-maple-syrup-stroopwafels-caddy,handcrafted-pure-maple-syrup-butter-popcorn,maple-ceylon-tea,organic-maple-cream-butter-jar,pure-maple-syrup-maple-leaf-bottle-250ml,maple-syrup-stroopwafel,maple-syrup-medium-dark-roast-ground-coffee" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15.png?v=1794511136&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Stroopwafels</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">1190 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$39.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42579003408633" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Stroopwafels to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/handcrafted-pure-maple-syrup-butter-popcorn" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-butter-popcorn.jpg?v=1749671339&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/handcrafted-pure-maple-syrup-butter-popcorn" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Butter Popcorn</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$4.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815596810489" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Butter Popcorn to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-ceylon-tea" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/mapleterroirmapletea.png?v=1749671971&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-ceylon-tea" class="hover:text-amber-warm transition-colors">Maple Ceylon Tea</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">30 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815601922297" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Ceylon Tea to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-maple-cream-butter-jar" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplebutter.png?v=1749671359&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-maple-cream-butter-jar" class="hover:text-amber-warm transition-colors">Organic Maple Cream Butter Jar</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">160 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552999673" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Maple Cream Butter Jar to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maple-syrup-stroopwafel-136g-box-front.jpg?v=1786496064&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Stroopwafel</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">136 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Stroopwafel to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-medium-dark-roast-ground-coffee" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplecoffee200gFront.png?v=1749671930&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-medium-dark-roast-ground-coffee" class="hover:text-amber-warm transition-colors">Maple Syrup Medium-Dark Roast Ground Coffee</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]"></p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/46304596099321" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Medium-Dark Roast Ground Coffee to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15.png?v=1794511136&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Stroopwafels</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">1190 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$39.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42579003408633" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Stroopwafels to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/handcrafted-pure-maple-syrup-butter-popcorn" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-butter-popcorn.jpg?v=1749671339&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/handcrafted-pure-maple-syrup-butter-popcorn" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Butter Popcorn</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$4.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815596810489" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Butter Popcorn to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-ceylon-tea" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/mapleterroirmapletea.png?v=1749671971&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-ceylon-tea" class="hover:text-amber-warm transition-colors">Maple Ceylon Tea</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">30 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815601922297" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Ceylon Tea to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-maple-cream-butter-jar" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplebutter.png?v=1749671359&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/organic-maple-cream-butter-jar" class="hover:text-amber-warm transition-colors">Organic Maple Cream Butter Jar</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">160 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552999673" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Maple Cream Butter Jar to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maple-syrup-stroopwafel-136g-box-front.jpg?v=1786496064&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-syrup-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Stroopwafel</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">136 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Stroopwafel to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-medium-dark-roast-ground-coffee" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplecoffee200gFront.png?v=1749671930&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-syrup-medium-dark-roast-ground-coffee" class="hover:text-amber-warm transition-colors">Maple Syrup Medium-Dark Roast Ground Coffee</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]"></p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/46304596099321" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Medium-Dark Roast Ground Coffee to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -980,7 +985,7 @@
   <section class="py-10 md:py-16 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto sn-split">
       <div>
-        <h2 id="how-we-chose" class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">How We Chose Them</h2>
+        <h2 id="how-we-chose" class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">How We Chose Them</h2>
         <div class="reveal prose-body">
           <p>We picked brands a shopper in Canada can find in a grocery store or order online, across six kinds of food, and left off retailers' own store brands. For each one we read the company's own site on November 19, 2026: what it makes, where it says the food is made and who owns it. Where a brand's site does not say, the entry says so rather than guess.</p>
           <p>We left out brands whose own pages disagreed with each other about where they started or who owns them. The list is grouped by kind, not ranked. Prices are in Canadian dollars before tax and change; the brand's own page has today's price.</p>
@@ -998,12 +1003,12 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 id="faq" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Canadian Food Questions</h2>
+        <h2 id="faq" class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Canadian Food Questions</h2>
       </div>
       <div class="reveal reveal-delay-2 space-y-3">
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What are some Canadian food products to buy?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What are some Canadian food products to buy?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -1012,7 +1017,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What does &quot;Product of Canada&quot; mean on a food label?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What does &quot;Product of Canada&quot; mean on a food label?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -1021,7 +1026,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is &quot;Made in Canada&quot; the same as &quot;Product of Canada&quot;?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Is &quot;Made in Canada&quot; the same as &quot;Product of Canada&quot;?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -1030,7 +1035,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Which Canadian food brands are owned outside Canada?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Which Canadian food brands are owned outside Canada?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -1039,7 +1044,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I order Canadian food online and send it as a gift?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can I order Canadian food online and send it as a gift?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -1056,21 +1061,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Canadian Maple, From One Family Store.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Organic maple syrup, maple stroopwafels, popcorn and tea, from $4.99.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Canadian Maple, From One Family Store.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Organic maple syrup, maple stroopwafels, popcorn and tea, from $4.99.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Syrup</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Shop All Products</a>
+                <a href="/products" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">Shop All Products</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

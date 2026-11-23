@@ -257,7 +257,7 @@ function anatomy(attrs, where) {
   const price = (pageHtml.match(/"price":\s*"?([\d.]+)/) || [])[1];
   const buy = !pdp && a.variant ? `
       <div class="reveal mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <p class="font-display text-2xl font-semibold text-charcoal">$${Number(price).toFixed(2)} <span class="text-sm font-normal text-warm-gray-500" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif">for ${a.size}</span></p>
+        <p class="font-display text-2xl font-medium text-charcoal">$${Number(price).toFixed(2)} <span class="text-sm font-normal text-warm-gray-500" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif">for ${a.size}</span></p>
         <button class="atc-btn" style="padding:.75rem 1.4rem;font-size:.8rem" data-variant-id="gid://shopify/ProductVariant/${a.variant}" onclick="MapleCart.addFromBtn(this)" aria-label="Add ${a.size} to cart">+ Add to cart</button>
         <a href="${moreHref}" class="text-sm text-charcoal underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">${a.more}</a>
       </div>` : '';
@@ -267,7 +267,7 @@ function anatomy(attrs, where) {
   <section${a.id ? ` id="${a.id}"` : ''} class="${a.id ? 'scroll-mt-28 ' : ''}py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-3xl mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">${pdp && a.pdpTitle ? a.pdpTitle : a.title}</h2>${intro}
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">${pdp && a.pdpTitle ? a.pdpTitle : a.title}</h2>${intro}
       </div>
       <div class="st-anat st-copy" data-anat>
         <div class="st-anat-col">
@@ -345,7 +345,7 @@ function reviews(set, where) {
   const big = lead ? `        <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
           <a href="${lead.href}" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
             <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
-            <img src="${sizedImg(lead.img, 700)}" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+            <img src="${sizedImg(lead.img, 700)}" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:-rotate-2">
           </a>
           <div class="p-7 md:p-10 flex flex-col justify-center">
             ${STARS}
@@ -354,7 +354,7 @@ function reviews(set, where) {
           </div>
         </figure>` : '';
   const small = (r, i) => `        <figure class="reveal reveal-delay-${i + 1} group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="${r.href}" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="${sizedImg(r.img, 300)}" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="${r.href}" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="${sizedImg(r.img, 300)}" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700"></a>
           <div class="flex flex-col">
             ${STARS}
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;${r.text}&rdquo;</blockquote>
@@ -365,7 +365,7 @@ function reviews(set, where) {
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
         <div>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">${h2}</h2>
+          <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">${h2}</h2>
         </div>
         <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
@@ -387,7 +387,7 @@ const family = (where) => `  <section id="family" class="scroll-mt-28 px-4 md:px
         <figcaption class="text-xs text-warm-gray-400 mt-3">${CAPTION}</figcaption>
       </figure>
       <div class="reveal reveal-delay-1 md:col-span-7">
-        <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Three Generations of One Maple Family.</h2>
+        <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-5">Three generations of one maple family</h2>
         <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and our online orders are packed by family members at our facility.</p>
         <p class="text-warm-gray-600 leading-relaxed mb-8 max-w-[56ch]">When you order from mapleterroir.com, the order goes to that family, and they are the ones who pack it.</p>
 ${where === 'story.html' ? '' : `        <a href="/story" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Read the family story <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>`}
@@ -401,7 +401,7 @@ const CTA_DEFAULT = {
   title: 'Order straight from our family.',
   text: 'Single-origin maple syrup and maple treats, packed by our family in Vancouver.',
   href: '/products',
-  label: 'Shop All Products',
+  label: 'Shop all products',
 };
 const attr = (attrs, k) => {
   const m = attrs.match(new RegExp(`\\b${k}="([^"]*)"`));
@@ -411,25 +411,25 @@ const cta = (attrs) => {
   const c = Object.fromEntries(Object.entries(CTA_DEFAULT).map(([k, v]) => [k, attr(attrs, k) ?? v]));
   const href2 = attr(attrs, 'href2'), label2 = attr(attrs, 'label2');
   const second = href2 && label2 ? `
-                <a href="${href2}" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">${label2}</a>` : '';
+                <a href="${href2}" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">${label2}</a>` : '';
   return `  <section class="pb-24 md:pb-40 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">${c.title}</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">${c.text}</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">${c.title}</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">${c.text}</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="${c.href}" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="${c.href}" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>${c.label}</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>${second}
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

@@ -137,13 +137,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -201,8 +206,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -222,9 +227,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -233,14 +238,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -261,7 +266,7 @@
         </ol>
       </nav>
       <!-- CRUMBS:END -->
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-medium text-charcoal tracking-tight leading-[1.1] mb-6">
         Sugar Maple vs Red Maple: How to Tell Them Apart, and Which to Tap
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl mb-6">
@@ -297,7 +302,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal bg-gradient-to-br from-amber-glow/15 to-amber-warm/10 ring-1 ring-amber-warm/20 rounded-[2rem] p-7 md:p-10">
-        <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">The short answer: tap the sugar maple first, and tap the red maple too.</h2>
+        <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-4">The short answer: tap the sugar maple first, and tap the red maple too.</h2>
         <div class="prose-body max-w-[760px]">
           <p>Sugar maple sap takes about 40 gallons to make one gallon of syrup, and red maple sap takes about 60, according to the <a href="https://extension.unh.edu/blog/2024/11/red-or-sugar-maple-how-do-you-tell-difference" target="_blank" rel="noopener">University of New Hampshire Extension</a>. Red maples also bud earlier in spring, which ends their season first. To tell them apart, look for a U-shaped gap between the leaf lobes on a sugar maple and a V-shaped gap on a red maple; in winter, look at the buds, tan on a sugar maple and bright red on a red maple.</p>
         </div>
@@ -341,7 +346,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal mb-8 md:mb-10">
-        <h2 id="at-a-glance" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Sugar Maple vs Red Maple at a Glance</h2>
+        <h2 id="at-a-glance" class="font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Sugar Maple vs Red Maple at a Glance</h2>
       </div>
       <div class="reveal cmp-wrap">
         <table class="cmp-table">
@@ -371,13 +376,13 @@
   <!-- LEAF -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="leaf" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart by the Leaf</h2>
+      <h2 id="leaf" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart by the Leaf</h2>
       <p>Look at the gap between the lobes. A sugar maple leaf has five lobes separated by rounded, U-shaped gaps, and a red maple leaf has sharp, V-shaped gaps, the one feature both the <a href="https://arboretum.uoguelph.ca/print/145" target="_blank" rel="noopener">University of Guelph Arboretum</a> and the University of New Hampshire Extension lead with. The Extension's memory aid: there is a U in sugar.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Count the lobes</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Count the lobes</h3>
       <p>A sugar maple leaf almost always has five lobes, delicately rounded at the base. A red maple leaf has three main lobes, and many leaves carry two small extra lobes near the stem, which is why field guides list it as three to five.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Run a finger along the edge</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Run a finger along the edge</h3>
       <p>The edge of a sugar maple leaf is smooth between its few large points. A red maple leaf is toothed all the way around, like a fine saw, and you can feel it.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Ignore the color in summer</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Ignore the color in summer</h3>
       <p>A red maple's leaves are green all summer like any other maple. The name comes from its buds, twigs and spring flowers, which are bright red, so leaf color only helps in the fall.</p>
     </div></div>
   </section>
@@ -386,11 +391,11 @@
   <!-- WINTER -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="winter" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart in Winter</h2>
+      <h2 id="winter" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">How to Tell Them Apart in Winter</h2>
       <p>Check the buds first, then the bark. Red maple buds are bright red and stand out against snow, while sugar maple buds are brown to tan and very sharp-pointed, with tight scales. This matters because sap runs in late winter and early spring, when the trees are bare and the leaf test is gone.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Buds and twigs</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Buds and twigs</h3>
       <p>Red maple twigs are reddish and glossy, with small pale dots (lenticels, the breathing pores in the bark). Sugar maple twigs are brown, slender and shiny, and the bud at the tip of each twig comes to a sharp point.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Bark</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Bark</h3>
       <p>A young red maple has smooth, light gray bark that can be mistaken for a beech. As it ages, the bark breaks into long, narrow plates that look shaggy and peel off easily. Sugar maple bark darkens and furrows with age, and even when it looks rough it stays tight to the trunk, often in a small diamond pattern.</p>
       <p>The easiest fix is to mark your trees in the fall, while the leaves still tell you which is which. A strip of flagging tape on each red maple saves a guess in March.</p>
     </div></div>
@@ -400,7 +405,7 @@
   <!-- FLOWERS AND SEEDS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="flowers-and-seeds" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Flowers and Seeds</h2>
+      <h2 id="flowers-and-seeds" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Flowers and Seeds</h2>
       <p>Red maple flowers first and drops its seeds first. Its flowers are usually bright red and open in early spring, before the leaves, and its winged seeds ripen in late spring and early summer, according to the <a href="https://dendro.cnre.vt.edu/dendrology/syllabus/factsheet.cfm?ID=1" target="_blank" rel="noopener">Virginia Tech dendrology fact sheet</a>.</p>
       <p>Sugar maple flowers are small, light yellow-green clusters on long stalks that open with the leaves or just before them. Its seeds, the paired "helicopters" children throw, are horseshoe-shaped, about an inch long, and turn brown when they ripen in the fall.</p>
     </div></div>
@@ -410,7 +415,7 @@
   <!-- FALL COLOR -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="fall-color" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Fall Color</h2>
+      <h2 id="fall-color" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Fall Color</h2>
       <p>Red maples turn scarlet and sugar maples carry most of the orange. The University of Guelph Arboretum describes red maple leaves turning "a stunning shade of scarlet," and credits the sugar maple with most of the orange in an Ontario fall. Both can show red on the same hillside, so in October the leaf shape is still the better test.</p>
     </div></div>
   </section>
@@ -419,11 +424,11 @@
   <!-- HABITAT AND WOOD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="range-and-wood" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Where Each Grows, and What the Wood Is For</h2>
+      <h2 id="range-and-wood" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Where Each Grows, and What the Wood Is For</h2>
       <p>Sugar maple is a forest tree of rich hardwood stands, and red maple grows almost anywhere. The Canadian Encyclopedia places sugar maple in hardwood forests from Ontario to the Maritimes, and red maple in "a variety of habitats from swamps to dry woods," which is why one of its old names is swamp maple.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Size</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Size</h3>
       <p>A sugar maple grows up to 35 m tall with a dense, rounded crown and is often the dominant tree in the canopy of northeastern hardwood forests. A red maple is a medium-sized tree, up to about 90 feet.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Hard maple and soft maple</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Hard maple and soft maple</h3>
       <p>Sugar maple wood is strong and fine-grained, valued for furniture, musical instruments and panelling. Red maple is sold as a soft maple: still strong and even, used for furniture, crates and flooring, but softer and more porous than sugar maple.</p>
     </div></div>
   </section>
@@ -432,13 +437,13 @@
   <!-- SAP AND SYRUP -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="sap-and-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Sap and Syrup: Which Tree to Tap</h2>
+      <h2 id="sap-and-syrup" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Sap and Syrup: Which Tree to Tap</h2>
       <p>Both trees make real maple syrup; the sugar maple makes it with less boiling. The University of Guelph Arboretum gives sugar maple sap the highest sugar content of Ontario's maples, about 3 to 6 percent, so 30 to 40 liters of sap make one liter of syrup. Red maple sap is less sweet, at about 60 gallons of sap per gallon of syrup by the University of New Hampshire Extension's figure.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Why the sugar reading matters</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Why the sugar reading matters</h3>
       <p>Finished syrup is about 66 percent sugar, so every point of sugar in the sap cuts the boiling. The <a href="/blog/the-hidden-truth-behind-real-maple-syrup-sap-values-2025-guide">Rule of 86</a> turns a sap reading into gallons: divide 86 by the sugar percentage. Our <a href="/tools/sap-to-syrup-ratio">sap to syrup ratio calculator</a> does it for any reading or species.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Pull the red maple taps first</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Pull the red maple taps first</h3>
       <p>Red maples bud earlier than sugar maples, and syrup boiled from sap collected after the buds open, called buddy syrup, tastes off. The University of New Hampshire Extension's advice: when the red maple buds start to swell, pull those taps and keep the sugar maples running.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">How many taps each tree can take</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">How many taps each tree can take</h3>
       <p>The safe number of taps depends on the trunk's diameter, and the same rule applies to both species. Our <a href="/tools/maple-tree-tap-calculator">maple tree tap calculator</a> takes the diameter and species and gives the number, and the <a href="/blog/can-you-tap-any-maple-tree-the-truth-about-backyard-syrup-making">backyard tapping guide</a> covers the tools, the timing and every maple worth tapping.</p>
     </div></div>
   </section>
@@ -448,7 +453,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
-        <h2 id="norway-and-silver-maple" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">What About Norway Maple and Silver Maple?</h2>
+        <h2 id="norway-and-silver-maple" class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-4">What About Norway Maple and Silver Maple?</h2>
         <div class="prose-body max-w-[760px]">
           <p><strong class="text-charcoal font-semibold">Norway maple</strong> is the street tree most often taken for a sugar maple. <a href="https://extension.purdue.edu/news/county/whitley/2025/05/distinguishing-between-norway-sugar-and-black-maples.html" target="_blank" rel="noopener">Purdue Extension</a> gives the quickest test: snap off a leaf stem and squeeze it, and a Norway maple bleeds milky sap where a sugar maple's is clear. Its leaves often carry five to seven lobes, and its paired seeds spread out almost flat. It came from Europe and, per the Canadian Encyclopedia, is becoming naturalized in parts of Canada; its sap is less sweet than a sugar maple's.</p>
           <p><strong class="text-charcoal font-semibold">Silver maple</strong> leaves are deeply cut, with silvery undersides. Its sap runs heavily but carries even less sugar than red maple's, as low as one percent, and our <a href="/tools/sap-to-syrup-ratio">sap calculator</a> lists it beside the other three.</p>
@@ -461,7 +466,7 @@
   <!-- WHICH IS RIGHT -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="which-tree" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Tree Fits What You Want</h2>
+      <h2 id="which-tree" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Which Tree Fits What You Want</h2>
       <ul class="list-disc pl-6 space-y-3 text-warm-gray-600">
         <li><strong class="text-charcoal font-semibold">The most syrup per hour of boiling:</strong> sugar maple.</li>
         <li><strong class="text-charcoal font-semibold">A tree for a damp corner of the yard:</strong> red maple, which grows from swamps to dry woods.</li>
@@ -477,12 +482,12 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal mb-10 md:mb-14">
-        <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Sugar Maple and Red Maple FAQ</h2>
+        <h2 id="faq" class="font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Sugar Maple and Red Maple FAQ</h2>
       </div>
       <div class="space-y-3">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What is the easiest way to tell a sugar maple from a red maple?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What is the easiest way to tell a sugar maple from a red maple?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -491,7 +496,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How do you tell them apart in winter?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How do you tell them apart in winter?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -500,7 +505,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can you make maple syrup from a red maple?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can you make maple syrup from a red maple?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -509,7 +514,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Do red maples have red leaves?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Do red maples have red leaves?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -518,7 +523,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Which maple is on the Canadian flag?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Which maple is on the Canadian flag?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -527,7 +532,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How do you tell a Norway maple from a sugar maple?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How do you tell a Norway maple from a sugar maple?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -544,21 +549,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">No Sugar Bush of Your Own?</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Our syrup comes from one farm, in 250 mL bottles from $14.99.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">No Sugar Bush of Your Own?</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Our syrup comes from one farm, in 250 mL bottles from $14.99.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Syrup</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/tools/" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">All Maple Tools</a>
+                <a href="/tools/" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">All Maple Tools</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

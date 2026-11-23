@@ -53,15 +53,20 @@
     ::-webkit-scrollbar-track { background: #FDFBF7; }
     ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
     ::-webkit-scrollbar-thumb:hover { background: #B8AD9E; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; }
     .reveal-delay-2 { transition-delay: 200ms; }
     .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .nav-scrolled { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255,255,255,0.5); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    .nav-scrolled { box-shadow: 0 1px 2px rgba(26, 23, 20, 0.04); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; }
     .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .link-underline:hover::after { width: 100%; }
@@ -137,8 +142,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -158,9 +163,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -169,14 +174,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -198,7 +203,7 @@
         </ol>
       </nav>
       <!-- CRUMBS:END -->
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.08] max-w-4xl mb-6">Canadian maple syrup, stroopwafels and gifts.
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-medium text-charcoal tracking-tight leading-[1.08] max-w-4xl mb-6">Canadian maple syrup, stroopwafels and gifts.
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[55ch] text-lg">
         Maple syrup from one farm in Quebec's Appalachian Mountains, plus stroopwafels, cookies, chocolates, snacks, tea and coffee made with maple syrup. Orders ship from Vancouver to every Canadian province.
@@ -235,11 +240,11 @@
       <!-- Gift Sets  -  unique layout, kept static but data loaded from API -->
       <div id="cat-gift-sets" class="hidden" data-gift-sets="1">
         <div class="reveal">
-          <div class="bg-amber-warm/8 ring-1 ring-amber-warm/15 p-2 rounded-[2rem] transition-all duration-700 hover:ring-amber-warm/30 hover:bg-amber-warm/12">
+          <div class="bg-amber-warm/8 ring-1 ring-amber-warm/15 p-2 rounded-[2rem] transition duration-700 hover:ring-amber-warm/30 hover:bg-amber-warm/12">
             <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] p-10 md:p-16 min-h-[300px] md:min-h-[360px] flex flex-col md:flex-row items-center justify-between gap-10">
               <div class="absolute inset-0 bg-gradient-to-br from-amber-warm/10 via-amber-glow/5 to-cream"></div>
               <div class="relative z-10 max-w-xl">
-                <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight mb-4 leading-[1.1]">Gift Sets</h2>
+                <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight mb-4 leading-[1.1]">Gift Sets</h2>
                 <p class="text-warm-gray-600 leading-relaxed mb-6 max-w-[45ch]">
                   Boxed sets of our maple syrup, cookies, stroopwafels, tea and snacks. Each set lists what is inside on its product page.
                 </p>
@@ -387,7 +392,7 @@
     function renderCategory(cat, products) {
       var html = '<div id="cat-' + (cat.id || cat.handle) + '" class="mb-20 md:mb-28">' +
         '<div class="flex items-end justify-between mb-10"><div>' +
-          '<h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-semibold text-charcoal tracking-tight">' + cat.title + '</h2>' +
+          '<h2 class="reveal reveal-delay-1 font-display text-2xl md:text-4xl font-medium text-charcoal tracking-tight">' + cat.title + '</h2>' +
         '</div></div>' +
         '<div class="grid grid-cols-2 md:grid-cols-' + cat.cols + ' gap-4 md:gap-6">';
       products.forEach(function (p, i) { html += renderCard(p, i % cat.cols); });
@@ -526,7 +531,7 @@
   <!-- SHOP BY COLLECTION: every collection and shop page, linked in the HTML so the catalog hub reaches them -->
   <section class="pb-16 md:pb-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <h2 class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-8 md:mb-10">Shop by collection</h2>
+      <h2 class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-8 md:mb-10">Shop by collection</h2>
       <div class="grid grid-cols-3 md:grid-cols-7 gap-x-3 gap-y-6 md:gap-x-5">
         <a href="/collections/premium-maple-syrup" class="group block">
           <div class="aspect-square rounded-[1.25rem] overflow-hidden ring-1 ring-warm-gray-200/40 bg-[#F1E9DC]"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" width="600" height="600"></div>
@@ -585,7 +590,7 @@
           <p class="mt-3 text-sm font-medium text-charcoal leading-snug group-hover:text-amber-warm transition-colors">New Arrivals</p>
         </a>
       </div>
-      <p class="mt-10 text-warm-gray-600 leading-relaxed max-w-[60ch]">Buying for a team or a store? We put together <a href="/shop/maple-syrup-corporate-gift" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">corporate gift orders</a> and sell <a href="/shop/maple-syrup-wholesale" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">wholesale by the case</a>. Every selling page, from organic syrup to stocking stuffers, is listed on our <a href="/shop/" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">shop page</a>.</p>
+      <p class="mt-10 text-warm-gray-600 leading-relaxed max-w-[60ch]">Buying for a team or a store? We put together <a href="/shop/maple-syrup-corporate-gift" class="text-amber-deep hover:text-charcoal transition-colors font-medium">corporate gift orders</a> and sell <a href="/shop/maple-syrup-wholesale" class="text-amber-deep hover:text-charcoal transition-colors font-medium">wholesale by the case</a>. Every selling page, from organic syrup to stocking stuffers, is listed on our <a href="/shop/" class="text-amber-deep hover:text-charcoal transition-colors font-medium">shop page</a>.</p>
     </div>
   </section>
 
@@ -595,20 +600,20 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Order straight from our family.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Single-origin maple syrup and maple treats, packed by our family in Vancouver.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Order straight from our family.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Single-origin maple syrup and maple treats, packed by our family in Vancouver.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
-                  <span>Shop All Products</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
+                  <span>Shop all products</span>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

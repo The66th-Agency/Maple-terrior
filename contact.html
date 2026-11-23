@@ -54,14 +54,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
-    .btn-premium:active { transform: translateY(0) scale(0.98); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
 
@@ -105,8 +109,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -126,9 +130,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -137,14 +141,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -167,10 +171,10 @@
           </ol>
         </nav>
         <!-- CRUMBS:END -->
-        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.05] mb-6">Questions, orders, or just to say hello.
+        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-medium text-charcoal tracking-tight leading-[1.05] mb-6">Questions, orders, or just to say hello.
         </h1>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[55ch] text-lg">
-          Email us about an order, <a href="/shop/maple-syrup-corporate-gift" class="text-amber-warm hover:text-amber-deep transition-colors">a corporate gift</a> or where our syrup comes from. We read every message.
+          Email us about an order, <a href="/shop/maple-syrup-corporate-gift" class="text-amber-deep hover:text-charcoal transition-colors">a corporate gift</a> or where our syrup comes from. We read every message.
         </p>
       </div>
       <div class="md:col-span-5">
@@ -187,7 +191,7 @@
     <div class="max-w-[1400px] mx-auto" style="margin-top:clamp(4rem,6.7vw,6rem)">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         <!-- Email -->
-        <a href="mailto:info@mapleterroir.com" class="reveal group block bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem] transition-all duration-500 hover:ring-amber-warm/40">
+        <a href="mailto:info@mapleterroir.com" class="reveal group block bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem] transition duration-500 hover:ring-amber-warm/40">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-7 md:p-8 h-full">
             <div class="w-12 h-12 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6 transition-colors duration-500 group-hover:bg-amber-warm/20">
               <svg class="w-6 h-6 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -195,13 +199,13 @@
               </svg>
             </div>
             <h3 class="text-sm font-medium text-warm-gray-500 mb-2">Email</h3>
-            <p class="font-display text-xl font-semibold text-charcoal tracking-tight mb-1">info@mapleterroir.com</p>
+            <p class="font-display text-xl font-medium text-charcoal tracking-tight mb-1">info@mapleterroir.com</p>
             <p class="text-sm text-warm-gray-500 leading-relaxed">Best for order questions, custom gifting and general inquiries.</p>
           </div>
         </a>
 
         <!-- Phone -->
-        <a href="tel:+16043246556" class="reveal reveal-delay-1 group block bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem] transition-all duration-500 hover:ring-amber-warm/40">
+        <a href="tel:+16043246556" class="reveal reveal-delay-1 group block bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem] transition duration-500 hover:ring-amber-warm/40">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-7 md:p-8 h-full">
             <div class="w-12 h-12 rounded-2xl bg-amber-warm/10 flex items-center justify-center mb-6 transition-colors duration-500 group-hover:bg-amber-warm/20">
               <svg class="w-6 h-6 text-amber-warm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -209,7 +213,7 @@
               </svg>
             </div>
             <h3 class="text-sm font-medium text-warm-gray-500 mb-2">Phone</h3>
-            <p class="font-display text-xl font-semibold text-charcoal tracking-tight mb-1">+1 (604) 324-6556</p>
+            <p class="font-display text-xl font-medium text-charcoal tracking-tight mb-1">+1 (604) 324-6556</p>
             <p class="text-sm text-warm-gray-500 leading-relaxed">Monday to Friday, 10 AM to 3 PM Pacific time, except statutory holidays.</p>
           </div>
         </a>
@@ -223,7 +227,7 @@
               </svg>
             </div>
             <h3 class="text-sm font-medium text-warm-gray-500 mb-2">Pickup</h3>
-            <p class="font-display text-xl font-semibold text-charcoal tracking-tight mb-1 leading-tight">9291 Shaughnessy Street<br>Vancouver, BC V6P 6P4</p>
+            <p class="font-display text-xl font-medium text-charcoal tracking-tight mb-1 leading-tight">9291 Shaughnessy Street<br>Vancouver, BC V6P 6P4</p>
             <p class="text-sm text-warm-gray-500 leading-relaxed mt-1">Online orders ship from here, and local pickup is free.</p>
           </div>
         </div>
@@ -238,19 +242,19 @@
   <section class="pb-24 md:pb-32 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-10 md:mb-14">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Many answers are a click away</h2>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Many answers are a click away</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-        <a href="/answers/" class="reveal group block bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 transition-all duration-500 hover:ring-amber-warm/40 hover:-translate-y-1">
-          <h3 class="font-display text-xl font-semibold text-charcoal tracking-tight mb-2 group-hover:text-amber-warm transition-colors">Maple Terroir Answers</h3>
+        <a href="/answers/" class="reveal group block bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 transition duration-500 hover:ring-amber-warm/40 hover:-translate-y-1">
+          <h3 class="font-display text-xl font-medium text-charcoal tracking-tight mb-2 group-hover:text-amber-warm transition-colors">Maple Terroir Answers</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">Who we are, where our syrup comes from, prices, how we compare and how to order.</p>
         </a>
-        <a href="/shop/maple-syrup-wholesale" class="reveal reveal-delay-1 group block bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 transition-all duration-500 hover:ring-amber-warm/40 hover:-translate-y-1">
-          <h3 class="font-display text-xl font-semibold text-charcoal tracking-tight mb-2 group-hover:text-amber-warm transition-colors">Wholesale</h3>
+        <a href="/shop/maple-syrup-wholesale" class="reveal reveal-delay-1 group block bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 transition duration-500 hover:ring-amber-warm/40 hover:-translate-y-1">
+          <h3 class="font-display text-xl font-medium text-charcoal tracking-tight mb-2 group-hover:text-amber-warm transition-colors">Wholesale</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">Become a stockist. See how wholesale ordering works.</p>
         </a>
-        <a href="/press" class="reveal reveal-delay-2 group block bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 transition-all duration-500 hover:ring-amber-warm/40 hover:-translate-y-1">
-          <h3 class="font-display text-xl font-semibold text-charcoal tracking-tight mb-2 group-hover:text-amber-warm transition-colors">Press</h3>
+        <a href="/press" class="reveal reveal-delay-2 group block bg-cream-dark ring-1 ring-warm-gray-200/40 rounded-[2rem] p-7 md:p-8 transition duration-500 hover:ring-amber-warm/40 hover:-translate-y-1">
+          <h3 class="font-display text-xl font-medium text-charcoal tracking-tight mb-2 group-hover:text-amber-warm transition-colors">Press</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">Media kit, brand assets, and interview requests.</p>
         </a>
       </div>

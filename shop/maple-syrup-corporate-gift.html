@@ -108,13 +108,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .img-zoom { transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1); } .img-zoom:hover { transform: scale(1.05); }
@@ -155,8 +160,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -176,9 +181,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -187,14 +192,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -217,15 +222,15 @@
           </ol>
         </nav>
         <!-- CRUMBS:END -->
-        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.08] max-w-4xl">Canadian Maple Syrup Corporate Gifts.
+        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-medium text-charcoal tracking-tight leading-[1.08] max-w-4xl">Canadian Maple Syrup Corporate Gifts.
         </h1>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[58ch] text-lg mt-6">
           Boxed maple gift sets and single bottles for client gifts, staff gifts and events, shipped to every Canadian province from Vancouver. Order a few sets online, or email us for volume orders.
         </p>
         <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-4">
-          <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+          <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-charcoal rounded-full px-7 py-4 text-sm font-semibold group">
             <span>Email About Corporate Orders</span>
-            <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+            <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
               <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </a>
@@ -287,7 +292,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           Who Orders Corporate Maple Gifts
         </h2>
       </div>
@@ -296,7 +301,7 @@
         <!-- Card 1 -->
         <div class="reveal bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 h-full">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Companies and Teams</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">Companies and Teams</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">
               Client appreciation packages, employee milestone gifts, onboarding kits, and holiday programs.
             </p>
@@ -306,7 +311,7 @@
         <!-- Card 2 -->
         <div class="reveal reveal-delay-1 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 h-full">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Hotels and Hospitality</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">Hotels and Hospitality</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">
               In-room amenity sets, VIP guest gifting, loyalty program rewards, and event packages.
             </p>
@@ -316,9 +321,9 @@
         <!-- Card 3 -->
         <div class="reveal reveal-delay-2 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 h-full">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Events</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">Events</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">
-              Conference delegate gifts, tradeshow giveaways, and cultural exchange programs. For a wedding, our <a href="/shop/maple-syrup-wedding-favours" class="text-amber-warm hover:text-amber-deep transition-colors">wedding favours</a> page sizes an order of leaf bottles to the guest list. We supplied our stroopwafels to the <a href="/blog/maple-terroir-partners-with-ted2024-fueling-innovators-with-iconic-stroopwafels" class="text-amber-warm hover:text-amber-deep transition-colors">TED Conference</a> in Vancouver in 2024, 2025 and 2026.
+              Conference delegate gifts, tradeshow giveaways, and cultural exchange programs. For a wedding, our <a href="/shop/maple-syrup-wedding-favours" class="text-amber-deep hover:text-charcoal transition-colors">wedding favours</a> page sizes an order of leaf bottles to the guest list. We supplied our stroopwafels to the <a href="/blog/maple-terroir-partners-with-ted2024-fueling-innovators-with-iconic-stroopwafels" class="text-amber-deep hover:text-charcoal transition-colors">TED Conference</a> in Vancouver in 2024, 2025 and 2026.
             </p>
           </div>
         </div>
@@ -333,7 +338,7 @@
   <section id="gift-collection" class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           The Maple Terroir Corporate Gift Collection
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] text-lg mt-4">
@@ -349,7 +354,7 @@
       <div class="reveal mt-12 text-center">
         <a href="/collections/home-sets" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
           <span>View All Home Sets</span>
-          <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+          <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -364,7 +369,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           Ordering Corporate Maple Gifts
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[52ch] text-lg mt-4">
@@ -375,21 +380,21 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="reveal bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 text-center">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">1. Choose Your Sets</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">Browse the sets above and pick the one that fits your budget. Home sets run from $75 to $150, and our two gift sets are $75 and $240. For a smaller gift for every person, our <a href="/blog/made-in-canada-corporate-gifts" class="text-amber-warm hover:text-amber-deep transition-colors">corporate gift ideas made in Canada</a> start at $5.99 each.</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">1. Choose Your Sets</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">Browse the sets above and pick the one that fits your budget. Home sets run from $75 to $150, and our two gift sets are $75 and $240. For a smaller gift for every person, our <a href="/blog/made-in-canada-corporate-gifts" class="text-amber-deep hover:text-charcoal transition-colors">corporate gift ideas made in Canada</a> start at $5.99 each.</p>
           </div>
         </div>
 
         <div class="reveal reveal-delay-1 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 text-center">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">2. Email for Volume</h3>
-            <p class="text-sm text-warm-gray-600 leading-relaxed">For orders of multiple sets, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-warm hover:text-amber-deep transition-colors">info@mapleterroir.com</a>. We reply with pricing and lead times.</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">2. Email for Volume</h3>
+            <p class="text-sm text-warm-gray-600 leading-relaxed">For orders of multiple sets, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-deep hover:text-charcoal transition-colors">info@mapleterroir.com</a>. We reply with pricing and lead times.</p>
           </div>
         </div>
 
         <div class="reveal reveal-delay-2 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 p-2 rounded-[2rem]">
           <div class="bg-white rounded-[calc(2rem-0.5rem)] p-8 md:p-10 text-center">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">3. Delivered</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">3. Delivered</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Standard delivery takes 3 to 9 business days and Express takes 1 to 2. Volume orders are confirmed case by case. Orders of $99 or more ship free to every Canadian province.</p>
           </div>
         </div>
@@ -404,21 +409,21 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-10 md:mb-14">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           About the Maple
         </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="reveal bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-[2rem] p-8">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Certified organic syrup</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed">Our organic syrups are certified organic by Ecocert, Canada Organic and USDA Organic. <a href="/blog/organic-vs-conventional-maple-syrup" class="text-amber-warm hover:text-amber-deep transition-colors">Is organic maple syrup actually better?</a></p>
+          <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">Certified organic syrup</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed">Our organic syrups are certified organic by Ecocert, Canada Organic and USDA Organic. <a href="/blog/organic-vs-conventional-maple-syrup" class="text-amber-deep hover:text-charcoal transition-colors">Is organic maple syrup actually better?</a></p>
         </div>
         <div class="reveal reveal-delay-1 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-[2rem] p-8">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Single-origin, every bottle</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">Single-origin, every bottle</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">Every bottle comes from one farm in Quebec's Appalachian Mountains, and Maple Terroir has been a family business since 1978.</p>
         </div>
         <div class="reveal reveal-delay-2 bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-[2rem] p-8">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Carried by retailers across Canada</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">Carried by retailers across Canada</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">Maple Terroir is carried by Costco, Amazon, Walmart, Save-On-Foods, Shoppers Drug Mart, HomeSense, Urban Fare, Nesters Market and CANEX.</p>
         </div>
       </div>
@@ -432,7 +437,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
       <div class="lg:col-span-4">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           Corporate Gift FAQ
         </h2>
       </div>
@@ -440,17 +445,17 @@
       <div class="reveal reveal-delay-2 space-y-3 lg:col-span-8">
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What comes in a maple syrup corporate gift from Maple Terroir?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What comes in a maple syrup corporate gift from Maple Terroir?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Each set lists its contents on its product page. They range from the $75 <a href="/products/maple-treat-home-set" class="text-amber-warm hover:text-amber-deep transition-colors">Maple Treat Home Set</a> to the $240 Maple Mega Combo Gift Set with 25 items. For anything else, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-warm hover:text-amber-deep transition-colors">info@mapleterroir.com</a>.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Each set lists its contents on its product page. They range from the $75 <a href="/products/maple-treat-home-set" class="text-amber-deep hover:text-charcoal transition-colors">Maple Treat Home Set</a> to the $240 Maple Mega Combo Gift Set with 25 items. For anything else, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-deep hover:text-charcoal transition-colors">info@mapleterroir.com</a>.</p>
           </div>
         </div>
 
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is Maple Terroir maple syrup certified organic?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Is Maple Terroir maple syrup certified organic?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -460,27 +465,27 @@
 
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can we order maple gift sets in volume for a corporate event or gifting program?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can we order maple gift sets in volume for a corporate event or gifting program?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. Our team handles corporate and event volume orders directly. Email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-warm hover:text-amber-deep transition-colors">info@mapleterroir.com</a> with your estimated quantity, event date, and delivery destination, and we reply with pricing and lead times. For wholesale-scale orders, see our <a href="/shop/maple-syrup-wholesale" class="text-amber-warm hover:text-amber-deep transition-colors">wholesale page</a>.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. Our team handles corporate and event volume orders directly. Email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-deep hover:text-charcoal transition-colors">info@mapleterroir.com</a> with your estimated quantity, event date, and delivery destination, and we reply with pricing and lead times. For wholesale-scale orders, see our <a href="/shop/maple-syrup-wholesale" class="text-amber-deep hover:text-charcoal transition-colors">wholesale page</a>.</p>
           </div>
         </div>
 
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Do you ship maple syrup corporate gift orders internationally?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Do you ship maple syrup corporate gift orders internationally?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Our online store ships to the ten Canadian provinces. For any other destination, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-warm hover:text-amber-deep transition-colors">info@mapleterroir.com</a> with the destination and approximate quantity, and we will tell you what is possible.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Our online store ships to the ten Canadian provinces. For any other destination, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-deep hover:text-charcoal transition-colors">info@mapleterroir.com</a> with the destination and approximate quantity, and we will tell you what is possible.</p>
           </div>
         </div>
 
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How much lead time do corporate maple gift orders require?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How much lead time do corporate maple gift orders require?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -490,11 +495,11 @@
 
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How do we place a corporate maple gift order?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How do we place a corporate maple gift order?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Order individual gift sets directly at <a href="/collections/maple-syrup-gift-set" class="text-amber-warm hover:text-amber-deep transition-colors">mapleterroir.com/collections/maple-syrup-gift-set</a>. For volume orders, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-warm hover:text-amber-deep transition-colors">info@mapleterroir.com</a> and we reply with pricing and lead times.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Order individual gift sets directly at <a href="/collections/maple-syrup-gift-set" class="text-amber-deep hover:text-charcoal transition-colors">mapleterroir.com/collections/maple-syrup-gift-set</a>. For volume orders, email <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="text-amber-deep hover:text-charcoal transition-colors">info@mapleterroir.com</a> and we reply with pricing and lead times.</p>
           </div>
         </div>
       </div>
@@ -507,21 +512,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Order Corporate Gifts</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Email the team with your quantity, event date, and delivery destination. We reply with pricing and lead times.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Order Corporate Gifts</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Email the team with your quantity, event date, and delivery destination. We reply with pricing and lead times.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="mailto:info@mapleterroir.com?subject=Corporate%20Gift%20Inquiry&amp;body=Company%20name%3A%0ANumber%20of%20gifts%3A%0ABudget%20per%20gift%3A%0ADelivery%20date%20and%20city%3A%0AOne%20address%20or%20several%3A%0A" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Email info@mapleterroir.com</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/collections/maple-syrup-gift-set" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Browse Gift Sets</a>
+                <a href="/collections/maple-syrup-gift-set" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">Browse Gift Sets</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>
@@ -628,7 +633,7 @@
                   (img ? '<img src="' + esc(img.url) + '&width=600" alt="' + esc(img.altText || p.title) + '" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">' : '<div class="w-full h-full bg-cream-dark"></div>') +
                 '</div>' +
                 '<div class="p-5">' +
-                  '<h3 class="font-display text-base font-semibold text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3>' +
+                  '<h3 class="font-display text-base font-medium text-charcoal mb-1 leading-snug">' + esc(p.title) + '</h3>' +
                   '<div class="flex items-center justify-between mt-3">' +
                     '<p class="text-sm text-warm-gray-500 font-medium">$' + price + '</p>' +
                     (variantId && variant.availableForSale ? '<button class="atc-btn" data-variant-id="' + esc(variantId) + '" onclick="event.stopPropagation(); MapleCart.addFromBtn(this)">+ Add</button>' : (variantId ? '<span class="sold-out-badge">Sold Out</span>' : '')) +

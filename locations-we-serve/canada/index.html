@@ -69,13 +69,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .city-card { transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -108,8 +113,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -129,9 +134,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -140,14 +145,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -168,7 +173,7 @@
         </ol>
       </nav>
       <!-- CRUMBS:END -->
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-semibold text-charcoal tracking-tight leading-[1.05] max-w-4xl mb-6">
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl lg:text-7xl font-medium text-charcoal tracking-tight leading-[1.05] max-w-4xl mb-6">
         Buy Maple Syrup in Canada.
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl max-w-[62ch]">
@@ -182,10 +187,10 @@
   <section class="pb-16 md:pb-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-8 md:mb-12">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">
           Canadian City Guides
         </h2>
-        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[60ch] mt-4">Each guide covers what to buy in one city. For gifts to take home from a trip, see our <a href="/canadian-souvenirs" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Canadian souvenirs guide</a>.</p>
+        <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[60ch] mt-4">Each guide covers what to buy in one city. For gifts to take home from a trip, see our <a href="/canadian-souvenirs" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Canadian souvenirs guide</a>.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
 
@@ -193,8 +198,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Buy Maple Syrup in Vancouver</h3>
-<p class="text-amber-warm/80 text-sm mt-1">British Columbia</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Buy Maple Syrup in Vancouver</h3>
+<p class="text-amber-deep text-sm mt-1">British Columbia</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -205,8 +210,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Buy Maple Syrup in Toronto</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Ontario</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Buy Maple Syrup in Toronto</h3>
+<p class="text-amber-deep text-sm mt-1">Ontario</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -217,8 +222,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Buy Maple Syrup in Montreal</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Quebec</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Buy Maple Syrup in Montreal</h3>
+<p class="text-amber-deep text-sm mt-1">Quebec</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -229,8 +234,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Buy Maple Syrup in Calgary</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Alberta</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Buy Maple Syrup in Calgary</h3>
+<p class="text-amber-deep text-sm mt-1">Alberta</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -241,8 +246,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Buy Maple Syrup in Edmonton</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Alberta</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Buy Maple Syrup in Edmonton</h3>
+<p class="text-amber-deep text-sm mt-1">Alberta</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -253,8 +258,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Buy Maple Syrup in Ottawa</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Ontario</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Buy Maple Syrup in Ottawa</h3>
+<p class="text-amber-deep text-sm mt-1">Ontario</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -265,8 +270,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Buy Maple Syrup in Winnipeg</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Manitoba</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Buy Maple Syrup in Winnipeg</h3>
+<p class="text-amber-deep text-sm mt-1">Manitoba</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -276,8 +281,8 @@
         <a href="/locations-we-serve/canada/gift-baskets-winnipeg" class="city-card reveal reveal-delay-2 flex flex-col bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-6 md:p-7">
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Maple Gift Baskets Delivered to Winnipeg</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Manitoba</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Maple Gift Baskets Delivered to Winnipeg</h3>
+<p class="text-amber-deep text-sm mt-1">Manitoba</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -287,8 +292,8 @@
         <a href="/locations-we-serve/canada/gift-baskets-montreal" class="city-card reveal reveal-delay-2 flex flex-col bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-6 md:p-7">
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Maple Gift Baskets Delivered to Montreal</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Quebec</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Maple Gift Baskets Delivered to Montreal</h3>
+<p class="text-amber-deep text-sm mt-1">Quebec</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -299,8 +304,8 @@
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
               
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Maple Gift Baskets Delivered to Toronto</h3>
-<p class="text-amber-warm/80 text-sm mt-1">Ontario</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Maple Gift Baskets Delivered to Toronto</h3>
+<p class="text-amber-deep text-sm mt-1">Ontario</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -310,8 +315,8 @@
         <a href="/locations-we-serve/canada/gift-baskets-calgary" class="city-card reveal flex flex-col bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-6 md:p-7">
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Maple Gift Baskets Delivered to Calgary</h3>
-              <p class="text-amber-warm/80 text-sm mt-1">Alberta</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Maple Gift Baskets Delivered to Calgary</h3>
+              <p class="text-amber-deep text-sm mt-1">Alberta</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -321,8 +326,8 @@
         <a href="/locations-we-serve/canada/gift-baskets-vancouver" class="city-card reveal reveal-delay-1 flex flex-col bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-6 md:p-7">
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Maple Gift Baskets Delivered to Vancouver</h3>
-              <p class="text-amber-warm/80 text-sm mt-1">British Columbia</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Maple Gift Baskets Delivered to Vancouver</h3>
+              <p class="text-amber-deep text-sm mt-1">British Columbia</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -332,8 +337,8 @@
         <a href="/locations-we-serve/canada/canadian-gifts-vancouver" class="city-card reveal reveal-delay-1 flex flex-col bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-6 md:p-7">
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Canadian Gifts and Souvenirs in Vancouver</h3>
-              <p class="text-amber-warm/80 text-sm mt-1">British Columbia</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Canadian Gifts and Souvenirs in Vancouver</h3>
+              <p class="text-amber-deep text-sm mt-1">British Columbia</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -343,8 +348,8 @@
         <a href="/locations-we-serve/canada/canadian-souvenirs-toronto" class="city-card reveal reveal-delay-2 flex flex-col bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-6 md:p-7">
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Canadian Souvenirs in Toronto</h3>
-              <p class="text-amber-warm/80 text-sm mt-1">Ontario</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Canadian Souvenirs in Toronto</h3>
+              <p class="text-amber-deep text-sm mt-1">Ontario</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -354,8 +359,8 @@
         <a href="/locations-we-serve/canada/banff-souvenirs" class="city-card reveal reveal-delay-3 flex flex-col bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-6 md:p-7">
           <div class="flex items-start justify-between mb-3 gap-4">
             <div>
-              <h3 class="font-display text-xl md:text-2xl font-semibold text-charcoal tracking-tight">Banff Souvenirs</h3>
-              <p class="text-amber-warm/80 text-sm mt-1">Alberta</p>
+              <h3 class="font-display text-xl md:text-2xl font-medium text-charcoal tracking-tight">Banff Souvenirs</h3>
+              <p class="text-amber-deep text-sm mt-1">Alberta</p>
             </div>
             <svg class="w-6 h-6 text-amber-warm flex-shrink-0 mt-1" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
@@ -372,7 +377,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-10 md:mb-14">
         <div class="flex flex-col md:flex-row md:items-end gap-4 md:gap-16">
-          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-2xl">
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-2xl">
             Every Canadian Province
           </h2>
           <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-base max-w-[42ch] md:mb-1">
@@ -383,48 +388,48 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">British Columbia</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-vancouver" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Vancouver</a>, <a href="/locations-we-serve/canada/canadian-gifts-vancouver" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Vancouver gifts and souvenirs</a>, <a href="/locations-we-serve/canada/gift-baskets-vancouver" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Vancouver gift sets</a>, <a href="/locations-we-serve/canada/gift-baskets-victoria" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Victoria gift sets</a>, <a href="/locations-we-serve/canada/gift-baskets-kelowna" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Kelowna gift sets</a>, Surrey, Burnaby, Richmond, Coquitlam.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">British Columbia</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-vancouver" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Vancouver</a>, <a href="/locations-we-serve/canada/canadian-gifts-vancouver" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Vancouver gifts and souvenirs</a>, <a href="/locations-we-serve/canada/gift-baskets-vancouver" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Vancouver gift sets</a>, <a href="/locations-we-serve/canada/gift-baskets-victoria" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Victoria gift sets</a>, <a href="/locations-we-serve/canada/gift-baskets-kelowna" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Kelowna gift sets</a>, Surrey, Burnaby, Richmond, Coquitlam.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Alberta</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-calgary" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Calgary</a>, <a href="/locations-we-serve/canada/gift-baskets-calgary" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Calgary gift sets</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-calgary" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Calgary souvenirs</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-edmonton" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Edmonton</a>, <a href="/locations-we-serve/canada/gift-baskets-edmonton" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Edmonton gift sets</a>, <a href="/locations-we-serve/canada/banff-souvenirs" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Banff souvenirs</a>, Red Deer, Lethbridge, Medicine Hat, Fort McMurray.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Alberta</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-calgary" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Calgary</a>, <a href="/locations-we-serve/canada/gift-baskets-calgary" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Calgary gift sets</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-calgary" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Calgary souvenirs</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-edmonton" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Edmonton</a>, <a href="/locations-we-serve/canada/gift-baskets-edmonton" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Edmonton gift sets</a>, <a href="/locations-we-serve/canada/banff-souvenirs" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Banff souvenirs</a>, Red Deer, Lethbridge, Medicine Hat, Fort McMurray.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Saskatchewan</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/gift-baskets-saskatoon" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Saskatoon gift sets</a>, <a href="/locations-we-serve/canada/gift-baskets-regina" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Regina gift sets</a>, Prince Albert, Moose Jaw, Swift Current.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Saskatchewan</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/gift-baskets-saskatoon" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Saskatoon gift sets</a>, <a href="/locations-we-serve/canada/gift-baskets-regina" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Regina gift sets</a>, Prince Albert, Moose Jaw, Swift Current.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Manitoba</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-winnipeg" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Winnipeg</a>, <a href="/locations-we-serve/canada/gift-baskets-winnipeg" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Winnipeg gift sets</a>, Brandon, Steinbach, Thompson, Portage la Prairie.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Manitoba</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-winnipeg" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Winnipeg</a>, <a href="/locations-we-serve/canada/gift-baskets-winnipeg" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Winnipeg gift sets</a>, Brandon, Steinbach, Thompson, Portage la Prairie.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Ontario</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-toronto" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Toronto</a>, <a href="/locations-we-serve/canada/gift-baskets-toronto" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Toronto gift sets</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-toronto" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Toronto souvenirs</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-ottawa" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Ottawa</a>, <a href="/locations-we-serve/canada/gift-baskets-ottawa" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Ottawa gift sets</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-ottawa" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Ottawa souvenirs</a>, Mississauga, Hamilton, London, Kitchener, Windsor.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Ontario</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-toronto" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Toronto</a>, <a href="/locations-we-serve/canada/gift-baskets-toronto" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Toronto gift sets</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-toronto" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Toronto souvenirs</a>, <a href="/locations-we-serve/canada/buy-maple-syrup-ottawa" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Ottawa</a>, <a href="/locations-we-serve/canada/gift-baskets-ottawa" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Ottawa gift sets</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-ottawa" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Ottawa souvenirs</a>, Mississauga, Hamilton, London, Kitchener, Windsor.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Quebec</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-montreal" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Montreal</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-montreal" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Montreal souvenirs</a>, <a href="/locations-we-serve/canada/gift-baskets-montreal" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Montreal gift sets</a>, Quebec City, Laval, Gatineau, Sherbrooke, Trois-Rivieres.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Quebec</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed"><a href="/locations-we-serve/canada/buy-maple-syrup-montreal" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Montreal</a>, <a href="/locations-we-serve/canada/canadian-souvenirs-montreal" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Montreal souvenirs</a>, <a href="/locations-we-serve/canada/gift-baskets-montreal" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Montreal gift sets</a>, Quebec City, Laval, Gatineau, Sherbrooke, Trois-Rivieres.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">New Brunswick</h3>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">New Brunswick</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">Fredericton, Moncton, Saint John, Dieppe.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Nova Scotia</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed">Halifax, <a href="/locations-we-serve/canada/gift-baskets-halifax" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">Halifax gift sets</a>, Dartmouth, Sydney, Truro.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Nova Scotia</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed">Halifax, <a href="/locations-we-serve/canada/gift-baskets-halifax" class="text-amber-deep hover:text-charcoal transition-colors font-medium">Halifax gift sets</a>, Dartmouth, Sydney, Truro.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Prince Edward Island</h3>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Prince Edward Island</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">Charlottetown, Summerside, Stratford.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Newfoundland and Labrador</h3>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Newfoundland and Labrador</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">St. John's, Mount Pearl, Corner Brook, Gander.</p>
         </div>
         <div class="reveal bg-white rounded-[1.5rem] p-6 ring-1 ring-warm-gray-200/40">
-          <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Yukon, Northwest Territories and Nunavut</h3>
-          <p class="text-sm text-warm-gray-600 leading-relaxed">The online checkout ships to the ten provinces. For an address in the territories, email <a href="mailto:info@mapleterroir.com" class="text-amber-warm hover:text-amber-deep transition-colors font-medium">info@mapleterroir.com</a> before you order.</p>
+          <h3 class="font-display text-lg font-medium text-charcoal mb-2">Yukon, Northwest Territories and Nunavut</h3>
+          <p class="text-sm text-warm-gray-600 leading-relaxed">The online checkout ships to the ten provinces. For an address in the territories, email <a href="mailto:info@mapleterroir.com" class="text-amber-deep hover:text-charcoal transition-colors font-medium">info@mapleterroir.com</a> before you order.</p>
         </div>
       </div>
     </div>
@@ -436,20 +441,20 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Syrup From One Farm.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Shop the full maple syrup collection.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Syrup From One Farm.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Shop the full maple syrup collection.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Syrup</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

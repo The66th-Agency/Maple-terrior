@@ -199,13 +199,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -395,8 +400,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -416,9 +421,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -427,14 +432,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -456,7 +461,7 @@
         </ol>
       </nav>
       <!-- CRUMBS:END -->
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-medium text-charcoal tracking-tight leading-[1.1] mb-6">
         Maple Cookies Recipe With Pure Maple Syrup and Maple Sugar
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-base md:text-xl mb-6">
@@ -586,7 +591,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[760px] prose-body">
-        <h2 id="boxes" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">One Box of Maple Sugar or Three</h2>
+        <h2 id="boxes" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">One Box of Maple Sugar or Three</h2>
         <p>The recipe's author gives two ways to make these, and in our 100 g boxes of maple sugar they come to one box or three. She calls maple sugar a little on the pricey side, so she suggests brown sugar in the dough when you want a small amount to go further, with the maple sugar saved for the coating.</p>
       </div>
       <div class="reveal mc-routes">
@@ -623,7 +628,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[760px] prose-body">
-        <h2 id="ingredients" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">What the Maple Syrup and Maple Sugar Each Do</h2>
+        <h2 id="ingredients" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">What the Maple Syrup and Maple Sugar Each Do</h2>
         <p>The syrup is the liquid maple and the sugar is the dry maple, and the recipe as written uses one of each. Made that way, a little over a third of the dough is maple by weight: 198 g of maple sugar and 156 g of syrup in about 981 g of dough.</p>
       </div>
       <figure class="reveal mc-dough">
@@ -645,11 +650,11 @@
       </figure>
       <div class="mc-two prose-body">
         <div>
-        <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mb-4">Pure maple syrup</h3>
+        <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mb-4">Pure maple syrup</h3>
         <p>The syrup carries maple flavor into the dough, and it is also an extra liquid. Sally McKenney of Sally's Baking gives that as the reason she chills her own maple dough, which uses ⅓ cup of syrup: without chilling, she writes, her cookies spread into a greasy puddle. She also writes that the syrup helps give her cookies slightly crisp edges. Use pure maple syrup, made only from maple sap. Pancake or table syrup is mostly corn syrup with flavoring; our guide to <a href="/blog/pure-maple-syrup-vs-table-syrup">pure maple syrup vs table syrup</a> shows how to tell them apart on the label.</p>
         </div>
         <div>
-        <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mb-4">Maple sugar</h3>
+        <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mb-4">Maple sugar</h3>
         <p>Maple sugar is maple syrup boiled further and stirred until it dries into granules, so it adds maple without adding liquid. In this recipe it is beaten with the butter, as white sugar would be, and in other recipes it replaces white sugar cup for cup. Michelle Lopez credits the maple sugar for the texture of her cookies, which she describes as pillowy and chewy, and she writes not to skip the coating: without it, the cookies turn out puffy and cakey-looking.</p>
         </div>
       </div>
@@ -661,7 +666,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[760px] prose-body">
-        <h2 id="timing" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How Long the Recipe Takes</h2>
+        <h2 id="timing" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">How Long the Recipe Takes</h2>
         <p>Plan on about two hours for the first pan of cookies. About 20 minutes of that is mixing and shaping, which is our estimate and not a figure from the recipe. The chilling, baking and cooling times are the recipe's.</p>
       </div>
       <div class="reveal mc-line" role="list" aria-label="The four stages of the recipe, in order, with the time each takes">
@@ -679,7 +684,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="mc-split">
         <div class="max-w-[760px] prose-body">
-          <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup to Bake With</h2>
+          <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup to Bake With</h2>
           <p>Bake these with a Dark syrup. It has the strongest maple flavor of the grades we sell, so more of it is left after 12 minutes in the oven. A Golden syrup has a delicate taste that fades when it is baked, which makes it the one to pour over pancakes instead. Our guide to the <a href="/blog/best-maple-syrup-for-baking">best maple syrup for baking</a> explains why, and the <a href="/blog/grade-a-vs-grade-b-maple-syrup">guide to maple syrup grades</a> covers the whole color scale.</p>
           <p>Sally McKenney notes that the darker syrup, made later in the season, has more flavor, though she says either grade works in her cookies. Have the syrup at room temperature before it goes into the mixer, as the recipe asks.</p>
         </div>
@@ -696,7 +701,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[760px] prose-body">
-        <h2 id="glaze" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">The Maple Glaze</h2>
+        <h2 id="glaze" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">The Maple Glaze</h2>
         <p>The glaze is optional and takes two ingredients. Mix ⅔ cup of icing sugar (powdered sugar) with 3 tablespoons of maple syrup and drizzle it over cookies that have cooled all the way. Give it at least 1 hour at room temperature to set before you stack the cookies.</p>
         <p>The quantities and the setting time are from Simple Bites' <a href="https://simplebites.net/soft-maple-sugar-cookies-cookie-swap-recap/" target="_blank" rel="nofollow noopener">Soft Maple Sugar Cookies</a>. The glaze is not cooked. Our baking guide builds a maple glaze on the Dark grade so the maple comes through clearly, and the same bottle covers the dough.</p>
       </div>
@@ -708,7 +713,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[760px] prose-body">
-        <h2 id="variations" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Variations and Swaps</h2>
+        <h2 id="variations" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Variations and Swaps</h2>
         <p>Keep the quantities as they are and change one thing at a time. The first three are the recipe author's own; the rest name where they come from.</p>
       </div>
       <ul class="reveal mc-vars">
@@ -736,9 +741,9 @@
         <!-- SHELF:START handles="organic-pure-maple-sugar,pure-maple-syrup-maple-leaf-bottle-250ml,organic-maple-cream-butter-jar" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-sugar" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-sugar-box.jpg?v=1749671374&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-sugar" class="hover:text-amber-warm transition-colors">Organic Pure Maple Sugar</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$9.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552213241" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Sugar to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-maple-cream-butter-jar" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplebutter.png?v=1749671359&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-maple-cream-butter-jar" class="hover:text-amber-warm transition-colors">Organic Maple Cream Butter Jar</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">160 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552999673" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Maple Cream Butter Jar to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-sugar" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-sugar-box.jpg?v=1749671374&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/organic-pure-maple-sugar" class="hover:text-amber-warm transition-colors">Organic Pure Maple Sugar</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$9.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552213241" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Sugar to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-maple-cream-butter-jar" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplebutter.png?v=1749671359&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/organic-maple-cream-butter-jar" class="hover:text-amber-warm transition-colors">Organic Maple Cream Butter Jar</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">160 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815552999673" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Maple Cream Butter Jar to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -771,7 +776,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[760px] prose-body">
-        <h2 id="problems" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Fixing the Common Problems</h2>
+        <h2 id="problems" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Fixing the Common Problems</h2>
         <p>The fixes below come from Michelle Lopez's and Sally McKenney's recipe notes, and the last one from our baking guide. Most of them are about chilling the dough, coating it and taking the cookies out on time.</p>
       </div>
       <div class="reveal cmp-wrap mc-problems">
@@ -795,7 +800,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="mc-split">
         <div class="max-w-[760px] prose-body">
-          <h2 id="storage" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Storing and Freezing</h2>
+          <h2 id="storage" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Storing and Freezing</h2>
           <p>The room temperature and fridge times are the recipe author's. The freezing time is Sally McKenney's, written for her own maple cookie dough, another chilled butter and maple syrup dough. She bakes her dough balls from frozen for an extra minute. Hers are half the size of these, so go by the edges: the cookies are done when the edges have set.</p>
           <p>If you glaze the cookies, let the glaze set first and put parchment between the layers.</p>
         </div>
@@ -817,15 +822,15 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="mc-ready">
         <div class="max-w-[760px] prose-body">
-          <h2 id="ready-made" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Ready-Made Maple Cookies</h2>
+          <h2 id="ready-made" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Ready-Made Maple Cookies</h2>
           <p>If you would sooner open a box than heat the oven, our <a href="/collections/cookies">maple cookies</a> are made with maple syrup or maple sugar. The Maple Sugar and Sea Salt Cookies are made with our maple sugar, and the blueberry cookies and the mini shortbread maple leaves are sweetened with pure maple syrup.</p>
         </div>
         <!-- SHELF:START handles="maple-sugar-sea-salt-cookies,maple-syrup-blueberry-cookies,maple-leaf-mini-shortbread-cookies" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-sugar-sea-salt-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-sugar-sea-salt-cookies" class="hover:text-amber-warm transition-colors">Maple Sugar &amp; Sea Salt Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815573643513" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Sugar &amp; Sea Salt Cookies to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-blueberry-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Blueberrycookiefront.png?v=1749672092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-blueberry-cookies" class="hover:text-amber-warm transition-colors">Maple Syrup &amp; Blueberry Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815577903353" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup &amp; Blueberry Cookies to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-leaf-mini-shortbread-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-leaf-mini-shortbread-cookies" class="hover:text-amber-warm transition-colors">Maple Leaf Mini Shortbread Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">113 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815578919161" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Leaf Mini Shortbread Cookies to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-sugar-sea-salt-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-sugar-sea-salt-cookies" class="hover:text-amber-warm transition-colors">Maple Sugar &amp; Sea Salt Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815573643513" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Sugar &amp; Sea Salt Cookies to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-blueberry-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Blueberrycookiefront.png?v=1749672092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-syrup-blueberry-cookies" class="hover:text-amber-warm transition-colors">Maple Syrup &amp; Blueberry Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815577903353" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup &amp; Blueberry Cookies to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-leaf-mini-shortbread-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-leaf-mini-shortbread-cookies" class="hover:text-amber-warm transition-colors">Maple Leaf Mini Shortbread Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">113 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815578919161" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Leaf Mini Shortbread Cookies to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -858,12 +863,12 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal mb-10 md:mb-14">
-        <h2 id="faq" class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">Maple Cookie Questions</h2>
+        <h2 id="faq" class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">Maple Cookie Questions</h2>
       </div>
       <div class="space-y-3">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What are maple cookies made of?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What are maple cookies made of?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -872,7 +877,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I use maple syrup instead of sugar in cookies?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can I use maple syrup instead of sugar in cookies?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -881,7 +886,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Do maple cookies need maple extract?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Do maple cookies need maple extract?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -890,7 +895,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I use pancake syrup in maple cookies?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can I use pancake syrup in maple cookies?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -899,7 +904,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I freeze maple cookie dough?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can I freeze maple cookie dough?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -908,7 +913,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Where can I buy maple sugar for baking in Canada?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Where can I buy maple sugar for baking in Canada?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -924,7 +929,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
-        <h2 id="takeaways" class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight mb-6">Key Takeaways</h2>
+        <h2 id="takeaways" class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight mb-6">Key Takeaways</h2>
         <ul class="mc-take">
           <li>For 19 cookies: 2¾ cups flour, 1 cup butter, 1 cup maple sugar, 1 egg and ½ cup pure maple syrup, with ⅓ cup maple sugar for the coating.</li>
           <li>Chill the dough for 1 hour, roll each ball in maple sugar, bake at 350°F (180°C) for 10 to 12 minutes and cool on the pan for 20 minutes.</li>
@@ -942,21 +947,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Sugar and Maple Syrup, Family Owned Since 1978.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Maple sugar in 100 g boxes at $9.99 and Dark maple syrup in the maple leaf bottle, the two maple ingredients in this recipe.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Sugar and Maple Syrup, Family Owned Since 1978.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Maple sugar in 100 g boxes at $9.99 and Dark maple syrup in the maple leaf bottle, the two maple ingredients in this recipe.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/shop/maple-sugar" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="/shop/maple-sugar" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Sugar</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/collections/cookies" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Shop Maple Cookies</a>
+                <a href="/collections/cookies" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">Shop Maple Cookies</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

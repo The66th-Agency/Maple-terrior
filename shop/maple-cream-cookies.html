@@ -158,13 +158,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .img-zoom { transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1); } .img-zoom:hover { transform: scale(1.05); }
@@ -336,8 +341,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -357,9 +362,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -368,14 +373,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -401,7 +406,7 @@
           </ol>
         </nav>
         <!-- CRUMBS:END -->
-        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl font-semibold text-charcoal tracking-tight leading-[1.08]">Maple Cream Cookies</h1>
+        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl font-medium text-charcoal tracking-tight leading-[1.08]">Maple Cream Cookies</h1>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[52ch] text-lg mt-6">
           Our Maple Syrup Cream Cookies are the classic Canadian maple cream cookie: two crisp maple leaf cookies around a cream centre, made with pure maple syrup. They are sold out right now and return in 2027. Until then, our maple leaf shortbread and three more maple cookies are ready to order below.
         </p>
@@ -409,7 +414,7 @@
         <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-4">
           <a href="#in-stock" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
             <span>Shop Maple Cookies in Stock</span>
-            <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+            <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
               <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </a>
@@ -458,16 +463,16 @@
   <section id="in-stock" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[720px] mb-12 md:mb-16">
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Cookies You Can Order Today</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Maple Cookies You Can Order Today</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] text-lg mt-4 mt-copy">Every cookie on this shelf is made with pure maple syrup or our pure maple sugar, at $8.99 a box. The closest to the cream cookie is the mini shortbread, the same maple leaf without the cream; our <a href="/shop/maple-leaf-cookies">maple leaf cookies</a> page compares the two.</p>
       </div>
       <!-- SHELF:START handles="maple-leaf-mini-shortbread-cookies,maple-sugar-sea-salt-cookies,maple-syrup-blueberry-cookies,maple-syrup-stroopwafel" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-leaf-mini-shortbread-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-leaf-mini-shortbread-cookies" class="hover:text-amber-warm transition-colors">Maple Leaf Mini Shortbread Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">113 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815578919161" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Leaf Mini Shortbread Cookies to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-sugar-sea-salt-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-sugar-sea-salt-cookies" class="hover:text-amber-warm transition-colors">Maple Sugar &amp; Sea Salt Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815573643513" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Sugar &amp; Sea Salt Cookies to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-blueberry-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Blueberrycookiefront.png?v=1749672092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-blueberry-cookies" class="hover:text-amber-warm transition-colors">Maple Syrup &amp; Blueberry Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815577903353" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup &amp; Blueberry Cookies to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maple-syrup-stroopwafel-136g-box-front.jpg?v=1786496064&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Stroopwafel</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">136 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Stroopwafel to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-leaf-mini-shortbread-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-leaf-mini-shortbread-cookies" class="hover:text-amber-warm transition-colors">Maple Leaf Mini Shortbread Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">113 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815578919161" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Leaf Mini Shortbread Cookies to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-sugar-sea-salt-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maplesugarcookiefront_30105152-617c-46be-b6f0-124decc0fff4.png?v=1749671397&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-sugar-sea-salt-cookies" class="hover:text-amber-warm transition-colors">Maple Sugar &amp; Sea Salt Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815573643513" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Sugar &amp; Sea Salt Cookies to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-blueberry-cookies" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Blueberrycookiefront.png?v=1749672092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-syrup-blueberry-cookies" class="hover:text-amber-warm transition-colors">Maple Syrup &amp; Blueberry Cookies</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815577903353" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup &amp; Blueberry Cookies to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maple-syrup-stroopwafel-136g-box-front.jpg?v=1786496064&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-syrup-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Stroopwafel</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">136 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Stroopwafel to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -500,7 +505,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
         <div>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Snack on It</h2>
+          <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Snack on It</h2>
         </div>
         <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
@@ -508,7 +513,7 @@
         <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
           <a href="/products/maple-leaf-mini-shortbread-cookies" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
             <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
-            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/MapleMiniShortbreadCookiesFront.png?v=1749671622&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:-rotate-2">
           </a>
           <div class="p-7 md:p-10 flex flex-col justify-center">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
@@ -517,7 +522,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-1 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/handcrafted-pure-maple-syrup-butter-popcorn" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-butter-popcorn.jpg?v=1749671339&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/handcrafted-pure-maple-syrup-butter-popcorn" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-butter-popcorn.jpg?v=1749671339&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;I keep buying this over and over and over again. It&#39;s the best snack and when I give it to other people they absolutely love it. I&#39;ll buy somebody a box for a birthday gift.&rdquo;</blockquote>
@@ -525,7 +530,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-2 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/cocoa-chocolate-maple-stroopwafels-caddy" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/cocoa-chocolate-maple-stroopwafels-caddy.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/cocoa-chocolate-maple-stroopwafels-caddy" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/cocoa-chocolate-maple-stroopwafels-caddy.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;My teenage daughter discovered these at a friend&#39;s house and begged me to order them. Now I understand why! The cocoa ones are incredible - rich chocolate flavor with that perfect chewy texture. Ordering more next week.&rdquo;</blockquote>
@@ -541,7 +546,7 @@
   <section id="box" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-[720px] mb-12 md:mb-16">
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Our Maple Cream Cookies, Read Off the Box</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">Our Maple Cream Cookies, Read Off the Box</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed max-w-[56ch] text-lg">Here is what the box says about the cookies inside, point by point.</p>
       </div>
       <div class="ck-anat" data-anat>
@@ -604,7 +609,7 @@
   <section id="compare" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div>
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How Ours Compares With the Classic</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-6">How Ours Compares With the Classic</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch]">The maple leaf cream cookie is a Canadian classic, and many bakeries and grocery brands make their own. They share the leaf shape and the cream centre, so three lines on the box tell them apart. Here is what to read, and what ours says.</p>
         <div class="reveal cmp-wrap">
           <table class="cmp-table ck-check">
@@ -625,23 +630,23 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div>
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Ways to Serve Maple Cream Cookies</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-6">Ways to Serve Maple Cream Cookies</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch]">A sandwich cookie with a sweet centre wants something to drink beside it. Each idea below names a cookie you can order now.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-copy">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">With tea or coffee</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">With tea or coffee</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Our product listing suggests tea or coffee with the cream cookies. Until they return, try the shortbread or the <a href="/products/maple-sugar-sea-salt-cookies">maple sugar and sea salt cookies</a> with our <a href="/products/maple-ceylon-tea">Maple Ceylon tea</a>.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">With a glass of cold milk</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">With a glass of cold milk</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">The other pairing on our listing. Today, try a <a href="/products/maple-syrup-stroopwafel">maple syrup stroopwafel</a> the Dutch way: set it on top of a hot drink for a minute so the steam softens the filling.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">On a sharing plate</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">On a sharing plate</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">With 18 loose cookies to a box when they return, the cream cookies are made for a plate in the middle of the table. The mini shortbread does the same job today, in a peanut-free facility.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">As a taste of Canada</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">As a taste of Canada</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">A maple leaf cookie in a bilingual box says where it comes from. Our <a href="/canadian-souvenirs">Canadian souvenirs</a> and <a href="/shop/canadian-stocking-stuffers">stocking stuffers</a> pages pair our cookies with small bottles of syrup.</p>
           </div>
         </div>
@@ -653,21 +658,21 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div>
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-10">From Our Shelf to Yours</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-10">From Our Shelf to Yours</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <p class="font-display text-3xl font-semibold text-amber-warm">1</p>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">Choose the cookies in stock</h3>
+            <p class="font-display text-3xl font-medium text-amber-warm">1</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mt-2 mb-2 tracking-tight">Choose the cookies in stock</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Add boxes from the shelf above, or a case of 12 to 48 on each product page. Cookies, syrup and tea can share one order.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <p class="font-display text-3xl font-semibold text-amber-warm">2</p>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">Packed by our family</h3>
+            <p class="font-display text-3xl font-medium text-amber-warm">2</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mt-2 mb-2 tracking-tight">Packed by our family</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Our online orders are packed by family members at our facility, which holds a federal Safe Food licence.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <p class="font-display text-3xl font-semibold text-amber-warm">3</p>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">It arrives, or you collect it</h3>
+            <p class="font-display text-3xl font-medium text-amber-warm">3</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mt-2 mb-2 tracking-tight">It arrives, or you collect it</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Send the box to your own address or to the person it is for. Vancouver buyers can collect it at Shaughnessy Street instead.</p>
           </div>
         </div>
@@ -683,7 +688,7 @@
         <figcaption class="text-xs text-warm-gray-400 mt-3">From left: Wayne, Shawn and Gavin Lytton.</figcaption>
       </figure>
       <div class="reveal reveal-delay-1 md:col-span-7">
-        <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Three Generations of One Maple Family.</h2>
+        <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-5">Three generations of one maple family</h2>
         <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and our online orders are packed by family members at our facility.</p>
         <p class="text-warm-gray-600 leading-relaxed mb-8 max-w-[56ch]">When you order from mapleterroir.com, the order goes to that family, and they are the ones who pack it.</p>
         <a href="/story" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Read the family story <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -696,40 +701,40 @@
   <section id="faq" class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
       <div class="lg:col-span-4">
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Cream Cookie Questions</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Maple Cream Cookie Questions</h2>
       </div>
       <div class="reveal space-y-3 mt-copy lg:col-span-8">
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal">What are maple cream cookies?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal">What are maple cream cookies?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed"><p>Sandwich cookies made of two maple leaf-shaped cookies with a maple cream between them, a Canadian classic. Ours, the Maple Syrup Cream Cookies, are made with pure maple syrup.</p></div></div>
         </div>
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal">When will your maple cream cookies be back in stock?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal">When will your maple cream cookies be back in stock?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed"><p>In 2027. The <a href="/products/maple-syrup-cream-cookies-350g">product page</a> shows when you can order them again.</p></div></div>
         </div>
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal">How many cookies come in a box?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal">How many cookies come in a box?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed"><p>When the cream cookies return in 2027, each box holds 18 cookies, packed together rather than wrapped one by one.</p></div></div>
         </div>
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal">Which maple cookie can I order instead?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal">Which maple cookie can I order instead?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed"><p>The Maple Leaf Mini Shortbread Cookies are the closest: the same maple leaf, made with pure maple syrup, in a 113 g box for $8.99. Our <a href="/shop/maple-leaf-cookies">maple leaf cookies</a> page has the details, and the <a href="#in-stock">shelf above</a> has three more maple cookies.</p></div></div>
         </div>
         <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal">How do delivery and pickup work?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal">How do delivery and pickup work?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed"><p>We ship online orders to all ten Canadian provinces. We pack each order within 1 to 3 business days; Standard delivery then takes 3 to 9 business days for $19.99, Express takes 1 to 2 business days for $39.99, and orders of $99 or more ship free. For Christmas, order by December 10 for delivery to any province, or pick up in Vancouver until December 23.</p></div></div>
@@ -743,21 +748,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Cookies You Can Order Today</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">The cream cookies return in 2027. Our maple leaf shortbread and three more maple cookies are $8.99 a box now.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Cookies You Can Order Today</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">The cream cookies return in 2027. Our maple leaf shortbread and three more maple cookies are $8.99 a box now.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="#in-stock" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="#in-stock" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Cookies</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/shop/maple-leaf-cookies" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Maple Leaf Cookies</a>
+                <a href="/shop/maple-leaf-cookies" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">Maple Leaf Cookies</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

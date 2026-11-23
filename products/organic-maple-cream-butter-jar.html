@@ -21,10 +21,15 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #FDFBF7; }
     ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; }
     .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .link-underline:hover::after { width: 100%; }
@@ -232,8 +237,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -253,9 +258,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -264,14 +269,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -310,13 +315,13 @@
 
         <!-- RIGHT: Product Info -->
         <div class="flex flex-col">
-          <h1 id="product-title" class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-2">Maple Butter</h1>
+          <h1 id="product-title" class="font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-[1.1] mb-2">Maple Butter</h1>
           <p class="text-sm font-semibold text-charcoal mb-3">Organic Maple Cream Butter Jar, 160 g</p>
           <!-- PDP-TASTE (quoted from the product description, October 12, 2026; lead changed to "maple butter", November 9, 2026) --><p class="text-base md:text-lg text-warm-gray-600 leading-relaxed mb-3 max-w-[34rem]">Maple butter, also called maple cream or maple spread, is pure maple syrup boiled and whipped into a smooth spread. There is no butter in it and nothing added; it is called butter because it spreads like butter.</p>
           <p class="text-xs text-warm-gray-500 mb-5">Published <time datetime="2026-05-29">May 29, 2026</time> &middot; Last updated <time datetime="2026-11-09">November 9, 2026</time></p>
 
           <div class="flex items-center gap-3 mb-6">
-            <span id="product-price" class="font-display text-2xl md:text-3xl font-semibold text-charcoal">$11.99</span>
+            <span id="product-price" class="font-display text-2xl md:text-3xl font-medium text-charcoal">$11.99</span>
           </div>
 
           <div id="variant-picker" class="flex flex-wrap gap-2 mb-8"></div>
@@ -344,7 +349,7 @@
 
           <!-- PDP-ABOUT:START (maple butter facts, November 9, 2026; sources in active/maple-terroir/agent/runs/specs/maple-butter-jar/RESEARCH.md) -->
           <div id="pdp-about" class="mb-8">
-            <dl class="grid grid-cols-[5.5rem_1fr] gap-x-4 gap-y-3 text-sm leading-relaxed"><dt class="font-semibold text-charcoal">Made from</dt><dd class="text-warm-gray-600">Pure maple syrup, nothing added. No butter, no dairy, fat free.</dd><dt class="font-semibold text-charcoal">Texture</dt><dd class="text-warm-gray-600">Smooth and spreadable, like soft butter. <a href="#maple-butter" class="text-amber-warm underline underline-offset-2">How it is made</a></dd><dt class="font-semibold text-charcoal">Use it on</dt><dd class="text-warm-gray-600">Toast, bagels, muffins, pancakes and waffles.</dd><dt class="font-semibold text-charcoal">Storage</dt><dd class="text-warm-gray-600">In the fridge.</dd><dt class="font-semibold text-charcoal">In the jar</dt><dd class="text-warm-gray-600">160 g. $11.99 a jar, or $9.60 a jar in a case of 48.</dd></dl>
+            <dl class="grid grid-cols-[5.5rem_1fr] gap-x-4 gap-y-3 text-sm leading-relaxed"><dt class="font-semibold text-charcoal">Made from</dt><dd class="text-warm-gray-600">Pure maple syrup, nothing added. No butter, no dairy, fat free.</dd><dt class="font-semibold text-charcoal">Texture</dt><dd class="text-warm-gray-600">Smooth and spreadable, like soft butter. <a href="#maple-butter" class="text-amber-deep underline underline-offset-2">How it is made</a></dd><dt class="font-semibold text-charcoal">Use it on</dt><dd class="text-warm-gray-600">Toast, bagels, muffins, pancakes and waffles.</dd><dt class="font-semibold text-charcoal">Storage</dt><dd class="text-warm-gray-600">In the fridge.</dd><dt class="font-semibold text-charcoal">In the jar</dt><dd class="text-warm-gray-600">160 g. $11.99 a jar, or $9.60 a jar in a case of 48.</dd></dl>
           </div>
           <!-- PDP-ABOUT:END -->
 
@@ -428,7 +433,7 @@
   <section class="py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-3xl mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">What Is in This Jar</h2>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">What Is in This Jar</h2>
       </div>
       <div class="st-anat st-copy" data-anat>
         <div class="st-anat-col">
@@ -506,7 +511,7 @@
   <section id="maple-butter" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto mb-copy">
       <div class="max-w-3xl mb-10 md:mb-14">
-        <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">What Is Maple Butter?</h2>
+        <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">What Is Maple Butter?</h2>
         <p class="reveal reveal-delay-1 text-warm-gray-600 leading-relaxed">Maple butter is maple syrup boiled past the syrup stage, cooled and stirred until it sets into a smooth, spreadable cream. Cornell University&rsquo;s maple program says the names maple cream, maple butter and maple spread all mean the same thing, and none of them has dairy in it. Our jar is that spread: pure maple syrup and nothing else.</p>
       </div>
 
@@ -525,7 +530,7 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-12 md:mb-16">
         <div class="lg:col-span-6">
-          <h3 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-4">How Syrup Becomes a Spread</h3>
+          <h3 class="reveal font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight leading-tight mb-4">How Syrup Becomes a Spread</h3>
           <p class="reveal text-warm-gray-600 leading-relaxed mb-3">The longer syrup boils, the more water leaves it and the firmer it sets. Cornell&rsquo;s chart puts maple syrup at 104&deg;C and maple cream at 111.5&deg;C. Its method says to boil 12 to 13&deg;C above the temperature water boils that day. We boil ours to 112&deg;C, then whip it into a smooth cream.</p>
           <p class="reveal text-warm-gray-600 leading-relaxed">The syrup is cooled before it is stirred. Stirring then forms sugar crystals too small to feel on the tongue, which is what makes the spread smooth and pale. Boiled further, to about 118&deg;C, syrup sets hard enough for <a href="/shop/maple-candy">maple candy</a>, and at about 122&deg;C it dries into granulated <a href="/shop/maple-sugar">maple sugar</a>.</p>
         </div>
@@ -544,13 +549,13 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         <div class="lg:col-span-6">
-          <h3 class="reveal font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-4">How to Use and Store It</h3>
+          <h3 class="reveal font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight leading-tight mb-4">How to Use and Store It</h3>
           <p class="reveal text-warm-gray-600 leading-relaxed mb-3">Spread it straight from the jar on toast, bagels, muffins, pancakes or waffles.</p>
           <p class="reveal text-warm-gray-600 leading-relaxed mb-3">Keep the jar in the fridge. Cornell gives refrigerated maple cream a shelf life of about 6 months, and less than one month at room temperature, where it can mold. For up to a year, freeze it.</p>
           <p class="reveal text-warm-gray-600 leading-relaxed">A thin layer of syrup can rise to the top in storage. That is the syrup in the cream separating, and stirring brings it back together.</p>
         </div>
         <div class="lg:col-span-6 reveal">
-          <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight leading-tight mb-4">Maple Butter by the Case</h3>
+          <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight leading-tight mb-4">Maple Butter by the Case</h3>
           <table class="mb-table">
             <thead><tr><th>Jars</th><th>Price</th><th>Each</th><th>Saving</th></tr></thead>
             <tbody>
@@ -571,7 +576,7 @@
   <!-- BEFORE / AFTER SLIDER (stroopwafels only) -->
   <section id="ba-section" class="hidden py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto" style="padding-right:max(0px,calc(100% - 900px))">
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-3">Packaged vs. Unwrapped</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-3">Packaged vs. Unwrapped</h2>
       <p class="text-sm text-warm-gray-500 mb-8">Drag the slider to reveal what is inside the box</p>
       <div class="ba-slider" id="ba-slider">
         <!-- The two photos are added by the page script when the slider turns on (stroopwafels with 3+ Shopify photos), so no empty img ships in the server HTML. -->
@@ -590,7 +595,7 @@
        replaces this whole section with the product's reviews from the Loox export. -->
   <section id="reviews-section" class="hidden px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24">
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-12">What Our Customers Say</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-12">What Our Customers Say</h2>
     </div>
   </section>
 
@@ -598,7 +603,7 @@
   <section class="px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24" style="padding-right:max(0px,calc(100% - 820px))">
       <!-- PDP-FAQ (maple butter questions, November 9, 2026. A build-products.mjs re-run puts back the template's general FAQ) -->
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-12">Maple Butter Questions</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-12">Maple Butter Questions</h2>
       <div id="faq-list" class="mb-copy">
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>What is maple butter?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Maple butter is maple syrup boiled, cooled and stirred until it sets into a smooth spread. Ours is made from pure maple syrup alone, boiled to 112&deg;C and whipped, in a 160 g jar.</div></div></div>
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>Does maple butter have butter or dairy in it?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Ours has none. It is called butter because it spreads like butter, and it is fat free. Some recipes use the same name for dairy butter whipped with maple syrup; our <a href="/blog/how-to-make-maple-butter">maple butter recipe</a> shows both.</div></div></div>
@@ -618,7 +623,7 @@
   <!-- YOU MAY ALSO LIKE -->
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-10">You may also like</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-10">You may also like</h2>
       <div id="recommendations" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <div class="skeleton" style="aspect-ratio:1;border-radius:1rem"></div>
         <div class="skeleton" style="aspect-ratio:1;border-radius:1rem"></div>
@@ -827,7 +832,7 @@
       })
       .catch(function () {
         document.getElementById('product-title').textContent = 'Something went wrong';
-        document.getElementById('product-desc').innerHTML = '<p>We could not load this product. Please check your connection and <a href="/products" class="text-amber-warm underline">browse all products</a>.</p>';
+        document.getElementById('product-desc').innerHTML = '<p>We could not load this product. Please check your connection and <a href="/products" class="text-amber-deep underline">browse all products</a>.</p>';
       });
     }
 

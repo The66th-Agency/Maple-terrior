@@ -140,13 +140,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .img-zoom { transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1); } .img-zoom:hover { transform: scale(1.05); }
@@ -227,8 +232,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -248,9 +253,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -259,14 +264,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -292,7 +297,7 @@
           </ol>
         </nav>
         <!-- CRUMBS:END -->
-        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl font-semibold text-charcoal tracking-tight leading-[1.08]">Maple Leaf Bottle Maple Syrup</h1>
+        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-6xl font-medium text-charcoal tracking-tight leading-[1.08]">Maple Leaf Bottle Maple Syrup</h1>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[52ch] text-lg mt-6">
           Pure maple syrup in a glass bottle shaped like a maple leaf, in 50 mL, 100 mL and 250 mL sizes from $7.99. Every bottle holds the same Grade A Dark, Robust Taste syrup from one farm, and every size comes in packs of 12 to 48 at up to 25 percent off.
         </p>
@@ -300,7 +305,7 @@
         <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-4">
           <a href="#sizes" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
             <span>Choose a Size</span>
-            <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110">
+            <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
               <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
           </a>
@@ -359,15 +364,15 @@
   <section id="sizes" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Three Sizes, One Syrup</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Three Sizes, One Syrup</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed max-w-[60ch] text-lg mt-4">The 50 mL bottle is a taste, the 100 mL is a gift for one person, and the 250 mL is for the table. Choose a pack size on each product page.</p>
       </div>
       <!-- SHELF:START handles="pure-maple-syrup-maple-leaf-bottle-50ml,pure-maple-syrup-maple-leaf-bottle-100ml,pure-maple-syrup-maple-leaf-bottle-250ml" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-syrup-maple-leaf-50ml.jpg?v=1794510092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 50ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">50 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$7.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815537697017" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 50ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1794510133&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-syrup-maple-leaf-50ml.jpg?v=1794510092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 50ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">50 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$7.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815537697017" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 50ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1794510133&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -393,15 +398,15 @@
       <!-- SHELF:END -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
         <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">50 mL, $7.99</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">50 mL, $7.99</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">About three tablespoons of syrup, a taste for one person. It fits a stocking, a place setting or a carry-on, and a 48-pack brings each bottle to $5.99.</p>
         </div>
         <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">100 mL, $11.99</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">100 mL, $11.99</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">The <a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="underline underline-offset-4 decoration-amber-warm text-charcoal">100 mL maple leaf bottle</a> holds twice the syrup and is still within the 100 mL limit for a carry-on. This is the size to give one person, such as a host, a teacher or a colleague abroad.</p>
         </div>
         <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-          <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">250 mL, $24.99</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">250 mL, $24.99</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed">The full-size leaf. It holds about a cup of syrup for several breakfasts, and it travels in a checked bag.</p>
         </div>
       </div>
@@ -413,7 +418,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
         <div>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Pour It</h2>
+          <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Pour It</h2>
         </div>
         <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
@@ -421,7 +426,7 @@
         <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
           <a href="/products/organic-pure-maple-syrup-250ml" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
             <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
-            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:-rotate-2">
           </a>
           <div class="p-7 md:p-10 flex flex-col justify-center">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
@@ -430,7 +435,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-1 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Genuine maple syrup!! Awesome service!!&rdquo;</blockquote>
@@ -438,7 +443,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-2 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/products/maple-leaf-bottle/maple-leaf-bottle-50ml-embossed.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/products/maple-leaf-bottle/maple-leaf-bottle-50ml-embossed.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Delicious!&rdquo;</blockquote>
@@ -486,7 +491,7 @@
   <section class="py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-3xl mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">What Is in the Bottle</h2>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">What Is in the Bottle</h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] st-copy">The label on our 250 mL leaf bottle says what you are buying. Here is what it means.</p>
       </div>
       <div class="st-anat st-copy" data-anat>
@@ -521,7 +526,7 @@
         </div>
       </div>
       <div class="reveal mt-12 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <p class="font-display text-2xl font-semibold text-charcoal">$24.99 <span class="text-sm font-normal text-warm-gray-500" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif">for 250 mL</span></p>
+        <p class="font-display text-2xl font-medium text-charcoal">$24.99 <span class="text-sm font-normal text-warm-gray-500" style="font-family:'Plus Jakarta Sans',system-ui,sans-serif">for 250 mL</span></p>
         <button class="atc-btn" style="padding:.75rem 1.4rem;font-size:.8rem" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add 250 mL to cart">+ Add to cart</button>
         <a href="#packs" class="text-sm text-charcoal underline decoration-warm-gray-300 underline-offset-4 hover:text-amber-warm">Packs of 12 to 48 save 10 to 25 percent</a>
       </div>
@@ -544,27 +549,27 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div>
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Who Buys a Maple Leaf Bottle</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-6">Who Buys a Maple Leaf Bottle</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-10 max-w-[65ch]">The leaf bottle says where it comes from before anyone opens it, so it works as a gift as well as a pantry bottle. Here are five ways to use one, and the size that suits each.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">A souvenir for the flight</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">A souvenir for the flight</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Canada's airport screening authority, CATSA, allows maple syrup in a carry-on in containers of 100 mL or less, all inside one clear 1 L bag. The 50 mL and 100 mL bottles qualify, and the 250 mL goes in a checked bag. More picks for the trip are on our <a href="/canadian-souvenirs" class="underline underline-offset-4 decoration-amber-warm text-charcoal">Canadian souvenirs</a> page.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">A gift from home</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">A gift from home</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">For family or friends who have moved away, the 250 mL leaf bottle is the one to send. Pair it with our stroopwafels and shortbread from our <a href="/shop/canadian-stocking-stuffers" class="underline underline-offset-4 decoration-amber-warm text-charcoal">Canadian stocking stuffers</a>, or choose a boxed set from our <a href="/shop/canadian-gift-baskets" class="underline underline-offset-4 decoration-amber-warm text-charcoal">Canadian gift baskets</a>.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">A place card for every guest</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">A place card for every guest</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">At a wedding, a reunion or a conference dinner, a 50 mL bottle sits at each setting. A 48-pack is $287.52, or $5.99 a bottle, and you can order more than one pack. Our page on <a href="/shop/maple-syrup-wedding-favours" class="underline underline-offset-4 decoration-amber-warm text-charcoal">maple syrup wedding favours</a> works out how many bottles a guest list needs.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">A thank-you for clients and staff</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">A thank-you for clients and staff</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">A 100 mL bottle for each person on a team, or a 250 mL for each client, at 10 to 25 percent off by the pack. Our <a href="/shop/maple-syrup-corporate-gift" class="underline underline-offset-4 decoration-amber-warm text-charcoal">corporate gift page</a> covers orders sent to many addresses.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Breakfast at home</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">Breakfast at home</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">The robust taste holds up over pancakes, waffles, oatmeal and roasted vegetables. For syrup by the jug rather than the leaf, see our <a href="/collections/premium-maple-syrup" class="underline underline-offset-4 decoration-amber-warm text-charcoal">maple syrup collection</a>.</p>
           </div>
         </div>
@@ -576,7 +581,7 @@
   <section id="packs" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div>
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Maple Leaf Bottles by the Dozen</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-6">Maple Leaf Bottles by the Dozen</h2>
         <p class="reveal text-warm-gray-600 leading-relaxed mb-8 max-w-[65ch]">Every size comes in packs of 12, 24, 36 and 48. A pack of 12 is 10 percent off the single price, 24 is 15 percent, 36 is 20 percent and 48 is 25 percent. Prices are in Canadian dollars.</p>
         <div class="reveal cmp-wrap">
           <table class="cmp-table">
@@ -603,21 +608,21 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div>
-        <h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-10">From Our Shelf to Yours</h2>
+        <h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-10">From Our Shelf to Yours</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <p class="font-display text-3xl font-semibold text-amber-warm">1</p>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">Choose the size and the count</h3>
+            <p class="font-display text-3xl font-medium text-amber-warm">1</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mt-2 mb-2 tracking-tight">Choose the size and the count</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Add single bottles above, or a pack from the table. Sizes can be mixed in one order.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <p class="font-display text-3xl font-semibold text-amber-warm">2</p>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">Packed by our family</h3>
+            <p class="font-display text-3xl font-medium text-amber-warm">2</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mt-2 mb-2 tracking-tight">Packed by our family</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Our online orders are packed by family members at our facility, which holds a federal Safe Food licence.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <p class="font-display text-3xl font-semibold text-amber-warm">3</p>
-            <h3 class="font-display text-xl font-semibold text-charcoal mt-2 mb-2 tracking-tight">It arrives, or you collect it</h3>
+            <p class="font-display text-3xl font-medium text-amber-warm">3</p>
+            <h3 class="font-display text-xl font-medium text-charcoal mt-2 mb-2 tracking-tight">It arrives, or you collect it</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Send it to your own address or to the person it is for. Vancouver buyers can collect it at Shaughnessy Street instead.</p>
           </div>
         </div>
@@ -633,7 +638,7 @@
         <figcaption class="text-xs text-warm-gray-400 mt-3">From left: Wayne, Shawn and Gavin Lytton.</figcaption>
       </figure>
       <div class="reveal reveal-delay-1 md:col-span-7">
-        <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Three Generations of One Maple Family.</h2>
+        <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-5">Three generations of one maple family</h2>
         <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and our online orders are packed by family members at our facility.</p>
         <p class="text-warm-gray-600 leading-relaxed mb-8 max-w-[56ch]">When you order from mapleterroir.com, the order goes to that family, and they are the ones who pack it.</p>
         <a href="/story" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Read the family story <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -646,39 +651,39 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-        <div class="lg:col-span-4"><h2 class="reveal font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Leaf Bottle Questions</h2></div>
+        <div class="lg:col-span-4"><h2 class="reveal font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Maple Leaf Bottle Questions</h2></div>
         <div class="reveal space-y-3 lg:col-span-8">
           <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
             <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <h3 class="font-display text-lg font-semibold text-charcoal">Where can I buy maple syrup in a maple leaf bottle?</h3>
+              <h3 class="font-display text-lg font-medium text-charcoal">Where can I buy maple syrup in a maple leaf bottle?</h3>
               <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Right here. We sell our maple leaf bottles in 50 mL, 100 mL and 250 mL sizes, from $7.99 to $24.99 each, and ship them to every Canadian province.</div></div>
           </div>
           <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
             <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <h3 class="font-display text-lg font-semibold text-charcoal">What grade of syrup is in the leaf bottle?</h3>
+              <h3 class="font-display text-lg font-medium text-charcoal">What grade of syrup is in the leaf bottle?</h3>
               <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Grade A Dark, Robust Taste, from the late harvest. All three sizes hold the same syrup, and it is pure maple syrup with nothing added.</div></div>
           </div>
           <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
             <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <h3 class="font-display text-lg font-semibold text-charcoal">Can I take a maple leaf bottle on a plane?</h3>
+              <h3 class="font-display text-lg font-medium text-charcoal">Can I take a maple leaf bottle on a plane?</h3>
               <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">Yes. CATSA allows <a href="https://www.catsa-acsta.gc.ca/en/what-can-bring/item/maple-syrup-canned-or-jarred" class="underline underline-offset-4" rel="noopener" target="_blank">maple syrup</a> in a carry-on in containers of 100 mL or less, inside your one clear 1 L bag (<a href="https://www.catsa-acsta.gc.ca/en/what-can-bring/liquids-non-solid-food-personal-items" class="underline underline-offset-4" rel="noopener" target="_blank">CATSA, liquids and non-solid food</a>), so the 50 mL and 100 mL bottles can go in the cabin. Put the 250 mL bottle in your checked bag, wrapped in clothing.</div></div>
           </div>
           <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
             <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <h3 class="font-display text-lg font-semibold text-charcoal">How long does the syrup keep?</h3>
+              <h3 class="font-display text-lg font-medium text-charcoal">How long does the syrup keep?</h3>
               <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">A sealed glass bottle keeps in the pantry, and an opened one belongs in the fridge. Our <a href="/tools/maple-syrup-shelf-life" class="underline underline-offset-4">maple syrup shelf life checker</a> gives a finish-by date for your bottle, and our <a href="/blog/does-maple-syrup-go-bad-shelf-life-storage" class="underline underline-offset-4">shelf life guide</a> explains why.</div></div>
           </div>
           <div class="bg-warm-gray-100/40 ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
             <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-              <h3 class="font-display text-lg font-semibold text-charcoal">How do delivery and pickup work?</h3>
+              <h3 class="font-display text-lg font-medium text-charcoal">How do delivery and pickup work?</h3>
               <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="accordion-content px-6"><div class="pb-5 text-sm text-warm-gray-600 leading-relaxed">We ship to any address in the ten provinces. Standard takes 3 to 9 business days for $19.99, Express takes 1 to 2 business days for $39.99, and orders of $99 or more ship free, so four 250 mL bottles ($99.96) or a dozen 100 mL bottles ($129.60) ship at no charge. Vancouver buyers can choose free pickup at checkout.</div></div>
@@ -693,20 +698,20 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">The maple leaf, filled with pure syrup.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Three sizes from one farm, from $7.99.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">The maple leaf, filled with pure syrup.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Three sizes from one farm, from $7.99.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="#sizes" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="#sizes" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Choose a Size</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

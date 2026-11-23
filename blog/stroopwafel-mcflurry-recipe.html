@@ -187,13 +187,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -282,8 +287,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -303,9 +308,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -314,14 +319,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -343,7 +348,7 @@
         </ol>
       </nav>
       <!-- CRUMBS:END -->
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-medium text-charcoal tracking-tight leading-[1.1] mb-6">
         Stroopwafel McFlurry Recipe: Make It at Home With Maple Stroopwafels
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl mb-6">
@@ -466,7 +471,7 @@
   <!-- BEFORE YOU START -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="before-you-start" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">What You Need Before You Start</h2>
+      <h2 id="before-you-start" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">What You Need Before You Start</h2>
       <p>You need a freezer with room for two glasses and a bowl, a small saucepan and about 30 minutes, most of it waiting for the caramel to cool. There is no special equipment: a frozen bowl and a strong metal spoon turn store-bought ice cream into a soft-serve texture.</p>
       <p>Cold is the one thing that decides the result. Every minute the ice cream spends in a warm bowl or under warm caramel turns it from thick to runny, so freeze the glasses and the bowl first, and let the caramel cool fully before it touches the ice cream.</p>
       <p>Buy a full-fat vanilla ice cream rather than a light one or a frozen dessert. A rich, dense ice cream holds its shape when you beat it; a light, airy one turns into a milkshake quickly.</p>
@@ -477,13 +482,13 @@
   <!-- TEXTURE -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="texture" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Get the Soft-Serve Texture</h2>
+      <h2 id="texture" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">How to Get the Soft-Serve Texture</h2>
       <p>The texture comes from three steps done in order: soften, beat, fold. Skip the softening and you get hard lumps; beat too long and it runs; fold too much and the caramel disappears into beige.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Soften it on the counter</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Soften it on the counter</h3>
       <p>Leave the tub out for 5 to 10 minutes. It is ready when a spoon presses into the center without force but the ice cream still holds a scoop shape. A warm kitchen gets there sooner, so check at 5 minutes.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Beat it in a frozen bowl</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Beat it in a frozen bowl</h3>
       <p>Press and drag the ice cream against the side of the cold bowl with the back of a metal spoon for 30 to 60 seconds. It turns smooth, glossy and thick, the way soft serve falls off a cone. A stand mixer with the paddle on low does it in 20 to 30 seconds. Stop as soon as it is smooth.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Fold, do not stir</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Fold, do not stir</h3>
       <p>Add the stroopwafel pieces and caramel, then lift and turn the ice cream over them three or four times. You want ribbons of caramel and pockets of cookie in every spoonful.</p>
     </div></div>
   </section>
@@ -492,7 +497,7 @@
   <!-- STROOPWAFELS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="stroopwafels" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">The Stroopwafels: Why the Cookie Matters</h2>
+      <h2 id="stroopwafels" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">The Stroopwafels: Why the Cookie Matters</h2>
       <p>The cookie is most of the flavor, so use real stroopwafels rather than plain waffle cone. A stroopwafel is two thin baked waffle layers held together by a syrup filling, and its caramel taste carries into the ice cream around each piece.</p>
       <figure class="reveal rcp-fig">
         <img src="/assets/images/cards/maple-syrup-stroopwafel.webp" alt="A 136 g box of Maple Terroir Maple Syrup Stroopwafel with a stroopwafel pictured on the front" width="600" height="600" loading="lazy">
@@ -508,7 +513,7 @@
   <!-- MAPLE CARAMEL -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="maple-caramel" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">The Maple Caramel</h2>
+      <h2 id="maple-caramel" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">The Maple Caramel</h2>
       <p>The caramel is maple syrup boiled for two minutes, then finished with butter and cream. Boiling drives off some of the water in the syrup, so it thickens into a sauce that clings to the ice cream instead of sinking to the bottom of the glass. The butter adds richness, the cream turns it opaque and soft, and the pinch of salt keeps it from tasting flat.</p>
       <p>Watch the bubbles. At first they are small and fast; after about two minutes they turn large and slow, and that is the moment to take the pan off the heat. The cream foams up when it goes in, so pour it slowly and keep whisking. The sauce looks thin while hot and thickens as it cools, which takes about 15 minutes.</p>
       <p>Use a dark, robust maple syrup if you have the choice. Its stronger flavor still tastes of maple after boiling and next to the sweetness of the ice cream; the difference between the grades is color and strength of taste, explained in our <a href="/blog/grade-a-vs-grade-b-maple-syrup">guide to maple syrup grades</a>.</p>
@@ -520,7 +525,7 @@
   <!-- COMPARED -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="compared" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Homemade vs the Drive-Thru Version</h2>
+      <h2 id="compared" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Homemade vs the Drive-Thru Version</h2>
       <p>The homemade cup swaps every part of the restaurant one for a version you control: ice cream for soft serve, whole stroopwafels for waffle cone pieces, and maple caramel for caramel sauce.</p>
       <div class="reveal cmp-wrap">
         <table class="cmp-table">
@@ -549,10 +554,10 @@
         <!-- SHELF:START handles="maple-syrup-stroopwafel,pure-maple-syrup-maple-leaf-bottle-250ml,maple-syrup-mini-stroopwafel,pure-maple-syrup-stroopwafels-caddy" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maple-syrup-stroopwafel-136g-box-front.jpg?v=1786496064&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Stroopwafel</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">136 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Stroopwafel to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-mini-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_17_bac4a82c-094b-4140-944f-1fa18ad27e57.png?v=1774747403&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/maple-syrup-mini-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Mini Stroopwafels</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">128 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815580229881" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Mini Stroopwafels to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15.png?v=1794511136&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Stroopwafels</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">1190 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$39.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42579003408633" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Stroopwafels to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/maple-syrup-stroopwafel-136g-box-front.jpg?v=1786496064&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-syrup-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Stroopwafel</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">136 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815583441145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Stroopwafel to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/maple-syrup-mini-stroopwafel" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_17_bac4a82c-094b-4140-944f-1fa18ad27e57.png?v=1774747403&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/maple-syrup-mini-stroopwafel" class="hover:text-amber-warm transition-colors">Maple Syrup Mini Stroopwafels</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">128 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$8.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815580229881" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Syrup Mini Stroopwafels to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/public_15.png?v=1794511136&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-stroopwafels-caddy" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Stroopwafels</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">1190 g</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$39.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/42579003408633" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Stroopwafels to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -584,7 +589,7 @@
   <!-- VARIATIONS -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="variations" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Five Ways to Change It</h2>
+      <h2 id="variations" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Five Ways to Change It</h2>
       <p>Keep the method and change one thing: the stroopwafel flavor, the ice cream or the form. Each of these uses the same quantities as the recipe card.</p>
       <ul class="list-disc pl-6 space-y-3 text-warm-gray-600">
         <li><strong class="text-charcoal font-semibold">Chocolate:</strong> chocolate ice cream with our <a href="/products/cocoa-chocolate-maple-stroopwafels-caddy">Chocolate Maple Stroopwafels</a>, and the maple caramel as written.</li>
@@ -601,7 +606,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[900px]">
       <div class="max-w-[760px] prose-body">
-        <h2 id="fixes" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Fixes for Common Problems</h2>
+        <h2 id="fixes" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Fixes for Common Problems</h2>
         <p>Almost every problem with this dessert is temperature. Here is what each one looks like and what to do.</p>
       </div>
       <div class="fix-list">
@@ -619,7 +624,7 @@
   <!-- AHEAD -->
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto"><div class="max-w-[760px] prose-body">
-      <h2 id="ahead" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Making It Ahead</h2>
+      <h2 id="ahead" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Making It Ahead</h2>
       <p>Make the caramel first, up to a day ahead, and keep it covered in the fridge. It sets firm when cold, so leave it out for 15 minutes or warm it for 10 seconds before using it.</p>
       <p>The assembled dessert is best eaten within minutes. For a party, beat and fold each batch just before serving, or spoon the finished cups into the freezer and serve them within the hour, before the stroopwafel pieces soften.</p>
     </div></div>
@@ -630,12 +635,12 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal mb-10 md:mb-14">
-        <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Stroopwafel McFlurry Questions</h2>
+        <h2 id="faq" class="font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Stroopwafel McFlurry Questions</h2>
       </div>
       <div class="space-y-3">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is the Stroopwafel McFlurry available in Canada?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Is the Stroopwafel McFlurry available in Canada?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -644,7 +649,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What is in a stroopwafel McFlurry?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What is in a stroopwafel McFlurry?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -653,7 +658,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I make it without a mixer?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can I make it without a mixer?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -662,7 +667,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How many stroopwafels do I need?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How many stroopwafels do I need?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -671,7 +676,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can I use maple syrup instead of caramel?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can I use maple syrup instead of caramel?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -680,7 +685,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is it gluten-free or dairy-free?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Is it gluten-free or dairy-free?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -696,7 +701,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
-        <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Key Takeaways</h2>
+        <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-4">Key Takeaways</h2>
         <ul class="list-disc pl-6 space-y-2 text-warm-gray-600 max-w-[760px]">
           <li>2 cups of vanilla ice cream, 3 maple stroopwafels and a maple caramel make two servings in about 30 minutes.</li>
           <li>Freeze the glasses, the bowl and the stroopwafels first; cold decides the texture.</li>
@@ -714,21 +719,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Stroopwafels, Family Owned Since 1978.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Made in Canada with a pure maple syrup filling, from $8.99 a box of four.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Maple Stroopwafels, Family Owned Since 1978.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Made in Canada with a pure maple syrup filling, from $8.99 a box of four.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/collections/maple-stroopwafels" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="/collections/maple-stroopwafels" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Stroopwafels</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/recipes/" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">More Recipes</a>
+                <a href="/recipes/" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">More Recipes</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

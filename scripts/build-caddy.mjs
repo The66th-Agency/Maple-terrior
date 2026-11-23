@@ -185,7 +185,7 @@ function block(list, self) {
     <div class="max-w-[1400px] mx-auto">
       <div class="cd-top mb-16 md:mb-24">
         <div>
-          <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">35 Stroopwafels in Every Caddy</h2>
+          <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">35 Stroopwafels in Every Caddy</h2>
           <p class="reveal reveal-delay-1 cd-lede">Each caddy holds ${PER_CADDY} stroopwafels, and each ${GRAMS} g stroopwafel is sealed in its own wrapper, ${(PER_CADDY * GRAMS).toLocaleString('en-CA')} g in all. At ${money(one)} a caddy, that is about ${money(each)} a stroopwafel. All five flavors are made in Canada with Canadian flour and maple syrup.</p>
           <div class="cd-facts reveal reveal-delay-2">
             <div class="cd-fact"><b>${PER_CADDY}</b><span>stroopwafels, each wrapped</span></div>

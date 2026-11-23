@@ -153,13 +153,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .img-zoom { transition: transform 1.2s cubic-bezier(0.32, 0.72, 0, 1); } .img-zoom:hover { transform: scale(1.05); }
@@ -216,8 +221,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -237,9 +242,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -248,14 +253,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -285,7 +290,7 @@
         </ol>
       </nav>
       <!-- CRUMBS:END -->
-      <h1 class="reveal reveal-delay-1 font-display text-3xl md:text-6xl lg:text-7xl font-semibold text-cream tracking-tight leading-[1.08] max-w-4xl">
+      <h1 class="reveal reveal-delay-1 font-display text-3xl md:text-6xl lg:text-7xl font-medium text-cream tracking-tight leading-[1.08] max-w-4xl">
         Canadian Maple Syrup,<br>From One Farm.
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-300 leading-relaxed max-w-[56ch] text-lg mt-6">
@@ -293,9 +298,9 @@
       </p>
       <p class="reveal reveal-delay-2 text-sm text-warm-gray-300 mt-4">Published <time datetime="2026-08-26">August 26, 2026</time> &middot; Last updated <time datetime="2026-11-04">November 4, 2026</time></p>
       <div class="reveal reveal-delay-3 mt-8 flex flex-wrap gap-4">
-        <a href="#shop" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-7 py-4 text-sm font-semibold group">
+        <a href="#shop" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-charcoal rounded-full px-7 py-4 text-sm font-semibold group">
           <span>Shop Canadian Maple Syrup</span>
-          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition duration-500 group-hover:translate-x-0.5"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a href="#where" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-7 py-4 text-sm font-medium hover:bg-white/15">Where It Comes From</a>
       </div>
@@ -332,7 +337,7 @@
   <section id="shop" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           Shop Canadian Maple Syrup
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[56ch] text-lg mt-4">
@@ -342,11 +347,11 @@
       <!-- SHELF:START handles="organic-pure-maple-syrup-250ml,organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition,pure-maple-syrup-maple-leaf-bottle-50ml,pure-maple-syrup-maple-leaf-bottle-100ml,pure-maple-syrup-maple-leaf-bottle-250ml" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-5 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="hover:text-amber-warm transition-colors">Organic First Tap Nouveau Limited Edition Pure Maple Syrup</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$19.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815545397497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic First Tap Nouveau Limited Edition Pure Maple Syrup to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-syrup-maple-leaf-50ml.jpg?v=1794510092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 50ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">50 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$7.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815537697017" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 50ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1794510133&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/organic-maple-syrup-nouveau-250ml.jpg?v=1749671602&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="hover:text-amber-warm transition-colors">Organic First Tap Nouveau Limited Edition Pure Maple Syrup</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$19.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815545397497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic First Tap Nouveau Limited Edition Pure Maple Syrup to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/pure-maple-syrup-maple-leaf-50ml.jpg?v=1794510092&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 50ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">50 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$7.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815537697017" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 50ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1794510133&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -373,7 +378,7 @@
       <div class="reveal mt-12 text-center">
         <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-7 py-4 text-sm font-semibold group">
           <span>View All Maple Syrup</span>
-          <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center transition duration-500 group-hover:translate-x-0.5"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
       </div>
     </div>
@@ -385,7 +390,7 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
         <div>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Pour It</h2>
+          <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">Rated 5.0 by the People Who Pour It</h2>
         </div>
         <a href="/products" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Shop the full range <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
@@ -393,7 +398,7 @@
         <figure class="reveal group lg:col-span-7 lg:row-span-2 rounded-[2rem] overflow-hidden grid grid-cols-1 sm:grid-cols-2" style="background:#F3E6CF">
           <a href="/products/organic-pure-maple-syrup-250ml" class="relative flex items-center justify-center p-8 md:p-10 min-h-[260px]" tabindex="-1" aria-hidden="true">
             <span class="absolute inset-6 rounded-full bg-white/50 blur-2xl"></span>
-            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2">
+            <img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=700" alt="" width="700" height="700" loading="lazy" class="relative w-full max-w-[320px] aspect-square object-contain mix-blend-multiply transition-transform duration-700 group-hover:-rotate-2">
           </a>
           <div class="p-7 md:p-10 flex flex-col justify-center">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
@@ -402,7 +407,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-1 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=300" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Genuine maple syrup!! Awesome service!!&rdquo;</blockquote>
@@ -410,7 +415,7 @@
           </div>
         </figure>
         <figure class="reveal reveal-delay-2 group lg:col-span-5 bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-5 md:p-6 flex gap-5 items-center">
-          <a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/products/maple-leaf-bottle/maple-leaf-bottle-50ml-embossed.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></a>
+          <a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="flex-shrink-0 w-24 h-24 md:w-32 md:h-32 rounded-[1.25rem] overflow-hidden flex items-center justify-center" style="background:#F5F0E8" tabindex="-1" aria-hidden="true"><img src="/assets/images/products/maple-leaf-bottle/maple-leaf-bottle-50ml-embossed.webp" alt="" width="300" height="300" loading="lazy" class="w-full h-full object-cover transition-transform duration-700"></a>
           <div class="flex flex-col">
             <span class="inline-flex gap-0.5 text-amber-warm" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4 fill-current"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span>
             <blockquote class="text-charcoal leading-relaxed mt-3">&ldquo;Delicious!&rdquo;</blockquote>
@@ -427,7 +432,7 @@
   <section id="grades" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-16 mb-10 md:mb-14">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-2xl">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-2xl">
           The Four Canadian Grades, and the Two We Sell
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[48ch] md:mb-1">
@@ -437,14 +442,14 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
         <div class="reveal flex flex-col">
           <div class="cs-class rounded-[1.5rem] p-5 md:p-6 flex flex-col" style="background:#E8B653;">
-            <p class="mt-auto font-display text-xl md:text-2xl font-semibold text-charcoal leading-tight">Golden, Delicate Taste</p>
+            <p class="mt-auto font-display text-xl md:text-2xl font-medium text-charcoal leading-tight">Golden, Delicate Taste</p>
             <p class="text-xs text-charcoal/80 mt-1">75 percent of light or more passes through</p>
           </div>
           <div class="pt-6 space-y-6">
             <article class="flex gap-4 items-start">
               <a href="/products/organic-pure-maple-syrup-250ml" class="flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/organic-pure-maple-syrup-250ml.webp" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
               <div>
-                <h3 class="font-display text-lg font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup</a></h3>
+                <h3 class="font-display text-lg font-medium text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup</a></h3>
                 <p class="text-sm text-warm-gray-600 leading-relaxed mt-1">Early harvest, certified organic. 250 mL.</p>
                 <div class="flex items-center gap-3 mt-3"><p class="text-sm font-medium text-charcoal">$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup to cart">+ Add</button></div>
               </div>
@@ -452,7 +457,7 @@
             <article class="flex gap-4 items-start">
               <a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition.webp?v=3" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
               <div>
-                <h3 class="font-display text-lg font-semibold text-charcoal leading-snug"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="hover:text-amber-warm transition-colors">Organic First Tap Nouveau</a></h3>
+                <h3 class="font-display text-lg font-medium text-charcoal leading-snug"><a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="hover:text-amber-warm transition-colors">Organic First Tap Nouveau</a></h3>
                 <p class="text-sm text-warm-gray-600 leading-relaxed mt-1">Boiled and bottled on the first day of the season, each bottle serial-numbered, in a gift box. 250 mL.</p>
                 <div class="flex items-center gap-3 mt-3"><p class="text-sm font-medium text-charcoal">$19.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815545397497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic First Tap Nouveau to cart">+ Add</button></div>
               </div>
@@ -461,7 +466,7 @@
         </div>
         <div class="reveal reveal-delay-1 flex flex-col">
           <div class="cs-class rounded-[1.5rem] p-5 md:p-6 flex flex-col" style="background:#C9852B;">
-            <p class="mt-auto font-display text-xl md:text-2xl font-semibold text-charcoal leading-tight">Amber, Rich Taste</p>
+            <p class="mt-auto font-display text-xl md:text-2xl font-medium text-charcoal leading-tight">Amber, Rich Taste</p>
             <p class="text-xs text-charcoal/80 mt-1">50 to 75 percent of light</p>
           </div>
           <div class="pt-6 space-y-6">
@@ -470,14 +475,14 @@
         </div>
         <div class="reveal reveal-delay-2 flex flex-col">
           <div class="cs-class rounded-[1.5rem] p-5 md:p-6 flex flex-col" style="background:#8A4B14;">
-            <p class="mt-auto font-display text-xl md:text-2xl font-semibold text-cream leading-tight">Dark, Robust Taste</p>
+            <p class="mt-auto font-display text-xl md:text-2xl font-medium text-cream leading-tight">Dark, Robust Taste</p>
             <p class="text-xs text-cream/75 mt-1">25 to 50 percent of light</p>
           </div>
           <div class="pt-6 space-y-6">
             <article class="flex gap-4 items-start">
               <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="flex-shrink-0 w-20 h-20 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
               <div>
-                <h3 class="font-display text-lg font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Maple Leaf Bottle</a></h3>
+                <h3 class="font-display text-lg font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Maple Leaf Bottle</a></h3>
                 <p class="text-sm text-warm-gray-600 leading-relaxed mt-1">Late harvest, in the maple leaf glass bottle. Not organic. 250 mL.</p>
                 <div class="flex items-center gap-3 mt-3"><p class="text-sm font-medium text-charcoal">$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Maple Leaf Bottle to cart">+ Add</button></div>
               </div>
@@ -486,7 +491,7 @@
         </div>
         <div class="reveal reveal-delay-3 flex flex-col">
           <div class="cs-class rounded-[1.5rem] p-5 md:p-6 flex flex-col" style="background:#3F2108;">
-            <p class="mt-auto font-display text-xl md:text-2xl font-semibold text-cream leading-tight">Very Dark, Strong Taste</p>
+            <p class="mt-auto font-display text-xl md:text-2xl font-medium text-cream leading-tight">Very Dark, Strong Taste</p>
             <p class="text-xs text-cream/75 mt-1">under 25 percent of light</p>
           </div>
           <div class="pt-6 space-y-6">
@@ -496,15 +501,15 @@
       </div>
       <div class="reveal mt-14 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 border-t border-warm-gray-200 pt-8">
         <div>
-          <h3 class="font-display text-xl font-semibold text-charcoal">On pancakes</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal">On pancakes</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed mt-2 mt-copy">Pour Golden for a light, delicate stack, and Dark when you want the maple to come through the butter and berries. <a href="/blog/best-maple-syrup-for-pancakes-and-waffles">The pancake guide</a> explains why.</p>
         </div>
         <div>
-          <h3 class="font-display text-xl font-semibold text-charcoal">In baking</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal">In baking</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed mt-2 mt-copy">Bake with Dark, the stronger of our two grades, so you still taste the maple after the oven. <a href="/blog/best-maple-syrup-for-baking">The baking guide</a> has the detail.</p>
         </div>
         <div>
-          <h3 class="font-display text-xl font-semibold text-charcoal">In coffee</h3>
+          <h3 class="font-display text-xl font-medium text-charcoal">In coffee</h3>
           <p class="text-sm text-warm-gray-600 leading-relaxed mt-2 mt-copy">Stir Golden into black coffee and Dark into a latte, one to two teaspoons a cup, as <a href="/blog/best-maple-syrup-for-coffee">the coffee guide</a> suggests.</p>
         </div>
       </div>
@@ -520,17 +525,17 @@
     <div class="max-w-[1400px] mx-auto bg-charcoal rounded-[2rem] p-8 md:p-14 lg:p-20 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <div class="lg:col-span-5 grid grid-cols-2 gap-4 md:gap-5">
         <div class="reveal rounded-[1.5rem] bg-white/5 border border-white/10 p-6 md:p-8">
-          <p class="font-display text-5xl md:text-6xl font-semibold text-amber-glow leading-none">71%</p>
+          <p class="font-display text-5xl md:text-6xl font-medium text-amber-glow leading-none">71%</p>
           <p class="text-sm text-warm-gray-300 leading-relaxed mt-4">of the world&rsquo;s pure maple syrup is made in Canada</p>
         </div>
         <div class="reveal reveal-delay-1 rounded-[1.5rem] bg-white/5 border border-white/10 p-6 md:p-8">
-          <p class="font-display text-5xl md:text-6xl font-semibold text-amber-glow leading-none">90%</p>
+          <p class="font-display text-5xl md:text-6xl font-medium text-amber-glow leading-none">90%</p>
           <p class="text-sm text-warm-gray-300 leading-relaxed mt-4">of Canada&rsquo;s maple syrup was made in Quebec in 2025</p>
         </div>
         <p class="col-span-2 text-xs text-warm-gray-500">Figures from <a href="https://www.maplefromcanada.com/about/where-does-maple-come-from/" class="underline underline-offset-2 hover:text-cream" rel="noopener">Maple from Canada</a> and <a href="https://www150.statcan.gc.ca/n1/daily-quotidien/251211/dq251211f-eng.htm" class="underline underline-offset-2 hover:text-cream" rel="noopener">Statistics Canada</a>.</p>
       </div>
       <div class="lg:col-span-7">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-cream tracking-tight leading-tight mb-5">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-cream tracking-tight leading-tight mb-5">
           Where Our Canadian Maple Syrup Comes From
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-300 leading-relaxed max-w-[58ch]">
@@ -553,7 +558,7 @@
   <section id="sizes" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-3xl mb-8 md:mb-10">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">
           Sizes, and the Price per Bottle by the Case
         </h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[58ch]">
@@ -564,35 +569,35 @@
           <div class="cs-row reveal grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-16 items-center py-6">
             <div class="lg:col-span-4 flex items-center gap-4">
               <a href="/products/organic-pure-maple-syrup-250ml" class="flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/organic-pure-maple-syrup-250ml.webp" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
-              <div><p class="font-display text-lg font-semibold text-charcoal leading-snug">Organic Pure Maple Syrup</p><p class="text-xs text-warm-gray-500 mt-0.5">250 mL, Golden</p></div>
+              <div><p class="font-display text-lg font-medium text-charcoal leading-snug">Organic Pure Maple Syrup</p><p class="text-xs text-warm-gray-500 mt-0.5">250 mL, Golden</p></div>
             </div>
             <div class="lg:col-span-8 flex flex-wrap gap-2"><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add 1 bottle of Organic Pure Maple Syrup to cart"><b>$14.99</b><span>1 bottle</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521323766009" onclick="MapleCart.addFromBtn(this)" aria-label="Add 12 bottles of Organic Pure Maple Syrup to cart"><b>$13.50 each</b><span>12 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521323798777" onclick="MapleCart.addFromBtn(this)" aria-label="Add 24 bottles of Organic Pure Maple Syrup to cart"><b>$12.75 each</b><span>24 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/46289714053369" onclick="MapleCart.addFromBtn(this)" aria-label="Add 36 bottles of Organic Pure Maple Syrup to cart"><b>$12.00 each</b><span>36 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42573697155321" onclick="MapleCart.addFromBtn(this)" aria-label="Add 48 bottles of Organic Pure Maple Syrup to cart"><b>$11.25 each</b><span>48 bottles</span></button></div>
           </div>
           <div class="cs-row reveal grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-16 items-center py-6">
             <div class="lg:col-span-4 flex items-center gap-4">
               <a href="/products/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition" class="flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/organic-first-tap-nouveau-limited-edition-pure-maple-syrup-limited-edition.webp?v=3" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
-              <div><p class="font-display text-lg font-semibold text-charcoal leading-snug">Organic First Tap Nouveau</p><p class="text-xs text-warm-gray-500 mt-0.5">250 mL, Golden</p></div>
+              <div><p class="font-display text-lg font-medium text-charcoal leading-snug">Organic First Tap Nouveau</p><p class="text-xs text-warm-gray-500 mt-0.5">250 mL, Golden</p></div>
             </div>
             <div class="lg:col-span-8 flex flex-wrap gap-2"><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/45815545397497" onclick="MapleCart.addFromBtn(this)" aria-label="Add 1 bottle of Organic First Tap Nouveau to cart"><b>$19.99</b><span>1 bottle</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42531889381625" onclick="MapleCart.addFromBtn(this)" aria-label="Add 12 bottles of Organic First Tap Nouveau to cart"><b>$17.99 each</b><span>12 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42531889414393" onclick="MapleCart.addFromBtn(this)" aria-label="Add 24 bottles of Organic First Tap Nouveau to cart"><b>$16.99 each</b><span>24 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/46289714479353" onclick="MapleCart.addFromBtn(this)" aria-label="Add 36 bottles of Organic First Tap Nouveau to cart"><b>$15.99 each</b><span>36 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42573709574393" onclick="MapleCart.addFromBtn(this)" aria-label="Add 48 bottles of Organic First Tap Nouveau to cart"><b>$14.99 each</b><span>48 bottles</span></button></div>
           </div>
           <div class="cs-row reveal grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-16 items-center py-6">
             <div class="lg:col-span-4 flex items-center gap-4">
               <a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
-              <div><p class="font-display text-lg font-semibold text-charcoal leading-snug">Maple Leaf Bottle</p><p class="text-xs text-warm-gray-500 mt-0.5">250 mL, Dark</p></div>
+              <div><p class="font-display text-lg font-medium text-charcoal leading-snug">Maple Leaf Bottle</p><p class="text-xs text-warm-gray-500 mt-0.5">250 mL, Dark</p></div>
             </div>
             <div class="lg:col-span-8 flex flex-wrap gap-2"><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add 1 bottle of Maple Leaf Bottle to cart"><b>$24.99</b><span>1 bottle</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521324585209" onclick="MapleCart.addFromBtn(this)" aria-label="Add 12 bottles of Maple Leaf Bottle to cart"><b>$22.50 each</b><span>12 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521324617977" onclick="MapleCart.addFromBtn(this)" aria-label="Add 24 bottles of Maple Leaf Bottle to cart"><b>$21.25 each</b><span>24 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/46289711104249" onclick="MapleCart.addFromBtn(this)" aria-label="Add 36 bottles of Maple Leaf Bottle to cart"><b>$19.99 each</b><span>36 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42573690405113" onclick="MapleCart.addFromBtn(this)" aria-label="Add 48 bottles of Maple Leaf Bottle to cart"><b>$18.75 each</b><span>48 bottles</span></button></div>
           </div>
       <div class="cs-row reveal grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-16 items-center py-6">
             <div class="lg:col-span-4 flex items-center gap-4">
               <a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-100ml.webp?v=3" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
-              <div><p class="font-display text-lg font-semibold text-charcoal leading-snug">Maple Leaf Bottle</p><p class="text-xs text-warm-gray-500 mt-0.5">100 mL, Dark</p></div>
+              <div><p class="font-display text-lg font-medium text-charcoal leading-snug">Maple Leaf Bottle</p><p class="text-xs text-warm-gray-500 mt-0.5">100 mL, Dark</p></div>
             </div>
             <div class="lg:col-span-8 flex flex-wrap gap-2"><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add 1 bottle of Maple Leaf Bottle 100 mL to cart"><b>$11.99</b><span>1 bottle</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521324224761" onclick="MapleCart.addFromBtn(this)" aria-label="Add 12 bottles of Maple Leaf Bottle 100 mL to cart"><b>$10.80 each</b><span>12 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521324257529" onclick="MapleCart.addFromBtn(this)" aria-label="Add 24 bottles of Maple Leaf Bottle 100 mL to cart"><b>$10.20 each</b><span>24 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/46289709236473" onclick="MapleCart.addFromBtn(this)" aria-label="Add 36 bottles of Maple Leaf Bottle 100 mL to cart"><b>$9.60 each</b><span>36 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521324290297" onclick="MapleCart.addFromBtn(this)" aria-label="Add 48 bottles of Maple Leaf Bottle 100 mL to cart"><b>$8.99 each</b><span>48 bottles</span></button></div>
           </div>
       <div class="cs-row reveal grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-16 items-center py-6">
             <div class="lg:col-span-4 flex items-center gap-4">
               <a href="/products/pure-maple-syrup-maple-leaf-bottle-50ml" class="flex-shrink-0 w-16 h-16 rounded-2xl overflow-hidden" style="background:#F1E9DC;" tabindex="-1" aria-hidden="true"><img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-50ml.webp?v=3" alt="" width="1000" height="1000" loading="lazy" class="w-full h-full object-cover"></a>
-              <div><p class="font-display text-lg font-semibold text-charcoal leading-snug">Maple Leaf Bottle</p><p class="text-xs text-warm-gray-500 mt-0.5">50 mL, Dark</p></div>
+              <div><p class="font-display text-lg font-medium text-charcoal leading-snug">Maple Leaf Bottle</p><p class="text-xs text-warm-gray-500 mt-0.5">50 mL, Dark</p></div>
             </div>
             <div class="lg:col-span-8 flex flex-wrap gap-2"><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/45815537697017" onclick="MapleCart.addFromBtn(this)" aria-label="Add 1 bottle of Maple Leaf Bottle 50 mL to cart"><b>$7.99</b><span>1 bottle</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521323962617" onclick="MapleCart.addFromBtn(this)" aria-label="Add 12 bottles of Maple Leaf Bottle 50 mL to cart"><b>$7.20 each</b><span>12 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521323995385" onclick="MapleCart.addFromBtn(this)" aria-label="Add 24 bottles of Maple Leaf Bottle 50 mL to cart"><b>$6.80 each</b><span>24 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/46289708286201" onclick="MapleCart.addFromBtn(this)" aria-label="Add 36 bottles of Maple Leaf Bottle 50 mL to cart"><b>$6.40 each</b><span>36 bottles</span></button><button class="cs-chip" data-variant-id="gid://shopify/ProductVariant/42521324060921" onclick="MapleCart.addFromBtn(this)" aria-label="Add 48 bottles of Maple Leaf Bottle 50 mL to cart"><b>$5.99 each</b><span>48 bottles</span></button></div>
           </div>
@@ -607,19 +612,19 @@
   <!-- WHERE TO BUY -->
   <section id="where-to-buy" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Where to Buy Canadian Maple Syrup</h2>
+      <h2 class="reveal font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">Where to Buy Canadian Maple Syrup</h2>
       <p class="reveal text-warm-gray-600 leading-relaxed max-w-[65ch] mb-10">Canadian maple syrup sells at grocery and warehouse stores, from small maple brands and online. Bottle size moves the price, so compare the price per 100 mL: a 250 to 375 mL bottle cost 2.1 times as much per 100 mL as a bottle of 1 L or more. These figures come from our <a href="/research/canadian-maple-syrup-price-index" class="underline underline-offset-4 decoration-amber-warm text-charcoal">Canadian maple syrup price index</a>, read on October 23, 2026, which leaves our own bottles out.</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Grocery and warehouse stores</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">Grocery and warehouse stores</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Store brands had a median of $2.10 per 100 mL and grocery brands $2.04. A large jug is the lowest-cost way to buy syrup for everyday use.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Smaller maple brands</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">Smaller maple brands</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">Smaller brands selling from their own websites had a median of $3.40 per 100 mL, across a mix of bottle sizes.</p>
           </div>
           <div class="reveal bg-white ring-1 ring-warm-gray-200/40 rounded-[1.5rem] p-7">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-2 tracking-tight">Right here</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-2 tracking-tight">Right here</h3>
             <p class="text-sm text-warm-gray-600 leading-relaxed">We sell small glass bottles from one farm. The organic 250 mL is $6.00 per 100 mL, or $4.50 in a pack of 48. The 250 mL maple leaf bottle is $10.00, or $7.50 in a pack of 48.</p>
           </div>
       </div>
@@ -662,7 +667,7 @@
   <section id="real" class="scroll-mt-28 py-16 md:py-28 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="max-w-3xl mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">How to Tell Real Canadian Maple Syrup</h2>
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">How to Tell Real Canadian Maple Syrup</h2>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed max-w-[54ch] st-copy">Three checks on the label separate pure maple syrup from a table syrup that only looks the part, and the price is a fourth. Our <a href="/blog/pure-maple-syrup-vs-table-syrup">guide to pure maple syrup and table syrup</a> goes through each label in detail.</p>
       </div>
       <div class="st-anat st-copy" data-anat>
@@ -718,7 +723,7 @@
         <figcaption class="text-xs text-warm-gray-400 mt-3">From left: Wayne, Shawn and Gavin Lytton.</figcaption>
       </figure>
       <div class="reveal reveal-delay-1 md:col-span-7">
-        <h2 class="font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-5">Three Generations of One Maple Family.</h2>
+        <h2 class="font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-5">Three generations of one maple family</h2>
         <p class="text-warm-gray-600 leading-relaxed mb-4 max-w-[56ch]">Wayne Lytton, born in Nanaimo, B.C., started Maple Terroir with his wife Kaori in 1978. Their son Shawn runs the company today, and our online orders are packed by family members at our facility.</p>
         <p class="text-warm-gray-600 leading-relaxed mb-8 max-w-[56ch]">When you order from mapleterroir.com, the order goes to that family, and they are the ones who pack it.</p>
         <a href="/story" class="inline-flex items-center gap-2 text-sm font-medium text-charcoal hover:text-amber-warm transition-colors duration-300">Read the family story <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -732,14 +737,14 @@
   <section id="faq" class="scroll-mt-28 py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
       <div class="lg:col-span-4">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           Questions About Canadian Maple Syrup
         </h2>
       </div>
       <div class="reveal reveal-delay-2 space-y-3 lg:col-span-8">
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What does Canada Grade A mean on maple syrup?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What does Canada Grade A mean on maple syrup?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -748,7 +753,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Which provinces make Canadian maple syrup?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Which provinces make Canadian maple syrup?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -757,7 +762,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How should I store maple syrup?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How should I store maple syrup?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -766,7 +771,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Where can I buy real Canadian maple syrup online?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Where can I buy real Canadian maple syrup online?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -783,21 +788,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Order Canadian Maple Syrup From Our Family</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Golden or Dark, one bottle or a case of 48, packed by our family.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Order Canadian Maple Syrup From Our Family</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Golden or Dark, one bottle or a case of 48, packed by our family.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="#shop" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="#shop" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Syrup</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/terroir" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Read the Terroir Story</a>
+                <a href="/terroir" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">Read the Terroir Story</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

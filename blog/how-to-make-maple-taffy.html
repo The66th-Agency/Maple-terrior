@@ -183,13 +183,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -345,7 +350,7 @@
       .kt li { break-inside: avoid; }
     }
     /* Rise without the 0.98 scale, so a heading waiting to reveal already sits on the container edge. */
-    .reveal { transform: translateY(2.5rem); }
+    .reveal { transform: translateY(16px); }
     @media (prefers-reduced-motion: reduce) { .reveal { transform: none; } }
   </style>
 </head>
@@ -366,8 +371,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -387,9 +392,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -398,14 +403,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -427,7 +432,7 @@
           </ol>
         </nav>
         <!-- CRUMBS:END -->
-        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">How to Make Maple Taffy on Snow</h1>
+        <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-medium text-charcoal tracking-tight leading-[1.1] mb-6">How to Make Maple Taffy on Snow</h1>
         <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg">Boil one cup of pure maple syrup to 113°C (235°F), pour it in strips over packed snow and roll each strip onto a stick before it sets. No snow? Finely crushed ice works the same way.</p>
         <div class="reveal reveal-delay-2 rh-facts">
           <div><span>Time</span><strong>20 min</strong></div>
@@ -545,7 +550,7 @@
     <div class="max-w-[1400px] mx-auto">
     <div>
       <div class="max-w-[760px] prose-body mb-6">
-        <h2 id="steps" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-4">Boil, Pour, Roll</h2>
+        <h2 id="steps" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-4">Boil, Pour, Roll</h2>
         <p>The method is four moves, and the only one that needs care is the temperature. Everything else is about speed: the syrup sets on the snow in seconds, so have the sticks ready before you pour.</p>
       </div>
       <div class="reveal ps">
@@ -566,7 +571,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto tgrid">
     <div class="tg-a max-w-[760px] prose-body">
-      <h2 id="temperature" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">What Temperature for Maple Taffy</h2>
+      <h2 id="temperature" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">What Temperature for Maple Taffy</h2>
       <p>Boil maple syrup to 113°C (235°F) for taffy you can roll on a stick. That is the finish temperature for maple on snow in the <a href="https://blogs.cornell.edu/cornellmaple/files/2021/04/Confection-Notebook5th-edition-with-bookmarks.pdf" target="_blank" rel="nofollow noopener">New York State Maple Confections Notebook</a> from Cornell's maple program, and it sits 13°C (23°F) above the point where water boils at sea level.</p>
       <p>Every maple treat is the same syrup boiled to a different point. The longer it boils, the more water leaves, and the firmer it sets as it cools. The chart below shows where taffy sits beside the other confections, from the same Cornell table. The bar is the temperature.</p>
     </div>
@@ -582,10 +587,10 @@
       </div>
     </div>
     <div class="tg-b max-w-[760px] prose-body">
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-4 mb-4">Adjust for your kitchen</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-4 mb-4">Adjust for your kitchen</h3>
       <p>Water does not boil at exactly 100°C everywhere. It boils lower at altitude and moves a little with the weather, and thermometers drift. The Cornell guide's advice for maple cream applies here too: measure the temperature at which water boils, on the day, with the thermometer you will use.</p>
       <p>Bring a pot of water to a rolling boil and read the thermometer. Add 13°C (23°F) to that number, and that is your taffy temperature. If water boils at 98°C in your kitchen, take the syrup off at 111°C. The <a href="https://www.massmaple.org/?p=44" target="_blank" rel="nofollow noopener">Massachusetts Maple Producers Association</a> gives a range of 22 to 28°F (12 to 16°C) above boiling water, and says the higher end makes a stiffer taffy.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Softer or chewier</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Softer or chewier</h3>
       <p>At 113°C (235°F) the taffy is soft and stretchy and rolls easily. Taken to 115°C (239°F), the temperature Ricardo uses in his <a href="https://www.ricardocuisine.com/en/recipes/3117-homemade-maple-taffy-on-snow" target="_blank" rel="nofollow noopener">maple taffy on snow</a>, it sets firmer and chewier on the stick. Go much past that and the strips harden before you can roll them.</p>
     </div>
     </div>
@@ -594,7 +599,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
     <div class="max-w-[760px] prose-body">
-      <h2 id="no-thermometer" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Test Maple Taffy Without a Thermometer</h2>
+      <h2 id="no-thermometer" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">How to Test Maple Taffy Without a Thermometer</h2>
       <p>A thermometer is the reliable way, but two tests tell you when the syrup is close. Start testing once the bubbles turn small and the syrup coats a spoon in a thick layer.</p>
       <div class="duo">
         <div>
@@ -614,13 +619,13 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
     <div class="max-w-[760px] prose-body">
-      <h2 id="without-snow" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">How to Make Maple Taffy Without Snow</h2>
+      <h2 id="without-snow" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">How to Make Maple Taffy Without Snow</h2>
       <p>Maple taffy only needs a surface cold enough to set the syrup before crystals form. The Cornell notebook explains that syrup poured onto snow or fine shaved ice thickens so quickly that it sets smooth instead of grainy. Any of these three works.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Crushed ice in a baking pan</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Crushed ice in a baking pan</h3>
       <p>Crush 1 to 2 kg (2 to 4 lb) of ice as fine as you can in a food processor or blender, a few cups at a time, and pack it into the baking pan. This is the method in Maple from Canada's recipe. Fine ice works better than cubes, because cubes leave gaps the syrup runs into.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Shaved ice</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Shaved ice</h3>
       <p>A shaved-ice machine makes ice with a texture close to snow. Both the Cornell notebook and the Massachusetts producers name shaved ice as the stand-in. Pack it firm in the pan the same way.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Snow saved in the freezer</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Snow saved in the freezer</h3>
       <p>Scoop clean snow into the pan on a snowy day, cover it and keep it in the freezer until you want it. Fresh snow from away from roads and paths, with the top layer scraped off, is the cleanest to use.</p>
     </div>
     </div>
@@ -629,7 +634,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
     <div class="max-w-[760px] prose-body">
-      <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup to Use for Taffy</h2>
+      <h2 id="which-syrup" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Which Maple Syrup to Use for Taffy</h2>
       <p>Use pure maple syrup, made only from boiled maple sap. The taste of the taffy is the taste of the syrup, concentrated, so the grade you pick shows. Table syrup is mostly corn syrup with flavoring and will not taste of maple; our guide to <a href="/blog/pure-maple-syrup-vs-table-syrup">pure maple syrup vs table syrup</a> explains how to read the label.</p>
       <figure class="reveal rcp-fig">
         <img src="/assets/images/cards/pure-maple-syrup-maple-leaf-bottle-250ml.webp" alt="A 250 mL maple-leaf-shaped glass bottle of Maple Terroir pure maple syrup, Canada Grade A Dark, Robust Taste" width="600" height="600" loading="lazy">
@@ -653,9 +658,9 @@
         <!-- SHELF:START handles="pure-maple-syrup-maple-leaf-bottle-250ml,organic-pure-maple-syrup-250ml,pure-maple-syrup-maple-leaf-bottle-100ml" -->
       <style>@media (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd){grid-column:1/-1;flex-direction:row}[data-shelf]>article:last-child:nth-child(odd)>a{flex:none;width:calc(50% - 6px)}[data-shelf]>article:last-child:nth-child(odd)>div{justify-content:center}[data-shelf]>article:last-child:nth-child(odd)>div>div{margin-top:0}}@media (min-width:768px) and (max-width:1023px){[data-shelf]>article:last-child:nth-child(odd)>a{width:calc(50% - 10px)}}</style>
       <div data-shelf class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
-        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1794510133&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-250ml.jpg?v=1749671463&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-250ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$24.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815541301497" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/organic-pure-maple-syrup-250ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/files/Maplesyruporganic250ml.png?v=1749671434&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/organic-pure-maple-syrup-250ml" class="hover:text-amber-warm transition-colors">Organic Pure Maple Syrup 250ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">250 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$14.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815550673145" onclick="MapleCart.addFromBtn(this)" aria-label="Add Organic Pure Maple Syrup 250ml to cart">+ Add</button></div></div></article>
+        <article class="product-card ring-1 ring-warm-gray-200/30 flex flex-col"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="block relative aspect-square overflow-hidden bg-white" tabindex="-1" aria-hidden="true"><img src="https://cdn.shopify.com/s/files/1/0636/0763/6217/products/maple-syrup-maple-leaf-100ml.jpg?v=1794510133&amp;width=600" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600"></a><div class="p-4 md:p-5 flex flex-col flex-1"><h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/pure-maple-syrup-maple-leaf-bottle-100ml" class="hover:text-amber-warm transition-colors">Pure Maple Syrup Maple Leaf Bottle 100ml</a></h3><p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">100 mL</p><div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap"><p class="text-sm font-medium text-charcoal" data-price>$11.99</p><button class="atc-btn" data-variant-id="gid://shopify/ProductVariant/45815538843897" onclick="MapleCart.addFromBtn(this)" aria-label="Add Pure Maple Syrup Maple Leaf Bottle 100ml to cart">+ Add</button></div></div></article>
       </div>
       <script>
       (function () {
@@ -686,7 +691,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
     <div class="max-w-[760px] prose-body">
-      <h2 id="crowd" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Making Maple Taffy for a Crowd</h2>
+      <h2 id="crowd" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Making Maple Taffy for a Crowd</h2>
       <p>Allow about 2 tablespoons of finished taffy per stick. Food writer Valerie Lugonja of <a href="https://acanadianfoodie.com/?p=71308" target="_blank" rel="nofollow noopener">A Canadian Foodie</a> plans one cup of syrup for six to eight people. Boil one cup at a time: a small batch reaches temperature in about 10 minutes, and it stays hot and pourable while you work through the pan.</p>
       <div class="reveal cmp-wrap">
         <table class="cmp-table">
@@ -707,7 +712,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
     <div class="max-w-[760px] prose-body">
-      <h2 id="fixes" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">When Maple Taffy Goes Wrong</h2>
+      <h2 id="fixes" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">When Maple Taffy Goes Wrong</h2>
       <p>Nearly every problem comes down to the temperature or the snow. These are the four you are most likely to meet, and how to fix each one without starting over.</p>
       <div class="fix-list">
         <div><h3>It melts into the snow</h3><p>The syrup did not boil long enough. Put the pan back on the heat and keep going until it reaches 113°C (235°F). Ricardo's recipe gives the same fix: if the taffy is too liquid, continue cooking.</p></div>
@@ -722,7 +727,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
     <div class="max-w-[760px] prose-body">
-      <h2 id="tradition" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">The Sugar Shack Tradition</h2>
+      <h2 id="tradition" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">The Sugar Shack Tradition</h2>
       <p>Maple taffy belongs to sugaring season, the few weeks each spring when the sap runs and producers boil it into syrup. At a sugar shack, or cabane à sucre, taffy is made alongside the syrup: poured hot onto clean snow and picked up on a wooden stick.</p>
       <p>The New England version comes with its own side dishes. The Massachusetts Maple Producers Association lists sour pickles to cut the sweetness, served with saltines or plain doughnuts. It sounds odd and works well, and it is a good way to keep a group eating more than one stick. To learn how the syrup itself is made before it reaches the pan, read <a href="/blog/from-sap-to-sweetness-a-complete-pure-maple-syrup-journey">how maple syrup is made, from sap to bottle</a>.</p>
     </div>
@@ -732,12 +737,12 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
     <div class="max-w-[760px] prose-body">
-      <h2 id="safety" class="reveal font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight mb-6">Safety and Leftovers</h2>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-4 mb-4">Hot syrup burns</h3>
+      <h2 id="safety" class="reveal font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight mb-6">Safety and Leftovers</h2>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-4 mb-4">Hot syrup burns</h3>
       <p>At 113°C, boiling syrup is hotter than boiling water, and it sticks to skin. Let an adult do the boiling and the pouring. Children can stand on the far side of the pan and roll the strips once they are on the snow, which is the part they want to do anyway.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Eat it the same day</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Eat it the same day</h3>
       <p>Maple taffy is at its best a minute after it is rolled. It does not keep well at room temperature, where it softens and slumps off the stick. To hold it for a few hours, or until the next day, leave the rolled sticks on a tray of ice in the freezer.</p>
-      <h3 class="font-display text-2xl font-semibold text-charcoal tracking-tight mt-10 mb-4">Syrup left in the pan</h3>
+      <h3 class="font-display text-2xl font-medium text-charcoal tracking-tight mt-10 mb-4">Syrup left in the pan</h3>
       <p>Whatever is left in the pan sets as it cools. Warm it gently with a spoonful of water and pour it over pancakes or ice cream, or soak the pan in hot water and it will dissolve.</p>
       <p>An opened bottle of syrup belongs in the fridge between batches. Our <a href="/tools/maple-syrup-shelf-life">maple syrup shelf life checker</a> says how long yours will last.</p>
     </div>
@@ -747,12 +752,12 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
       <div class="reveal md:col-span-4">
-        <h2 id="faq" class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">Maple Taffy Questions</h2>
+        <h2 id="faq" class="font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">Maple Taffy Questions</h2>
       </div>
       <div class="space-y-3 md:col-span-8">
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What is maple taffy made of?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What is maple taffy made of?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -761,7 +766,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What temperature do you boil maple syrup to for taffy?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What temperature do you boil maple syrup to for taffy?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -770,7 +775,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Can you make maple taffy without snow?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Can you make maple taffy without snow?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -779,7 +784,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Why did my maple taffy melt into the snow?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Why did my maple taffy melt into the snow?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -788,7 +793,7 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How much maple syrup do I need per person?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How much maple syrup do I need per person?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -797,11 +802,11 @@
         </div>
         <div class="reveal bg-white rounded-[1.5rem] ring-1 ring-warm-gray-200/40 overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is maple taffy the same as maple candy?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Is maple taffy the same as maple candy?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
-            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">No. Taffy is poured onto snow and cools too fast to crystallize, so it stays smooth and chewy. <a href="/shop/maple-candy" class="text-amber-warm underline">Maple candy</a> is boiled a little higher, stirred until it crystallizes and set in a mold, so it is firm and melts on the tongue.</p>
+            <p class="pb-5 text-sm text-warm-gray-600 leading-relaxed">No. Taffy is poured onto snow and cools too fast to crystallize, so it stays smooth and chewy. <a href="/shop/maple-candy" class="text-amber-deep underline">Maple candy</a> is boiled a little higher, stirred until it crystallizes and set in a mold, so it is firm and melts on the tongue.</p>
           </div>
         </div>
       </div>
@@ -811,7 +816,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto kt">
       <div class="reveal bg-white rounded-[2rem] ring-1 ring-warm-gray-200/40 p-7 md:p-10">
-        <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-4">Key Takeaways</h2>
+        <h2 id="takeaways" class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-4">Key Takeaways</h2>
         <ul class="list-disc pl-6 space-y-2 text-warm-gray-600">
           <li>Boil 1 cup (250 mL) of pure maple syrup, without stirring, to 113°C (235°F). It makes about eight sticks.</li>
           <li>Set the temperature 13°C (23°F) above the point where water boils in your kitchen.</li>
@@ -827,21 +832,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Pure Maple Syrup, Family Owned Since 1978.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Our syrup comes from one farm, in 250 mL bottles from $14.99.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Pure Maple Syrup, Family Owned Since 1978.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Our syrup comes from one farm, in 250 mL bottles from $14.99.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="/collections/premium-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Syrup</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/recipes/" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">More Recipes</a>
+                <a href="/recipes/" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">More Recipes</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

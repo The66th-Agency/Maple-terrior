@@ -45,7 +45,7 @@ const card = (p) => `<article class="product-card ring-1 ring-warm-gray-200/30 f
     `<img src="${esc(sized(p.image, 600))}" alt="" class="w-full h-full object-cover" loading="lazy" width="600" height="600">` +
   '</a>' +
   '<div class="p-4 md:p-5 flex flex-col flex-1">' +
-    `<h3 class="font-display text-[15px] md:text-base font-semibold text-charcoal leading-snug"><a href="/products/${esc(p.handle)}" class="hover:text-amber-warm transition-colors">${esc(p.title)}</a></h3>` +
+    `<h3 class="font-display text-[15px] md:text-base font-medium text-charcoal leading-snug"><a href="/products/${esc(p.handle)}" class="hover:text-amber-warm transition-colors">${esc(p.title)}</a></h3>` +
     `<p class="text-xs text-warm-gray-400 mt-1 min-h-[1rem]">${esc(p.size)}</p>` +
     '<div class="mt-auto pt-3 flex items-center justify-between gap-2 flex-wrap">' +
       `<p class="text-sm font-medium text-charcoal" data-price>$${p.price}</p>` +

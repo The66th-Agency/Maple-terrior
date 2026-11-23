@@ -90,13 +90,18 @@
     body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; background-color: #FDFBF7; color: #2E2822; overflow-x: hidden; }
     body::after { content: ''; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
     ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #FDFBF7; } ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .reveal { opacity: 0; transform: translateY(2.5rem) scale(0.98); transition: opacity 0.9s cubic-bezier(0.32, 0.72, 0, 1), transform 0.9s cubic-bezier(0.32, 0.72, 0, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1), transform 0.6s cubic-bezier(0.32, 0.72, 0, 1); }
+    .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 100ms; } .reveal-delay-2 { transition-delay: 200ms; } .reveal-delay-3 { transition-delay: 300ms; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196,132,29,0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; } .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); } .link-underline:hover::after { width: 100%; }
     .eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
     .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
@@ -132,8 +137,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -153,9 +158,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -164,14 +169,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -192,7 +197,7 @@
         </ol>
       </nav>
       <!-- CRUMBS:END -->
-      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-6">
+      <h1 class="reveal reveal-delay-1 font-display text-4xl md:text-5xl lg:text-6xl font-medium text-charcoal tracking-tight leading-[1.1] mb-6">
         Pure Maple Syrup vs Table Syrup: How to Tell Them Apart
       </h1>
       <p class="reveal reveal-delay-2 text-warm-gray-600 leading-relaxed text-lg md:text-xl mb-6">
@@ -238,7 +243,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal mb-10 md:mb-14">
-        <h2 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
+        <h2 class="font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-3xl">
           The Ingredient Lists Side by Side
         </h2>
       </div>
@@ -246,7 +251,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         <div class="reveal bg-gradient-to-br from-amber-glow/15 to-amber-warm/10 ring-1 ring-amber-warm/20 rounded-[2rem] p-8 md:p-10">
           
-          <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-6">One ingredient.</h3>
+          <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-6">One ingredient.</h3>
 <p class="text-amber-warm text-sm mt-1 max-w-[760px]">Pure Maple Syrup</p>
           <ul class="space-y-2 mb-6 max-w-[760px]">
             <li class="text-charcoal font-medium text-lg">Maple syrup.</li>
@@ -256,7 +261,7 @@
 
         <div class="reveal reveal-delay-1 bg-warm-gray-100/50 ring-1 ring-warm-gray-200/50 rounded-[2rem] p-8 md:p-10">
           
-          <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-6">Ten ingredients or more.</h3>
+          <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-6">Ten ingredients or more.</h3>
 <p class="text-warm-gray-500 text-sm mt-1 max-w-[760px]">Table Syrup (Typical)</p>
           <ul class="space-y-2 mb-6 text-sm text-warm-gray-700 max-w-[760px]">
             <li>Corn syrup</li>
@@ -296,14 +301,14 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal mb-10 md:mb-14">
-        <h2 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
+        <h2 class="font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-3xl">
           How Each Is Made
         </h2>
       </div>
 
       <div class="max-w-[760px] prose-body">
         <p><strong class="text-charcoal font-semibold">Pure maple syrup.</strong> A maple producer drills a small tap into a sugar maple tree during the late winter and early spring, when daytime warming and overnight cold pulls sap up through the trunk. The sap, which leaves the tree at roughly two percent sugar, flows through tubing or buckets to an evaporator. There, the producer boils the sap until enough water evaporates for the remaining liquid to hit 66 percent sugar. That takes roughly 40 liters of sap to produce one liter of syrup. The producer bottles the syrup, applies a grade label based on color and flavor, and ships it. No additives, no chemistry, no laboratory.</p>
-        <p><strong class="text-charcoal font-semibold">Table syrup.</strong> A food manufacturer combines corn syrup and high-fructose corn syrup as the base. The blender adds water, then a thickener such as cellulose gum to give the product a syrup-like viscosity. Caramel color provides the brown tint. Salt and citric acid balance the flavor. Artificial maple flavoring, manufactured separately in a flavor lab from compounds such as sotolon and ethyl maltol, gets stirred in. Preservatives like sorbic acid and sodium benzoate extend the shelf life. The plant fills the bottles on a high-volume line and ships pallets to grocery chains. Pure maple syrup carries no preservative, so an opened bottle belongs in the fridge; our <a href="/tools/maple-syrup-shelf-life" class="text-amber-warm hover:text-amber-deep transition-colors">maple syrup shelf life checker</a> gives the date to finish one by.</p>
+        <p><strong class="text-charcoal font-semibold">Table syrup.</strong> A food manufacturer combines corn syrup and high-fructose corn syrup as the base. The blender adds water, then a thickener such as cellulose gum to give the product a syrup-like viscosity. Caramel color provides the brown tint. Salt and citric acid balance the flavor. Artificial maple flavoring, manufactured separately in a flavor lab from compounds such as sotolon and ethyl maltol, gets stirred in. Preservatives like sorbic acid and sodium benzoate extend the shelf life. The plant fills the bottles on a high-volume line and ships pallets to grocery chains. Pure maple syrup carries no preservative, so an opened bottle belongs in the fridge; our <a href="/tools/maple-syrup-shelf-life" class="text-amber-deep hover:text-charcoal transition-colors">maple syrup shelf life checker</a> gives the date to finish one by.</p>
       </div>
     </div>
   </section>
@@ -313,7 +318,7 @@
   <section class="py-8 md:py-12 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal mb-10 md:mb-14">
-        <h2 class="font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
+        <h2 class="font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-3xl">
           Nutritional Comparison
         </h2>
       </div>
@@ -354,7 +359,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-3xl">
           Blood Sugar
         </h2>
       </div>
@@ -370,21 +375,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
         <div class="md:col-span-4">
-          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">
             Taste
           </h2>
         </div>
         <div class="md:col-span-7 md:col-start-6 divide-y divide-warm-gray-200/50">
           <div class="reveal pb-8 prose-body max-w-[760px]">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Pure maple syrup</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">Pure maple syrup</h3>
             <p>The flavor profile is layered: caramelized maple at the top, vanilla and butterscotch underneath, with a finish that varies by grade. Producers grade pure maple syrup by color and flavor intensity into four tiers (Golden, Amber, Dark, Very Dark). The Golden grade tastes delicate and floral, while the Very Dark grade reads as robust, with notes closer to molasses. The grade chart and what each tier pairs with is covered in detail in our <a href="../blog/grade-a-vs-grade-b-maple-syrup">guide to maple syrup grades</a>.</p>
           </div>
           <div class="reveal py-8 prose-body max-w-[760px]">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">Table syrup</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">Table syrup</h3>
             <p>Table syrup tastes of sweetness and added flavoring. Pure maple syrup tastes of maple, and the taste changes with the grade.</p>
           </div>
           <div class="reveal pt-8 prose-body max-w-[760px]">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">The side-by-side test</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">The side-by-side test</h3>
             <p>Anyone who has only ever poured table syrup will notice the change immediately on the first pour of pure maple syrup. The most common reaction is that real maple syrup is less sweet, which is partly true (the sugar content is similar but the flavor distracts from pure sweetness) and partly a function of the palate adjusting to actual flavor instead of pure sugar plus flavoring.</p>
           </div>
         </div>
@@ -397,7 +402,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-3xl">
           How to Tell at a Glance
         </h2>
       </div>
@@ -405,8 +410,8 @@
       <div class="max-w-[900px] space-y-10 md:space-y-12">
         <article class="reveal">
           <div class="flex items-baseline gap-4 mb-3">
-            <span class="font-display text-4xl font-semibold text-amber-warm/60 leading-none">01</span>
-            <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight">Read the ingredient list</h3>
+            <span class="font-display text-4xl font-medium text-amber-warm/60 leading-none">01</span>
+            <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight">Read the ingredient list</h3>
           </div>
           <div class="prose-body pl-0 md:pl-14">
             <p>Pure maple syrup has one ingredient: maple syrup. Table syrup has 10 or more. This is the fastest test, takes three seconds, and is decisive. If the back-of-bottle list runs more than one line, the product is not pure maple syrup.</p>
@@ -415,28 +420,28 @@
 
         <article class="reveal">
           <div class="flex items-baseline gap-4 mb-3">
-            <span class="font-display text-4xl font-semibold text-amber-warm/60 leading-none">02</span>
-            <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight">Check the label wording</h3>
+            <span class="font-display text-4xl font-medium text-amber-warm/60 leading-none">02</span>
+            <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight">Check the label wording</h3>
           </div>
           <div class="prose-body pl-0 md:pl-14">
-            <p>In Canada, only syrup that meets the federal standard for maple syrup may use the name "maple syrup" on its label (<a href="https://inspection.canada.ca/en/food-labels/labelling/industry/maple-products" class="text-amber-warm underline underline-offset-2" rel="noopener noreferrer nofollow" target="_blank">Canadian Food Inspection Agency</a>). If a brand uses qualifiers like "maple-flavored syrup," "pancake syrup," "breakfast syrup," or "table syrup," the product is not pure maple syrup.</p>
+            <p>In Canada, only syrup that meets the federal standard for maple syrup may use the name "maple syrup" on its label (<a href="https://inspection.canada.ca/en/food-labels/labelling/industry/maple-products" class="text-amber-deep underline underline-offset-2" rel="noopener noreferrer nofollow" target="_blank">Canadian Food Inspection Agency</a>). If a brand uses qualifiers like "maple-flavored syrup," "pancake syrup," "breakfast syrup," or "table syrup," the product is not pure maple syrup.</p>
           </div>
         </article>
 
         <article class="reveal">
           <div class="flex items-baseline gap-4 mb-3">
-            <span class="font-display text-4xl font-semibold text-amber-warm/60 leading-none">03</span>
-            <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight">Check the price</h3>
+            <span class="font-display text-4xl font-medium text-amber-warm/60 leading-none">03</span>
+            <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight">Check the price</h3>
           </div>
           <div class="prose-body pl-0 md:pl-14">
-            <p>Pure maple syrup usually costs more than table syrup, but price alone does not tell you which is which. The ingredient list does. In our <a href="/research/canadian-maple-syrup-price-index" class="text-amber-warm hover:text-amber-deep transition-colors">October 2026 price index</a>, pure maple syrup cost more than five times as much as table syrup per 100 mL.</p>
+            <p>Pure maple syrup usually costs more than table syrup, but price alone does not tell you which is which. The ingredient list does. In our <a href="/research/canadian-maple-syrup-price-index" class="text-amber-deep hover:text-charcoal transition-colors">October 2026 price index</a>, pure maple syrup cost more than five times as much as table syrup per 100 mL.</p>
           </div>
         </article>
 
         <article class="reveal">
           <div class="flex items-baseline gap-4 mb-3">
-            <span class="font-display text-4xl font-semibold text-amber-warm/60 leading-none">04</span>
-            <h3 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight">Check the bottle</h3>
+            <span class="font-display text-4xl font-medium text-amber-warm/60 leading-none">04</span>
+            <h3 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight">Check the bottle</h3>
           </div>
           <div class="prose-body pl-0 md:pl-14">
             <p>The bottle does not settle it either: pure maple syrup comes in glass, plastic and tins.</p>
@@ -451,7 +456,7 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight max-w-3xl">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight max-w-3xl">
           Single-Origin vs Blended Pure Maple Syrup
         </h2>
       </div>
@@ -469,21 +474,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
         <div class="md:col-span-4">
-          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-semibold text-charcoal tracking-tight leading-tight">
+          <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-4xl font-medium text-charcoal tracking-tight leading-tight">
             Three Misconceptions About Pure Maple Syrup vs Table Syrup
           </h2>
         </div>
         <div class="md:col-span-7 md:col-start-6 divide-y divide-warm-gray-200/50">
           <div class="reveal pb-8 prose-body max-w-[760px]">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"They taste the same once you put them on pancakes"</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">"They taste the same once you put them on pancakes"</h3>
             <p>Not true. Table syrup tastes of sweetness and added flavoring. Pure maple syrup tastes of maple, and the taste changes with the grade. Pour both on pancakes and you can taste the difference.</p>
           </div>
           <div class="reveal py-8 prose-body max-w-[760px]">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"Table syrup is healthier because it has fewer calories"</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">"Table syrup is healthier because it has fewer calories"</h3>
             <p>Not true. Calorie counts run similar per tablespoon. Pure maple syrup adds manganese, zinc, calcium, potassium, and 50-plus antioxidant compounds. Table syrup adds preservatives.</p>
           </div>
           <div class="reveal pt-8 prose-body max-w-[760px]">
-            <h3 class="font-display text-xl font-semibold text-charcoal mb-3 tracking-tight">"Pure maple syrup is too expensive for everyday use"</h3>
+            <h3 class="font-display text-xl font-medium text-charcoal mb-3 tracking-tight">"Pure maple syrup is too expensive for everyday use"</h3>
             <p>A 250 mL bottle holds about 17 tablespoons. At $24.99, our maple leaf bottle works out to about $1.50 a tablespoon, and our organic 250 mL bottle at $14.99 to about 90 cents. A two-tablespoon pancake breakfast costs about $1.80 to $3.</p>
           </div>
         </div>
@@ -500,16 +505,16 @@
     </div>
     <div class="absolute inset-0 bg-charcoal/65"></div>
     <div class="relative max-w-[1100px] mx-auto text-center">
-      <h2 class="reveal font-display text-3xl md:text-5xl lg:text-6xl font-semibold text-cream tracking-tight leading-tight mb-4 max-w-3xl mx-auto">
+      <h2 class="reveal font-display text-3xl md:text-5xl lg:text-6xl font-medium text-cream tracking-tight leading-tight mb-4 max-w-3xl mx-auto">
         Pure Maple Syrup From One Farm
       </h2>
       <p class="reveal reveal-delay-1 text-warm-gray-300 leading-relaxed max-w-[48ch] mx-auto text-lg mb-10">
         Single-origin pure maple syrup from one farm. Our organic syrups are certified by Ecocert, Canada Organic and USDA Organic.
       </p>
       <div class="reveal reveal-delay-2 flex flex-wrap gap-4 justify-center">
-        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-white rounded-full px-8 py-4 text-sm font-semibold group">
+        <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-amber-warm text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
           <span>Shop Maple Terroir</span>
-          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition duration-500 group-hover:translate-x-0.5"><svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </a>
         <a href="../blog/organic-vs-conventional-maple-syrup" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/20 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">Organic vs Conventional</a>
       </div>
@@ -522,14 +527,14 @@
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
       <div class="mb-12 md:mb-16">
-        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-semibold text-charcoal tracking-tight leading-tight">
+        <h2 class="reveal reveal-delay-1 font-display text-3xl md:text-5xl font-medium text-charcoal tracking-tight leading-tight">
           Pure Maple Syrup vs Table Syrup FAQ
         </h2>
       </div>
       <div class="reveal reveal-delay-2 space-y-3">
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">What is the difference between pure maple syrup and table syrup?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">What is the difference between pure maple syrup and table syrup?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -538,7 +543,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is pure maple syrup healthier than table syrup?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Is pure maple syrup healthier than table syrup?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -547,7 +552,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">How can I tell if maple syrup is real?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">How can I tell if maple syrup is real?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -556,7 +561,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Why is pure maple syrup so much more expensive than table syrup?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Why is pure maple syrup so much more expensive than table syrup?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -565,7 +570,7 @@
         </div>
         <div class="bg-white ring-1 ring-warm-gray-200/30 rounded-2xl overflow-hidden">
           <button onclick="toggleAccordion(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
-            <h3 class="font-display text-lg font-semibold text-charcoal pr-4">Is pancake syrup the same as maple syrup?</h3>
+            <h3 class="font-display text-lg font-medium text-charcoal pr-4">Is pancake syrup the same as maple syrup?</h3>
             <svg class="accordion-icon w-5 h-5 text-warm-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="accordion-content px-6">
@@ -582,21 +587,21 @@
     <div class="max-w-[1400px] mx-auto">
       <div class="reveal">
         <div class="bg-warm-gray-100/50 ring-1 ring-warm-gray-200/30 p-2 md:p-2.5 rounded-[2rem] md:rounded-[2.5rem]">
-          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-gradient-to-br from-amber-warm via-amber-deep to-charcoal p-10 md:p-16 lg:p-20 text-center text-cream min-h-[320px] flex flex-col items-center justify-center">
+          <div class="relative overflow-hidden rounded-[calc(2rem-0.5rem)] md:rounded-[calc(2.5rem-0.625rem)] bg-amber-warm p-10 md:p-16 lg:p-20 text-center text-charcoal min-h-[320px] flex flex-col items-center justify-center">
             <div class="relative">
-              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Single-Origin Maple Syrup, Family Owned Since 1978.</h2>
-              <p class="text-base md:text-lg text-cream/75 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Our organic syrups are certified by Ecocert, Canada Organic and USDA Organic.</p>
+              <h2 class="font-display text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-6 max-w-[20ch] mx-auto">Single-Origin Maple Syrup, Family Owned Since 1978.</h2>
+              <p class="text-base md:text-lg text-charcoal/90 leading-relaxed max-w-[45ch] mx-auto mb-10 [&_a]:underline [&_a]:underline-offset-4">Our organic syrups are certified by Ecocert, Canada Organic and USDA Organic.</p>
               <div class="flex flex-wrap gap-3 justify-center">
-                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-cream text-charcoal rounded-full px-8 py-4 text-sm font-semibold group">
+                <a href="/products" class="btn-premium inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-6 py-3.5 text-sm font-medium group">
                   <span>Shop Maple Terroir</span>
-                  <span class="w-7 h-7 rounded-full bg-charcoal/[0.08] flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-110 group-hover:bg-charcoal/15">
-                    <svg class="w-3.5 h-3.5" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5">
+                    <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
                 </a>
-                <a href="/blog/" class="btn-premium inline-flex items-center gap-3 bg-white/10 border border-white/25 text-cream rounded-full px-8 py-4 text-sm font-medium hover:bg-white/15">More from the Blog</a>
+                <a href="/blog/" class="btn-premium inline-flex items-center gap-3 border border-charcoal/30 text-charcoal rounded-full px-6 py-3.5 text-sm font-medium hover:bg-charcoal/10">More from the Blog</a>
               </div>
             </div>
-            <div class="absolute inset-0 shadow-[inset_0_2px_4px_rgba(0,0,0,0.15)] rounded-[inherit] pointer-events-none"></div>
+          </div>
           </div>
         </div>
       </div>

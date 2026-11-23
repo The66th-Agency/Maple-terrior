@@ -21,10 +21,15 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #FDFBF7; }
     ::-webkit-scrollbar-thumb { background: #D9D1C4; border-radius: 3px; }
-    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
+    .nav-glass { backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
     .nav-scrolled { background: rgba(253, 251, 247, 0.85); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04); }
-    .btn-premium { transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
-    .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -15px rgba(196, 132, 29, 0.3); }
+    .btn-premium {
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    }
+    .btn-premium.bg-charcoal:hover { background-color: #2E2822; }
+    .btn-premium.bg-amber-warm:hover { background-color: #D3912A; }
+    .btn-premium.bg-cream:hover { background-color: #F5F0E8; }
+    .btn-premium:active { transform: scale(0.98); }
     .link-underline { position: relative; }
     .link-underline::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: currentColor; transition: width 0.5s cubic-bezier(0.32, 0.72, 0, 1); }
     .link-underline:hover::after { width: 100%; }
@@ -232,8 +237,8 @@
         <a href="/blog/" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Blog</a>
         <a href="/shop/maple-syrup-wholesale" class="link-underline text-[15px] font-medium text-charcoal/80 hover:text-charcoal transition-colors duration-500">Wholesale</a>
         <a href="/products" class="btn-premium inline-flex items-center gap-2 bg-charcoal text-cream rounded-full px-5 py-2.5 text-sm font-medium group">
-          <span>Shop Now</span>
-          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+          <span>Shop now</span>
+          <span class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
             <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </a>
@@ -253,9 +258,9 @@
         </button>
         <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-gray-100 transition-colors duration-300" aria-label="Toggle menu">
           <div class="relative w-5 h-4 flex flex-col justify-between">
-            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
-            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
-            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar1" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
+            <span id="bar2" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"></span>
+            <span id="bar3" class="block w-full h-[1.5px] bg-charcoal rounded-full transition duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] origin-center"></span>
           </div>
         </button>
       </div>
@@ -264,14 +269,14 @@
   <div id="mobile-menu" class="fixed inset-0 z-30 pointer-events-none opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
     <div class="absolute inset-0 bg-cream/95 backdrop-blur-3xl"></div>
     <div class="relative h-full flex flex-col items-center justify-center gap-8 px-8">
-      <a href="/story" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
-      <a href="/products" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
-      <a href="/terroir" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
-      <a href="/blog/" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
-      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-semibold text-charcoal translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
+      <a href="/story" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 100ms">Our Story</a>
+      <a href="/products" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 200ms">Products</a>
+      <a href="/terroir" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 300ms">Terroir</a>
+      <a href="/blog/" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 350ms">Blog</a>
+      <a href="/shop/maple-syrup-wholesale" class="mobile-link text-3xl font-display font-medium text-charcoal translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 400ms">Wholesale</a>
       <a href="/products"
-         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
-        Shop Now
+         class="mobile-link btn-premium mt-4 inline-flex items-center gap-3 bg-charcoal text-cream rounded-full px-8 py-4 text-lg font-medium translate-y-12 opacity-0 transition duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]" style="transition-delay: 500ms">
+        Shop now
         <svg class="w-4 h-4" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -310,13 +315,13 @@
 
         <!-- RIGHT: Product Info -->
         <div class="flex flex-col">
-          <h1 id="product-title" class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-[1.1] mb-3">Maple Syrup Mini Stroopwafels</h1>
+          <h1 id="product-title" class="font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-[1.1] mb-3">Maple Syrup Mini Stroopwafels</h1>
           <!-- PDP-TASTE (count and weight from the box, November 15, 2026) --><p class="text-base md:text-lg text-warm-gray-600 leading-relaxed mb-3 max-w-[34rem]">Fifteen mini stroopwafels in a 128 g box, with a filling sweetened with pure maple syrup. Four minis weigh the same as one of our full-size stroopwafels.</p>
           <p class="text-xs text-warm-gray-500 mb-5">Published <time datetime="2026-05-29">May 29, 2026</time> &middot; Last updated <time datetime="2026-11-15">November 15, 2026</time></p>
 
 
           <div class="flex items-center gap-3 mb-6">
-            <span id="product-price" class="font-display text-2xl md:text-3xl font-semibold text-charcoal">$8.99</span>
+            <span id="product-price" class="font-display text-2xl md:text-3xl font-medium text-charcoal">$8.99</span>
           </div>
 
           <div id="variant-picker" class="flex flex-wrap gap-2 mb-8"></div>
@@ -521,7 +526,7 @@
 
       <div class="mn-top mb-16 md:mb-24">
         <div>
-          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-charcoal tracking-tight leading-tight mb-5">15 Mini Stroopwafels in Every Box</h2>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-medium text-charcoal tracking-tight leading-tight mb-5">15 Mini Stroopwafels in Every Box</h2>
           <p class="mn-lede">Each 128 g box holds 15 mini stroopwafels: two layers of baked dough around a filling sweetened with pure maple syrup. One mini weighs about 8.5 g, and the box gives four of them as 34 g, the weight of one of our full-size stroopwafels. At $8.99 a box, that is about 60 cents a mini.</p>
           <div class="mn-facts">
             <div class="mn-fact"><b>15</b><span>in a 128 g box</span></div>
@@ -709,7 +714,7 @@
   <!-- BEFORE / AFTER SLIDER (stroopwafels only) -->
   <section id="ba-section" class="hidden py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto" style="padding-right:max(0px,calc(100% - 900px))">
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-3">Packaged vs. Unwrapped</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-3">Packaged vs. Unwrapped</h2>
       <p class="text-sm text-warm-gray-500 mb-8">Drag the slider to reveal what is inside the box</p>
       <div class="ba-slider" id="ba-slider">
         <!-- The two photos are added by the page script when the slider turns on (stroopwafels with 3+ Shopify photos), so no empty img ships in the server HTML. -->
@@ -728,7 +733,7 @@
        replaces this whole section with the product's reviews from the Loox export. -->
   <section id="reviews-section" class="px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24">
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-12">What Our Customers Say</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-12">What Our Customers Say</h2>
       <div class="mt-reviews-summary"><div class="mt-reviews-score"><b>5.0</b><span class="mt-stars" role="img" aria-label="5.0 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span></div><span class="mt-reviews-count">Based on 2 reviews from verified buyers</span></div><p class="mt-reviews-source">Every review on this page comes from a customer who bought the product. Reviews are collected and verified by <a href="https://loox.io/" rel="nofollow noopener" target="_blank">Loox</a>, which sends the request only to a real order.</p><div class="mt-reviews-grid mt-reviews-grid--few mt-reviews-grid--2"><article class="mt-review"><div class="mt-review-head"><div class="mt-review-who"><span class="mt-review-name">Carol C.</span><span class="mt-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span><span class="mt-review-verified"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Verified purchase</span></div><span class="mt-review-date">April 2026</span></div><p class="mt-review-text">Great products.  Fresh and delicious.  I am very pleased with my purchase and the delivery was faster than expected. Thank you!</p><span class="mt-review-variant">128g x 12 ($8.10 ea./10% Off!)</span><div class="mt-review-reply"><b>Maple Terroir replied</b><p>Thank you for the kind words, Carol! Glad to hear your products not only arrived quickly, but were fresh &amp; delicious!</p></div></article><article class="mt-review"><div class="mt-review-head"><div class="mt-review-who"><span class="mt-review-name">Michelle Buchar</span><span class="mt-stars" role="img" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></span><span class="mt-review-verified"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Verified purchase</span></div><span class="mt-review-date">March 2023</span></div><p class="mt-review-text">Cookies were so good! Great gifts to give to family!</p><div class="mt-review-reply"><b>Maple Terroir replied</b><p>Appreciate the kind words - glad you and your family enjoyed them!</p></div></article></div>
     </div>
   </section>
@@ -737,7 +742,7 @@
   <section class="px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto border-t border-warm-gray-200/30 py-16 md:py-24" style="padding-right:max(0px,calc(100% - 820px))">
       <!-- PDP-FAQ (mini stroopwafel questions, November 15, 2026. A build-products.mjs re-run leaves them alone) -->
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-12">Mini Stroopwafel Questions</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-12">Mini Stroopwafel Questions</h2>
       <div id="faq-list">
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How many mini stroopwafels are in a box?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Fifteen. Each box holds 128 g, so one mini is about 8.5 g.</div></div></div>
         <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span>How big is a mini stroopwafel next to a full-size one?</span><span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v8M2 6h8"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">By weight, a quarter of the size. Four minis weigh 34 g, the same as one full-size Maple Terroir stroopwafel.</div></div></div>
@@ -757,7 +762,7 @@
   <!-- YOU MAY ALSO LIKE -->
   <section class="py-16 md:py-24 px-4 md:px-8">
     <div class="max-w-[1400px] mx-auto">
-      <h2 class="font-display text-2xl md:text-3xl font-semibold text-charcoal tracking-tight mb-10">You may also like</h2>
+      <h2 class="font-display text-2xl md:text-3xl font-medium text-charcoal tracking-tight mb-10">You may also like</h2>
       <div id="recommendations" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         <div class="skeleton" style="aspect-ratio:1;border-radius:1rem"></div>
         <div class="skeleton" style="aspect-ratio:1;border-radius:1rem"></div>
@@ -966,7 +971,7 @@
       })
       .catch(function () {
         document.getElementById('product-title').textContent = 'Something went wrong';
-        document.getElementById('product-desc').innerHTML = '<p>We could not load this product. Please check your connection and <a href="/products" class="text-amber-warm underline">browse all products</a>.</p>';
+        document.getElementById('product-desc').innerHTML = '<p>We could not load this product. Please check your connection and <a href="/products" class="text-amber-deep underline">browse all products</a>.</p>';
       });
     }
 
